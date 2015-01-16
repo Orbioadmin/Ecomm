@@ -1,0 +1,10 @@
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\bin\Nop.Admin.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\bin\Nop.Admin.pdb
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Administration\obj\Release\Nop.Admin.csprojResolveAssemblyReference.cache
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Administration\obj\Release\Nop.Admin.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Administration\obj\Release\Nop.Admin.pdb
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\bin\Nop.Admin.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\bin\Nop.Admin.pdb
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Administration\obj\Release\Nop.Admin.csprojResolveAssemblyReference.cache
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Administration\obj\Release\Nop.Admin.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Administration\obj\Release\Nop.Admin.pdb

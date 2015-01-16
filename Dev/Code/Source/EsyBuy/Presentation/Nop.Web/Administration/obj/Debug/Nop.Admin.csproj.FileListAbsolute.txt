@@ -1,0 +1,45 @@
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\bin\Nop.Admin.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\bin\Nop.Admin.pdb
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Administration\obj\Debug\Nop.Admin.csprojResolveAssemblyReference.cache
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Administration\obj\Debug\Nop.Admin.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Administration\obj\Debug\Nop.Admin.pdb
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\bin\Nop.Admin.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\bin\Nop.Admin.pdb
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Administration\obj\Debug\Nop.Admin.csprojResolveAssemblyReference.cache
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Administration\obj\Debug\Nop.Admin.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Administration\obj\Debug\Nop.Admin.pdb
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\bin\Nop.Admin.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\bin\Nop.Admin.pdb
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Administration\obj\Debug\Nop.Admin.csprojResolveAssemblyReference.cache
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Administration\obj\Debug\Nop.Admin.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Administration\obj\Debug\Nop.Admin.pdb
+D:\EsyBuy Source\Presentation\Nop.Web\bin\Nop.Admin.dll
+D:\EsyBuy Source\Presentation\Nop.Web\bin\Nop.Admin.pdb
+D:\EsyBuy Source\Presentation\Nop.Web\Administration\obj\Debug\Nop.Admin.csprojResolveAssemblyReference.cache
+D:\EsyBuy Source\Presentation\Nop.Web\Administration\obj\Debug\Nop.Admin.dll
+D:\EsyBuy Source\Presentation\Nop.Web\Administration\obj\Debug\Nop.Admin.pdb
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\bin\Nop.Admin.dll
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\bin\Nop.Admin.pdb
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Administration\obj\Debug\Nop.Admin.csprojResolveAssemblyReference.cache
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Administration\obj\Debug\Nop.Admin.dll
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Administration\obj\Debug\Nop.Admin.pdb
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\bin\Nop.Admin.dll
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\bin\Nop.Admin.pdb
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Administration\obj\Debug\Nop.Admin.csprojResolveAssemblyReference.cache
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Administration\obj\Debug\Nop.Admin.dll
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Administration\obj\Debug\Nop.Admin.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\bin\Nop.Admin.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\bin\Nop.Admin.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Administration\obj\Debug\Nop.Admin.csprojResolveAssemblyReference.cache
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Administration\obj\Debug\Nop.Admin.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Administration\obj\Debug\Nop.Admin.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\bin\Nop.Admin.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\bin\Nop.Admin.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Administration\obj\Debug\Nop.Admin.csprojResolveAssemblyReference.cache
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Administration\obj\Debug\Nop.Admin.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Administration\obj\Debug\Nop.Admin.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\bin\Nop.Admin.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\bin\Nop.Admin.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Administration\obj\Debug\Nop.Admin.csprojResolveAssemblyReference.cache
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Administration\obj\Debug\Nop.Admin.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Administration\obj\Debug\Nop.Admin.pdb

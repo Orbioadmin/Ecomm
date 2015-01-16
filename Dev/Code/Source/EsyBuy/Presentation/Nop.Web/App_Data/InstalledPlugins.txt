@@ -1,0 +1,3 @@
+Payments.CashOnDelivery
+ExternalAuth.Facebook
+Payments.Manual
