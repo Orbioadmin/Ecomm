@@ -1,0 +1,103 @@
+﻿@model FooterModel
+@using Nop.Web.Models.Common;
+
+<!-- Footer ================================================================== -->
+<div id="footerSection">
+    <div class="container">
+        <div class="row">
+            <div class="span2">
+                <div class="leftSection"><span class="giftVoucher"></span> <a href="#">Gift Vouchers & Card</a></div>
+                <div class="leftSection"><span class="genuineProducts"></span> <a href="#">Genuine Products</a></div>
+            </div>
+            <div class="span10 rightSection">
+                <ul class="span2 unstyled">
+                    <h5>Portal</h5>
+                    <li><a href="#">Brands</a></li>
+                    <li><a href="#">Clearance</a></li>
+                    <li><a href="#">Mobile</a></li>
+                    <li><a href="#">Tablet</a></li>
+                    <li><a href="#">Laptops</a></li>
+                    <li><a href="#">New Arrivals</a></li>
+                    <li><a href="#">Watches</a></li>
+                    <li><a href="#">Camera</a></li>
+                    <li><a href="#">Home Theator</a></li>
+                    <li><a href="#">Kitchen Appliance</a></li>
+                    <li><a href="#">All Departments</a></li>
+                    <h5>Customer Support</h5>
+                    <li><a href="@Url.RouteUrl("Topic", new {SystemName = "FAQs"})">FAQs</a></li>
+                    <li><a href="@Url.RouteUrl("Topic", new {SystemName = "Deliveries"})">Deliveries</a></li>
+                    <li><a href="@Url.RouteUrl("Topic", new {SystemName = "Returns"})">Returns</a></li>
+                    <li><a href="@Url.RouteUrl("Topic", new {SystemName = "Warranties"})">Warranties</a></li>
+                </ul>
+                <ul class="span2 unstyled">
+                    <h5>About Us</h5>
+                    <li><a href="@Url.RouteUrl("Topic", new {SystemName = "aboutUs"})">Meet The Team</a></li>
+                    <li><a href="#">News & Articles</a></li>
+                    <li><a href="@Url.RouteUrl("Blog")">@T("Blog")</a></li>
+                    <li><a href="#">Invester Related</a></li>
+                    <h5>Legal</h5>
+                    <li><a href="@Url.RouteUrl("Topic", new {SystemName = "conditionsofUse"})">@T("ConditionsOfUse")</a></li>
+                    <li><a href="@Url.RouteUrl("Topic", new {SystemName = "legalNotices"})">Legal Notices</a></li>
+                    <li><a href="@Url.RouteUrl("Topic", new {SystemName = "privacyinfo"})">@T("PrivacyPolicy")</a></li>
+                    <li><a href="@Url.RouteUrl("Topic", new {SystemName = "returnPolicy"})">Return Policy</a></li>
+                    <h5>Contact</h5>
+                    <li><a href="mailto:help@protal.com">help@portal.com</a></li>
+                    <li><a href="#">+97155353535</a></li>
+                    <li><a href="#">Sunday-Thursday</a></li>
+                    <li><a href="#">9AM-6PM(+4GMT)</a></li>
+                </ul>
+                <div class="span3">
+                  
+                    @Html.Action("NewsletterBox", "Newsletter")
+
+                    <h5 class="pull-left">Keep In Touch</h5>
+
+                    <div class="socilIcons pull-left">
+                        @if (!string.IsNullOrEmpty(Model.FacebookLink))
+                        {
+                            <a href="@Model.FacebookLink" class="faceBookIcon"></a>
+                        }
+                        @if (!string.IsNullOrEmpty(Model.TwitterLink))
+                        {
+                            <a href="@Model.TwitterLink" class="twitterIcon"></a>
+                        }
+                        @if (!string.IsNullOrEmpty(Model.YoutubeLink))
+                        {
+                            <a href="@Model.YoutubeLink" class="youTubeIcon"></a>
+                        }
+                    </div>
+                </div>
+                <div class="span3">
+                    <h5>Customer Testimonials</h5>
+                    <div class="video"><img src="~/images/temp/youtube.jpg"> </div>
+                    <h5>Payment Methods</h5>
+                    <a href="#" class="cards1 cards"></a>
+                    <a href="#" class="cards2 cards"></a>
+                    <a href="#" class="cards3 cards"></a>
+                    <a href="#" class="cards4 cards"></a>
+                    <a href="#" class="cards5 cards"></a>
+                    <a href="#" class="cards6 cards"></a>
+                    <span class="cardDetails">we also accept debit cards, netbanking, bank transfers, cheques & demand draft. View all supported Payment Options</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bottomFooter">
+        <div class="container">
+            <ul class="unstyled">
+                <li><a href="@Url.RouteUrl("Topic", new {SystemName = "termsOfUse"})">Terms of Use</a></li>
+                <li class="seperator">|</li>
+                <li><a href="@Url.RouteUrl("Topic", new {SystemName = "security"})">Security</a></li>
+                <li class="seperator">|</li>
+                <li><a href="@Url.RouteUrl("Topic", new {SystemName = "privacyinfo"})">@T("Privacy")</a></li>
+                <span>@T("Content.CopyrightNotice", DateTime.Now.Year.ToString(), Model.StoreName)</span>
+            </ul>
+        </div>
+    </div>
+</div>
+@*<div class="footer-store-theme">
+            @Html.Action("StoreThemeSelector", "Common")
+        </div>
+        @Html.Action("ChangeDeviceBlock", "Common")
+        @Html.Widget("footer")
+    </div>*@

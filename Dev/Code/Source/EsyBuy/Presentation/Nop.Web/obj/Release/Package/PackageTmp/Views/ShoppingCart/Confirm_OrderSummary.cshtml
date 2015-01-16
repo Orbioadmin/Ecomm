@@ -1,0 +1,196 @@
+﻿@model ShoppingCartModel
+@using Nop.Core
+@using Nop.Core.Infrastructure
+@using Nop.Web.Models.ShoppingCart;
+@{
+    var webHelper = EngineContext.Current.Resolve<IWebHelper>();
+ Html.AppendCssFileParts("~/styles/TGI/shoppingCart.css");
+}
+
+<div class="order-summary-content">
+    @Html.Widget("order_summary_content_before")
+    @Html.Partial("_OrderReviewData", Model.OrderReviewData)
+    @if (Model.Items.Count > 0)
+    {
+        if (Model.Warnings.Count > 0)
+        {
+        <div class="message-error">
+            <ul>
+                @for (int i = 0; i < Model.Warnings.Count; i++)
+                {
+                    <li>@Model.Warnings[i]</li>
+                }
+            </ul>
+        </div>
+        }
+
+
+
+        <div class="mainBody pull-left shoppingCartInCheckOut">
+          
+                <div class="row noMarginLeft shoppingCartSection">
+                   
+                        <div class="shoppingCartContainer pull-left">
+                        <div class="shoppingCartHeader pull-left">
+                            <div class="products pull-left">Product(s)</div>
+                            <div class="price pull-left">Price</div>
+                            <div class="qty pull-left">Qty.</div>
+                            <div class="pull-left total">Total</div>
+                        </div>
+                        <div class="shoppingCartBody pull-left">
+                        @foreach (var item in Model.Items)
+                            {
+                                <div class="shoppingList pull-left">
+                                    <div class="products pull-left">
+                                     
+                                    <div class="pull-left shoppingListDetails">
+                                        <a href="@Url.RouteUrl("Product", new { SeName = item.ProductSeName })" class="product-name"><b class="shoppingCartLeftDetailHead fullWidth pull-left">@item.ProductName</b></a>
+                                        <br>
+                                      
+                                    </div> </div>
+                                <div class="price pull-left regularFont">@item.UnitPrice</div>
+                                <div class="qty pull-left">
+                                    <div class="quantity_main pull-left">
+                                            @if (Model.IsEditable)
+                                            {
+                                                <span class="quantity_main_contents pull-left">
+                                                <input type=text placeholder=1 value="@item.Quantity" class=quantityBox name="itemquantity@(item.Id)"><a href=# class="pull-left buttonToText" itemid="@item.Quantity"><input type="submit" name="updatecart" value="Update" /></a>
+                                                <span class="up_down_quantity pull-left">
+                                                <span class="increase icon-caret-up pull-left"></span>
+                                                <span class="decrease icon-caret-down pull-left"></span>
+                                                </span>
+                                                </span>
+                                            }
+                                            else
+                                            {
+                                                <span>@item.Quantity</span>
+                                            }
+                                    </div>
+                                </div>
+                                <div class="total pull-left regularFont">@item.SubTotal</div>
+                            </div>
+                    }
+
+
+
+<div class="shoppingListFooter pull-left">
+                        
+                       
+                        <div class="pull-right">
+
+
+
+         <div class="totals">
+                @Html.Action("OrderTotals", "ShoppingCart", new { isEditable = Model.IsEditable })
+
+            </div>
+        
+
+
+
+                           
+                        </div>
+                    </div>
+
+<div class="shoppingCartFooter pull-left">
+                <div class="pull-right">
+                    @if (Model.IsEditable)
+                {
+                                if (Model.TermsOfServiceOnShoppingCartPage)
+                                        {
+                                            <div id="terms-of-service-warning-box" title="@T("Checkout.TermsOfService")" style="display:none;">
+                                                <p>@T("Checkout.TermsOfService.PleaseAccept")</p>
+                                            </div>
+                                            <div class="terms-of-service">
+                                                <input id="termsofservice" type="checkbox" name="termsofservice" />
+                                                @T("Checkout.TermsOfService.IAccept")
+
+<a class="read"  target="_blank" href="@Url.RouteUrl("Topic", new {SystemName = "conditionsofUse"})">@T("Checkout.TermsOfService.Read")</a>
+                                                
+                                            </div>
+                                        }
+                   
+                     <div class="checkOutSection pull-right">
+                                         <a class="buttonToText">  <input type="submit" name="continueshopping" value="@T("ShoppingCart.ContinueShopping")" class="continueShop pull-left buttonToText" required /></a>
+                        <div class="checkout-buttons">
+                        @if (String.IsNullOrEmpty(Model.MinOrderSubtotalWarning))
+                        {
+                            <script type="text/javascript">
+                                $(document).ready(function () {
+                                    $('#checkout').click(function (e) {
+                                      
+                                        if ($('#termsofservice').is(':checked')) {
+                                            
+                                        }
+                                        else {
+                                            alert("Please accept the terms of service before the next step.");
+                                            e.preventDefault();
+                                          
+                                        }
+                                      
+                                    });
+                                });
+                            </script>
+                            <button type="submit" id="checkout" name="checkout" value="checkout" class="btn checkOutButton pull-right">@T("Checkout.Button")</button>
+                        }
+                    </div>
+                    </div>
+                    <div class="addon-buttons">
+                        @*Payment method buttons (e.g. GoogleCheckoutButton, Paypal Express)*@
+                        @Html.Partial("_ButtonPaymentMethod", Model)
+                    </div>
+                }
+                   
+                </div>
+            </div>
+
+
+
+
+
+                    </div>
+                            </div>
+                    </div>
+                   
+                    </div>
+      
+
+
+       
+
+        <div class="cart-footer">
+            @Html.Widget("order_summary_cart_footer")
+            @if (Model.IsEditable)
+            {
+                if (!String.IsNullOrEmpty(Model.MinOrderSubtotalWarning))
+                {
+                <div>
+                    <div class="min-amount-warning">
+                        @Model.MinOrderSubtotalWarning
+                    </div>
+                </div>
+                }
+            }
+      
+           
+        </div>
+        if (Model.IsEditable)
+        {
+             @Html.Action("CrossSellProducts", "Catalog")
+        }
+        
+    }
+   
+    @Html.Widget("order_summary_content_after")
+</div>
+<script type=text/cjs>
+
+        $('.shoppingListDetails ul.linkSection li a.delete').click(function(){
+            
+            var itemid = $(this).attr('itemid');
+            var frm = $('#frmShoppingCart');
+            var hidden = $('<input type="hidden" name="removefromcart" id="removefromcart" value="' + itemid +'"/>');
+            frm.append(hidden);
+            $('#frmShoppingCart').submit();
+        });
+</script>

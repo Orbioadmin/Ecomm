@@ -1,0 +1,177 @@
+﻿@model ProductDetailsModel.AddToCartModel
+@using Nop.Web.Models.Catalog;
+@using Nop.Core.Domain.Orders;
+
+
+@{
+Layout = "~/Views/Shared/_Root.Head.cshtml";
+ Html.AppendCssFileParts("~/styles/TGI/productDetail.css");
+
+}
+<div class="pull-left buyNowSection">
+<div class="quantity_main pull-left span6">
+    @if (Model.UpdatedShoppingCartItemId > 0)
+    {
+        @Html.HiddenFor(x => x.UpdatedShoppingCartItemId)
+    }
+    @if (Model.CustomerEntersPrice)
+    {
+        <div class="customer-entered-price">
+            <div class="price-input">
+                @Html.LabelFor(model => model.CustomerEnteredPrice, new { @class = "enter-price-label" }, ":")
+                @*round price*@
+                @Html.TextBox("CustomerEnteredPrice", Convert.ToInt32(Math.Ceiling(Model.CustomerEnteredPrice)), new { @class = "enter-price-input" })
+            </div>
+            <div class="price-range">
+                @Model.CustomerEnteredPriceRange
+            </div>
+        </div>
+    }
+    @if (!Model.DisableBuyButton || !Model.DisableWishlistButton)
+    {
+        <span class="pull-left span6">
+@*            @Html.LabelFor(model => model.EnteredQuantity, new { @class = "qty-label" }, ":")   *@
+            @if (Model.AllowedQuantities.Count > 0)
+            {
+
+              @* @Html.DropDownListFor(model => model.EnteredQuantity, Model.AllowedQuantities, new {@class = "qty-dropdown"})    *@                            
+            }
+            else
+            {
+               @*   @Html.TextBoxFor(model => model.EnteredQuantity, new {@class = "quantityBox"})*@
+
+                        <span class="quantity_main_contents pull-left">
+
+
+   Qty:   @Html.TextBoxFor(model => model.EnteredQuantity, new {@class = "quantityBox"})
+
+                                        <span class="up_down_quantity pull-left">
+                                            <span class="increase icon-caret-up pull-left"></span>
+                                            <span class="decrease icon-caret-down pull-left"></span>
+                                        </span>
+
+                                    </span>
+               
+                
+                //when a customer clicks 'Enter' button we submit the "add to cart" button (if visible)
+                if (!Model.DisableBuyButton)
+                {
+                <script type="text/javascript">
+                    $(document).ready(function() {
+                        $("#@Html.FieldIdFor(model => model.EnteredQuantity)").keydown(function(event) {
+                            if (event.keyCode == 13) {
+                                $("#add-to-cart-button-@Model.ProductId").click();
+                                return false;
+                            }
+                        });
+                    });
+                </script>
+                 }
+            }
+            @if (!Model.DisableBuyButton)
+            {
+                var addToCartText = "";
+                if (Model.UpdatedShoppingCartItemId > 0)
+                {
+                    addToCartText = T("ShoppingCart.AddToCart.Update").Text;
+                }
+                else
+                {
+                    addToCartText = Model.AvailableForPreOrder ? T("ShoppingCart.PreOrder").Text : T("ShoppingCart.AddToCart").Text;
+                }
+        @*        <input type="button" id="add-to-cart-button-@Model.ProductId" class="button-1 add-to-cart-button btn BuyNow btn-large" value="@addToCartText" data-productid="@Model.ProductId" onclick="AjaxCart.addproducttocart_details('@Url.RouteUrl("AddProductToCart-Details", new { productId = Model.ProductId, shoppingCartTypeId = (int)ShoppingCartType.ShoppingCart })', '#product-details-form');return false;" /> *@
+            
+            <button type="button" id="add-to-cart-button-@Model.ProductId" class="button-1 add-to-cart-button btn BuyNow btn-large" value="@addToCartText" data-productid="@Model.ProductId" onclick="AjaxCart.addproducttocart_details('@Url.RouteUrl("AddProductToCart-Details", new { productId = Model.ProductId, shoppingCartTypeId = (int)ShoppingCartType.ShoppingCart })', '#product-details-form');return false;">Buy Now</button>  
+
+
+}
+            @if (!Model.DisableWishlistButton && Model.UpdatedShoppingCartItemId == 0)
+            {
+@*              <input type="button" id="add-to-wishlist-button-@Model.ProductId" class="button-2 add-to-wishlist-button addToWishListIcon addToWishListIcon" value="@T("ShoppingCart.AddToWishlist")" data-productid="@Model.ProductId" onclick="AjaxCart.addproducttocart_details('@Url.RouteUrl("AddProductToCart-Details", new { productId = Model.ProductId, shoppingCartTypeId = (int)ShoppingCartType.Wishlist })', '#product-details-form');return false;" />  *@
+                  
+
+@*         <a id="add-to-wishlist-button-@Model.ProductId" style="cursor:pointer" data-productid="@Model.ProductId" onclick="AjaxCart.addproducttocart_details('@Url.RouteUrl("AddProductToCart-Details", new { productId = Model.ProductId, shoppingCartTypeId = (int)ShoppingCartType.Wishlist })', '#product-details-form');return false;" > Add to my wish list </a>    *@
+
+ 
+     
+        @* @Html.ActionLink("Submit now","Wishlist  ","AddProductToCart-Details",null,  new { productId = Model.ProductId, shoppingCartTypeId = (int)ShoppingCartType.Wishlist })*@
+
+  }
+        </span>
+
+    }
+    @Html.Widget("productdetails_add_info")
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- Add to Wish List -->
+
+<div class="span5 noMarginLeft addToSection">
+<ul class="span4">
+
+<li>
+
+       <span class="addToWishListIcon"></span>
+       @if (!Model.DisableWishlistButton && Model.UpdatedShoppingCartItemId == 0){
+       <a id="add-to-wishlist-button-@Model.ProductId" data-productid="@Model.ProductId" onclick="AjaxCart.addproducttocart_details('@Url.RouteUrl("AddProductToCart-Details", new { productId = Model.ProductId, shoppingCartTypeId = (int)ShoppingCartType.Wishlist })', '#product-details-form');return false;" > Add to my wish list</a>     
+
+}
+
+</li>
+
+
+
+
+<!-- To compare the models -->
+
+@using Nop.Web.Models.Catalog;
+<li class="compare-products">
+   
+@*   <input type="button" value="@T("Products.Compare.AddToCompareList")" class="button-2 add-to-compare-list-button" onclick="setLocation('@Url.RouteUrl("AddProductToCompare", new { productId = Model.ProductId })')" />*@
+     <span class="addToCompareIcon"></span>
+     <a value="@T("Products.Compare.AddToCompareList")" class="button-2 add-to-compare-list-button" onclick="setLocation('@Url.RouteUrl("AddProductToCompare", new { productId = Model.ProductId })')">  Add to Compare  </a>
+</li>
+
+
+
+<!-- Send Email to an Friend -->
+
+<li class="email-a-friend">
+@using Nop.Web.Models.Catalog;  
+@*   <input type="button" value="@T("Products.EmailAFriend")" class="button-2 email-a-friend-button" onclick="setLocation('@Url.RouteUrl("ProductEmailAFriend", new { productId = Model.ProductId })')" />*@
+     <span class="suggestFriendIcon"></span>
+     <a value="@T("Products.EmailAFriend")" class="button-2 email-a-friend-button" onclick="setLocation('@Url.RouteUrl("ProductEmailAFriend", new { productId = Model.ProductId })')"> Email a Friend </a>
+</li>
+
+@*<li><span class="suggestFriendIcon"></span><a>Suggest to a friend</a> </li>*@
+
+
+</ul>
+<div class="socialIcons pull-left">
+            <ul>
+                <li><a class="faceBookIconSmall" href="http://www.facebook.com" target="_blank"></a> </li>
+                <li><a class="twitterIconSmall" href="http://www.twitter.com" target="_blank"></a> </li>
+                <li><a class="googlePlus" href="http://plus.google.com" target="_blank"></a> </li>
+                <li><a class="counter" href="#"></a> </li>
+            </ul>
+        </div>
+</div>
+
+       <div class="span5 noMarginLeft noteSection">
+          <i class="icon-warning-sign alertIcon"></i><strong>Note:</strong>In a day dummy text is dummy text.Lorem ipsum is a dummy text
+       </div>
+
+
+
+
+
+

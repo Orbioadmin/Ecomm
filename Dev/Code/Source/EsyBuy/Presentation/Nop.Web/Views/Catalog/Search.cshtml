@@ -1,0 +1,180 @@
+﻿@model SearchModel
+@{
+    Layout = "~/Views/Shared/_Root.cshtml";
+    Html.AppendCssFileParts("~/styles/TGI/listing.css");
+    Html.AppendCssFileParts("~/styles/TGI/quickPopup.css");
+
+    //title
+    Html.AddTitleParts(T("PageTitle.Search").Text);
+}
+@using Nop.Web.Models.Catalog;
+@using Nop.Web.Extensions;
+
+<div class="container containerBlock marginBottom marginTopConfig listingPage">
+    <div class="productTopContainer">
+        <div class="span7 noMarginLeft">
+        </div>
+        <div class="span5 noMarginLeft extraOffer">
+            <a href="#" class="pull-right">Get an Extra <span>20% discount</span> on all LG mobile phones</a><span class="extraOfferBrand pull-right"></span>
+        </div>
+    </div>
+    <div class="mainBody pull-left">
+        <div class="container">
+            <div class="row noMarginLeft">
+                @Html.Widget("categorydetails_before_filters")
+                <div class="span2 pull-left noMarginLeft">
+                    <div class="filters widthConfigSpan2">
+                        <h3>Filter</h3>
+                        <div class="filterChecks">
+                        </div>
+                    </div>
+                    <span class="banner pull-left">
+                        <img src="~/images/banner/left-banner.gif">
+                    </span>
+                    <span class="banner pull-left">
+                        <img src="~/images/banner/left-banner.gif">
+                    </span>
+                </div>
+                <div class="bannerTop span10 noMarginLeft"><img src="~/images/banner/banner-yellow-top.jpg"></div>
+                <div class="mainContentBottom pull-right span10 noMarginLeft">
+
+                    <div class="carouselBlock span10 noMarginLeft pull-right">
+                        <div class="span10 noMarginLeft ">
+                            <div class="well well-small">
+                                <div class="productHeading">
+                                    <span class="itemsFound">@Model.Products.Count items found</span>
+                                    <div class="viewBy pull-right">
+                                        <label class="control-label viewLabel pull-left">View By: </label>
+                                        <div class="pull-left" id="myTab">
+                                            <a data-toggle="tab" href="#blockView" class="active"><span class="btn btn-large noBackground"><i class="icon-th-large"></i></span></a>
+                                            <a data-toggle="tab" href="#listView"><span class="btn btn-large noBackground"><i class="icon-list"></i></span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-content">
+                                    @*product list*@
+
+                                    @if (Model.Products.Count > 0)
+                                    {
+
+                                        @*list mode*@
+                                        <div class="tab-pane" id="listView">
+                                            <div class="row-fluid">
+                                                <div class="slide">
+                                                    <div class="carousel-inner">
+                                                        <div class="item ">
+                                                            <ul class="thumbnails">
+                                                                @foreach (var product in Model.Products)
+                                                                {
+                                                                    <li class="span12">
+                                                                        @RenderProductItemList(product)
+                                                                    </li>
+                                                                }
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        @*grid mode*@
+                                        <div class="tab-pane active" id="blockView">
+                                            <div class="row-fluid">
+                                                <div class="slide">
+                                                    <div class="carousel-inner">
+                                                        <div class="item ">
+                                                            <ul class="thumbnails">
+
+                                                                @foreach (var product in Model.Products)
+                                                                {
+                                                                    <li class="span3">
+                                                                        @RenderProductItemTile(product)
+                                                                    </li>
+
+                                                                }
+                                                            </ul>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@helper RenderProductItemList(ProductOverviewModel product)
+{
+    
+    
+    <div class="thumbnail pull-left">
+       <div class="productAlignBlock"> <a href="product_details.html"><img alt="" src="@product.DefaultPictureModel.ImageUrl" class="imageNormal"></a></div>
+        <div class="caption pull-left">
+            <span class="productDesc pull-left">@product.Name</span>
+            @*<div class="pull-left rating">
+                <span class="icon-star yellow"></span>
+                <span class="icon-star yellow"></span>
+                <span class="icon-star yellow"></span>
+                <span class="icon-star yellow"></span>
+                <span class="icon-star gray"></span>
+                <p class="pull-right">(@product.ReviewOverviewModel.TotalReviews ratings)</p>
+            </div>*@
+            <p class="pull-left productDescription">
+                @Html.Raw(@product.ShortDescription)
+            </p>
+            <div class="offerBlock pull-left">
+                <div class="offerBlockInside span3 pull-left">
+                    
+                    @if (!product.ProductPrice.OldPrice.IsEmpty())
+                    {
+                        <span class="actualPrice pull-left">@product.ProductPrice.OldPrice</span>
+                        <span class="offPrice pull-left">@product.ProductPrice.Discount.ToString("0")%<sup>OFF</sup></span>
+                    }
+                    <span class="sellingPrice pull-left clearfix">@product.ProductPrice.Price</span>
+                </div>
+                 @*<a onclick="AjaxCart.addproducttocart_catalog('@addtocartlink'); return false;" class="buttonShopNow"><span class="iconShopNow"></span>SHOP NOW</a>*@
+               <a href="#" class="buttonShopNow"><span class="iconShopNow"></span>SHOP NOW</a>
+            </div>
+        </div>
+    </div>
+    <div class="quickView"><a class="btn btn-primary" href="/Catalog/QuickView?productId=@product.Id" data-target="#quickView" data-toggle="modal">Quick View</a></div>
+    @*<div class="surpriseGift"><img src="~/images/surprise-gifit-bg.png"><span class="giftBox"></span></div>*@
+}
+
+@helper RenderProductItemTile(ProductOverviewModel product)
+{
+ 
+    <div class="thumbnail pull-left">
+        <div class="productAlignBlock">
+       <a href="@Url.RouteUrl("Product",  new { SeName = product.SeName })" title="product.DefaultPictureModel.Title" ><img alt="" src="@product.DefaultPictureModel.ImageUrl" class="imageNormal"></a></div>
+        <div class="caption pull-left">
+            
+            @if (!product.ProductPrice.OldPrice.IsEmpty())
+            {
+                <span class="actualPrice">@product.ProductPrice.OldPrice</span>
+                <span class="offPrice pull-left">@product.ProductPrice.Discount.ToString("0")%<sup>OFF</sup></span>
+            }
+            <span class="sellingPrice">@product.ProductPrice.Price</span>
+            <span class="productDesc pull-left">@product.Name</span>
+            @*<div class="pull-left rating">
+                <span class="icon-star yellow"></span>
+                <span class="icon-star yellow"></span>
+                <span class="icon-star yellow"></span>
+                <span class="icon-star yellow"></span>
+                <span class="icon-star gray"></span>
+                <p class="pull-right">(@product.ReviewOverviewModel.TotalReviews ratings)</p>
+            </div>*@
+             @*<a onclick="AjaxCart.addproducttocart_catalog('@addtocartlink'); return false;" class="buttonShopNow"><span class="iconShopNow"></span>SHOP NOW</a>*@
+            <a href="#" class="buttonShopNow"><span class="iconShopNow"></span>SHOP NOW</a>
+        </div>
+    </div>
+    <div class="quickView"><a class="btn btn-primary" href="/Catalog/QuickView?productId=@product.Id" data-target="#quickView" data-toggle="modal">Quick View</a></div>
+}

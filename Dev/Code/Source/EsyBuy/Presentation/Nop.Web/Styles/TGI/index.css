@@ -1,0 +1,43 @@
+.mainContent .slideshowBlock
+{
+	position: relative;
+}
+.slideshowBlock .carousel .sliderOfferTag
+{
+	background: url(../../images/offer-of-the-day.png) repeat scroll 0 0 rgba(0, 0, 0, 0);
+	float: left;
+	height: 101px;
+	left: -4px;
+	position: absolute;
+	top: 48px;
+	width: 101px;
+}
+.productBlock .span2
+{
+	width: 190px;
+}
+.popularCategories .productBlock
+{
+	margin-bottom: 22px;
+}
+.popularCategories .productHeading
+{
+	margin-bottom: 18px !important;
+}
+.popularCategories .productBlock li.marginRight
+{
+	margin-right: 15px !important;
+}
+.popularCategories .productBlock .thumbnail
+{
+	min-height: 162px;
+}
+.popularCategories .thumbnail .productAlignBlock
+{
+	height: 130px;
+	padding-bottom: 10px;
+}
+#featured .carousel-inner
+{
+	overflow: visible;
+}

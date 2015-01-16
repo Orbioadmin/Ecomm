@@ -1,0 +1,34 @@
+﻿@model IList<CategoryModel>
+
+
+@using Nop.Web.Models.Catalog;
+
+@if (Model.Count > 0)
+{
+    <div class="productDisplayBlock pull-left popularCategories">
+        <h3 class="productHeading pull-left span10 noMarginLeft">
+            Popular Categories <a href="#" class="viewAll">View All</a>
+        </h3>
+        <div class="span10 noMarginLeft pull-right">
+            <ul class="thumbnails noMarginLeft productBlock">
+                @foreach (var item in Model)
+                {
+                    <li class="span2 noMarginLeft">
+                        
+                        <div class="thumbnail">
+                        <div class="productAlignBlock">
+                            <a href="@Url.RouteUrl("Category", new { SeName = item.SeName })">
+                                <img src="@item.PictureModel.ImageUrl" class="imageNormal" />
+                            </a>
+                            </div>
+                            <h4>@item.Name</h4>
+                        </div>
+                        <div class="offerTag">
+                            <span>upto</span><span class="offerValue">50%</span><span class="offerTagbottom">OFF</span>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+}

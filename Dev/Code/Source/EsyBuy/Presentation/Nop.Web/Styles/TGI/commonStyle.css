@@ -1,0 +1,774 @@
+
+body
+{
+	font-family: arial;
+}
+a:focus
+{
+	outline: 0;
+}
+.floatNone
+{
+	float: none;
+}
+.marginAuto
+{
+	margin: auto;
+}
+.noMarginLeft
+{
+	margin-left: 0 !important;
+}
+.noBorder
+{
+	border-right: none !important;
+}
+.noMarginTop
+{
+	margin-top: 0 !important;
+}
+.noMarginBottom
+{
+	margin-bottom: 0;
+}
+.noMarginRight
+{
+	margin-right: 0 !important;
+}
+.noPaddingRight
+{
+	padding-right: 0 !important;
+}
+.borderBottomNone
+{
+	border-bottom: none !important;
+}
+.marginTop
+{
+	margin-top: 10%;
+}
+.marginRight
+{
+	margin-right: 10px;
+}
+.marginBottom
+{
+	margin-bottom: 25px;
+}
+.marginTopConfig
+{
+	margin-top: 135px;
+}
+.yellow
+{
+	color: #eed44c;
+}
+.gray
+{
+	color: #808080;
+}
+.widthFull
+{
+	width: 100%;
+}
+.clearLeft
+{
+	clear: left;
+}
+.loading
+{
+	background-image: linear-gradient(to bottom, #F2F1F2 0, #D7D6D8 100%);
+	color: #333;
+
+	font-size: 14px;
+	font-weight: normal;
+	margin: 25px auto 10px;
+	padding: 2px 22px;
+	text-align: center;
+	width: 12%;
+}
+#topcontrol
+{
+	background: url("../../images/image%20pieces/top.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+	float: left;
+	height: 46px;
+	margin-right: 10px;
+	width: 46px;
+}
+.buttonShopNow
+{
+	background: linear-gradient(to bottom, #30A72D, #298F28) repeat scroll 0 0 rgba(0, 0, 0, 0);
+	border-radius: 2px 2px 2px 2px;
+	color: #fff;
+	cursor: pointer;
+	float: left;
+
+	font-size: 12px;
+	font-weight: bold;
+	height: 25px;
+	line-height: 25px;
+	margin-left: 28px;
+	padding: 0 12px;
+	text-shadow: 0 -1px rgba(0, 0, 0, 0.3);
+}
+.buttonShopNow:hover
+{
+	background: linear-gradient(to bottom, #31942E, #56C552);
+	color: #fff;
+	text-decoration: none;
+}
+.caption .buttonShopNow
+{
+	bottom: 0;
+	left: 0;
+	margin-left: 30px;
+	position: absolute;
+}
+.myAccount .continue,.blueButton
+{
+	background: linear-gradient(to bottom, #1B7CFB, #1C5CB0) repeat scroll 0 0 rgba(0, 0, 0, 0);
+	border: none;
+	box-shadow: 2px 1px rgba(0, 0, 0, 0.2);
+	color: #FFFFFF;
+	padding: 6px 14px;
+	text-shadow: 0 -1px rgba(0, 0, 0, 0.2);
+}
+.myAccount .continue:hover,.blueButton:hover
+{
+	background: linear-gradient(to bottom,#1C5CB0, #1B7CFB) repeat scroll 0 0 rgba(0, 0, 0, 0);
+	color: #FFFFFF;
+}
+.blueButton
+{
+	float: right;
+	padding: 3px 10px;
+}
+.buttonShopNow .iconShopNow
+{
+	background: url("../../images/sprite.png") no-repeat scroll -376px -85px rgba(0, 0, 0, 0);
+	float: left;
+	height: 16px;
+	margin: 4px 4px 0 0;
+	width: 16px;
+}
+.modal .close
+{
+	background: url("../../images/sprite.png") repeat scroll -336px -86px rgba(0, 0, 0, 0);
+	font-size: 0;
+	height: 22px;
+	opacity: 1;
+	position: absolute;
+	right: 6px;
+	top: 14px;
+	width: 22px;
+}
+.containerBlock .productTopContainer
+{
+	margin: 4px 0;
+	width: 100%;
+}
+.containerBlock .topcontainer
+{
+	margin: auto auto 20px;
+	width: 86%;
+}
+.topcontainer .span3
+{
+	border-right: 1px solid #e3e3e3;
+	margin-right: 15px;
+	padding-right: 15px;
+	width: auto;
+}
+.topcontainer .cashOnDeliveryIcon
+{
+	background: url("../../images/sprite.png") repeat scroll -93px -7px rgba(0, 0, 0, 0);
+	float: left;
+	height: 30px;
+	width: 25px;
+}
+.topcontainer .freeShipping
+{
+	background: url("../../images/sprite.png") repeat scroll -135px -13px rgba(0, 0, 0, 0);
+	float: left;
+	height: 27px;
+	width: 36px;
+}
+.topcontainer .returnPolicy
+{
+	background: url("../../images/sprite.png") repeat scroll -188px -7px rgba(0, 0, 0, 0);
+	float: left;
+	height: 30px;
+	width: 26px;
+}
+.topcontainer .Cash
+{
+	color: #bf0708;
+
+	font-size: 14px;
+	font-weight: bold;
+	margin: 8px 4px 0 10px;
+	text-transform: uppercase;
+}
+.topcontainer .textBlock
+{
+	color: #333;
+
+	margin: 8px 0 0;
+}
+.topcontainer .row .span4
+{
+	width: 350px;
+}
+.mainBody .container .banner
+{
+	margin: 0 5px 9px 0;
+	width: 100%;
+}
+.banner.pull-left.widthConfigSpan2 img{
+float:left;
+}
+.mainBody .mainContentBottom .fewMoreAvailable
+{
+	color: #f90;
+
+	font-size: 11px;
+	font-weight: bold;
+	letter-spacing: 0;
+	padding: 6px 0;
+	text-align: center;
+	text-transform: uppercase;
+}
+.mainBody .mainContentBottom .soldOut
+{
+	color: #CC0001 !important;
+}
+.mainBody .mainContentBottom .available
+{
+	color: #359430 !important;
+}
+.productHeading
+{
+	border-bottom: 4px solid #999;
+	color: #194c8e;
+
+	font-size: 24px;
+	line-height: normal;
+	margin-bottom: 15px;
+	margin-top: 20px;
+	width: 100%;
+}
+.productBlock .thumbnail
+{
+	border: 4px solid transparent;
+	min-height: 270px;
+	padding: 10px 15px;
+	text-align: center;
+}
+.productBlock li
+{
+	background: linear-gradient(to bottom, #ffffff 90%, #f7f7f7 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	margin-bottom: 0;
+	margin-right: 10px;
+	position: relative;
+}
+.productBlock li:nth-child(5n)
+{
+	margin-right: 0;
+}
+.productBlock li:hover
+{
+	border: 1px solid rgba(0, 0, 0, 0.3);
+	box-shadow: 0 0 0 1px #ddd;
+}
+.productBlock li:hover .thumbnail
+{
+	border: 4px solid rgba(0, 0, 0, 0.1);
+}
+.thumbnail img
+{
+	height: auto;
+	max-height: 160px;
+	max-width: 150px;
+}
+.thumbnail .productAlignBlock
+{
+	display: table-cell;
+	height: 150px;
+	vertical-align: middle;
+	width: 150px;
+}
+.thumbnail > a
+{
+	float: left;
+	width: 100%;
+}
+.mainBody .actualPrice, .modal-body .actualPrice
+{
+	color: #999;
+	float: left;
+	font-size: 12px;
+	font-weight: bold;
+	margin-right: 8px;
+	text-decoration: line-through;
+	width: auto;
+}
+.mainBody .offPrice, .modal-body .offPrice
+{
+	color: #f00;
+	float: left;
+	font-size: 16px;
+	font-weight: bold;
+	width: auto;
+}
+.mainBody .offPrice sup, .modal-body .offPrice sup
+{
+	font-size: 10px !important;
+	top: -9px;
+}
+.mainBody .sellingPrice, .modal-body .sellingPrice
+{
+	color: #333;
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 16px;
+}
+.mainBody .sellingPrice
+{
+	clear: left;
+	float: left;
+}
+.mainBody .productDesc
+{
+	color: #333;
+
+	font-size: 12px;
+	line-height: 16px;
+	padding: 5px 0;
+	width: 100%;
+}
+.bestSellers ul li .productDesc
+{
+	max-height: 30px;
+	overflow: hidden;
+}
+.productHeading .viewAll
+{
+	color: #1f569c;
+
+	font-size: 12px;
+	font-weight: normal;
+	margin-left: 10px;
+}
+.mainContentBottom .productBlock
+{
+	margin-bottom: 10px;
+}
+.productBlock .offerTag
+{
+	background: url("../../images/sprite.png") repeat scroll -6px -54px rgba(0, 0, 0, 0);
+	color: #fff;
+	float: left;
+	height: 78px;
+	left: -7px;
+	line-height: 15px;
+	padding: 0 8px;
+	position: absolute;
+	text-shadow: 0 -1px rgba(0, 0, 0, 0.3);
+	top: -2px;
+	width: 80px;
+    text-align: left;
+}
+.productBlock .offerValue
+{
+	display: block;
+	font-size: 22px;
+}
+.productBlock .offerTagbottom
+{
+	margin-left: 4px;
+}
+.carousel
+{
+	border-radius: 5px 5px 5px 5px;
+	height: 300px;
+	margin-bottom: 0;
+	overflow: hidden;
+}
+.carouselBlock .carousel-inner .span3
+{
+	margin-left: 0;
+	width: 20%;
+}
+.carouselBlock .well-small
+{
+	padding: 10px 0;
+}
+.carouselBlock .well
+{
+	background: linear-gradient(to bottom, #ffffff 98%, #f7f7f7 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+	margin-bottom: 24px;
+}
+.carouselBlock .well .productHeading
+{
+	margin: 5px 15px 14px !important;
+	width: 97%;
+}
+.carouselBlock .thumbnail
+{
+	border: 4px solid transparent;
+	box-shadow: none;
+	display: block;
+	height: 90%;
+	line-height: 20px;
+	padding: 10px 15px;
+	text-align: center;
+	transition: all .2s ease-in-out 0s;
+}
+.carousel-control
+{
+	border: 0;
+	border-radius: 0;
+	height: 20px;
+	margin-top: 0;
+	top: 45%;
+	width: 20px;
+}
+.carousel-control.left
+{
+	background: url("../../images/sprite.png") no-repeat scroll -245px -13px rgba(0, 0, 0, 0);
+	left: -5px;
+}
+.carousel-control.right
+{
+	background: url("../../images/sprite.png") no-repeat scroll -284px -13px rgba(0, 0, 0, 0);
+	left: auto;
+	right: -5px;
+}
+.mainContent .slideshowBlock .carousel
+{
+	height: 278px;
+	margin-top: 10px;
+	position: static;
+}
+.carouselBlock .thumbnails li
+{
+	border-right: 1px solid #e3e3e3;
+	position: relative;
+}
+.carouselBlock .thumbnails li:hover .quickView
+{
+	display: block;
+}
+.carouselBlock .carousel-inner .thumbnails li:hover
+{
+	border-right: 1px solid rgba(0, 0, 0, 0);
+}
+.carouselBlock .thumbnails li:nth-child(5n)
+{
+	border-right: 1px solid transparent;
+}
+.carouselBlock .carousel-inner .thumbnails li:hover .thumbnail
+{
+	border: 4px solid rgba(0, 0, 0, 0.1);
+}
+.carouselBlock .carousel-inner .thumbnails li:last-child:hover
+{
+	border-right: 1px solid transparent;
+}
+.carouselBlock .slide
+{
+	padding: 0 20px;
+}
+.carouselBlock .carousel-control.left
+{
+	left: 0;
+}
+.carouselBlock .carousel-control.right
+{
+	right: 0;
+}
+.carousel-inner .thumbnails ,.carousel .item,.carousel .carousel-inner,.carousel-inner .thumbnails > li
+{
+	height: 100%;
+}
+.productBlock li:hover .quickView
+{
+	display: block;
+}
+.thumbnail .caption
+{
+	line-height: 14px;
+	margin-top: 5px;
+	min-height: 98px;
+	padding: 0;
+	position: relative;
+	text-align: left;
+}
+.thumbnail .caption .btn
+{
+	border-radius: 2px;
+	height: 25px;
+	line-height: 29px;
+	padding: 0 12px;
+}
+.widthConfigSpan2
+{
+	width: 93%;
+}
+.productTopContainer .extraOfferBrand
+{
+	background: url("../../images/sprite.png") repeat scroll -320px -145px rgba(0, 0, 0, 0);
+	height: 32px;
+	margin-right: 10px;
+	width: 32px;
+}
+.productTopContainer .extraOffer
+{
+	margin-top: -6px;
+}
+.productTopContainer .extraOffer a
+{
+	color: #ffb900;
+	font-size: 18px;
+	line-height: 30px;
+	text-decoration: underline;
+}
+.productTopContainer .extraOffer a:hover
+{
+	text-decoration: none;
+}
+.productTopContainer .extraOffer span:first-child
+{
+	color: #44423e;
+}
+.logoSection .carousel
+{
+	height: 65px;
+	margin-top: 0;
+}
+.logoSection .carousel-inner
+{
+	max-height: 65px;
+}
+.logoSection .carousel-inner .item
+{
+	max-height: 65px;
+}
+#featured3 .carousel-control.left
+{
+	left: -4px;
+}
+#featured3 .carousel-control.right
+{
+	right: -4px;
+}
+.logoSection .row-fluid .span2
+{
+	width: 12%;
+}
+.logoSection .well-small
+{
+	padding: 4px;
+}
+.logoSection .well
+{
+	background: linear-gradient(to bottom, #F7F7F7 17%, #FFFFFF 47%, #F7F7F7 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+#featured3 .carousel-control
+{
+	top: 35%;
+}
+.logoSection #featured3 .thumbnail, .logoSection #featured3 .thumbnails li, .logoSection #featured3 .thumbnails, .logoSection #featured3 .carousel-inner .thumbnails li:hover, .logoSection #featured3 .carousel-inner .thumbnails li:hover .thumbnail, .logoSection #featured3 .carousel-inner .thumbnails li:last-child:hover
+{
+	border: none !important;
+}
+#themesBtn
+{
+	background: url("../../images/feedback.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+	cursor: pointer;
+	height: 116px;
+	position: fixed;
+	right: 0;
+	top: 220px;
+	width: 33px;
+}
+#secectionBox
+{
+	background: none repeat scroll 0 0 #ebebeb;
+	color: #000;
+	padding: 2%;
+	position: fixed;
+	right: -999px;
+	top: 150px;
+	width: 250px;
+}
+#hideme
+{
+	background: url("../../images/sprite.png") repeat scroll -336px -86px rgba(0, 0, 0, 0);
+	color: #fff;
+	height: 20px;
+	opacity: 1;
+	position: absolute;
+	right: 8px;
+	top: 14px;
+	width: 22px;
+}
+.container .filters
+{
+	background-image: linear-gradient(to bottom, #FFFFFF 95%, #F7F7F7 100%);
+	border: 1px solid #e3e3e3;
+	border-radius: 5px 5px 0 0;
+	box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.1);
+	margin-bottom: 15px;
+	padding-bottom: 25px;
+}
+.container .filters h3
+{
+	background-color: #e3e3e3;
+	color: #000;
+	font-size: 16px;
+	line-height: 32px;
+	margin: 0;
+	text-indent: 15px;
+}
+.container .filterChecks
+{
+	padding: 0 16px 10px;
+}
+.container .filters .filterChecks h4
+{
+	color: #000;
+	font-size: 14px;
+	margin-bottom: 2px;
+	margin-top: 9px;
+}
+.container .filters .filterChecks h5
+{
+	border-bottom: 1px solid #e3e3e3;
+	font-size: 12px;
+	margin-bottom: 12px;
+	margin-top: 4px;
+	padding-bottom: 5px;
+}
+.container .filters .filterChecks h5 a
+{
+	color: #1f569c;
+	font-size: 12px;
+}
+.container .filters .filterChecks h5 a:hover
+{
+	text-decoration: underline;
+}
+.container .filters .filterChecks input
+{
+	float: left;
+	margin: 4px 6px 0 0;
+}
+.container .filters .filterChecks label
+{
+	color: #1F569C;
+	cursor: pointer;
+	font-size: 11px;
+	font-weight: bold;
+	margin-bottom: 0;
+}
+.container .filters .filterChecks label span
+{
+	color: #999;
+	margin-left: 4px;
+}
+.quantity_main_contents
+{
+	border: medium none;
+	margin: 8px 0 0;
+	position: relative;
+	width: 23%;
+}
+.quantity_main
+{
+	width: 17%;
+}
+.quantity_main_contents .up_down_quantity
+{
+	background: none repeat scroll 0 0 #c4c4c4;
+	border-radius: 0 4px 4px 0;
+	position: absolute;
+	right: 6px;
+	text-align: center;
+	top: 1px;
+}
+.up_down_quantity .increase, .up_down_quantity .decrease
+{
+	cursor: pointer;
+	height: 12px;
+	margin-top: 0;
+	width: 100%;
+}
+.removeAddress
+{
+	background: url("../../images/sprite.png") repeat scroll -13px -228px rgba(0, 0, 0, 0);
+	cursor: pointer;
+	float: right;
+	height: 17px;
+	position: absolute;
+	right: -4px;
+	top: -8px;
+	width: 17px;
+}
+.required
+{
+	color: #e30b0b;
+	font-size: 14px;
+}
+.admin-header-links
+{
+	float: left;
+	margin-top: 5px;
+	position: fixed;
+	right: 0px;
+	text-align: center;
+	top: 83px;
+	width: 20%;
+	z-index: 9999;
+}
+.admin-header-links .administration
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.admin-header-links .administration:hover
+{
+	color: #FF0000;
+	text-decoration: underline;
+}
+.removeProduct
+{
+	background: url("../../images/sprite.png") repeat scroll -437px -191px rgba(0, 0, 0, 0);
+}
+#featured .thumbnail .caption,#featured1 .thumbnail .caption
+{
+	min-height: 110px;
+}
+#featured3 .thumbnail img
+{
+	max-height: 45px;
+	max-width: 106px;
+}
+.noItems 
+{
+    padding-left:15px;
+    }
+.ajax-loading-block-window{position:fixed;top:50%;left:50%;width:128px;height:128px;overflow:hidden;z-index:1104;}
+.ajax-loading-block-window .loading-image{position:absolute;top:0;left:0;width:128px;height:128px;background-image:url('../../images/ajax_loader_large.gif')}
+.please-wait{background:url('../../images/ajax_loader_small.gif') no-repeat;padding-left:20px;}
+
+
+.bar-notification{display:none;left:0;position:fixed;top:0;width:100%;z-index:100000;}
+.bar-notification.success{background:none repeat scroll 0 0 #91BD09;border-bottom:3px solid #FFFFFF !important;color:#FFFFFF;margin:0 0 10px;}
+.bar-notification.error{background:none repeat scroll 0 0 #CC0000;border-bottom:3px solid #FFFFFF !important;color:#FFFFFF;margin:0 0 10px;}
+.bar-notification .close{background:url(../../images/ico-close-notification-bar.png) no-repeat;width:20px;height:20px;float:right;margin:9px 9px 0px 0px;cursor:pointer;}
+.bar-notification p.content{padding:0px 10px;margin:10px 0px;}
+.bar-notification p.content a{text-decoration:underline;color:#FFFFFF;}
+.bar-notification p.content a:hover{text-decoration:none;color:#FFFFFF;}

@@ -1,0 +1,76 @@
+﻿@model SearchBoxModel
+@using Nop.Web.Models.Catalog;
+@using Nop.Services.Catalog;
+@using Nop.Core.Infrastructure;
+@{
+
+    var categoryService = (new NopEngine()).Resolve<ICategoryService>();
+    var categories = categoryService.GetAllCategoriesByParentCategoryId(0).ToList();
+}
+@using (Html.BeginRouteForm("ProductSearch", FormMethod.Get, new { onsubmit = "return check_small_search_form()" }))
+{
+    <div class="span5 search-bar noMarginLeft pull-left">
+        <div class="row pull-left span6 noMarginLeft marginTopNew">
+
+            <div class="input-group nav-searchbar-inner">
+                <form role="search" class="nav-searchbar-inner" name="site-search" method="get" action="/search">
+                            <input type="hidden" name="as" value="true" />
+	 	                    <input type="hidden" name="isc" value="true" />
+	 	                    <input type="hidden" name="mid" value="0" />
+	 	                    <input type="hidden" name="sid" value="true" /> 
+                    <span class="nav-sprite nav-facade-active btn btn-default" id="nav-search-in">
+                        <span data-value="aps" id="nav-search-in-content">
+                            ALL
+                        </span>
+                        <span class="caret"></span>
+                        <select title="Search in" class="searchSelect" id="searchDropdownBox" name="CId">
+                            <option selected="selected" value="Search">All</option>
+
+                            @foreach (var category in categories)
+                            {
+                                   @*<option value="@category.Id">@category.Name</option>*@
+                                <option data-catid="esybuy/@category.Id">@category.Name</option>
+                                
+                            }
+                        </select>
+                    </span>
+                    <div class="nav-searchfield-outer nav-sprite">
+                        <div class="nav-searchfield-inner nav-sprite">
+                            <div class="nav-searchfield-width">
+                                <div id="nav-iss-attach">
+                                     <input type="text" autocomplete="off" name="q" value="" title="Search For" id="twotabsearchtextbox" placeholder="Search a product or brand" onfocus="this.placeholder=''" onblur="this.placeholder='Search a product or brand'">
+                                    @*<input type="text" autocomplete="off" name="q" value="" title="Search For" id="twotabsearchtextbox" placeholder="Search a product or brand" onfocus="this.placeholder=''" onblur="this.placeholder='Search a product or brand'">
+                                    <input type="text" autocomplete="on" id="searchTerm" class="form-control span4 pull-left noMarginLeft" placeholder="Search a product or brand" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search a product or brand'">*@
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="nav-submit-button  btn btn-default btn-search-submit">
+                          <input type="submit" title="search" class="nav-submit-input" value="Search" id="searchButton">
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <script type=text/cjs>
+               $(document).ready(function () {
+            $("#searchDropdownBox").change(function () {
+                var Search_Str = $(this).val();;
+                var wid = $(this).width();
+                $("#nav-search-in-content").text(Search_Str);
+            });
+            $('#searchButton').click(function(e){
+	 	        e.preventDefault();
+	 	        var url = $("#searchDropdownBox").val()+'?q='+$('#twotabsearchtextbox').val();
+	 	        window.location.href = url;
+
+	 	        }); 
+        });
+
+    </script>
+    @Html.Widget("searchbox")
+}

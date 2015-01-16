@@ -1,0 +1,110 @@
+﻿@model CustomerAddressListModel
+@using Nop.Web.Models.Customer;
+@{
+    Layout = "~/Views/Shared/_ColumnsTwo.cshtml";
+
+    //title
+    Html.AddTitleParts(T("PageTitle.Account").Text);
+}
+@section left
+{
+    @Html.Partial("MyAccountNavigation", Model.NavigationModel, new ViewDataDictionary())
+}
+<div class="page account-page address-edit-page">
+         <div class="productHeading noMarginTop">
+        <h3 class="noMarginTop noMarginBottom">@T("Account.MyAccount") - @T("Account.CustomerAddresses")</h3>
+    </div>
+   <div class="page-body accountBody pull-left borderBottomThin">
+        <div class="address-list">
+            @if (Model.Addresses.Count > 0)
+            {
+                for (int i = 0; i < Model.Addresses.Count; i++)
+                {
+                    var address = Model.Addresses[i];
+                    
+                <div class="section address-item addressBlockContent pull-left">
+                   
+                    <div class="editRemoveBlock pull-left"><a class="pull-right edit button-2 edit-address-button" onclick="location.href='@(Url.RouteUrl("CustomerAddressEdit", new { addressId = address.Id }))'" >Edit</a>
+
+                    </div>
+
+
+                    <div class="info addressBlock pull-left">
+                        
+                        <a class="button-2 delete-address-button removeAddress" onclick="if (confirm('@(T("Common.AreYouSure").Text)')) {location.href='@(Url.RouteUrl("CustomerAddressDelete", new { addressId = address.Id }))';}"></a>
+                        <address>
+
+                        <span class="nameBlock">@address.FirstName @address.LastName</span><br>
+                        @* @Html.LabelFor(model => model.Addresses[i].Email, new { }, ":")*@
+                                                  
+                        @if (address.CompanyEnabled && !String.IsNullOrEmpty(address.Company))
+                        {
+                            @address.Company
+                        }
+                        @if (address.StreetAddressEnabled)
+                        {
+                            
+                                @address.Address1<br>
+                        }
+                         @if (address.StreetAddress2Enabled && !String.IsNullOrEmpty(address.Address2))
+                        {
+                           
+                                @address.Address2<br>
+                           
+                        }
+                        @if (address.CityEnabled || address.StateProvinceEnabled || address.ZipPostalCodeEnabled)
+                        {
+                            <div class="city-state-zip">
+                                @if (address.CityEnabled)
+                                {
+                                    @address.City<br>
+                                }
+                              
+                                   
+                               
+                                @if (address.StateProvinceEnabled)
+                                {
+                                    @address.StateProvinceName<br>
+                                }
+                                @if (address.ZipPostalCodeEnabled)
+                                {
+                                    @address.ZipPostalCode<br>
+                                }
+                                  
+                            </div>
+                        }
+                        @if (address.CountryEnabled && !String.IsNullOrEmpty(address.CountryName))
+                        {
+                           
+                                @address.CountryName<br>
+                           
+                        }
+                         @address.Email<br>
+                        @if (address.PhoneEnabled)
+                        {
+                           
+                               @* @Html.LabelFor(model => model.Addresses[i].PhoneNumber, new { }, ":")*@
+                                @address.PhoneNumber<br>
+                        }
+                        @if (address.FaxEnabled)
+                        {
+                             @* @Html.LabelFor(model => model.Addresses[i].FaxNumber, new { }, ":")*@
+                                @address.FaxNumber<br>
+                         }
+                        </address>
+                       
+                    </div>
+                   
+                </div>
+              
+
+  }
+            }
+            else
+            {
+                @T("Account.CustomerAddresses.NoAddresses")
+            }
+        </div>
+      </div>
+<button class="btn continue addNew button-1 add-address-button" type="button" onclick="location.href='@Url.RouteUrl("CustomerAddressAdd")'" value="@T("Common.AddNew")">@T("Common.AddNew")</button>
+</div>

@@ -1,0 +1,199 @@
+﻿@model ProductReviewsModel
+@using Nop.Web.Models.Catalog;
+@{
+   
+  @*  Layout = "~/Views/Shared/_ColumnsTwo.cshtml"; *@
+      Layout = "~/Views/Shared/_ColumnsFour.cshtml";    
+     Html.AppendCssFileParts("~/styles/TGI/writeReview.css");
+
+
+    //title
+    Html.AddTitleParts(Model.ProductName);
+    Html.AddTitleParts(T("PageTitle.ProductReviews").Text);
+}
+ 
+ 
+<!--product breadcrumb-->
+ @Html.Action("ProductBreadcrumb", "Catalog")
+
+<div class="writeReview">
+<div class="span2 pull-left noMarginLeft">
+                  
+                    <span class="banner pull-left">
+                        <a href="/"><img src="/esybuy/images/banner/left-banner.gif"></a>
+                    </span>
+                    <span class="banner pull-left">
+                        <a href="/"><img src="/esybuy/images/banner/left-banner.gif"></a>
+                    </span>
+                </div>
+
+<div class="carouselBlock span10 noMarginLeft pull-right">
+<div class="bannerTop span10 noMarginLeft"><a href="~/Views/Catalog/ManufacturerAll" target="_blank"><img src="/esybuy/images/banner/banner-yellow-top.jpg"></a></div>
+
+<div class="span10 noMarginLeft">
+<div class="well well-small pull-left">
+<div class="page product-reviews-page">
+    <h3 class="productHeading pull-left">
+        @T("Reviews.ProductReviewsFor") <a href="@Url.RouteUrl("Product", new { SeName = Model.ProductSeName })">@Model.ProductName</a>
+   </h3>
+
+            </div>
+
+
+<div class="pull-left accountContent">
+<div class="accountBody pull-left">
+    <div class="page-body ">
+        @Html.Widget("productreviews_page_top")
+        @if (Model.AddProductReview.SuccessfullyAdded)
+        {
+            <div class="result">
+                @Model.AddProductReview.Result
+            </div>
+        }
+        else
+        {
+            <div class="write-review" id="review-form">
+                @*<div class="title">
+                    <strong>@T("Reviews.Write")</strong>
+                </div>*@
+                
+                @using (Html.BeginForm( "ProductReviews", "Catalog", FormMethod.Post, new { @class="form-horizontal"}))
+                {
+                    <div class="message-error">@Html.ValidationSummary(true)</div>
+                    <div class="form-fields">
+                 
+                        <div class="form-group pull-left">
+
+                            @Html.LabelFor(model => model.AddProductReview.Title, new { @class= "pull-left" }, ":")
+                           <div class="pull-left inputArea">
+                            @Html.TextBoxFor(model => model.AddProductReview.Title, Model.AddProductReview.CanCurrentCustomerLeaveReview ? (object)(new { @class = "form-control" }) : (object)(new { @class = "form-control", disabled = "disabled" }))
+                           </div>
+                            @Html.ValidationMessageFor(model => model.AddProductReview.Title)
+                 
+                          </div>
+                        <div class="form-group pull-left">
+                            @Html.LabelFor(model => model.AddProductReview.ReviewText, new {@class= "pull-left" }, ":")
+                           <div class="pull-left inputArea">
+                            @Html.TextAreaFor(model => model.AddProductReview.ReviewText, Model.AddProductReview.CanCurrentCustomerLeaveReview ? (object)(new { @class = "inputSection" }) : (object)(new { @class = "inputSection", disabled = "disabled" }))
+                           </div>
+                            @Html.ValidationMessageFor(model => model.AddProductReview.ReviewText)
+                        </div>
+
+                               <div class="form-group pull-left">
+                            @Html.LabelFor(model => model.AddProductReview.Rating, new {@class ="pull-left" }, ":")
+                           
+                                <ul class="pull-left rateIndicate" >
+                                 @*   <li class="first">@T("Reviews.Fields.Rating.Bad")</li>*@
+                                    <span class="ratingStar">
+                                        @Html.RadioButtonFor(model => model.AddProductReview.Rating, "5", new { id = "addproductrating_1",@class="rating-input" })
+                                         <label for="addproductrating_1" class="rating-star"></label> 
+                                        @Html.RadioButtonFor(model => model.AddProductReview.Rating, "4", new { id = "addproductrating_2",@class="rating-input"})
+                                        <label for="addproductrating_2" class="rating-star" ></label> 
+                                        @Html.RadioButtonFor(model => model.AddProductReview.Rating, "3", new { id = "addproductrating_3",@class="rating-input" })
+                                          <label for="addproductrating_3" class="rating-star" ></label> 
+                                        @Html.RadioButtonFor(model => model.AddProductReview.Rating, "2", new { id = "addproductrating_4",@class="rating-input" })
+                                         <label for="addproductrating_4" class="rating-star" ></label> 
+                                        @Html.RadioButtonFor(model => model.AddProductReview.Rating, "1", new { id = "addproductrating_5",@class="rating-input" })
+                                          <label for="addproductrating_5" class="rating-star" ></label> 
+                                    </span>
+
+                                  @*  <li class="last">@T("Reviews.Fields.Rating.Excellent")</li>*@
+                                </ul>
+                                         
+                        </div>
+
+                        @if (Model.AddProductReview.DisplayCaptcha)
+                        {
+                            <div class="captcha-box">
+                                @Html.Raw(Html.GenerateCaptcha())
+                            </div>
+                        }
+                    </div>
+                    <div class="form-group pull-left">
+                      <label class="pull-left"></label>
+                   <input type="submit" name="add-review" class="btn continue blueButton" value="@T("Reviews.SubmitButton")" />
+                      
+                    </div>
+                }
+               
+            </div>
+        }
+        @if (Model.Items.Count > 0)
+        {
+            <div class="pull-left tabContainer borderBottomNone">
+<div class="pull-left tabContentTop">
+            <div class="reviewLeft pull-left">
+                <span class="reviewProductName pull-left">Reviews of @Model.ProductName</span>
+                <span class="pull-left overAllRating">Overall Rating</span>
+                    <div class="pull-left">@Html.Action("ProductReviewOverview")</div>
+            </div>
+        </div>
+
+                <div class="title">
+                   <strong>@T("Reviews.ExistingReviews")</strong>
+                </div>
+                @foreach (var review in Model.Items)
+                {
+                    int ratingPercent = review.Rating * 20;  
+          
+
+            <div class="pull-left tabContainer">
+
+
+                        <div class="pull-left leftTabSection">
+                            <span class="reviewerName clearfix">
+                              @*  <strong>@T("Reviews.From"):</strong>*@
+                                @if (review.AllowViewingProfiles)
+                                {
+                                    <a href="@Url.RouteUrl("CustomerProfile", new { id = review.CustomerId })">@(review.CustomerName)</a>
+                                }
+                                else
+                                {
+                                    @review.CustomerName
+                                }
+                            </span>
+                            <span class="reviewDate clearfix">
+                           @*<strong>@T("Reviews.Date"):</strong>*@
+                                @review.WrittenOnStr
+                            </span>
+                            <span class="reviewerRatings clearfix">
+                                <div class="rating">
+                                    <div style="width: @(ratingPercent)%">
+                                    </div>
+                                 </div>
+                            </span>
+                        </div>
+
+                       <div class="rightTabSection pull-left">
+                          <b>@review.Title</b>
+
+                          <p class="description">
+                            @Html.Raw(Nop.Core.Html.HtmlHelper.FormatText(review.ReviewText, false, true, false, false, false, false))
+                          </p>
+                        </div>
+
+
+                  @*      @Html.Partial("_ProductReviewHelpfulness", review.Helpfulness, new ViewDataDictionary())*@
+                        @Html.Widget("productreviews_page_inside_review")
+
+
+</div>
+
+                }
+            </div>
+        }
+    @*  @Html.Action("ProductManufacturers", "Catalog")*@
+   @* @Html.Action("RelatedProducts", "Catalog")*@
+   
+        @Html.Widget("productreviews_page_bottom")
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+@*@Html.Partial("_ProductDetailsPictures", Model)*@
+

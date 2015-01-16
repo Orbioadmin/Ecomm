@@ -1,0 +1,125 @@
+﻿@model ProductDetailsModel.ProductPriceModel
+@using Nop.Web.Models.Catalog;
+@using System.Globalization;
+@using System.Text.RegularExpressions;
+@{
+    Html.AppendCssFileParts("/Styles/TGI/productDetail.css");
+    string pattern = "(?<val>(\\d+[\\s\\,\\.]?)+)";
+    string replacement = String.Format("<span class=\"price-val-for-dyn-upd-{0}\">${{val}}</span> ", Model.ProductId);
+}
+@if (Model.DynamicPriceUpdate)
+{
+    <script type="text/javascript">
+        var priceValForDynUpd_@(Model.ProductId) = @(((float)(Model.PriceValue != Model.PriceWithDiscountValue ? Model.PriceWithDiscountValue : Model.PriceValue)).ToString(new CultureInfo("en-US")));
+    </script>
+}
+<div class="pull-left span4 noMarginLeft">
+
+    @if (Model.CustomerEntersPrice)
+    {
+        @*display nothing*@
+    }
+    else if (Model.CallForPrice)
+    {
+        @*call for price*@
+        <div class="product-price call-for-price">
+            <span>@T("Products.CallForPrice")</span>
+        </div>
+    }
+    else {   
+           decimal discount = 0;
+        if (!String.IsNullOrWhiteSpace(Model.OldPrice))
+        {
+                                   
+                <span class="pricePercent">
+	                 <span class="actualPrice">@Model.OldPrice</span>
+	                 <span class="offPrice">@Model.Discount%<sup>OFF</sup></span>
+	             </span>
+              
+            <span class="sellingPrice">@Model.Price</span>
+        }
+       
+
+
+        <div class="@if (String.IsNullOrWhiteSpace(Model.PriceWithDiscount))
+                    {<text>product-price</text>}
+                    else
+                    {<text>non-discounted-price</text>}">
+
+            @if (!String.IsNullOrWhiteSpace(Model.OldPrice) || !String.IsNullOrWhiteSpace(Model.PriceWithDiscount))
+            {
+                @*display "Price:" label if we have old price or discounted one*@
+                @*<div class="sellingPrice"><span class="sellingPrice">@T("Products.Price"):</span></div>  // showing Price as text *@
+            }
+            
+            @*render price*@
+            <span @if (String.IsNullOrWhiteSpace(Model.PriceWithDiscount)) { <text>itemprop="price"</text> } >
+                @if (Model.DynamicPriceUpdate && !Model.HidePrices && String.IsNullOrWhiteSpace(Model.PriceWithDiscount))
+                {
+                    @*@Html.Raw(Regex.Replace(Model.Price, pattern, replacement))*@
+                }
+                else
+                {
+                   @Html.Raw(Model.Price)
+                }
+            </span>
+        </div>
+       
+        
+        if (!String.IsNullOrWhiteSpace(Model.PriceWithDiscount))
+        {
+            @*discounted price*@
+
+
+            <div class="product-price discounted-price sellingPrice">
+                <label class="sellingPrice">@T("Products.Price.WithDiscount"):</label>
+                <span itemprop="price sellingPrice ">
+                    @if (Model.DynamicPriceUpdate && !Model.HidePrices)
+                    {
+                        <div class="sellingPrice">@Html.Raw(Regex.Replace(Model.PriceWithDiscount, pattern, replacement))</div>
+                    }
+                    else
+                    {
+                        <div class="sellingPrice">@Html.Raw(Model.PriceWithDiscount)</div>
+                    }
+                </span>
+            </div>
+         }
+         if (!String.IsNullOrEmpty(Model.CurrencyCode))
+         {
+            <meta itemprop="priceCurrency" content="@Model.CurrencyCode" />
+         }
+    }
+</div>
+
+
+
+
+
+
+
+<div>
+ @*<span>
+           <span class="actualPrice">@Model.OldPrice</span> <br/>
+           <span class=" sellingPrice">@Model.Price</span></br>
+            @if (!String.IsNullOrWhiteSpace(Model.PriceWithDiscount))
+            {
+           
+               <span> discountValue </span>
+              var discountValue = Model.PriceValue - Model.PriceWithDiscountValue; // calculate the amount
+
+    
+                var discountPercentage = Math.Round(100/(Model.PriceValue / discountValue)); // calculate the percentage
+                           
+                @Html.Raw("<div class=\"offPrice\">" + discountPercentage + "%<sup>OFF</sup></div>") // show percentage in the block
+            }
+            <span class="offPrice">30%<sup>OFF</sup></span>
+        </span>*@
+
+
+
+    
+     
+  </div>
+
+

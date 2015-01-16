@@ -1,0 +1,331 @@
+﻿@model ProductDetailsModel
+@using Nop.Core.Domain.Seo;
+@using Nop.Core.Infrastructure;
+@using Nop.Web.Models.Catalog;
+@{
+    Layout = "~/Views/Shared/_Root.cshtml";
+
+    Html.AppendCssFileParts("/Styles/TGI/productDetail.css");
+    Html.AppendCssFileParts("~/styles/TGI/quickPopup.css");
+        
+    Html.AddTitleParts(!String.IsNullOrEmpty(Model.MetaTitle) ? Model.MetaTitle : Model.Name);
+    Html.AddMetaDescriptionParts(Model.MetaDescription);
+    Html.AddMetaKeywordParts(Model.MetaKeywords);
+
+    var canonicalUrlsEnabled = EngineContext.Current.Resolve<SeoSettings>().CanonicalUrlsEnabled;
+    if (canonicalUrlsEnabled)
+    {
+        var productUrl = Url.RouteUrl("Product", new { SeName = Model.SeName }, this.Request.Url.Scheme);
+        Html.AddCanonicalUrlParts(productUrl);
+    }
+}
+
+<div class="container containerBlock marginBottom marginTopConfig">
+    <div class="productTopContainer">
+
+        <div class="span7 noMarginLeft">
+            <!--product breadcrumb-->
+            @Html.Action("ProductBreadcrumb", "Catalog", new { productId = Model.Id })
+        </div>
+        <div class="span5 noMarginLeft extraOffer">
+            <a href="#" class="pull-right">
+                Get an Extra
+                <span>
+                    20% discount
+                </span>
+                on all LG mobile phones
+            </a>
+            <span class="extraOfferBrand pull-right">
+            </span>
+        </div>
+    </div>
+    <div class="mainBody pull-left">
+        <div class="container">
+            <div class="row noMarginLeft">
+                <div class="pull-left productDetailContainer noMarginLeft">
+                    @using (Html.BeginRouteForm("Product", new { SeName = Model.SeName }, FormMethod.Post, new { id = "product-details-form" }))
+                    {
+                                <!--product pictures-->
+                       @Html.Partial("_ProductDetailsPictures", Model)
+
+                        <div class="pull-right productDetailSection">
+                            <div class="productDetailSectionTop"> <h3>@Model.Name</h3>
+
+                             @if (!String.IsNullOrEmpty(Model.ShortDescription))
+                                {
+                            @*<div  class="brandDeatails pull-left">*@
+                         <small>     @Html.Raw(Model.ShortDescription)</small>
+                            @*</div>*@
+                                }
+
+                            </div>
+                            @*@if (!String.IsNullOrEmpty(Model.ShortDescription))
+                                {
+                            <div  class="brandDeatails pull-left">
+                              @Html.Raw(Model.ShortDescription)
+                            </div>
+                                }*@
+
+
+                            <div class="productDetailContent pull-left">
+                                <div class="leftDetailSection pull-left ">
+
+                                   <!-- For Reviews -->
+                                   @Html.Action("ProductReviewOverview", "Catalog", new { productId = Model.Id })
+                                    <!-- For Product attributes -->
+                                     @Html.Action("ProductSpecifications", "Catalog", new { productId = Model.Id })
+                                        @*Stock availability*@
+                                       @if (!String.IsNullOrWhiteSpace(Model.StockAvailability))
+                                        {
+                                            <div class="stockDetail pull-left"><span class="flag"></span>@Model.StockAvailability</div>
+                                        }
+                                       @* <div class="stockDetail pull-left"><span class="flag"></span>In Stock</div>*@
+                                        @if (Model.FreeShippingNitificationEnabled && Model.IsFreeShipping)
+                                        {
+                                             <div class="stockDetail pull-left"><span class="shippingIcon flag"></span>@T("Products.FreeShipping")</div>
+                                        }
+                                        @if (!String.IsNullOrWhiteSpace(Model.DeliveryDate))
+                                        {
+                                             <div class="stockDetail pull-left"><span class="DeliveryIcon flag"></span>@T("Products.DeliveryDate"): <span class="value">@Model.DeliveryDate</span></div>
+                                        }
+
+
+
+                                @Html.Widget("productdetails_overview_top")
+                                <!--product SKU, manufacturer part number, stock info-->
+                               @* @Html.Partial("_SKU_Man_Stock", Model)*@
+                                <!--Back in stock subscription-->
+                                @Html.Partial("_BackInStockSubscription", Model)
+                                <!--product manufacturers-->
+                               
+                                <!--product reviews-->
+                              
+                                <!--sample download-->
+                                @Html.Partial("_DownloadSample", Model)
+                                            <!--attributes-->
+                                    @{
+                                            var dataDictAttributes = new ViewDataDictionary();
+                                            dataDictAttributes.TemplateInfo.HtmlFieldPrefix = string.Format("attributes_{0}", Model.Id);
+                                            @Html.Partial("_ProductAttributes", Model.ProductVariantAttributes, dataDictAttributes);
+                                    }
+
+                              
+                       <div class="pull-left">
+                                
+                                 <!--price & add to cart-->
+                                    @{
+                                                var dataDictPrice = new ViewDataDictionary();
+                                                dataDictPrice.TemplateInfo.HtmlFieldPrefix = string.Format("price_{0}", Model.Id);
+                                            @Html.Partial("_ProductPrice", Model.ProductPrice, dataDictPrice)
+
+                                        @*     var dataDictAddToCart = new ViewDataDictionary();
+                                            dataDictAddToCart.TemplateInfo.HtmlFieldPrefix = string.Format("addtocart_{0}", Model.Id);
+                                            @Html.Partial("_AddToCart", Model.AddToCart, dataDictAddToCart)     *@ 
+                                           
+                                
+                                    }
+                            </div>
+
+
+
+
+                                </div>
+                                <div class="span2 noMarginLeft pull-right rightDetailSection">
+                                    <div class="warrantySection pull-left">
+                                        <div class="warrantySectionTop">1 year Apple warranty and Free transit insurance</div>
+                                        <div class="warrantySectionContent pull-left">
+                                            <span class="rightMark"></span><span class="redText">Cash</span>
+                                            <span class="grayText">On Delivery Orders</span>
+                                        </div>
+                                        <div class="warrantySectionContent pull-left">
+                                            <span class="rightMark"></span><span class="redText">Cash</span>
+                                            <span class="grayText">On Delivery Orders</span>
+                                        </div>
+
+                                        <div class="warrantySectionContent pull-left">
+                                            <span class="rightMark"></span><span class="redText">Cash</span>
+                                            <span class="grayText">On Delivery Orders</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="rightDetailBottom"> <img src="~/images/safe-and-security.png"></div>
+                                </div>
+                            </div>
+
+                            <div class="pull-left">
+                                
+                                 <!--price & add to cart-->
+                                    @{
+                                               @* var dataDictPrice = new ViewDataDictionary();
+                                                dataDictPrice.TemplateInfo.HtmlFieldPrefix = string.Format("price_{0}", Model.Id);
+                                            @Html.Partial("_ProductPrice", Model.ProductPrice, dataDictPrice)*@
+
+                                             var dataDictAddToCart = new ViewDataDictionary();
+                                            dataDictAddToCart.TemplateInfo.HtmlFieldPrefix = string.Format("addtocart_{0}", Model.Id);
+                                            @Html.Partial("_AddToCart", Model.AddToCart, dataDictAddToCart)     
+                                    
+                                    }
+                                      </div>
+
+
+                        </div>
+
+                     @*   @Html.Action("RelatedProducts", "Catalog", new { productId = Model.Id })*@
+
+
+
+
+                       <!--this code is to check related products -->
+
+                @Html.Widget("productdetails_before_collateral")
+                <div class="product-collateral">
+       
+                    @*@Html.Action("ProductTierPrices", "Catalog", new { productId = Model.Id })
+                    @Html.Action("ProductSpecifications", "Catalog", new { productId = Model.Id })
+                    @Html.Action("ProductTags", "Catalog", new { productId = Model.Id })
+                    @Html.Action("ProductsAlsoPurchased", "Catalog", new { productId = Model.Id })*@
+                    @Html.Action("RelatedProducts", "Catalog", new { productId = Model.Id })
+                </div>
+
+
+
+
+
+
+                        <div class="tabSection pull-left">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#tab1" data-toggle="tab">Description</a> </li>
+                                <li><a href="#tab2" data-toggle="tab">Specifications</a> </li>
+                               
+                            </ul>
+
+                            <div class="tab-content" id="myTabContent">
+                                <div id="tab1" class="hide  active">
+                                    <span class="pull-left"><img src="@Model.DefaultPictureModel.ImageUrl"></span>
+                                    <span class="rightTabSection pull-left">
+                                        <h3>Description of @Model.Name</h3>
+                                        <h4>@Model.Name</h4>
+                                        <h6></h6>
+                                        <p class="description">
+                                            @Html.Raw(@Model.FullDescription)
+                                        </p>
+                                    </span>
+                                </div>
+                                <div id="tab2" class="hide">
+                                    <span class="pull-left"><img src="@Model.DefaultPictureModel.ImageUrl"></span>
+                                    <span class="rightTabSection pull-left">
+                                        <h3>Specifications of @Model.Name</h3>
+                                        <h4>@Model.Name</h4>
+                                        <h6></h6>
+                                        <p class="description">
+                                            @Html.Action("ProductSpecifications", "Catalog", new { productId = Model.Id })
+                                        </p>
+                                    </span>
+                                </div>
+                               
+                            </div>
+
+
+                        </div>
+                    }
+                </div>
+
+
+
+
+
+<div class="span12 noMarginLeft ">
+                <!--product manufacturers-->
+                @Html.Action("ProductManufacturers", "Catalog", new { productId = Model.Id })
+</div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<script type="text/cjs">
+    $(".increase").click(function(){
+    var quantity = $(this).parents(".quantity_main").find(".quantityBox").val();
+    quantity++;
+    $(this).parents(".quantity_main").find(".quantityBox").val(quantity);
+    var subtotal = $(this).parents(".quantity_main").find(".sub_total_price").html();
+    var newprice = basicprice*quantity;
+    $(this).parents(".quantity_main").find(".sub_total_price").html(newprice);
+    });
+
+    $(".decrease").click(function(){
+    var quantity = $(this).parents(".quantity_main").find(".quantityBox").val();
+    if(quantity > 1 )
+    {
+    quantity--;
+    $(this).parents(".quantity_main").find(".quantityBox").val(quantity);
+    var subtotal = $(this).parents(".quantity_main").find(".sub_total_price").html();
+    var newprice = basicprice*quantity;
+    $(this).parents(".quantity_main").find(".sub_total_price").html(newprice);
+    }
+    });
+</script>
+<script type="text/cjs">
+    $(document).ready(function(){
+    $('.colorSelected').click(function () {
+    $(this).parent('.optionValues').find('.selectedOption').removeClass('selectedOption');
+    $(this).addClass('selectedOption');
+    });
+    $('.colorSelected2').click(function () {
+    $(this).parent('.optionValues').find('.selectedOption').removeClass('selectedOption');
+    $(this).addClass('selectedOption');
+    });
+    });
+</script>
+<script type="text/cjs">
+    $('#themesBtn').click(function() {
+    $('#secectionBox').animate({
+    right:'0'
+    }, 500, function() {
+    // Animation complete.
+    });
+    $('#themesBtn').animate({
+    right:'-80'
+    }, 100, function() {
+    // Animation complete.
+    });
+    });
+    $('#hideme').click(function() {
+    $('#secectionBox').animate({
+    right:'-999'
+    }, 500, function() {
+    // Animation complete.
+    });
+
+    $('#themesBtn').animate({
+    right:'0'
+    }, 700, function() {
+    // Animation complete.
+    });
+    });
+</script>
+<script type="text/cjs">
+    $(document.body).on('click', '.dropdown-menu li', function (event) {
+    var $target = $(event.currentTarget);
+    $target.closest('.btn-group').find('[data-bind="label"]').text($target.text()).end().children('.dropdown-toggle').dropdown('toggle');
+    return false;
+    });
+</script>
+<script type="text/cjs">
+    var sourceSwap = function () { var $this = $(this);
+    var newSource = $this.data('alt-src');
+    $this.data('alt-src', $this.attr('src'));
+    $this.attr('src', newSource);
+    }
+    $(document).ready(function () {
+
+    $('img.imageNormal').hover(sourceSwap, sourceSwap);
+    });
+</script>

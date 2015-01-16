@@ -1,0 +1,102 @@
+.quickView
+{
+	top:1%;
+	display: none;
+	left: 25%;
+	position: absolute;
+}
+.quickView .btn
+{
+	border: 0 none;
+	border-radius: 2px;
+	font-family: arial;
+	font-size: 12px;
+	font-weight: bold;
+	height: 25px;
+	line-height: 25px;
+	padding: 0px 10px;
+	text-transform: uppercase;
+}
+#quickView
+{
+	left: 35%;
+	width: 1000px;
+}
+#quickView .productDetailSection .leftDetailSection
+{
+	width: 54%;
+}
+#quickView .leftDetailSection .reviewSection
+{
+	width: 100%;
+}
+#quickView .productDetailSection .reviewSection .brandDeatails
+{
+	width: 95%;
+}
+#quickView .productDetailContainer
+{
+	margin-bottom: 25px;
+}
+#quickView .productDetailSection .optionValues
+{
+	width: 66%;
+}
+#quickView .productDetailContainer
+{
+	background: none repeat scroll 0 0 rgba(0,0,0,0);
+	border: 0 none;
+	border-radius: 0;
+	padding: 0;
+	width: 100%;
+}
+#quickView .modal-body
+{
+	min-height: 450px;
+}
+#quickView .productDetailSection .reviewSection .brandOptions .storageCapacity
+{
+	margin-bottom: 0;
+}
+#quickView .productDetailSection .storageCapacity .optionValues
+{
+	width: 60%;
+}
+#quickView .productDetailSection .buyNowSection
+{
+	margin-top: 0;
+}
+#quickView .productDetailSection .reviewSection .brandDeatails ul
+{
+	width: auto;
+}
+#quickView .zoomPad .productImageBlock
+{
+	max-width: 385px;
+}
+#quickView .zoomWindow
+{
+	width: 545px!important;
+}
+#quickView .buyNowSection .quantity_main
+{
+    margin: 0;   
+	width: 22%;
+}
+.quickViewNew .productDetailSection .buyNowSection
+{
+	width: 94%;
+}
+.quickViewNew .quantity_main_contents
+{
+	width: 26%;
+}
+.quickViewNew .productDetailSection .buyNowSection .BuyNow
+{
+	width: 40%;
+}
+#quickView .quantity_main > .pull-left.span6
+{
+	margin: 0;
+    width: 400px;
+}

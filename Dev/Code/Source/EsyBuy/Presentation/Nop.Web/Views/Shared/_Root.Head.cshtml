@@ -1,0 +1,108 @@
+﻿@using Nop.Core
+@using Nop.Core.Domain.Common;
+@using Nop.Core.Infrastructure;
+@{
+    var displayMiniProfiler = CommonHelper.GetTrustLevel() >= AspNetHostingPermissionLevel.High &&
+        EngineContext.Current.Resolve<Nop.Core.Domain.StoreInformationSettings>().DisplayMiniProfilerInPublicStore;
+
+    //resources
+    Html.AppendCssFileParts("~/styles/TGI/header.css");
+    Html.AppendCssFileParts("~/styles/TGI/footer.css");
+    Html.AppendCssFileParts("~/styles/jquery.jqzoom.css");
+    Html.AppendCssFileParts("~/styles/TGI/productDetail.css");
+    Html.AppendCssFileParts("~/styles/TGI/commonStyle.css");
+
+
+
+
+    Html.AppendScriptParts("~/scripts/control.js");
+    Html.AppendScriptParts("~/scripts/jquery.js");
+
+    Html.AppendScriptParts("~/Scripts/public.common.js");
+    Html.AppendScriptParts("~/Scripts/jquery.js");
+    Html.AppendScriptParts("~/Scripts/public.ajaxcart.js");
+  
+    Html.AppendScriptParts("~/Scripts/jquery-ui-1.10.0.min.js");
+    Html.AppendScriptParts("~/Scripts/jquery.validate.unobtrusive.min.js");
+    Html.AppendScriptParts("~/Scripts/jquery.validate.min.js");
+    Html.AppendScriptParts("~/Scripts/jquery.unobtrusive-ajax.min.js");
+    Html.AppendScriptParts("~/Scripts/jquery-1.7.1.min.js");
+
+    Html.AddScriptParts("~/Scripts/bootstrap.js");
+    Html.AddScriptParts("~/Scripts/jquery.lightbox-0.5.js");
+    Html.AddScriptParts("~/Scripts/slideshow.js");
+    Html.AddScriptParts("~/Scripts/jquery.easing.1.3.js");
+    Html.AddScriptParts("~/Scripts/jquery.scrolltotop.js");
+    Html.AddScriptParts("~/Scripts/jquery.jqzoom-core-pack.js");
+    Html.AddScriptParts("~/Scripts/commonScript.js");
+
+
+
+
+
+    //X-UA-Compatible tag
+    var commonSettings = EngineContext.Current.Resolve<CommonSettings>();
+    if (commonSettings.RenderXuaCompatible)
+    {
+        Html.AppendHeadCustomParts(string.Format("<meta http-equiv=\"X-UA-Compatible\" content=\"{0}\"/>", commonSettings.XuaCompatibleValue));
+    }
+}
+<!DOCTYPE html>
+<html @Html.Partial("LanguageAttributes")>
+<head>
+    <title>@Html.NopTitle(true)</title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+    <meta name="description" content="@(Html.NopMetaDescription())" />
+    <meta name="keywords" content="@(Html.NopMetaKeywords())" />
+    <meta name="generator" content="nopCommerce" />
+    @Html.NopHeadCustom()
+    @*This is used so that themes can inject content into the header*@
+    @Html.Partial("Head")
+    @Html.Widget("head_html_tag")
+    @Html.NopCssFiles(this.Url, ResourceLocation.Head)
+
+    @Html.NopScripts(this.Url, ResourceLocation.Head)
+    @Html.NopCanonicalUrls()
+    @Html.Action("RssHeaderLink", "News")
+    @Html.Action("RssHeaderLink", "Blog")
+    @*Favicon - upload favicon.ico file to the root directory*@
+    @Html.Action("Favicon", "Common")
+    @if (displayMiniProfiler)
+    {
+        @StackExchange.Profiling.MiniProfiler.RenderIncludes()
+    }
+    <!--Powered by nopCommerce - http://www.nopCommerce.com-->
+    <!--Copyright (c) 2008-2013-->
+</head>
+<body>
+    @RenderBody()
+    @Html.NopCssFiles(this.Url, ResourceLocation.Foot)
+    @Html.NopScripts(this.Url, ResourceLocation.Foot)
+    @Html.Partial("_Login")
+    @Html.Partial("_Register")
+<div id="quickView" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false">
+	 	        <div class="modal-header">
+		            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+	 	            <h3>Quick View</h3>
+	 	        </div>
+	        <div class="modal-body">
+		
+	       </div>
+</div> 
+<script>
+	 $(document).on('click', '.quickView a', function (e) {
+		            e.preventDefault();
+	    var $modalBody = $('#quickView').find('.modal-body'),
+	                $this = $(this);
+ 	            $modalBody.html('');
+		
+ 	            $.ajax({
+ 	                url: $this.attr('href'),
+	 	                success: function (response) {
+	 	                    $modalBody.html(response);
+	 	                }
+	 	            })
+	 	        });
+</script> 
+</body>
+</html>

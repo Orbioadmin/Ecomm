@@ -1,0 +1,498 @@
+﻿@model CategoryModel
+@{
+  
+    @*Layout = "~/Views/Shared/_Root.cshtml";
+    Html.AppendCssFileParts("~/styles/TGI/fashionPage.css");
+  
+  
+    Html.AddTitleParts(!String.IsNullOrEmpty(Model.MetaTitle) ? Model.MetaTitle : Model.Name);
+    Html.AddMetaDescriptionParts(Model.MetaDescription);
+    Html.AddMetaKeywordParts(Model.MetaKeywords);*@
+
+        Html.AppendCssFileParts("~/styles/TGI/fashionPage.css");
+
+        Html.AppendScriptParts("~/scripts/public.ajaxcart.js"); 
+
+            if (!(bool)Model.CustomProperties["noFormat"])
+	 	    {
+	 	        Layout = "~/Views/Shared/_Root.cshtml";
+	 	        Html.AppendCssFileParts("~/styles/TGI/listing.css");
+                Html.AppendCssFileParts("~/styles/TGI/quickPopup.css");
+	 	        Html.AddTitleParts(!String.IsNullOrEmpty(Model.MetaTitle) ? Model.MetaTitle : Model.Name);
+	 	        Html.AddMetaDescriptionParts(Model.MetaDescription);
+	 	        Html.AddMetaKeywordParts(Model.MetaKeywords);
+	 	    } 
+
+    var canonicalUrlsEnabled = EngineContext.Current.Resolve<SeoSettings>().CanonicalUrlsEnabled;
+    if (canonicalUrlsEnabled)
+    {
+        var categoryUrl = Url.RouteUrl("Category", new { SeName = Model.SeName }, this.Request.Url.Scheme);
+        Html.AddCanonicalUrlParts(categoryUrl);
+    }
+
+    var breadcrumbDelimiter = EngineContext.Current.Resolve<CommonSettings>().BreadcrumbDelimiter;
+}
+@using Nop.Core.Domain.Common;
+@using Nop.Core.Domain.Seo;
+@using Nop.Core.Infrastructure;
+@using Nop.Core.Domain.Orders;
+@using Nop.Web.Models.Catalog;
+@using Nop.Web.Extensions;
+
+
+
+<div class="container containerBlock marginBottom marginTopConfig listingPage offerPage fashionPage">
+    <div class="productTopContainer">
+
+        <div class="span7 noMarginLeft">
+            @*category breadcrumb*@
+            @if (Model.DisplayCategoryBreadcrumb)
+            {
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="@Url.RouteUrl("HomePage")" title="@T("Categories.Breadcrumb.Top")">@T("Categories.Breadcrumb.Top")</a>
+                        <span class="divider">&gt;</span>
+                    </li>
+                    @foreach (var cat in Model.CategoryBreadcrumb)
+                    {
+                        var isLastCategory = cat.Id == Model.Id;
+
+                        if (isLastCategory)
+                        {
+                            <li class="active">@cat.Name</li>
+                        }
+                        else
+                        {
+                            <li>
+                               <a href="@Url.RouteUrl("Category", new { SeName = cat.SeName })" title="@cat.Name">@cat.Name</a>
+                                <span class="delimiter">&gt;</span>
+                            </li>
+                        }
+                    }
+                </ul>
+            }
+        </div>
+        @Html.Widget("categorydetails_after_breadcrumb")
+
+
+        <div class="span5 noMarginLeft extraOffer">
+            <a href="#" class="pull-right">Get an Extra <span>20% discount</span> on all LG mobile phones</a><span class="extraOfferBrand pull-right"></span>
+        </div>
+    </div>
+    <div class="mainBody pull-left">
+        <div class="container">
+            <div class="row noMarginLeft">
+                @Html.Widget("categorydetails_before_filters")
+                <div class="span2 pull-left noMarginLeft">
+                    <div class="filters widthConfigSpan2">
+                        <h3>Filter</h3>
+                        <div class="filterChecks">
+                            @*filtering*@
+                            @if (Model.PagingFilteringContext.PriceRangeFilter.Enabled)
+                            {
+                                @Html.Partial("_FilterPriceBox", Model.PagingFilteringContext.PriceRangeFilter, new ViewDataDictionary())
+                            }
+                            @*filtering*@
+                            @if (Model.PagingFilteringContext.SpecificationFilter.Enabled)
+                            {
+                                @Html.Partial("_FilterSpecsBox", Model.PagingFilteringContext.SpecificationFilter, new ViewDataDictionary())
+                            }
+                        </div>
+                    </div>
+                    <span class="banner pull-left">
+                        <img src="~/images/banner/left-banner.gif">
+                    </span>
+                    <span class="banner pull-left">
+                        <img src="~/images/banner/left-banner.gif">
+                    </span>
+                </div>
+
+
+
+
+
+
+
+
+    
+         @*      @if(@cat.Name=="MOBILE"){*@
+                <div class="bannerTop span10 noMarginLeft"><img src="~/images/banner/fashionMainBanner1.png"></div>
+                   @*}*@
+          <div class="mainContentBottom pull-right span10 noMarginLeft">
+             <div class="productDisplayBlock pull-left">
+
+
+
+
+<h3 class="productHeading pull-left"> New arrivals @*  <a class="viewAll" href="@Url.RouteUrl("Category", new { SeName = "FASHION-ACCESSORIES" })">View All</a>*@ </h3>
+        <div class="span10 noMarginLeft pull-right">
+            <ul class="thumbnails noMarginLeft productBlock">
+                <li class="span3 noMarginLeft marginRight">
+                    <img alt="banner" src="images/banner/fashionBanner1.png">
+                </li>
+                <li class="span3 noMarginLeft marginRight">
+                    <img alt="banner" src="images/banner/banner_fashion.png">
+                </li>
+                <li class="span3 noMarginLeft marginRight">
+                    <img alt="banner" src="images/banner/small.png">
+                </li>
+            </ul>
+        </div>
+        <div class="span10 noMarginLeft pull-right topMarginer">
+            <ul class="thumbnails noMarginLeft productBlock">
+                <li class="span3 noMarginLeft marginRight">
+                    <img alt="banner" src="images/banner/fashionLittleBanner1.png">
+                </li>
+                <li class="span3 noMarginLeft marginRight">
+                    <img alt="banner" src="images/banner/fashionLittleBanner1.png">
+                </li>
+                <li class="span3 noMarginLeft marginRight">
+                    <img alt="banner" src="images/banner/fashionLittleBanner1.png">
+                </li>
+            </ul>
+        </div>
+
+
+
+
+
+                <div class="mainContentBottom pull-right span10 noMarginLeft">
+<div class="<div class="carouselBlock span10 noMarginLeft pull-right">
+
+                    <div class="carouselBlock span10 noMarginLeft pull-right">
+                        <div class="span10 noMarginLeft ">
+                            <div class="well well-small">
+                                <div class="productHeading">
+                New arrivals  @* @Model.Name *@    @*<span class="itemsFound">@Model.Products.Count items found</span>*@
+
+
+
+
+                                    @Html.Widget("categorydetails_top")
+                                    @*description*@
+                                    @*@if (!String.IsNullOrWhiteSpace(Model.Description))
+                                        {
+                                            <div class="category-description">
+                                                @Html.Raw(Model.Description)
+                                            </div>
+                                        }
+
+                                        @Html.Widget("categorydetails_before_featured_products")*@
+                                    @*featured products*@
+                                    @*@if (Model.FeaturedProducts.Count > 0)
+                                        {
+                                            <div class="product-grid featured-product-grid">
+                                                <div class="title">
+                                                    <strong>@T("Products.FeaturedProducts")</strong>
+                                                </div>
+                                                <div>
+                                                    @foreach (var item in Model.FeaturedProducts)
+                                                    {
+                                                        <div class="item-box">
+                                                            @Html.Partial("_ProductBox", item)
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </div>
+                                        }*@
+                                    @Html.Widget("categorydetails_after_featured_products")
+                                    <div class="viewBy pull-right">
+                                        @*sorting*@
+                                        @if (Model.PagingFilteringContext.AllowProductSorting && Model.Products.Count > 0)
+                                        {
+                                            <form class="form-horizontal pull-left">
+                                                <div class="control-group span2">
+                                                    <label class="control-label">Sort By: </label>
+
+                                                    @Html.DropDownList("products-orderby", Model.PagingFilteringContext.AvailableSortOptions, new { onchange = "setLocation(this.value);" })
+                                                </div>
+                                            </form>
+                                        }
+                                        @*view mode*@
+                                        @if (Model.PagingFilteringContext.AllowProductViewModeChanging && Model.Products.Count > 0)
+                                        {
+                                            <label class="control-label viewLabel pull-left">View By: </label>
+                                            <div class="pull-left" id="myTab">
+                                                <a data-toggle="tab" href="#blockView" class="active"><span class="btn btn-large noBackground"><i class="icon-th-large"></i></span></a>
+                                                <a data-toggle="tab" href="#listView"><span class="btn btn-large noBackground"><i class="icon-list"></i></span></a>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+
+                                @*page size*@
+                                @*@if (Model.PagingFilteringContext.AllowCustomersToSelectPageSize && Model.Products.Count > 0)
+                                    {
+                                        <div class="product-page-size">
+                                            <span>@T("Categories.PageSize")</span>
+                                            @Html.DropDownList("products-pagesize", Model.PagingFilteringContext.PageSizeOptions, new { onchange = "setLocation(this.value);" })
+                                            <span>@T("Categories.PageSize.PerPage")</span>
+                                        </div>
+                                    }*@
+
+                                @Html.Widget("categorydetails_before_product_list")
+                                <div class="tab-content">
+                                    @*product list*@
+
+                                    @if (Model.Products.Count > 0)
+                                    {
+                                        @*list mode*@
+                                        <div class="tab-pane" id="listView">
+                                            <div class="row-fluid">
+                                                <div class="slide">
+                                                    <div class="carousel-inner">
+                                                        <div class="item ">
+                                                            <ul class="thumbnails">
+                                                                @foreach (var product in Model.Products)
+                                                                {
+                                                                    <li class="span12">
+                                                                        @RenderProductItemList(product)
+
+
+
+
+
+
+
+
+
+                                                                    </li>
+                                                                }
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @*grid mode*@
+                                        <div class="tab-pane active" id="blockView">
+                                            <div class="row-fluid">
+                                                <div class="slide">
+                                                    <div class="carousel-inner">
+                                                        <div class="item ">
+                                                            <ul class="thumbnails">
+
+                                                                @foreach (var product in Model.Products)
+                                                                {
+                                                                    <li class="span3">
+                                                                        @RenderProductItemTile(product)
+                                                                    </li>
+
+                                                                }
+                                                            </ul>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+
+                                </div>
+
+
+                            </div>
+                       <!-- waris commented -->
+
+                            <div class="pager">
+                                @Html.Pager(Model.PagingFilteringContext).QueryParam("pagenumber")
+                            </div>
+                      
+
+                            <h4 class="loading" data-pagenumber="@Model.PagingFilteringContext.PageNumber">Loading... </h4> 
+
+                       <!-- till here -->
+                            @Html.Widget("categorydetails_bottom")
+                        </div>
+
+                    </div>
+</div>
+                </div>
+</div>
+</div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@helper RenderProductItemList(ProductOverviewModel product)
+{
+//prepare "Add to cart" AJAX link
+    string addtocartlink = "";
+    var shoppingCartTypeId = (int)ShoppingCartType.ShoppingCart;
+    var quantity = 1;
+    if (product.ProductPrice.ForceRedirectionAfterAddingToCart)
+    {
+        addtocartlink = Url.RouteUrl("AddProductToCart-Catalog", new { productId = product.Id, shoppingCartTypeId = shoppingCartTypeId, quantity = quantity, forceredirection = product.ProductPrice.ForceRedirectionAfterAddingToCart });
+    }
+    else
+    {
+        addtocartlink = Url.RouteUrl("AddProductToCart-Catalog", new { productId = product.Id, shoppingCartTypeId = shoppingCartTypeId, quantity = quantity, });
+    }
+
+decimal discount = 0;
+if (!product.ProductPrice.OldPrice.IsEmpty())
+	 	    {
+	 	        @*decimal oldPrice = Decimal.Parse(product.ProductPrice.OldPrice, System.Globalization.NumberStyles.Currency);
+	 	        decimal newPrice = Decimal.Parse(product.ProductPrice.Price, System.Globalization.NumberStyles.Currency);
+	 	        discount = (oldPrice - newPrice) * 100 / oldPrice;*@
+	 	    }               
+    <div class="thumbnail pull-left">
+      <div class="productAlignBlock">   <a href="@Url.RouteUrl("Product", new { SeName = product.SeName })"><img alt="" src="@product.DefaultPictureModel.ImageUrl" class="imageNormal"></a></div>
+        <div class="caption pull-left">
+            <span class="productDesc pull-left">@product.Name</span>
+            @*<div class="pull-left rating">
+                <span class="icon-star yellow pull-left"></span>
+                <span class="icon-star yellow pull-left"></span>
+                <span class="icon-star yellow pull-left"></span>
+                <span class="icon-star yellow pull-left"></span>
+                <span class="icon-star gray pull-left"></span>
+                <p>(@product.ReviewOverviewModel.TotalReviews ratings)</p>
+            </div>*@
+            <p class="pull-left productDescription">
+                @Html.Raw(@product.ShortDescription)
+            </p>
+            <div class="offerBlock pull-left">
+                <div class="offerBlockInside span3 pull-left">
+                    
+                     @if (!product.ProductPrice.OldPrice.IsEmpty())
+ 	 	                    {
+ 		                       <span class="actualPrice pull-left">@product.ProductPrice.OldPrice</span>
+	 	                        <span class="offPrice pull-left"> @product.ProductPrice.Discount.ToString("#")%<sup>OFF</sup></span>
+ 	 	                    } 
+                 
+                    <span class="sellingPrice pull-left clearfix">@product.ProductPrice.Price</span>
+                </div>
+                <a onclick="AjaxCart.addproducttocart_catalog('@addtocartlink'); return false;" class="buttonShopNow"><span class="iconShopNow"></span>SHOP NOW</a>
+            </div>
+        </div>
+    </div>
+   <div class="quickView"><a class="btn btn-primary" href="/Catalog/QuickView?productId=@product.Id" data-target="#quickView" data-toggle="modal">Quick View</a></div> 
+    @*<div class="surpriseGift"><img src="images/surprise-gifit-bg.png"><span class="giftBox"></span></div>*@
+}
+
+@*The below code is for block view*@
+
+@helper RenderProductItemTile(ProductOverviewModel product)
+{
+decimal discount = 0;
+
+//prepare "Add to cart" AJAX link
+    string addtocartlink = "";
+    var shoppingCartTypeId = (int)ShoppingCartType.ShoppingCart;
+    var quantity = 1;
+    if (product.ProductPrice.ForceRedirectionAfterAddingToCart)
+    {
+        addtocartlink = Url.RouteUrl("AddProductToCart-Catalog", new { productId = product.Id, shoppingCartTypeId = shoppingCartTypeId, quantity = quantity, forceredirection = product.ProductPrice.ForceRedirectionAfterAddingToCart });
+    }
+    else
+    {
+        addtocartlink = Url.RouteUrl("AddProductToCart-Catalog", new { productId = product.Id, shoppingCartTypeId = shoppingCartTypeId, quantity = quantity, });
+    }
+
+
+if (!product.ProductPrice.OldPrice.IsEmpty())
+	 	    {
+	 	       @* decimal oldPrice = decimal.Parse(product.ProductPrice.OldPrice, System.Globalization.NumberStyles.Currency);
+	 	        decimal newPrice = decimal.Parse(product.ProductPrice.Price, System.Globalization.NumberStyles.Currency);
+	 	        discount = (oldPrice - newPrice) * 100 / oldPrice;*@
+	 	    } 
+               
+    <div class="thumbnail pull-left">
+       <div class="productAlignBlock">   <a href="@Url.RouteUrl("Product", new { SeName = product.SeName })"><img alt="" src="@product.DefaultPictureModel.ImageUrl" class="imageNormal"></a></div>
+        <div class="caption pull-left">
+            
+                   @if (!product.ProductPrice.OldPrice.IsEmpty())
+ 	 	            {
+ 		               <span class="actualPrice">@product.ProductPrice.OldPrice </span> 
+	 	                <span class="offPrice pull-left"> @product.ProductPrice.Discount.ToString("#")%<sup>OFF</sup></span>
+ 	 	            }
+                                      
+            <span class="sellingPrice">@product.ProductPrice.Price</span>
+            <span class="productDesc pull-left">@product.Name</span>
+ 
+           @*<div class="pull-left rating">
+                 <span class="icon-star yellow pull-left"></span>
+                <span class="icon-star yellow pull-left"></span>
+                <span class="icon-star yellow pull-left"></span>
+                <span class="icon-star yellow pull-left"></span>
+                <span class="icon-star gray pull-left"></span>
+                <p>(@product.ReviewOverviewModel.TotalReviews ratings)</p>
+            </div>*@
+            <a onclick="AjaxCart.addproducttocart_catalog('@addtocartlink'); return false; " class="buttonShopNow" ><span class="iconShopNow"></span>SHOP NOW</a>
+        </div>
+    </div>
+  <div class="quickView"><a class="btn btn-primary" href="/Catalog/QuickView?productId=@product.Id" data-target="#quickView" data-toggle="modal">Quick View</a></div> 
+
+
+}
+
+
+
+
+
+
+
+     <script>
+    pgNum = 1;
+    if ($('.loading').attr('data-pagenumber') >= "@Model.PagingFilteringContext.TotalPages") {
+        $('.loading').hide();
+    }
+    function parseAndRenderProducts($html) {
+        
+	 	        var $blocksList = $html.find('#blockView').find('ul.thumbnails'),
+	 	        $blockItems = $blocksList.find('li');
+	 	        $('#blockView .thumbnails').append($blockItems);
+	 	
+	 	        var $itemsList = $html.find('#listView').find('ul.thumbnails'),
+	 	        $listItems = $itemsList.find('li');
+	 	        $('#listView .thumbnails').append($listItems);
+	 	    }
+	 	
+          function loadNextPage() {
+	 	        var pageNumber = $('.loading').attr('data-pagenumber');
+	 	        pageNumber = (parseInt(pageNumber) + 1);
+	 	    
+	 	        if (pgNum == pageNumber) {
+	 	                $.ajax({
+	 	                    url: '?pagenumber=' + pageNumber,
+	 	                    success: function (response) {
+	 	                        pgNum = pageNumber;
+	 	                        $('.loading').attr('data-pagenumber', pageNumber);
+	 	                        parseAndRenderProducts($(response));
+	 	                    }
+	 	                })
+	 	        }
+	 	      }
+
+	 	    jQuery(window).scroll(function () {
+	 	        if ($(".loading").isOnScreen()) {
+	 	            pgNum++;
+	 	           
+	 	            if ($('.loading').attr('data-pagenumber') >= "@Model.PagingFilteringContext.TotalPages")
+	 	            {
+	 	                $('.loading').hide();
+	 	            }
+                    else    loadNextPage();
+	 	        }
+	 	    });
+	 	    $.fn.isOnScreen = function () {
+	 	        var b = $(window);
+	 	        var a = { top: b.scrollTop() };
+	 	        a.bottom = b.scrollTop() + b.height();
+	 	        var c = this.offset();
+	 	        c.bottom = c.top + this.outerHeight();
+	 	        return !(a.bottom < c.top || a.top > c.bottom)
+	 	    };
+
+	 	    //$(document).ready(function (e) {
+	 	    //    $('.loading').click(function (e) {
+	 	    //        loadNextPage();
+	 	    //    })
+	 	    //});
+</script>
+	 
+
+
+

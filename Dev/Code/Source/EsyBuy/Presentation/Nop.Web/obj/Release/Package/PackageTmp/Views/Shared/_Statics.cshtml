@@ -1,0 +1,31 @@
+﻿@{
+    Layout = "~/Views/Shared/_Root.cshtml";
+    Html.AppendCssFileParts("~/styles/TGI/staticPage.css");
+}
+<div class="container containerBlock marginBottom marginTopConfig aboutUs">
+
+    <div class="mainBody pull-left sideBarMargin">
+        <div class="container">
+            <div class="row noMarginLeft">
+                <div class="span2 pull-left noMarginLeft">
+
+
+                    <span class="banner pull-left">
+                        <img src="/images/banner/left-banner.gif" alt="banner">
+                    </span>
+                    <span class="banner pull-left">
+                        <img src="/images/banner/left-banner.gif" alt="banner">
+                    </span>
+                </div>
+
+                <div class="mainContentBottom pull-right span10 noMarginLeft">
+                    <div class="productDisplayBlock pull-left">
+                        
+                            @RenderBody()
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

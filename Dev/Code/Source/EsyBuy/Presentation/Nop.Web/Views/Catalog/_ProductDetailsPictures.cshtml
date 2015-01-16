@@ -1,0 +1,46 @@
+﻿@model ProductDetailsModel
+@using Nop.Core.Domain.Media
+@using Nop.Core.Infrastructure
+@using Nop.Web.Models.Catalog;
+@{
+    Html.AppendCssFileParts("/Styles/jquery.jqzoom.css");
+    Html.AppendCssFileParts("~/styles/TGI/productDetail.css");
+    Html.AppendScriptParts("~/Scripts/jquery.jqzoom-core-pack.js");
+    int productPerRow = EngineContext.Current.Resolve<MediaSettings>().ProductThumbPerRowOnProductDetailsPage;
+}
+<div class="pull-left productImageSection productImage">
+    <div class="productImageBox">
+
+        <a href="@Model.DefaultPictureModel.FullSizeImageUrl" class="jqzoom" rel='gal1' title="@Model.Name">
+            <img alt="@Model.DefaultPictureModel.AlternateText" src="@Model.DefaultPictureModel.ImageUrl" title="@Model.DefaultPictureModel.Title" class="productImageBlock" style="border: 4px solid #666;" />
+        </a>
+    </div>
+    <div class="productImageBoxBottom pull-left">
+        <ul id="thumblist" class="clearfix productThumbnails">
+            <li class="selected">
+                <a class="zoomThumbActive" href='javascript:void(0);' rel="{gallery: 'gal1', smallimage: '@Model.DefaultPictureModel.ImageUrl',largeimage: '@Model.DefaultPictureModel.FullSizeImageUrl'}"><img src='@Model.DefaultPictureModel.ImageUrl'></a>
+            </li>
+
+
+            @for (int i = 0; i < Model.PictureModels.Count; i++)
+            {
+                var picture = Model.PictureModels[i];
+
+                <li>
+                    <a href='javascript:void(0);' rel="{gallery: 'gal1', smallimage: '@picture.ImageUrl',largeimage: '@picture.FullSizeImageUrl'}"><img src='@picture.ImageUrl'></a>
+                </li>
+            }
+        </ul>
+    </div>
+
+</div>
+<script type="text/javascript">
+    $(document).ready(function() {
+    $('.jqzoom').jqzoom({
+    zoomType: 'standard',
+    lens:true,
+    preloadImages: false,
+    alwaysOn:false
+    });
+    });
+</script>

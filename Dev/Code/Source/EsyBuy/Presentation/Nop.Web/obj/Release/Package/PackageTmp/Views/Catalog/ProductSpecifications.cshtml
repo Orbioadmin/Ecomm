@@ -1,0 +1,30 @@
+﻿@model IList<ProductSpecificationModel>
+@using Nop.Web.Models.Catalog;
+<div class="pull-left specs">
+ <ul class="pull-left brandDeatails">
+    @if (Model.Count > 0)
+    {
+        for (int i = 0; i < Model.Count; i++)
+        {        
+            @*@(i % 2 == 0 ? Html.Raw("<li>") : Html.Raw(""))*@
+            var item = Model[i];
+
+                     <li>  <i class="icon-chevron-right rightIcon"></i><span class=leftDetail>@item.SpecificationAttributeName :<span class=rightDetail>@item.SpecificationAttributeOption</span></span> </li>
+
+          @*@(i+1 % 2 == 0 ? Html.Raw("</li>") : Html.Raw(""))*@
+        }
+
+    }
+</ul>
+</div>
+
+
+
+
+          @*  <li>
+              <i class="icon-chevron-right rightIcon"></i>
+              <span class="leftDetail">@item.SpecificationAttributeName :
+              <span class="rightDetail">@item.SpecificationAttributeOption
+              </span>
+              </span>
+              </li>  *@

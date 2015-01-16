@@ -1,0 +1,28 @@
+﻿@{
+    var returnURL = HttpUtility.UrlEncode(this.Context.Request.Url.AbsoluteUri);
+
+}
+<div id="login" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3>Login</h3>
+    </div>
+    <div class="message-error">
+                                    @Html.ValidationSummary(true, T("Account.Login.Unsuccessful").Text)
+                               </div>
+    <div class="modal-body">
+       <div class="span3 noMarginLeft pull-left FormClass">
+             
+            <form class="form-horizontal l" action="/login?returnurl=@returnURL" method="post">
+                <div class="control-group"><input type="text" placeholder="Email" id="Email" name="Email"></div>
+                <div class="control-group"><input type="password" placeholder="Password" id="Password" name="Password"></div>
+                <div class="control-group"><label class="checkbox"> <input type="checkbox" id="RememberMe" name="RememberMe" value="true"> Remember me <input type="hidden" id="RememberMe" name="RememberMe" value="false" /></label></div>
+                <button class="btn btn-success" type="submit">Sign in</button>
+            </form>
+        </div>
+        <div class="divider  pull-left marginTop span2 ">OR</div>
+        <div class="span2 pull-right noMarginLeft marginConfig">
+            <span class=" span2 pull-left noMarginLeft ">Sign In With</span><a class="pull-left" href="#"><img src="~/images/facebook-signin.png"></a>
+        </div>
+    </div>
+</div>

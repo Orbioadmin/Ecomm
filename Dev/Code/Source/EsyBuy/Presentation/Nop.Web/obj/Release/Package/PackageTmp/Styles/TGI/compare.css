@@ -1,0 +1,98 @@
+.compare .productHeading
+{
+	border-bottom: 1px solid #999999;
+	color: #333333;
+	font-size: 16px;
+	line-height: 30px;
+	margin-bottom: 6px;
+	margin-top: 0;
+}
+.compare .compareSection
+{
+	border: 1px solid #519DFF;
+	padding: 15px 0 0;
+	width: 83%;
+}
+.compare .removeAddress
+{
+	position: static;
+}
+.compare .table
+{
+	margin-bottom: 0;
+}
+.compare .table td
+{
+	border-collapse: collapse;
+	border-right: 1px solid #999999;
+	border-top: 1px solid #999999;
+	padding: 3px !important;
+	width: 190px;
+}
+.compare .table td:last-child
+{
+	border-right: none;
+}
+.compare .table tr:first-child td
+{
+	border-bottom: 1px solid #519DFF;
+	border-top: none;
+}
+.compare .productImageSection
+{
+	border-bottom: 1px solid #519DFF;
+	width: 100%;
+}
+.compare .productImageSection .productName
+{
+	color: #666666;
+	font-weight: bold;
+}
+.compare .productImage
+{
+	max-height: 200px;
+	max-width: 200px;
+	padding: 20px 0 0;
+}
+.compare .compareSectionBody .detailHead
+{
+	text-indent: 8px;
+}
+.compare .priceSection .column
+{
+	text-indent: 10px;
+}
+.compare .priceSection .price
+{
+	color: #C20001;
+	font-weight: bold;
+}
+.compare .compareSectionBody
+{
+	background: none repeat scroll 0 0 #BCD3F2;
+	color: #454545;
+	width: 100%;
+}
+.compare .shortDescSection .column
+{
+	padding-top: 10px;
+}
+.compare .compareSectionBody .details
+{
+	font-size: 12px;
+	line-height: 15px;
+	padding: 10px 12px !important;
+	width: 174px;
+}
+.compare .inTheBoxSection .column
+{
+	padding-top: 10px;
+}
+.compare .inTheBoxSection ul.unstyled
+{
+	margin: 0;
+}
+.compare .inTheBoxSection ul.unstyled li
+{
+	line-height: 16px;
+}

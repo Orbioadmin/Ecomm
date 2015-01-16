@@ -1,0 +1,283 @@
+﻿@model LoginModel
+@using Nop.Web.Models.Customer;
+@using Nop.Core;
+@using Nop.Core.Infrastructure;
+@{
+   Layout = "~/Views/Shared/_ColumnsFour.cshtml";
+    @*Layout = "~/Views/Shared/_Root.cshtml";*@
+
+    //title
+    Html.AddTitleParts(T("PageTitle.Login").Text);
+    Html.AppendCssFileParts("~/styles/TGI/checkout.css");
+    //register URL with return URL (if specified)
+    var registerUrl = Url.RouteUrl("Register");
+    if (!String.IsNullOrEmpty(this.Context.Request.QueryString["returnUrl"]))
+    {
+        var webHelper = EngineContext.Current.Resolve<IWebHelper>();
+        registerUrl = webHelper.ModifyQueryString(registerUrl, "returnurl=" + HttpUtility.UrlEncode(this.Context.Request.QueryString["returnUrl"]), null);
+    }
+}
+<div class="page login-page row noMarginLeft shoppingCartSection checkOut SignInUser">
+   @* <div class="productHeading">
+        <h1>@T("Account.Login.Welcome")</h1>
+    </div>*@
+    @Html.Partial("_ExternalAuthentication.AssociateMessage")
+    @Html.Partial("_ExternalAuthentication.Errors")
+    <div  class="pull-left tabContainer widthFull">
+        <div class="customer-blocks">
+
+    <div class="shoppingCartLeftSection pull-left">
+      
+    <div class="tab-content">
+        <div class="hide active" id="emailLogin">
+            <div class="pull-left tabContainer">
+            <div class="leftContent pull-left">
+             <div class="form-horizontal">
+                 <div class="control-group">
+                    <div class="form-fields">
+           
+                    @using (Html.BeginForm())
+                   {
+                                <div class="message-error">
+                                    @Html.ValidationSummary(true, T("Account.Login.Unsuccessful").Text)
+                               </div>
+                    
+                    @* if (Model.UsernamesEnabled)
+                        {
+                        <div class="inputs">
+                            @Html.LabelFor(m => m.Username, new { @class = "control-label" }, ":") 
+                            @Html.TextBoxFor(m => m.Username, new { @class = "username", autofocus = "autofocus" })
+                            @Html.ValidationMessageFor(m => m.Username)
+                        </div>
+                        }
+                        else
+                        {
+                        <div class="inputs">
+                            @Html.LabelFor(m => m.Email, new { }, ":")
+                            @Html.TextBoxFor(m => m.Email, new { @class = "email", autofocus = "autofocus" })
+                            @Html.ValidationMessageFor(m => m.Email)
+                        </div>
+                        }*@
+                   
+                     <div class="controls pull-left widthNewChange">
+                        
+
+                         @*<span class="help-block">Your order details will send to this email address.</span>*@
+                         @if(ViewData["ShowOption"] != null){
+                         if((bool)ViewData["ShowOption"]){
+                         <label>
+                             <input type="radio"   value="continueWithoutPassword" id="optionsRadios1" name="optionsRadios" class="checkAsGuest">
+                           Check out as guest
+                             <span class="help-block">(You do not need a password)</span>
+                         </label>
+                                }
+                                }
+
+                         <label>
+                             <input type="radio" checked="checked" value="continueWithPassword" id="optionsRadios2" name="optionsRadios" onchange="load2();" >
+                            I have a esybuy account and password
+                             <span class="help-block">Signin to your account and checkout faster</span>
+                         </label>
+                         <div id="signInWithh">
+                         @*   @Html.LabelFor(m => m.Password, new { }, ":")
+                            @Html.PasswordFor(m => m.Password, new { @class = "password" })
+                            @Html.ValidationMessageFor(m => m.Password)
+                          
+                            @Html.CheckBoxFor(m => m.RememberMe)
+                            @Html.LabelFor(m => m.RememberMe)
+                            <span class="forgot-password">
+                                @Html.RouteLink(T("Account.Login.ForgotPassword").Text, "PasswordRecovery")
+                            </span>*@
+                         
+                            
+                            
+                            <div class="form-fields formFieldNew">
+                    @using (Html.BeginForm())
+                    {
+                        <div class="message-error">
+                            @Html.ValidationSummary(true, T("Account.Login.Unsuccessful").Text)
+                        </div>
+                        if (Model.UsernamesEnabled)
+                        {
+                        <div class="inputs">
+                            @Html.LabelFor(m => m.Username, new { }, ":") 
+                            @Html.TextBoxFor(m => m.Username, new { @class = "username", autofocus = "autofocus" })
+                            @Html.ValidationMessageFor(m => m.Username)
+                        </div>
+                        }
+                        else
+                        {
+                        <div class="inputs">
+                            @Html.LabelFor(m => m.Email, new { }, ":")
+                            @Html.TextBoxFor(m => m.Email, new { @class = "email", autofocus = "autofocus" })
+                            @Html.ValidationMessageFor(m => m.Email)
+                        </div>
+                        }
+                        <div class="inputs">
+                            @Html.LabelFor(m => m.Password, new { }, ":")
+                            @Html.PasswordFor(m => m.Password, new { @class = "password" })
+                            @Html.ValidationMessageFor(m => m.Password)
+                        </div>
+                        <div class="inputs reversed loginRemember">
+                            @Html.CheckBoxFor(m => m.RememberMe)
+                            @Html.LabelFor(m => m.RememberMe)
+                            <span class="forgot-password">
+                                @Html.RouteLink(T("Account.Login.ForgotPassword").Text, "PasswordRecovery")
+                            </span>
+                        </div>
+
+
+
+                        <div class="buttons">
+          <input class="pull-right button-1 login-button button-1 checkout-as-guest-button btn continue LoginButton" type="submit" value="@T("Account.Login.LoginButton")" id="waris" />
+                        </div>
+
+
+                        if(ViewData["ShowOption"] != null) {
+                  if((bool)ViewData["ShowOption"]== false){
+             <div class="loginRegister"><label>New Users Please Register below</label>
+                 <input type="button" class="button-1 checkout-as-guest-button btn continue" onclick="location.href = '@registerUrl'" value="@T("Account.Register")" />  
+             </div> }}
+
+
+
+
+
+
+
+                        if (Model.DisplayCaptcha)
+                        {
+                        <div class="captcha-box">
+                            @Html.Raw(Html.GenerateCaptcha())
+                        </div>
+                        }
+
+                        @*<div class="buttons">
+          <input class="pull-right button-1 login-button button-1 checkout-as-guest-button btn continue LoginButton" type="submit" value="@T("Account.Login.LoginButton")" id="waris" />
+                        </div>*@
+@*}*@
+                       
+                    }
+                </div>
+
+                    </div>
+                     </div>
+       
+                <div class="clearfix"></div>
+               <div class="pull-right ">
+           
+     @*@if (Model.CheckoutAsGuest)
+            {
+ <a  class="button-1 checkout-as-guest-button btn continue" onclick="location.href='@Url.RouteUrl("Checkout")'"  >Continue</a>
+              
+            }*@
+
+            @if(ViewData["ShowOption"] != null){
+     if((bool)ViewData["ShowOption"])
+    {
+        <a  class="button-1 checkout-as-guest-button btn continue" onclick="location.href='@Url.RouteUrl("Checkout")'"  >Continue</a>
+              
+    }
+    }
+
+
+                </div>
+                    if (Model.DisplayCaptcha)
+                        {
+                        <div class="captcha-box">
+                            Html.Raw(Html.GenerateCaptcha())
+                        </div>
+                        }
+                       
+                    }
+            </div>
+        </div>
+          </div>
+</div>
+            <div class="divider pull-left">OR</div>
+
+            <div class="rightContent pull-left">
+                <span class="pull-left">Sign in with</span>
+                <a class="faceBookSignIn pull-left clearLeft" href="#"></a>
+                
+            </div>
+  </div></div></div></div></div></div></div>
+     <script type="text/cjs">
+    $(document).ready(function(){
+    $("input[name='optionsRadios']").change(function(){
+   
+    if($(this).val()=="continueWithPassword")  
+
+    {
+    $("#signInWith").show();
+    
+    $('.checkout-as-guest-button.continue').hide();
+
+    $('.checkout-as-guest-button.LoginButton').css('display','block');
+    }
+    else
+    {
+    $("#signInWith").hide();
+    $('.checkout-as-guest-button.continue').css('display','block');
+    
+    $('.checkout-as-guest-button.LoginButton').hide();
+    }
+    });
+    $('.removeProduct').click(function(){
+    $(this).closest(".reviewBody").hide();
+    
+    });
+});
+    </script>
+
+    <script type="text/cjs">
+$('.checkout-as-guest-button').click(function(){
+
+});
+
+if ($('.checkAsGuest').is(':checked')) {
+
+}
+else
+{
+
+}
+
+</script>
+
+
+<!-- waris added code below -->
+<script type="text/javascript">
+    function load() {
+
+        if (document.getElementById('optionsRadios1').checked = true) {
+            document.getElementById('waris').style.visibility = "hidden";
+        }
+    }
+    window.onload = load;
+    function load2() {
+        if (document.getElementById('optionsRadios2').checked = true) {
+            document.getElementById('waris').style.visibility = "visible";
+        }
+
+    }
+</script>
+
+
+
+@*<script type="text/javascript">
+    function hello()
+    {
+        document.getElementById("waris").style.visibility = "hidden";
+    }
+    window.onload = hello;
+   </script>*@
+
+@*<script type="text/javascript">
+    function auto()
+    {
+        document.getElementById('optionsRadios2').checked = true;
+        document.getElementById('signInWith').style.display = "block";
+    }
+    window.onload = auto;
+</script>*@

@@ -1,0 +1,1015 @@
+.checkOut .shoppingCartSection
+{
+	padding: 1.5% 1.5% 4%!important;
+}
+.checkOut .shoppingCartLeftSection
+{
+	border: 1px solid #D3D3D3;
+	width: 100%;
+}
+.checkOut .shoppingCartSection .productHeading
+{
+	font-size: 28px;
+	margin-bottom: 30px;
+	margin-top: 0;
+}
+.checkOut .shoppingCartLeftSectionTop
+{
+	margin-right: 18px;
+	width: 68%;
+}
+.shoppingCartLeftSection ul.nav-tabs li:hover
+{
+	background: none;
+}
+.shoppingCartLeftSection ul.nav-tabs li a
+{
+	border-radius: 0;
+	color: #797979;
+
+	padding-left: 30px;
+	padding-right: 30px;
+}
+.shoppingCartLeftSection ul.nav-tabs li a:hover
+{
+	background: none;
+	border-color: rgba(0,0,0,0.0);
+}
+.shoppingCartLeftSection ul.nav-tabs li.active a
+{
+	background: none;
+	color: #194C8E;
+}
+.shoppingCartLeftSection ul.nav-tabs li a .serialNum
+{
+	font-size: 24px;
+	margin-right: 6px;
+}
+.shoppingCartLeftSection .nav.nav-tabs
+{
+	background: linear-gradient(to bottom, #E4E6E5, #DADADA) repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+.shoppingCartLeftSection ul.nav-tabs li .arrowRight
+{
+	background: url("../../images/sprite.png") repeat scroll -304px -184px rgba(0, 0, 0, 0);
+	float: left;
+	height: 26px;
+	margin-top: 6px;
+	width: 9px;
+}
+.shoppingCartLeftSection .nav-tabs > .active > a
+{
+	border-color: rgba(0,0,0,0.0);
+}
+.tab-content .tabContainer
+{
+	padding: 15px 25px 35px;
+}
+.tab-content #emailLogin .leftContent label.control-label
+{
+	color: #454545;
+	font-size: 16px;
+	font-weight: bold;
+	margin-top: 4px;
+	width: 26%;
+}
+.tab-content .leftContent
+{
+	border-right: 2px solid #999999;
+	width: 64%;
+}
+.tab-content #emailLogin .leftContent input#emailBox,.tab-content #emailLogin .leftContent input#emailBox1
+{
+	border: 1px solid #999999;
+	border-radius: 0;
+	height: 22px;
+	width: 75%;
+}
+.tab-content #emailLogin .leftContent .help-block
+{
+	color: #454545;
+	margin-top: 4px;
+}
+.tab-content #emailLogin .leftContent label .help-block
+{
+	font-weight: normal;
+	margin-left: 18px;
+	margin-top: 0;
+}
+.tab-content #emailLogin .leftContent label input
+{
+	margin-top: 0;
+}
+.tab-content #emailLogin .leftContent .controls label
+{
+	color: #454545;
+	font-weight: bold;
+	margin-top: 14px;
+}
+.checkOut .tab-content #emailLogin .form-horizontal .controls
+{
+	margin-left: 16px;
+}
+.checkOut .tab-content .divider
+{
+	background: none repeat scroll 0 0 #FFFFFF;
+	border: 2px solid #999999;
+	border-radius: 70px 70px 70px 70px;
+	height: 35px;
+	left: -21px;
+	line-height: 35px;
+	margin-left: 0;
+	position: relative;
+	text-align: center;
+	top: 70px;
+	width: 35px;
+}
+.checkOut .tab-content #emailLogin .faceBookSignIn
+{
+	background: url("../../images/facebook_checkout.png") repeat scroll -1px -1px rgba(0, 0, 0, 0);
+	height: 24px;
+	margin-top: 22px;
+	width: 111px;
+}
+.checkOut .tab-content #emailLogin .faceBookSignIn:hover
+{
+	background: url("../../images/facebook_checkout.png") repeat scroll -1px -27px rgba(0, 0, 0, 0);
+}
+.checkOut .tab-content .rightContent
+{
+	color: #454545;
+	font-weight: bold;
+	padding: 35px 0 0 25px;
+	width: 20%;
+}
+.checkOut .tab-content #emailLogin .googleIcon
+{
+	background: url("../../images/google_checkout.png") repeat scroll -1px -1px rgba(0, 0, 0, 0);
+}
+.checkOut .tab-content #emailLogin .googleIcon:hover
+{
+	background: url("../../images/google_checkout.png") repeat scroll -1px -27px rgba(0, 0, 0, 0);
+}
+.checkOut .tab-content .btn.continue
+{
+	background: linear-gradient(to bottom, #1B7BFA, #1C5AAA) repeat scroll 0 0 rgba(0, 0, 0, 0);
+	border: none;
+	box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.5);
+	color: #FFFFFF;
+	font-size: 18px;
+	font-weight: bold;
+	height: 40px;
+	line-height: 40px;
+	margin-right: 10px;
+	padding: 0;
+	text-shadow: 0 -1px rgba(0, 0, 0, 0.4);
+	width: 120px;
+}
+.checkOut .tab-content .btn.continue:hover
+{
+	background: linear-gradient(to bottom ,#1C5AAA, #1B7BFA);
+}
+.checkOut #signInWith
+{
+	color: #454545;
+	display: none;
+	font-size: 12px;
+	width: 99%;
+}
+#signInWith .formFieldNew
+{
+	float: left;
+	margin-left: 30px;
+	width: 95%;
+}
+#signInWith #keepMeIn
+{
+	margin-right: 4px;
+	margin-top: 0;
+}
+#signInWith .viewAll
+{
+	color: #6780B6;
+	text-decoration: underline;
+}
+#signInWith > label
+{
+	display: inline;
+
+	font-size: 12px;
+}
+.checkOut .shoppingCartrightSectionTop
+{
+	width: 30%;
+}
+.checkOut .shoppingCartrightSectionTop .shoppingCartrightSection
+{
+	border: 1px solid #d3d3d3;
+	padding: 10px 10px 0;
+	width: 94%;
+}
+.shoppingCartrightSectionTop .shoppingCartrightSection .orderSummaryHead
+{
+	background: linear-gradient(to bottom, #E4E6E5, #DADADA) repeat scroll 0 0 rgba(0, 0, 0, 0);
+	color: #454545;
+
+	margin-top: 10px;
+	padding: 2px 6px;
+	width: 96%;
+}
+.shoppingCartrightSectionTop .shoppingCartrightSection .product
+{
+	width: 34%;
+}
+.shoppingCartrightSectionTop .shoppingCartrightSection .qty
+{
+	text-align: center;
+	width: 35%;
+}
+.shoppingCartrightSectionTop .shoppingCartrightSection .orderSummaryBody
+{
+	border-top: 1px solid #D3D3D3;
+	padding: 20px 6px;
+	width: 96%;
+}
+.mini-shopping-cart .items
+{
+	margin-bottom: 20px;
+}
+.shoppingCartrightSectionTop .shoppingCartrightSection .orderSummaryBody:last-child
+{
+	border-bottom: 0;
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+.shoppingCartrightSectionTop .shoppingCartrightSection .orderSummaryBody .product.pull-left > img
+{
+	max-width: 50px;
+}
+.shoppingCartrightSectionTop .shoppingCartrightSection .price
+{
+	width: 25%;
+}
+.shoppingCartrightSectionTop .shoppingCartrightSection .orderSummaryBody .price .actualPrice
+{
+	color: #9B9A9A;
+
+	font-size: 14px;
+}
+.shoppingCartrightSectionTop .shoppingCartrightSection .orderSummaryBody .price
+{
+	color: #454545;
+	font-size: 16px;
+	font-weight: bold;
+	width: 25%;
+}
+.shoppingCartrightSectionTop .shoppingCartrightSection .earnRewardSection
+{
+	border-top: 1px solid #D3D3D3;
+	color: #191919;
+	padding: 15px 0;
+	text-align: right;
+	width: 100%;
+}
+.shoppingCartrightSectionTop .shoppingCartrightSection .earnRewardSection:last-child
+{
+	border-bottom: 0;
+}
+.shoppingCartrightSectionTop .shoppingCartrightSection .earnRewardSection .knowMore
+{
+	color: #191919;
+	font-size: 12px;
+	text-decoration: underline;
+}
+.shoppingCartrightSectionTop .shoppingCartrightSection .subTotal
+{
+	color: #191919;
+	width: 96%;
+}
+.shoppingCartrightSectionTop .shoppingCartrightSection .subTotalLeft
+{
+
+	width: 75%;
+}
+.shoppingCartrightSection .subTotalRight
+{
+
+	font-weight: bold;
+	width: 22%;
+}
+.checkOut .shoppingCartrightSectionTop .deliveryDetailSection .orderDetailLeft
+{
+	color: #519DFF;
+
+	font-size: 17px;
+	width: 18%;
+}
+.checkOut .shoppingCartrightSectionTop .deliveryDetailSection .orderDetailRight
+{
+	color: #7C7C7C;
+	text-transform: uppercase;
+	width: 80%;
+}
+.checkOut .shoppingCartrightSectionTop .deliveryDetailSection .deliveryDetail
+{
+	padding: 2px;
+	width: 100%;
+}
+.checkOut .shoppingCartrightSectionTop .deliveryDetailSection
+{
+	color: #363636;
+	font-size: 14px;
+	margin-top: 16px;
+	padding: 18px 10px;
+}
+.checkOut .earnRewardSection .greenText
+{
+	color: #00AE2D;
+}
+.checkOut .safeAndSecureSection .lockIcon
+{
+	background: url("../../images/sprite.png") repeat scroll -124px -189px rgba(0, 0, 0, 0);
+	height: 19px;
+	margin-right: 18px;
+	width: 15px;
+}
+.checkOut .safeAndSecureSection
+{
+	color: #454545;
+	padding: 6px 0;
+	width: 100%;
+}
+.checkOut .cardSection
+{
+	margin-top: 12px;
+	width: 100%;
+}
+.checkOut .addressBlock
+{
+	border: 1px solid #999999;
+	color: #454545;
+	font-size: 16px;
+	margin-right: 16px;
+	padding: 2px 4px;
+	position: relative;
+	width: 42%;
+	word-wrap: break-word;
+}
+.checkOut .addressBlock .nameBlock
+{
+
+}
+.checkOut .tab-content #shippingAddress .rightContent
+{
+	padding: 0 35px;
+	width: 29%;
+}
+.checkOut .tab-content #shippingAddress .leftContent
+{
+	width: 55%;
+}
+.checkOut .tab-content #shippingAddress .selection
+{
+	margin-bottom: 12px;
+	width: 100%;
+}
+.checkOut .tab-content #shippingAddress .select
+{
+	background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+	border: 1px solid #999999;
+	border-radius: 0 0 0 0 !important;
+	color: #A0A0A0;
+	height: 35px;
+	padding: 0;
+	text-align: left;
+	width: 229px;
+}
+.checkOut .tab-content .sr-only
+{
+	border-right: 1px solid #999999;
+	float: left;
+	height: 33px;
+	line-height: 33px;
+	text-indent: 4px;
+	width: 86%;
+}
+.checkOut .tab-content .selectDropIcon
+{
+	line-height: 26px !important;
+	text-indent: 4px;
+}
+#shippingAddress .noMarginBottom
+{
+	margin-bottom: 0px !important;
+}
+.checkOut .tab-content #shippingAddress .btn.continue
+{
+	margin-right: 28px;
+	width: 174px;
+}
+.checkOut .tab-content #shippingAddress .inputSection
+{
+	border: 1px solid #999999 !important;
+	border-radius: 0 0 0 0 !important;
+	color: #A0A0A0;
+	font-size: 13px;
+	width: 100%;
+}
+.checkOut .tab-content h5
+{
+	color: #454545;
+	margin-top: 0;
+}
+.checkOut .tab-content #orderSummary .tabContainer
+{
+	padding: 15px 12px 35px;
+}
+.checkOut .tab-content .reviewHeader
+{
+	background: none repeat scroll 0 0 #DADADA;
+	color: #363636;
+	padding: 6px 14px;
+	text-transform: uppercase;
+	width: 96%;
+}
+.checkOut .tab-content #orderSummary h5
+{
+	margin-left: 16px;
+}
+.checkOut .tab-content .reviewHeader .serialNum
+{
+	width: 8%;
+}
+.checkOut .tab-content .reviewBody .serialNum
+{
+	color: #000000;
+}
+.checkOut .tab-content .reviewHeader .itemDesc
+{
+	width: 32%;
+}
+.checkOut .tab-content .reviewBody .itemDesc
+{
+
+}
+.checkOut .tab-content .reviewHeader .dispatch
+{
+	width: 16%;
+}
+.checkOut .tab-content .reviewHeader .price
+{
+	width: 13%;
+}
+.checkOut .tab-content .reviewHeader .qty.pull-left
+{
+	text-align: center;
+	width: 8%;
+}
+.checkOut .tab-content .reviewHeader .subTotal
+{
+	width: 15%;
+}
+.checkOut .tab-content .reviewBody
+{
+	background: none repeat scroll 0 0 rgba(0, 0, 0, 0) !important;
+	border: 1px solid #D3D3D3;
+	color: #363636;
+	margin-bottom: 18px;
+	margin-top: 18px;
+	padding-bottom: 14px !important;
+	padding-top: 14px !important;
+	position: relative;
+	text-transform: none;
+}
+.checkOut .tab-content .qty .qtyNum
+{
+	border: 1px solid #D3D3D3 !important;
+	border-radius: 0 0 0 0 !important;
+	font-size: 12px !important;
+	height: 20px !important;
+	margin-bottom: 0 !important;
+	padding: 0;
+	text-align: center;
+	width: 32%;
+}
+.checkOut .tab-content .reviewBody .qty.pull-left > a
+{
+	color: #1C5DB1;
+	font-size: 12px;
+	text-decoration: underline;
+}
+.checkOut .giftIcon
+{
+	background: url("../../images/sprite.png") repeat scroll -326px -188px rgba(0, 0, 0, 0);
+	float: left;
+	height: 24px;
+	margin-left: 8px;
+	margin-right: 5px;
+	width: 22px;
+}
+.checkOut .giftWrapText
+{
+	color: #1C1C1C;
+	width: 30%;
+}
+.checkOut .giftWrapSection
+{
+	margin-bottom: 10px;
+	width: 100%;
+}
+.checkOut .giftWrapSection .additionalText
+{
+	font-size: 12px;
+	width: 100%;
+}
+.checkOut .giftWrapSection .shippingDetail
+{
+	color: #1C1C1C;
+	width: 15%;
+}
+.checkOut .TotalAmount .amtPay.pull-left
+{
+	color: #010101;
+	width: 22%;
+}
+.checkOut .TotalAmount .savings.pull-left
+{
+	color: #1C1C1C;
+
+	font-size: 16px;
+	width: 68%;
+}
+.checkOut .TotalAmount .savings .savingAmount
+{
+	color: #D81717;
+}
+.checkOut .TotalAmount
+{
+	background: none repeat scroll 0 0 #C1C1C1 !important;
+	border: 1px solid #B2B5BC;
+	font-size: 16px;
+	font-weight: bold;
+	padding: 10px 14px !important;
+}
+.checkOut .dicountHeader
+{
+	color: #1C1C1C;
+
+	font-size: 16px;
+	margin-bottom: 6px;
+	width: 100%;
+}
+.checkOut .help
+{
+	background: url("../../images/sprite.png") repeat scroll -405px -193px rgba(0, 0, 0, 0);
+	float: left;
+	height: 15px;
+	margin-left: 4px;
+	margin-top: 8px;
+	width: 14px;
+}
+.checkOut .dicountCodeSection.pull-left
+{
+	padding: 15px 22px 35px;
+	width: 94%;
+}
+.checkOut .mobileIcon
+{
+	background: url("../../images/sprite.png") repeat scroll -371px -188px rgba(0, 0, 0, 0);
+	float: left;
+	height: 19px;
+	margin-right: 8px;
+	margin-top: 8px;
+	width: 19px;
+}
+.checkOut .alertSection
+{
+	clear: both;
+	color: #1C1C1C;
+	margin-top: 12px;
+	width: 100%;
+}
+.checkOut .dicountCodeSection > input
+{
+	border-radius: 0 0 0 0;
+	width: 20%;
+}
+.checkOut .alertSection > input
+{
+	border-radius: 0 0 0 0;
+	margin-left: 6px;
+	margin-top: 6px;
+	width: 22%;
+}
+.checkOut .tabContainer .paymentHead
+{
+	color: #454545;
+
+	font-size: 16px;
+	margin-bottom: 6px;
+	text-transform: uppercase;
+}
+.checkOut .tabContainer .paymentHead span
+{
+	color: #ec392b;
+	margin-left: 10px;
+}
+.checkOut .tabContainer .paymentBody
+{
+	border-top: 1px solid #D6D6D6;
+	clear: both;
+	padding: 25px 0 25px 25px;
+	width: 97%;
+}
+.checkOut .tabContainer ul.payModeSelection
+{
+	list-style-type: none;
+	margin: 0;
+	text-transform: uppercase;
+	width: 21%;
+}
+.checkOut .tabContainer .payModeSelection a
+{
+	color: #1C1C1C;
+
+	line-height: normal;
+	padding: 4px 0;
+}
+.checkOut .tabContainer .payModeSelection > li
+{
+	border-bottom: 1px solid #C1C1C1;
+	line-height: 26px;
+	margin-bottom: 0;
+	padding: 10px;
+}
+.checkOut .tabContainer .payModeSelection > li:hover,.payModeSelection li.active
+{
+	background: none repeat scroll 0 0 #bcd3f2;
+	margin-right: -2px;
+	position: relative;
+}
+.checkOut .tabContainer .paymentBody .tab-content
+{
+	color: #1C1C1C;
+	width: 78%;
+}
+.checkOut .tabContainer .paymentBody .tabContentInside
+{
+	border: 1px solid #519DFF;
+	margin-bottom: 30px;
+	min-height: 245px;
+	padding: 4px 0 25px 25px;
+	width: 91%;
+}
+.paymentBody .payModeSelection .active > a
+{
+	color: #1C1C1C !important;
+}
+.checkOut .paymentModeDetail .form-horizontal
+{
+	margin-top: 30px;
+	width: 100%;
+}
+.checkOut .paymentModeDetail .cardInputs
+{
+	border: 1px solid #999999 !important;
+	border-radius: 0 0 0 0 !important;
+	width: 94%;
+}
+.checkOut .paymentModeDetail .cardInputSection
+{
+	width: 60%;
+}
+.checkOut .paymentModeDetail .form-horizontal label
+{
+	color: #1C1C1C;
+	margin-right: 8%;
+	text-transform: uppercase;
+	width: 20%;
+}
+.checkOut .paymentModeDetail .form-group
+{
+	margin-bottom: 10px;
+	width: 100%;
+}
+.checkOut .form-horizontal .select
+{
+	background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+	border: 1px solid #999999;
+	border-radius: 0 0 0 0;
+	color: #9B9A9A;
+
+	padding: 0;
+	width: 100%;
+}
+.checkOut .paymentModeDetail .form-horizontal .btn-group
+{
+	width: 48%;
+}
+.checkOut .tab-content .paymentModeDetail .form-horizontal .sr-only
+{
+	width: 80%;
+}
+.checkOut .tab-content .paymentModeDetail .form-horizontal .selectDropIcon
+{
+	text-indent: 0;
+}
+.checkOut .paymentModeDetail .form-horizontal .cardInputs.halfWidth
+{
+	width: 44% !important;
+}
+.checkOut .paymentModeDetail .checkList.pull-right
+{
+	color: #2E2D2D;
+
+	width: 72%;
+}
+.checkOut .paymentModeDetail .checkList input
+{
+	margin-right: 4px;
+	margin-top: -4px;
+}
+.checkOut .paymentModeDetail .checkList .knowMore
+{
+	color: #007FB6;
+
+	font-size: 12px;
+	margin-left: 4px;
+	text-decoration: underline;
+}
+.checkOut .tab-content #paymentOptions .btn.continue
+{
+	background: linear-gradient(to bottom, #FFCC00, #D3A100) repeat scroll 0 0 rgba(0, 0, 0, 0);
+
+	font-size: 30px;
+	height: 50px;
+	line-height: 50px;
+	margin-right: 2px;
+	width: 180px;
+}
+.checkOut .tab-content #paymentOptions .btn.continue:hover
+{
+	background: linear-gradient(to bottom, #D3A100, #FFCC00) repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+.checkOut .paymentBody .tab-content .note_net_banking
+{
+	color: #999999;
+	float: left;
+	font-size: 12px;
+	width: 90%;
+	word-wrap: break-word;
+}
+.checkOut .paymentBody .tab-content .note_net_banking .note_color
+{
+	color: #000000;
+}
+.checkOut .paymentBody .tab-content .selectDropIcon
+{
+	text-indent: 0px;
+}
+.checkOut .paymentBody .tab-content #netBanking .btn-group,.checkOut .paymentBody .tab-content #debitCard .btn-group
+{
+	width: 70%;
+}
+.checkOut .paymentBody .tab-content .amount_payable
+{
+	clear: both;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	text-transform: uppercase;
+}
+.checkOut .paymentBody .tab-content .checkout_total
+{
+	color: #EC392B;
+	margin-left: 10px;
+}
+.checkOut .removeAddress
+{
+	background: url("../../images/sprite.png") repeat scroll -13px -228px rgba(0, 0, 0, 0);
+	float: right;
+	height: 17px;
+	position: absolute;
+	right: -4px;
+	top: -8px;
+	width: 17px;
+}
+.checkOut .selectAddress
+{
+	background: url("../../images/sprite.png") repeat scroll -469px -190px rgba(0, 0, 0, 0);
+	bottom: -6px;
+	height: 24px;
+	position: absolute;
+	right: -8px;
+	width: 24px;
+}
+.checkOut .shoppingCartLeftSection ul.nav-tabs li.active a:hover
+{
+	border-color: rgba(0, 0, 0, 0);
+}
+.checkOut .customizedDropDown
+{
+	border-radius: 0;
+	padding: 0;
+	text-align: center;
+	top: 90%;
+}
+.checkOut #netBanking .customizedDropDown,.checkOut #debitCard .customizedDropDown
+{
+	min-width: 360px;
+}
+.checkOut #creditCard .customizedDropDown
+{
+	min-width: 148px;
+}
+.checkOut #shippingAddress .customizedDropDown
+{
+	min-width: 228px;
+}
+.checkOut .shoppingCartrightSectionTop .shoppingAddressSection
+{
+	display: none;
+}
+.shoppingCartrightSectionTop .shoppingAddressSection .change
+{
+	color: #0180B6;
+	font-size: 12px;
+	font-weight: normal;
+	text-decoration: underline;
+}
+.shoppingCartrightSectionTop .shoppingAddressSection h5
+{
+	font-size: 16px;
+	margin-top: 0;
+}
+.checkOut .radio.inline + .radio.inline
+{
+	margin-left: 30px;
+}
+.checkOut .radio.inline
+{
+	cursor: pointer;
+
+	margin: 2px 0;
+}
+.checkOut .shippingDetail .shipping
+{
+	margin-right: 20px;
+}
+.checkOut .checkList label
+{
+	cursor: pointer;
+	display: inline-block;
+}
+.orderSummaryBody .picture a b
+{
+	color: #000;
+}
+.checkOut .tab-content .btn.continue.LoginButton
+{
+	 display: block;
+}
+.SignInUser #emailLogin .tabContainer
+{
+	width: 95%;
+}
+.SignInUser #emailLogin .tabContainer .leftContent
+{
+	width: 50%;
+}
+.widthNewChange
+{
+	width: 98%;
+}
+.checkout-data ul#checkout-steps li
+{
+	list-style: none outside none;
+	margin: 0 0 2px;
+}
+.checkout-data ul#checkout-steps li:last-child
+{
+	margin: 0;
+}
+#checkout-steps .step-title h2
+{
+	background: linear-gradient(to bottom, #ebebeb, #e0e0e0) repeat scroll 0 0 rgba(0, 0, 0, 0);
+	color: #797979;
+
+	font-size: 15px;
+	font-weight: normal;
+	margin: 0;
+	padding: 0 10px;
+}
+.checkout-data #checkout-steps
+{
+	margin: 0;
+	padding: 0;
+}
+#checkout-steps .tab-section .step.a-item
+{
+	margin: 20px;
+}
+.checkout-data ul#checkout-steps li.active .step-title h2
+{
+	background: none repeat scroll 0 0 #AFAFAF;
+	color: #ffffff;
+}
+.checkout-data .method-name input
+{
+	margin: 0;
+}
+.checkout-data .method-name label
+{
+	display: inline;
+}
+.shipping-method .method-list > li
+{
+	margin-bottom: 10px;
+}
+.checkout-data .method-description
+{
+	margin-left: 15px;
+}
+.checkout-data .shipping-method .method-list
+{
+	margin-left: 0;
+}
+#signInWith .inputs.reversed,#signInWith .inputs.reversed #RememberMe,#signInWith .inputs.reversed label
+{
+	float: left;
+}
+#signInWith .inputs.reversed label
+{
+	margin-left: 5px;
+	margin-top: 0 !important;
+}
+#signInWith .inputs.reversed .forgot-password
+{
+	clear: left;
+	float: left;
+}
+#signInWith .inputs.reversed
+{
+	margin-top: 10px;
+}
+#checkout-steps .allow .step-title h2
+{
+	background: linear-gradient(to bottom,#dedede,#c7c7c7);
+	cursor: pointer;
+}
+#checkout-steps .number
+{
+	border: 2px solid #8E8E8E;
+	border-radius: 20px;
+	height: 20px;
+	margin-right: 8px;
+	margin-top: 8px;
+	text-align: center;
+	width: 20px;
+}
+#checkout-steps .active .number
+{
+	background: none repeat scroll 0 0 #FFFFFF;
+	border: 1px solid #FFFFFF;
+	color: #959595;
+}
+#checkout-steps .tab-section .step .new-billing-address .edit-address label,#checkout-steps .tab-section .step .new-shipping-address .edit-address label
+{
+	float: left;
+	width: 20%;
+}
+#billing-address-select,#shipping-address-select
+{
+	width: 500px;
+}
+.shoppingCartInCheckOut .shoppingCartSection .shoppingList
+{
+	width: 92%;
+}
+.shoppingCartInCheckOut .shoppingCartContainer .products
+{
+	width: 55%;
+}
+.order-review-data
+{
+	float: left;
+	width: 100%;
+}
+.order-review-data .title
+{
+	background: none repeat scroll 0 0 #E9E9E9;
+}
+.order-review-data li
+{
+	padding: 2px 10px;
+}
+
+.loginRegister {
+margin-top:40px;
+}
+
+
+.loginRemember input{
+    float: left;
+    margin-right: 6px;
+    margin-top: 4px;
+}

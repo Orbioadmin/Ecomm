@@ -1,0 +1,55 @@
+﻿@model ProductOverviewModel
+@using Nop.Core.Domain.Orders
+@using Nop.Web.Models.Catalog;
+@{
+    //prepare "Add to cart" AJAX link
+    string addtocartlink = "";
+    var shoppingCartTypeId = (int)ShoppingCartType.ShoppingCart;
+    var quantity = 1;
+    if (Model.ProductPrice.ForceRedirectionAfterAddingToCart)
+    {
+        addtocartlink = Url.RouteUrl("AddProductToCart-Catalog", new { productId = Model.Id, shoppingCartTypeId = shoppingCartTypeId, quantity = quantity, forceredirection = Model.ProductPrice.ForceRedirectionAfterAddingToCart });
+    }
+    else
+    {
+        addtocartlink = Url.RouteUrl("AddProductToCart-Catalog", new { productId = Model.Id, shoppingCartTypeId = shoppingCartTypeId, quantity = quantity, });
+    }
+decimal discount = 0;
+}
+<div class="thumbnail pull-left">
+  @*  <div class="fewMoreAvailable">-Few more available-</div>*@
+    <div class="productAlignBlock">
+        <a href="@Url.RouteUrl("Product", new { SeName = Model.SeName })">
+            <img src="@Model.DefaultPictureModel.ImageUrl" alt="@Model.DefaultPictureModel.AlternateText" class="imageNormal" />
+        </a>
+    </div>
+    <div class="caption pull-left">
+        
+        @if (!String.IsNullOrEmpty(Model.ProductPrice.OldPrice))
+        {
+            
+    	    @*decimal oldPrice = Decimal.Parse(@Model.ProductPrice.OldPrice, System.Globalization.NumberStyles.Currency);
+	     	decimal newPrice = Decimal.Parse(@Model.ProductPrice.Price, System.Globalization.NumberStyles.Currency);
+	     	discount = (oldPrice - newPrice) * 100 / oldPrice;*@
+	     
+            <span class="actualPrice">@Model.ProductPrice.OldPrice</span>
+            <span class="offPrice">@Model.ProductPrice.Discount.ToString("#")%<sup>OFF</sup></span>
+
+        }
+
+
+        <span class="sellingPrice">@Model.ProductPrice.Price</span>
+        <span class="productDesc pull-left">@Html.Raw(Model.Name)</span>
+
+
+
+            @if (!Model.ProductPrice.DisableBuyButton)
+                {
+                    <a class="buttonShopNow" onclick="AjaxCart.addproducttocart_catalog('@addtocartlink');return false;" >SHOP NOW</a>
+                }
+    </div>
+</div>
+<div class="quickView">
+   <a class="btn btn-primary" href="/esybuy/Catalog/QuickView?productId=@Model.Id" data-target="#quickView" data-toggle="modal">Quick View</a> 
+</div>
+ 

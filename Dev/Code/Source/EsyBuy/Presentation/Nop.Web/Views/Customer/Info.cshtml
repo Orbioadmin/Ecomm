@@ -1,0 +1,369 @@
+﻿@model CustomerInfoModel
+@using Nop.Web.Models.Customer;
+@using Nop.Core;
+@{
+    Layout = "~/Views/Shared/_ColumnsTwo.cshtml";
+      Html.AppendCssFileParts("~/styles/TGI/myAccount.css");
+
+    //title
+    Html.AddTitleParts(T("PageTitle.Account").Text);
+}
+
+@section left
+{
+    @Html.Partial("MyAccountNavigation", Model.NavigationModel, new ViewDataDictionary())
+}
+
+@if (Model.CountryEnabled && Model.StateProvinceEnabled)
+{
+    <script type="text/javascript">
+        $(function () {
+            $("#@Html.FieldIdFor(model => model.CountryId)").change(function () {
+                var selectedItem = $(this).val();
+                var ddlStates = $("#@Html.FieldIdFor(model => model.StateProvinceId)");
+             var statesProgress = $("#states-loading-progress");
+             statesProgress.show();
+             $.ajax({
+                 cache: false,
+                 type: "GET",
+                 url: "@(Url.RouteUrl("GetStatesByCountryId"))",
+                    data: { "countryId": selectedItem, "addEmptyStateIfRequired": "true" },
+                    success: function (data) {
+                        ddlStates.html('');
+                        $.each(data, function (id, option) {
+                            ddlStates.append($('<option></option>').val(option.id).html(option.name));
+                        });
+                        statesProgress.hide();
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alert('Failed to retrieve states.');
+                        statesProgress.hide();
+                    }
+                });
+            });
+        });
+    </script>
+}
+
+
+
+
+
+@*<div class="page account-page customer-info-page">*@
+    <div class="productHeading noMarginTop">
+        <h3 class="noMarginTop noMarginBottom">@T("Account.MyAccount") - @T("Account.CustomerInfo")</h3>
+    </div>
+    <div class="accountBody noPadding">
+        @using (Html.BeginForm("Info", "customer", FormMethod.Post,new { @class="form-horizontal"}))
+        {
+            @Html.AntiForgeryToken()
+            <div class="message-error">
+                @Html.ValidationSummary(true)
+            </div>
+            <div class="form-group pull-left">
+                <strong>@T("Account.YourPersonalDetails")</strong>
+                    
+                
+                <div class="form-group pull-left">
+                     <div class="form-group pull-left">
+                        @Html.LabelFor(model => model.FirstName, new { @class = "pull-left" }, ":")
+<div class="pull-left inputArea">
+                        @Html.EditorFor(model => model.FirstName)</div>
+                        @Html.RequiredHint()
+                        @Html.ValidationMessageFor(model => model.FirstName)
+                    </div>
+                    <div class="form-group pull-left">
+                        @Html.LabelFor(model => model.LastName, new {@class = "pull-left" }, ":")
+<div class="pull-left inputArea">
+                        @Html.EditorFor(model => model.LastName)</div>
+                        @Html.RequiredHint()
+                        @Html.ValidationMessageFor(model => model.LastName)
+                    </div>
+                   
+                    @if (Model.DateOfBirthEnabled)
+                    {
+                        <div class="form-group pull-left">
+                            <label class="pull-left">@T("Account.Fields.DateOfBirth"):</label>
+                   <div class="pull-left inputArea">         @Html.DatePickerDropDowns(Html.FieldNameFor(x => x.DateOfBirthDay),
+                                        Html.FieldNameFor(x => x.DateOfBirthMonth),
+                                        Html.FieldNameFor(x => x.DateOfBirthYear),
+                                        DateTime.Now.Year - 110,
+                                        DateTime.Now.Year,
+                                        Model.DateOfBirthDay,
+                                        Model.DateOfBirthMonth,
+                                        Model.DateOfBirthYear)</div>
+                            @Html.ValidationMessageFor(model => model.DateOfBirthDay)
+                            @Html.ValidationMessageFor(model => model.DateOfBirthMonth)
+                            @Html.ValidationMessageFor(model => model.DateOfBirthYear)
+                        </div>
+                    }
+                    <div class="form-group pull-left">
+                        @Html.LabelFor(model => model.Email, new { @class = "pull-left" }, ":")
+<div class="pull-left inputArea">
+                        @Html.EditorFor(model => model.Email)</div>
+                        @Html.RequiredHint()
+                        @Html.ValidationMessageFor(model => model.Email)
+                    </div>
+                     @if (Model.UsernamesEnabled)
+                    {
+                        if (Model.AllowUsersToChangeUsernames)
+                        {
+                        <div class="form-group pull-left">
+                            @Html.LabelFor(model => model.Username, new { @class = "pull-left" }, ":")
+<div class="pull-left inputArea">
+                            @Html.EditorFor(model => model.Username)</div>
+                            @Html.RequiredHint()
+                            @Html.ValidationMessageFor(model => model.Username)
+                            @if (Model.CheckUsernameAvailabilityEnabled)
+                            {
+                                @Html.Partial("_CheckUsernameAvailability")
+                            }
+                        </div>
+                        }
+                        else
+                        {
+                        <div class="form-group pull-left">
+                            @Html.LabelFor(model => model.Username, new { @class = "pull-left" }, ":")
+
+                            @Model.Username
+                        </div>
+                        }
+                    }
+                    @if (Model.GenderEnabled)
+                    {
+                                   
+                        <div class="form-group pull-left">
+                            <label class="pull-left">@T("Account.Fields.Gender"):</label>
+                            <div class="pull-left genderRegister">
+                                @Html.RadioButton("Gender", "M", (Model.Gender == "M"), new { id = "gender-male"})
+                                <label class="forcheckbox" for="gender-male">@T("Account.Fields.Gender.Male")</label>
+                            </div>
+                            <div class="pull-left genderRegister">
+                                @Html.RadioButton("Gender", "F", (Model.Gender == "F"), new { id = "gender-female" })
+                                <label class="forcheckbox" for="gender-female">@T("Account.Fields.Gender.Female")</label>
+                            </div>
+                        </div>
+                    }
+
+                    
+                   
+                </div>
+           </div>    
+
+
+
+                    if (Model.AssociatedExternalAuthRecords.Count > 0)
+                    {
+            <div class="form-group pull-left">
+                <div class="title">
+                    <strong>@T("Account.AssociatedExternalAuth")</strong>
+                </div>
+                <table class="data-table">
+                    <colgroup>
+                        <col />
+                        <col />
+                        <col />
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th class="a-center auth-method-name">
+                                @T("Account.AssociatedExternalAuth.AuthMethodName")
+                            </th>
+                            <th class="a-center email">
+                                @T("Account.AssociatedExternalAuth.Email")
+                            </th>
+                            <th class="a-center external-id">
+                                @T("Account.AssociatedExternalAuth.ExternalIdentifier")
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.AssociatedExternalAuthRecords)
+                        {
+                            <tr>
+                                <td class="a-left auth-method-name">
+                                    @item.AuthMethodName
+                                </td>
+                                <td class="a-left email">
+                                    @item.Email
+                                </td>
+                                <td class="a-left external-id">
+                                    @CommonHelper.EnsureMaximumLength(item.ExternalIdentifier, 40, "...")
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+                    }
+                    if (Model.CompanyEnabled || Model.DisplayVatNumber)
+                    {
+           
+                    }
+                    if (Model.StreetAddressEnabled ||
+                                Model.StreetAddress2Enabled ||
+                                Model.ZipPostalCodeEnabled ||
+                                Model.CityEnabled ||
+                                Model.CountryEnabled)
+                    {
+            <div class="form-group pull-left">
+                <div class="title">
+                    <strong>@T("Account.YourAddress")</strong>
+                </div>
+                <div class="form-group pull-left">
+                    @if (Model.StreetAddressEnabled)
+                    {
+                        <div class="form-group pull-left">
+                            @Html.LabelFor(model => model.StreetAddress, new {@class = "pull-left" }, ":")
+<div class="pull-left inputArea"> 
+                            @Html.EditorFor(model => model.StreetAddress)</div>
+                            @if (Model.StreetAddressRequired)
+                            {
+                                @Html.RequiredHint()
+                            }
+                            @Html.ValidationMessageFor(model => model.StreetAddress)
+                        </div>
+                    }
+                    @if (Model.StreetAddress2Enabled)
+                    {
+                        <div class="form-group pull-left">
+                            @Html.LabelFor(model => model.StreetAddress2, new {@class = "pull-left" }, ":")
+<div class="pull-left inputArea"> 
+                            @Html.EditorFor(model => model.StreetAddress2)</div>
+                            @if (Model.StreetAddress2Required)
+                            {
+                                @Html.RequiredHint()
+                            }
+                            @Html.ValidationMessageFor(model => model.StreetAddress2)
+                        </div>
+                    }
+                    @if (Model.ZipPostalCodeEnabled)
+                    {
+                        <div class="form-group pull-left">
+                            @Html.LabelFor(model => model.ZipPostalCode, new {@class = "pull-left" }, ":")
+<div class="pull-left inputArea"> 
+                            @Html.EditorFor(model => model.ZipPostalCode)</div>
+                            @if (Model.ZipPostalCodeRequired)
+                            {
+                                @Html.RequiredHint()
+                            }
+                            @Html.ValidationMessageFor(model => model.ZipPostalCode)
+                        </div>
+                    }
+                    @if (Model.CityEnabled)
+                    {
+                        <div class="form-group pull-left">
+                            @Html.LabelFor(model => model.City, new { @class = "pull-left"}, ":")
+<div class="pull-left inputArea"> 
+                            @Html.EditorFor(model => model.City)</div>
+                            @if (Model.CityRequired)
+                            {
+                                @Html.RequiredHint()
+                            }
+                            @Html.ValidationMessageFor(model => model.City)
+                        </div>
+                    }
+                    @if (Model.CountryEnabled)
+                    {
+                        <div class="form-group pull-left">
+                            @Html.LabelFor(model => model.CountryId, new {@class = "pull-left" }, ":")
+                 <div class="pull-left inputArea"> 
+           @Html.DropDownList("CountryId", Model.AvailableCountries)</div>
+                        </div>
+                    }
+                    @if (Model.CountryEnabled && Model.StateProvinceEnabled)
+                    {
+                        <div class="form-group pull-left">
+                            @Html.LabelFor(model => model.StateProvinceId, new {@class = "pull-left" }, ":")
+<div class="pull-left inputArea"> 
+                            @Html.DropDownList("StateProvinceId", Model.AvailableStates)</div>
+                            <span id="states-loading-progress" style="display: none;" class="please-wait">@T("Common.Wait...")</span>
+                        </div>
+                    }
+                </div>
+            </div>            
+                    }
+                    if (Model.PhoneEnabled || Model.FaxEnabled)
+                    {
+            <div class="form-group pull-left">
+                <div class="title">
+                    <strong>@T("Account.YourContactInformation")</strong>
+                </div>
+                <div class="form-group pull-left">
+                    @if (Model.PhoneEnabled)
+                    {
+                        <div class="form-group pull-left">
+                            @Html.LabelFor(model => model.Phone, new { @class = "pull-left"}, ":")
+<div class="pull-left inputArea"> 
+                            @Html.EditorFor(model => model.Phone)</div>
+                            @if (Model.PhoneRequired)
+                            {
+                                @Html.RequiredHint()
+                            }
+                            @Html.ValidationMessageFor(model => model.Phone)
+                        </div>
+                    }
+                    @if (Model.FaxEnabled)
+                    {
+                        <div class="form-group pull-left">
+                            @Html.LabelFor(model => model.Fax, new {@class = "pull-left" }, ":")
+<div class="pull-left inputArea"> 
+                            @Html.EditorFor(model => model.Fax)</div>
+                            @if (Model.FaxRequired)
+                            {
+                                @Html.RequiredHint()
+                            }
+                            @Html.ValidationMessageFor(model => model.Fax)
+                        </div>
+                    }
+                </div>
+            </div>
+                    }
+                    if (Model.NewsletterEnabled)
+                    {
+            <div class="form-group pull-left">
+                
+               <strong>@T("Account.Options")</strong>
+                <div class="form-group pull-left">
+                    <div class="form-group pull-left">
+                        @Html.LabelFor(model => model.Newsletter, new {@class = "pull-left" }, ":")
+<div class="pull-left inputArea"> 
+                        @Html.EditorFor(model => model.Newsletter)</div>
+                        @Html.ValidationMessageFor(model => model.Newsletter)
+                    </div>
+                </div>
+            </div>
+                    }
+                    if (Model.AllowCustomersToSetTimeZone || Model.SignatureEnabled)
+                    { 
+            <div class="form-group pull-left">
+                <div class="title">
+                    <strong>@T("Account.Preferences")</strong>
+                </div>
+                <div class="form-group pull-left">
+                    @if (Model.AllowCustomersToSetTimeZone)
+                    {
+                        <div class="form-group pull-left">
+                            @Html.LabelFor(model => model.TimeZoneId, new {@class = "pull-left" }, ":")
+<div class="pull-left inputArea"> 
+                            @Html.DropDownList("TimeZoneId", Model.AvailableTimeZones)</div>
+                            @Html.ValidationMessageFor(model => model.TimeZoneId)
+                        </div>
+                    }
+                    @if (Model.SignatureEnabled)
+                    {             
+                        <div class="form-group pull-left">
+                            @Html.LabelFor(model => model.Signature, new { @class = "pull-left"}, ":")
+<div class="pull-left inputArea"> 
+                            @Html.TextAreaFor(model => model.Signature, new { @class = "account-signature-text" })</div>
+                        </div>
+                    }
+                </div>
+            </div>
+                    }
+            <div class="buttons saveButton">
+                <input type="submit" value="@T("Common.Save")" name="save-info-button" class="btn continue"/>
+            </div>
+        }
+    </div>
+@*</div>*@

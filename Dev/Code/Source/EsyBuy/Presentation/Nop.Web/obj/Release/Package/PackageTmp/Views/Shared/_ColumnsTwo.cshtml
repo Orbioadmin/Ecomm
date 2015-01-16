@@ -1,0 +1,103 @@
+﻿@{
+    Layout = "~/Views/Shared/_Root.cshtml";
+       
+}
+@{
+    //current category ID
+    int currentCategoryId = 0;
+    if (Url.RequestContext.RouteData.Values["controller"].ToString().Equals("catalog", StringComparison.InvariantCultureIgnoreCase) &&
+        Url.RequestContext.RouteData.Values["action"].ToString().Equals("category", StringComparison.InvariantCultureIgnoreCase))
+    {
+        currentCategoryId = Convert.ToInt32(Url.RequestContext.RouteData.Values["categoryId"].ToString());
+    }
+
+
+    //current manufacturer ID
+    int currentManufacturerId = 0;
+    if (Url.RequestContext.RouteData.Values["controller"].ToString().Equals("catalog", StringComparison.InvariantCultureIgnoreCase) &&
+        Url.RequestContext.RouteData.Values["action"].ToString().Equals("manufacturer", StringComparison.InvariantCultureIgnoreCase))
+    {
+        currentManufacturerId = Convert.ToInt32(Url.RequestContext.RouteData.Values["manufacturerId"].ToString());
+    }
+
+
+    //current product ID
+    int currentProductId = 0;
+    if (Url.RequestContext.RouteData.Values["controller"].ToString().Equals("catalog", StringComparison.InvariantCultureIgnoreCase) &&
+        Url.RequestContext.RouteData.Values["action"].ToString().Equals("product", StringComparison.InvariantCultureIgnoreCase))
+    {
+        currentProductId = Convert.ToInt32(Url.RequestContext.RouteData.Values["productId"].ToString());
+    }
+}
+<div class="container containerBlock marginBottom marginTopConfig">
+<div class="productTopContainer">
+
+      @*  <div class="span7 noMarginLeft">
+            <ul class="breadcrumb">
+                <li>
+                    <a href="index.html">
+                        Home
+                    </a>
+
+            <span class="divider">
+              &gt;
+            </span>
+                </li>
+                <li>
+                    <a href="#">
+                        Mobile
+                    </a>
+
+            <span class="divider">
+              &gt;
+            </span>
+                </li>
+                <li class="active">
+                    All Brands
+                </li>
+            </ul>
+        </div>*@
+        <div class="span5 noMarginLeft extraOffer pull-right">
+            <a class="pull-right" href="#">
+                Get an Extra
+          <span>
+            20% discount
+          </span>
+                on all LG mobile phones
+            </a>
+        <span class="extraOfferBrand pull-right">
+        </span>
+        </div>
+
+    </div>
+<div class="mainBody pull-left myAccount">
+<div class="container">
+<div class="row noMarginLeft">
+    @if (IsSectionDefined("left"))
+    {
+        @RenderSection("left")
+    }
+    else
+    {
+        @Html.Widget("left_side_column_before")
+        @Html.Action("CategoryNavigation", "Catalog", new { currentCategoryId = currentCategoryId, currentProductId = currentProductId })
+        @Html.Widget("left_side_column_after_category_navigation")
+        @Html.Action("ManufacturerNavigation", "Catalog", new { currentManufacturerId = currentManufacturerId })
+        @Html.Action("VendorNavigation", "Catalog")
+        @Html.Action("NewsletterBox", "Newsletter")
+        @Html.Widget("left_side_column_after")
+    }
+
+<div  class="pull-left accountContent">
+    @Html.Widget("main_column_before")
+    @RenderBody()
+    @Html.Widget("main_column_after")
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+
+

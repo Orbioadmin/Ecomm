@@ -1,0 +1,130 @@
+﻿@model IList<ProductOverviewModel>
+
+@using Nop.Web.Models.Catalog;
+
+@{
+     Html.AppendScriptParts("~/scripts/public.ajaxcart.js");  
+}
+
+@if (Model.Count > 0)
+{
+int i = 0;
+     <div class ="pull-left recommendedProducts productDisplayBlock span11">
+
+            <h3 class="productHeading pull-left">@T("Products.RelatedProducts")</h3>
+                     <ul class="thumbnails noMarginLeft productBlock pull-left">
+
+      
+                        <div class="row-fluid">
+                       <div class="carousel slide" id="featured11">
+                        <div class="carousel-inner">
+
+                         @foreach (var item in Model)
+                        {
+                @*       <li class="span2 noMarginLeft item-box">@Html.Partial("_ProductBox", item)</li>   *@
+
+
+
+                                     //prepare "Add to cart" AJAX link
+                                       @* string addtocartlink = "";
+                                        var shoppingCartTypeId = (int)ShoppingCartType.ShoppingCart;
+                                        var quantity = 1;*@
+                                       @* if (item.ProductPrice.ForceRedirectionAfterAddingToCart)
+                                        {
+                                            addtocartlink = Url.RouteUrl("AddProductToCart-Catalog", new { productId = item.Id, shoppingCartTypeId = shoppingCartTypeId, quantity = quantity, forceredirection = item.ProductPrice.ForceRedirectionAfterAddingToCart });
+                                        }
+                                        else
+                                        {
+                                            addtocartlink = Url.RouteUrl("AddProductToCart-Catalog", new { productId = item.Id, shoppingCartTypeId = shoppingCartTypeId, quantity = quantity, });
+                                        }*@
+
+                                decimal discount = 0;
+                                if (!item.ProductPrice.OldPrice.IsEmpty())
+                                {
+                                   decimal oldPrice = decimal.Parse(item.ProductPrice.OldPrice, System.Globalization.NumberStyles.Currency);
+                                    decimal newPrice = decimal.Parse(item.ProductPrice.Price, System.Globalization.NumberStyles.Currency);
+                                    discount = (oldPrice - newPrice) * 100 / oldPrice;
+                                }
+                                if (i++ % 5 == 0)
+                                {
+                                    if (i < 5)
+                                    {
+                                        @Html.Raw("<div class=\"item active\"><ul class=\"thumbnails\">");
+                                    }
+                                    else
+                                    {
+                                        @Html.Raw("<div class=\"item\"><ul class=\"thumbnails\">");
+                                    }
+                                }
+
+                                <li class="span2">
+                                    <div class="thumbnail pull-left">
+                                    <div class="productAlignBlock">
+                                        <a href="@Url.RouteUrl("Product", new { SeName = item.SeName })">
+                                            <img alt="" src="@item.DefaultPictureModel.ImageUrl"
+                                                 class="imageNormal">
+                                        </a>
+
+                                    </div>
+
+                                        <div class="caption pull-left">
+                                            @if (discount >= 1)
+                                            {
+                                                <span class="actualPrice">@item.ProductPrice.OldPrice</span>
+                                                <span class="offPrice">@discount.ToString("#.##")<sup>OFF</sup></span>
+                                            }
+                                            <span class="sellingPrice pull-left clearLeft widthFull">@item.ProductPrice.Price</span>
+                                            <span class="productDesc pull-left">@item.Name</span>
+                                        @*   <a onclick="AjaxCart.addproducttocart_catalog('@addtocartlink '); return false;" class="buttonShopNow">SHOP NOW</a> *@
+                                        </div>
+                                    </div>
+                                    <div class="quickView">
+                                       <a class="btn btn-primary" href="/Catalog/QuickView?productId=@item.Id" data-target="#quickView" data-toggle="modal">Quick View</a> 
+                                    </div>
+                                </li>
+                                if (i % 5 == 0)
+                                {
+                                    @Html.Raw("</ul></div>");
+                                }
+
+                            }
+                            @if (i % 5 != 0)
+                            {
+                                @Html.Raw("</ul></div>");
+                            }
+                        </div>
+                        <a data-slide="prev" href="#featured11" class="left carousel-control"></a>
+                        <a data-slide="next" href="#featured11" class="right carousel-control"></a>
+                    </div>
+
+
+    </ul>
+
+     </div>
+}
+
+
+
+
+
+@*<ul class="thumbnails noMarginLeft productBlock pull-left">
+        <li class="span2 noMarginLeft">
+            <div class="thumbnail">
+                <div class="productAlignBlock"><a href="detailPage.html"> <img data-alt-src="common/images/temp/mobile-1.jpg" src="common/images/temp/samsung-phone.jpg" class="imageNormal"> </a></div>
+                <div class="caption pull-left">
+                    <span class="actualPrice">4,300.00 AED -</span>
+                    <span class="offPrice">30%<sup>OFF</sup></span>
+                    <span class="sellingPrice pull-left">3,300.00 AED</span>
+                    <span class="productDesc pull-left"> Apple iphone 5s(64GB, 4G LTE + WiFi, Space Gray)</span>
+                    <div class="ratings pull-left">
+                        <span class="icon-star yellow pull-left"></span>
+                        <span class="icon-star yellow pull-left"></span>
+                        <span class="icon-star yellow pull-left"></span>
+                        <span class="icon-star yellow pull-left"></span>
+                        <span class="icon-star gray pull-left"></span>
+                        <p class="pull-left">(67 ratings)</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+</ul>*@

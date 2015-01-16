@@ -1,0 +1,55 @@
+﻿
+
+@model List<ManufacturerModel>
+@using Nop.Web.Models.Catalog;
+@if (Model.Count > 0)
+{
+int i = 0;
+    <div class="carouselBlock noMarginLeft logoSection">
+            <div class="well well-small">
+                <div class="row-fluid">
+                    <div class="carousel slide" id="featured3">
+                        <div class="carousel-inner">
+                          
+                                    @for (int j = 0; j < Model.Count; j++)
+                                    {
+                                        var item = Model[j];
+                                             if (i++ % 8 == 0)
+                                            {
+                                                if (i < 8)
+                                                {
+                                                    @Html.Raw("<div class=\"item active\"><ul class=\"thumbnails\">");
+                                                }
+                                                else
+                                                {
+                                                    @Html.Raw("<div class=\"item\"><ul class=\"thumbnails\">");
+                                                }
+                                            }
+
+                                        <li class="span2 noMarginLeft">
+                                            <div class="thumbnail pull-left">
+                                                
+                                                <a href="@Url.RouteUrl("Manufacturer", new { SeName = item.SeName })">
+                                                    <img src="@item.PictureModel.FullSizeImageUrl">
+                                                </a>
+                                               
+                                            </div>
+                                        </li>
+                                             if (i % 8 == 0)
+                                                {
+                                                    @Html.Raw("</ul></div>");
+                                                }
+                                    }
+                                             @if (i % 8 != 0)
+                                                {
+                                                    @Html.Raw("</ul></div>");
+                                                }
+                                
+                        </div>
+                        <a data-slide="prev" href="#featured3" class="left carousel-control"></a>
+                        <a data-slide="next" href="#featured3" class="right carousel-control"></a>
+                    </div>
+                </div>
+            </div>
+    </div>
+}

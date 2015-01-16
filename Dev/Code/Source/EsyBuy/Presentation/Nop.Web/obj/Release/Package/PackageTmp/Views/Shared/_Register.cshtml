@@ -1,0 +1,47 @@
+﻿@{
+    var returnURL = HttpUtility.UrlEncode(this.Context.Request.Url.AbsoluteUri);
+}
+<div id="register" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3>Register</h3>
+    </div>
+    <div class="modal-body">
+        <div class="span3 noMarginLeft pull-left FormClass">
+            <form class="form-horizontal loginFrm" action="/register?returnurl=@returnURL" method="post">
+                @Html.AntiForgeryToken()
+                        <div class="control-group"><input type="text" placeholder="First Name" id="inputFirstName" name="FirstName"></div>
+	 	                <div class="control-group"><input type="text" placeholder="Last Name" id="inputLastName" name="LastName"></div> 
+                <div class="control-group"><input type="text" placeholder="Email" id="inputEmail" name="Email"></div>
+                <div class="control-group"><input type="password" placeholder="Password" id="inputPassword1" name="Password"></div>
+                <div class="control-group"><input type="password" placeholder="Repeat" id="inputPassword2" name="ConfirmPassword"></div>
+                <button class="btn btn-success" type="submit">Register Now!</button>
+            </form>
+        </div>
+        <div class="divider  pull-left marginTop span2 noMarginLeft">OR</div>
+        <div class="span2 pull-right noMarginLeft marginConfig">
+            <span class=" span2 pull-left noMarginLeft ">Sign In With</span><a class="pull-left" href="#"><img src="/images/facebook-signin.png"></a>
+        </div>
+    </div>
+</div>
+<script>
+	 	    $('.loginFrm').on('submit', function (e) {
+	 	        e.preventDefault();
+	 	        var data = $(this).serialize();
+	 	        var url = $(this).attr('action');
+	 	        var method = $(this).attr('method');
+	 	        $.ajax({
+	 	            url: url,
+	 	            type: method,
+	 	            data: data,
+	 	            success: function (response) {
+	 	                if (response.success && response.success == true) {
+	 	                    window.location.reload();
+	 	                }
+	 	            },
+	 	            error: function (response, x) {
+	 	                console.log(response);
+	 	            }
+	 	        })
+		    });
+</script> 

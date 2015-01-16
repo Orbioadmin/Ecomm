@@ -1,0 +1,79 @@
+﻿@model TopMenuModel
+@using Nop.Web.Models.Catalog;
+@helper RenderCategoryLine(CategorySimpleModel category, int level)
+{
+    <li class="dropdown yamm-fullwidth">
+        <a href="@Url.RouteUrl("Category", new { SeName = category.SeName })">@category.Name
+        @*@if (category.numberofproducts.hasvalue)
+        {
+            <text> </text>@t("categories.totalproducts", category.numberofproducts.value)
+        }*@
+        </a>
+        @{
+            var levelClass = "";
+            if (level == 0)
+            {
+                levelClass = "firstLevel";
+            }
+            if (category.SubCategories.Count > 0)
+            {
+                <ul class="dropdown-menu">
+                    <li>
+                        <div class="yamm-content">
+                            @foreach (var subCategory in  category.SubCategories)
+                            {
+                                <ul class="span2 unstyled"><li>@RenderSubCategoryLine(subCategory)</li></ul>
+                            }
+                            <ul class="span2 unstyled">
+                                <li><img src="~/images/banner/banner-mega-menu.jpg"></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            }
+        }
+    </li>
+}
+@helper RenderSubCategoryLine(CategorySimpleModel category) { 
+    <li class="heading">@category.Name</li>
+     foreach (var subCategory in category.SubCategories)
+     {
+         <li><a href="/@subCategory.Name">@subCategory.Name</a></li>
+     }
+}
+<ul class="nav span12 noMarginRight">
+    <li class="homeIcon selected"><a href="@Url.RouteUrl("HomePage")">
+        <img src="~/images/home.png">
+    </a></li>
+    @Html.Widget("header_menu_before")
+    @if (Model.Categories.Count > 0)
+    {
+        foreach (var category in Model.Categories)
+        {
+            @RenderCategoryLine(category, 0)
+        }
+    }
+    else
+    {
+        //no categories to display?
+        //in this cae let's diplay some default menu items
+        <li><a href="@Url.RouteUrl("HomePage")">@T("HomePage")</a></li>
+        if (Model.RecentlyAddedProductsEnabled)
+        {
+            <li><a href="@Url.RouteUrl("RecentlyAddedProducts")">@T("Products.NewProducts")</a>
+            </li>
+        }
+        <li><a href="@Url.RouteUrl("ProductSearch")">@T("Search")</a> </li>
+        <li><a href="@Url.RouteUrl("CustomerInfo")">@T("Account.MyAccount")</a></li>
+        if (Model.BlogEnabled)
+        {
+            <li><a href="@Url.RouteUrl("Blog")">@T("Blog")</a></li>
+        }
+        if (Model.ForumEnabled)
+        {
+            <li><a href="@Url.RouteUrl("Boards")">@T("Forum.Forums")</a></li>
+        }
+        <li><a href="@Url.RouteUrl("ContactUs")">@T("ContactUs")</a></li>
+    }
+    @Html.Widget("header_menu_after")
+</ul>

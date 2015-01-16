@@ -1,0 +1,157 @@
+﻿@model ProductEmailAFriendModel
+@using Nop.Web.Models.Catalog;
+
+
+
+@{
+    @*Layout = "~/Views/Shared/_ColumnsTwo.cshtml";*@
+   Layout = "~/Views/Shared/_ColumnsFour.cshtml"; 
+
+    Html.AppendCssFileParts("~/styles/TGI/writeReview.css");
+
+    //title
+    Html.AddTitleParts(Model.ProductName);
+    Html.AddTitleParts(T("PageTitle.ProductEmailAFriend").Text);
+}
+
+
+            <!--product breadcrumb-->
+         @Html.Action("ProductBreadcrumb", "Catalog")
+     <!-- For Recently viewed Products -->
+        @*@Html.Action("RecentlyViewedProductsBlock", "Catalog", new { productThumbPictureSize = 32 }) *@  
+
+
+<div class="writeReview">
+<div class="span2 pull-left noMarginLeft">
+                  
+                    <span class="banner pull-left">
+                        <a href="/"><img src="/esyBuy/images/banner/left-banner.gif"></a>
+                    </span>
+                    <span class="banner pull-left">
+                        <a href="/"><img src="/esyBuy/images/banner/left-banner.gif"></a>
+                    </span>
+                </div>
+<div class="carouselBlock span10 noMarginLeft pull-right">
+<div class="bannerTop span10 noMarginLeft"><a href="~/Views/Catalog/ManufacturerAll" target="_blank"><img src="~/images/banner/banner-yellow-top.jpg"></a></div>
+<div class=" span10 noMarginLeft">
+
+<div class="well well-small pull-left">
+
+
+
+
+@*<div class="well well-small pull-left">
+<div class="page product-reviews-page">
+    <h3 class="productHeading pull-left">
+        Product reviews for <a href="/samsung-galaxy-grand-2-white"> Samsung Galaxy Grand 2 (White)</a>
+   </h3>
+</div>
+
+<div class="pull-left accountContent">
+<div class="accountBody pull-left">
+    <div class="page-body ">
+        
+            <div id="review-form" class="write-review">
+                
+                
+          <form method="post" class="form-horizontal" action="/productreviews/59" novalidate="novalidate">                    <div class="message-error"></div>
+                    <div class="form-fields">
+                 
+                        <div class="form-group pull-left">
+
+                            <label for="AddProductReview_Title" class="pull-left">Review title:</label>
+                           <div class="pull-left inputArea">
+                            <input type="text" value="" name="AddProductReview.Title" id="AddProductReview_Title" class="form-control">
+                           </div>
+                            <span data-valmsg-replace="true" data-valmsg-for="AddProductReview.Title" class="field-validation-valid"></span>
+                 
+                          </div>
+                        <div class="form-group pull-left">
+                            <label for="AddProductReview_ReviewText" class="pull-left">Review text:</label>
+                           <div class="pull-left inputArea">
+                            <textarea rows="2" name="AddProductReview.ReviewText" id="AddProductReview_ReviewText" cols="20" class="inputSection"></textarea>
+                           </div>
+                            <span data-valmsg-replace="true" data-valmsg-for="AddProductReview.ReviewText" class="field-validation-valid"></span>
+                        </div>
+
+                    </div>
+                    
+        </form>               
+            </div>
+                    
+    </div>
+</div>
+</div>
+</div>*@
+
+
+<div class="page product-reviews-page">
+        <h3 class="productHeading pull-left">@T("Products.EmailAFriend.Title")</h3>
+</div>
+
+@*<a href="@Url.RouteUrl("Product", new { SeName = Model.ProductSeName })" class="product">@Model.ProductName</a>*@
+<div class="pull-left accountContent">
+<div class="accountBody pull-left">
+    <div class="page-body">
+        @if (Model.SuccessfullySent)
+        {
+            <div class="result">
+                @Model.Result
+            </div>
+        }
+        else
+        {
+            using (Html.BeginForm("productemailafriend", "Catalog",FormMethod.Post,new { @class="form-horizontal"}))
+            {         
+            <div class="title">
+                <h4><a href="@Url.RouteUrl("Product", new { SeName = Model.ProductSeName })" class="product">@Model.ProductName</a></h4>
+            </div>
+            <div class="message-error">
+                @Html.ValidationSummary(true)
+            </div>
+            <div class="form-fields">
+                <div class="form-group pull-left">
+                        @Html.LabelFor(model => model.FriendEmail, new { @class= "pull-left" }, ":")
+                        <div class="pull-left inputArea">
+                        @Html.TextBoxFor(model => model.FriendEmail, new { @class = "form-control", placeholder = T("Products.EmailAFriend.FriendEmail.Hint") })
+                           </div>
+                        @Html.ValidationMessageFor(model => model.FriendEmail)
+</div>
+                    <div class="form-group pull-left">
+                        @Html.LabelFor(model => model.YourEmailAddress, new {@class= "pull-left" })
+                        <div class="pull-left inputArea">
+                        @Html.TextBoxFor(model => model.YourEmailAddress, new { @class = "form-control", placeholder = T("Products.EmailAFriend.YourEmailAddress.Hint") })
+                           </div>
+                        @Html.ValidationMessageFor(model => model.YourEmailAddress)
+                    </div>
+                    @if (Model.DisplayCaptcha)
+                    {
+                        <div class="captcha-box">
+                            @Html.Raw(Html.GenerateCaptcha())
+                        </div>
+                    }
+                
+                <div class="form-group pull-left">
+                    
+                        @Html.LabelFor(model => model.PersonalMessage,new {@class= "pull-left" })
+                        <div class="pull-left inputArea">
+                        @Html.TextAreaFor(model => model.PersonalMessage, new { @class = "form-control", placeholder = T("Products.EmailAFriend.PersonalMessage.Hint") })
+                        </div>
+                        @Html.ValidationMessageFor(model => model.PersonalMessage)
+
+                </div>
+            </div>
+            <div class="form-group pull-left">
+          <label class="pull-left"></label>
+                <input type="submit" name="send-email" class="btn continue blueButton" value="@T("Products.EmailAFriend.Button")" />
+          
+              </div>
+            }
+        }
+    </div>
+</div>
+</div>
+</div>
+
+</div>
+</div></div>

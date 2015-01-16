@@ -1,0 +1,79 @@
+﻿@{
+    Layout = "~/Views/Shared/_Root.cshtml";
+    Html.AppendCssFileParts("~/styles/TGI/index.css");
+    Html.AppendCssFileParts("~/styles/TGI/quickPopup.css");
+}
+<div class="container containerBlock marginBottom marginTopConfig">
+    <div class="topcontainer">
+        <div class="row noMarginLeft">
+            <div class="span3 noMarginLeft  ">
+                <span class="cashOnDeliveryIcon"></span> <span class="Cash pull-left">Cash</span><span class="textBlock pull-left">On Delivery Orders AED 100 and up.</span>
+            </div>
+            <div class="span3 noMarginLeft ">
+                <span class="freeShipping"></span> <span class="Cash pull-left">Free</span><span class="textBlock pull-left">Shipping Orders AED 100 and up.</span>
+            </div>
+            <div class="span4 noMarginLeft">
+                <span class="returnPolicy"></span> <span class="Cash pull-left">12 days</span><span class="textBlock pull-left">Return Policy Don't like it? Send it back.</span>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="mainBody pull-left">
+        <div class="container">
+            <div class="row noMarginLeft">
+                <div class="span2  pull-left noMarginLeft">
+                    <span class="banner pull-left widthConfigSpan2">
+                        <img src="~/images/banner/banner1.jpg">
+                    </span> <span class="banner pull-left widthConfigSpan2">
+                        <img src="~/images/banner/banner2.jpg">
+                    </span> <span class="banner pull-left widthConfigSpan2">
+                        <img src="~/images/banner/left-banner.gif">
+                    </span>
+                </div>
+                <div class="span10 mainContent noMarginLeft pull-right">
+                    <div class="slideshowBlock span8 noMarginLeft">
+                        <div class="bannerTop">
+                            <img src="~/images/banner/daily-deal-banner.gif">
+                        </div>
+                        <div class="carousel">
+                            @Html.Action("TopicBlock", "Topic", new { systemName = "HomePageCarousel" })
+                        </div>
+                    </div>
+                    <span class="pull-right noMarginLeft span2">
+                        <span class="banner pull-right noMarginRight widthConfigSpan2">
+                            <img src="~/images/banner/banner1.jpg" class="pull-right">
+                        </span>
+                        <span class="banner pull-right noMarginRight widthConfigSpan2">
+                            <img src="~/images/banner/banner2.jpg" class="pull-right">
+                        </span>
+                    </span>
+
+                </div>
+                <div class="mainContentBottom pull-right span10 noMarginLeft ">
+                    @Html.Action("HomepageBestSellers", "Catalog")
+                    @Html.Action("HomepageCategories", "Catalog")
+                    @Html.Action("HomepageProducts", "Catalog")
+                    @Html.Action("HomepageMobiles", "Catalog")
+                   @* @Html.Action("HomepageLaptops", "Catalog")*@
+                <div class="span10 noMarginLeft ">
+                    @Html.Action("ProductManufacturers", "Catalog")
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+    $('#slideShow').slideShow({            thumbnails: true, navigation: false, playPause: false, autoAdvance: true, hover: false        });
+    });
+</script>
+@*<script type="text/javascript">
+    $(document.body).on('click', '.dropdown-menu li', function (event) {
+    var $target = $(event.currentTarget);
+    $target.closest('.btn-group').find('[data-bind="label"]').text($target.text()).end().children('.dropdown-toggle').dropdown('toggle');
+    return false;
+    });
+</script>*@
+

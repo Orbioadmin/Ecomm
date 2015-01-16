@@ -1,0 +1,606 @@
+.myAccount .filters.widthConfigSpan2 > h4
+{
+	background: none repeat scroll 0 0 #4F8EF2;
+	color: #F1F1F1;
+	font-size: 16px;
+	margin: 0;
+	padding: 6px 0;
+	text-indent: 15px;
+}
+.myAccount .filters
+{
+	border-radius: 0 !important;
+	float: left;
+	padding-bottom: 0 !important;
+}
+.myAccount .container .filters .filterChecks h5
+{
+	border-bottom: medium none;
+	color: #606060;
+	float: left;
+	margin: 4px 0 0;
+	padding-bottom: 0;
+	padding-top: 5px;
+	text-transform: uppercase;
+}
+.myAccount .container .filters .filterChecks > ul
+{
+	float: left;
+	list-style-type: none;
+	margin: 0;
+	width: 100%;
+}
+.myAccount .container .filters .filterChecks a
+{
+	color: #333333;
+	float: left;
+	font-size: 12px;
+	padding: 2px;
+	width: 98%;
+}
+.myAccount .container .filters .filterChecks > ul li
+{
+	float: left;
+	padding: 0;
+	width: 100%;
+}
+.myAccount .container .filters .filterChecks > ul li:hover,.myAccount .filterChecks ul li .active
+{
+	background: #e9e9e9;
+}
+.myAccount .container .filters .filterChecks a:hover
+{
+	text-decoration: none;
+}
+.myAccount .container .filterChecks
+{
+	float: left;
+	padding: 0 0 6px;
+	text-indent: 15px;
+	width: 100%;
+}
+.myAccount .accountContent
+{
+	margin-left: 10px;
+	padding: 0 0 10px 16px;
+	width: 81%;
+}
+.myAccount .accountContainerDetails
+{
+	margin-left: 0;
+	padding-left: 0;
+	width: 100%;
+}
+.myAccount .accountContent h5.productHeading
+{
+	border-bottom: 1px solid #999999;
+	color: #333333;
+	font-size: 16px;
+	margin-top: 8px;
+	padding: 0 0 6px;
+}
+.myAccount .accountBody
+{
+	color: #333333;
+	padding: 20px 0;
+	width: 100%;
+}
+.myAccount .accountBody .form-horizontal .inputArea
+{
+	width: 30%;
+}
+.myAccount .accountBody .form-horizontal .inputArea input
+{
+	border: 1px solid #999999;
+	border-radius: 0 0 0 0;
+	color: #333333;
+	width: 88%;
+}
+.myAccount .accountBody .form-horizontal label
+{
+	margin-top: 5px;
+	width: 16%;
+}
+.myAccount .accountBody .form-horizontal .form-group
+{
+	margin-bottom: 12px;
+	width: 100%;
+}
+.myAccount .accountBody .form-horizontal .btn-group
+{
+	width: 12%;
+}
+.myAccount .accountBody .form-horizontal .btn-group .select
+{
+	background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+	border: 1px solid #999999;
+	border-radius: 0 0 0 0 !important;
+	color: #333333;
+	padding: 0;
+	width: 100%;
+}
+.myAccount .accountBody .form-horizontal .btn-group .sr-only
+{
+	border-right: 1px solid #999999;
+	float: left;
+	height: 28px;
+	line-height: 28px;
+	text-align: left;
+	text-indent: 8px;
+	width: 75%;
+}
+.myAccount .accountBody .form-horizontal .btn-group .selectDropIcon
+{
+	line-height: 22px !important;
+}
+.myAccount .accountBody .form-horizontal .btn-group .dropdown-menu
+{
+	border-radius: 0 0 0 0;
+	min-width: 116px;
+	padding: 0;
+	top: 90%;
+}
+.myAccount .accountBody .form-horizontal .btn-group .dropdown-menu a
+{
+	padding: 4px 10px;
+}
+.myAccount .continue
+{
+	background: linear-gradient(to bottom, #1B7CFB, #1C5CB0) repeat scroll 0 0 rgba(0, 0, 0, 0);
+	border: none;
+	box-shadow: 2px 1px rgba(0, 0, 0, 0.2);
+	color: #FFFFFF;
+	padding: 6px 14px;
+	text-shadow: 0 -1px rgba(0, 0, 0, 0.2);
+}
+.myAccount .continue:hover
+{
+	background: linear-gradient(to bottom,#1C5CB0, #1B7CFB) repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+.myAccount .accountBody .savePassword
+{
+	padding: 3px 16px;
+}
+.myAccount .borderBottomThin
+{
+	border-bottom: 1px solid #999999;
+}
+.myAccount .addressBlockContent
+{
+	color: #454545;
+	font-size: 16px;
+	margin-bottom: 20px;
+	margin-right: 8%;
+	width: 22%;
+}
+
+.myAccount .accountBody h5
+{
+	color: #454545;
+	margin: 0;
+}
+.myAccount .addressBlockContent .addressBlock
+{
+	border: 1px solid #999999;
+	position: relative;
+	width: 100%;
+}
+.myAccount .addressBlockContent .addressBlock address
+{
+	padding: 2px 25px 0 6px;
+}
+.myAccount .addressBlockContent .editRemoveBlock
+{
+	width: 94%;
+}
+.myAccount .addressBlockContent .editRemoveBlock .edit
+{
+	color: #014BAD;
+	cursor: pointer;
+	font-size: 12px;
+	margin-right: 10px;
+	text-decoration: underline;
+}
+.myAccount .addressBlockContent .editRemoveBlock .edit:hover
+{
+	text-decoration: none;
+}
+.myAccount .addNew
+{
+	margin-top: 2%;
+	padding: 3px 16px !important;
+}
+.myAccount .myOrder h5.productHeading
+{
+	margin-bottom: 6px;
+}
+.myAccount .myOrderHeader
+{
+	background: none repeat scroll 0 0 #D9DADA;
+	color: #363636;
+	font-size: 13px;
+	padding: 10px;
+	text-shadow: 0 -1px rgba(0, 0, 0, 0.1);
+	text-transform: uppercase;
+	width: 97%;
+	word-wrap: break-word;
+}
+.myAccount .orderNum
+{
+	width: 15%;
+}
+.myAccount .itemDesc
+{
+	width: 20%;
+}
+.myAccount .shippingAddress
+{
+	width: 24%;
+}
+.myAccount .qty
+{
+	width: 6%;
+}
+.myAccount .total
+{
+	width: 15%;
+}
+.myAccount .status
+{
+	width: 15%;
+}
+.myAccount .myOrderBody
+{
+	background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+	border: 1px solid #999999;
+	font-size: 12px;
+	margin-top: 8px;
+	padding: 0 9px;
+	text-transform: none;
+	word-wrap: break-word;
+}
+.myAccount .myOrderBody .itemDesc
+{
+
+	word-wrap: break-word;
+}
+.myAccount .myOrderBody .shippingAddress
+{
+
+	word-wrap: break-word;
+}
+.myAccount .padding
+{
+	padding: 15px 0;
+}
+.myAccount .myOrderBody .shippingAddress address
+{
+	margin-bottom: 0;
+	padding-right: 25px;
+}
+.myAccount .myOrderBody .statusDetails > a
+{
+	background: linear-gradient(to bottom, #F0F0F0, #B3B3B3) repeat scroll 0 0 rgba(0, 0, 0, 0);
+	border-radius: 2px;
+	box-shadow: 1px 2px 2px 0 #B3B3B3;
+	color: #363636;
+	padding: 6px 12px !important;
+}
+.myAccount .myOrderBody .statusDetails > a:last-child
+{
+	padding-right: 0;
+}
+.myAccount .myOrderBody .statusDetails
+{
+	color: #1C5DB3;
+}
+.myAccount .alertMessageSection .successMsgTextIcon
+{
+	background: url("../../images/sprite.png") repeat scroll -83px -223px rgba(0, 0, 0, 0);
+	height: 24px;
+	margin-right: 6px;
+	width: 24px;
+}
+.myAccount .alertMessageSection
+{
+
+	margin-bottom: 10px;
+	margin-top: 4px;
+	width: 84%;
+}
+.myAccount .alertMessageSection .errorMsgTextIcon
+{
+	background: url("../../images/sprite.png") repeat scroll -45px -222px rgba(0, 0, 0, 0);
+}
+.myAccount .alertMessageSection .errorMsgText
+{
+	color: #C70000;
+	margin-top: 2px;
+}
+.myAccount .alertMessageSection .successMsgText
+{
+	color: #008E00;
+	margin-right: 16px;
+	margin-top: 2px;
+}
+.accountBody.egift .form-horizontal label
+{
+	width: 20%;
+}
+.myAccount .getDetailWidth,.egift .getDetailWidth
+{
+	width: 80% !important;
+}
+.egift .savePassword
+{
+	padding: 4px 30px !important;
+}
+.egift .accountBody
+{
+	padding: 20px 0 10%;
+}
+.egift .btn.continue.checkBalance
+{
+	padding: 5px 18px;
+}
+.myAccount .myOrder .myCredit
+{
+	padding-top: 10px;
+	width: 80%;
+}
+.myAccount .myOrder .myCredit .myOrderBody
+{
+
+	padding: 18px 10px;
+}
+.myAccount .myOrder .myCredit .date
+{
+
+	width: 12%;
+}
+.myAccount .myOrder .myCredit .orderNum
+{
+	width: 15%;
+}
+.myAccount .myOrder .myCredit .amount
+{
+	width: 18%;
+}
+.myAccount .myOrder .myCredit .action
+{
+	width: 20%;
+}
+.myAccount .myOrder .myCredit .storeCreditBalance
+{
+	color: #363636;
+	margin-bottom: 6px;
+}
+.myAccount .myOrder .myCredit .storeCreditBalance .rightContent
+{
+	color: #BF0808;
+	font-size: 16px;
+	margin-left: 2px;
+}
+.viewOrder .orderSummary
+{
+	border: 1px solid #E7E7E7;
+	color: #363636;
+	margin-right: 20px;
+	text-indent: 8px;
+	width: 25%;
+}
+.viewOrder .orderSummary .orderSummaryBody
+{
+	font-size: 12px;
+	padding: 8px;
+	text-indent: 0;
+	width: 93%;
+}
+.viewOrder .orderSummary .orderSummaryHead
+{
+	background: none repeat scroll 0 0 #E9E9E9;
+
+	padding: 6px 0;
+	width: 100%;
+}
+.viewOrder .orderSummary .orderSummaryBody .numOfOrder
+{
+	border-bottom: 1px solid #E9E9E9;
+	margin-bottom: 4px;
+	width: 100%;
+}
+.viewOrder .orderSummary .orderSummaryBody .orderId
+{
+	padding: 2px 0;
+	width: 100%;
+}
+.viewOrder .orderSummary .orderSummaryBody .orderId .leftContent
+{
+	width: 45%;
+}
+.viewOrder .orderSummary .orderSummaryBody .orderId .rightContent
+{
+
+	font-size: 14px;
+}
+.viewOrder .orderSummary .orderSummaryBody address
+{
+	color: #454545;
+	font-size: 16px;
+	margin-top: 6px;
+	word-wrap: break-word;
+}
+.viewOrder .orderSummary .orderSummaryBody address .nameBlock.pull-left
+{
+
+	width: 100%;
+}
+.viewOrder .myOrderHeader
+{
+	border: 1px solid #ACBBCE;
+	margin-top: 3%;
+	padding: 8px;
+	width: 73%;
+}
+.viewOrder .myOrderHeader .itemDesc
+{
+	width: 28%;
+}
+.viewOrder .myOrderHeader .itemDesc a
+{
+	color: #363636;
+}
+.viewOrder .myOrderHeader .qty
+{
+	width: 15%;
+}
+.viewOrder .myOrderHeader .total
+{
+	width: 28%;
+}
+.viewOrder .orderSummary.shippingAddress
+{
+	width: 23%;
+}
+.viewOrder .myOrderBody
+{
+	margin-top: 6px !important;
+	padding: 12px 8px;
+}
+.viewOrder .delivered
+{
+	background: url("../../images/sprite.png") repeat scroll -469px -190px rgba(0, 0, 0, 0);
+	height: 24px;
+	width: 24px;
+}
+.egiftVoucher .accountBody .form-horizontal label
+{
+	width: 20%;
+}
+.addNewAddress .btn-group
+{
+	display: block;
+	margin-bottom: 10px;
+	width: 28% !important;
+}
+.addNewAddress .btn-group+.btn-group
+{
+	margin-bottom: 0;
+	margin-left: 0;
+}
+.addNewAddress .accountBody .form-horizontal label
+{
+	cursor: pointer;
+	margin: 2px 0;
+	width: 8%;
+}
+.addNewAddress .accountBody .form-horizontal .inputArea
+{
+	margin-bottom: 10px;
+}
+.addNewAddress .accountBody .form-horizontal .btn-group .sr-only
+{
+	width: 85%;
+}
+.addNewAddress .accountBody .form-horizontal textarea
+{
+	border: 1px solid #999999;
+	border-radius: 0 0 0 0;
+	width: 88%;
+}
+.addNewAddress .accountBody
+{
+	padding: 0px 0px 6px;
+}
+.addNewAddress .accountBody h5
+{
+	margin: 0 0 16px;
+}
+.genderBlock
+{
+	float: left;
+	margin-bottom: 15px;
+	width: 100%;
+}
+.genderBlock label
+{
+	float: left;
+	margin-right: 15px;
+}
+.gender > input
+{
+	float: left;
+}
+.saveButton
+{
+	margin-top: 15px;
+}
+.saveButton .btn
+{
+	padding: 6px 50px;
+}
+.selectDropDown select
+{
+	margin-right: 10px;
+}
+.accountContent .form-fields .inputs > label
+{
+	float: left;
+	margin-top: 5px;
+	width: 12%;
+}
+.change-password-page .buttons .change-password-button
+{
+	margin-top: 10px;
+}
+.pending
+{
+	color: #bf0606;
+	font-weight: bold;
+}
+.sent
+{
+	color: #7599e3;
+	font-weight: bold;
+}
+.accountBody .bottomSection
+{
+	margin-top: 10px;
+	width: 74%;
+}
+.clear
+{
+	clear: both;
+}
+.bottomSection .leftTotal
+{
+	color: #000000;
+	font-weight: 600;
+	width: 58%;
+}
+.bottomSection .TotalSection
+{
+	clear: both;
+	width: 29%;
+}
+.bottomSection .rightTotal
+{
+	width: 42%;
+}
+.marginRightNew
+{
+	margin-right: 20px;
+}
+.bottomSection .giftWrapSection
+{
+	font-size: 12px;
+	margin-bottom: 10px;
+}
+.order-details-page .pdf-order-button
+{
+	margin-left: 20px;
+}
+.selectDropDown select
+{
+	width: 220px;
+}

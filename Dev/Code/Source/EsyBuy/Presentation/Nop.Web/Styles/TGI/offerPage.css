@@ -1,0 +1,125 @@
+.offerPage .productBlock .span3
+{
+	width: 318px;
+}
+.offerPage .mainBody .container .banner
+{
+	margin: 0 0 22px;
+}
+.offerPage .mainBody .mainContentBottom .productHeading
+{
+	margin-bottom: 20px;
+	width: 100%;
+}
+.offerPage .marginRight
+{
+	margin-right: 20px;
+}
+.offerPage .productBlock li
+{
+	position: relative;
+}
+.offerPage .productBlock li:last-child
+{
+	margin-right: 0;
+}
+.offerPage .mainBody .mainContentBottom .productDesc
+{
+	color: #000;
+	font-size: 16px;
+	padding: 8px 0;
+}
+.offerPage .thumbnail .caption
+{
+	text-align: center;
+}
+.offerPage .mainBody .mainContentBottom .actualPrice
+{
+	float: none;
+	font-size: 14px;
+}
+.offerPage .mainBody .mainContentBottom .sellingPrice
+{
+	color: #99090b;
+}
+.offerPage .mainBody .mainContentBottom .instock
+{
+	color: #393;
+	font-size: 12px;
+	font-weight: 700;
+	padding: 6px 0;
+}
+.offerPage .mainBody .mainContentBottom .instock .noBold
+{
+
+	font-weight: 400;
+}
+.offerPage .productBlock .thumbnail
+{
+	min-height: 400px;
+}
+.offerPage .buttonShopNow
+{
+	box-shadow: 1px 1px 3px 1px #CACACA;
+	margin-left: 29%;
+	padding: 2px 15px;
+}
+.offerPage .discountTag
+{
+	background: url(../../images/discount.png) repeat scroll 0 0 rgba(0,0,0,0);
+	height: 100px;
+	left: -9px;
+	line-height: 26px;
+	position: absolute;
+	text-align: center;
+	top: 0;
+	width: 145px;
+}
+.offerPage .discountTag .discount
+{
+	color: #FFF;
+	font-size: 12px;
+	font-weight: 700;
+	text-shadow: 0 2px rgba(0,0,0,.3);
+	width: 100%;
+}
+.offerPage .discountTag .offPercentage
+{
+	color: #FFF;
+	font-size: 22px;
+	text-shadow: 0 -2px rgba(0,0,0,.3);
+	width: 100%;
+}
+.offerPage .discountTag .offPercentage>sup
+{
+	font-size: 12px;
+}
+.offerPage .discountTag .youSaved
+{
+
+	font-size: 14px;
+	line-height: 14px;
+	width: 100%;
+}
+.offerPage .discountTag .blackColor
+{
+	color: #000;
+}
+.offerPage .quickView
+{
+	left: 35%;
+}
+.offerPage .filters
+{
+	padding-bottom: 0;
+}
+.offerPage .filterChecks
+{
+	padding: 10px 16px;
+}
+.offerPage .thumbnail img
+{
+	height: auto;
+	max-height: 270px;
+	max-width: 270px;
+}

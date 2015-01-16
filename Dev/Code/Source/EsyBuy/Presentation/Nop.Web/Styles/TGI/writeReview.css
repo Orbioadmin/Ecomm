@@ -1,0 +1,135 @@
+.writeReview .bannerTop {
+    margin-bottom: 20px;
+}
+.writeReview .accountBody .form-horizontal .form-group {
+    margin-bottom: 26px;
+    width: 100%;
+}
+.writeReview .accountBody .form-horizontal label {
+    margin-top: 5px;
+    width: 20%;
+    font-weight: bold;
+}
+.writeReview .accountBody .form-horizontal .inputArea {
+    width: 50%;
+}
+.writeReview .accountBody .form-horizontal .inputArea input,.writeReview .accountBody .form-horizontal .inputArea textarea {
+    border: 1px solid #999999;
+    border-radius: 0 0 0 0;
+    color: #333333;
+    width:75%;
+}
+.writeReview .accountBody {
+    color: #333333;
+    padding: 20px 0;
+    width: 100%;
+}
+.writeReview .accountContent {
+    margin-left: 20px;
+}
+.writeReview .well
+{
+    width: 100%;
+}
+.writeReview .rateIndicate .icon-star {
+    font-size: 30px;
+    width: auto;
+}
+.writeReview .rateIndicate {
+    margin-top: 5px;
+    margin-left:0;
+}
+.writeReview .rateIndicate p {
+    margin-left: 18px;
+}
+.writeReview .blueButton {
+    float: left;
+    padding: 10px;
+}
+.ratingStar {
+    overflow: hidden;
+    display: inline-block;
+    font-size: 0;
+    position: relative;
+}
+.rating-input {
+    float: left;
+    height: 16px;
+    margin: 5px -16px 0 0 !important;
+    opacity: 0;
+    padding: 0;
+    width: 16px !important;
+}
+.ratingStar:hover .rating-star:hover,
+.ratingStar:hover .rating-star:hover ~ .rating-star,
+.rating-input:checked ~ .rating-star {
+    background-position: 0 0;
+}
+.rating-star,
+.ratingStar:hover .rating-star {
+    position: relative;
+    float: right;
+    display: block;
+    width: 16px!important;
+    height: 16px;
+    background: url('../../images/starrating.png') 0 -16px;
+}
+.tabContainer {
+    border-bottom: 1px solid #999999;
+    margin: 15px -5px;
+    padding-bottom: 16px;
+    width: 100%;
+}
+.leftTabSection {
+    font-size: 13px;
+    width: 8%;
+}
+.rightTabSection {
+    color: #333333;
+
+    margin-left: 20px;
+    width: 88%;
+}
+.rightTabSection b {
+    font-size: 13px;
+}
+.rightTabSection .description {
+    margin-top: 0;
+    font-size: 12px;
+}
+.tabContentTop {
+    border: 1px solid #999999;
+    margin-bottom: 12px;
+    padding: 10px;
+    width: 96%;
+}
+.tabContentTop .reviewLeft {
+    margin: 20px 0;
+    width: 70%;
+}
+.tabContentTop .reviewProductName {
+    border-right: 2px solid;
+    font-weight: bold;
+    margin-right: 10px;
+    padding-right: 10px;
+}
+.tabContentTop .reviewLeft .overAllRating {
+    margin-right: 12px;
+}
+.rating {
+    background:  url(../../images/star-x-inactive.png) repeat-x scroll 0 0 rgba(0, 0, 0, 0);
+    height: 16px;
+    width: 80px;
+}
+.rating div {
+    background:  url(../../images/star-x-active.png) repeat-x scroll 0 0 rgba(0, 0, 0, 0);
+    float: left;
+    height: 16px;
+}
+.product-reviews-overview .nav
+{
+    display:none;   
+}
+.writeReview h4 {
+    margin: 0 0 26px;
+}

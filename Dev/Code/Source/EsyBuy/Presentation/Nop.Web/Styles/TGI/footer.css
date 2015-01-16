@@ -1,0 +1,232 @@
+#footerSection .span2, #footerSection .span3
+{
+	margin-left: 0;
+}
+#footerSection .container
+{
+	background: url("../../images/image%20pieces/divider-shadow.jpg") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+#footerSection .container ul li
+{
+	line-height: 17px;
+}
+#footerSection .container .row:first-child
+{
+	margin-top: 30px;
+}
+#footerSection .container .leftSection
+{
+	float: left;
+	margin-bottom: 25px;
+	width: 100%;
+}
+#footerSection .leftSection .giftVoucher
+{
+	background: url("../../images/sprite.png") repeat scroll -113px -50px rgba(0, 0, 0, 0);
+	float: left;
+	height: 65px;
+	position: relative;
+	right: -55px;
+	width: 101px;
+}
+#footerSection .leftSection .genuineProducts
+{
+	background: url("../../images/sprite.png") repeat scroll -227px -47px rgba(0, 0, 0, 0);
+	float: left;
+	height: 80px;
+	position: relative;
+	right: -55px;
+	width: 101px;
+}
+#footerSection .leftSection > a
+{
+	color: #1F569C;
+	float: left;
+
+	font-size: 12px;
+	font-weight: bold;
+	text-align: center;
+	width: 100%;
+}
+#footerSection ul h5, #footerSection .container h5
+{
+	color: #1F569C;
+	margin-bottom: 7px;
+}
+#footerSection ul li a,#footerSection ul li
+{
+	color: #666666;
+}
+#footerSection .socilIcons {
+    margin: 0 auto;
+    width: 35%;
+}
+#footerSection .faceBookIcon
+{
+	background: url("../../images/sprite.png") repeat scroll -318px -7px rgba(0, 0, 0, 0);
+	float: left;
+	height: 34px;
+	width: 35px;
+}
+#footerSection .twitterIcon
+{
+	background: url("../../images/sprite.png") repeat scroll -352px -7px rgba(0, 0, 0, 0);
+	float: left;
+	height: 34px;
+	width: 35px;
+}
+#footerSection .youTubeIcon
+{
+	background: url(../../images/sprite.png) repeat scroll -387px -7px rgba(0, 0, 0, 0);
+	float: left;
+	height: 34px;
+	width: 35px;
+}
+.cards
+{
+	float: left;
+	height: 29px;
+	width: 46px;
+}
+.cards1
+{
+	background: url(../../images/sprite.png) repeat scroll -8px -148px rgba(0, 0, 0, 0);
+}
+.cards2
+{
+	background: url(../../images/sprite.png) repeat scroll -54px -148px rgba(0, 0, 0, 0);
+}
+.cards3
+{
+	background: url(../../images/sprite.png) repeat scroll -101px -148px rgba(0, 0, 0, 0);
+}
+.cards4
+{
+	background: url(../../images/sprite.png) repeat scroll -149px -148px rgba(0, 0, 0, 0);
+}
+.cards5
+{
+	background: url("../../images/sprite.png") repeat scroll -196px -148px rgba(0, 0, 0, 0);
+}
+.cards6
+{
+	background: url("../../images/sprite.png") repeat scroll -243px -148px rgba(0, 0, 0, 0);
+}
+.cards7
+{
+	background: url("../../images/sprite.png") repeat scroll -153px -187px rgba(0, 0, 0, 0);
+	width: 54px;
+}
+.cards8
+{
+	background: url("../../images/sprite.png") repeat scroll -213px -187px rgba(0, 0, 0, 0);
+	width: 77px;
+}
+#footerSection .cardDetails
+{
+	color: #777777;
+	float: left;
+	font-size: 11px;
+	line-height: 14px;
+	margin-top: 3px;
+	width: 100%;
+}
+#footerSection .signUpSection {
+    background: none repeat scroll 0 0 #EAE8E9;
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    width: 75%;
+    margin: 0 auto 10px;
+    float:none;
+}
+#footerSection .rightSection
+{
+	border-left: 1px solid #DDDDDD;
+	margin-left: 0;
+	padding-left: 35px;
+}
+
+.signUpSection .btnSignUp
+{
+	border-radius: 2px;
+	font-size: 12px;
+	font-weight: bold;
+	margin-bottom: 15px;
+	padding: 4px 18px;
+	text-shadow: 0 1px #FFFFFF;
+}
+#footerSection .bigText
+{
+	color: #000000;
+
+	font-size: 15px;
+	width: 100%;
+}
+.signUpSection .smallText
+{
+	color: #666666;
+
+	font-size: 11px;
+	margin-bottom: 10px;
+	width: 100%;
+}
+.signUpSection .control-group
+{
+	margin-bottom: 5px;
+	width: 100%;
+}
+#footerSection .bottomFooter
+{
+	background: #E2E2E2;
+	margin: 25px 0 0;
+	padding: 20px 0 12px;
+	width: 100%;
+}
+#footerSection .bottomFooter .container
+{
+	border-top: medium none;
+}
+#footerSection .bottomFooter .unstyled > li
+{
+	display: inline;
+}
+#footerSection .bottomFooter .seperator
+{
+	margin: 0 2px;
+}
+.bottomFooter ul.unstyled
+{
+	font-size: 12px;
+	text-align: center;
+	width: 100%;
+}
+.bottomFooter ul.unstyled span
+{
+	color: #666666;
+	margin-left: 20px;
+}
+.textBoxEmail
+{
+	border: 1px solid #9A9899 !important;
+	border-radius: 1px !important;
+	float: left;
+
+	font-size: 12px !important;
+	height: 17px !important;
+	width: 156px;
+}
+#footerSection .row .span2
+{
+	width: 194px;
+}
+.socilIcons a:hover
+{
+	opacity: 0.7;
+}
+#footerSection .bottomFooter .container
+{
+	background: none;
+}
+.headPadder {
+padding:0 20px;
+}

@@ -1,0 +1,291 @@
+﻿@model ProductDetailsModel
+@using Nop.Core.Domain.Seo;
+@using Nop.Core.Infrastructure;
+@using Nop.Web.Models.Catalog;
+
+
+
+
+<div class="pull-left productDetailContainer noMarginLeft quickViewNew">
+    @using (Html.BeginRouteForm("Product", new { SeName = Model.SeName }, FormMethod.Post, new { id = "product-details-form" }))
+    {
+                                <!--product pictures-->
+        @Html.Partial("_ProductDetailsPictures", Model)
+
+        <div class="pull-right productDetailSection">
+            <div class="productDetailSectionTop"> <h3>@Model.Name</h3>
+
+
+                             @if (!String.IsNullOrEmpty(Model.ShortDescription))
+                                {
+                           @* <div  class="brandDeatails pull-left">*@
+                         <small>     @Html.Raw(Model.ShortDescription) </small>
+                            @*</div>*@
+                                }
+                                 </div>
+                       
+
+                <div class="productDetailContent pull-left">
+                <div class="leftDetailSection pull-left ">
+                     
+                             <!-- Below code is for review / rating  -->
+                       @Html.Action("ProductReviewOverview", "Catalog", new { productId = Model.Id }) 
+                      @Html.Action("ProductSpecifications", "Catalog", new { productId = Model.Id })
+
+
+                                           @*Stock availability*@
+                                        @if (!String.IsNullOrWhiteSpace(Model.StockAvailability))
+                                        {
+                                            <div class="stockDetail pull-left"><span class="flag"></span>@Model.StockAvailability |</div>
+                                        }
+                                        @if (Model.FreeShippingNitificationEnabled && Model.IsFreeShipping)
+                                        {
+                                             <div class="stockDetail pull-left"><span class="shippingIcon flag"></span>@T("Products.FreeShipping")</div>
+                                        }
+                                        @if (!String.IsNullOrWhiteSpace(Model.DeliveryDate))
+                                        {
+                                             <div class="stockDetail pull-left"><span class="DeliveryIcon flag"></span>@T("Products.DeliveryDate"): <span class="value">@Model.DeliveryDate</span></div>
+                                        }
+                               
+
+
+                    <div class=" reviewSectionTop  pull-left">
+                      
+                       @* <span class="icon-star yellow pull-left"></span>
+                        <span class="icon-star yellow pull-left"></span>
+                        <span class="icon-star yellow pull-left"></span>
+                        <span class="icon-star yellow pull-left"></span>
+                        <span class="icon-star gray pull-left"></span>*@
+                    </div>
+                @*     <ul class="nav pull-left ratings ">
+
+                              
+                      
+                        <li><a href="#">20 ratings</a></li>
+                        <li class="separator">|</li>
+                        <li><a href="#">20 ratings</a></li>
+                        <li class="separator">|</li>
+                        <li><a href="#">20 ratings</a></li>  
+                    </ul>    *@
+                 
+
+              @*      <div class="stockDetail pull-left"><span class="flag"></span>In stock @Model.StockAvailability available</div>*@
+
+                     @Html.Widget("productdetails_overview_top")
+
+                     <!--product SKU, manufacturer part number, stock info-->
+                    @* @Html.Partial("_SKU_Man_Stock", Model)*@
+                      <!--Back in stock subscription-->
+                      @Html.Partial("_BackInStockSubscription", Model)
+                       <!--product manufacturers-->
+                               
+                      <!--product reviews-->
+                              
+                      <!--sample download-->
+                       @Html.Partial("_DownloadSample", Model)
+                       
+
+                    <!--attributes-->
+                    @{
+        var dataDictAttributes = new ViewDataDictionary();
+        dataDictAttributes.TemplateInfo.HtmlFieldPrefix = string.Format("attributes_{0}", Model.Id);
+        @Html.Partial("_ProductAttributes", Model.ProductVariantAttributes, dataDictAttributes);
+                    }
+                   
+                      <div class="pull-left">
+                    <!--price & add to cart-->
+                    @{
+                        var dataDictPrice = new ViewDataDictionary();
+                        dataDictPrice.TemplateInfo.HtmlFieldPrefix = string.Format("price_{0}", Model.Id);
+                        @Html.Partial("_ProductPrice", Model.ProductPrice, dataDictPrice)
+
+                       @*    var dataDictAddToCart = new ViewDataDictionary();
+                         dataDictAddToCart.TemplateInfo.HtmlFieldPrefix = string.Format("addtocart_{0}", Model.Id);
+                         @Html.Partial("_AddToCart", Model.AddToCart, dataDictAddToCart)     *@
+                         
+                    }
+                               </div>
+
+
+                </div>
+                <div class="span2 noMarginLeft pull-right rightDetailSection">
+                    <div class="warrantySection pull-left">
+                        <div class="warrantySectionTop">1 year Apple warranty and Free transit insurance</div>
+                        <div class="warrantySectionContent pull-left">
+                            <span class="rightMark"></span><span class="redText">Cash</span>
+                            <span class="grayText">On Delivery Orders</span>
+                        </div>
+                        <div class="warrantySectionContent pull-left">
+                            <span class="rightMark"></span><span class="redText">Cash</span>
+                            <span class="grayText">On Delivery Orders</span>
+                        </div>
+                        <div class="warrantySectionContent pull-left">
+                            <span class="rightMark"></span><span class="redText">Cash</span>
+                            <span class="grayText">On Delivery Orders</span>
+                        </div>
+
+                    </div>
+                    <div class="rightDetailBottom"> <img src="/esybuy/images/safe-and-security.png"></div>
+                </div>
+            </div>
+
+
+
+                        <div class="pull-left">
+                    <!--price & add to cart-->
+                    @{
+                       @*  var dataDictPrice = new ViewDataDictionary();
+                        dataDictPrice.TemplateInfo.HtmlFieldPrefix = string.Format("price_{0}", Model.Id);
+                        @Html.Partial("_ProductPrice", Model.ProductPrice, dataDictPrice)  *@
+
+                          var dataDictAddToCart = new ViewDataDictionary();
+                         dataDictAddToCart.TemplateInfo.HtmlFieldPrefix = string.Format("addtocart_{0}", Model.Id);
+                        @Html.Partial("_AddToCart", Model.AddToCart, dataDictAddToCart)    
+                         
+                    }
+                               </div>
+
+            
+
+
+           @* <div class="pull-left buyNowSection">
+                <div class="quantity_main pull-left">
+                    <span class="quantity_main_contents pull-left">
+                        Qty:
+                        <input type="text" placeholder="1" value="1" class="quantityBox">
+                        <span class="up_down_quantity pull-left">
+                            <span class="increase icon-caret-up pull-left"></span>
+                            <span class="decrease icon-caret-down pull-left"></span>
+                        </span>
+                    </span>
+                </div>
+
+
+                <button type="button" class="btn BuyNow btn-large">Buy Now</button>
+
+            </div>*@
+
+         @*  <div class="span5 noMarginLeft addToSection">
+                <ul class="span4">
+                    <li><span class="addToWishListIcon"></span><input type="button" id="add-to-wishlist-button-@Model.ProductId" class="button-2 add-to-wishlist-button" value="@T("ShoppingCart.AddToWishlist")" data-productid="@Model.ProductId" onclick="AjaxCart.addproducttocart_details('@Url.RouteUrl("AddProductToCart-Details", new { productId = Model.ProductId, shoppingCartTypeId = (int)ShoppingCartType.Wishlist })', '#product-details-form');return false;" /> </li>
+                    <li><span class="addToCompareIcon"></span><a>Add to compare</a> </li>
+                    <li><span class="suggestFriendIcon"></span><a>Suggest to a friend</a> </li>
+                </ul>
+                <div class="socialIcons pull-left">
+                    <ul>
+                        <li><a href="#" class="faceBookIconSmall"></a> </li>
+                        <li><a href="#" class="twitterIconSmall"></a> </li>
+                        <li><a href="#" class="googlePlus"></a> </li>
+                        <li><a href="#" class="counter"></a> </li>
+                    </ul>
+                </div>
+
+            </div>*@
+
+          @*  <div class="span5 noMarginLeft noteSection">
+                <i class="icon-warning-sign alertIcon"></i><strong>Note:</strong>
+                In a day dummy text is dummy text.Lorem ipsum is a dummy text
+            </div>*@
+
+        </div>
+
+
+
+    }
+</div>
+
+<script type="text/cjs">
+    $(".increase").click(function(){
+    var quantity = $(this).parents(".quantity_main").find(".quantityBox").val();
+    quantity++;
+    $(this).parents(".quantity_main").find(".quantityBox").val(quantity);
+    var subtotal = $(this).parents(".quantity_main").find(".sub_total_price").html();
+    var newprice = basicprice*quantity;
+    $(this).parents(".quantity_main").find(".sub_total_price").html(newprice);
+    });
+
+    $(".decrease").click(function(){
+    var quantity = $(this).parents(".quantity_main").find(".quantityBox").val();
+    if(quantity > 1 )
+    {
+    quantity--;
+    $(this).parents(".quantity_main").find(".quantityBox").val(quantity);
+    var subtotal = $(this).parents(".quantity_main").find(".sub_total_price").html();
+    var newprice = basicprice*quantity;
+    $(this).parents(".quantity_main").find(".sub_total_price").html(newprice);
+    }
+    });
+</script>
+<script type="text/cjs">
+    $(document).ready(function(){
+    $('.colorSelected').click(function () {
+    $(this).parent('.optionValues').find('.selectedOption').removeClass('selectedOption');
+    $(this).addClass('selectedOption');
+    });
+    $('.colorSelected2').click(function () {
+    $(this).parent('.optionValues').find('.selectedOption').removeClass('selectedOption');
+    $(this).addClass('selectedOption');
+    });
+    });
+</script>
+<script type="text/cjs">
+    $('#themesBtn').click(function() {
+    $('#secectionBox').animate({
+    right:'0'
+    }, 500, function() {
+    // Animation complete.
+    });
+    $('#themesBtn').animate({
+    right:'-80'
+    }, 100, function() {
+    // Animation complete.
+    });
+    });
+    $('#hideme').click(function() {
+    $('#secectionBox').animate({
+    right:'-999'
+    }, 500, function() {
+    // Animation complete.
+    });
+
+    $('#themesBtn').animate({
+    right:'0'
+    }, 700, function() {
+    // Animation complete.
+    });
+    });
+</script>
+<script type="text/cjs">
+    $(document.body).on('click', '.dropdown-menu li', function (event) {
+    var $target = $(event.currentTarget);
+    $target.closest('.btn-group').find('[data-bind="label"]').text($target.text()).end().children('.dropdown-toggle').dropdown('toggle');
+    return false;
+    });
+</script>
+<script type="text/cjs">
+    var sourceSwap = function () { var $this = $(this);
+    var newSource = $this.data('alt-src');
+    $this.data('alt-src', $this.attr('src'));
+    $this.attr('src', newSource);
+    }
+    $(document).ready(function () {
+
+    $('img.imageNormal').hover(sourceSwap, sourceSwap);
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
