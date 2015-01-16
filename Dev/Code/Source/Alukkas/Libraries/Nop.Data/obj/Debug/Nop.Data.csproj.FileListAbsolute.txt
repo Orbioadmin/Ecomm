@@ -1,0 +1,220 @@
+D:\Code from AShish\Mar_07_11.15am_\Libraries\Nop.Data\bin\Debug\Nop.Data.dll
+D:\Code from AShish\Mar_07_11.15am_\Libraries\Nop.Data\bin\Debug\Nop.Data.pdb
+D:\Code from AShish\Mar_07_11.15am_\Libraries\Nop.Data\bin\Debug\EntityFramework.dll
+D:\Code from AShish\Mar_07_11.15am_\Libraries\Nop.Data\bin\Debug\EntityFramework.SqlServer.dll
+D:\Code from AShish\Mar_07_11.15am_\Libraries\Nop.Data\bin\Debug\EntityFramework.SqlServerCompact.dll
+D:\Code from AShish\Mar_07_11.15am_\Libraries\Nop.Data\bin\Debug\Nop.Core.dll
+D:\Code from AShish\Mar_07_11.15am_\Libraries\Nop.Data\bin\Debug\System.Data.SqlServerCe.dll
+D:\Code from AShish\Mar_07_11.15am_\Libraries\Nop.Data\bin\Debug\Autofac.dll
+D:\Code from AShish\Mar_07_11.15am_\Libraries\Nop.Data\bin\Debug\System.Web.Mvc.dll
+D:\Code from AShish\Mar_07_11.15am_\Libraries\Nop.Data\bin\Debug\Autofac.Integration.Mvc.dll
+D:\Code from AShish\Mar_07_11.15am_\Libraries\Nop.Data\bin\Debug\System.Web.Razor.dll
+D:\Code from AShish\Mar_07_11.15am_\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.Razor.dll
+D:\Code from AShish\Mar_07_11.15am_\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.dll
+D:\Code from AShish\Mar_07_11.15am_\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.Deployment.dll
+D:\Code from AShish\Mar_07_11.15am_\Libraries\Nop.Data\bin\Debug\Nop.Core.pdb
+D:\Code from AShish\Mar_07_11.15am_\Libraries\Nop.Data\bin\Debug\EntityFramework.xml
+D:\Code from AShish\Mar_07_11.15am_\Libraries\Nop.Data\bin\Debug\EntityFramework.SqlServer.xml
+D:\Code from AShish\Mar_07_11.15am_\Libraries\Nop.Data\bin\Debug\EntityFramework.SqlServerCompact.xml
+D:\Code from AShish\Mar_07_11.15am_\Libraries\Nop.Data\bin\Debug\Autofac.xml
+D:\Code from AShish\Mar_07_11.15am_\Libraries\Nop.Data\bin\Debug\System.Web.Mvc.xml
+D:\Code from AShish\Mar_07_11.15am_\Libraries\Nop.Data\bin\Debug\Autofac.Integration.Mvc.xml
+D:\Code from AShish\Mar_07_11.15am_\Libraries\Nop.Data\bin\Debug\System.Web.Razor.xml
+D:\Code from AShish\Mar_07_11.15am_\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.Razor.xml
+D:\Code from AShish\Mar_07_11.15am_\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.xml
+D:\Code from AShish\Mar_07_11.15am_\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.Deployment.xml
+D:\Code from AShish\Mar_07_11.15am_\Libraries\Nop.Data\obj\Debug\Nop.Data.csprojResolveAssemblyReference.cache
+D:\Code from AShish\Mar_07_11.15am_\Libraries\Nop.Data\obj\Debug\Nop.Data.dll
+D:\Code from AShish\Mar_07_11.15am_\Libraries\Nop.Data\obj\Debug\Nop.Data.pdb
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Libraries\Nop.Data\bin\Debug\Nop.Data.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Libraries\Nop.Data\bin\Debug\Nop.Data.pdb
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Libraries\Nop.Data\bin\Debug\EntityFramework.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Libraries\Nop.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Libraries\Nop.Data\bin\Debug\EntityFramework.SqlServerCompact.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Libraries\Nop.Data\bin\Debug\Nop.Core.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Libraries\Nop.Data\bin\Debug\System.Data.SqlServerCe.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Libraries\Nop.Data\bin\Debug\Autofac.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Libraries\Nop.Data\bin\Debug\System.Web.Mvc.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Libraries\Nop.Data\bin\Debug\Autofac.Integration.Mvc.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Libraries\Nop.Data\bin\Debug\System.Web.Razor.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Libraries\Nop.Data\bin\Debug\Nop.Core.pdb
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Libraries\Nop.Data\bin\Debug\EntityFramework.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Libraries\Nop.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Libraries\Nop.Data\bin\Debug\EntityFramework.SqlServerCompact.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Libraries\Nop.Data\bin\Debug\Autofac.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Libraries\Nop.Data\bin\Debug\System.Web.Mvc.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Libraries\Nop.Data\bin\Debug\Autofac.Integration.Mvc.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Libraries\Nop.Data\bin\Debug\System.Web.Razor.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Libraries\Nop.Data\obj\Debug\Nop.Data.csprojResolveAssemblyReference.cache
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Libraries\Nop.Data\obj\Debug\Nop.Data.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Libraries\Nop.Data\obj\Debug\Nop.Data.pdb
+D:\Code from AShish\EsyBuy Source\Libraries\Nop.Data\bin\Debug\Nop.Data.dll
+D:\Code from AShish\EsyBuy Source\Libraries\Nop.Data\bin\Debug\Nop.Data.pdb
+D:\Code from AShish\EsyBuy Source\Libraries\Nop.Data\bin\Debug\EntityFramework.dll
+D:\Code from AShish\EsyBuy Source\Libraries\Nop.Data\bin\Debug\EntityFramework.SqlServer.dll
+D:\Code from AShish\EsyBuy Source\Libraries\Nop.Data\bin\Debug\EntityFramework.SqlServerCompact.dll
+D:\Code from AShish\EsyBuy Source\Libraries\Nop.Data\bin\Debug\Nop.Core.dll
+D:\Code from AShish\EsyBuy Source\Libraries\Nop.Data\bin\Debug\System.Data.SqlServerCe.dll
+D:\Code from AShish\EsyBuy Source\Libraries\Nop.Data\bin\Debug\Autofac.dll
+D:\Code from AShish\EsyBuy Source\Libraries\Nop.Data\bin\Debug\System.Web.Mvc.dll
+D:\Code from AShish\EsyBuy Source\Libraries\Nop.Data\bin\Debug\Autofac.Integration.Mvc.dll
+D:\Code from AShish\EsyBuy Source\Libraries\Nop.Data\bin\Debug\System.Web.Razor.dll
+D:\Code from AShish\EsyBuy Source\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.Razor.dll
+D:\Code from AShish\EsyBuy Source\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.dll
+D:\Code from AShish\EsyBuy Source\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.Deployment.dll
+D:\Code from AShish\EsyBuy Source\Libraries\Nop.Data\bin\Debug\Nop.Core.pdb
+D:\Code from AShish\EsyBuy Source\Libraries\Nop.Data\bin\Debug\EntityFramework.xml
+D:\Code from AShish\EsyBuy Source\Libraries\Nop.Data\bin\Debug\EntityFramework.SqlServer.xml
+D:\Code from AShish\EsyBuy Source\Libraries\Nop.Data\bin\Debug\EntityFramework.SqlServerCompact.xml
+D:\Code from AShish\EsyBuy Source\Libraries\Nop.Data\bin\Debug\Autofac.xml
+D:\Code from AShish\EsyBuy Source\Libraries\Nop.Data\bin\Debug\System.Web.Mvc.xml
+D:\Code from AShish\EsyBuy Source\Libraries\Nop.Data\bin\Debug\Autofac.Integration.Mvc.xml
+D:\Code from AShish\EsyBuy Source\Libraries\Nop.Data\bin\Debug\System.Web.Razor.xml
+D:\Code from AShish\EsyBuy Source\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.Razor.xml
+D:\Code from AShish\EsyBuy Source\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.xml
+D:\Code from AShish\EsyBuy Source\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.Deployment.xml
+D:\Code from AShish\EsyBuy Source\Libraries\Nop.Data\obj\Debug\Nop.Data.csprojResolveAssemblyReference.cache
+D:\Code from AShish\EsyBuy Source\Libraries\Nop.Data\obj\Debug\Nop.Data.dll
+D:\Code from AShish\EsyBuy Source\Libraries\Nop.Data\obj\Debug\Nop.Data.pdb
+D:\EsyBuy Source\Libraries\Nop.Data\bin\Debug\Nop.Data.dll
+D:\EsyBuy Source\Libraries\Nop.Data\bin\Debug\Nop.Data.pdb
+D:\EsyBuy Source\Libraries\Nop.Data\bin\Debug\EntityFramework.dll
+D:\EsyBuy Source\Libraries\Nop.Data\bin\Debug\EntityFramework.SqlServer.dll
+D:\EsyBuy Source\Libraries\Nop.Data\bin\Debug\EntityFramework.SqlServerCompact.dll
+D:\EsyBuy Source\Libraries\Nop.Data\bin\Debug\Nop.Core.dll
+D:\EsyBuy Source\Libraries\Nop.Data\bin\Debug\System.Data.SqlServerCe.dll
+D:\EsyBuy Source\Libraries\Nop.Data\bin\Debug\Autofac.dll
+D:\EsyBuy Source\Libraries\Nop.Data\bin\Debug\System.Web.Mvc.dll
+D:\EsyBuy Source\Libraries\Nop.Data\bin\Debug\Autofac.Integration.Mvc.dll
+D:\EsyBuy Source\Libraries\Nop.Data\bin\Debug\System.Web.Razor.dll
+D:\EsyBuy Source\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.Razor.dll
+D:\EsyBuy Source\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.dll
+D:\EsyBuy Source\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.Deployment.dll
+D:\EsyBuy Source\Libraries\Nop.Data\bin\Debug\Nop.Core.pdb
+D:\EsyBuy Source\Libraries\Nop.Data\bin\Debug\EntityFramework.xml
+D:\EsyBuy Source\Libraries\Nop.Data\bin\Debug\EntityFramework.SqlServer.xml
+D:\EsyBuy Source\Libraries\Nop.Data\bin\Debug\EntityFramework.SqlServerCompact.xml
+D:\EsyBuy Source\Libraries\Nop.Data\bin\Debug\Autofac.xml
+D:\EsyBuy Source\Libraries\Nop.Data\bin\Debug\System.Web.Mvc.xml
+D:\EsyBuy Source\Libraries\Nop.Data\bin\Debug\Autofac.Integration.Mvc.xml
+D:\EsyBuy Source\Libraries\Nop.Data\bin\Debug\System.Web.Razor.xml
+D:\EsyBuy Source\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.Razor.xml
+D:\EsyBuy Source\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.xml
+D:\EsyBuy Source\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.Deployment.xml
+D:\EsyBuy Source\Libraries\Nop.Data\obj\Debug\Nop.Data.csprojResolveAssemblyReference.cache
+D:\EsyBuy Source\Libraries\Nop.Data\obj\Debug\Nop.Data.dll
+D:\EsyBuy Source\Libraries\Nop.Data\obj\Debug\Nop.Data.pdb
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Libraries\Nop.Data\bin\Debug\Nop.Data.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Libraries\Nop.Data\bin\Debug\Nop.Data.pdb
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Libraries\Nop.Data\bin\Debug\EntityFramework.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Libraries\Nop.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Libraries\Nop.Data\bin\Debug\EntityFramework.SqlServerCompact.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Libraries\Nop.Data\bin\Debug\Nop.Core.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Libraries\Nop.Data\bin\Debug\System.Data.SqlServerCe.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Libraries\Nop.Data\bin\Debug\Autofac.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Libraries\Nop.Data\bin\Debug\System.Web.Mvc.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Libraries\Nop.Data\bin\Debug\Autofac.Integration.Mvc.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Libraries\Nop.Data\bin\Debug\System.Web.Razor.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Libraries\Nop.Data\bin\Debug\Nop.Core.pdb
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Libraries\Nop.Data\bin\Debug\EntityFramework.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Libraries\Nop.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Libraries\Nop.Data\bin\Debug\EntityFramework.SqlServerCompact.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Libraries\Nop.Data\bin\Debug\Autofac.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Libraries\Nop.Data\bin\Debug\System.Web.Mvc.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Libraries\Nop.Data\bin\Debug\Autofac.Integration.Mvc.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Libraries\Nop.Data\bin\Debug\System.Web.Razor.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Libraries\Nop.Data\obj\Debug\Nop.Data.csprojResolveAssemblyReference.cache
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Libraries\Nop.Data\obj\Debug\Nop.Data.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Libraries\Nop.Data\obj\Debug\Nop.Data.pdb
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\Nop.Data.dll
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\Nop.Data.pdb
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\EntityFramework.dll
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\EntityFramework.SqlServer.dll
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\EntityFramework.SqlServerCompact.dll
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\Nop.Core.dll
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\System.Data.SqlServerCe.dll
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\Autofac.dll
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\System.Web.Mvc.dll
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\Autofac.Integration.Mvc.dll
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\System.Web.Razor.dll
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.Razor.dll
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.dll
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.Deployment.dll
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\Nop.Core.pdb
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\EntityFramework.xml
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\EntityFramework.SqlServer.xml
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\EntityFramework.SqlServerCompact.xml
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\Autofac.xml
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\System.Web.Mvc.xml
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\Autofac.Integration.Mvc.xml
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\System.Web.Razor.xml
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.Razor.xml
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.xml
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.Deployment.xml
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Libraries\Nop.Data\obj\Debug\Nop.Data.csprojResolveAssemblyReference.cache
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Libraries\Nop.Data\obj\Debug\Nop.Data.dll
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Libraries\Nop.Data\obj\Debug\Nop.Data.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\Nop.Data.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\Nop.Data.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\EntityFramework.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\EntityFramework.SqlServer.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\EntityFramework.SqlServerCompact.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\Nop.Core.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\System.Data.SqlServerCe.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\Autofac.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\Autofac.Integration.Mvc.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\System.Web.Razor.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.Razor.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.Deployment.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\Nop.Core.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\EntityFramework.xml
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\EntityFramework.SqlServer.xml
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\EntityFramework.SqlServerCompact.xml
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\Autofac.xml
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\Autofac.Integration.Mvc.xml
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\System.Web.Razor.xml
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.Razor.xml
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.xml
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.Deployment.xml
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Libraries\Nop.Data\obj\Debug\Nop.Data.csprojResolveAssemblyReference.cache
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Libraries\Nop.Data\obj\Debug\Nop.Data.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Libraries\Nop.Data\obj\Debug\Nop.Data.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\Nop.Data.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\Nop.Data.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\EntityFramework.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\EntityFramework.SqlServer.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\EntityFramework.SqlServerCompact.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\Nop.Core.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\System.Data.SqlServerCe.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\Autofac.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\Autofac.Integration.Mvc.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\System.Web.Razor.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.Razor.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.Deployment.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\Nop.Core.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\EntityFramework.xml
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\EntityFramework.SqlServer.xml
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\EntityFramework.SqlServerCompact.xml
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\Autofac.xml
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\Autofac.Integration.Mvc.xml
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\System.Web.Razor.xml
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.Razor.xml
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.xml
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Libraries\Nop.Data\bin\Debug\System.Web.WebPages.Deployment.xml
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Libraries\Nop.Data\obj\Debug\Nop.Data.csprojResolveAssemblyReference.cache
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Libraries\Nop.Data\obj\Debug\Nop.Data.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Libraries\Nop.Data\obj\Debug\Nop.Data.pdb

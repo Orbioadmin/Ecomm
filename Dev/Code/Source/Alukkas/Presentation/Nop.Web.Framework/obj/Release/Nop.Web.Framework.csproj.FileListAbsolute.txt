@@ -1,0 +1,240 @@
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\Nop.Web.Framework.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\Nop.Web.Framework.pdb
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\Antlr3.Runtime.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\Autofac.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\Autofac.Integration.Mvc.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\EntityFramework.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\EntityFramework.SqlServer.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\FluentValidation.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\Microsoft.Web.Infrastructure.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\Newtonsoft.Json.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\Nop.Core.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\Nop.Data.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\Nop.Services.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\Recaptcha.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\System.Web.Helpers.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\System.Web.Mvc.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\System.Web.Optimization.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\System.Web.Razor.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\System.Web.WebPages.Deployment.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\System.Web.WebPages.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\System.Web.WebPages.Razor.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\Telerik.Web.Mvc.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\WebActivator.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\WebGrease.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\itextsharp.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\MaxMind.GeoIP2.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\EPPlus.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\Nop.Core.pdb
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\Nop.Data.pdb
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\Nop.Services.pdb
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\Autofac.xml
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\Autofac.Integration.Mvc.xml
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\EntityFramework.xml
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\EntityFramework.SqlServer.xml
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\FluentValidation.xml
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\Newtonsoft.Json.xml
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\System.Web.Helpers.xml
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\System.Web.Mvc.xml
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\System.Web.Optimization.xml
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\System.Web.Razor.xml
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\System.Web.WebPages.xml
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\System.Web.WebPages.Deployment.xml
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\System.Web.WebPages.Razor.xml
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\MaxMind.GeoIP2.xml
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\EPPlus.xml
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\de\FluentValidation.resources.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\es\FluentValidation.resources.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\fr\FluentValidation.resources.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\it\FluentValidation.resources.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\ko\FluentValidation.resources.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\nl\FluentValidation.resources.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\pl\FluentValidation.resources.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\pt\FluentValidation.resources.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\ru\FluentValidation.resources.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\sv\FluentValidation.resources.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\tr\FluentValidation.resources.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\bin\Release\Nop.Services.XmlSerializers.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\obj\Release\Nop.Web.Framework.csprojResolveAssemblyReference.cache
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\obj\Release\Nop.Web.Framework.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web.Framework\obj\Release\Nop.Web.Framework.pdb
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\Nop.Web.Framework.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\Nop.Web.Framework.pdb
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\Antlr3.Runtime.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\Autofac.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\Autofac.Integration.Mvc.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\EntityFramework.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\EntityFramework.SqlServer.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\FluentValidation.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\Microsoft.Web.Infrastructure.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\Newtonsoft.Json.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\Nop.Core.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\Nop.Data.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\Nop.Services.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\Recaptcha.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\System.Web.Helpers.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\System.Web.Mvc.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\System.Web.Optimization.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\System.Web.Razor.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\System.Web.WebPages.Deployment.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\System.Web.WebPages.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\System.Web.WebPages.Razor.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\Telerik.Web.Mvc.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\WebActivator.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\WebGrease.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\itextsharp.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\MaxMind.GeoIP2.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\EPPlus.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\Nop.Core.pdb
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\Nop.Data.pdb
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\Nop.Services.pdb
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\Autofac.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\Autofac.Integration.Mvc.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\EntityFramework.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\EntityFramework.SqlServer.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\FluentValidation.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\Newtonsoft.Json.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\System.Web.Helpers.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\System.Web.Mvc.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\System.Web.Optimization.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\System.Web.Razor.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\System.Web.WebPages.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\System.Web.WebPages.Deployment.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\System.Web.WebPages.Razor.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\MaxMind.GeoIP2.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\EPPlus.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\de\FluentValidation.resources.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\es\FluentValidation.resources.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\fr\FluentValidation.resources.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\it\FluentValidation.resources.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\ko\FluentValidation.resources.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\nl\FluentValidation.resources.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\pl\FluentValidation.resources.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\pt\FluentValidation.resources.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\ru\FluentValidation.resources.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\sv\FluentValidation.resources.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\tr\FluentValidation.resources.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\Nop.Services.XmlSerializers.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\obj\Release\Nop.Web.Framework.csprojResolveAssemblyReference.cache
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\obj\Release\Nop.Web.Framework.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web.Framework\obj\Release\Nop.Web.Framework.pdb
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\Nop.Web.Framework.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\Nop.Web.Framework.pdb
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\Antlr3.Runtime.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\Autofac.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\Autofac.Integration.Mvc.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\EntityFramework.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\EntityFramework.SqlServer.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\FluentValidation.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\Microsoft.Web.Infrastructure.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\Newtonsoft.Json.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\Nop.Core.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\Nop.Data.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\Nop.Services.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\Recaptcha.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\System.Web.Helpers.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\System.Web.Mvc.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\System.Web.Optimization.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\System.Web.Razor.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\System.Web.WebPages.Deployment.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\System.Web.WebPages.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\System.Web.WebPages.Razor.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\Telerik.Web.Mvc.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\WebActivator.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\WebGrease.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\itextsharp.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\MaxMind.GeoIP2.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\EPPlus.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\Nop.Core.pdb
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\Nop.Data.pdb
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\Nop.Services.pdb
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\Autofac.xml
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\Autofac.Integration.Mvc.xml
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\EntityFramework.xml
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\EntityFramework.SqlServer.xml
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\FluentValidation.xml
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\Newtonsoft.Json.xml
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\System.Web.Helpers.xml
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\System.Web.Mvc.xml
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\System.Web.Optimization.xml
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\System.Web.Razor.xml
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\System.Web.WebPages.xml
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\System.Web.WebPages.Deployment.xml
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\System.Web.WebPages.Razor.xml
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\MaxMind.GeoIP2.xml
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\EPPlus.xml
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\de\FluentValidation.resources.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\es\FluentValidation.resources.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\fr\FluentValidation.resources.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\it\FluentValidation.resources.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\ko\FluentValidation.resources.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\nl\FluentValidation.resources.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\pl\FluentValidation.resources.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\pt\FluentValidation.resources.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\ru\FluentValidation.resources.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\sv\FluentValidation.resources.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\tr\FluentValidation.resources.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\bin\Release\Nop.Services.XmlSerializers.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\obj\Release\Nop.Web.Framework.csprojResolveAssemblyReference.cache
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\obj\Release\Nop.Web.Framework.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web.Framework\obj\Release\Nop.Web.Framework.pdb
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\Nop.Web.Framework.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\Nop.Web.Framework.pdb
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\Antlr3.Runtime.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\Autofac.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\Autofac.Integration.Mvc.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\EntityFramework.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\EntityFramework.SqlServer.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\FluentValidation.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\Microsoft.Web.Infrastructure.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\Newtonsoft.Json.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\Nop.Core.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\Nop.Data.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\Nop.Services.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\Recaptcha.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\System.Web.Helpers.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\System.Web.Mvc.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\System.Web.Optimization.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\System.Web.Razor.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\System.Web.WebPages.Deployment.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\System.Web.WebPages.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\System.Web.WebPages.Razor.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\Telerik.Web.Mvc.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\WebActivator.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\WebGrease.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\itextsharp.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\MaxMind.GeoIP2.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\EPPlus.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\Nop.Core.pdb
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\Nop.Data.pdb
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\Nop.Services.pdb
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\Autofac.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\Autofac.Integration.Mvc.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\EntityFramework.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\EntityFramework.SqlServer.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\FluentValidation.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\Newtonsoft.Json.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\System.Web.Helpers.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\System.Web.Mvc.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\System.Web.Optimization.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\System.Web.Razor.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\System.Web.WebPages.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\System.Web.WebPages.Deployment.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\System.Web.WebPages.Razor.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\MaxMind.GeoIP2.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\EPPlus.xml
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\de\FluentValidation.resources.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\es\FluentValidation.resources.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\fr\FluentValidation.resources.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\it\FluentValidation.resources.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\ko\FluentValidation.resources.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\nl\FluentValidation.resources.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\pl\FluentValidation.resources.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\pt\FluentValidation.resources.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\ru\FluentValidation.resources.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\sv\FluentValidation.resources.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\tr\FluentValidation.resources.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\bin\Release\Nop.Services.XmlSerializers.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\obj\Release\Nop.Web.Framework.csprojResolveAssemblyReference.cache
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\obj\Release\Nop.Web.Framework.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy_Source_V3\Presentation\Nop.Web.Framework\obj\Release\Nop.Web.Framework.pdb

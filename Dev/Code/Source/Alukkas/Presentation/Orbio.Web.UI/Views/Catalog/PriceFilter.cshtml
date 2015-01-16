@@ -1,0 +1,10 @@
+﻿@model Orbio.Web.UI.Models.Catalog.SpecificationAttribute
+  <div class="list_products" id="priceFilter">
+                            <h2><i class="add_cart_icon"></i>@this.Model.Name </h2>
+                           
+                            @foreach (var option in this.Model.SpecificationAttributeOptions)
+                            {
+                                @Html.Hidden(option.ElementName, option.Name)
+                            }
+                          <input type="text" id="range_04" />
+                        </div><!--/price-range-->

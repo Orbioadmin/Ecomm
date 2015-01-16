@@ -1,0 +1,12 @@
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Shipping.ByWeight\Description.txt
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Shipping.ByWeight\logo.jpg
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Shipping.ByWeight\Nop.Plugin.Shipping.ByWeight.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Shipping.ByWeight\Nop.Plugin.Shipping.ByWeight.pdb
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.Shipping.ByWeight\obj\Release\Nop.Plugin.Shipping.ByWeight.dll
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.Shipping.ByWeight\obj\Release\Nop.Plugin.Shipping.ByWeight.pdb
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Shipping.ByWeight\Description.txt
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Shipping.ByWeight\logo.jpg
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Shipping.ByWeight\Nop.Plugin.Shipping.ByWeight.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Shipping.ByWeight\Nop.Plugin.Shipping.ByWeight.pdb
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.Shipping.ByWeight\obj\Release\Nop.Plugin.Shipping.ByWeight.dll
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.Shipping.ByWeight\obj\Release\Nop.Plugin.Shipping.ByWeight.pdb

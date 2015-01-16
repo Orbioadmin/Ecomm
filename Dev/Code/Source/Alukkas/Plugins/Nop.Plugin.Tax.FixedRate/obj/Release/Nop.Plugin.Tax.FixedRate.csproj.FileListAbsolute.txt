@@ -1,0 +1,14 @@
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Tax.FixedRate\Description.txt
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Tax.FixedRate\logo.jpg
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Tax.FixedRate\Nop.Plugin.Tax.FixedRate.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Tax.FixedRate\Nop.Plugin.Tax.FixedRate.pdb
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.Tax.FixedRate\obj\Release\Nop.Plugin.Tax.FixedRate.csprojResolveAssemblyReference.cache
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.Tax.FixedRate\obj\Release\Nop.Plugin.Tax.FixedRate.dll
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.Tax.FixedRate\obj\Release\Nop.Plugin.Tax.FixedRate.pdb
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Tax.FixedRate\Description.txt
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Tax.FixedRate\logo.jpg
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Tax.FixedRate\Nop.Plugin.Tax.FixedRate.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Tax.FixedRate\Nop.Plugin.Tax.FixedRate.pdb
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.Tax.FixedRate\obj\Release\Nop.Plugin.Tax.FixedRate.csprojResolveAssemblyReference.cache
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.Tax.FixedRate\obj\Release\Nop.Plugin.Tax.FixedRate.dll
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.Tax.FixedRate\obj\Release\Nop.Plugin.Tax.FixedRate.pdb

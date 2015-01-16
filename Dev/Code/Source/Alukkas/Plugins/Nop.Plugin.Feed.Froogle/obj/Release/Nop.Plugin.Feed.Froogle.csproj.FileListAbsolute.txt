@@ -1,0 +1,14 @@
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Feed.Froogle\Description.txt
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Feed.Froogle\Content\styles.css
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Feed.Froogle\logo.jpg
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Feed.Froogle\Nop.Plugin.Feed.Froogle.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Feed.Froogle\Nop.Plugin.Feed.Froogle.pdb
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.Feed.Froogle\obj\Release\Nop.Plugin.Feed.Froogle.dll
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.Feed.Froogle\obj\Release\Nop.Plugin.Feed.Froogle.pdb
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Feed.Froogle\Description.txt
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Feed.Froogle\Content\styles.css
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Feed.Froogle\logo.jpg
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Feed.Froogle\Nop.Plugin.Feed.Froogle.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Feed.Froogle\Nop.Plugin.Feed.Froogle.pdb
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.Feed.Froogle\obj\Release\Nop.Plugin.Feed.Froogle.dll
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.Feed.Froogle\obj\Release\Nop.Plugin.Feed.Froogle.pdb

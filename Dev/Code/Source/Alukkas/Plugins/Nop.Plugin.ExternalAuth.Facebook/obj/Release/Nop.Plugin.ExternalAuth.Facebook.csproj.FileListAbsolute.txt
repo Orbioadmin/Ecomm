@@ -1,0 +1,22 @@
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.Facebook\Description.txt
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.Facebook\Content\facebookstyles.css
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.Facebook\Content\Images\facebook-signing.png
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.Facebook\logo.jpg
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.Facebook\Nop.Plugin.ExternalAuth.Facebook.dll.config
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.Facebook\Nop.Plugin.ExternalAuth.Facebook.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.Facebook\Nop.Plugin.ExternalAuth.Facebook.pdb
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.ExternalAuth.Facebook\obj\Release\Nop.Plugin.ExternalAuth.Facebook.csproj.App.config
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.ExternalAuth.Facebook\obj\Release\Nop.Plugin.ExternalAuth.Facebook.csprojResolveAssemblyReference.cache
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.ExternalAuth.Facebook\obj\Release\Nop.Plugin.ExternalAuth.Facebook.dll
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.ExternalAuth.Facebook\obj\Release\Nop.Plugin.ExternalAuth.Facebook.pdb
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.Facebook\Description.txt
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.Facebook\Content\facebookstyles.css
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.Facebook\Content\Images\facebook-signing.png
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.Facebook\logo.jpg
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.Facebook\Nop.Plugin.ExternalAuth.Facebook.dll.config
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.Facebook\Nop.Plugin.ExternalAuth.Facebook.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.Facebook\Nop.Plugin.ExternalAuth.Facebook.pdb
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.ExternalAuth.Facebook\obj\Release\Nop.Plugin.ExternalAuth.Facebook.csproj.App.config
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.ExternalAuth.Facebook\obj\Release\Nop.Plugin.ExternalAuth.Facebook.csprojResolveAssemblyReference.cache
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.ExternalAuth.Facebook\obj\Release\Nop.Plugin.ExternalAuth.Facebook.dll
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.ExternalAuth.Facebook\obj\Release\Nop.Plugin.ExternalAuth.Facebook.pdb

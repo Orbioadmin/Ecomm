@@ -1,0 +1,25 @@
+﻿@model Orbio.Web.UI.Models.Catalog.ProductOverViewModel
+
+ <li>
+      @{
+          var baseImageUrl = System.Configuration.ConfigurationManager.AppSettings["ImageServerBaseUrl"];
+          var imageUrl = baseImageUrl + this.Model.ImageRelativeUrl;
+      }
+       <div class="main_thumb">
+                            <div class="thumbnail">
+                                <a href="@Url.RouteUrl("Category", new { SeName = this.Model.SeName })?p=pt"><img src="@imageUrl" alt=""></a>                                
+                            </div>
+                            <div class="caption">
+                                <div class="list_light_dark">@this.Model.Name</div>                        
+                                <div class="detail_list_cart">
+                                <ul class="list_cart">
+                                <li>
+                                <input type="submit" class="add_it_icon" value=""></li><li>
+                                <input type="submit" class="save_it_icon" value=""></li><li>
+                                <input type="submit" class="share_it_icon" value=""></li></ul>
+                                </div>
+                                <div class="list_thumb_offer"><s>325.00</s> (66% off) <span>@this.Model.ProductPrice.Price @this.Model.CurrencyCode</span></div>
+                            </div>
+                            </div>
+
+       </li>
