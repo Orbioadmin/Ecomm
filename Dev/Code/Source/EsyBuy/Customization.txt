@@ -1,0 +1,8 @@
+web.config - nopsection - add dependencyregistrars
+NopConfig.cs -  added dependencyregistrars list , read from web.config instead of assembly probing
+ContainerConfigurer.cs - read dependencyregistrar types from nopconfig instead of assembly probing
+
+Added new SP - usp_Catalog_GetTopMenu -  to get topmenu items
+Added new projects - orbio.core, orbio.services
+Added new file in nope.core.domain - XmlResultSet.cs
+added new file CommonPathRoute.cs
