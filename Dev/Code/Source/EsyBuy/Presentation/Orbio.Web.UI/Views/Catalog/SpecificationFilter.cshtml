@@ -1,0 +1,45 @@
+﻿@model Orbio.Web.UI.Models.Catalog.SpecificationAttribute
+ <div class="list_products"><!--brands_products-->
+                            <h2><i class="add_cart_icon"></i>@this.Model.Name</h2>
+                            <div class="brands-name">
+                                <ul class="nav nav-pills nav-stacked">
+                                    @{
+                                        var maxDisplay = 7;
+                                        if(System.Configuration.ConfigurationManager.AppSettings["NoOfFiltersToDisplay"]!=null)
+                                        {
+                                            maxDisplay = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings["NoOfFiltersToDisplay"]);
+                                        }
+                                        var counter = 1;
+                                        foreach (var attr in this.Model.SpecificationAttributeOptions)
+                                        {
+                                            if (counter > maxDisplay)
+                                            {
+                                                counter--;
+                                                break;
+                                            }
+                                            
+                                            <li> 
+                                                @*Html.CheckBox("specFilterCheckBox", attr.Selected, new Dictionary<string,object>{{"data-url"= attr.FilterUrl}, "data-id"=attr.Id})*@
+                                                @if(attr.Selected){
+                                                    <input  id="specFilterCheckBox"  checked="checked"  type="checkbox" data-url= "@attr.FilterUrl" data-id="@attr.Id"/>
+                                                }
+                                                else{
+                                                     <input  id="specFilterCheckBox"  type="checkbox" data-url= "@attr.FilterUrl" data-id="@attr.Id"/>
+                                                }
+                                                @attr.Name</li>
+                                            
+                                           
+
+                                            counter++;
+                                        }
+                                        var plusMore = this.Model.SpecificationAttributeOptions.Count - counter;
+                                    }
+                                     
+                                </ul>
+                                @if(plusMore>0)
+                                {
+                                    
+                                    <p class="more">+ @plusMore More</p>
+                                }
+                            </div>
+                        </div>

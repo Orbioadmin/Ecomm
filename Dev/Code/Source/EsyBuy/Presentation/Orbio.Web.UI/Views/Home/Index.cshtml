@@ -1,0 +1,255 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+    <section class="Slider">
+   <div class="slider_inner">
+<div id="ei-slider" class="ei-slider">
+                    <ul class="ei-slider-large">
+                        <li>
+                            <img src="images/slider/Esybuy-main-banner4.jpg" alt="image06"/>
+                        </li>
+                        <li>
+                            <img src="images/slider/Esybuy-main-banner1.jpg" alt="image01" />
+                        </li>
+                        <li>
+                            <img src="images/slider/Esybuy-main-banner2.jpg" alt="image02" />
+                        </li>
+                        <li>
+                            <img src="images/slider/Esybuy-main-banner3.jpg" alt="image03"/>
+                        </li>
+                        <li>
+                            <img src="images/slider/Esybuy-main-banner5.jpg" alt="image04"/>
+                        </li>
+                       
+                    </ul><!-- ei-slider-large -->
+                    <ul class="ei-slider-thumbs">
+                        <li class="ei-slider-element">Current</li>
+                        <li><a href="#">Slide 6</a></li>
+                        <li><a href="#">Slide 1</a></li>
+                        <li><a href="#">Slide 2</a></li>
+                        <li><a href="#">Slide 3</a></li>
+                        <li><a href="#">Slide 5</a></li>
+                    </ul><!-- ei-slider-thumbs -->
+               </div><!-- ei-slider -->
+
+
+
+
+
+
+<ul class="social_slider">
+    <li><a href="" class="facebook_slide"></a></li>
+    <!--<li><a href="" class="digg_slide"></a></li>-->
+    <li><a href="" class="insta_slide"></a></li>
+    <li><a href="" class="twitter_slide"></a></li>
+</ul>
+</div>
+
+    </section><!--/#main-slider-->
+
+    <div class="slider_image"><img src="images/Basic_image/shopping.jpg"></div>
+    
+    <section class="mobile_title">
+    <ul class="esy_buy_electronic">
+    <li><a href="">ELECTRONICS</a></li>
+    <li><a href="">MENS</a></li>
+    <li><a href="">WOMENS</a></li>
+    <li><a href="">HOME & KITCHEN</a></li>
+    <li><a href="">EASY DEALS</a></li>
+    <li><a href="">GADGETS UNDER 99 AED</a></li>    
+    </ul>
+</section>
+    
+  
+     <div class="subscri">
+<div class="container">
+<ul class="Newletter clearfix">
+<li class="newletter_subscri" style="margin-top:0;">
+<p class="subscrible_responsive"><span class="sub_msg"></span>Subscribe for Newletter</p>
+<p class="subscrible_desktop"><span class="sub_msg"></span>Subscribe to our Newletter to get the latest updates</p>
+</li>
+
+<li class="newletter_subscri_input" style="margin-top:0;">
+<input type="text" class="Newsletter_email" placeholder="Type your email here">
+</li>
+
+<li class="for_men" style="margin-top:3px;">
+<div class="pos_rel">
+<input type="submit" class="subcri-butt" value="FOR MEN">
+</div>
+</li>
+
+<li class="for_women" style="margin-top:3px;">
+<input type="submit" class="subcri-butt" value="FOR WOMEN">
+
+</li>
+
+</ul>
+</div>
+</div>
+
+
+    <section class="Home_ads">
+    <div class="container">
+    <div class="row">
+<div class="col-sm-3 ">
+<img src="images/Banner-Home/Esybuy-home-product-banner1.jpg" >
+</div>
+
+<div class="col-sm-6 ">
+<img src="images/Banner-Home/Esybuy-home-product-banner2.jpg" class="home_ban2" >
+</div>
+
+<div class="col-sm-3 ">
+<img src="images/Banner-Home/Esybuy-home-product-banner3.jpg" >
+</div>
+</div>
+    </section>
+
+
+    <div class="crazy">
+    <img src="images/Banner-Home/Esybuy-men-women-banner.jpg" alt="" class="sml_banner">
+    <div>
+    <a class="men_shop"><span>SHOP FOR MEN</span> </a>
+    <div class="men_icon"></div>
+    </div>
+    <div>
+    <a class="women_shop"><span>SHOP FOR WOMEN</span></a>
+    <div class="women_icon"></div>
+    </div>
+    </div>
+
+
+    <section class="bot_banner">
+ <div class="container">
+ <ul>
+ <li class="col-sm-3"><img src="images/Banner-Home/Esybuy-home-product-banner4.jpg" /></li>
+ <li class="col-sm-3"><img src="images/Banner-Home/Esybuy-home-product-banner5.jpg" /></li>
+ <li class="col-sm-3"><img src="images/Banner-Home/Esybuy-home-product-banner6.jpg" /></li>
+ <li class="col-sm-3"><img src="images/Banner-Home/Esybuy-home-product-banner7.jpg" /></li>
+ </ul>
+ </div>
+     
+
+ </section>
+@section scripts{
+    <script  type="text/javascript">
+
+        jQuery(document).ready(function () {
+            jQuery('ul.sf-menu').superfish();
+        });
+
+        </script>
+              <script type="text/javascript">
+                  $(function () {
+                      $('#ei-slider').eislideshow({
+                          animation: 'center',
+                          autoplay: true,
+                          slideshow_interval: 3000,
+                          titlesFactor: 0
+                      });
+                  });
+
+
+                  // Carousel Auto-Cycle
+                  $(document).ready(function () {
+                      $('.carousel').carousel({
+                          interval: 3000
+                      })
+                  });
+
+
+                  //Listview
+
+                  $('.listview button').on('click', function (e) {
+                      if ($(this).hasClass('three_view')) {
+                          $('.featured_items ul').removeClass('four_items');
+                      }
+                      else if ($(this).hasClass('four_view')) {
+                          $('.featured_items ul').addClass('four_items');
+                      }
+                  });
+
+                  $('.listview button').click(function (e) {
+                      e.preventDefault(); //prevent the link from being followed
+                      $('.listview button').removeClass('selected');
+                      $(this).addClass('selected');
+                  });
+
+
+                  /*Price slider */
+
+                  $("[data-slider]")
+                 .each(function () {
+                     var input = $(this);
+                     $("<span>")
+                       .addClass("output")
+                       .insertAfter($(this));
+                 })
+                 .bind("slider:ready slider:changed", function (event, data) {
+                     $(this)
+                       .nextAll(".output:first")
+                         .html(data.value.toFixed(3));
+                 });
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+
+                $("#range_1").ionRangeSlider({
+                    min: 0,
+                    max: 5000,
+                    from: 0,
+                    to: 4000,
+                    type: 'double',
+                    step: 1,
+                    prefix: "",
+                    prettify: true,
+                    hasGrid: true
+                });
+
+            });
+
+            //scroll
+
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-36251023-1']);
+            _gaq.push(['_setDomainName', 'jqueryscript.net']);
+            _gaq.push(['_trackPageview']);
+
+            (function () {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+
+            $(document).ready(function () {
+                // Show or hide the sticky footer button
+                $(window).scroll(function () {
+                    if ($(this).scrollTop() > 200) {
+                        $('.to-top').fadeIn(200);
+                    } else {
+                        $('.to-top').fadeOut(200);
+                    }
+                });
+
+                // Animate the scroll to top
+                $('.to-top').click(function (event) {
+                    event.preventDefault();
+
+                    $('html, body').animate({ scrollTop: 0 }, 300);
+                })
+            });
+
+
+
+            $(document).ready(function () {
+
+                $("#toggle").click(function () {
+                    $(".target").slideToggle('slow', function () {
+                        $(".log").text('Toggle Transition Complete');
+                    });
+                });
+
+            });
+</script>
+}

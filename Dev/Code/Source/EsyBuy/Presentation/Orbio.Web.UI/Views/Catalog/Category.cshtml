@@ -1,0 +1,236 @@
+﻿@model Orbio.Web.UI.Models.Catalog.CategoryModel
+@{
+    ViewBag.Title = "Category";
+}
+
+<section>
+       <div class="container">
+
+         <ol class="breadcrumb">
+               <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+             @{
+                foreach(var breadCrumb in this.Model.BreadCrumbs)
+                {
+                     <li><a href="@Url.RouteUrl("Category", new { SeName = breadCrumb.SeName })?p=ct">@breadCrumb.Name</a></li> 
+                }
+             }
+
+  <li class="active">@this.Model.Name</li>
+</ol>
+
+            <div class="row">
+                <div class="col-sm-2">
+
+
+
+ 
+
+
+            @{
+                
+                var priceModel = (from pr in
+                                      (
+                                          from p in this.Model.Products
+                                          select p.ProductPrice)
+                                  select Convert.ToDecimal(pr.Price)).ToList();
+
+                var minPrice = 0M;
+                var maxPrice = 0M;
+                
+                if(priceModel.Count>0)
+                {
+                    minPrice = priceModel.Min();
+                    maxPrice = priceModel.Max();
+                }
+            
+               
+            }
+
+            @Html.Action("ProductFilter", "Catalog", new { categoryId = this.Model.Id, minPrice = minPrice, maxPrice = maxPrice,selectedSpecs= this.Model.SelectedSpecificationAttributeIds })
+
+
+       </div>
+      
+        @{
+               Html.RenderPartial(this.Model.ViewPath, this.Model); 
+           }
+      
+
+
+    
+
+    
+
+       </div>
+       </div>
+      
+   </section>
+@section scripts{
+        <script type="text/javascript">
+            $(function () {
+             
+                $('input[id=specFilterCheckBox]').on('change', function (e) {
+                    // if ($(this).is(':checked')) {
+                    var specboxes = $('input[id=specFilterCheckBox');
+                    var specs = '';
+                    $.each(specboxes, function () {
+                        if ($(this).is(':checked')) {
+                            specs += $(this).attr('data-id') + ",";
+                        }
+                    });
+               window.location.href = $(this).attr('data-url') + '&spec=' + specs;
+           //}
+           //else {
+           //    //NEED TO REMOVE SPEC FORM URL
+           //}
+       });
+   
+
+                $('#ei-slider').eislideshow({
+                    animation           : 'center',
+                    autoplay            : true,
+                    slideshow_interval  : 3000,
+                    titlesFactor        : 0
+                });
+            });
+
+
+            // Carousel Auto-Cycle
+            $(document).ready(function () {
+                function lastPostFunc() {
+                    alert('scroll');
+                    //$('#divPostsLoader').html('<img src="images/bigLoader.gif">');
+
+                    ////send a query to server side to present new content
+                    //$.ajax({
+                    //    type: "POST",
+                    //    url: "Articles.aspx/ItemsGet",
+                    //    data: "{}",
+                    //    contentType: "application/json; charset=utf-8",
+                    //    dataType: "json",
+                    //    success: function (data) {
+
+                    //        if (data != "") {
+                    //            $('.divLoadData:last').after(data.d);
+                    //        }
+                    //        $('#divPostsLoader').empty();
+                    //    }
+
+                    //})
+                };
+
+                $(window).scroll(function () {
+                    if ($(window).scrollTop() == $(document).height()  - $(window).height()) {
+                        lastPostFunc();
+                    }
+                });
+
+    $('.carousel').carousel({
+      interval: 3000
+    })
+  });
+
+        
+        //Listview
+
+$('.listview button').on('click',function(e) {
+    if ($(this).hasClass('three_view')) {
+        $('.featured_items ul').removeClass('four_items');
+    }
+    else if($(this).hasClass('four_view')) {
+        $('.featured_items ul').addClass('four_items');
+    }
+});
+
+$('.listview button').click(function(e) {
+    e.preventDefault(); //prevent the link from being followed
+    $('.listview button').removeClass('selected');
+    $(this).addClass('selected');
+});
+     
+
+/*Price slider */
+
+     $("[data-slider]")
+    .each(function () {
+      var input = $(this);
+      $("<span>")
+        .addClass("output")
+        .insertAfter($(this));
+    })
+    .bind("slider:ready slider:changed", function (event, data) {
+      $(this)
+        .nextAll(".output:first")
+          .html(data.value.toFixed(3));
+    });
+        </script>
+        <script type="text/javascript">
+    $(document).ready(function(){
+        var minPrice = 0;
+        var maxPrice = 0;
+        if ($('#productPriceFilterMinValue').length > 0) {
+            minPrice = $('#productPriceFilterMinValue').val();
+        }
+
+        if ($('#productPriceFilterMaxValue').length > 0) {
+            maxPrice = $('#productPriceFilterMaxValue').val();
+        }
+        if (minPrice == 0 && maxPrice == 0) {
+            $("div[id='priceFilter']").hide();
+        }
+        else {
+            $("#range_04").ionRangeSlider({
+                type: "double",
+                grid: true,
+                min: minPrice,
+                max: maxPrice
+                //from: 1500,
+                //to: 5000
+            });
+        }
+
+       $("#range_03").ionRangeSlider({
+    type: "double",
+    grid: true,
+    min: 0,
+    max: 1000,
+    from: 200,
+    to: 800,
+    prefix: "$"
+});
+
+    });
+
+    //scroll
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+$(document).ready(function() {
+            // Show or hide the sticky footer button
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 200) {
+                    $('.to-top').fadeIn(200);
+                } else {
+                    $('.to-top').fadeOut(200);
+                }
+            });
+            
+            // Animate the scroll to top
+            $('.to-top').click(function(event) {
+                event.preventDefault();
+                
+                $('html, body').animate({scrollTop: 0}, 300);
+            })
+        });
+</script>
+
+}

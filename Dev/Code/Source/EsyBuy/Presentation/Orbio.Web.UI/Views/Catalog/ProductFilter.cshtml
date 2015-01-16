@@ -1,0 +1,17 @@
+﻿@model List<Orbio.Web.UI.Models.Catalog.SpecificationAttribute>
+ <div class="left-sidebar">
+                    
+                    <div class="filter_by">FILTER BY</div>    
+                    
+                        @foreach (var attr in this.Model)
+                        {
+                            if (attr.SpecificationAttributeOptions.Count > 0)
+                            {
+                                Html.RenderPartial(attr.Type + "Filter", attr);
+                            }
+                        }
+                        
+                      
+                                              
+                        
+                    </div>

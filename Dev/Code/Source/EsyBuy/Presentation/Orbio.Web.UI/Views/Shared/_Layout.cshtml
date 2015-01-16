@@ -1,0 +1,342 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="@ViewBag.MetaDescription">
+        <meta name="author" content="">
+        <meta name="keywords" content="@ViewBag.MetaKeywords" />
+       
+        <title>ESYBUY</title>
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,100,300,700,900' rel='stylesheet' type='text/css'>
+        @Styles.Render("~/Content/css")
+         <link rel="shortcut icon" href="~/images/Basic_image/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/Basic_image/favicon-114x114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/Basic_image/favicon-72x72.png">
+        @Scripts.Render("~/bundles/modernizr")
+       
+    </head>
+    <body>
+       <header id="header">
+        <div class="top-bar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5 col-sm-3 col-xs-12">
+                        <div class="top-number"><p><i class="phone"></i> Call: 800 ESYBUY (379289)</p></div>
+                    </div>
+                    <div class="col-md-7 col-sm-9 col-xs-8">
+                       
+                     <ul class="top_rgt_menu hidden-xs">
+                     <li><a href="">Free Delivery<span class="manatory">*</span></a>
+                     <p class="tooltips">Free Delivery applicable on Fashion and promotional products</p>
+                     </li>
+                     <li><a href="">Free Exchanges</a>
+                     <p class="tooltips">No charges for exchange</p>
+                     </li>
+                     <li><a href="">Cash on Delivery</a></li>
+                     <li><a href="">One Year Warranty</a><span class="manatory">*</span></li>
+                     <li class="notification"><a href=""><i class="noti_flag"></i>NOTIFICATION</a></li>                     
+                     </ul>
+
+
+                    </div>
+                </div>
+            </div><!--/.container-->
+        </div><!--/.top-bar-->
+
+      <section id="slider_text">            
+                    <div id="slider-carousel" class="carousel slide" data-ride="carousel">
+                        
+                        <div class="carousel-inner">
+                            <div class="item active">       
+                            <div class="col-sm-12">                     
+                                <div class="mobile_slide"><p><i class="phone"></i> Call: 800 ESYBUY (379289)</p></div>
+                            </div>
+                            </div>
+
+                            <div class="item">
+                            <div class="col-sm-12"> 
+                                <div class="mobile_slide"><p><i class="cash_dev"></i> CASH ON DELIVERY</p></div>
+                            </div>
+                            </div>
+                            
+                            <div class="item">
+                            <div class="col-sm-12"> 
+                               <div class="mobile_slide"><p><i class="exchange"></i> FREE EXCHANGE</p></div>
+                            </div>
+                            </div>
+
+                            <div class="item">
+                            <div class="col-sm-12"> 
+                               <div class="mobile_slide"><p><i class="free_deliv"></i> FREE DELIVERY</p></div>
+                            </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+    </section>
+
+        <nav class="navbar navbar-inverse inner" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    
+                </div>
+                <div class="clear"></div>
+                <div class="row search_menu">
+                <div class="col-sm-3 col-md-3">
+                <a class="navbar-brand" href="@Url.Action("Index", "Home")"><img src="images/Basic_image/Esybuy-Logo.png" alt="logo"></a>
+                </div>
+                <div class="col-sm-5 col-md-5">
+                <button id="toggle">  </button>
+
+              <div class="search target">
+                                <form role="form">
+                                    <input type="text" class="header_search" autocomplete="off" placeholder="Search for product brand & more...">
+                                    <input type="button" class="search_butt">
+                                </form>
+                           </div> 
+
+                           <i class="cart_icon"></i>      
+                           </div>
+
+<div class="col-sm-4 col-md-4">
+<div class="account_menu">
+<div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+    <img src="images/Basic_image/user.png" class="account_img" />Account
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">My Account</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Tracking</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Setting</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Logout</a></li>
+  </ul>
+</div>
+</div>
+<div class="my_cart"><a href=""><i class="cart_icon"></i>MY CART</a></div>
+
+</div>
+</div>
+                <div class="clear"></div>
+
+                <div class="main_menu">
+                   @Html.Action("TopMenu", "Catalog")
+                </div>
+
+            </div><!--/.container-->
+        </nav><!--/nav-->
+        
+    </header><!--/header-->
+      
+        @RenderBody()
+           
+         <footer id="footer" >
+    <div class="footer_top">
+     
+        <div class="container">
+        <div class="normal_view">
+           <div class="row">
+
+                <div class="col-sm-3">
+                    <h1>ESY BUY</h1>
+ <ul class="foot_menu">
+                        <li><a href="#">Who are we?</a></li>
+                        <li><a href="#">Help & Policies</a></li>
+                        <li><a href="#">Terms  & Conditions</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">In the Press</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                <h1>MY ACCOUNT</h1>
+                    <ul class="foot_menu">
+                        <li><a href="#">Account</a></li>
+                        <li><a href="#">New Registration</a></li>
+                        <li><a href="#">Subscrible/Unsubscrible</a></li>
+                        <li><a href="#">My Account</a></li>
+                        <li><a href="#">My Shopping Cart</a></li>
+                        <li><a href="#">Forget Password</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-sm-3">
+                <h1>POLICIES</h1>
+                    <ul class="foot_menu">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Return & Exchange Policy</a></li>
+                        <li><a href="#">Return a Product</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-sm-3">
+                <h1>HOW DO I</h1>
+                 <ul class="foot_menu">
+                        <li><a href="#">Buy a ESY BUY Product</a></li>
+                        <li><a href="#">Pay for my order</a></li>
+                        <li><a href="#">Track my Order</a></li>
+                        <li><a href="#">Use Promo Code</a></li>
+                        <li><a href="#">Add Compliant</a></li>
+                    </ul>
+                    
+                </div>
+                </div>
+            </div>
+
+
+
+            <!-- Responsive -->
+              
+                <div class="hidden-md hidden-lg hidden-sm">
+<div class="row">
+                <div class="responsive_footer">
+    
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="collapsed">
+          <i class="plus_icon"></i>ESY BUY
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+     <ul class="foot_menu">
+                        <li><a href="#">Who are we?</a></li>
+                        <li><a href="#">Help & Policies</a></li>
+                        <li><a href="#">Terms  & Conditions</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">In the Press</a></li>
+                    </ul>
+
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" class="collapsed">
+         <i class="plus_icon"></i> MY ACCOUNT
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="panel-body">
+        
+     <ul class="foot_menu">
+                        <li><a href="#">Account</a></li>
+                        <li><a href="#">New Registration</a></li>
+                        <li><a href="#">Subscrible/Unsubscrible</a></li>
+                        <li><a href="#">My Account</a></li>
+                        <li><a href="#">My Shopping Cart</a></li>
+                        <li><a href="#">Forget Password</a></li>
+                    </ul>
+
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingThree">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree" class="collapsed">
+         <i class="plus_icon"></i> Mobile Type
+        </a>
+      </h4>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+      <div class="panel-body">
+        
+       <ul class="foot_menu">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Return & Exchange Policy</a></li>
+                        <li><a href="#">Return a Product</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+
+      </div>
+    </div>  
+  </div>
+  
+</div>
+</div>
+</div>
+    
+</div>
+
+            <!-- Responsive -->
+        </div>
+        </div>
+
+        <div class="foot_bottom">
+        <div class="container">
+        
+        <div class="note_about">
+        <h1>A Note about us</h1>
+        <p>EsyBuy.com is one of the fastest growing e-commerce portals providing a massive collection of high-quality and branded products
+catering to consumer electronics and fashion. This 24x7 premium online store has operations localized in the entire UAE, and offers 
+Customers a range of products that seconds none otherr in the online space.</p>
+</div>
+        <div class="foot_Pay_social">
+          <div class="row">
+
+                <div class="col-sm-5">
+                <div class="Pay_method">
+<h1>PAYMENT METHODS</h1>
+<ul>
+<li><a href="" class="visa"></a></li>
+<li><a href="" class="master"></a></li>
+<li><a href="" class="amer"></a></li>
+<li><a href="" class="cod"></a></li>
+<li><a href="" class="net_pay"></a></li>
+</ul>
+                </div>
+                </div>
+
+                  <div class="col-sm-2">
+
+<img src="images/Basic_image/Esybuy-guarantee.png" class="esybuy_grant" >
+                </div>
+
+
+                  <div class="col-sm-5">
+
+ <div class="social_net">
+<h1>WE ARE SOCIAL</h1>
+<ul>
+<li><a href="" class="facebook"></a></li>
+<li><a href="" class="digg"></a></li>
+<li><a href="" class="insta"></a></li>
+<li><a href="" class="twitter"></a></li>
+</ul>
+                </div>
+
+                </div>
+
+                </div>
+        </div>
+</div>
+<div class="copyright">&copy; 2014 <a target="_blank" href="#">ESY BUY.COM</a>. All Rights Reserved.
+        </div>
+
+        <a href="#" class="to-top"></a>
+
+    </footer><!--/#footer-->
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryui")
+        @RenderSection("scripts", required: false)
+
+        @section scripts {
+         
+            }
+    </body>
+</html>
