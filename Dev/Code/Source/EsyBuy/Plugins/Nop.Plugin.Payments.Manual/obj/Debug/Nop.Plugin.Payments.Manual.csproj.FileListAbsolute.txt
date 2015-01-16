@@ -1,0 +1,62 @@
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Payments.Manual\Description.txt
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Payments.Manual\logo.jpg
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Payments.Manual\Nop.Plugin.Payments.Manual.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Payments.Manual\Nop.Plugin.Payments.Manual.pdb
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.Payments.Manual\obj\Debug\Nop.Plugin.Payments.Manual.dll
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.Payments.Manual\obj\Debug\Nop.Plugin.Payments.Manual.pdb
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.Payments.Manual\obj\Debug\Nop.Plugin.Payments.Manual.csprojResolveAssemblyReference.cache
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.Manual\Description.txt
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.Manual\logo.jpg
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.Manual\Nop.Plugin.Payments.Manual.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.Manual\Nop.Plugin.Payments.Manual.pdb
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Plugins\Nop.Plugin.Payments.Manual\obj\Debug\Nop.Plugin.Payments.Manual.csprojResolveAssemblyReference.cache
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Plugins\Nop.Plugin.Payments.Manual\obj\Debug\Nop.Plugin.Payments.Manual.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Plugins\Nop.Plugin.Payments.Manual\obj\Debug\Nop.Plugin.Payments.Manual.pdb
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.Manual\Description.txt
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.Manual\logo.jpg
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.Manual\Nop.Plugin.Payments.Manual.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.Manual\Nop.Plugin.Payments.Manual.pdb
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.Payments.Manual\obj\Debug\Nop.Plugin.Payments.Manual.csprojResolveAssemblyReference.cache
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.Payments.Manual\obj\Debug\Nop.Plugin.Payments.Manual.dll
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.Payments.Manual\obj\Debug\Nop.Plugin.Payments.Manual.pdb
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.Manual\Description.txt
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.Manual\logo.jpg
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.Manual\Nop.Plugin.Payments.Manual.dll
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.Manual\Nop.Plugin.Payments.Manual.pdb
+D:\EsyBuy Source\Plugins\Nop.Plugin.Payments.Manual\obj\Debug\Nop.Plugin.Payments.Manual.csprojResolveAssemblyReference.cache
+D:\EsyBuy Source\Plugins\Nop.Plugin.Payments.Manual\obj\Debug\Nop.Plugin.Payments.Manual.dll
+D:\EsyBuy Source\Plugins\Nop.Plugin.Payments.Manual\obj\Debug\Nop.Plugin.Payments.Manual.pdb
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.Manual\Description.txt
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.Manual\logo.jpg
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.Manual\Nop.Plugin.Payments.Manual.dll
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.Manual\Nop.Plugin.Payments.Manual.pdb
+D:\24_03_2014\EsyBuy Source\Plugins\Nop.Plugin.Payments.Manual\obj\Debug\Nop.Plugin.Payments.Manual.dll
+D:\24_03_2014\EsyBuy Source\Plugins\Nop.Plugin.Payments.Manual\obj\Debug\Nop.Plugin.Payments.Manual.pdb
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Payments.Manual\Description.txt
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Payments.Manual\logo.jpg
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Payments.Manual\Nop.Plugin.Payments.Manual.dll
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Payments.Manual\Nop.Plugin.Payments.Manual.pdb
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Plugins\Nop.Plugin.Payments.Manual\obj\Debug\Nop.Plugin.Payments.Manual.csprojResolveAssemblyReference.cache
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Plugins\Nop.Plugin.Payments.Manual\obj\Debug\Nop.Plugin.Payments.Manual.dll
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Plugins\Nop.Plugin.Payments.Manual\obj\Debug\Nop.Plugin.Payments.Manual.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Payments.Manual\Description.txt
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Payments.Manual\logo.jpg
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Payments.Manual\Nop.Plugin.Payments.Manual.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Payments.Manual\Nop.Plugin.Payments.Manual.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Plugins\Nop.Plugin.Payments.Manual\obj\Debug\Nop.Plugin.Payments.Manual.csprojResolveAssemblyReference.cache
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Plugins\Nop.Plugin.Payments.Manual\obj\Debug\Nop.Plugin.Payments.Manual.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Plugins\Nop.Plugin.Payments.Manual\obj\Debug\Nop.Plugin.Payments.Manual.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Payments.Manual\Description.txt
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Payments.Manual\logo.jpg
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Payments.Manual\Nop.Plugin.Payments.Manual.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Payments.Manual\Nop.Plugin.Payments.Manual.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Plugins\Nop.Plugin.Payments.Manual\obj\Debug\Nop.Plugin.Payments.Manual.csprojResolveAssemblyReference.cache
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Plugins\Nop.Plugin.Payments.Manual\obj\Debug\Nop.Plugin.Payments.Manual.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Plugins\Nop.Plugin.Payments.Manual\obj\Debug\Nop.Plugin.Payments.Manual.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Payments.Manual\Description.txt
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Payments.Manual\logo.jpg
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Payments.Manual\Nop.Plugin.Payments.Manual.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Payments.Manual\Nop.Plugin.Payments.Manual.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Payments.Manual\obj\Debug\Nop.Plugin.Payments.Manual.csprojResolveAssemblyReference.cache
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Payments.Manual\obj\Debug\Nop.Plugin.Payments.Manual.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Payments.Manual\obj\Debug\Nop.Plugin.Payments.Manual.pdb

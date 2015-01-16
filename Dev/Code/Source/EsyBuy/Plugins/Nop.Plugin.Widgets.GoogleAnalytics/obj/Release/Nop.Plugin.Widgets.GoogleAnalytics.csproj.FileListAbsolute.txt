@@ -1,0 +1,12 @@
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Widgets.GoogleAnalytics\Description.txt
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Widgets.GoogleAnalytics\logo.jpg
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Widgets.GoogleAnalytics\Nop.Plugin.Widgets.GoogleAnalytics.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Widgets.GoogleAnalytics\Nop.Plugin.Widgets.GoogleAnalytics.pdb
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.Widgets.GoogleAnalytics\obj\Release\Nop.Plugin.Widgets.GoogleAnalytics.dll
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.Widgets.GoogleAnalytics\obj\Release\Nop.Plugin.Widgets.GoogleAnalytics.pdb
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.GoogleAnalytics\Description.txt
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.GoogleAnalytics\logo.jpg
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.GoogleAnalytics\Nop.Plugin.Widgets.GoogleAnalytics.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.GoogleAnalytics\Nop.Plugin.Widgets.GoogleAnalytics.pdb
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.Widgets.GoogleAnalytics\obj\Release\Nop.Plugin.Widgets.GoogleAnalytics.dll
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.Widgets.GoogleAnalytics\obj\Release\Nop.Plugin.Widgets.GoogleAnalytics.pdb

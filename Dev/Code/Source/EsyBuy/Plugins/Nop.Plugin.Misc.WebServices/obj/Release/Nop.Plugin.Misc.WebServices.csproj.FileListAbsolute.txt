@@ -1,0 +1,16 @@
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Misc.WebServices\Description.txt
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Misc.WebServices\logo.jpg
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Misc.WebServices\Remote\NopService.svc
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Misc.WebServices\Remote\web.config
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Misc.WebServices\Nop.Plugin.Misc.WebServices.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Misc.WebServices\Nop.Plugin.Misc.WebServices.pdb
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.Misc.WebServices\obj\Release\Nop.Plugin.Misc.WebServices.dll
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.Misc.WebServices\obj\Release\Nop.Plugin.Misc.WebServices.pdb
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.WebServices\Description.txt
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.WebServices\logo.jpg
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.WebServices\Remote\NopService.svc
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.WebServices\Remote\web.config
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.WebServices\Nop.Plugin.Misc.WebServices.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.WebServices\Nop.Plugin.Misc.WebServices.pdb
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.Misc.WebServices\obj\Release\Nop.Plugin.Misc.WebServices.dll
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.Misc.WebServices\obj\Release\Nop.Plugin.Misc.WebServices.pdb

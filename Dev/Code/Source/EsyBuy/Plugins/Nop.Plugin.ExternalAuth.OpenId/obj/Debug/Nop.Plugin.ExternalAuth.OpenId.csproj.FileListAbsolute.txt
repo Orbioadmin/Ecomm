@@ -1,0 +1,882 @@
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Description.txt
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\aol.gif
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\facebook.gif
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\google.gif
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\mailru.gif
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\myopenid.gif
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\openid.gif
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\rambler.gif
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\verisign.gif
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\vkontakte.gif
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\yahoo.gif
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\yandex.gif
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\aol.ico
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\aol.ico.gif
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\aol.ico.png
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\blogger.ico
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\blogger.ico.gif
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\blogger.ico.png
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\claimid.ico
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\claimid.ico.gif
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\claimid.ico.png
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\clickpass.ico
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\clickpass.ico.gif
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\clickpass.ico.png
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\facebook.ico
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\facebook.ico.gif
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\facebook.ico.png
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\flickr.ico
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\flickr.ico.gif
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\flickr.ico.png
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google.ico
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google.ico.gif
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google.ico.png
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google_profile.ico
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google_profile.ico.gif
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google_profile.ico.png
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\launchpad.ico
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\launchpad.ico.gif
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\launchpad.ico.png
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\linkedin.ico
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\linkedin.ico.gif
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\linkedin.ico.png
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\livejournal.ico
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\livejournal.ico.gif
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\livejournal.ico.png
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\mailru.ico
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\mailru.ico.gif
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\mailru.ico.png
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\myopenid.ico
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\myopenid.ico.gif
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\myopenid.ico.png
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\openid.ico
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\openid.ico.gif
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\openid.ico.png
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\rambler.ico
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\rambler.ico.gif
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\rambler.ico.png
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\technorati.ico
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\technorati.ico.gif
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\technorati.ico.png
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\twitter.ico
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\twitter.ico.gif
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\twitter.ico.png
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\verisign.ico
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\verisign.ico.gif
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\verisign.ico.png
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vidoop.ico
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vidoop.ico.gif
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vidoop.ico.png
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vkontakte.ico
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vkontakte.ico.gif
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vkontakte.ico.png
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\winliveid.ico
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\winliveid.ico.gif
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\winliveid.ico.png
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\wordpress.ico
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\wordpress.ico.gif
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\wordpress.ico.png
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yahoo.ico
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yahoo.ico.gif
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yahoo.ico.png
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yandex.ico
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yandex.ico.gif
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yandex.ico.png
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images\openid-inputicon.gif
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images\openid-providers-en.png
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images\openid-providers-ru.png
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\openidstyles.css
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\logo.jpg
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Scripts\openid-en.js
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Scripts\openid-jquery-1.3b1.js
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Nop.Plugin.ExternalAuth.OpenId.dll.config
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Nop.Plugin.ExternalAuth.OpenId.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Nop.Plugin.ExternalAuth.OpenId.pdb
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.ExternalAuth.OpenId\obj\Debug\Nop.Plugin.ExternalAuth.OpenId.csproj.App.config
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.ExternalAuth.OpenId\obj\Debug\Nop.Plugin.ExternalAuth.OpenId.csprojResolveAssemblyReference.cache
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.ExternalAuth.OpenId\obj\Debug\Nop.Plugin.ExternalAuth.OpenId.dll
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.ExternalAuth.OpenId\obj\Debug\Nop.Plugin.ExternalAuth.OpenId.pdb
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Description.txt
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\aol.gif
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\facebook.gif
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\google.gif
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\mailru.gif
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\myopenid.gif
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\openid.gif
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\rambler.gif
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\verisign.gif
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\vkontakte.gif
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\yahoo.gif
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\yandex.gif
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\aol.ico
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\aol.ico.gif
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\aol.ico.png
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\blogger.ico
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\blogger.ico.gif
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\blogger.ico.png
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\claimid.ico
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\claimid.ico.gif
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\claimid.ico.png
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\clickpass.ico
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\clickpass.ico.gif
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\clickpass.ico.png
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\facebook.ico
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\facebook.ico.gif
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\facebook.ico.png
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\flickr.ico
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\flickr.ico.gif
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\flickr.ico.png
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google.ico
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google.ico.gif
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google.ico.png
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google_profile.ico
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google_profile.ico.gif
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google_profile.ico.png
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\launchpad.ico
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\launchpad.ico.gif
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\launchpad.ico.png
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\linkedin.ico
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\linkedin.ico.gif
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\linkedin.ico.png
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\livejournal.ico
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\livejournal.ico.gif
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\livejournal.ico.png
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\mailru.ico
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\mailru.ico.gif
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\mailru.ico.png
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\myopenid.ico
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\myopenid.ico.gif
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\myopenid.ico.png
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\openid.ico
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\openid.ico.gif
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\openid.ico.png
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\rambler.ico
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\rambler.ico.gif
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\rambler.ico.png
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\technorati.ico
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\technorati.ico.gif
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\technorati.ico.png
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\twitter.ico
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\twitter.ico.gif
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\twitter.ico.png
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\verisign.ico
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\verisign.ico.gif
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\verisign.ico.png
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vidoop.ico
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vidoop.ico.gif
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vidoop.ico.png
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vkontakte.ico
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vkontakte.ico.gif
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vkontakte.ico.png
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\winliveid.ico
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\winliveid.ico.gif
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\winliveid.ico.png
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\wordpress.ico
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\wordpress.ico.gif
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\wordpress.ico.png
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yahoo.ico
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yahoo.ico.gif
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yahoo.ico.png
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yandex.ico
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yandex.ico.gif
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yandex.ico.png
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images\openid-inputicon.gif
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images\openid-providers-en.png
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images\openid-providers-ru.png
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\openidstyles.css
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\logo.jpg
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Scripts\openid-en.js
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Scripts\openid-jquery-1.3b1.js
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Nop.Plugin.ExternalAuth.OpenId.dll.config
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Nop.Plugin.ExternalAuth.OpenId.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Nop.Plugin.ExternalAuth.OpenId.pdb
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Plugins\Nop.Plugin.ExternalAuth.OpenId\obj\Debug\Nop.Plugin.ExternalAuth.OpenId.csproj.App.config
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Plugins\Nop.Plugin.ExternalAuth.OpenId\obj\Debug\Nop.Plugin.ExternalAuth.OpenId.csprojResolveAssemblyReference.cache
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Plugins\Nop.Plugin.ExternalAuth.OpenId\obj\Debug\Nop.Plugin.ExternalAuth.OpenId.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Plugins\Nop.Plugin.ExternalAuth.OpenId\obj\Debug\Nop.Plugin.ExternalAuth.OpenId.pdb
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Description.txt
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\aol.gif
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\facebook.gif
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\google.gif
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\mailru.gif
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\myopenid.gif
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\openid.gif
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\rambler.gif
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\verisign.gif
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\vkontakte.gif
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\yahoo.gif
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\yandex.gif
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\aol.ico
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\aol.ico.gif
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\aol.ico.png
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\blogger.ico
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\blogger.ico.gif
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\blogger.ico.png
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\claimid.ico
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\claimid.ico.gif
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\claimid.ico.png
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\clickpass.ico
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\clickpass.ico.gif
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\clickpass.ico.png
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\facebook.ico
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\facebook.ico.gif
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\facebook.ico.png
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\flickr.ico
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\flickr.ico.gif
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\flickr.ico.png
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google.ico
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google.ico.gif
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google.ico.png
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google_profile.ico
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google_profile.ico.gif
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google_profile.ico.png
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\launchpad.ico
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\launchpad.ico.gif
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\launchpad.ico.png
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\linkedin.ico
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\linkedin.ico.gif
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\linkedin.ico.png
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\livejournal.ico
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\livejournal.ico.gif
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\livejournal.ico.png
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\mailru.ico
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\mailru.ico.gif
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\mailru.ico.png
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\myopenid.ico
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\myopenid.ico.gif
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\myopenid.ico.png
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\openid.ico
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\openid.ico.gif
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\openid.ico.png
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\rambler.ico
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\rambler.ico.gif
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\rambler.ico.png
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\technorati.ico
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\technorati.ico.gif
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\technorati.ico.png
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\twitter.ico
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\twitter.ico.gif
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\twitter.ico.png
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\verisign.ico
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\verisign.ico.gif
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\verisign.ico.png
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vidoop.ico
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vidoop.ico.gif
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vidoop.ico.png
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vkontakte.ico
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vkontakte.ico.gif
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vkontakte.ico.png
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\winliveid.ico
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\winliveid.ico.gif
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\winliveid.ico.png
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\wordpress.ico
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\wordpress.ico.gif
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\wordpress.ico.png
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yahoo.ico
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yahoo.ico.gif
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yahoo.ico.png
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yandex.ico
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yandex.ico.gif
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yandex.ico.png
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images\openid-inputicon.gif
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images\openid-providers-en.png
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images\openid-providers-ru.png
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\openidstyles.css
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\logo.jpg
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Scripts\openid-en.js
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Scripts\openid-jquery-1.3b1.js
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Nop.Plugin.ExternalAuth.OpenId.dll.config
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Nop.Plugin.ExternalAuth.OpenId.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Nop.Plugin.ExternalAuth.OpenId.pdb
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.ExternalAuth.OpenId\obj\Debug\Nop.Plugin.ExternalAuth.OpenId.csproj.App.config
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.ExternalAuth.OpenId\obj\Debug\Nop.Plugin.ExternalAuth.OpenId.csprojResolveAssemblyReference.cache
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.ExternalAuth.OpenId\obj\Debug\Nop.Plugin.ExternalAuth.OpenId.dll
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.ExternalAuth.OpenId\obj\Debug\Nop.Plugin.ExternalAuth.OpenId.pdb
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Description.txt
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\aol.gif
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\facebook.gif
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\google.gif
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\mailru.gif
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\myopenid.gif
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\openid.gif
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\rambler.gif
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\verisign.gif
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\vkontakte.gif
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\yahoo.gif
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\yandex.gif
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\aol.ico
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\aol.ico.gif
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\aol.ico.png
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\blogger.ico
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\blogger.ico.gif
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\blogger.ico.png
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\claimid.ico
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\claimid.ico.gif
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\claimid.ico.png
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\clickpass.ico
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\clickpass.ico.gif
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\clickpass.ico.png
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\facebook.ico
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\facebook.ico.gif
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\facebook.ico.png
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\flickr.ico
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\flickr.ico.gif
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\flickr.ico.png
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google.ico
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google.ico.gif
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google.ico.png
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google_profile.ico
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google_profile.ico.gif
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google_profile.ico.png
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\launchpad.ico
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\launchpad.ico.gif
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\launchpad.ico.png
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\linkedin.ico
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\linkedin.ico.gif
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\linkedin.ico.png
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\livejournal.ico
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\livejournal.ico.gif
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\livejournal.ico.png
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\mailru.ico
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\mailru.ico.gif
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\mailru.ico.png
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\myopenid.ico
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\myopenid.ico.gif
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\myopenid.ico.png
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\openid.ico
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\openid.ico.gif
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\openid.ico.png
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\rambler.ico
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\rambler.ico.gif
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\rambler.ico.png
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\technorati.ico
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\technorati.ico.gif
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\technorati.ico.png
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\twitter.ico
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\twitter.ico.gif
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\twitter.ico.png
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\verisign.ico
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\verisign.ico.gif
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\verisign.ico.png
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vidoop.ico
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vidoop.ico.gif
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vidoop.ico.png
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vkontakte.ico
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vkontakte.ico.gif
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vkontakte.ico.png
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\winliveid.ico
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\winliveid.ico.gif
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\winliveid.ico.png
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\wordpress.ico
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\wordpress.ico.gif
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\wordpress.ico.png
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yahoo.ico
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yahoo.ico.gif
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yahoo.ico.png
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yandex.ico
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yandex.ico.gif
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yandex.ico.png
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images\openid-inputicon.gif
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images\openid-providers-en.png
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images\openid-providers-ru.png
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\openidstyles.css
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\logo.jpg
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Scripts\openid-en.js
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Scripts\openid-jquery-1.3b1.js
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Nop.Plugin.ExternalAuth.OpenId.dll.config
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Nop.Plugin.ExternalAuth.OpenId.dll
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Nop.Plugin.ExternalAuth.OpenId.pdb
+D:\EsyBuy Source\Plugins\Nop.Plugin.ExternalAuth.OpenId\obj\Debug\Nop.Plugin.ExternalAuth.OpenId.csproj.App.config
+D:\EsyBuy Source\Plugins\Nop.Plugin.ExternalAuth.OpenId\obj\Debug\Nop.Plugin.ExternalAuth.OpenId.csprojResolveAssemblyReference.cache
+D:\EsyBuy Source\Plugins\Nop.Plugin.ExternalAuth.OpenId\obj\Debug\Nop.Plugin.ExternalAuth.OpenId.dll
+D:\EsyBuy Source\Plugins\Nop.Plugin.ExternalAuth.OpenId\obj\Debug\Nop.Plugin.ExternalAuth.OpenId.pdb
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Description.txt
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\aol.gif
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\facebook.gif
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\google.gif
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\mailru.gif
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\myopenid.gif
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\openid.gif
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\rambler.gif
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\verisign.gif
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\vkontakte.gif
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\yahoo.gif
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\yandex.gif
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\aol.ico
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\aol.ico.gif
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\aol.ico.png
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\blogger.ico
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\blogger.ico.gif
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\blogger.ico.png
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\claimid.ico
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\claimid.ico.gif
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\claimid.ico.png
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\clickpass.ico
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\clickpass.ico.gif
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\clickpass.ico.png
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\facebook.ico
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\facebook.ico.gif
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\facebook.ico.png
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\flickr.ico
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\flickr.ico.gif
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\flickr.ico.png
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google.ico
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google.ico.gif
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google.ico.png
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google_profile.ico
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google_profile.ico.gif
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google_profile.ico.png
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\launchpad.ico
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\launchpad.ico.gif
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\launchpad.ico.png
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\linkedin.ico
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\linkedin.ico.gif
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\linkedin.ico.png
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\livejournal.ico
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\livejournal.ico.gif
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\livejournal.ico.png
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\mailru.ico
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\mailru.ico.gif
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\mailru.ico.png
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\myopenid.ico
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\myopenid.ico.gif
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\myopenid.ico.png
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\openid.ico
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\openid.ico.gif
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\openid.ico.png
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\rambler.ico
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\rambler.ico.gif
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\rambler.ico.png
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\technorati.ico
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\technorati.ico.gif
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\technorati.ico.png
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\twitter.ico
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\twitter.ico.gif
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\twitter.ico.png
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\verisign.ico
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\verisign.ico.gif
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\verisign.ico.png
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vidoop.ico
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vidoop.ico.gif
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vidoop.ico.png
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vkontakte.ico
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vkontakte.ico.gif
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vkontakte.ico.png
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\winliveid.ico
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\winliveid.ico.gif
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\winliveid.ico.png
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\wordpress.ico
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\wordpress.ico.gif
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\wordpress.ico.png
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yahoo.ico
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yahoo.ico.gif
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yahoo.ico.png
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yandex.ico
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yandex.ico.gif
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yandex.ico.png
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images\openid-inputicon.gif
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images\openid-providers-en.png
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images\openid-providers-ru.png
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\openidstyles.css
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\logo.jpg
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Scripts\openid-en.js
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Scripts\openid-jquery-1.3b1.js
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Nop.Plugin.ExternalAuth.OpenId.dll.config
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Nop.Plugin.ExternalAuth.OpenId.dll
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Nop.Plugin.ExternalAuth.OpenId.pdb
+D:\24_03_2014\EsyBuy Source\Plugins\Nop.Plugin.ExternalAuth.OpenId\obj\Debug\Nop.Plugin.ExternalAuth.OpenId.csproj.App.config
+D:\24_03_2014\EsyBuy Source\Plugins\Nop.Plugin.ExternalAuth.OpenId\obj\Debug\Nop.Plugin.ExternalAuth.OpenId.csprojResolveAssemblyReference.cache
+D:\24_03_2014\EsyBuy Source\Plugins\Nop.Plugin.ExternalAuth.OpenId\obj\Debug\Nop.Plugin.ExternalAuth.OpenId.dll
+D:\24_03_2014\EsyBuy Source\Plugins\Nop.Plugin.ExternalAuth.OpenId\obj\Debug\Nop.Plugin.ExternalAuth.OpenId.pdb
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Description.txt
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\aol.gif
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\facebook.gif
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\google.gif
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\mailru.gif
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\myopenid.gif
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\openid.gif
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\rambler.gif
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\verisign.gif
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\vkontakte.gif
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\yahoo.gif
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\yandex.gif
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\aol.ico
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\aol.ico.gif
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\aol.ico.png
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\blogger.ico
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\blogger.ico.gif
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\blogger.ico.png
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\claimid.ico
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\claimid.ico.gif
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\claimid.ico.png
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\clickpass.ico
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\clickpass.ico.gif
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\clickpass.ico.png
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\facebook.ico
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\facebook.ico.gif
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\facebook.ico.png
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\flickr.ico
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\flickr.ico.gif
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\flickr.ico.png
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google.ico
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google.ico.gif
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google.ico.png
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google_profile.ico
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google_profile.ico.gif
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google_profile.ico.png
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\launchpad.ico
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\launchpad.ico.gif
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\launchpad.ico.png
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\linkedin.ico
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\linkedin.ico.gif
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\linkedin.ico.png
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\livejournal.ico
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\livejournal.ico.gif
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\livejournal.ico.png
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\mailru.ico
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\mailru.ico.gif
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\mailru.ico.png
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\myopenid.ico
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\myopenid.ico.gif
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\myopenid.ico.png
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\openid.ico
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\openid.ico.gif
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\openid.ico.png
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\rambler.ico
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\rambler.ico.gif
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\rambler.ico.png
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\technorati.ico
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\technorati.ico.gif
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\technorati.ico.png
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\twitter.ico
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\twitter.ico.gif
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\twitter.ico.png
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\verisign.ico
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\verisign.ico.gif
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\verisign.ico.png
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vidoop.ico
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vidoop.ico.gif
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vidoop.ico.png
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vkontakte.ico
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vkontakte.ico.gif
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vkontakte.ico.png
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\winliveid.ico
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\winliveid.ico.gif
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\winliveid.ico.png
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\wordpress.ico
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\wordpress.ico.gif
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\wordpress.ico.png
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yahoo.ico
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yahoo.ico.gif
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yahoo.ico.png
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yandex.ico
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yandex.ico.gif
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yandex.ico.png
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images\openid-inputicon.gif
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images\openid-providers-en.png
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images\openid-providers-ru.png
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\openidstyles.css
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\logo.jpg
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Scripts\openid-en.js
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Scripts\openid-jquery-1.3b1.js
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Nop.Plugin.ExternalAuth.OpenId.dll.config
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Nop.Plugin.ExternalAuth.OpenId.dll
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Nop.Plugin.ExternalAuth.OpenId.pdb
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Plugins\Nop.Plugin.ExternalAuth.OpenId\obj\Debug\Nop.Plugin.ExternalAuth.OpenId.csproj.App.config
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Plugins\Nop.Plugin.ExternalAuth.OpenId\obj\Debug\Nop.Plugin.ExternalAuth.OpenId.csprojResolveAssemblyReference.cache
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Plugins\Nop.Plugin.ExternalAuth.OpenId\obj\Debug\Nop.Plugin.ExternalAuth.OpenId.dll
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Plugins\Nop.Plugin.ExternalAuth.OpenId\obj\Debug\Nop.Plugin.ExternalAuth.OpenId.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Description.txt
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\aol.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\facebook.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\google.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\mailru.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\myopenid.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\openid.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\rambler.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\verisign.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\vkontakte.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\yahoo.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\yandex.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\aol.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\aol.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\aol.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\blogger.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\blogger.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\blogger.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\claimid.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\claimid.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\claimid.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\clickpass.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\clickpass.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\clickpass.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\facebook.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\facebook.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\facebook.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\flickr.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\flickr.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\flickr.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google_profile.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google_profile.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google_profile.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\launchpad.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\launchpad.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\launchpad.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\linkedin.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\linkedin.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\linkedin.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\livejournal.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\livejournal.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\livejournal.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\mailru.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\mailru.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\mailru.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\myopenid.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\myopenid.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\myopenid.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\openid.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\openid.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\openid.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\rambler.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\rambler.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\rambler.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\technorati.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\technorati.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\technorati.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\twitter.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\twitter.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\twitter.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\verisign.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\verisign.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\verisign.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vidoop.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vidoop.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vidoop.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vkontakte.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vkontakte.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vkontakte.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\winliveid.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\winliveid.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\winliveid.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\wordpress.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\wordpress.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\wordpress.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yahoo.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yahoo.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yahoo.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yandex.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yandex.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yandex.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images\openid-inputicon.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images\openid-providers-en.png
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images\openid-providers-ru.png
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\openidstyles.css
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\logo.jpg
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Scripts\openid-en.js
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Scripts\openid-jquery-1.3b1.js
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Nop.Plugin.ExternalAuth.OpenId.dll.config
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Nop.Plugin.ExternalAuth.OpenId.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Nop.Plugin.ExternalAuth.OpenId.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Plugins\Nop.Plugin.ExternalAuth.OpenId\obj\Debug\Nop.Plugin.ExternalAuth.OpenId.csproj.App.config
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Plugins\Nop.Plugin.ExternalAuth.OpenId\obj\Debug\Nop.Plugin.ExternalAuth.OpenId.csprojResolveAssemblyReference.cache
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Plugins\Nop.Plugin.ExternalAuth.OpenId\obj\Debug\Nop.Plugin.ExternalAuth.OpenId.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Plugins\Nop.Plugin.ExternalAuth.OpenId\obj\Debug\Nop.Plugin.ExternalAuth.OpenId.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Description.txt
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\aol.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\facebook.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\google.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\mailru.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\myopenid.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\openid.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\rambler.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\verisign.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\vkontakte.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\yahoo.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\yandex.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\aol.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\aol.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\aol.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\blogger.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\blogger.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\blogger.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\claimid.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\claimid.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\claimid.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\clickpass.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\clickpass.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\clickpass.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\facebook.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\facebook.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\facebook.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\flickr.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\flickr.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\flickr.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google_profile.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google_profile.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google_profile.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\launchpad.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\launchpad.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\launchpad.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\linkedin.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\linkedin.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\linkedin.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\livejournal.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\livejournal.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\livejournal.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\mailru.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\mailru.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\mailru.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\myopenid.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\myopenid.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\myopenid.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\openid.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\openid.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\openid.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\rambler.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\rambler.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\rambler.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\technorati.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\technorati.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\technorati.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\twitter.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\twitter.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\twitter.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\verisign.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\verisign.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\verisign.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vidoop.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vidoop.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vidoop.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vkontakte.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vkontakte.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vkontakte.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\winliveid.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\winliveid.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\winliveid.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\wordpress.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\wordpress.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\wordpress.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yahoo.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yahoo.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yahoo.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yandex.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yandex.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yandex.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images\openid-inputicon.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images\openid-providers-en.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images\openid-providers-ru.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\openidstyles.css
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\logo.jpg
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Scripts\openid-en.js
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Scripts\openid-jquery-1.3b1.js
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Nop.Plugin.ExternalAuth.OpenId.dll.config
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Nop.Plugin.ExternalAuth.OpenId.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Nop.Plugin.ExternalAuth.OpenId.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Plugins\Nop.Plugin.ExternalAuth.OpenId\obj\Debug\Nop.Plugin.ExternalAuth.OpenId.csproj.App.config
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Plugins\Nop.Plugin.ExternalAuth.OpenId\obj\Debug\Nop.Plugin.ExternalAuth.OpenId.csprojResolveAssemblyReference.cache
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Plugins\Nop.Plugin.ExternalAuth.OpenId\obj\Debug\Nop.Plugin.ExternalAuth.OpenId.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Plugins\Nop.Plugin.ExternalAuth.OpenId\obj\Debug\Nop.Plugin.ExternalAuth.OpenId.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Description.txt
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\aol.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\facebook.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\google.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\mailru.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\myopenid.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\openid.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\rambler.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\verisign.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\vkontakte.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\yahoo.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.large\yandex.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\aol.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\aol.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\aol.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\blogger.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\blogger.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\blogger.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\claimid.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\claimid.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\claimid.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\clickpass.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\clickpass.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\clickpass.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\facebook.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\facebook.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\facebook.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\flickr.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\flickr.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\flickr.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google_profile.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google_profile.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\google_profile.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\launchpad.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\launchpad.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\launchpad.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\linkedin.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\linkedin.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\linkedin.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\livejournal.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\livejournal.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\livejournal.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\mailru.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\mailru.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\mailru.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\myopenid.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\myopenid.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\myopenid.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\openid.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\openid.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\openid.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\rambler.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\rambler.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\rambler.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\technorati.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\technorati.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\technorati.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\twitter.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\twitter.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\twitter.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\verisign.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\verisign.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\verisign.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vidoop.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vidoop.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vidoop.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vkontakte.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vkontakte.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\vkontakte.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\winliveid.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\winliveid.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\winliveid.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\wordpress.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\wordpress.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\wordpress.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yahoo.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yahoo.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yahoo.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yandex.ico
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yandex.ico.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images.small\yandex.ico.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images\openid-inputicon.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images\openid-providers-en.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\Images\openid-selector\images\openid-providers-ru.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Content\openidstyles.css
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\logo.jpg
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Scripts\openid-en.js
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Scripts\openid-jquery-1.3b1.js
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Nop.Plugin.ExternalAuth.OpenId.dll.config
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Nop.Plugin.ExternalAuth.OpenId.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\ExternalAuth.OpenId\Nop.Plugin.ExternalAuth.OpenId.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.ExternalAuth.OpenId\obj\Debug\Nop.Plugin.ExternalAuth.OpenId.csproj.App.config
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.ExternalAuth.OpenId\obj\Debug\Nop.Plugin.ExternalAuth.OpenId.csprojResolveAssemblyReference.cache
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.ExternalAuth.OpenId\obj\Debug\Nop.Plugin.ExternalAuth.OpenId.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.ExternalAuth.OpenId\obj\Debug\Nop.Plugin.ExternalAuth.OpenId.pdb

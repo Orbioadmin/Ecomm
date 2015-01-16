@@ -1,0 +1,12 @@
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Payments.PayPalStandard\Description.txt
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Payments.PayPalStandard\logo.jpg
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Payments.PayPalStandard\Nop.Plugin.Payments.PayPalStandard.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Payments.PayPalStandard\Nop.Plugin.Payments.PayPalStandard.pdb
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.Payments.PayPalStandard\obj\Release\Nop.Plugin.Payments.PayPalStandard.dll
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.Payments.PayPalStandard\obj\Release\Nop.Plugin.Payments.PayPalStandard.pdb
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.PayPalStandard\Description.txt
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.PayPalStandard\logo.jpg
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.PayPalStandard\Nop.Plugin.Payments.PayPalStandard.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.PayPalStandard\Nop.Plugin.Payments.PayPalStandard.pdb
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.Payments.PayPalStandard\obj\Release\Nop.Plugin.Payments.PayPalStandard.dll
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.Payments.PayPalStandard\obj\Release\Nop.Plugin.Payments.PayPalStandard.pdb

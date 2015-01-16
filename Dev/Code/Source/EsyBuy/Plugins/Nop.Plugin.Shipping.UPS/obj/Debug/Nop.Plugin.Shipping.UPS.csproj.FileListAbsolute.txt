@@ -1,0 +1,71 @@
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Shipping.UPS\Description.txt
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Shipping.UPS\logo.jpg
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Shipping.UPS\Nop.Plugin.Shipping.UPS.dll.config
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Shipping.UPS\Nop.Plugin.Shipping.UPS.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Shipping.UPS\Nop.Plugin.Shipping.UPS.pdb
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.Shipping.UPS\obj\Debug\Nop.Plugin.Shipping.UPS.dll
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.Shipping.UPS\obj\Debug\Nop.Plugin.Shipping.UPS.pdb
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.Shipping.UPS\obj\Debug\Nop.Plugin.Shipping.UPS.csprojResolveAssemblyReference.cache
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Shipping.UPS\Description.txt
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Shipping.UPS\logo.jpg
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Shipping.UPS\Nop.Plugin.Shipping.UPS.dll.config
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Shipping.UPS\Nop.Plugin.Shipping.UPS.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Shipping.UPS\Nop.Plugin.Shipping.UPS.pdb
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Plugins\Nop.Plugin.Shipping.UPS\obj\Debug\Nop.Plugin.Shipping.UPS.csprojResolveAssemblyReference.cache
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Plugins\Nop.Plugin.Shipping.UPS\obj\Debug\Nop.Plugin.Shipping.UPS.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Plugins\Nop.Plugin.Shipping.UPS\obj\Debug\Nop.Plugin.Shipping.UPS.pdb
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Shipping.UPS\Description.txt
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Shipping.UPS\logo.jpg
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Shipping.UPS\Nop.Plugin.Shipping.UPS.dll.config
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Shipping.UPS\Nop.Plugin.Shipping.UPS.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Shipping.UPS\Nop.Plugin.Shipping.UPS.pdb
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.Shipping.UPS\obj\Debug\Nop.Plugin.Shipping.UPS.csprojResolveAssemblyReference.cache
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.Shipping.UPS\obj\Debug\Nop.Plugin.Shipping.UPS.dll
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.Shipping.UPS\obj\Debug\Nop.Plugin.Shipping.UPS.pdb
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Shipping.UPS\Description.txt
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Shipping.UPS\logo.jpg
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Shipping.UPS\Nop.Plugin.Shipping.UPS.dll.config
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Shipping.UPS\Nop.Plugin.Shipping.UPS.dll
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Shipping.UPS\Nop.Plugin.Shipping.UPS.pdb
+D:\EsyBuy Source\Plugins\Nop.Plugin.Shipping.UPS\obj\Debug\Nop.Plugin.Shipping.UPS.csprojResolveAssemblyReference.cache
+D:\EsyBuy Source\Plugins\Nop.Plugin.Shipping.UPS\obj\Debug\Nop.Plugin.Shipping.UPS.dll
+D:\EsyBuy Source\Plugins\Nop.Plugin.Shipping.UPS\obj\Debug\Nop.Plugin.Shipping.UPS.pdb
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Shipping.UPS\Description.txt
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Shipping.UPS\logo.jpg
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Shipping.UPS\Nop.Plugin.Shipping.UPS.dll.config
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Shipping.UPS\Nop.Plugin.Shipping.UPS.dll
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Shipping.UPS\Nop.Plugin.Shipping.UPS.pdb
+D:\24_03_2014\EsyBuy Source\Plugins\Nop.Plugin.Shipping.UPS\obj\Debug\Nop.Plugin.Shipping.UPS.dll
+D:\24_03_2014\EsyBuy Source\Plugins\Nop.Plugin.Shipping.UPS\obj\Debug\Nop.Plugin.Shipping.UPS.pdb
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Shipping.UPS\Description.txt
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Shipping.UPS\logo.jpg
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Shipping.UPS\Nop.Plugin.Shipping.UPS.dll.config
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Shipping.UPS\Nop.Plugin.Shipping.UPS.dll
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Shipping.UPS\Nop.Plugin.Shipping.UPS.pdb
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Plugins\Nop.Plugin.Shipping.UPS\obj\Debug\Nop.Plugin.Shipping.UPS.csprojResolveAssemblyReference.cache
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Plugins\Nop.Plugin.Shipping.UPS\obj\Debug\Nop.Plugin.Shipping.UPS.dll
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Plugins\Nop.Plugin.Shipping.UPS\obj\Debug\Nop.Plugin.Shipping.UPS.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Shipping.UPS\Description.txt
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Shipping.UPS\logo.jpg
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Shipping.UPS\Nop.Plugin.Shipping.UPS.dll.config
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Shipping.UPS\Nop.Plugin.Shipping.UPS.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Shipping.UPS\Nop.Plugin.Shipping.UPS.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Plugins\Nop.Plugin.Shipping.UPS\obj\Debug\Nop.Plugin.Shipping.UPS.csprojResolveAssemblyReference.cache
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Plugins\Nop.Plugin.Shipping.UPS\obj\Debug\Nop.Plugin.Shipping.UPS.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Plugins\Nop.Plugin.Shipping.UPS\obj\Debug\Nop.Plugin.Shipping.UPS.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Shipping.UPS\Description.txt
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Shipping.UPS\logo.jpg
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Shipping.UPS\Nop.Plugin.Shipping.UPS.dll.config
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Shipping.UPS\Nop.Plugin.Shipping.UPS.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Shipping.UPS\Nop.Plugin.Shipping.UPS.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Plugins\Nop.Plugin.Shipping.UPS\obj\Debug\Nop.Plugin.Shipping.UPS.csprojResolveAssemblyReference.cache
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Plugins\Nop.Plugin.Shipping.UPS\obj\Debug\Nop.Plugin.Shipping.UPS.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Plugins\Nop.Plugin.Shipping.UPS\obj\Debug\Nop.Plugin.Shipping.UPS.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Shipping.UPS\Description.txt
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Shipping.UPS\logo.jpg
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Shipping.UPS\Nop.Plugin.Shipping.UPS.dll.config
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Shipping.UPS\Nop.Plugin.Shipping.UPS.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Shipping.UPS\Nop.Plugin.Shipping.UPS.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Shipping.UPS\obj\Debug\Nop.Plugin.Shipping.UPS.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Shipping.UPS\obj\Debug\Nop.Plugin.Shipping.UPS.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Shipping.UPS\obj\Debug\Nop.Plugin.Shipping.UPS.csprojResolveAssemblyReference.cache

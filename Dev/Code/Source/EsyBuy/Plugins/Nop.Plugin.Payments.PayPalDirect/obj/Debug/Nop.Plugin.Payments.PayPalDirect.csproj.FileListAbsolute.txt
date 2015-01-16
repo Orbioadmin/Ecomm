@@ -1,0 +1,71 @@
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\Description.txt
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\logo.jpg
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\Nop.Plugin.Payments.PayPalDirect.dll.config
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\Nop.Plugin.Payments.PayPalDirect.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\Nop.Plugin.Payments.PayPalDirect.pdb
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.Payments.PayPalDirect\obj\Debug\Nop.Plugin.Payments.PayPalDirect.dll
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.Payments.PayPalDirect\obj\Debug\Nop.Plugin.Payments.PayPalDirect.pdb
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.Payments.PayPalDirect\obj\Debug\Nop.Plugin.Payments.PayPalDirect.csprojResolveAssemblyReference.cache
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\Description.txt
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\logo.jpg
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\Nop.Plugin.Payments.PayPalDirect.dll.config
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\Nop.Plugin.Payments.PayPalDirect.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\Nop.Plugin.Payments.PayPalDirect.pdb
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Plugins\Nop.Plugin.Payments.PayPalDirect\obj\Debug\Nop.Plugin.Payments.PayPalDirect.csprojResolveAssemblyReference.cache
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Plugins\Nop.Plugin.Payments.PayPalDirect\obj\Debug\Nop.Plugin.Payments.PayPalDirect.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Plugins\Nop.Plugin.Payments.PayPalDirect\obj\Debug\Nop.Plugin.Payments.PayPalDirect.pdb
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\Description.txt
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\logo.jpg
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\Nop.Plugin.Payments.PayPalDirect.dll.config
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\Nop.Plugin.Payments.PayPalDirect.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\Nop.Plugin.Payments.PayPalDirect.pdb
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.Payments.PayPalDirect\obj\Debug\Nop.Plugin.Payments.PayPalDirect.csprojResolveAssemblyReference.cache
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.Payments.PayPalDirect\obj\Debug\Nop.Plugin.Payments.PayPalDirect.dll
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.Payments.PayPalDirect\obj\Debug\Nop.Plugin.Payments.PayPalDirect.pdb
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\Description.txt
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\logo.jpg
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\Nop.Plugin.Payments.PayPalDirect.dll.config
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\Nop.Plugin.Payments.PayPalDirect.dll
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\Nop.Plugin.Payments.PayPalDirect.pdb
+D:\EsyBuy Source\Plugins\Nop.Plugin.Payments.PayPalDirect\obj\Debug\Nop.Plugin.Payments.PayPalDirect.csprojResolveAssemblyReference.cache
+D:\EsyBuy Source\Plugins\Nop.Plugin.Payments.PayPalDirect\obj\Debug\Nop.Plugin.Payments.PayPalDirect.dll
+D:\EsyBuy Source\Plugins\Nop.Plugin.Payments.PayPalDirect\obj\Debug\Nop.Plugin.Payments.PayPalDirect.pdb
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\Description.txt
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\logo.jpg
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\Nop.Plugin.Payments.PayPalDirect.dll.config
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\Nop.Plugin.Payments.PayPalDirect.dll
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\Nop.Plugin.Payments.PayPalDirect.pdb
+D:\24_03_2014\EsyBuy Source\Plugins\Nop.Plugin.Payments.PayPalDirect\obj\Debug\Nop.Plugin.Payments.PayPalDirect.dll
+D:\24_03_2014\EsyBuy Source\Plugins\Nop.Plugin.Payments.PayPalDirect\obj\Debug\Nop.Plugin.Payments.PayPalDirect.pdb
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\Description.txt
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\logo.jpg
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\Nop.Plugin.Payments.PayPalDirect.dll.config
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\Nop.Plugin.Payments.PayPalDirect.dll
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\Nop.Plugin.Payments.PayPalDirect.pdb
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Plugins\Nop.Plugin.Payments.PayPalDirect\obj\Debug\Nop.Plugin.Payments.PayPalDirect.csprojResolveAssemblyReference.cache
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Plugins\Nop.Plugin.Payments.PayPalDirect\obj\Debug\Nop.Plugin.Payments.PayPalDirect.dll
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Plugins\Nop.Plugin.Payments.PayPalDirect\obj\Debug\Nop.Plugin.Payments.PayPalDirect.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\Description.txt
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\logo.jpg
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\Nop.Plugin.Payments.PayPalDirect.dll.config
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\Nop.Plugin.Payments.PayPalDirect.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\Nop.Plugin.Payments.PayPalDirect.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Plugins\Nop.Plugin.Payments.PayPalDirect\obj\Debug\Nop.Plugin.Payments.PayPalDirect.csprojResolveAssemblyReference.cache
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Plugins\Nop.Plugin.Payments.PayPalDirect\obj\Debug\Nop.Plugin.Payments.PayPalDirect.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Plugins\Nop.Plugin.Payments.PayPalDirect\obj\Debug\Nop.Plugin.Payments.PayPalDirect.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\Description.txt
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\logo.jpg
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\Nop.Plugin.Payments.PayPalDirect.dll.config
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\Nop.Plugin.Payments.PayPalDirect.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\Nop.Plugin.Payments.PayPalDirect.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Plugins\Nop.Plugin.Payments.PayPalDirect\obj\Debug\Nop.Plugin.Payments.PayPalDirect.csprojResolveAssemblyReference.cache
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Plugins\Nop.Plugin.Payments.PayPalDirect\obj\Debug\Nop.Plugin.Payments.PayPalDirect.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Plugins\Nop.Plugin.Payments.PayPalDirect\obj\Debug\Nop.Plugin.Payments.PayPalDirect.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\Description.txt
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\logo.jpg
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\Nop.Plugin.Payments.PayPalDirect.dll.config
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\Nop.Plugin.Payments.PayPalDirect.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Payments.PayPalDirect\Nop.Plugin.Payments.PayPalDirect.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Payments.PayPalDirect\obj\Debug\Nop.Plugin.Payments.PayPalDirect.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Payments.PayPalDirect\obj\Debug\Nop.Plugin.Payments.PayPalDirect.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Payments.PayPalDirect\obj\Debug\Nop.Plugin.Payments.PayPalDirect.csprojResolveAssemblyReference.cache

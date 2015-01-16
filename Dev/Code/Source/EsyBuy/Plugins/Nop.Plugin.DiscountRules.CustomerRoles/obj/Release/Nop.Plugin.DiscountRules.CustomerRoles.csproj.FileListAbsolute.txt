@@ -1,0 +1,14 @@
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\DiscountRules.CustomerRoles\Description.txt
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\DiscountRules.CustomerRoles\logo.jpg
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\DiscountRules.CustomerRoles\Nop.Plugin.DiscountRules.CustomerRoles.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\DiscountRules.CustomerRoles\Nop.Plugin.DiscountRules.CustomerRoles.pdb
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.DiscountRules.CustomerRoles\obj\Release\Nop.Plugin.DiscountRules.CustomerRoles.dll
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.DiscountRules.CustomerRoles\obj\Release\Nop.Plugin.DiscountRules.CustomerRoles.pdb
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.DiscountRules.CustomerRoles\obj\Release\Nop.Plugin.DiscountRules.CustomerRoles.csprojResolveAssemblyReference.cache
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\DiscountRules.CustomerRoles\Description.txt
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\DiscountRules.CustomerRoles\logo.jpg
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\DiscountRules.CustomerRoles\Nop.Plugin.DiscountRules.CustomerRoles.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\DiscountRules.CustomerRoles\Nop.Plugin.DiscountRules.CustomerRoles.pdb
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.DiscountRules.CustomerRoles\obj\Release\Nop.Plugin.DiscountRules.CustomerRoles.csprojResolveAssemblyReference.cache
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.DiscountRules.CustomerRoles\obj\Release\Nop.Plugin.DiscountRules.CustomerRoles.dll
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.DiscountRules.CustomerRoles\obj\Release\Nop.Plugin.DiscountRules.CustomerRoles.pdb

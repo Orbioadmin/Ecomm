@@ -1,0 +1,12 @@
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\SMS.Verizon\Description.txt
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\SMS.Verizon\logo.jpg
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\SMS.Verizon\Nop.Plugin.SMS.Verizon.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\SMS.Verizon\Nop.Plugin.SMS.Verizon.pdb
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.SMS.Verizon\obj\Release\Nop.Plugin.SMS.Verizon.dll
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.SMS.Verizon\obj\Release\Nop.Plugin.SMS.Verizon.pdb
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\SMS.Verizon\Description.txt
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\SMS.Verizon\logo.jpg
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\SMS.Verizon\Nop.Plugin.SMS.Verizon.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\SMS.Verizon\Nop.Plugin.SMS.Verizon.pdb
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.SMS.Verizon\obj\Release\Nop.Plugin.SMS.Verizon.dll
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.SMS.Verizon\obj\Release\Nop.Plugin.SMS.Verizon.pdb

@@ -1,0 +1,70 @@
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\Description.txt
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\logo.jpg
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\logo2.jpg
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\Nop.Plugin.Payments.CashOnDelivery.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\Nop.Plugin.Payments.CashOnDelivery.pdb
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.Payments.CashOnDelivery\obj\Debug\Nop.Plugin.Payments.CashOnDelivery.dll
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.Payments.CashOnDelivery\obj\Debug\Nop.Plugin.Payments.CashOnDelivery.pdb
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.Payments.CashOnDelivery\obj\Debug\Nop.Plugin.Payments.CashOnDelivery.csprojResolveAssemblyReference.cache
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\Description.txt
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\logo.jpg
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\logo2.jpg
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\Nop.Plugin.Payments.CashOnDelivery.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\Nop.Plugin.Payments.CashOnDelivery.pdb
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Plugins\Nop.Plugin.Payments.CashOnDelivery\obj\Debug\Nop.Plugin.Payments.CashOnDelivery.csprojResolveAssemblyReference.cache
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Plugins\Nop.Plugin.Payments.CashOnDelivery\obj\Debug\Nop.Plugin.Payments.CashOnDelivery.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Plugins\Nop.Plugin.Payments.CashOnDelivery\obj\Debug\Nop.Plugin.Payments.CashOnDelivery.pdb
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\Description.txt
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\logo.jpg
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\logo2.jpg
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\Nop.Plugin.Payments.CashOnDelivery.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\Nop.Plugin.Payments.CashOnDelivery.pdb
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.Payments.CashOnDelivery\obj\Debug\Nop.Plugin.Payments.CashOnDelivery.csprojResolveAssemblyReference.cache
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.Payments.CashOnDelivery\obj\Debug\Nop.Plugin.Payments.CashOnDelivery.dll
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.Payments.CashOnDelivery\obj\Debug\Nop.Plugin.Payments.CashOnDelivery.pdb
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\Description.txt
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\logo.jpg
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\logo2.jpg
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\Nop.Plugin.Payments.CashOnDelivery.dll
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\Nop.Plugin.Payments.CashOnDelivery.pdb
+D:\EsyBuy Source\Plugins\Nop.Plugin.Payments.CashOnDelivery\obj\Debug\Nop.Plugin.Payments.CashOnDelivery.csprojResolveAssemblyReference.cache
+D:\EsyBuy Source\Plugins\Nop.Plugin.Payments.CashOnDelivery\obj\Debug\Nop.Plugin.Payments.CashOnDelivery.dll
+D:\EsyBuy Source\Plugins\Nop.Plugin.Payments.CashOnDelivery\obj\Debug\Nop.Plugin.Payments.CashOnDelivery.pdb
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\Description.txt
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\logo.jpg
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\logo2.jpg
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\Nop.Plugin.Payments.CashOnDelivery.dll
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\Nop.Plugin.Payments.CashOnDelivery.pdb
+D:\24_03_2014\EsyBuy Source\Plugins\Nop.Plugin.Payments.CashOnDelivery\obj\Debug\Nop.Plugin.Payments.CashOnDelivery.dll
+D:\24_03_2014\EsyBuy Source\Plugins\Nop.Plugin.Payments.CashOnDelivery\obj\Debug\Nop.Plugin.Payments.CashOnDelivery.pdb
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\Description.txt
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\logo.jpg
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\logo2.jpg
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\Nop.Plugin.Payments.CashOnDelivery.dll
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\Nop.Plugin.Payments.CashOnDelivery.pdb
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Plugins\Nop.Plugin.Payments.CashOnDelivery\obj\Debug\Nop.Plugin.Payments.CashOnDelivery.csprojResolveAssemblyReference.cache
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Plugins\Nop.Plugin.Payments.CashOnDelivery\obj\Debug\Nop.Plugin.Payments.CashOnDelivery.dll
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Plugins\Nop.Plugin.Payments.CashOnDelivery\obj\Debug\Nop.Plugin.Payments.CashOnDelivery.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\Description.txt
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\logo.jpg
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\logo2.jpg
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\Nop.Plugin.Payments.CashOnDelivery.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\Nop.Plugin.Payments.CashOnDelivery.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Plugins\Nop.Plugin.Payments.CashOnDelivery\obj\Debug\Nop.Plugin.Payments.CashOnDelivery.csprojResolveAssemblyReference.cache
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Plugins\Nop.Plugin.Payments.CashOnDelivery\obj\Debug\Nop.Plugin.Payments.CashOnDelivery.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Plugins\Nop.Plugin.Payments.CashOnDelivery\obj\Debug\Nop.Plugin.Payments.CashOnDelivery.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\Description.txt
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\logo.jpg
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\logo2.jpg
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\Nop.Plugin.Payments.CashOnDelivery.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\Nop.Plugin.Payments.CashOnDelivery.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Plugins\Nop.Plugin.Payments.CashOnDelivery\obj\Debug\Nop.Plugin.Payments.CashOnDelivery.csprojResolveAssemblyReference.cache
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Plugins\Nop.Plugin.Payments.CashOnDelivery\obj\Debug\Nop.Plugin.Payments.CashOnDelivery.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Plugins\Nop.Plugin.Payments.CashOnDelivery\obj\Debug\Nop.Plugin.Payments.CashOnDelivery.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\Description.txt
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\logo.jpg
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\logo2.jpg
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\Nop.Plugin.Payments.CashOnDelivery.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\Nop.Plugin.Payments.CashOnDelivery.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Payments.CashOnDelivery\obj\Debug\Nop.Plugin.Payments.CashOnDelivery.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Payments.CashOnDelivery\obj\Debug\Nop.Plugin.Payments.CashOnDelivery.pdb

@@ -1,0 +1,14 @@
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\Description.txt
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\logo.jpg
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\logo2.jpg
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\Nop.Plugin.Payments.CashOnDelivery.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\Nop.Plugin.Payments.CashOnDelivery.pdb
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.Payments.CashOnDelivery\obj\Release\Nop.Plugin.Payments.CashOnDelivery.dll
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.Payments.CashOnDelivery\obj\Release\Nop.Plugin.Payments.CashOnDelivery.pdb
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\Description.txt
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\logo.jpg
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\logo2.jpg
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\Nop.Plugin.Payments.CashOnDelivery.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\Nop.Plugin.Payments.CashOnDelivery.pdb
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.Payments.CashOnDelivery\obj\Release\Nop.Plugin.Payments.CashOnDelivery.dll
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.Payments.CashOnDelivery\obj\Release\Nop.Plugin.Payments.CashOnDelivery.pdb

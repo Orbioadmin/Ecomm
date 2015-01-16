@@ -1,0 +1,250 @@
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\sample-images\banner1.jpg
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\sample-images\banner2.jpg
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\sample-images\banner3.jpg
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\nivo-slider.css
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\bar\arrows.png
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\bar\bar.css
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\bar\bullets.png
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\bar\loading.gif
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\dark\arrows.png
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\dark\bullets.png
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\dark\dark.css
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\dark\loading.gif
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\default\arrows.png
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\default\bullets.png
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\default\default.css
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\default\loading.gif
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\light\arrows.png
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\light\bullets.png
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\light\light.css
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\light\loading.gif
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Description.txt
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Scripts\jquery.nivo.slider.js
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\logo.jpg
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Nop.Plugin.Widgets.NivoSlider.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Nop.Plugin.Widgets.NivoSlider.pdb
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.Widgets.NivoSlider\obj\Debug\Nop.Plugin.Widgets.NivoSlider.dll
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.Widgets.NivoSlider\obj\Debug\Nop.Plugin.Widgets.NivoSlider.pdb
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.Widgets.NivoSlider\obj\Debug\Nop.Plugin.Widgets.NivoSlider.csprojResolveAssemblyReference.cache
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\sample-images\banner1.jpg
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\sample-images\banner2.jpg
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\sample-images\banner3.jpg
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\nivo-slider.css
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\bar\arrows.png
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\bar\bar.css
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\bar\bullets.png
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\bar\loading.gif
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\dark\arrows.png
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\dark\bullets.png
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\dark\dark.css
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\dark\loading.gif
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\default\arrows.png
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\default\bullets.png
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\default\default.css
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\default\loading.gif
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\light\arrows.png
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\light\bullets.png
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\light\light.css
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\light\loading.gif
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Description.txt
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Scripts\jquery.nivo.slider.js
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\logo.jpg
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Nop.Plugin.Widgets.NivoSlider.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Nop.Plugin.Widgets.NivoSlider.pdb
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Plugins\Nop.Plugin.Widgets.NivoSlider\obj\Debug\Nop.Plugin.Widgets.NivoSlider.csprojResolveAssemblyReference.cache
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Plugins\Nop.Plugin.Widgets.NivoSlider\obj\Debug\Nop.Plugin.Widgets.NivoSlider.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Plugins\Nop.Plugin.Widgets.NivoSlider\obj\Debug\Nop.Plugin.Widgets.NivoSlider.pdb
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\sample-images\banner1.jpg
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\sample-images\banner2.jpg
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\sample-images\banner3.jpg
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\nivo-slider.css
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\bar\arrows.png
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\bar\bar.css
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\bar\bullets.png
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\bar\loading.gif
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\dark\arrows.png
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\dark\bullets.png
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\dark\dark.css
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\dark\loading.gif
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\default\arrows.png
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\default\bullets.png
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\default\default.css
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\default\loading.gif
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\light\arrows.png
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\light\bullets.png
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\light\light.css
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\light\loading.gif
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Description.txt
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Scripts\jquery.nivo.slider.js
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\logo.jpg
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Nop.Plugin.Widgets.NivoSlider.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Nop.Plugin.Widgets.NivoSlider.pdb
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.Widgets.NivoSlider\obj\Debug\Nop.Plugin.Widgets.NivoSlider.csprojResolveAssemblyReference.cache
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.Widgets.NivoSlider\obj\Debug\Nop.Plugin.Widgets.NivoSlider.dll
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.Widgets.NivoSlider\obj\Debug\Nop.Plugin.Widgets.NivoSlider.pdb
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\sample-images\banner1.jpg
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\sample-images\banner2.jpg
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\sample-images\banner3.jpg
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\nivo-slider.css
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\bar\arrows.png
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\bar\bar.css
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\bar\bullets.png
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\bar\loading.gif
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\dark\arrows.png
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\dark\bullets.png
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\dark\dark.css
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\dark\loading.gif
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\default\arrows.png
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\default\bullets.png
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\default\default.css
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\default\loading.gif
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\light\arrows.png
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\light\bullets.png
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\light\light.css
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\light\loading.gif
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Description.txt
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Scripts\jquery.nivo.slider.js
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\logo.jpg
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Nop.Plugin.Widgets.NivoSlider.dll
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Nop.Plugin.Widgets.NivoSlider.pdb
+D:\EsyBuy Source\Plugins\Nop.Plugin.Widgets.NivoSlider\obj\Debug\Nop.Plugin.Widgets.NivoSlider.csprojResolveAssemblyReference.cache
+D:\EsyBuy Source\Plugins\Nop.Plugin.Widgets.NivoSlider\obj\Debug\Nop.Plugin.Widgets.NivoSlider.dll
+D:\EsyBuy Source\Plugins\Nop.Plugin.Widgets.NivoSlider\obj\Debug\Nop.Plugin.Widgets.NivoSlider.pdb
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\sample-images\banner1.jpg
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\sample-images\banner2.jpg
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\sample-images\banner3.jpg
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\nivo-slider.css
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\bar\arrows.png
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\bar\bar.css
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\bar\bullets.png
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\bar\loading.gif
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\dark\arrows.png
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\dark\bullets.png
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\dark\dark.css
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\dark\loading.gif
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\default\arrows.png
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\default\bullets.png
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\default\default.css
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\default\loading.gif
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\light\arrows.png
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\light\bullets.png
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\light\light.css
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\light\loading.gif
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Description.txt
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Scripts\jquery.nivo.slider.js
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\logo.jpg
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Nop.Plugin.Widgets.NivoSlider.dll
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Nop.Plugin.Widgets.NivoSlider.pdb
+D:\24_03_2014\EsyBuy Source\Plugins\Nop.Plugin.Widgets.NivoSlider\obj\Debug\Nop.Plugin.Widgets.NivoSlider.dll
+D:\24_03_2014\EsyBuy Source\Plugins\Nop.Plugin.Widgets.NivoSlider\obj\Debug\Nop.Plugin.Widgets.NivoSlider.pdb
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\sample-images\banner1.jpg
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\sample-images\banner2.jpg
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\sample-images\banner3.jpg
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\nivo-slider.css
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\bar\arrows.png
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\bar\bar.css
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\bar\bullets.png
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\bar\loading.gif
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\dark\arrows.png
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\dark\bullets.png
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\dark\dark.css
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\dark\loading.gif
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\default\arrows.png
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\default\bullets.png
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\default\default.css
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\default\loading.gif
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\light\arrows.png
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\light\bullets.png
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\light\light.css
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\light\loading.gif
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Description.txt
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Scripts\jquery.nivo.slider.js
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\logo.jpg
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Nop.Plugin.Widgets.NivoSlider.dll
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Nop.Plugin.Widgets.NivoSlider.pdb
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Plugins\Nop.Plugin.Widgets.NivoSlider\obj\Debug\Nop.Plugin.Widgets.NivoSlider.csprojResolveAssemblyReference.cache
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Plugins\Nop.Plugin.Widgets.NivoSlider\obj\Debug\Nop.Plugin.Widgets.NivoSlider.dll
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Plugins\Nop.Plugin.Widgets.NivoSlider\obj\Debug\Nop.Plugin.Widgets.NivoSlider.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\sample-images\banner1.jpg
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\sample-images\banner2.jpg
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\sample-images\banner3.jpg
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\nivo-slider.css
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\bar\arrows.png
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\bar\bar.css
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\bar\bullets.png
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\bar\loading.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\dark\arrows.png
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\dark\bullets.png
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\dark\dark.css
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\dark\loading.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\default\arrows.png
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\default\bullets.png
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\default\default.css
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\default\loading.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\light\arrows.png
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\light\bullets.png
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\light\light.css
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\light\loading.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Description.txt
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Scripts\jquery.nivo.slider.js
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\logo.jpg
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Nop.Plugin.Widgets.NivoSlider.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Nop.Plugin.Widgets.NivoSlider.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Plugins\Nop.Plugin.Widgets.NivoSlider\obj\Debug\Nop.Plugin.Widgets.NivoSlider.csprojResolveAssemblyReference.cache
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Plugins\Nop.Plugin.Widgets.NivoSlider\obj\Debug\Nop.Plugin.Widgets.NivoSlider.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Plugins\Nop.Plugin.Widgets.NivoSlider\obj\Debug\Nop.Plugin.Widgets.NivoSlider.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\sample-images\banner1.jpg
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\sample-images\banner2.jpg
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\sample-images\banner3.jpg
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\nivo-slider.css
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\bar\arrows.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\bar\bar.css
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\bar\bullets.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\bar\loading.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\dark\arrows.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\dark\bullets.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\dark\dark.css
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\dark\loading.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\default\arrows.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\default\bullets.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\default\default.css
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\default\loading.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\light\arrows.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\light\bullets.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\light\light.css
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\light\loading.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Description.txt
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Scripts\jquery.nivo.slider.js
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\logo.jpg
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Nop.Plugin.Widgets.NivoSlider.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Nop.Plugin.Widgets.NivoSlider.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Plugins\Nop.Plugin.Widgets.NivoSlider\obj\Debug\Nop.Plugin.Widgets.NivoSlider.csprojResolveAssemblyReference.cache
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Plugins\Nop.Plugin.Widgets.NivoSlider\obj\Debug\Nop.Plugin.Widgets.NivoSlider.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Plugins\Nop.Plugin.Widgets.NivoSlider\obj\Debug\Nop.Plugin.Widgets.NivoSlider.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\sample-images\banner1.jpg
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\sample-images\banner2.jpg
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\sample-images\banner3.jpg
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\nivo-slider.css
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\bar\arrows.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\bar\bar.css
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\bar\bullets.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\bar\loading.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\dark\arrows.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\dark\bullets.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\dark\dark.css
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\dark\loading.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\default\arrows.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\default\bullets.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\default\default.css
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\default\loading.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\light\arrows.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\light\bullets.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\light\light.css
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Content\nivoslider\themes\light\loading.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Description.txt
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Scripts\jquery.nivo.slider.js
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\logo.jpg
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Nop.Plugin.Widgets.NivoSlider.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Widgets.NivoSlider\Nop.Plugin.Widgets.NivoSlider.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Widgets.NivoSlider\obj\Debug\Nop.Plugin.Widgets.NivoSlider.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Widgets.NivoSlider\obj\Debug\Nop.Plugin.Widgets.NivoSlider.pdb

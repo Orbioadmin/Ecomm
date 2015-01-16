@@ -1,0 +1,12 @@
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Shipping.USPS\Description.txt
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Shipping.USPS\logo.jpg
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Shipping.USPS\Nop.Plugin.Shipping.USPS.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Shipping.USPS\Nop.Plugin.Shipping.USPS.pdb
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.Shipping.USPS\obj\Release\Nop.Plugin.Shipping.USPS.dll
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.Shipping.USPS\obj\Release\Nop.Plugin.Shipping.USPS.pdb
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Shipping.USPS\Description.txt
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Shipping.USPS\logo.jpg
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Shipping.USPS\Nop.Plugin.Shipping.USPS.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Shipping.USPS\Nop.Plugin.Shipping.USPS.pdb
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.Shipping.USPS\obj\Release\Nop.Plugin.Shipping.USPS.dll
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.Shipping.USPS\obj\Release\Nop.Plugin.Shipping.USPS.pdb

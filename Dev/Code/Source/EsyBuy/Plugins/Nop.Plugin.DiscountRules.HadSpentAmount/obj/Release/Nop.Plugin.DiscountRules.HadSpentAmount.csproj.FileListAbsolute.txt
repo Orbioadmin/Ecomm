@@ -1,0 +1,12 @@
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\DiscountRules.HadSpentAmount\Description.txt
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\DiscountRules.HadSpentAmount\logo.jpg
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\DiscountRules.HadSpentAmount\Nop.Plugin.DiscountRules.HadSpentAmount.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\DiscountRules.HadSpentAmount\Nop.Plugin.DiscountRules.HadSpentAmount.pdb
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.DiscountRules.HadSpentAmount\obj\Release\Nop.Plugin.DiscountRules.HadSpentAmount.dll
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.DiscountRules.HadSpentAmount\obj\Release\Nop.Plugin.DiscountRules.HadSpentAmount.pdb
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\DiscountRules.HadSpentAmount\Description.txt
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\DiscountRules.HadSpentAmount\logo.jpg
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\DiscountRules.HadSpentAmount\Nop.Plugin.DiscountRules.HadSpentAmount.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\DiscountRules.HadSpentAmount\Nop.Plugin.DiscountRules.HadSpentAmount.pdb
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.DiscountRules.HadSpentAmount\obj\Release\Nop.Plugin.DiscountRules.HadSpentAmount.dll
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.DiscountRules.HadSpentAmount\obj\Release\Nop.Plugin.DiscountRules.HadSpentAmount.pdb

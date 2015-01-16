@@ -1,0 +1,135 @@
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Description.txt
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\logo.gif
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\top-menu-background.png
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\top-menu-divider.png
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\top-menu-list-image-hover.png
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\top-menu-list-image.png
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\top-menu-triangle.png
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\styles.css
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Misc.FacebookShop\logo.jpg
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Scripts\jquery-1.7.1.min.js
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Nop.Plugin.Misc.FacebookShop.dll
+D:\Code from AShish\Mar_07_11.15am_\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Nop.Plugin.Misc.FacebookShop.pdb
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.Misc.FacebookShop\obj\Debug\Nop.Plugin.Misc.FacebookShop.dll
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.Misc.FacebookShop\obj\Debug\Nop.Plugin.Misc.FacebookShop.pdb
+D:\Code from AShish\Mar_07_11.15am_\Plugins\Nop.Plugin.Misc.FacebookShop\obj\Debug\Nop.Plugin.Misc.FacebookShop.csprojResolveAssemblyReference.cache
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Description.txt
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\logo.gif
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\top-menu-background.png
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\top-menu-divider.png
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\top-menu-list-image-hover.png
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\top-menu-list-image.png
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\top-menu-triangle.png
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\styles.css
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\logo.jpg
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Scripts\jquery-1.7.1.min.js
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Nop.Plugin.Misc.FacebookShop.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Nop.Plugin.Misc.FacebookShop.pdb
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Plugins\Nop.Plugin.Misc.FacebookShop\obj\Debug\Nop.Plugin.Misc.FacebookShop.csprojResolveAssemblyReference.cache
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Plugins\Nop.Plugin.Misc.FacebookShop\obj\Debug\Nop.Plugin.Misc.FacebookShop.dll
+C:\Official\TGIL\Opportunities\SuperSpeedComputers\EsyBuy Source\Plugins\Nop.Plugin.Misc.FacebookShop\obj\Debug\Nop.Plugin.Misc.FacebookShop.pdb
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Description.txt
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\logo.gif
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\top-menu-background.png
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\top-menu-divider.png
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\top-menu-list-image-hover.png
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\top-menu-list-image.png
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\top-menu-triangle.png
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\styles.css
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\logo.jpg
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Scripts\jquery-1.7.1.min.js
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Nop.Plugin.Misc.FacebookShop.dll
+D:\Code from AShish\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Nop.Plugin.Misc.FacebookShop.pdb
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.Misc.FacebookShop\obj\Debug\Nop.Plugin.Misc.FacebookShop.csprojResolveAssemblyReference.cache
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.Misc.FacebookShop\obj\Debug\Nop.Plugin.Misc.FacebookShop.dll
+D:\Code from AShish\EsyBuy Source\Plugins\Nop.Plugin.Misc.FacebookShop\obj\Debug\Nop.Plugin.Misc.FacebookShop.pdb
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Description.txt
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\logo.gif
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\top-menu-background.png
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\top-menu-divider.png
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\top-menu-list-image-hover.png
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\top-menu-list-image.png
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\top-menu-triangle.png
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\styles.css
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\logo.jpg
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Scripts\jquery-1.7.1.min.js
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Nop.Plugin.Misc.FacebookShop.dll
+D:\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Nop.Plugin.Misc.FacebookShop.pdb
+D:\EsyBuy Source\Plugins\Nop.Plugin.Misc.FacebookShop\obj\Debug\Nop.Plugin.Misc.FacebookShop.csprojResolveAssemblyReference.cache
+D:\EsyBuy Source\Plugins\Nop.Plugin.Misc.FacebookShop\obj\Debug\Nop.Plugin.Misc.FacebookShop.dll
+D:\EsyBuy Source\Plugins\Nop.Plugin.Misc.FacebookShop\obj\Debug\Nop.Plugin.Misc.FacebookShop.pdb
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Description.txt
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\logo.gif
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\top-menu-background.png
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\top-menu-divider.png
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\top-menu-list-image-hover.png
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\top-menu-list-image.png
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\top-menu-triangle.png
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\styles.css
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\logo.jpg
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Scripts\jquery-1.7.1.min.js
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Nop.Plugin.Misc.FacebookShop.dll
+D:\24_03_2014\EsyBuy Source\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Nop.Plugin.Misc.FacebookShop.pdb
+D:\24_03_2014\EsyBuy Source\Plugins\Nop.Plugin.Misc.FacebookShop\obj\Debug\Nop.Plugin.Misc.FacebookShop.csprojResolveAssemblyReference.cache
+D:\24_03_2014\EsyBuy Source\Plugins\Nop.Plugin.Misc.FacebookShop\obj\Debug\Nop.Plugin.Misc.FacebookShop.dll
+D:\24_03_2014\EsyBuy Source\Plugins\Nop.Plugin.Misc.FacebookShop\obj\Debug\Nop.Plugin.Misc.FacebookShop.pdb
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Description.txt
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\logo.gif
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\top-menu-background.png
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\top-menu-divider.png
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\top-menu-list-image-hover.png
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\top-menu-list-image.png
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\top-menu-triangle.png
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\styles.css
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Misc.FacebookShop\logo.jpg
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Scripts\jquery-1.7.1.min.js
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Nop.Plugin.Misc.FacebookShop.dll
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Nop.Plugin.Misc.FacebookShop.pdb
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Plugins\Nop.Plugin.Misc.FacebookShop\obj\Debug\Nop.Plugin.Misc.FacebookShop.csprojResolveAssemblyReference.cache
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Plugins\Nop.Plugin.Misc.FacebookShop\obj\Debug\Nop.Plugin.Misc.FacebookShop.dll
+F:\Excercises\Rakesh\EsyBuy_Source_V4\Plugins\Nop.Plugin.Misc.FacebookShop\obj\Debug\Nop.Plugin.Misc.FacebookShop.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Description.txt
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\logo.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\top-menu-background.png
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\top-menu-divider.png
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\top-menu-list-image-hover.png
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\top-menu-list-image.png
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\top-menu-triangle.png
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\styles.css
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Misc.FacebookShop\logo.jpg
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Scripts\jquery-1.7.1.min.js
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Nop.Plugin.Misc.FacebookShop.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Nop.Plugin.Misc.FacebookShop.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Plugins\Nop.Plugin.Misc.FacebookShop\obj\Debug\Nop.Plugin.Misc.FacebookShop.csprojResolveAssemblyReference.cache
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Plugins\Nop.Plugin.Misc.FacebookShop\obj\Debug\Nop.Plugin.Misc.FacebookShop.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Code\EsyBuy_Source_V4\Plugins\Nop.Plugin.Misc.FacebookShop\obj\Debug\Nop.Plugin.Misc.FacebookShop.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Description.txt
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\logo.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\top-menu-background.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\top-menu-divider.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\top-menu-list-image-hover.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\top-menu-list-image.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\top-menu-triangle.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\styles.css
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Misc.FacebookShop\logo.jpg
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Scripts\jquery-1.7.1.min.js
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Nop.Plugin.Misc.FacebookShop.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Nop.Plugin.Misc.FacebookShop.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Plugins\Nop.Plugin.Misc.FacebookShop\obj\Debug\Nop.Plugin.Misc.FacebookShop.csprojResolveAssemblyReference.cache
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Plugins\Nop.Plugin.Misc.FacebookShop\obj\Debug\Nop.Plugin.Misc.FacebookShop.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Plugins\Nop.Plugin.Misc.FacebookShop\obj\Debug\Nop.Plugin.Misc.FacebookShop.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Description.txt
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\logo.gif
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\top-menu-background.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\top-menu-divider.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\top-menu-list-image-hover.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\top-menu-list-image.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\images\top-menu-triangle.png
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Content\styles.css
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Misc.FacebookShop\logo.jpg
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Scripts\jquery-1.7.1.min.js
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Nop.Plugin.Misc.FacebookShop.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Misc.FacebookShop\Nop.Plugin.Misc.FacebookShop.pdb
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Misc.FacebookShop\obj\Debug\Nop.Plugin.Misc.FacebookShop.csprojResolveAssemblyReference.cache
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Misc.FacebookShop\obj\Debug\Nop.Plugin.Misc.FacebookShop.dll
+F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Misc.FacebookShop\obj\Debug\Nop.Plugin.Misc.FacebookShop.pdb
