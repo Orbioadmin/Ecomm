@@ -63,16 +63,22 @@ namespace Orbio.Web.UI.Controllers
          
             var cachedModel = cacheManager.Get(string.Format(ModelCacheEventConsumer.CATEGORY_MENU_MODEL_KEY, 1, 4, 1),
                 () => PrepareCategorySimpleModels());
-            
-           var model = new TopMenuModel()
+            if (cachedModel.Count > 0 || cachedModel != null)
             {
-                Categories = cachedModel,
-               // RecentlyAddedProductsEnabled = catalogSettings.RecentlyAddedProductsEnabled,
-                BlogEnabled =  false, //blogSettings.Enabled,
-                ForumEnabled = false //forumSettings.ForumsEnabled
-            };
-           ViewBag.NumberOfCategory = Convert.ToInt32(ConfigurationManager.AppSettings["TopMenuNoOfCategory"]);
-            return PartialView(model);
+                var model = new TopMenuModel()
+                 {
+                     Categories = cachedModel,
+                     // RecentlyAddedProductsEnabled = catalogSettings.RecentlyAddedProductsEnabled,
+                     BlogEnabled = false, //blogSettings.Enabled,
+                     ForumEnabled = false //forumSettings.ForumsEnabled
+                 };
+                ViewBag.NumberOfCategory = Convert.ToInt32(ConfigurationManager.AppSettings["TopMenuNoOfCategory"]);
+                return PartialView(model);
+            }
+            else
+            {
+                return PartialView("TopMenuStatic");
+            }
         }
 
         public ActionResult Category(string seName,string spec, string minPrice, string maxPrice)
