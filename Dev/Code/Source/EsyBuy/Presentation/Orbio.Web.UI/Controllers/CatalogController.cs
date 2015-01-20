@@ -63,7 +63,7 @@ namespace Orbio.Web.UI.Controllers
          
             var cachedModel = cacheManager.Get(string.Format(ModelCacheEventConsumer.CATEGORY_MENU_MODEL_KEY, 1, 4, 1),
                 () => PrepareCategorySimpleModels());
-            int flag = Convert.ToInt32(ConfigurationManager.AppSettings["LoadTopMenufromDb"]);
+            int flag = (ConfigurationManager.AppSettings["LoadTopMenufromDb"].ToString() != "")?Convert.ToInt32(ConfigurationManager.AppSettings["LoadTopMenufromDb"]):1;
             if (flag == 1)
             {
                 var model = new TopMenuModel()
