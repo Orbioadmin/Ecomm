@@ -1,7 +1,15 @@
 /*price range*/
 
- $('#sl2').slider();
-
+//$("#sl2").slider({
+//    range: true,
+//    min: 0,
+//    max: 500,
+//    values: [35, 200],
+//    slide: function (event, ui) {
+//        $("#slidevalue")
+//           .val("$" + ui.values[0] + " - $" + ui.values[1]);
+//    }
+//});
 	var RGBChange = function() {
 	  $('#RGB').css('background', 'rgb('+r.getValue()+','+g.getValue()+','+b.getValue()+')')
 	};	
