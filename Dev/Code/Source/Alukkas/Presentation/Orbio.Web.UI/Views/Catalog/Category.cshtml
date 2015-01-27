@@ -2,8 +2,8 @@
 @{
     ViewBag.Title = "Category";
 }
-
-<section>
+  @Html.Action("PriceBar", "Home")
+<section class="listing_page">
        <div class="container">
 
          <ol class="breadcrumb">
@@ -133,20 +133,20 @@
         
         //Listview
 
-$('.listview button').on('click',function(e) {
-    if ($(this).hasClass('three_view')) {
-        $('.featured_items ul').removeClass('four_items');
-    }
-    else if($(this).hasClass('four_view')) {
-        $('.featured_items ul').addClass('four_items');
-    }
-});
+//$('.listview button').on('click',function(e) {
+//    if ($(this).hasClass('three_view')) {
+//        $('.featured_items ul').removeClass('four_items');
+//    }
+//    else if($(this).hasClass('four_view')) {
+//        $('.featured_items ul').addClass('four_items');
+//    }
+//});
 
-$('.listview button').click(function(e) {
-    e.preventDefault(); //prevent the link from being followed
-    $('.listview button').removeClass('selected');
-    $(this).addClass('selected');
-});
+//$('.listview button').click(function(e) {
+//    e.preventDefault(); //prevent the link from being followed
+//    $('.listview button').removeClass('selected');
+//    $(this).addClass('selected');
+//});
      
 
 /*Price slider */
@@ -189,30 +189,12 @@ $('.listview button').click(function(e) {
             });
         }
 
-       $("#range_03").ionRangeSlider({
-    type: "double",
-    grid: true,
-    min: 0,
-    max: 1000,
-    from: 200,
-    to: 800,
-    prefix: "$"
-});
+   
 
     });
 
     //scroll
 
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-36251023-1']);
-  _gaq.push(['_setDomainName', 'jqueryscript.net']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
 
 $(document).ready(function() {
             // Show or hide the sticky footer button

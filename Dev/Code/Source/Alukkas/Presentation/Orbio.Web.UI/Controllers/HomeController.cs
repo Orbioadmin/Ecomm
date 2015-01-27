@@ -28,5 +28,10 @@ namespace Orbio.Web.UI.Controllers
 
             return View();
         }
+
+        public ActionResult PriceBar()
+        {
+            return PartialView();
+        }
     }
 }

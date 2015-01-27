@@ -9,24 +9,19 @@ namespace Orbio.Web.UI
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.IgnoreList.Clear();
-            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js","~/Scripts/bootstrap.min.js", "~/Scripts/script.min.js"));
+            bundles.Add(new ScriptBundle("~/bundles/jquery").Include("~/Scripts/jquery.js",
+                        "~/Scripts/jquery-{version}.js","~/Scripts/bootstrap.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
-                        "~/Scripts/jquery-ui-{version}.js", "~/Scripts/hoverintent.js", "~/Scripts/superfish.js",
-                         "~/Scripts/jquery.eislideshow.js", "~/Scripts/jquery.easing.1.3.js", "~/Scripts/ion.rangeSlider.min.js"
-            , "~/Scripts/jquery-mousewheel.min.js"));
-
-            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                        "~/Scripts/jquery.unobtrusive*",
-                        "~/Scripts/jquery.validate*"));
+                        "~/Scripts/cloud-zoom.js", "~/Scripts/main.js", "~/Scripts/html5shiv.js", "~/Scripts/price-range.js"));
+           
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/*.css"));
+            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/*.css", "~/Content/bootstrap.min.css", "~/Content/font-awesome.min.css"));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",

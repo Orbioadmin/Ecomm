@@ -5,7 +5,63 @@
           var baseImageUrl = System.Configuration.ConfigurationManager.AppSettings["ImageServerBaseUrl"];
           var imageUrl = baseImageUrl + this.Model.ImageRelativeUrl;
       }
-       <div class="main_thumb">
+
+     <div class="products-grid row">
+                                                <div class="item ">
+        <div class="item-inner clearfix">
+             
+                  <div class="item-img have-additional clearfix">
+                  <a href="@Url.RouteUrl("Category", new { SeName = this.Model.SeName })?p=pt" class="product-image have-additional">
+                      <span class="image-main">
+                    <img src="@imageUrl" alt="Share " />
+                      </span>
+                  </a>
+                        <div class="actions">
+                            <ul class="add-to-links">
+                          <li><a title="Add to cart" href="myaccount.html" class="link-share" data-toggle="tooltip" data-original-title="Add to Wishlist" >
+                          </a></li>
+                          <li><a title="Add to Wishlist" href="myaccount.html" class="link-wishlist" data-toggle="tooltip" data-original-title="Add to Compare"></a></li>
+                                                            </ul>
+                                                <div class="quickview-wrap">
+                            <a href="" title="Share ">
+                              <i class="link-compare"></i>
+                            </a>
+                        </div>
+                                                </div>
+                        <!-- media -->
+                                           
+
+                                    <!-- media -->
+                    </div>
+                    <div class="item-info">
+                        <div class="info-inner">
+                          
+                            <div class="item-title">
+                                <a href="@Url.RouteUrl("Category", new { SeName = this.Model.SeName })?p=pt" title="">
+                                    @this.Model.Name                                 </a>
+                            </div>
+                            <div class="item-content clearfix">
+                                <div class="item-price">
+                                    
+
+                        
+    <div class="price-box">
+                       <span class="regular-price" id="">
+                                            <span class="price">@this.Model.CurrencyCode .@this.Model.ProductPrice.Price  </span>                                    </span>
+                        
+        </div>
+
+                                </div>
+                            </div>
+                                                                    
+                                                        </div>
+                    </div>
+        </div>
+            </div>
+
+</div>
+
+      @* <div class="main_thumb">
                             <div class="thumbnail">
                                 <a href="@Url.RouteUrl("Category", new { SeName = this.Model.SeName })?p=pt"><img src="@imageUrl" alt=""></a>                                
                             </div>
@@ -20,6 +76,6 @@
                                 </div>
                                 <div class="list_thumb_offer"><s>325.00</s> (66% off) <span>@this.Model.ProductPrice.Price @this.Model.CurrencyCode</span></div>
                             </div>
-                            </div>
+                            </div>*@
 
        </li>
