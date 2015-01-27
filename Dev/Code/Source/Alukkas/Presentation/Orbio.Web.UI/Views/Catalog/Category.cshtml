@@ -48,11 +48,10 @@
 
             @Html.Action("ProductFilter", "Catalog", new { categoryId = this.Model.Id, minPrice = minPrice, maxPrice = maxPrice,selectedSpecs= this.Model.SelectedSpecificationAttributeIds })
 
-
        </div>
       
         @{
-               Html.RenderPartial(this.Model.ViewPath, this.Model); 
+            Html.RenderPartial(this.Model.ViewPath, this.Model); 
            }
       
 
@@ -65,6 +64,7 @@
        </div>
       
    </section>
+
 @section scripts{
         <script type="text/javascript">
             $(function () {
@@ -86,12 +86,12 @@
        });
    
 
-                $('#ei-slider').eislideshow({
-                    animation           : 'center',
-                    autoplay            : true,
-                    slideshow_interval  : 3000,
-                    titlesFactor        : 0
-                });
+                //$('#ei-slider').eislideshow({
+                //    animation           : 'center',
+                //    autoplay            : true,
+                //    slideshow_interval  : 3000,
+                //    titlesFactor        : 0
+                //});
             });
 
 
@@ -179,14 +179,18 @@
             $("div[id='priceFilter']").hide();
         }
         else {
-            $("#range_04").ionRangeSlider({
-                type: "double",
-                grid: true,
-                min: minPrice,
-                max: maxPrice
-                //from: 1500,
-                //to: 5000
-            });
+            //$("#range_04").ionRangeSlider({
+            //    type: "double",
+            //    grid: true,
+            //    min: minPrice,
+            //    max: maxPrice
+            //    //from: 1500,
+            //    //to: 5000
+            //});
+            var val = $(".tooltip-inner").html();
+            var res = val.split(" : ");
+            minPrice = res[0];
+            maxPrice = res[1];
         }
 
    
