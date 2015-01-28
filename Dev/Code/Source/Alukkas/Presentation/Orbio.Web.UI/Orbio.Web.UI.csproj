@@ -315,6 +315,7 @@
     <Content Include="Images\Basic_image\Francis-alukkas-Birthstone.png" />
     <Content Include="Images\Basic_image\Francis-alukkas-double-value.png" />
     <Content Include="Images\Basic_image\Francis-alukkas-easygold.png" />
+    <Content Include="Images\Basic_image\Francis-alukkas-easygold1.png" />
     <Content Include="Images\Basic_image\Francis-alukkas-gift-diamond.png" />
     <Content Include="Images\Basic_image\Francis-alukkas-gift-vouchers.png" />
     <Content Include="Images\Basic_image\gold.png" />
@@ -350,10 +351,14 @@
     <Content Include="Images\Basic_image\SizeChart-popup.jpg" />
     <Content Include="Images\Basic_image\Stars_sprite.png" />
     <Content Include="Images\Basic_image\thumb_sliderbg.png" />
+    <Content Include="Images\Basic_image\triangle-left.png" />
+    <Content Include="Images\Basic_image\triangle-right.png" />
     <Content Include="Images\Basic_image\up-arrow.png" />
     <Content Include="Images\Basic_image\updates-image1.png" />
     <Content Include="Images\Basic_image\updates-image2.png" />
     <Content Include="Images\Basic_image\updates-image3.png" />
+    <Content Include="Images\Basic_image\white-bg.png" />
+    <Content Include="Images\Basic_image\white-line.png" />
     <Content Include="Images\Basic_image\wishlist-button-bg.png" />
     <Content Include="Images\Basic_image\yellow-line.png" />
     <Content Include="Images\Basic_image\yellow-tab.png" />

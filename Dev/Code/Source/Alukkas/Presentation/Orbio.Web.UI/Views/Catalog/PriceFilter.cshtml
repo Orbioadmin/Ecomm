@@ -1,6 +1,5 @@
 ﻿@*@model Orbio.Web.UI.Models.Catalog.SpecificationAttribute*@
-  <div class="panel panel-default" id="priceFilter">
-    <h2>@this.Model.Name </h2>
+  
 
     @*@foreach (var option in this.Model.SpecificationAttributeOptions)
         {
@@ -8,20 +7,10 @@
         }*@
     @Html.Hidden("productPriceFilterMinValue", "0")
     @Html.Hidden("productPriceFilterMaxValue", "600")
-    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-        <div class="panel-body">
-
-            <div class="list_products">
-
-
-
-            </div><!--/price-range-->
-
-        </div>
-    </div>
-</div><!--/price-range-->
+    
+ 
 <div class="list_products">
-    <h2>Price </h2>
+    <h2>@this.Model.Name </h2>
 
     <div class="price-range">
         <!--price-range-->
@@ -33,15 +22,3 @@
 
 </div><!--/price-range-->
 
-<p>
-    <label for="slidevalue">Slide:</label>
-    <input type="text" id="slidevalue"
-           style="border:0; color:#b9cd6d; font-weight:bold;">
-</p>
-<script src="~/Scripts/jquery.js"></script>
-<script src="~/Scripts/price-range.js"></script>
-<script>
-    $(function () {
-        $("#sl2").slider();
-    });
-</script>
