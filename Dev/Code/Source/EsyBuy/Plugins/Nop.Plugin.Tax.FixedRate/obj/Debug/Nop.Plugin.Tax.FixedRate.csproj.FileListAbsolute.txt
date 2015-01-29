@@ -67,3 +67,10 @@ F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web
 F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Tax.FixedRate\obj\Debug\Nop.Plugin.Tax.FixedRate.csprojResolveAssemblyReference.cache
 F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Tax.FixedRate\obj\Debug\Nop.Plugin.Tax.FixedRate.dll
 F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Tax.FixedRate\obj\Debug\Nop.Plugin.Tax.FixedRate.pdb
+C:\Users\Orbiopc\Source\Repos\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Tax.FixedRate\Description.txt
+C:\Users\Orbiopc\Source\Repos\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Tax.FixedRate\logo.jpg
+C:\Users\Orbiopc\Source\Repos\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Tax.FixedRate\Nop.Plugin.Tax.FixedRate.dll
+C:\Users\Orbiopc\Source\Repos\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Tax.FixedRate\Nop.Plugin.Tax.FixedRate.pdb
+C:\Users\Orbiopc\Source\Repos\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Tax.FixedRate\obj\Debug\Nop.Plugin.Tax.FixedRate.csprojResolveAssemblyReference.cache
+C:\Users\Orbiopc\Source\Repos\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Tax.FixedRate\obj\Debug\Nop.Plugin.Tax.FixedRate.dll
+C:\Users\Orbiopc\Source\Repos\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Tax.FixedRate\obj\Debug\Nop.Plugin.Tax.FixedRate.pdb

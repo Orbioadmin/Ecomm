@@ -590,6 +590,7 @@ namespace Nop.Services.Media
             return url;
         }
 
+
         /// <summary>
         /// Get a picture local path
         /// </summary>
@@ -725,6 +726,35 @@ namespace Nop.Services.Media
             return picture;
         }
 
+
+        public virtual Picture InsertPicture(string mimeType, string seoFilename,
+    bool isNew, bool validateBinary = true)
+        {
+            //mimeType = CommonHelper.EnsureNotNull(mimeType);
+            //mimeType = CommonHelper.EnsureMaximumLength(mimeType, 20);
+
+            //seoFilename = CommonHelper.EnsureMaximumLength(seoFilename, 100);
+
+            //if (validateBinary)
+            //    pictureBinary = ValidatePicture(pictureBinary, mimeType);
+
+            var picture = new Picture()
+            {
+                //PictureBinary = this.StoreInDb ? pictureBinary : new byte[0],
+                MimeType = mimeType,
+                SeoFilename = seoFilename,
+                IsNew = isNew,
+            };
+            //_pictureRepository.Insert(picture);
+
+            //if (!this.StoreInDb)
+            //    SavePictureInFile(picture.Id, pictureBinary, mimeType);
+
+            ////event notification
+            //_eventPublisher.EntityInserted(picture);
+
+            return picture;
+        }
         /// <summary>
         /// Updates the picture
         /// </summary>

@@ -30,6 +30,11 @@ namespace Nop.Core.Domain.Media
         public bool IsNew { get; set; }
 
         /// <summary>
+        /// Gets or sets the picture location path
+        /// </summary>
+        public string RelativeUrl { get; set; }
+
+        /// <summary>
         /// Gets or sets the product pictures
         /// </summary>
         public virtual ICollection<ProductPicture> ProductPictures

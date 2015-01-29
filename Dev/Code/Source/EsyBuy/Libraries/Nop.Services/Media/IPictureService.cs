@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Nop.Core;
 using Nop.Core.Domain.Media;
+using System.IO;
 
 namespace Nop.Services.Media
 {
@@ -112,7 +113,7 @@ namespace Nop.Services.Media
         /// <param name="validateBinary">A value indicating whether to validated provided picture binary</param>
         /// <returns>Picture</returns>
         Picture InsertPicture(byte[] pictureBinary, string mimeType, string seoFilename, bool isNew, bool validateBinary = true);
-
+        Picture InsertPicture(string mimeType, string seoFilename, bool isNew, bool validateBinary = true);
         /// <summary>
         /// Updates the picture
         /// </summary>
