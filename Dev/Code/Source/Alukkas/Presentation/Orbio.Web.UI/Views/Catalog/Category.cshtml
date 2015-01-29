@@ -181,6 +181,8 @@
         else {
             $("#sl2").attr('data-slider-min', minPrice);
             $("#sl2").attr('data-slider-max', maxPrice);
+            $('.pull-left').text(minPrice);
+            $('.pull-right').text(maxPrice)
             $("#sl2").attr('data-slider-value', "[" + minPrice + "," + maxPrice + "]");
             $("#sl2").slider(
                 //{
