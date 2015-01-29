@@ -8,7 +8,7 @@
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{792EB613-2587-4DE8-B56F-75ED14145450}</ProjectGuid>
-    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Orbio.Web.UI</RootNamespace>
@@ -280,6 +280,13 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\20080567-calibrib.svg" />
+    <Content Include="fonts\241271973-calibril_light.svg" />
+    <Content Include="fonts\919219971-calibri.svg" />
+    <Content Include="fonts\AvantGardeLT-Book.svg" />
+    <Content Include="fonts\AvantGardeLT-Demi.svg" />
+    <Content Include="fonts\cinzeldecorative-bold.svg" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\fonts\20080567-calibrib.eot" />
     <Content Include="Content\fonts\20080567-calibrib.ttf" />
@@ -391,6 +398,8 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\cloud-zoom.js" />
     <Content Include="Scripts\html5shiv.js" />
+    <Content Include="Scripts\ion.rangeSlider.min.js" />
+    <Content Include="Scripts\jquery.eislideshow.js" />
     <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\price-range.js" />
@@ -460,6 +469,31 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\PriceBar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\20080567-calibrib.eot" />
+    <Content Include="fonts\20080567-calibrib.ttf" />
+    <Content Include="fonts\20080567-calibrib.woff" />
+    <Content Include="fonts\241271973-calibril_light.eot" />
+    <Content Include="fonts\241271973-calibril_light.ttf" />
+    <Content Include="fonts\241271973-calibril_light.woff" />
+    <Content Include="fonts\919219971-calibri.eot" />
+    <Content Include="fonts\919219971-calibri.ttf" />
+    <Content Include="fonts\919219971-calibri.woff" />
+    <Content Include="fonts\AvantGardeLT-Book.eot" />
+    <Content Include="fonts\AvantGardeLT-Book.TTF" />
+    <Content Include="fonts\AvantGardeLT-Book.woff" />
+    <Content Include="fonts\AvantGardeLT-Demi.eot" />
+    <Content Include="fonts\AvantGardeLT-Demi.ttf" />
+    <Content Include="fonts\AvantGardeLT-Demi.woff" />
+    <Content Include="fonts\cinzeldecorative-bold.eot" />
+    <Content Include="fonts\cinzeldecorative-bold.ttf" />
+    <Content Include="fonts\cinzeldecorative-bold.woff" />
+    <Content Include="fonts\cinzeldecorative-bold.woff2" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\FontAwesome.otf" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
