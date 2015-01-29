@@ -179,18 +179,22 @@
             $("div[id='priceFilter']").hide();
         }
         else {
-            //$("#range_04").ionRangeSlider({
-            //    type: "double",
-            //    grid: true,
-            //    min: minPrice,
-            //    max: maxPrice
-            //    //from: 1500,
-            //    //to: 5000
-            //});
-            var val = $(".tooltip-inner").html();
-            var res = val.split(" : ");
-            minPrice = res[0];
-            maxPrice = res[1];
+            $("#sl2").attr('data-slider-min', minPrice);
+            $("#sl2").attr('data-slider-max', maxPrice);
+            $("#sl2").attr('data-slider-value', "[" + minPrice + "," + maxPrice + "]");
+            $("#sl2").slider(
+                //{
+                //range: true,
+                //min: 0,
+                //max: 500,
+                //values: [35, 200],
+                //slide: function (event, ui) {
+                    
+                //    $("#slidevalue")
+                //       .val("$" + ui.values[0] + " - $" + ui.values[1]);
+                //}
+                //}
+            );
         }
 
    
