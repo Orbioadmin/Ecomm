@@ -85,11 +85,23 @@ namespace Nop.Admin.Controllers
             }
 
             var picture = _pictureService.InsertPicture(fileBinary, contentType, null, true);
+            //getting the image url
+            var image_url = _pictureService.GetPictureUrl(picture, 100);
+            string Url_for_Ftp = _pictureService.GetThumbLocalPath(picture, 0, true);      
+           
+            string baseimgurl = System.Configuration.ConfigurationManager.AppSettings["ImageServerBaseUrl"];
+            string ftpserverurl = System.Configuration.ConfigurationManager.AppSettings["ImageServerPath"];
+            string ftpusername = System.Configuration.ConfigurationManager.AppSettings["FtpUserName"];
+            string ftppassword = System.Configuration.ConfigurationManager.AppSettings["FtpPassword"];
+
+             //saving image in ftp
+            string url_db = _pictureService.UploadFileToFTP(Url_for_Ftp, baseimgurl, ftpserverurl, ftpusername, ftppassword);
+
+             var url = _pictureService.UpdatePicture(picture.Id, fileBinary, contentType, null, false, url_db, true);
             //when returning JSON the mime-type must be set to text/plain
             //otherwise some browsers will pop-up a "Save As" dialog.
             return Json(new { success = true, pictureId = picture.Id,
-                imageUrl = _pictureService.GetPictureUrl(picture, 100) },
-                "text/plain");
+                              imageUrl = image_url}, "text/plain");
         }
     }
 }
