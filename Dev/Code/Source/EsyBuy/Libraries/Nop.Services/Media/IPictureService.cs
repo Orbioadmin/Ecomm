@@ -113,7 +113,6 @@ namespace Nop.Services.Media
         /// <param name="validateBinary">A value indicating whether to validated provided picture binary</param>
         /// <returns>Picture</returns>
         Picture InsertPicture(byte[] pictureBinary, string mimeType, string seoFilename, bool isNew, bool validateBinary = true);
-        Picture InsertPicture(string mimeType, string seoFilename, bool isNew, bool validateBinary = true);
         /// <summary>
         /// Updates the picture
         /// </summary>
@@ -125,7 +124,7 @@ namespace Nop.Services.Media
         /// <param name="validateBinary">A value indicating whether to validated provided picture binary</param>
         /// <returns>Picture</returns>
         Picture UpdatePicture(int pictureId, byte[] pictureBinary, string mimeType, string seoFilename, bool isNew, bool validateBinary = true);
-
+        Picture UpdatePicture(int pictureId, byte[] pictureBinary, string mimeType, string seoFilename, bool isNew, string relativeurl, bool validateBinary = true);
         /// <summary>
         /// Updates a SEO filename of a picture
         /// </summary>
@@ -138,5 +137,11 @@ namespace Nop.Services.Media
         /// Gets or sets a value indicating whether the images should be stored in data base.
         /// </summary>
         bool StoreInDb { get; set; }
+
+        /// <summary>
+        /// saving image to ftp
+        /// </summary>
+
+        string UploadFileToFTP(string source, string baseimgurl, string ftpserverurl, string ftpusername, string ftppassword);
     }
 }

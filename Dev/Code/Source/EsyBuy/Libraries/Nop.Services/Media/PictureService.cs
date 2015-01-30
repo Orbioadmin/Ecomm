@@ -13,6 +13,9 @@ using Nop.Services.Configuration;
 using Nop.Services.Events;
 using Nop.Services.Logging;
 using Nop.Services.Seo;
+using System.Net;
+using System.Web;
+
 
 namespace Nop.Services.Media
 {
@@ -700,6 +703,7 @@ namespace Nop.Services.Media
         public virtual Picture InsertPicture(byte[] pictureBinary, string mimeType, string seoFilename,
             bool isNew, bool validateBinary = true)
         {
+           
             mimeType = CommonHelper.EnsureNotNull(mimeType);
             mimeType = CommonHelper.EnsureMaximumLength(mimeType, 20);
 
@@ -727,33 +731,46 @@ namespace Nop.Services.Media
         }
 
 
-        public virtual Picture InsertPicture(string mimeType, string seoFilename,
-    bool isNew, bool validateBinary = true)
+      /// <summary>
+        ///  uploading image file to ftp
+      /// </summary>
+      /// <param name="source"></param>
+      /// <param name="baseimageurl"></param>
+      /// <param name="ftpurl"></param>
+      /// <param name="ftpusername"></param>
+      /// <param name="ftppassword"></param>
+      /// <returns></returns>
+        public string UploadFileToFTP(string source, string baseimageurl, string ftpurl, string ftpusername, string ftppassword)
         {
-            //mimeType = CommonHelper.EnsureNotNull(mimeType);
-            //mimeType = CommonHelper.EnsureMaximumLength(mimeType, 20);
-
-            //seoFilename = CommonHelper.EnsureMaximumLength(seoFilename, 100);
-
-            //if (validateBinary)
-            //    pictureBinary = ValidatePicture(pictureBinary, mimeType);
-
-            var picture = new Picture()
+            string ftppath;
+            try
             {
-                //PictureBinary = this.StoreInDb ? pictureBinary : new byte[0],
-                MimeType = mimeType,
-                SeoFilename = seoFilename,
-                IsNew = isNew,
-            };
-            //_pictureRepository.Insert(picture);
 
-            //if (!this.StoreInDb)
-            //    SavePictureInFile(picture.Id, pictureBinary, mimeType);
+                string filename = Path.GetFileName(source);
+                ftppath = ftpurl + "/" +filename;
+                string ftpfullpath = baseimageurl + ftppath;
+                FtpWebRequest ftp = (FtpWebRequest)FtpWebRequest.Create(ftpfullpath);
+                ftp.Credentials = new NetworkCredential(ftpusername, ftppassword);
 
-            ////event notification
-            //_eventPublisher.EntityInserted(picture);
+                ftp.KeepAlive = true;
+                ftp.UseBinary = true;
+                ftp.Method = WebRequestMethods.Ftp.UploadFile;
 
-            return picture;
+                FileStream fs = File.OpenRead(source);
+                byte[] buffer = new byte[fs.Length];
+                fs.Read(buffer, 0, buffer.Length);
+                fs.Close();
+
+                Stream ftpstream = ftp.GetRequestStream();
+                ftpstream.Write(buffer, 0, buffer.Length);
+                ftpstream.Close();
+            }
+            catch (WebException ex)
+            {
+                throw ex;
+               
+            }
+            return ftppath;
         }
         /// <summary>
         /// Updates the picture
@@ -792,6 +809,53 @@ namespace Nop.Services.Media
             _pictureRepository.Update(picture);
 
             if(!this.StoreInDb)
+                SavePictureInFile(picture.Id, pictureBinary, mimeType);
+
+            //event notification
+            _eventPublisher.EntityUpdated(picture);
+
+            return picture;
+        }
+
+
+        /// <summary>
+        /// Updates the picture with url
+        /// </summary>
+        /// <param name="pictureId">The picture identifier</param>
+        /// <param name="pictureBinary">The picture binary</param>
+        /// <param name="mimeType">The picture MIME type</param>
+        /// <param name="seoFilename">The SEO filename</param>
+        /// <param name="isNew">A value indicating whether the picture is new</param>
+        /// <param name="validateBinary">A value indicating whether to validated provided picture binary</param>
+        /// <returns>Picture</returns>
+        public virtual Picture UpdatePicture(int pictureId, byte[] pictureBinary, string mimeType,
+            string seoFilename, bool isNew, string relativeurl, bool validateBinary = true)
+        {
+            mimeType = CommonHelper.EnsureNotNull(mimeType);
+            mimeType = CommonHelper.EnsureMaximumLength(mimeType, 20);
+
+            seoFilename = CommonHelper.EnsureMaximumLength(seoFilename, 100);
+
+            if (validateBinary)
+                pictureBinary = ValidatePicture(pictureBinary, mimeType);
+
+            var picture = GetPictureById(pictureId);
+            if (picture == null)
+                return null;
+
+            //delete old thumbs if a picture has been changed
+            if (seoFilename != picture.SeoFilename)
+                DeletePictureThumbs(picture);
+
+            picture.PictureBinary = (this.StoreInDb ? pictureBinary : new byte[0]);
+            picture.MimeType = mimeType;
+            picture.SeoFilename = seoFilename;
+            picture.IsNew = isNew;
+            picture.RelativeUrl = relativeurl;
+
+            _pictureRepository.Update(picture);
+
+            if (!this.StoreInDb)
                 SavePictureInFile(picture.Id, pictureBinary, mimeType);
 
             //event notification
