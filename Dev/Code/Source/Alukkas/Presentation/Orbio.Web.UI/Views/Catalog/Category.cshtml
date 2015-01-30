@@ -48,6 +48,7 @@
 
             @Html.Action("ProductFilter", "Catalog", new { categoryId = this.Model.Id, minPrice = minPrice, maxPrice = maxPrice,selectedSpecs= this.Model.SelectedSpecificationAttributeIds })
 
+
        </div>
       
         @{
@@ -64,7 +65,6 @@
        </div>
       
    </section>
-
 @section scripts{
         <script type="text/javascript">
             $(function () {
@@ -86,12 +86,12 @@
        });
    
 
-                //$('#ei-slider').eislideshow({
-                //    animation           : 'center',
-                //    autoplay            : true,
-                //    slideshow_interval  : 3000,
-                //    titlesFactor        : 0
-                //});
+                $('#ei-slider').eislideshow({
+                    animation           : 'center',
+                    autoplay            : true,
+                    slideshow_interval  : 3000,
+                    titlesFactor        : 0
+            });
             });
 
 
@@ -181,8 +181,6 @@
         else {
             $("#sl2").attr('data-slider-min', minPrice);
             $("#sl2").attr('data-slider-max', maxPrice);
-            $('.pull-left').text(minPrice);
-            $('.pull-right').text(maxPrice)
             $("#sl2").attr('data-slider-value', "[" + minPrice + "," + maxPrice + "]");
             $("#sl2").slider(
                 //{

@@ -12,8 +12,8 @@ namespace Orbio.Web.UI
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include("~/Scripts/jquery.js",
                         "~/Scripts/jquery-{version}.js","~/Scripts/bootstrap.min.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include( "~/Scripts/price-range.js",
-                        "~/Scripts/cloud-zoom.js", "~/Scripts/main.js", "~/Scripts/html5shiv.js"));
+            bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
+                        "~/Scripts/cloud-zoom.js", "~/Scripts/main.js", "~/Scripts/html5shiv.js", "~/Scripts/price-range.js"));
            
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're

@@ -1,12 +1,11 @@
-﻿@*@model Orbio.Web.UI.Models.Catalog.SpecificationAttribute*@
+﻿@model Orbio.Web.UI.Models.Catalog.SpecificationAttribute
+  <div class="list_products" id="priceFilter">
+                            <h2>@this.Model.Name </h2>
   
-
-    @*@foreach (var option in this.Model.SpecificationAttributeOptions)
+                            @foreach (var option in this.Model.SpecificationAttributeOptions)
         {
             @Html.Hidden(option.ElementName, option.Name)
-        }*@
-    @Html.Hidden("productPriceFilterMinValue", "0")
-    @Html.Hidden("productPriceFilterMaxValue", "600")
+                            }
     
  
 <div class="list_products">
@@ -15,10 +14,7 @@
     <div class="price-range">
         <!--price-range-->
         <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]"  id="sl2"><br />
-        <b class="pull-left">$ 0</b> <b class="pull-right">$ 400</b>
+        <b class="pull-left">$ 0</b> <b class="pull-right">$ 600</b>
 
-    </div><!--/price-range-->
-
-
+                        </div>
 </div><!--/price-range-->
-
