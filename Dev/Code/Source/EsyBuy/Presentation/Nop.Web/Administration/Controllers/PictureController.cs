@@ -87,9 +87,9 @@ namespace Nop.Admin.Controllers
             var picture = _pictureService.InsertPicture(fileBinary, contentType, null, true);
             //getting the image url
             var image_url = _pictureService.GetPictureUrl(picture, 100);
-            string Url_for_Ftp = _pictureService.GetThumbLocalPath(picture, 0, true);      
-           
-            string baseimgurl = System.Configuration.ConfigurationManager.AppSettings["ImageServerBaseUrl"];
+            string Url_for_Ftp = _pictureService.GetThumbLocalPath(picture, 0, true);
+
+            string baseimgurl = System.Configuration.ConfigurationManager.AppSettings["ImageServerBaseftpUrl"];
             string ftpserverurl = System.Configuration.ConfigurationManager.AppSettings["ImageServerPath"];
             string ftpusername = System.Configuration.ConfigurationManager.AppSettings["FtpUserName"];
             string ftppassword = System.Configuration.ConfigurationManager.AppSettings["FtpPassword"];
