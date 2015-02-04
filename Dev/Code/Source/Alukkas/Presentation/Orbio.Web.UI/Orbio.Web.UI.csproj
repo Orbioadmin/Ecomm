@@ -206,7 +206,10 @@
     <Compile Include="Models\Catalog\BaseCatalogModel.cs" />
     <Compile Include="Models\Catalog\CategoryModel.cs" />
     <Compile Include="Models\Catalog\CategorySimpleModel.cs" />
+    <Compile Include="Models\Catalog\ProductDetailModel.cs" />
     <Compile Include="Models\Catalog\ProductOverViewModel.cs" />
+    <Compile Include="Models\Catalog\ProductVariantAttributeModel.cs" />
+    <Compile Include="Models\Catalog\ProductVariantAttributeValueModel.cs" />
     <Compile Include="Models\Catalog\SpecificationAttribute.cs" />
     <Compile Include="Models\Catalog\SpecificationAttributeOption.cs" />
     <Compile Include="Models\Catalog\TopMenuModel.cs" />
