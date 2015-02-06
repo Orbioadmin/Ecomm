@@ -35,6 +35,8 @@ namespace Orbio.Web.UI
             DependencyResolver.SetResolver(dependencyResolver);
         }
 
+    
+
         public override string GetVaryByCustomString(HttpContext context, string custom)
         {
             //madhu MB 

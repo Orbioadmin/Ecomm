@@ -82,3 +82,4 @@ F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.We
 F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.Web\Plugins\Payments.CashOnDelivery\Nop.Plugin.Payments.CashOnDelivery.pdb
 F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.Payments.CashOnDelivery\obj\Debug\Nop.Plugin.Payments.CashOnDelivery.dll
 F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.Payments.CashOnDelivery\obj\Debug\Nop.Plugin.Payments.CashOnDelivery.pdb
+F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.Payments.CashOnDelivery\obj\Debug\Nop.Plugin.Payments.CashOnDelivery.csprojResolveAssemblyReference.cache

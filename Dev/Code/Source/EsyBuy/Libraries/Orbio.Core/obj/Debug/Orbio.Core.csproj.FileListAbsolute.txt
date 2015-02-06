@@ -11,3 +11,7 @@ C:\Users\Orbiopc\Source\Repos\Ecomm\Dev\Code\Source\EsyBuy\Libraries\Orbio.Core\
 C:\Users\Orbiopc\Source\Repos\Ecomm\Dev\Code\Source\EsyBuy\Libraries\Orbio.Core\bin\Debug\Orbio.Core.pdb
 C:\Users\Orbiopc\Source\Repos\Ecomm\Dev\Code\Source\EsyBuy\Libraries\Orbio.Core\obj\Debug\Orbio.Core.dll
 C:\Users\Orbiopc\Source\Repos\Ecomm\Dev\Code\Source\EsyBuy\Libraries\Orbio.Core\obj\Debug\Orbio.Core.pdb
+F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Libraries\Orbio.Core\bin\Debug\Orbio.Core.dll
+F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Libraries\Orbio.Core\bin\Debug\Orbio.Core.pdb
+F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Libraries\Orbio.Core\obj\Debug\Orbio.Core.dll
+F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Libraries\Orbio.Core\obj\Debug\Orbio.Core.pdb

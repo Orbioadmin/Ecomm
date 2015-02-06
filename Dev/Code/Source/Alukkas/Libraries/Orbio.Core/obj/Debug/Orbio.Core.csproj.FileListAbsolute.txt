@@ -7,3 +7,8 @@ F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Libraries\Orbio.Core
 F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Libraries\Orbio.Core\obj\Debug\Orbio.Core.dll
 F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Libraries\Orbio.Core\obj\Debug\Orbio.Core.pdb
 F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\EsyBuy_Source_V4\Libraries\Orbio.Core\obj\Debug\Orbio.Core.csprojResolveAssemblyReference.cache
+F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\Alukkas\Libraries\Orbio.Core\obj\Debug\Orbio.Core.csprojResolveAssemblyReference.cache
+F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\Alukkas\Libraries\Orbio.Core\obj\Debug\Orbio.Core.dll
+F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\Alukkas\Libraries\Orbio.Core\obj\Debug\Orbio.Core.pdb
+F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\Alukkas\Libraries\Orbio.Core\bin\Debug\Orbio.Core.dll
+F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\Alukkas\Libraries\Orbio.Core\bin\Debug\Orbio.Core.pdb

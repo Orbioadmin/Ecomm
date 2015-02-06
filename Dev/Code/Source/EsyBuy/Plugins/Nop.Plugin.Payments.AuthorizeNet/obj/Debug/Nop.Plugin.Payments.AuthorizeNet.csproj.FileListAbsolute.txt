@@ -69,14 +69,6 @@ F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Pl
 F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Payments.AuthorizeNet\obj\Debug\Nop.Plugin.Payments.AuthorizeNet.csprojResolveAssemblyReference.cache
 F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Payments.AuthorizeNet\obj\Debug\Nop.Plugin.Payments.AuthorizeNet.dll
 F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Payments.AuthorizeNet\obj\Debug\Nop.Plugin.Payments.AuthorizeNet.pdb
-F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Payments.AuthorizeNet\Description.txt
-F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Payments.AuthorizeNet\logo.jpg
-F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Payments.AuthorizeNet\Nop.Plugin.Payments.AuthorizeNet.dll.config
-F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Payments.AuthorizeNet\Nop.Plugin.Payments.AuthorizeNet.dll
-F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Payments.AuthorizeNet\Nop.Plugin.Payments.AuthorizeNet.pdb
-F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Payments.AuthorizeNet\obj\Debug\Nop.Plugin.Payments.AuthorizeNet.csprojResolveAssemblyReference.cache
-F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Payments.AuthorizeNet\obj\Debug\Nop.Plugin.Payments.AuthorizeNet.dll
-F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Payments.AuthorizeNet\obj\Debug\Nop.Plugin.Payments.AuthorizeNet.pdb
 C:\Users\Orbiopc\Source\Repos\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Payments.AuthorizeNet\Description.txt
 C:\Users\Orbiopc\Source\Repos\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Payments.AuthorizeNet\logo.jpg
 C:\Users\Orbiopc\Source\Repos\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Payments.AuthorizeNet\Nop.Plugin.Payments.AuthorizeNet.dll.config
@@ -85,3 +77,11 @@ C:\Users\Orbiopc\Source\Repos\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\
 C:\Users\Orbiopc\Source\Repos\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Payments.AuthorizeNet\obj\Debug\Nop.Plugin.Payments.AuthorizeNet.csprojResolveAssemblyReference.cache
 C:\Users\Orbiopc\Source\Repos\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Payments.AuthorizeNet\obj\Debug\Nop.Plugin.Payments.AuthorizeNet.dll
 C:\Users\Orbiopc\Source\Repos\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Payments.AuthorizeNet\obj\Debug\Nop.Plugin.Payments.AuthorizeNet.pdb
+F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Payments.AuthorizeNet\Description.txt
+F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Payments.AuthorizeNet\logo.jpg
+F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Payments.AuthorizeNet\Nop.Plugin.Payments.AuthorizeNet.dll.config
+F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Payments.AuthorizeNet\Nop.Plugin.Payments.AuthorizeNet.dll
+F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Payments.AuthorizeNet\Nop.Plugin.Payments.AuthorizeNet.pdb
+F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Payments.AuthorizeNet\obj\Debug\Nop.Plugin.Payments.AuthorizeNet.csprojResolveAssemblyReference.cache
+F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Payments.AuthorizeNet\obj\Debug\Nop.Plugin.Payments.AuthorizeNet.dll
+F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Payments.AuthorizeNet\obj\Debug\Nop.Plugin.Payments.AuthorizeNet.pdb

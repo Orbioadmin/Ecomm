@@ -69,14 +69,6 @@ F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Pl
 F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Feed.Froogle\obj\Debug\Nop.Plugin.Feed.Froogle.csprojResolveAssemblyReference.cache
 F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Feed.Froogle\obj\Debug\Nop.Plugin.Feed.Froogle.dll
 F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Feed.Froogle\obj\Debug\Nop.Plugin.Feed.Froogle.pdb
-F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Feed.Froogle\Description.txt
-F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Feed.Froogle\Content\styles.css
-F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Feed.Froogle\logo.jpg
-F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Feed.Froogle\Nop.Plugin.Feed.Froogle.dll
-F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Feed.Froogle\Nop.Plugin.Feed.Froogle.pdb
-F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Feed.Froogle\obj\Debug\Nop.Plugin.Feed.Froogle.csprojResolveAssemblyReference.cache
-F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Feed.Froogle\obj\Debug\Nop.Plugin.Feed.Froogle.dll
-F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Feed.Froogle\obj\Debug\Nop.Plugin.Feed.Froogle.pdb
 C:\Users\Orbiopc\Source\Repos\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Feed.Froogle\Description.txt
 C:\Users\Orbiopc\Source\Repos\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Feed.Froogle\Content\styles.css
 C:\Users\Orbiopc\Source\Repos\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Feed.Froogle\logo.jpg
@@ -85,3 +77,11 @@ C:\Users\Orbiopc\Source\Repos\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\
 C:\Users\Orbiopc\Source\Repos\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Feed.Froogle\obj\Debug\Nop.Plugin.Feed.Froogle.csprojResolveAssemblyReference.cache
 C:\Users\Orbiopc\Source\Repos\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Feed.Froogle\obj\Debug\Nop.Plugin.Feed.Froogle.dll
 C:\Users\Orbiopc\Source\Repos\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Feed.Froogle\obj\Debug\Nop.Plugin.Feed.Froogle.pdb
+F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Feed.Froogle\Description.txt
+F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Feed.Froogle\Content\styles.css
+F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Feed.Froogle\logo.jpg
+F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Feed.Froogle\Nop.Plugin.Feed.Froogle.dll
+F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Feed.Froogle\Nop.Plugin.Feed.Froogle.pdb
+F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Feed.Froogle\obj\Debug\Nop.Plugin.Feed.Froogle.csprojResolveAssemblyReference.cache
+F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Feed.Froogle\obj\Debug\Nop.Plugin.Feed.Froogle.dll
+F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Feed.Froogle\obj\Debug\Nop.Plugin.Feed.Froogle.pdb

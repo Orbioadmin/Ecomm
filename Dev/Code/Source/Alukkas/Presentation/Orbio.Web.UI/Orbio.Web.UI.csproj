@@ -466,6 +466,10 @@
       <Project>{75fd4163-333c-4dd5-854d-2ef294e45d94}</Project>
       <Name>Nop.Web.Framework</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Orbio.Web.Framework\Orbio.Web.Framework.csproj">
+      <Project>{8deefba5-da7a-4fbb-ad4c-232a4077e741}</Project>
+      <Name>Orbio.Web.Framework</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Catalog\TopMenuStatic.cshtml" />

@@ -60,13 +60,6 @@ F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Pl
 F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Shipping.ByWeight\obj\Debug\Nop.Plugin.Shipping.ByWeight.csprojResolveAssemblyReference.cache
 F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Shipping.ByWeight\obj\Debug\Nop.Plugin.Shipping.ByWeight.dll
 F:\Excercises\Rakesh\Branch\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Shipping.ByWeight\obj\Debug\Nop.Plugin.Shipping.ByWeight.pdb
-F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Shipping.ByWeight\Description.txt
-F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Shipping.ByWeight\logo.jpg
-F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Shipping.ByWeight\Nop.Plugin.Shipping.ByWeight.dll
-F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Shipping.ByWeight\Nop.Plugin.Shipping.ByWeight.pdb
-F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Shipping.ByWeight\obj\Debug\Nop.Plugin.Shipping.ByWeight.csprojResolveAssemblyReference.cache
-F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Shipping.ByWeight\obj\Debug\Nop.Plugin.Shipping.ByWeight.dll
-F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Shipping.ByWeight\obj\Debug\Nop.Plugin.Shipping.ByWeight.pdb
 C:\Users\Orbiopc\Source\Repos\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Shipping.ByWeight\Description.txt
 C:\Users\Orbiopc\Source\Repos\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Shipping.ByWeight\logo.jpg
 C:\Users\Orbiopc\Source\Repos\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Shipping.ByWeight\Nop.Plugin.Shipping.ByWeight.dll
@@ -74,3 +67,10 @@ C:\Users\Orbiopc\Source\Repos\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\
 C:\Users\Orbiopc\Source\Repos\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Shipping.ByWeight\obj\Debug\Nop.Plugin.Shipping.ByWeight.csprojResolveAssemblyReference.cache
 C:\Users\Orbiopc\Source\Repos\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Shipping.ByWeight\obj\Debug\Nop.Plugin.Shipping.ByWeight.dll
 C:\Users\Orbiopc\Source\Repos\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Shipping.ByWeight\obj\Debug\Nop.Plugin.Shipping.ByWeight.pdb
+F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Shipping.ByWeight\Description.txt
+F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Shipping.ByWeight\logo.jpg
+F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Shipping.ByWeight\Nop.Plugin.Shipping.ByWeight.dll
+F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Presentation\Nop.Web\Plugins\Shipping.ByWeight\Nop.Plugin.Shipping.ByWeight.pdb
+F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Shipping.ByWeight\obj\Debug\Nop.Plugin.Shipping.ByWeight.csprojResolveAssemblyReference.cache
+F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Shipping.ByWeight\obj\Debug\Nop.Plugin.Shipping.ByWeight.dll
+F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Plugins\Nop.Plugin.Shipping.ByWeight\obj\Debug\Nop.Plugin.Shipping.ByWeight.pdb

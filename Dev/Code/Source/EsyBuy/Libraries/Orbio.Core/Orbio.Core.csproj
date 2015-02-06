@@ -45,6 +45,7 @@
     <Compile Include="Domain\Catalog\CategoryProduct.cs" />
     <Compile Include="Domain\Catalog\Product.cs" />
     <Compile Include="Domain\Catalog\SpecificationFilterModel.cs" />
+    <Compile Include="Domain\Customers\Customer.cs" />
     <Compile Include="Domain\Seo\UrlRecord.cs" />
     <Compile Include="IWebHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
