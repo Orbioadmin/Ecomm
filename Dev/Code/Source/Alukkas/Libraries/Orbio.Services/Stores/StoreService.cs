@@ -47,16 +47,16 @@ namespace Orbio.Services.Stores
             this.context = context;
             this.cacheManager = cacheManager;
         }
-        public IList<Store> GetAllStores(string host)
+        public Store GetCurrentStore(string host)
         {
            
             string key = STORES_ALL_KEY;
             return cacheManager.Get(key, () =>
             {
-                 var result = context.ExecuteFunction<Store>("usp_Store_GetAllStores",
+                var result = context.ExecuteFunction<Store>("usp_Store_GetCurrentStore",
                     new SqlParameter() { ParameterName = "@host", Value = host, DbType = System.Data.DbType.String });
 
-                 return result != null ? result.ToList() : new List<Store>();
+                 return result != null ? result.ToList().FirstOrDefault() : new Store();
                  
             });
              

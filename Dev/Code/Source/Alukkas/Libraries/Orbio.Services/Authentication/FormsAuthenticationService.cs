@@ -19,7 +19,7 @@ namespace Orbio.Services.Authentication
         //private readonly CustomerSettings _customerSettings;
         private readonly TimeSpan _expirationTimeSpan;
 
-        //private Customer _cachedCustomer;
+        private Customer cachedCustomer;
 
         /// <summary>
         /// Ctor
@@ -40,34 +40,34 @@ namespace Orbio.Services.Authentication
 
         public virtual void SignIn(Customer customer, bool createPersistentCookie)
         {
-            //var now = DateTime.UtcNow.ToLocalTime();
+            var now = DateTime.UtcNow.ToLocalTime();
 
-            //var ticket = new FormsAuthenticationTicket(
-            //    1 /*version*/,
-            //    _customerSettings.UsernamesEnabled ? customer.Username : customer.Email,
-            //    now,
-            //    now.Add(_expirationTimeSpan),
-            //    createPersistentCookie,
-            //    _customerSettings.UsernamesEnabled ? customer.Username : customer.Email,
-            //    FormsAuthentication.FormsCookiePath);
+            var ticket = new FormsAuthenticationTicket(
+                1 /*version*/,
+                customer.Email,  //hardcoding for now need to get customersetting _customerSettings.UsernamesEnabled ? customer.Username : customer.Email,
+                now,
+                now.Add(_expirationTimeSpan),
+                createPersistentCookie,
+                customer.Email,  //hardcoding for now need to get customersetting _customerSettings.UsernamesEnabled ? customer.Username : customer.Email,
+                FormsAuthentication.FormsCookiePath);
 
-            //var encryptedTicket = FormsAuthentication.Encrypt(ticket);
+            var encryptedTicket = FormsAuthentication.Encrypt(ticket);
 
-            //var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
-            //cookie.HttpOnly = true;
-            //if (ticket.IsPersistent)
-            //{
-            //    cookie.Expires = ticket.Expiration;
-            //}
-            //cookie.Secure = FormsAuthentication.RequireSSL;
-            //cookie.Path = FormsAuthentication.FormsCookiePath;
-            //if (FormsAuthentication.CookieDomain != null)
-            //{
-            //    cookie.Domain = FormsAuthentication.CookieDomain;
-            //}
+            var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
+            cookie.HttpOnly = true;
+            if (ticket.IsPersistent)
+            {
+                cookie.Expires = ticket.Expiration;
+            }
+            cookie.Secure = FormsAuthentication.RequireSSL;
+            cookie.Path = FormsAuthentication.FormsCookiePath;
+            if (FormsAuthentication.CookieDomain != null)
+            {
+                cookie.Domain = FormsAuthentication.CookieDomain;
+            }
 
-            //_httpContext.Response.Cookies.Add(cookie);
-            //_cachedCustomer = customer;
+            _httpContext.Response.Cookies.Add(cookie);
+            cachedCustomer = customer;
         }
 
         public virtual void SignOut()

@@ -39,7 +39,7 @@ namespace Orbio.Web.Framework
         //private readonly LocalizationSettings _localizationSettings;
         private readonly IWebHelper webHelper;
 
-        private Customer _cachedCustomer;
+        private Customer cachedCustomer;
         private Customer _originalCustomerIfImpersonated;
         //private Vendor _cachedVendor;
 
@@ -118,8 +118,8 @@ namespace Orbio.Web.Framework
         {
             get
             {
-                if (_cachedCustomer != null)
-                    return _cachedCustomer;
+                if (cachedCustomer != null)
+                    return cachedCustomer;
 
                // Customer customer = null;
                 var checkBackgroundTask = false;
@@ -196,15 +196,15 @@ namespace Orbio.Web.Framework
                 if (!customer.Deleted && customer.Active)
                 {
                     SetCustomerCookie(customer.CustomerGuid);
-                    _cachedCustomer = customer;
+                    cachedCustomer = customer;
                 }
 
-                return _cachedCustomer;
+                return cachedCustomer;
             }
             set
             {
                 SetCustomerCookie(value.CustomerGuid);
-                _cachedCustomer = value;
+                cachedCustomer = value;
             }
         }
 
@@ -329,7 +329,7 @@ namespace Orbio.Web.Framework
         //            var customerCurrencyId = this.CurrentCustomer.GetAttribute<int>(SystemCustomerAttributeNames.CurrencyId,
         //                _genericAttributeService, _storeContext.CurrentStore.Id);
         //            foreach (var currency in allCurrencies)
-        //            {
+        //            {maddy4678
         //                if (customerCurrencyId == currency.Id)
         //                {
         //                    return currency;

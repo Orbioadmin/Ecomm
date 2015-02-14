@@ -48,6 +48,7 @@
     <Compile Include="Domain\Catalog\ProductDetail.cs" />
     <Compile Include="Domain\Catalog\SpecificationFilterModel.cs" />
     <Compile Include="Domain\Customers\Customer.cs" />
+    <Compile Include="Domain\Customers\CustomerLoginResults.cs" />
     <Compile Include="Domain\Customers\PasswordFormat.cs" />
     <Compile Include="Domain\Customers\SystemCustomerNames.cs" />
     <Compile Include="Domain\Seo\UrlRecord.cs" />

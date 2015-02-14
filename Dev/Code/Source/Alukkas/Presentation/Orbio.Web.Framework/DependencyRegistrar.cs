@@ -5,6 +5,7 @@ using Autofac.Integration.Mvc;
 using Nop.Core.Infrastructure;
 using Nop.Core.Infrastructure.DependencyManagement;
 using Orbio.Core;
+using Orbio.Services.Security;
  
 namespace Orbio.Web.Framework
 {
@@ -16,10 +17,7 @@ namespace Orbio.Web.Framework
             
             //added by madhu mb 
             builder.RegisterType<WebWorkContext>().As<IWorkContext>().InstancePerHttpRequest();
-          
-
-           
-
+            builder.RegisterType<EncryptionService>().As<IEncryptionService>().InstancePerHttpRequest();
         }
 
         public int Order

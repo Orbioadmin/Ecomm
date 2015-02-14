@@ -21,5 +21,13 @@ namespace Orbio.Services.Customers
         /// <param name="customerByCookieGuid">customer guid from cookie</param>
         /// <returns>returns a customer</returns>
         Customer GetCurrentCustomer(bool checkBackgroundTask, bool isSearchEngine, string @authenticatedCustomerData, string customerByCookieGuid, string ipAddress);
+
+         /// <summary>
+        /// Validate customer
+        /// </summary>
+        /// <param name="usernameOrEmail">Username or email</param>
+        /// <param name="password">Password</param>
+        /// <returns>Result</returns>
+        CustomerLoginResults ValidateCustomer(string usernameOrEmail, string password, ref Customer customerOut);
     }
 }

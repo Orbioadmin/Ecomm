@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
 using Nop.Core;
@@ -59,5 +60,16 @@ namespace Nop.Data
         /// <param name="parameters">any parameters if required</param>
         /// <returns>object result of type T</returns>
         List<T> ExecuteFunction<T>(string commandText, params object[] parameters);
+
+        ///// <summary>
+        ///// executes storeprocedure and returns 3 multiple result set
+        ///// </summary>
+        ///// <typeparam name="T1">first result type</typeparam>
+        ///// <typeparam name="T2">second result type</typeparam>
+        ///// <typeparam name="T3">3rd result type</typeparam>
+        ///// <param name="commandText">sp name</param>
+        ///// <param name="parameters">any parameters if required</param>
+        ///// <returns>object result of type T</returns>
+        //Tuple<T1,T2,T3> ExecuteMultipleResult<T1,T2,T3>(string commandText, params object[] parameters);
     }
 }

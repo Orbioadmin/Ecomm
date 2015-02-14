@@ -83,18 +83,18 @@ namespace Orbio.Web.UI
                 Thread.CurrentThread.CurrentCulture = culture;
                 Thread.CurrentThread.CurrentUICulture = culture;
             }
-            else
-            {
-                //public store
-                var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
-                var curcustomer = workContext.CurrentCustomer;
-                //if (workContext.CurrentCustomer != null && workContext.WorkingLanguage != null)
-                //{
-                //    var culture = new CultureInfo(workContext.WorkingLanguage.LanguageCulture);
-                //    Thread.CurrentThread.CurrentCulture = culture;
-                //    Thread.CurrentThread.CurrentUICulture = culture;
-                //}
-            }
+            //else
+            //{
+            //    //public store
+            //    var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
+            //    var curcustomer = workContext.CurrentCustomer;
+            //    //if (workContext.CurrentCustomer != null && workContext.WorkingLanguage != null)
+            //    //{
+            //    //    var culture = new CultureInfo(workContext.WorkingLanguage.LanguageCulture);
+            //    //    Thread.CurrentThread.CurrentCulture = culture;
+            //    //    Thread.CurrentThread.CurrentUICulture = culture;
+            //    //}
+            //}
         }
     }
 }

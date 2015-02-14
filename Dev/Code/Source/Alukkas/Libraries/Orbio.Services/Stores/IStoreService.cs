@@ -16,6 +16,6 @@ namespace Orbio.Services.Stores
         /// Gets all stores
         /// </summary>
         /// <returns>Store collection</returns>
-        IList<Store> GetAllStores(string host);
+        Store GetCurrentStore(string host);
     }
 }

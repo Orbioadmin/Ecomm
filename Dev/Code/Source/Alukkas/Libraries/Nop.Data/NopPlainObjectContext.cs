@@ -170,7 +170,7 @@ namespace Nop.Data
                             cmd.Parameters.Add(p);
 
                     //database call
-                    var reader = cmd.ExecuteReader();
+                    var reader = cmd.ExecuteReader();                    
                     //return reader.DataReaderToObjectList<TEntity>();
                     var result = context.Translate<TEntity>(reader).ToList();
                     for (int i = 0; i < result.Count; i++)

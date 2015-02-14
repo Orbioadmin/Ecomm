@@ -122,6 +122,11 @@ namespace Orbio.Core.Domain.Customers
         /// </summary>
         public DateTime LastActivityDateUtc { get; set; }
 
+        /// <summary>
+        /// Gets or sets is registered
+        /// </summary>
+        public bool IsRegistered { get; set; }
+
         #region Navigation properties
 
         ///// <summary>
