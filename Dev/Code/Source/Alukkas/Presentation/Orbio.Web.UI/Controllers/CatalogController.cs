@@ -18,6 +18,8 @@ namespace Orbio.Web.UI.Controllers
     public class CatalogController : Controller
     {
         private readonly ICategoryService categoryService;
+
+        private readonly IProductService productService;
        // private readonly IWorkContext workContext;
        // private readonly IStoreContext storeContext;
 
@@ -28,7 +30,7 @@ namespace Orbio.Web.UI.Controllers
         /// <summary>
         /// instantiates catalog controller
         /// </summary>
-        public CatalogController(ICategoryService categoryService,
+        public CatalogController(ICategoryService categoryService, IProductService productService,
             //IWorkContext workContext,
             //IStoreContext storeContext,       
             //CatalogSettings catalogSettings,          
@@ -38,6 +40,7 @@ namespace Orbio.Web.UI.Controllers
         {
             this.categoryService = categoryService;
 
+            this.productService = productService;
             //this.workContext = workContext;
             //this.storeContext = storeContext;
 
@@ -146,8 +149,10 @@ namespace Orbio.Web.UI.Controllers
 
         public ActionResult Product(string seName)
         {
-          
-            return View();
+            var model = PrepareProductdetailsModel(seName);
+            var queryString = new NameValueCollection(ControllerContext.HttpContext.Request.QueryString);
+            webHelper.RemoveQueryFromPath(ControllerContext.HttpContext, new List<string> { { "spec" } });
+            return View(model);
         }
 
 
@@ -161,6 +166,13 @@ namespace Orbio.Web.UI.Controllers
                 model.SelectedSpecificationAttributeIds = (from f in filterIds.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
                                                            select Convert.ToInt32(f)).ToArray();
             }
+            return model;
+        }
+
+        private ProductOverViewModel PrepareProductdetailsModel(string seName)
+        {
+            var model = new ProductDetailModel(productService.GetProductsDetailsBySlug(seName));
+
             return model;
         }
 

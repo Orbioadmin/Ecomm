@@ -16,7 +16,7 @@ namespace Orbio.Services.Catalog
         /// <param name="slug">the slug value</param>
         /// <param name="entityName">the entity name</param>
         /// <returns>instance of Product details</returns>
-        Product GetProductsDetailsBySlug(string slug);
+        ProductDetail GetProductsDetailsBySlug(string slug);
 
     }
 }

@@ -1,17 +1,14 @@
-﻿using Orbio.Core.Domain.Catalog;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Nop.Core.Domain;
 using Nop.Data;
+using Orbio.Core.Domain.Catalog;
 using System.Linq;
 using Orbio.Services.Utility;
 using System.Data.SqlClient;
 
 namespace Orbio.Services.Catalog
 {
-    class ProductService:IProductService
+    public class ProductService : IProductService
     {
 
          private readonly IDbContext context;
@@ -33,7 +30,7 @@ namespace Orbio.Services.Catalog
         /// <param name="entityName">the entity name</param>
         /// <returns>list of products</returns>
 
-        public Product GetProductsDetailsBySlug(string slug)
+        public ProductDetail GetProductsDetailsBySlug(string slug)
         {
             var sqlParamList = new List<SqlParameter>();
             sqlParamList.Add(new SqlParameter() { ParameterName = "@slug", Value = slug, DbType = System.Data.DbType.String });
@@ -44,11 +41,11 @@ namespace Orbio.Services.Catalog
                 ).FirstOrDefault();
             if (result != null)
             {
-                var productdetails = Serializer.GenericDeSerializer<Product>(result.XmlResult);
+                var productdetails = Serializer.GenericDeSerializer<ProductDetail>(result.XmlResult);
                 return productdetails;
             }
 
-            return new Product();
+            return new ProductDetail();
         }
     }
 }
