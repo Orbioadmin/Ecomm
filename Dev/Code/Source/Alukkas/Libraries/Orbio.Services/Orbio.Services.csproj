@@ -42,6 +42,8 @@
   <ItemGroup>
     <Compile Include="Catalog\CategoryService.cs" />
     <Compile Include="Catalog\ICategoryService.cs" />
+    <Compile Include="Catalog\IProductService.cs" />
+    <Compile Include="Catalog\ProductService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Seo\IUrlRecordService.cs" />
     <Compile Include="Seo\UrlRecordService.cs" />

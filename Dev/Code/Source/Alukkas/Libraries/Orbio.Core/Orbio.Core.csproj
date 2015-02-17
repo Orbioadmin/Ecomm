@@ -45,7 +45,11 @@
     <Compile Include="Domain\Catalog\Category.cs" />
     <Compile Include="Domain\Catalog\CategoryProduct.cs" />
     <Compile Include="Domain\Catalog\Product.cs" />
+    <Compile Include="Domain\Catalog\ProductAttribute.cs" />
     <Compile Include="Domain\Catalog\ProductDetail.cs" />
+    <Compile Include="Domain\Catalog\ProductPicture.cs" />
+    <Compile Include="Domain\Catalog\ProductsAttributes.cs" />
+    <Compile Include="Domain\Catalog\ProductVarientAttributeValue.cs" />
     <Compile Include="Domain\Catalog\SpecificationFilterModel.cs" />
     <Compile Include="Domain\Seo\UrlRecord.cs" />
     <Compile Include="IWebHelper.cs" />
