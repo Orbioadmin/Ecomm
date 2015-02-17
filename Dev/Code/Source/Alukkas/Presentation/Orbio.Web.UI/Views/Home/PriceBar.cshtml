@@ -1,4 +1,5 @@
-﻿<div class="second_menu">
+﻿@model  Orbio.Web.UI.Models.Home.PriceBarModel
+<div class="second_menu">
   <div class="container">
   <ul class="menu_desc">
   <li><a href="">20 Oct 2014</a></li>
@@ -13,7 +14,7 @@
 <input type="submit" class="search_butt" value="">
   </a></li>
   <li class="item_span"><a href=""><i class="item_icon"></i><span>0</span> items</a></li>
-  <li class="user"><a href="">HI USER!</a></li>
+  <li class="user"><a href="@Url.Action("MyAccount", "Customer")">HI @Model.UserNameOrEmail!</a></li>
   </ul>
   </div>
   </div>

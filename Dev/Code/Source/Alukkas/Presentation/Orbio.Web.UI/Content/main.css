@@ -1404,3 +1404,34 @@ clear: both; overflow: hidden;}
   padding:3px;
   border:1px solid #000;
 }
+
+.home_slider #slider-carousel{height: 500px!important;}
+.home_slider .carousel-caption{top: -120px; width: 76%; }
+.main_slide{background:url('../images/Basic_image/white-line.png') center repeat-x; height: 1px; position: absolute;
+top: 42%; width: 100%;}
+.slider_cap_img{width: 146px!important; height:149px!important; float: left; margin-right: 20px;}
+.easy_lft{float:left; height: 203px; width: 77px;}
+.easy_rgt{float:left; height: 203px; width: 77px;}
+.easy_cnt{float: left; background:url('../images/Basic_image/white-bg.png') repeat; width: 564px; height: 203px;}
+.easy_cnt h1{text-align: left; color: #2f2f2f; font-family: "Calibri"; font-size: 22px; text-shadow: 0 0px 0px rgba(0,0,0,0.6);}
+.easy_cnt a {color: #d4a00a; font-family: "Calibri Light"; font-size: 14px; text-align: left; float: left;
+text-transform: uppercase;}
+.easy_cnt p{text-align: left; color: #2f2f2f; font-family: "Calibri";  text-shadow: 0 0px 0px rgba(0,0,0,0.6);}
+.girl.img-responsive{height: 500px;}
+
+
+
+.Login_home{background: #F5F5F5; padding: 80px 0; }
+.Login_home h1{margin: 0; padding-bottom: 15px; font-size: 18px; color: #303030; font-family: "Calibri";}
+.login_inner{background: #DCAC00; border-radius:5px; }
+.Login_home .col-md-6.col-sm-6.col-xs-12 {float: inherit;}
+.login_form{background: #ffffff; border: 1px #DCAC00 solid;border-radius:5px;  }
+.login_form{text-align: left; padding:10px 20px;}
+.login_form .form-horizontal .control-label{text-align: left; font-size: 14px; color: #272727;  font-family: "Calibri"; font-weight: normal;}
+.forget label{margin: 0;}.forget a{ font-weight: normal; color: #272727; font-size: 12px;  font-family: "Calibri"; font-style: italic;}
+.new_user{background:url('../images/new-user-bg.png') repeat; text-align: left; padding: 10px 15px;}
+.login_form .form-horizontal .form-control{background: #EBEBEB; border:1px #959595 dashed; border-radius: 0; height: 27px; padding: 3px 5px;}
+.new_user h1{padding-bottom: 5px;}.new_user p{ color: #ffffff; font-size: 14px;  font-family: "Calibri";}
+.new_user .size_guide{border:0; border-bottom: 2px solid #d7d7d7; width: 100px; cursor: pointer; padding: 3px 15px;}
+.face_login{background: url('../images/login-facebook.png') no-repeat; border:0; width: 138px; height: 26px;}
+.login_form .Buynow{margin: 0 0 10px 0; padding:0 22px;}

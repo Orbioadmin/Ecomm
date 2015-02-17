@@ -42,3 +42,12 @@ Network Trash Folder
 Temporary Items
 .apdisk
 *.cache
+*.suo
+*.dll
+*.pdb
+*.cache
+*.dll
+*.pdb
+*.xml
+*.suo
+*.dll

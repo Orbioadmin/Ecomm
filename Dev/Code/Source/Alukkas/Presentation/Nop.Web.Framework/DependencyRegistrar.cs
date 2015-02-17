@@ -154,6 +154,11 @@ namespace Nop.Web.Framework
 
             builder.RegisterType<OBS.Seo.UrlRecordService>().As<OBS.Seo.IUrlRecordService>().InstancePerHttpRequest();
             builder.RegisterType<OBC.WebHelper>().As<OBC.IWebHelper>().InstancePerHttpRequest();
+            builder.RegisterType<OBS.Stores.StoreService>().As<OBS.Stores.IStoreService>().InstancePerHttpRequest();
+            builder.RegisterType<OBS.Authentication.FormsAuthenticationService>().As<OBS.Authentication.IAuthenticationService>().InstancePerHttpRequest();
+            builder.RegisterType<OBS.Customers.CustomerService>().As<OBS.Customers.ICustomerService>().InstancePerHttpRequest();
+            
+            
 
             builder.RegisterType<CompareProductsService>().As<ICompareProductsService>().InstancePerHttpRequest();
             builder.RegisterType<RecentlyViewedProductsService>().As<IRecentlyViewedProductsService>().InstancePerHttpRequest();

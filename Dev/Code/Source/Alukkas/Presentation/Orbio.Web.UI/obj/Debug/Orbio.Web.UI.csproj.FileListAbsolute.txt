@@ -603,3 +603,5 @@ F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\Alukkas\Presentation\Orbio.
 F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\Alukkas\Presentation\Orbio.Web.UI\obj\Debug\Orbio.Web.UI.csprojResolveAssemblyReference.cache
 F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\Alukkas\Presentation\Orbio.Web.UI\obj\Debug\Orbio.Web.UI.dll
 F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\Alukkas\Presentation\Orbio.Web.UI\obj\Debug\Orbio.Web.UI.pdb
+F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\Alukkas\Presentation\Orbio.Web.UI\bin\Orbio.Web.Framework.dll
+F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\Alukkas\Presentation\Orbio.Web.UI\bin\Orbio.Web.Framework.pdb

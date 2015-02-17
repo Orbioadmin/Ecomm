@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Nop.Core.Infrastructure;
+using Orbio.Web.UI.Models.Home;
 
 namespace Orbio.Web.UI.Controllers
 {
@@ -31,7 +33,10 @@ namespace Orbio.Web.UI.Controllers
 
         public ActionResult PriceBar()
         {
-            return PartialView();
+            var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
+            var curcustomer = workContext.CurrentCustomer;
+            var model = new PriceBarModel { UserNameOrEmail =  string.IsNullOrEmpty(curcustomer.Username)?"Guest":curcustomer.Username };
+            return PartialView(model);
         }
     }
 }

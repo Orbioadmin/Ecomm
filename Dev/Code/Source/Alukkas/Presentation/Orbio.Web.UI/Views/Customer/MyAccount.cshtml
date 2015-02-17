@@ -1,0 +1,150 @@
+﻿ @Html.Action("PriceBar", "Home")
+<section class="Order_whish">
+<div class="container">
+<ol class="breadcrumb">
+  <li><a href="#">Home</a></li>
+  <li class="active">My Account</li>
+</ol>
+
+<div class="order_main">
+<h1>MY ACCOUNT - DETAILS</h1>
+
+
+<div class="row">
+
+  <!-- Navigation Buttons -->
+  <div class="col-md-2 col-sm-2">
+    <ul class="nav nav-pills nav-stacked" id="myTabs">
+      <li class="active"><a href="#detail">MY DETAILS</a></li>
+      <li><a href="#myaccount">MY ACCOUNT</a></li>
+      <li><a href="#mywishlist">MY WISHLIST</a></li>
+    </ul>
+  </div>
+
+  <!-- Content -->
+  <div class="col-md-10 col-sm-10">
+    <div class="tab-content">
+    <!-- detail -->
+      <div class="tab-pane active" id="detail">
+        
+        <div class="row">
+        <div class="col-md-9 col-sm-9">
+        <div class="my_detail">
+        <dl class="dl-horizontal">
+  <dt>First Name</dt>
+  <dd>Name</dd>
+  <dt>Last Name</dt>
+  <dd>Name</dd>
+  <dt>Email</dt>
+  <dd>Name@jk.com</dd>
+  <dt>Date of Birth</dt>
+  <dd>--</dd>
+  <dt>Gender</dt>
+  <dd>Male</dd>
+  <dt>Mobile No</dt>
+  <dd>985715624</dd>
+  </dl>
+   </div>
+        </div>
+        <div class="col-md-3 col-sm-3">
+        <div class="prof_sett">
+         <button type="submit" class="btn btn-yellow">EDIT PROFILE</button>
+          <button type="submit" class="btn btn-yellow">CHANGE PASSWORD</button>
+          </div>
+        </div>
+        </div>
+
+      </div>
+      <!-- detail -->
+
+      <!-- My account -->
+      <div class="tab-pane" id="myaccount">
+ <div class="table-responsive">
+      <table cellspacing="0" cellpadding="0" width="100%" class="Order_table table">
+        <tbody><tr>
+        <th>S.No.</th>
+        <th>Order No.</th>
+        <th>Date</th>
+        <th>Status</th>
+        </tr>
+        <tr>
+        <td>1</td>
+        <td>ABC 123456789</td>
+        <td>18 - 11 -2014</td>
+        <td><p class="deliver">Delivered</p></td>
+        </tr>
+        <tr>
+        <td>2</td>
+        <td>ABC 123456789</td>
+        <td>18 - 11 -2014</td>
+        <td><p>Inprogess</p></td>
+        </tr>
+        <tr>
+        <td>3</td>
+        <td>ABC 123456789</td>
+        <td>18 - 11 -2014</td>
+        <td><p class="cancel">Cancelled</p></td>
+        </tr>
+        </tbody></table>
+</div>
+      </div>
+      <!-- My account -->
+
+      <!-- My Wishlist -->
+      <div class="tab-pane" id="mywishlist">
+      <div class="table-responsive">
+      <table cellspacing="0" cellpadding="0" width="100%" class="Order_table table">
+        <tbody><tr>
+        <th width="10%">Item</th>
+        <th></th>
+        <th>QTY</th>
+        <th>Price</th>
+        <th>Remove</th>
+        <th>Add To Cart</th>
+        </tr>
+        <tr>
+        <td><img src="images/Thumbnail/Listing-product1.jpg" class="wishlist_img"></td>
+        <td class="p_wish">
+        <p>Diamond Chain</p> 
+        </td>  
+        <td> 
+        <select>
+            <option>1</option>
+            <option>2</option>
+        </select>
+        </td>
+        <td>Rs.12,300.00</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+        <td><img src="images/Thumbnail/Listing-product1.jpg" class="wishlist_img"></td>
+        <td class="p_wish">
+        <p>Diamond Chain</p> 
+        </td>  
+        <td> 
+        <select>
+            <option>1</option>
+            <option>2</option>
+        </select>
+        </td>
+        <td>Rs.12,300.00</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        </tr>
+        
+        </tbody></table>
+</div>
+      </div>
+      <!-- My Wishlist -->
+    </div>
+  </div>
+
+</div>
+
+
+
+
+</div>
+</div>	
+</section>

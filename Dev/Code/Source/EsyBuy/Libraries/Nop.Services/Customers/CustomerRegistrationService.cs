@@ -90,7 +90,7 @@ namespace Nop.Services.Customers
                     pwd = password;
                     break;
             }
-            pwd = "F1EB4080B7307DAFB0BD5F9EB8A6E711C3827760";
+           // pwd = "F1EB4080B7307DAFB0BD5F9EB8A6E711C3827760";
             bool isValid = pwd == customer.Password;
 
             //save last login date
