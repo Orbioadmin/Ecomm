@@ -1,176 +1,229 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-   <div class="Fashion">
-    <img src="images/slider/shop-gold-diamond-image.png" alt="" class="fashion_banner">
-    <div>
-    <a class="gold_shop"><span></span> </a>
-    <div class="men_icon"></div>
+<section id="slider">
+    <!--slider-->
+    <div class="top_zig"></div>
+    <div class="">
+
+        <div id="slider-carousel" class="carousel slide" data-ride="carousel">
+
+
+            <div class="carousel-inner">
+                <div class="item active">
+                    <div class="col-sm-12">
+                        <img src="~/Images/Slider/main-banner1.png" class="girl img-responsive" alt="" />
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="col-sm-12">
+                        <img src="~/Images/Slider/main-banner1.png" class="girl img-responsive" alt="" />
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="col-sm-12">
+                        <img src="~/Images/Slider/main-banner1.png" class="girl img-responsive" alt="" />
+                    </div>
+                </div>
+
+            </div>
+
+            <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
+                <img src="~/Images/Basic_image/prev-arrow.png" />
+            </a>
+            <a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
+                <img src="~/Images/Basic_image/next-arrow.png" />
+            </a>
+        </div>
+
     </div>
-    <div>
-    <a class="diamond_shop"><span></span></a>
-    <div class="women_icon"></div>
-    </div>
-    </div>
-    
-    <div class="fashion_details">
+</section><!--/slider-->
+<div class="thumbnail_slider">
     <div class="container">
-    <div class="col-md-4 col-sm-4">
-    <div class="main_grid">
-    <h1>BIRTHSTONES</h1>
-    <img src="images/Basic_image/Francis-alukkas-Birthstone.png" >
-    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-    <a href="">Know Now >></a>
-    </div>
-    </div>
 
-    <div class="col-md-4 col-sm-4">
-    <div class="main_grid">
-    <h1>EASY GOLD</h1>
-    <img src="images/Basic_image/Francis-alukkas-easygold.png" >
-    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-    <a href="">Know Now >></a>
+        <ul class="thumb_ul">
+            <li class="thumb_first">
+                <div class="explore">
+                    <span>EXPLORE OUR</span> CATEGORY
+                </div>
+            </li>
+            <li>
+                <div class="ring">
+                    <p>Ring</p>
+                    <img src="~/Images/Basic_image/category-ring.png" />
+                </div>
+            </li>
+            <li>
+                <div class="ring">
+                    <p>Earrings</p>
+                    <img src="~/Images/Basic_image/category-earring.png" />
+                </div>
+            </li>
+            <li>
+                <div class="ring">
+                    <p>Bangles</p>
+                    <img src="~/Images/Basic_image/category-bangles.png" />
+                </div>
+            </li>
+            <li>
+                <div class="ring">
+                    <p>Necklace</p>
+                    <img src="~/Images/Basic_image/category-necklace.png" />
+                </div>
+            </li>
+        </ul>
     </div>
+</div>
+<div class="alukas_third">
+    <div class="container">
+        <div class="col-md-3 col-sm-3">
+            <img src="~/Images/Basic_image/banner2.jpg" />
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <img src="~/Images/Basic_image/banner1.jpg" />
+        </div>
+        <div class="col-md-3 col-sm-3">
+            <img src="~/Images/Basic_image/banner2.jpg" />
+        </div>
     </div>
+</div>
 
-    <!--<div class="col-md-3 col-sm-4">
-    <div class="main_grid">
-    <h1>DOUBLE VALUE</h1>
-    <img src="images/Basic_image/Francis-alukkas-double-value.png" >
-    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-    <a href="">Know Now >></a>
-    </div>
-    </div>-->
+<div class="alukkas_banner">
+    <img src="images/Basic_image/banner3.jpg" />
+</div>
 
-    <div class="col-md-4 col-sm-4">
-    <div class="main_grid">
-    <h1>GIFT VOUCHER</h1>
-    <img src="images/Basic_image/Francis-alukkas-gift-vouchers.png" >
-    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-    <a href="">Know Now >></a>
-    </div>
-    </div>
 
+
+<div class="alukkas_last">
+    <div class="container">
+        <div class="col-md-6 col-sm-6">
+            <img src="~/Images/Basic_image/banner4.jpg" />
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <img src="~/Images/Basic_image/banner5.png" />
+        </div>
     </div>
-    </div>
+</div>
+
 @section scripts{
-    <script  type="text/javascript">
+    <script type="text/javascript">
 
         //jQuery(document).ready(function () {
         //    jQuery('ul.sf-menu').superfish();
         //});
 
-        </script>
-              <script type="text/javascript">
-                  //$(function () {
-                  //    $('#ei-slider').eislideshow({
-                  //        animation: 'center',
-                  //        autoplay: true,
-                  //        slideshow_interval: 3000,
-                  //        titlesFactor: 0
-                  //    });
-                  //});
+    </script>
+    <script type="text/javascript">
+        //$(function () {
+        //    $('#ei-slider').eislideshow({
+        //        animation: 'center',
+        //        autoplay: true,
+        //        slideshow_interval: 3000,
+        //        titlesFactor: 0
+        //    });
+        //});
 
 
-                  // Carousel Auto-Cycle
-                  //$(document).ready(function () {
-                  //    $('.carousel').carousel({
-                  //        interval: 3000
-                  //    })
-                  //});
+        // Carousel Auto-Cycle
+        //$(document).ready(function () {
+        //    $('.carousel').carousel({
+        //        interval: 3000
+        //    })
+        //});
 
 
-                  //Listview
+        //Listview
 
-                 // $('.listview button').on('click', function (e) {
-                 //     if ($(this).hasClass('three_view')) {
-                 //         $('.featured_items ul').removeClass('four_items');
-                 //     }
-                 //     else if ($(this).hasClass('four_view')) {
-                 //         $('.featured_items ul').addClass('four_items');
-                 //     }
-                 // });
+        // $('.listview button').on('click', function (e) {
+        //     if ($(this).hasClass('three_view')) {
+        //         $('.featured_items ul').removeClass('four_items');
+        //     }
+        //     else if ($(this).hasClass('four_view')) {
+        //         $('.featured_items ul').addClass('four_items');
+        //     }
+        // });
 
-                 // $('.listview button').click(function (e) {
-                 //     e.preventDefault(); //prevent the link from being followed
-                 //     $('.listview button').removeClass('selected');
-                 //     $(this).addClass('selected');
-                 // });
+        // $('.listview button').click(function (e) {
+        //     e.preventDefault(); //prevent the link from being followed
+        //     $('.listview button').removeClass('selected');
+        //     $(this).addClass('selected');
+        // });
 
 
-                 // /*Price slider */
+        // /*Price slider */
 
-                 // $("[data-slider]")
-                 //.each(function () {
-                 //    var input = $(this);
-                 //    $("<span>")
-                 //      .addClass("output")
-                 //      .insertAfter($(this));
-                 //})
-                 //.bind("slider:ready slider:changed", function (event, data) {
-                 //    $(this)
-                 //      .nextAll(".output:first")
-                 //        .html(data.value.toFixed(3));
-                 //});
-        </script>
-        <script type="text/javascript">
-            //$(document).ready(function () {
+        // $("[data-slider]")
+        //.each(function () {
+        //    var input = $(this);
+        //    $("<span>")
+        //      .addClass("output")
+        //      .insertAfter($(this));
+        //})
+        //.bind("slider:ready slider:changed", function (event, data) {
+        //    $(this)
+        //      .nextAll(".output:first")
+        //        .html(data.value.toFixed(3));
+        //});
+    </script>
+    <script type="text/javascript">
+        //$(document).ready(function () {
 
-            //    $("#range_1").ionRangeSlider({
-            //        min: 0,
-            //        max: 5000,
-            //        from: 0,
-            //        to: 4000,
-            //        type: 'double',
-            //        step: 1,
-            //        prefix: "",
-            //        prettify: true,
-            //        hasGrid: true
-            //    });
+        //    $("#range_1").ionRangeSlider({
+        //        min: 0,
+        //        max: 5000,
+        //        from: 0,
+        //        to: 4000,
+        //        type: 'double',
+        //        step: 1,
+        //        prefix: "",
+        //        prettify: true,
+        //        hasGrid: true
+        //    });
 
-            //});
+        //});
 
-            //scroll
+        //scroll
 
-            //var _gaq = _gaq || [];
-            //_gaq.push(['_setAccount', 'UA-36251023-1']);
-            //_gaq.push(['_setDomainName', 'jqueryscript.net']);
-            //_gaq.push(['_trackPageview']);
+        //var _gaq = _gaq || [];
+        //_gaq.push(['_setAccount', 'UA-36251023-1']);
+        //_gaq.push(['_setDomainName', 'jqueryscript.net']);
+        //_gaq.push(['_trackPageview']);
 
-            //(function () {
-            //    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            //    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            //    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-            //})();
+        //(function () {
+        //    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        //    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        //    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        //})();
 
-            $(document).ready(function () {
-                // Show or hide the sticky footer button
-                $(window).scroll(function () {
-                    if ($(this).scrollTop() > 200) {
-                        $('.to-top').fadeIn(200);
-                    } else {
-                        $('.to-top').fadeOut(200);
-                    }
-                });
-
-                // Animate the scroll to top
-                $('.to-top').click(function (event) {
-                    event.preventDefault();
-
-                    $('html, body').animate({ scrollTop: 0 }, 300);
-                })
+        $(document).ready(function () {
+            // Show or hide the sticky footer button
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 200) {
+                    $('.to-top').fadeIn(200);
+                } else {
+                    $('.to-top').fadeOut(200);
+                }
             });
 
+            // Animate the scroll to top
+            $('.to-top').click(function (event) {
+                event.preventDefault();
+
+                $('html, body').animate({ scrollTop: 0 }, 300);
+            })
+        });
 
 
-            $(document).ready(function () {
 
-                $("#toggle").click(function () {
-                    $(".target").slideToggle('slow', function () {
-                        $(".log").text('Toggle Transition Complete');
-                    });
+        $(document).ready(function () {
+
+            $("#toggle").click(function () {
+                $(".target").slideToggle('slow', function () {
+                    $(".log").text('Toggle Transition Complete');
                 });
-
             });
-</script>
+
+        });
+    </script>
 }

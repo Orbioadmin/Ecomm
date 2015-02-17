@@ -22,19 +22,19 @@
 
     function CloudZoom(jWin, opts) {
         var sImg = $('img', jWin);
-        var	img1;
-        var	img2;
+        var img1;
+        var img2;
         var zoomDiv = null;
-        var	$mouseTrap = null;
-        var	lens = null;
-        var	$tint = null;
-        var	softFocus = null;
-        var	$ie6Fix = null;
-        var	zoomImage;
+        var $mouseTrap = null;
+        var lens = null;
+        var $tint = null;
+        var softFocus = null;
+        var $ie6Fix = null;
+        var zoomImage;
         var controlTimer = 0;
         var cw, ch;
         var destU = 0;
-        var	destV = 0;
+        var destV = 0;
         var currV = 0;
         var currU = 0;
         var filesLoaded = 0;
@@ -172,7 +172,7 @@
              We need the dummy background image as IE does not trap mouse events on
              transparent parts of a div.
              */
-            $mouseTrap = jWin.parent().append(format("<div class='mousetrap' style='background-image:url(\""+ opts.transparentImage +"\");z-index:999;position:absolute;width:%0px;height:%1px;left:%2px;top:%3px;\'></div>", sImg.outerWidth(), sImg.outerHeight(), 0, 0)).find(':last');
+            $mouseTrap = jWin.parent().append(format("<div class='mousetrap' style='background-image:url(\"" + opts.transparentImage + "\");z-index:999;position:absolute;width:%0px;height:%1px;left:%2px;top:%3px;\'></div>", sImg.outerWidth(), sImg.outerHeight(), 0, 0)).find(':last');
 
             //////////////////////////////////////////////////////////////////////
             /* Do as little as possible in mousemove event to prevent slowdown. */
@@ -186,9 +186,9 @@
                 jWin.trigger('cloudzoom_end_zoom');
                 clearTimeout(controlTimer);
                 //event.data.removeBits();
-                if(lens) { lens.fadeOut(299); }
-                if($tint) { $tint.fadeOut(299); }
-                if(softFocus) { softFocus.fadeOut(299); }
+                if (lens) { lens.fadeOut(299); }
+                if ($tint) { $tint.fadeOut(299); }
+                if (softFocus) { softFocus.fadeOut(299); }
                 zoomDiv.fadeOut(300, function () {
                     ctx.fadedOut();
                 });
@@ -238,7 +238,7 @@
                         w = siw;
                         h = sih;
                         break;
-                    // All other values, try and find an id in the dom to attach to.
+                        // All other values, try and find an id in the dom to attach to.
                     default:
                         appendTo = $('#' + opts.position);
                         // If dom element doesn't exit, just use 'right' position as default.
@@ -260,9 +260,9 @@
                 }
 
                 // Fix ie6 select elements wrong z-index bug. Placing an iFrame over the select element solves the issue...
-                var browserCheck = /(msie) ([\w.]+)/.exec( navigator.userAgent );
+                var browserCheck = /(msie) ([\w.]+)/.exec(navigator.userAgent);
                 if (browserCheck) {
-                    if ((browserCheck[1] || "") == 'msie' && (browserCheck[2] || "0" ) < 7) {
+                    if ((browserCheck[1] || "") == 'msie' && (browserCheck[2] || "0") < 7) {
                         $ie6Fix = $('<iframe frameborder="0" src="#"></iframe>').css({
                             position: "absolute",
                             left: xPos,
@@ -311,7 +311,7 @@
                 if (!noTrans) {
                     lens.css('opacity', opts.lensOpacity);
                 }
-                if ( opts.position !== 'inside' ) { lens.fadeIn(500); }
+                if (opts.position !== 'inside') { lens.fadeIn(500); }
 
                 // Start processing.
                 zw.controlLoop();
@@ -338,9 +338,9 @@
         // IE6 background image flicker fix
         try {
             document.execCommand("BackgroundImageCache", false, true);
-        } catch (e) {}
+        } catch (e) { }
         this.each(function () {
-            var	relOpts, opts;
+            var relOpts, opts;
             // Hmm...eval...slap on wrist.
             eval('var	a = {' + $(this).attr('rel') + '}');
             relOpts = a;
