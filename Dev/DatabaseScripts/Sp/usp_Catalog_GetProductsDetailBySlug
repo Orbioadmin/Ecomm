@@ -1,6 +1,26 @@
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[usp_Catalog_GetProductsDetailBySlug]') AND type in (N'P', N'PC'))
+BEGIN
+	DROP PROCEDURE [dbo].[usp_Catalog_GetProductsDetailBySlug]
+	PRINT 'Dropped [dbo].[usp_Catalog_GetProductsDetailBySlug]'
+END	
 GO
 
-/****** Object:  StoredProcedure [dbo].[usp_Catalog_GetProductsDetailBySlug]    Script Date: 17-02-2015 3.35.45 PM ******/
+PRINT 'Creating [dbo].[usp_Catalog_GetProductsDetailBySlug]'
+GO
+
+/* ******************************** PROLOG *******************************************
+# Procedure Name: usp_Catalog_GetProductsDetailBySlug
+# File Path:
+# CreatedDate: 06-Feb-2015
+# Author: Sankar T.S
+# Description: This stored procedure gets all the product details for the slug
+# Output Parameter: XML output
+# Return Parameter: None
+# History  of changes:
+#--------------------------------------------------------------------------------------
+# Version No.	Date of Change		Changed By		Reason for change
+#--------------------------------------------------------------------------------------
+*/
 SET ANSI_NULLS ON
 GO
 
@@ -32,8 +52,7 @@ FOR XML PATH('ProductDetail')
  SELECT @XmlResult as XmlResult
    
 END
- 
- --exec [dbo].[usp_Catalog_GetProductsDetailBySlug] 'peacock-bangle','Product'
+
 GO
-
-
+PRINT 'Created the procedure usp_Catalog_GetProductsDetailBySlug'
+GO  
