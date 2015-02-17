@@ -108,6 +108,11 @@ namespace Orbio.Web.UI.Controllers
                 return RedirectToAction("Index", "Home");
             }
         }
+
+        public ActionResult LogOut()
+        {
+            return View();
+        }
     }
     //[Authorize]
     //[InitializeSimpleMembership]

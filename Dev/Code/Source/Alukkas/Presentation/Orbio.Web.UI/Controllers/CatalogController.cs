@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Linq;
 using System.Web.Mvc;
 using Nop.Core.Caching;
+using Nop.Core.Infrastructure;
 using Orbio.Core;
 using Orbio.Services.Catalog;
 using Orbio.Web.UI.Infrastructure.Cache;
@@ -55,7 +56,7 @@ namespace Orbio.Web.UI.Controllers
         /// </summary>
         /// <returns></returns>
         [ChildActionOnly]
-        [OutputCache(VaryByCustom="topmenu", Duration=86400)]
+       // [OutputCache(VaryByCustom="topmenu", Duration=86400)]
         public ActionResult TopMenu()
         {
             // var customerRolesIds = workContext.CurrentCustomer.CustomerRoles
@@ -63,24 +64,28 @@ namespace Orbio.Web.UI.Controllers
             //string cacheKey = string.Format(ModelCacheEventConsumer.CATEGORY_MENU_MODEL_KEY, workContext.WorkingLanguage.Id,
             //    string.Join(",", customerRolesIds), storeContext.CurrentStore.Id);
 
-         
-            var cachedModel = cacheManager.Get(string.Format(ModelCacheEventConsumer.CATEGORY_MENU_MODEL_KEY, 1, 4, 1),
-                () => PrepareCategorySimpleModels());
+      
             int flag = (ConfigurationManager.AppSettings["LoadTopMenufromDb"].ToString() != "")?Convert.ToInt32(ConfigurationManager.AppSettings["LoadTopMenufromDb"]):1;
             if (flag == 1)
             {
-           var model = new TopMenuModel()
-            {
-                Categories = cachedModel,
-               // RecentlyAddedProductsEnabled = catalogSettings.RecentlyAddedProductsEnabled,
-                BlogEnabled =  false, //blogSettings.Enabled,
-                ForumEnabled = false //forumSettings.ForumsEnabled
-            };
-           ViewBag.NumberOfCategory = Convert.ToInt32(ConfigurationManager.AppSettings["TopMenuNoOfCategory"]);
-            return PartialView(model);
+
+                var cachedModel = cacheManager.Get(string.Format(ModelCacheEventConsumer.CATEGORY_MENU_MODEL_KEY, 1, 4, 1),
+                    () => PrepareCategorySimpleModels());
+                var model = new TopMenuModel()
+                 {
+                     Categories = cachedModel,
+                     // RecentlyAddedProductsEnabled = catalogSettings.RecentlyAddedProductsEnabled,
+                     BlogEnabled = false, //blogSettings.Enabled,
+                     ForumEnabled = false //forumSettings.ForumsEnabled
+                 };
+                ViewBag.NumberOfCategory = Convert.ToInt32(ConfigurationManager.AppSettings["TopMenuNoOfCategory"]);
+                return PartialView(model);
             }
             else
             {
+                 var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
+                
+                ViewBag.UserName = string.IsNullOrEmpty(workContext.CurrentCustomer.Username) ? "Guest" : workContext.CurrentCustomer.Username;
                 return PartialView("TopMenuStatic");
             }
         }
