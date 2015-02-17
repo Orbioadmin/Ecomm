@@ -46,6 +46,8 @@
     <Compile Include="Authentication\IAuthenticationService.cs" />
     <Compile Include="Catalog\CategoryService.cs" />
     <Compile Include="Catalog\ICategoryService.cs" />
+    <Compile Include="Catalog\IProductService.cs" />
+    <Compile Include="Catalog\ProductService.cs" />
     <Compile Include="Customers\CustomerService.cs" />
     <Compile Include="Customers\ICustomerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -71,7 +73,32 @@
       <Name>Orbio.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="bin\Debug\Autofac.dll" />
+    <Content Include="bin\Debug\Autofac.Integration.Mvc.dll" />
+    <Content Include="bin\Debug\Autofac.Integration.Mvc.xml" />
+    <Content Include="bin\Debug\Autofac.xml" />
+    <Content Include="bin\Debug\EntityFramework.dll" />
+    <Content Include="bin\Debug\EntityFramework.xml" />
+    <Content Include="bin\Debug\Nop.Core.dll" />
+    <Content Include="bin\Debug\Nop.Core.pdb" />
+    <Content Include="bin\Debug\Nop.Data.dll" />
+    <Content Include="bin\Debug\Nop.Data.pdb" />
+    <Content Include="bin\Debug\Orbio.Core.dll" />
+    <Content Include="bin\Debug\Orbio.Core.pdb" />
+    <Content Include="bin\Debug\Orbio.Services.dll" />
+    <Content Include="bin\Debug\Orbio.Services.pdb" />
+    <Content Include="bin\Debug\System.Web.Mvc.dll" />
+    <Content Include="bin\Debug\System.Web.Mvc.xml" />
+    <Content Include="bin\Debug\System.Web.Razor.dll" />
+    <Content Include="bin\Debug\System.Web.Razor.xml" />
+    <Content Include="bin\Debug\System.Web.WebPages.Deployment.dll" />
+    <Content Include="bin\Debug\System.Web.WebPages.Deployment.xml" />
+    <Content Include="bin\Debug\System.Web.WebPages.dll" />
+    <Content Include="bin\Debug\System.Web.WebPages.Razor.dll" />
+    <Content Include="bin\Debug\System.Web.WebPages.Razor.xml" />
+    <Content Include="bin\Debug\System.Web.WebPages.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
