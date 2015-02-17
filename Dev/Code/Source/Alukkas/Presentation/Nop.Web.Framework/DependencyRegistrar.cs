@@ -147,6 +147,11 @@ namespace Nop.Web.Framework
             builder.RegisterType<CategoryService>().As<ICategoryService>().InstancePerHttpRequest();
             //added by madhu mb 
             builder.RegisterType<OBS.Catalog.CategoryService>().As<OBS.Catalog.ICategoryService>().InstancePerHttpRequest();
+
+            builder.RegisterType<ProductService>().As<IProductService>().InstancePerHttpRequest();
+            //added by madhu mb 
+            builder.RegisterType<OBS.Catalog.ProductService>().As<OBS.Catalog.IProductService>().InstancePerHttpRequest();
+
             builder.RegisterType<OBS.Seo.UrlRecordService>().As<OBS.Seo.IUrlRecordService>().InstancePerHttpRequest();
             builder.RegisterType<OBC.WebHelper>().As<OBC.IWebHelper>().InstancePerHttpRequest();
 
