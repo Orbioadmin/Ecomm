@@ -1473,3 +1473,6 @@ li.cart_item a{padding:3px 10px!important; line-height: 35px;}
 .explore{font-family: 'AvantGardeLT-Demi'; font-size: 34px; padding:0 25px; line-height: 33px;  text-align: center;}
 .ring p{font-family: "Calibri"; font-style: italic; font-size: 18px;}
 header{position: relative;}
+
+.gender .checkbox{padding:0;}
+.error{color: #ff0000;}

@@ -72,8 +72,8 @@ namespace Orbio.Services.Authentication
 
         public virtual void SignOut()
         {
-            //_cachedCustomer = null;
-            //FormsAuthentication.SignOut();
+            cachedCustomer = null;
+            FormsAuthentication.SignOut();
         }
 
         public virtual string GetAuthenticatedCustomerData()

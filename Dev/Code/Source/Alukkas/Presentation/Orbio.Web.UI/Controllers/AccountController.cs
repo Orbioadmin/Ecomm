@@ -97,6 +97,46 @@ namespace Orbio.Web.UI.Controllers
             return View(model);
         }
 
+
+        public ActionResult LogOut()
+        {
+            ////external authentication
+            //ExternalAuthorizerHelper.RemoveParameters();
+
+            //if (_workContext.OriginalCustomerIfImpersonated != null)
+            //{
+            //    //logout impersonated customer
+            //    _genericAttributeService.SaveAttribute<int?>(_workContext.OriginalCustomerIfImpersonated,
+            //        SystemCustomerAttributeNames.ImpersonatedCustomerId, null);
+            //    //redirect back to customer details page (admin area)
+            //    return this.RedirectToAction("Edit", "Customer", new { id = _workContext.CurrentCustomer.Id, area = "Admin" });
+
+            //}
+            //else
+            //{
+                //standard logout 
+
+                //activity log
+                //_customerActivityService.InsertActivity("PublicStore.Logout", _localizationService.GetResource("ActivityLog.PublicStore.Logout"));
+
+                authenticationService.SignOut();
+                return RedirectToAction("index", "Home");
+            //}
+        }
+
+        [HttpGet]
+        public ActionResult Register(string returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Register(RegisterModel model, string returnUrl)
+        {
+            return View();
+        }
+
         private ActionResult RedirectToLocal(string returnUrl)
         {
             if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
@@ -107,11 +147,6 @@ namespace Orbio.Web.UI.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-        }
-
-        public ActionResult LogOut()
-        {
-            return View();
         }
     }
     //[Authorize]

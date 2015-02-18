@@ -6,6 +6,7 @@ namespace Orbio.Core.Domain.Catalog
     [DataContract]
     public class ProductDetail : Product
     {
+        public string DeliveredIn { get; set; }
         /// <summary>
         /// gets all Product Specification Attributes
         /// </summary>

@@ -15,7 +15,7 @@
     @*<label for="inputEmail3" class="col-sm-2 control-label">Email</label>*@
     <div class="col-sm-10">
      @Html.TextBoxFor(m=>m.UserName, new{type="email",@class="form-control",placeholder="Email"})
-          @Html.ValidationMessageFor(m => m.UserName)
+          @Html.ValidationMessageFor(m => m.UserName)        
       @*<input type="email" class="form-control" id="model.UserName" placeholder="Email">*@
     </div>
   </div>
@@ -49,10 +49,18 @@
 <div class="new_user">
 <h1>NEW USER REGISTER HERE</h1>
 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500</p>
-<input type="submit" class="size_guide" value="REGISTER" >
+<a   class="size_guide"  href="@Url.Action("Register", "Account", new {returnUrl = ViewBag.ReturnUrl })">REGISTER</a>
+
 </div>
 
       </div>
 					</div>
 		</div>
 	</section>
+@*<script type="text/javascript">
+    $(document).ready(function () {
+        $('.size_guide').click(function () {
+            window.Location =
+        });
+    });
+</script>*@
