@@ -10,12 +10,7 @@ namespace Orbio.Core.Domain.Catalog
     [DataContract]
     public class ProductPicture
     {
-        /// <summary>
-        /// Gets or sets the product identifier
-        /// </summary>
-        [DataMember]
-        public int ProductId { get; set; }
-
+        
         /// <summary>
         /// Gets or sets the picture identifier
         /// </summary>

@@ -174,7 +174,7 @@ namespace Orbio.Web.UI.Controllers
             return model;
         }
 
-        private ProductOverViewModel PrepareProductdetailsModel(string seName)
+        private ProductDetailModel PrepareProductdetailsModel(string seName)
         {
             var model = new ProductDetailModel(productService.GetProductsDetailsBySlug(seName));
 
