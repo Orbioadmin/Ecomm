@@ -215,6 +215,7 @@
     <Compile Include="Models\Catalog\SpecificationAttribute.cs" />
     <Compile Include="Models\Catalog\SpecificationAttributeOption.cs" />
     <Compile Include="Models\Catalog\TopMenuModel.cs" />
+    <Compile Include="Models\Customer\ChangePasswordModel.cs" />
     <Compile Include="Models\Customer\CustomerModel.cs" />
     <Compile Include="Models\Home\PriceBarModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

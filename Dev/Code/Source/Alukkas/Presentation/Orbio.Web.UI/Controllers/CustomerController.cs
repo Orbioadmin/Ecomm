@@ -48,7 +48,7 @@ namespace Orbio.Web.UI.Controllers
         {
             if (ModelState.IsValid)
             {
-                var loginResult = customerService.Customerdetails("Update",Customer.Id,model.FirstName,model.LastName,model.Gender,model.DOB,model.Email,model.Mobile);
+                string result = customerService.Customerdetails("Update",Customer.Id,model.FirstName,model.LastName,model.Gender,model.DOB,model.Email,model.Mobile);
             }
             Customer.FirstName = model.FirstName;
             Customer.LastName = model.LastName;

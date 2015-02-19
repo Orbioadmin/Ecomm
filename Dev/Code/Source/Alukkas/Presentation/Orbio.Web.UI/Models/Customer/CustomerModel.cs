@@ -39,7 +39,6 @@ namespace Orbio.Web.UI.Models.Customer
         public string Gender { get; set; }
 
         [Required]
-        [DataType(DataType.Date)]
         [Display(Name = "Date of Birth")]
         public string DOB { get; set; }
 

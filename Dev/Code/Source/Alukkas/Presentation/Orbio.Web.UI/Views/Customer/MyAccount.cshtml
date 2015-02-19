@@ -47,7 +47,7 @@
                                                 <dt>Mobile No</dt>
                                                 <dd>@Model.Mobile</dd>
                                             </dl>
-                                           
+
                                         </div>
                                         <div id="editinfo" style="display:none">
                                             @using (Html.BeginForm("MyAccount", "Customer", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal " }))
@@ -214,32 +214,38 @@
         </div>
     </div>
 </section>
+
 @section scripts{
-<script>
-    // Enable the Tabs
+    <script>
+        // Enable the Tabs
 
-    $('#myTabs a').click(function (e) {
-        e.preventDefault()
-        $(this).tab('show')
-    });
-
-    $('#edit').click(function (e) {
-        $("#viewinfo").css("display", "none");
-        $("#editinfo").css("display", "block");
-    });
-
-    $('#can').click(function (e) {
-        location.reload();
-    });
-</script>
-
-<script>
-    $(function () {
-        $("#DOB").datepicker({
-            yearRange: "-50:+0",
-            changeMonth: true,
-            changeYear: true
+        $('#myTabs a').click(function (e) {
+            e.preventDefault()
+            $(this).tab('show')
         });
-    });
-</script>
+
+        $('#edit').click(function (e) {
+            $("#viewinfo").css("display", "none");
+            $("#editinfo").css("display", "block");
+        });
+
+        $('#can').click(function (e) {
+            location.reload();
+        });
+    </script>
+    <script>
+        if ($("#FirstName").val() == "" || $("#LastName").val() == "" || $("#Email").val() == "" || $("#DOB").val() == "" || $("#Mobile").val() == "") {
+            $("#viewinfo").css("display", "none");
+            $("#editinfo").css("display", "block");
+        }
+    </script>
+    <script>
+        $(function () {
+            $("#DOB").datepicker({
+                yearRange: "-70:-10",
+                changeMonth: true,
+                changeYear: true
+            });
+        });
+    </script>
 }
