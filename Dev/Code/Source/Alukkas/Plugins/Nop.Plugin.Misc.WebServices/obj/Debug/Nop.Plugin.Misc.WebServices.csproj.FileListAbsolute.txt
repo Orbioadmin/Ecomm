@@ -96,3 +96,12 @@ F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.We
 F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.Misc.WebServices\obj\Debug\Nop.Plugin.Misc.WebServices.csprojResolveAssemblyReference.cache
 F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.Misc.WebServices\obj\Debug\Nop.Plugin.Misc.WebServices.dll
 F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.Misc.WebServices\obj\Debug\Nop.Plugin.Misc.WebServices.pdb
+C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.Web\Plugins\Misc.WebServices\Description.txt
+C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.Web\Plugins\Misc.WebServices\logo.jpg
+C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.Web\Plugins\Misc.WebServices\Remote\NopService.svc
+C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.Web\Plugins\Misc.WebServices\Remote\web.config
+C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.Web\Plugins\Misc.WebServices\Nop.Plugin.Misc.WebServices.dll
+C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.Web\Plugins\Misc.WebServices\Nop.Plugin.Misc.WebServices.pdb
+C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.Misc.WebServices\obj\Debug\Nop.Plugin.Misc.WebServices.dll
+C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.Misc.WebServices\obj\Debug\Nop.Plugin.Misc.WebServices.pdb
+C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.Misc.WebServices\obj\Debug\Nop.Plugin.Misc.WebServices.csprojResolveAssemblyReference.cache

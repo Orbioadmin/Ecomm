@@ -85,3 +85,11 @@ F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.We
 F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.Payments.AuthorizeNet\obj\Debug\Nop.Plugin.Payments.AuthorizeNet.csprojResolveAssemblyReference.cache
 F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.Payments.AuthorizeNet\obj\Debug\Nop.Plugin.Payments.AuthorizeNet.dll
 F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.Payments.AuthorizeNet\obj\Debug\Nop.Plugin.Payments.AuthorizeNet.pdb
+C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.Web\Plugins\Payments.AuthorizeNet\Description.txt
+C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.Web\Plugins\Payments.AuthorizeNet\logo.jpg
+C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.Web\Plugins\Payments.AuthorizeNet\Nop.Plugin.Payments.AuthorizeNet.dll.config
+C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.Web\Plugins\Payments.AuthorizeNet\Nop.Plugin.Payments.AuthorizeNet.dll
+C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.Web\Plugins\Payments.AuthorizeNet\Nop.Plugin.Payments.AuthorizeNet.pdb
+C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.Payments.AuthorizeNet\obj\Debug\Nop.Plugin.Payments.AuthorizeNet.dll
+C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.Payments.AuthorizeNet\obj\Debug\Nop.Plugin.Payments.AuthorizeNet.pdb
+C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.Payments.AuthorizeNet\obj\Debug\Nop.Plugin.Payments.AuthorizeNet.csprojResolveAssemblyReference.cache

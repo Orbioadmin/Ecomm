@@ -1,150 +1,251 @@
-﻿ @*@Html.Action("PriceBar", "Home")*@
+﻿@model Orbio.Web.UI.Models.Customer.CustomerModel
+@*@Html.Action("PriceBar", "Home")*@
+
 <section class="Order_whish">
-<div class="container">
-<ol class="breadcrumb">
-  <li><a href="#">Home</a></li>
-  <li class="active">My Account</li>
-</ol>
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li class="active">My Account</li>
+        </ol>
 
-<div class="order_main">
-<h1>MY ACCOUNT - DETAILS</h1>
+        <div class="order_main">
+            <h1>MY ACCOUNT - DETAILS</h1>
 
 
-<div class="row">
+            <div class="row">
 
-  <!-- Navigation Buttons -->
-  <div class="col-md-2 col-sm-2">
-    <ul class="nav nav-pills nav-stacked" id="myTabs">
-      <li class="active"><a href="#detail">MY DETAILS</a></li>
-      <li><a href="#myaccount">MY ACCOUNT</a></li>
-      <li><a href="#mywishlist">MY WISHLIST</a></li>
-    </ul>
-  </div>
+                <!-- Navigation Buttons -->
+                <div class="col-md-2 col-sm-2">
+                    <ul class="nav nav-pills nav-stacked" id="myTabs">
+                        <li class="active"><a href="#detail">MY DETAILS</a></li>
+                        <li><a href="#myaccount">MY ACCOUNT</a></li>
+                        <li><a href="#mywishlist">MY WISHLIST</a></li>
+                    </ul>
+                </div>
 
-  <!-- Content -->
-  <div class="col-md-10 col-sm-10">
-    <div class="tab-content">
-    <!-- detail -->
-      <div class="tab-pane active" id="detail">
-        
-        <div class="row">
-        <div class="col-md-9 col-sm-9">
-        <div class="my_detail">
-        <dl class="dl-horizontal">
-  <dt>First Name</dt>
-  <dd>Name</dd>
-  <dt>Last Name</dt>
-  <dd>Name</dd>
-  <dt>Email</dt>
-  <dd>Name@jk.com</dd>
-  <dt>Date of Birth</dt>
-  <dd>--</dd>
-  <dt>Gender</dt>
-  <dd>Male</dd>
-  <dt>Mobile No</dt>
-  <dd>985715624</dd>
-  </dl>
-   </div>
+                <!-- Content -->
+                <div class="col-md-10 col-sm-10">
+                    <div class="tab-content">
+                        <!-- detail -->
+                        <div class="tab-pane active" id="detail">
+
+                            <div class="row">
+                                <div class="col-md-9 col-sm-9">
+                                    <div class="my_detail">
+                                        <div id="viewinfo">
+                                            <dl class="dl-horizontal">
+                                                <dt>First Name</dt>
+                                                <dd>@Model.FirstName</dd>
+                                                <dt>Last Name</dt>
+                                                <dd>@Model.LastName</dd>
+                                                <dt>Email</dt>
+                                                <dd>@Model.Email</dd>
+                                                <dt>Date of Birth</dt>
+                                                <dd>@Model.DOB</dd>
+                                                <dt>Gender</dt>
+                                                <dd>@((Model.Gender == "M") ? "Male" : "Femail")</dd>
+                                                <dt>Mobile No</dt>
+                                                <dd>@Model.Mobile</dd>
+                                            </dl>
+
+                                        </div>
+                                        <div id="editinfo" style="display:none">
+                                            @using (Html.BeginForm("MyAccount", "Customer", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal " }))
+                                            {
+                                                @Html.AntiForgeryToken()
+                                                @Html.ValidationSummary(true)
+                                                <div class="form-group">
+                                                    @Html.LabelFor(m => m.FirstName, new { @for = "FirstName", @class = "col-sm-2 control-label" })
+                                                    <div class="col-sm-10">
+                                                        @Html.TextBoxFor(m => m.FirstName, new { type = "Text", @class = "form-control", placeholder = "First Name" })
+                                                        @Html.ValidationMessageFor(m => m.FirstName)
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    @Html.LabelFor(m => m.LastName, new { @for = "LastName", @class = "col-sm-2 control-label" })
+                                                    <div class="col-sm-10">
+                                                        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "Last Name" })
+                                                        @Html.ValidationMessageFor(m => m.LastName)
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    @Html.LabelFor(m => m.Email, new { @for = "Email", @class = "col-sm-2 control-label" })
+                                                    <div class="col-sm-10">
+                                                        @Html.TextBoxFor(m => m.Email, new { type = "email", @class = "form-control", placeholder = "Email" })
+                                                        @Html.ValidationMessageFor(m => m.Email)
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    @Html.LabelFor(m => m.DOB, new { @for = "DOB", @class = "col-sm-2 control-label" })
+                                                    <div class="col-sm-10">
+                                                        @Html.TextBoxFor(m => m.DOB, new { @class = "form-control", placeholder = "Date Of Birth" })
+                                                        @Html.ValidationMessageFor(m => m.DOB)
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    @Html.LabelFor(m => m.Gender, new { @for = "Gender", @class = "col-sm-2 control-label" })
+                                                    <div class="col-sm-10">
+                                                        @Html.RadioButton("Gender", "M", (Model.Gender == "M"), new { id = "gender-male" })
+                                                        @Html.Label("male", "Male")
+
+                                                        @Html.RadioButton("Gender", "F", (Model.Gender == "F"), new { id = "gender-male" })
+                                                        @Html.Label("female", "Female")
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    @Html.LabelFor(m => m.Mobile, new { @for = "Mobile", @class = "col-sm-2 control-label" })
+                                                    <div class="col-sm-10">
+                                                        @Html.TextBoxFor(m => m.Mobile, new { @class = "form-control", placeholder = "Mobile Nmuber" })
+                                                        @Html.ValidationMessageFor(m => m.Mobile)
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-sm-offset-2 col-sm-10">
+                                                        <input type="submit" value="UPDATE" class="Buynow">&nbsp;&nbsp; OR &nbsp;&nbsp;
+                                                        <input id="can" type="button" value="CANCEL" class="Buynow">
+                                                    </div>
+                                                </div>
+                                            }
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3">
+                                    <div class="prof_sett">
+                                        <button id="edit" type="submit" class="btn btn-yellow">EDIT PROFILE</button>
+                                        <button type="submit" class="btn btn-yellow">CHANGE PASSWORD</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- detail -->
+                        <!-- My account -->
+                        <div class="tab-pane" id="myaccount">
+                            <div class="table-responsive">
+                                <table cellspacing="0" cellpadding="0" width="100%" class="Order_table table">
+                                    <tbody>
+                                        <tr>
+                                            <th>S.No.</th>
+                                            <th>Order No.</th>
+                                            <th>Date</th>
+                                            <th>Status</th>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>ABC 123456789</td>
+                                            <td>18 - 11 -2014</td>
+                                            <td><p class="deliver">Delivered</p></td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>ABC 123456789</td>
+                                            <td>18 - 11 -2014</td>
+                                            <td><p>Inprogess</p></td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>ABC 123456789</td>
+                                            <td>18 - 11 -2014</td>
+                                            <td><p class="cancel">Cancelled</p></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- My account -->
+                        <!-- My Wishlist -->
+                        <div class="tab-pane" id="mywishlist">
+                            <div class="table-responsive">
+                                <table cellspacing="0" cellpadding="0" width="100%" class="Order_table table">
+                                    <tbody>
+                                        <tr>
+                                            <th width="10%">Item</th>
+                                            <th></th>
+                                            <th>QTY</th>
+                                            <th>Price</th>
+                                            <th>Remove</th>
+                                            <th>Add To Cart</th>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="images/Thumbnail/Listing-product1.jpg" class="wishlist_img"></td>
+                                            <td class="p_wish">
+                                                <p>Diamond Chain</p>
+                                            </td>
+                                            <td>
+                                                <select>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                </select>
+                                            </td>
+                                            <td>Rs.12,300.00</td>
+                                            <td><input type="checkbox"></td>
+                                            <td><input type="checkbox"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="images/Thumbnail/Listing-product1.jpg" class="wishlist_img"></td>
+                                            <td class="p_wish">
+                                                <p>Diamond Chain</p>
+                                            </td>
+                                            <td>
+                                                <select>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                </select>
+                                            </td>
+                                            <td>Rs.12,300.00</td>
+                                            <td><input type="checkbox"></td>
+                                            <td><input type="checkbox"></td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- My Wishlist -->
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
         </div>
-        <div class="col-md-3 col-sm-3">
-        <div class="prof_sett">
-         <button type="submit" class="btn btn-yellow">EDIT PROFILE</button>
-          <button type="submit" class="btn btn-yellow">CHANGE PASSWORD</button>
-          </div>
-        </div>
-        </div>
-
-      </div>
-      <!-- detail -->
-
-      <!-- My account -->
-      <div class="tab-pane" id="myaccount">
- <div class="table-responsive">
-      <table cellspacing="0" cellpadding="0" width="100%" class="Order_table table">
-        <tbody><tr>
-        <th>S.No.</th>
-        <th>Order No.</th>
-        <th>Date</th>
-        <th>Status</th>
-        </tr>
-        <tr>
-        <td>1</td>
-        <td>ABC 123456789</td>
-        <td>18 - 11 -2014</td>
-        <td><p class="deliver">Delivered</p></td>
-        </tr>
-        <tr>
-        <td>2</td>
-        <td>ABC 123456789</td>
-        <td>18 - 11 -2014</td>
-        <td><p>Inprogess</p></td>
-        </tr>
-        <tr>
-        <td>3</td>
-        <td>ABC 123456789</td>
-        <td>18 - 11 -2014</td>
-        <td><p class="cancel">Cancelled</p></td>
-        </tr>
-        </tbody></table>
-</div>
-      </div>
-      <!-- My account -->
-
-      <!-- My Wishlist -->
-      <div class="tab-pane" id="mywishlist">
-      <div class="table-responsive">
-      <table cellspacing="0" cellpadding="0" width="100%" class="Order_table table">
-        <tbody><tr>
-        <th width="10%">Item</th>
-        <th></th>
-        <th>QTY</th>
-        <th>Price</th>
-        <th>Remove</th>
-        <th>Add To Cart</th>
-        </tr>
-        <tr>
-        <td><img src="images/Thumbnail/Listing-product1.jpg" class="wishlist_img"></td>
-        <td class="p_wish">
-        <p>Diamond Chain</p> 
-        </td>  
-        <td> 
-        <select>
-            <option>1</option>
-            <option>2</option>
-        </select>
-        </td>
-        <td>Rs.12,300.00</td>
-        <td><input type="checkbox"></td>
-        <td><input type="checkbox"></td>
-        </tr>
-        <tr>
-        <td><img src="images/Thumbnail/Listing-product1.jpg" class="wishlist_img"></td>
-        <td class="p_wish">
-        <p>Diamond Chain</p> 
-        </td>  
-        <td> 
-        <select>
-            <option>1</option>
-            <option>2</option>
-        </select>
-        </td>
-        <td>Rs.12,300.00</td>
-        <td><input type="checkbox"></td>
-        <td><input type="checkbox"></td>
-        </tr>
-        
-        </tbody></table>
-</div>
-      </div>
-      <!-- My Wishlist -->
     </div>
-  </div>
-
-</div>
-
-
-
-
-</div>
-</div>	
 </section>
+
+@section scripts{
+    <script>
+        // Enable the Tabs
+
+        $('#myTabs a').click(function (e) {
+            e.preventDefault()
+            $(this).tab('show')
+        });
+
+        $('#edit').click(function (e) {
+            $("#viewinfo").css("display", "none");
+            $("#editinfo").css("display", "block");
+        });
+
+        $('#can').click(function (e) {
+            location.reload();
+        });
+    </script>
+    <script>
+        if ($("#FirstName").val() == "" || $("#LastName").val() == "" || $("#Email").val() == "" || $("#DOB").val() == "" || $("#Mobile").val() == "") {
+            $("#viewinfo").css("display", "none");
+            $("#editinfo").css("display", "block");
+        }
+    </script>
+    <script>
+        $(function () {
+            $("#DOB").datepicker({
+                yearRange: "-70:-10",
+                changeMonth: true,
+                changeYear: true
+            });
+        });
+    </script>
+}

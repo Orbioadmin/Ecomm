@@ -72,3 +72,10 @@ F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.We
 F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.Shipping.USPS\obj\Debug\Nop.Plugin.Shipping.USPS.dll
 F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.Shipping.USPS\obj\Debug\Nop.Plugin.Shipping.USPS.pdb
 F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.Shipping.USPS\obj\Debug\Nop.Plugin.Shipping.USPS.csprojResolveAssemblyReference.cache
+C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.Web\Plugins\Shipping.USPS\Description.txt
+C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.Web\Plugins\Shipping.USPS\logo.jpg
+C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.Web\Plugins\Shipping.USPS\Nop.Plugin.Shipping.USPS.dll
+C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.Web\Plugins\Shipping.USPS\Nop.Plugin.Shipping.USPS.pdb
+C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.Shipping.USPS\obj\Debug\Nop.Plugin.Shipping.USPS.dll
+C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.Shipping.USPS\obj\Debug\Nop.Plugin.Shipping.USPS.pdb
+C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.Shipping.USPS\obj\Debug\Nop.Plugin.Shipping.USPS.csprojResolveAssemblyReference.cache
