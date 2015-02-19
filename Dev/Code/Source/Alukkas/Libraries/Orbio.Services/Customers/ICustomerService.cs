@@ -29,5 +29,8 @@ namespace Orbio.Services.Customers
         /// <param name="password">Password</param>
         /// <returns>Result</returns>
         CustomerLoginResults ValidateCustomer(string usernameOrEmail, string password, ref Customer customerOut);
+
+
+        string Customerdetails(string Action, int id, string firstname, string lastname, string gender, string dob, string email, string mobile);
     }
 }

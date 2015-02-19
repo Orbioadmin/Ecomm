@@ -74,3 +74,10 @@ F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.We
 F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.Tax.CountryStateZip\obj\Debug\Nop.Plugin.Tax.CountryStateZip.csprojResolveAssemblyReference.cache
 F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.Tax.CountryStateZip\obj\Debug\Nop.Plugin.Tax.CountryStateZip.dll
 F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.Tax.CountryStateZip\obj\Debug\Nop.Plugin.Tax.CountryStateZip.pdb
+C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.Web\Plugins\Tax.CountryStateZip\Description.txt
+C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.Web\Plugins\Tax.CountryStateZip\logo.jpg
+C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.Web\Plugins\Tax.CountryStateZip\Nop.Plugin.Tax.CountryStateZip.dll
+C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.Web\Plugins\Tax.CountryStateZip\Nop.Plugin.Tax.CountryStateZip.pdb
+C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.Tax.CountryStateZip\obj\Debug\Nop.Plugin.Tax.CountryStateZip.dll
+C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.Tax.CountryStateZip\obj\Debug\Nop.Plugin.Tax.CountryStateZip.pdb
+C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.Tax.CountryStateZip\obj\Debug\Nop.Plugin.Tax.CountryStateZip.csprojResolveAssemblyReference.cache

@@ -100,5 +100,23 @@ namespace Orbio.Services.Customers
                 return CustomerLoginResults.WrongPassword;
            
         }
+
+
+
+        public string Customerdetails(string Action,int id,string firstname,string lastname,string gender,string dob,string email,string mobile)
+        {
+            context.ExecuteFunction<Customer>("usp_Customer_updateCustomer",
+                   new SqlParameter() { ParameterName = "@Action", Value = Action, DbType = System.Data.DbType.String },
+                    new SqlParameter() { ParameterName = "@cust_id", Value = id, DbType = System.Data.DbType.Int32 },
+                     new SqlParameter() { ParameterName = "@firstname", Value = firstname, DbType = System.Data.DbType.String },
+                      new SqlParameter() { ParameterName = "@lastname", Value = lastname, DbType = System.Data.DbType.String },
+                      new SqlParameter() { ParameterName = "@gender", Value = gender, DbType = System.Data.DbType.String },
+                      new SqlParameter() { ParameterName = "@dob", Value = dob, DbType = System.Data.DbType.String },
+                      new SqlParameter() { ParameterName = "@email", Value = email, DbType = System.Data.DbType.String },
+                      new SqlParameter() { ParameterName = "@mobileno", Value = mobile, DbType = System.Data.DbType.String });
+ 
+            return "Success";
+        }
+
     }
 }

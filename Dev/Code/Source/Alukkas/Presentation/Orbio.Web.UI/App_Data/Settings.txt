@@ -1,5 +1,3 @@
 DataProvider: sqlserver
-DataConnectionString: Data Source=.;Initial Catalog=esybuy;Integrated Security=False;Persist Security Info=False;User ID=sa;Password=sa123;MultipleActiveResultSets=True
+DataConnectionString: Data Source=ORBIO-SVR1;Initial Catalog=Alukkas_Ecommerce;Integrated Security=False;User Id=sa;Password=bachelor@123;MultipleActiveResultSets=True
 OrbioContext: true
-
-
