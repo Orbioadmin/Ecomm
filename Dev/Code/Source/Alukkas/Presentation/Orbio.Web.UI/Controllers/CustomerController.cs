@@ -39,23 +39,23 @@ namespace Orbio.Web.UI.Controllers
         {
             var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
             var curcustomer = workContext.CurrentCustomer;
-            var infomodel = customerinfo(model, curcustomer);
+            var infomodel = Customerinfo(model, curcustomer);
             ViewBag.ReturnUrl = returnUrl;
             return View(infomodel);
         }
 
-        public CustomerModel customerinfo(CustomerModel model, Customer Customer)
+        public CustomerModel Customerinfo(CustomerModel model, Customer customer)
         {
             if (ModelState.IsValid)
             {
-                string result = customerService.Customerdetails("Update",Customer.Id,model.FirstName,model.LastName,model.Gender,model.DOB,model.Email,model.Mobile);
+                customerService.getcustomerdetails("Update", customer.Id, model.FirstName, model.LastName, model.Gender, model.DOB, model.Email, model.Mobile);
             }
-            Customer.FirstName = model.FirstName;
-            Customer.LastName = model.LastName;
-            Customer.Gender = model.Gender;
-            Customer.DOB = model.DOB;
-            Customer.Email = model.Email;
-            Customer.MobileNo = model.Mobile;
+            customer.FirstName = model.FirstName;
+            customer.LastName = model.LastName;
+            customer.Gender = model.Gender;
+            customer.DOB = model.DOB;
+            customer.Email = model.Email;
+            customer.MobileNo = model.Mobile;
             return model;
         }
 

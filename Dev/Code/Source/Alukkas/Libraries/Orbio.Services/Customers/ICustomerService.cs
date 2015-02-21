@@ -31,6 +31,6 @@ namespace Orbio.Services.Customers
         CustomerLoginResults ValidateCustomer(string usernameOrEmail, string password, ref Customer customerOut);
 
 
-        string Customerdetails(string Action, int id, string firstname, string lastname, string gender, string dob, string email, string mobile);
+        void getcustomerdetails(string action, int id, string firstname, string lastname, string gender, string dob, string email, string mobile);
     }
 }
