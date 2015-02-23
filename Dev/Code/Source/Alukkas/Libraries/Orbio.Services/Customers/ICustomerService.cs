@@ -30,7 +30,10 @@ namespace Orbio.Services.Customers
         /// <returns>Result</returns>
         CustomerLoginResults ValidateCustomer(string usernameOrEmail, string password, ref Customer customerOut);
 
+        void GetCustomerDetails(string action, int id, string firstname, string lastname, string gender, string dob, string email, string mobile);
 
-        void getcustomerdetails(string action, int id, string firstname, string lastname, string gender, string dob, string email, string mobile);
+        CustomerLoginResults GetCustomerDetailsByEmail(string email, string password);
+
+        ChangePasswordResult ChangePassword(int id, string newpassword, int PasswordFormat);
     }
 }

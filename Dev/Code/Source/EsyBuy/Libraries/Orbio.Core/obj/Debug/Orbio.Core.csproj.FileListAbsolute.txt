@@ -15,3 +15,7 @@ F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Libraries\Orbio.Core
 F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Libraries\Orbio.Core\bin\Debug\Orbio.Core.pdb
 F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Libraries\Orbio.Core\obj\Debug\Orbio.Core.dll
 F:\Excercises\Rakesh\Git\Ecomm\Ecomm\Dev\Code\Source\EsyBuy\Libraries\Orbio.Core\obj\Debug\Orbio.Core.pdb
+C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\EsyBuy\Libraries\Orbio.Core\bin\Debug\Orbio.Core.dll
+C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\EsyBuy\Libraries\Orbio.Core\bin\Debug\Orbio.Core.pdb
+C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\EsyBuy\Libraries\Orbio.Core\obj\Debug\Orbio.Core.dll
+C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\EsyBuy\Libraries\Orbio.Core\obj\Debug\Orbio.Core.pdb

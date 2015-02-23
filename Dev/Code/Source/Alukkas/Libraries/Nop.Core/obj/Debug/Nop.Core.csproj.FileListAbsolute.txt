@@ -188,3 +188,4 @@ C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Libraries\No
 C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Libraries\Nop.Core\bin\Debug\System.Web.WebPages.Razor.xml
 C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Libraries\Nop.Core\obj\Debug\Nop.Core.dll
 C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Libraries\Nop.Core\obj\Debug\Nop.Core.pdb
+C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Libraries\Nop.Core\obj\Debug\Nop.Core.csprojResolveAssemblyReference.cache

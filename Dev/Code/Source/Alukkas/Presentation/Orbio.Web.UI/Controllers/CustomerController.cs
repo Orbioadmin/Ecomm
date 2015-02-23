@@ -16,6 +16,7 @@ namespace Orbio.Web.UI.Controllers
     {
 
         private readonly ICustomerService customerService;
+        private readonly CustomerSettings _customerSettings;
 
         public CustomerController(ICustomerService customerService)
         {
@@ -48,7 +49,7 @@ namespace Orbio.Web.UI.Controllers
         {
             if (ModelState.IsValid)
             {
-                customerService.getcustomerdetails("Update", customer.Id, model.FirstName, model.LastName, model.Gender, model.DOB, model.Email, model.Mobile);
+                customerService.GetCustomerDetails("Update", customer.Id, model.FirstName, model.LastName, model.Gender, model.DOB, model.Email, model.Mobile);
             }
             customer.FirstName = model.FirstName;
             customer.LastName = model.LastName;
@@ -59,5 +60,85 @@ namespace Orbio.Web.UI.Controllers
             return model;
         }
 
+        [LoginRequiredAttribute]
+        public ActionResult ChangePassword(string returnUrl)
+        {
+            var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
+            var curcustomer = workContext.CurrentCustomer;
+            var model = new CustomerModel(curcustomer);
+            ViewBag.ReturnUrl = returnUrl;
+            return View("~/Views/Customer/MyAccount.cshtml", model);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangePassword(ChangePasswordModel model, string returnUrl)
+        {
+            var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
+            var curcustomer = workContext.CurrentCustomer;
+
+            if (ModelState.IsValid)
+            {
+                var changePasswordRequest = new ChangePasswordRequest(curcustomer.Email,
+                    true, PasswordFormat.Hashed, model.NewPassword, model.OldPassword);
+
+                if (changePasswordRequest == null)
+                    throw new ArgumentNullException("request");
+
+                if (String.IsNullOrWhiteSpace(changePasswordRequest.Email))
+                {
+                    ModelState.AddModelError("", "Email Is Not Provided");
+                }
+                else if (String.IsNullOrWhiteSpace(changePasswordRequest.NewPassword))
+                {
+                    ModelState.AddModelError("", "Password Is Not Provided");
+                }
+                else
+                {
+                    var loginResult = customerService.GetCustomerDetailsByEmail(changePasswordRequest.Email, changePasswordRequest.OldPassword);
+                    switch (loginResult)
+                    {
+                        case CustomerLoginResults.Successful:
+                            {
+
+                                var changePasswordResult = customerService.ChangePassword(curcustomer.Id, changePasswordRequest.NewPassword, (int)PasswordFormat.Hashed);
+                                switch (changePasswordResult)
+                                {
+                                    case ChangePasswordResult.Successful:
+                                        {
+                                            var model1 = new CustomerModel(curcustomer);
+                                            model1.Result = "Your Password has been successfully changed";
+                                            ViewBag.ReturnUrl = returnUrl;
+                                            return View("~/Views/Customer/MyAccount.cshtml", model1);
+                                            //return RedirectToLocal(returnUrl);
+                                        }
+                                }
+                                break;
+                            }
+                        case CustomerLoginResults.CustomerNotExist:
+                            ModelState.AddModelError("", "No customer account found");
+                            break;
+                        case CustomerLoginResults.Deleted:
+                            ModelState.AddModelError("", "Customer is deleted");
+                            break;
+                        case CustomerLoginResults.NotActive:
+                            ModelState.AddModelError("", "Account is not active");
+                            break;
+                        case CustomerLoginResults.NotRegistered:
+                            ModelState.AddModelError("", "Account is not registered");
+                            break;
+                        case CustomerLoginResults.WrongPassword:
+                        default:
+                            ModelState.AddModelError("", "Old Password Doesnt Match");
+                            break;
+                    }
+                }
+
+            }
+            var acmodel = new CustomerModel(curcustomer);
+            ViewBag.ReturnUrl = returnUrl;
+            return View("~/Views/Customer/MyAccount.cshtml", acmodel);
+        }
     }
 }

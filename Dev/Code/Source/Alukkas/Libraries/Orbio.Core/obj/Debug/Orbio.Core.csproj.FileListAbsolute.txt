@@ -16,3 +16,4 @@ C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Libraries\Or
 C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Libraries\Orbio.Core\bin\Debug\Orbio.Core.pdb
 C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Libraries\Orbio.Core\obj\Debug\Orbio.Core.dll
 C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Libraries\Orbio.Core\obj\Debug\Orbio.Core.pdb
+C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Libraries\Orbio.Core\obj\Debug\Orbio.Core.csprojResolveAssemblyReference.cache
