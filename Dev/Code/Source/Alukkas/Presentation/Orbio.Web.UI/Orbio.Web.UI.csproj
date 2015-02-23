@@ -208,6 +208,7 @@
     <Compile Include="Models\Catalog\BaseCatalogModel.cs" />
     <Compile Include="Models\Catalog\CategoryModel.cs" />
     <Compile Include="Models\Catalog\CategorySimpleModel.cs" />
+    <Compile Include="Models\Catalog\PictureModel.cs" />
     <Compile Include="Models\Catalog\ProductDetailModel.cs" />
     <Compile Include="Models\Catalog\ProductOverViewModel.cs" />
     <Compile Include="Models\Catalog\ProductVariantAttributeModel.cs" />
@@ -544,6 +545,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Account\Login.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Catalog\ProductTemplate.Simple.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
