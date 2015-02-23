@@ -171,13 +171,12 @@ namespace Orbio.Services.Customers
         public ChangePasswordResult ChangePassword(int id, string newpassword, int passwordformat)
         {
             string pwd = "";
-            string saltKey = encryptionService.CreateSaltKey(5);
-            pwd = encryptionService.CreatePasswordHash(newpassword, saltKey, ConfigurationManager.AppSettings["HashedPasswordFormat"]);
+            pwd = encryptionService.CreatePasswordHash(newpassword, PasswordFormat.Hashed.ToString(), ConfigurationManager.AppSettings["HashedPasswordFormat"]);
             context.ExecuteFunction<Customer>("usp_Customer_ChangePassword",
                     new SqlParameter() { ParameterName = "@cust_id", Value = id, DbType = System.Data.DbType.Int32 },
                      new SqlParameter() { ParameterName = "@newpwd", Value = pwd, DbType = System.Data.DbType.String },
-                      new SqlParameter() { ParameterName = "@passwordformat", Value = passwordformat, DbType = System.Data.DbType.Int32 },
-                        new SqlParameter() { ParameterName = "@passwordsalt", Value = saltKey, DbType = System.Data.DbType.String });
+                      new SqlParameter() { ParameterName = "@passwordformat", Value = passwordformat, DbType = System.Data.DbType.Int32 });
+
             return ChangePasswordResult.Successful;
         }
 
@@ -304,17 +303,17 @@ namespace Orbio.Services.Customers
             request.Customer.Active = request.IsApproved;
 
             //add to 'Registered' role
-            var registeredRole = GetCustomerRoleBySystemName(SystemCustomerNames.Registered);
-            if (registeredRole == null)
-            {
-                throw new Nop.Core.NopException("Registered' role could not be loaded");
-            }
-            request.Customer.IsTaxExempt = registeredRole.TaxExempt;
-            request.Customer.CustomerRole.Add(registeredRole);
-            //remove from 'Guests' role
-            var guestRole = request.Customer.CustomerRole.FirstOrDefault(cr => cr.SystemName == SystemCustomerNames.Guests);
-            if (guestRole != null)
-                request.Customer.CustomerRole.Remove(guestRole);
+            //var registeredRole = GetCustomerRoleBySystemName(SystemCustomerNames.Registered);
+            //if (registeredRole == null)
+            //{
+            //    throw new Nop.Core.NopException("Registered' role could not be loaded");
+            //}
+            //request.Customer.IsTaxExempt = registeredRole.TaxExempt;
+            //request.Customer.CustomerRole.Add(registeredRole);
+            ////remove from 'Guests' role
+            //var guestRole = request.Customer.CustomerRole.FirstOrDefault(cr => cr.SystemName == SystemCustomerNames.Guests);
+            //if (guestRole != null)
+            //    request.Customer.CustomerRole.Remove(guestRole);
 
             ////Add reward points for customer registration (if enabled)
             //if (_rewardPointsSettings.Enabled &&
@@ -327,12 +326,12 @@ namespace Orbio.Services.Customers
 
         }
 
-        public virtual CustomerRole GetCustomerRoleBySystemName(string systemName)
+        public virtual Customer GetCustomerRoleBySystemName(string systemName)
         {
             if (String.IsNullOrWhiteSpace(systemName))
                 return null;
             //   var outputSqlParam = new SqlParameter() { ParameterName = "@CustomerRole", Direction = System.Data.ParameterDirection.Output, DbType = System.Data.DbType.Int32 };
-            var result = context.ExecuteFunction<CustomerRole>("usp_CustomerRole_GetCustomerRoleBySystemName",
+            var result = context.ExecuteFunction<Customer>("usp_CustomerRole_GetCustomerRoleBySystemName",
                   new SqlParameter() { ParameterName = "@systemname", Value = systemName, DbType = System.Data.DbType.String });
             var customerRole = result.FirstOrDefault();
             return customerRole;

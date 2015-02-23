@@ -12,7 +12,7 @@ namespace Orbio.Core.Domain.Customers
     public partial class Customer 
     {
         //private ICollection<ExternalAuthenticationRecord> _externalAuthenticationRecords;
-        private ICollection<CustomerRole> customerRoles;
+       // private ICollection<CustomerRole> customerRoles;
         //private ICollection<ShoppingCartItem> _shoppingCartItems;
         //private ICollection<RewardPointsHistory> _rewardPointsHistory;
         //private ICollection<ReturnRequest> _returnRequests;
@@ -188,11 +188,11 @@ namespace Orbio.Core.Domain.Customers
         //    protected set { _externalAuthenticationRecords = value; }
         //}
 
-        public virtual ICollection<CustomerRole> CustomerRole
-        {
-            get { return customerRoles ?? (customerRoles = new List<CustomerRole>()); }
-            protected set { customerRoles = value; }
-        }
+        //public virtual ICollection<CustomerRole> CustomerRole
+        //{
+        //    get { return customerRoles ?? (customerRoles = new List<CustomerRole>()); }
+        //    protected set { customerRoles = value; }
+        //}
 
         ///// <summary>
         ///// Gets or sets shopping cart items
