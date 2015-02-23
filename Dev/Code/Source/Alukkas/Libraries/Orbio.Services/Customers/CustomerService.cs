@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Nop.Data;
 using Orbio.Core.Domain.Customers;
+using Orbio.Services.Customers;
 using Orbio.Services.Security;
 using System.Text.RegularExpressions;
 
@@ -167,15 +168,16 @@ namespace Orbio.Services.Customers
 
         }
 
-        public ChangePasswordResult ChangePassword(int id, string newpassword, int PasswordFormat)
+        public ChangePasswordResult ChangePassword(int id, string newpassword, int passwordformat)
         {
             string pwd = "";
-            pwd = encryptionService.CreatePasswordHash(newpassword, "F8f+q9M=", ConfigurationManager.AppSettings["HashedPasswordFormat"]);
+            string saltKey = encryptionService.CreateSaltKey(5);
+            pwd = encryptionService.CreatePasswordHash(newpassword, saltKey, ConfigurationManager.AppSettings["HashedPasswordFormat"]);
             context.ExecuteFunction<Customer>("usp_Customer_ChangePassword",
                     new SqlParameter() { ParameterName = "@cust_id", Value = id, DbType = System.Data.DbType.Int32 },
                      new SqlParameter() { ParameterName = "@newpwd", Value = pwd, DbType = System.Data.DbType.String },
-                      new SqlParameter() { ParameterName = "@passwordformat", Value = PasswordFormat, DbType = System.Data.DbType.Int32 });
-
+                      new SqlParameter() { ParameterName = "@passwordformat", Value = passwordformat, DbType = System.Data.DbType.Int32 },
+                        new SqlParameter() { ParameterName = "@passwordsalt", Value = saltKey, DbType = System.Data.DbType.String });
             return ChangePasswordResult.Successful;
         }
 
