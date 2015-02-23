@@ -1,11 +1,11 @@
-﻿
+﻿@model Orbio.Web.UI.Models.Catalog.ProductDetailModel
 @{
     ViewBag.Title = "Product";
 }
  @*@Html.Action("PriceBar", "Home")*@
  <section>
     @{
-        Html.RenderAction("Product", "Catalog");
+       Html.RenderPartial(this.Model.ViewPath, this.Model); 
     }
 </section>
 
