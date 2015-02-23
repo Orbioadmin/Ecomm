@@ -16,7 +16,6 @@ namespace Orbio.Web.UI.Controllers
     {
 
         private readonly ICustomerService customerService;
-        private readonly CustomerSettings _customerSettings;
 
         public CustomerController(ICustomerService customerService)
         {

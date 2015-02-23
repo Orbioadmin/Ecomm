@@ -13,6 +13,7 @@ using Orbio.Web.UI.Models;
 using Orbio.Services.Customers;
 using Orbio.Core.Domain.Customers;
 using Orbio.Services.Authentication;
+using Nop.Core.Infrastructure;
 
 namespace Orbio.Web.UI.Controllers
 {
@@ -134,6 +135,58 @@ namespace Orbio.Web.UI.Controllers
         [HttpPost]
         public ActionResult Register(RegisterModel model, string returnUrl)
         {
+                var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
+                if (workContext.CurrentCustomer.IsRegistered)
+                {
+                    //Already registered customer. 
+                    authenticationService.SignOut();
+                }
+                var customer = workContext.CurrentCustomer;
+                //if (CustomerSettings.UserRegistrationType == UserRegistrationType.Disabled)
+                //    return RedirectToRoute("RegisterResult", new { resultId = (int)UserRegistrationType.Disabled });
+                //var customer = new Customer();
+                //var validationresult = customerService.ValidateNewCustomer(model.UserName);
+                //switch(validationresult)
+                //{
+                //    case CustomerRegistrationResult.ExistingUser:
+                //        ModelState.AddModelError("", "Account is already registered");
+                //            break;
+
+                //case CustomerRegistrationResult.NewUser:
+                //        {
+                var registrationRequest = new CustomerRegistrationRequest(customer, model.UserName, model.Gender, model.MobileNo, model.Password, PasswordFormat.Hashed, true);
+                var registrationResult = customerService.RegisterCustomer(registrationRequest);
+
+                switch (registrationResult)
+                {
+                    case CustomerRegistrationResult.NewUser:
+                        {
+                            if (customer.IsApproved)
+                              authenticationService.SignIn(customer, true);
+                            return RedirectToAction("MyAccount", "Customer");
+                        }
+
+                    case CustomerRegistrationResult.ExistingUser:
+                        ModelState.AddModelError("", "Account is already registered");
+                        break;
+
+                    case CustomerRegistrationResult.SearchEngine:
+                        ModelState.AddModelError("", "Search engine can't be registered");
+                        break;
+
+                    case CustomerRegistrationResult.BackgroundTask:
+                        ModelState.AddModelError("", "Background task account can't be registered");
+                        break;
+
+                    case CustomerRegistrationResult.InvalidEmail:
+                        ModelState.AddModelError("", "Email is not valid");
+                        break;
+
+                    case CustomerRegistrationResult.ProvidePassword:
+                        ModelState.AddModelError("", "Password is not provided");
+                        break;
+                }
+            ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 

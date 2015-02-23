@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseEntity.cs" />
     <Compile Include="Domain\Catalog\AttributeControlType.cs" />
     <Compile Include="Domain\Catalog\Category.cs" />
     <Compile Include="Domain\Catalog\CategoryProduct.cs" />
@@ -53,9 +54,12 @@
     <Compile Include="Domain\Customers\ChangePasswordResult.cs" />
     <Compile Include="Domain\Customers\Customer.cs" />
     <Compile Include="Domain\Customers\CustomerLoginResults.cs" />
+    <Compile Include="Domain\Customers\CustomerRegistrationResult.cs" />
+    <Compile Include="Domain\Customers\CustomerRole.cs" />
     <Compile Include="Domain\Customers\CustomerSettings.cs" />
     <Compile Include="Domain\Customers\PasswordFormat.cs" />
     <Compile Include="Domain\Customers\SystemCustomerNames.cs" />
+    <Compile Include="Domain\Security\PermissionRecord.cs" />
     <Compile Include="Domain\Seo\UrlRecord.cs" />
     <Compile Include="Domain\Stores\Store.cs" />
     <Compile Include="Domain\Stores\StoreExtensions.cs" />

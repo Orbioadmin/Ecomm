@@ -73,7 +73,7 @@ namespace Orbio.Web.UI.Models
     public class RegisterModel
     {
         [Required]
-        [Display(Name = "User name")]
+        [Display(Name = "User Name")]
         public string UserName { get; set; }
 
         [Required]
@@ -83,10 +83,21 @@ namespace Orbio.Web.UI.Models
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
+        [Display(Name = "Confirm Password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Gender")]
+        public string Gender { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 10)]
+        [DataType(DataType.PhoneNumber)]
+        [Display(Name = "Mobile Number")]
+        public string MobileNo { get; set; }
     }
+
 
     public class ExternalLogin
     {

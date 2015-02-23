@@ -49,6 +49,7 @@
     <Compile Include="Catalog\IProductService.cs" />
     <Compile Include="Catalog\ProductService.cs" />
     <Compile Include="Customers\ChangePasswordRequest.cs" />
+    <Compile Include="Customers\CustomerRegistrationRequest.cs" />
     <Compile Include="Customers\CustomerService.cs" />
     <Compile Include="Customers\ICustomerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -3,104 +3,125 @@
     ViewBag.Title = "Register";
 }
 
-<@*hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-    <h2>Create a new account.</h2>
-</hgroup>
+@*hgroup class="title">
+        <h1>@ViewBag.Title.</h1>
+        <h2>Create a new account.</h2>
+    </hgroup>
 
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary()
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary()
 
-    <fieldset>
-        <legend>Registration Form</legend>
-        <ol>
-            <li>
-                @Html.LabelFor(m => m.UserName)
-                @Html.TextBoxFor(m => m.UserName)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.Password)
-                @Html.PasswordFor(m => m.Password)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.ConfirmPassword)
-                @Html.PasswordFor(m => m.ConfirmPassword)
-            </li>
-        </ol>
-        <input type="submit" value="Register" />
-    </fieldset>
-}*@
+        <fieldset>
+            <legend>Registration Form</legend>
+            <ol>
+                <li>
+                    @Html.LabelFor(m => m.UserName)
+                    @Html.TextBoxFor(m => m.UserName)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.Password)
+                    @Html.PasswordFor(m => m.Password)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.ConfirmPassword)
+                    @Html.PasswordFor(m => m.ConfirmPassword)
+                </li>
+            </ol>
+            <input type="submit" value="Register" />
+        </fieldset>
+    }*@
 
 <section id="Login" class="Login_home">
-        <div class="container" align="center">
-            <div class="col-md-6 col-sm-6 col-xs-12">
-      <div class="login_inner">
+    <div class="container" align="center">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="login_inner">
 
-      <div class="login_form">
-                <h1>REGISTER HERE</h1>
+                <div class="login_form">
+                    <h1>REGISTER HERE</h1>
 
-       
-          @using (Html.BeginForm("Register", "Account",new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class="form-horizontal "})){ 
-             @Html.AntiForgeryToken()
-               @Html.ValidationSummary()
-  <div class="form-group">
-    <label for="inputEmail3" class="col-sm-4 control-label">Email</label>
-    <div class="col-sm-8">
-      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-     
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="inputPassword3" class="col-sm-4 control-label">Password</label>
-    <div class="col-sm-8">
-      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="inputPassword3" class="col-sm-4 control-label">Confirm Password</label>
-    <div class="col-sm-8">
-      <input type="password" class="form-control" id="inputPassword3" placeholder="Confirm Password">
-    </div>
-  </div>
 
-  <div class="form-group gender">
-    <label class="col-sm-4 control-label" for="inputPassword3">Gender</label>
-    <div class="col-sm-3">
-          <div class="checkbox">
-            <label>
-              <input type="radio"> Male
-            </label>
+                    @using (Html.BeginForm("Register", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal " }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary()
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.UserName, new { @class = "col-sm-4 control-label" })
+                            @*<label for="inputEmail3" class="col-sm-4 control-label">Email</label>*@
+                            <div class="col-sm-8">
+                                @Html.TextBoxFor(m => m.UserName, new { type = "email", @class = "form-control", placeholder = "Email" })
+                                @*@Html.ValidationMessageFor(m => m.UserName)*@
+                                @*<input type="email" class="form-control" id="inputEmail3" placeholder="Email">*@
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Password, new { @class = "col-sm-4 control-label" })
+                            @*<label for="inputPassword3" class="col-sm-4 control-label">Password</label>*@
+                            <div class="col-sm-8">
+                                @Html.TextBoxFor(m => m.Password, new { type = "password", @class = "form-control", placeholder = "Password" })
+                                @*@Html.ValidationMessageFor(m => m.Password)*@
+                                @*<input type="password" class="form-control" id="inputPassword3" placeholder="Password">*@
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-sm-4 control-label" })
+                            @*<label for="inputPassword3" class="col-sm-4 control-label">Confirm Password</label>*@
+                            <div class="col-sm-8">
+                                @Html.TextBoxFor(m => m.ConfirmPassword, new { type = "password", @class = "form-control", placeholder = "Confirm Password" })
+                                @*@Html.ValidationMessageFor(m => m.ConfirmPassword)*@
+                                @*<input type="password" class="form-control" id="inputPassword3" placeholder="Confirm Password">*@
+                            </div>
+                        </div>
+
+                        <div class="form-group gender col-sm-12 span_error">
+                            @Html.LabelFor(m => m.Gender, new { @class = "col-sm-4 control-label" })
+                            @*<label class="col-sm-4 control-label" for="inputPassword3">Gender</label>*@
+
+                            <div class="col-sm-4">
+                                @Html.RadioButtonFor(m => m.Gender, "M") Male
+                                @*<div class="checkbox">
+                                        <label>
+                                          <input type="radio"> Male
+                                        </label>
+                                    </div>*@
+                            </div>
+                            <div class="col-sm-4">
+                                @*@Html.RadioButtonFor(m => m.Gender, new { id = "F", @class = "checkbox female" }) Female*@
+                                @Html.RadioButtonFor(m => m.Gender, "F") Female
+                                @*<div class="checkbox female">
+                                        <label>
+                                          <input type="radio"> Female
+                                        </label>
+                                    </div>*@
+                            </div>
+                            @Html.ValidationMessageFor(m => m.Gender)
+
+
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.MobileNo, new { @class = "col-sm-4 control-label" })
+                            @*<label for="inputPassword3" class="col-sm-4 control-label">Mobile No</label>*@
+                            <div class="col-sm-8">
+                                @Html.TextBoxFor(m => m.MobileNo, new { type = "number", @class = "form-control", placeholder = "Mobile No" })
+                                @*@Html.ValidationMessageFor(m => m.MobileNo)*@
+                                @*<input type="number" class="form-control" id="inputPassword3" placeholder="Mobile No">*@
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-4 col-sm-8">
+                                <input type="submit" value="REGISTER" class="Buynow">
+                            </div>
+                        </div>
+                    }
+                </div>
+
+            </div>
         </div>
     </div>
-    <div class="col-sm-3">
-          <div class="checkbox female">
-            <label>
-              <input type="radio"> Female
-            </label>
-        </div>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="inputPassword3" class="col-sm-4 control-label">Mobile No</label>
-    <div class="col-sm-8">
-      <input type="number" class="form-control" id="inputPassword3" placeholder="Mobile No">
-    </div>
-  </div>
-  
-  <div class="form-group">
-    <div class="col-sm-offset-4 col-sm-8">
-      <input type="submit" value="REGISTER" class="Buynow">
-    </div>
-  </div>
-          }
-</div>
-
-      </div>
-                    </div>
-        </div>
-    </section>
+</section>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

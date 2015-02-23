@@ -12,7 +12,7 @@ namespace Orbio.Core.Domain.Customers
     public partial class Customer 
     {
         //private ICollection<ExternalAuthenticationRecord> _externalAuthenticationRecords;
-        //private ICollection<CustomerRole> _customerRoles;
+        private ICollection<CustomerRole> customerRoles;
         //private ICollection<ShoppingCartItem> _shoppingCartItems;
         //private ICollection<RewardPointsHistory> _rewardPointsHistory;
         //private ICollection<ReturnRequest> _returnRequests;
@@ -128,24 +128,24 @@ namespace Orbio.Core.Domain.Customers
         public DateTime LastActivityDateUtc { get; set; }
 
         /// <summary>
-        /// Gets or sets is registered
+        /// Gets or sets the Billing Address
         /// </summary>
-        public bool IsRegistered { get; set; }
+        public string BillingAddressId { get; set; }
 
         /// <summary>
-        /// Gets or sets the FirstName
+        /// Gets or sets the Shipping Address
+        /// </summary>
+        public string ShippingAddressId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the First Name
         /// </summary>
         public string FirstName { get; set; }
 
         /// <summary>
-        /// Gets or sets the LastName
+        /// Gets or sets the Last Name
         /// </summary>
         public string LastName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Gender
-        /// </summary>
-        public string Gender { get; set; }
 
         /// <summary>
         /// Gets or sets the DOB
@@ -153,9 +153,29 @@ namespace Orbio.Core.Domain.Customers
         public string DOB { get; set; }
 
         /// <summary>
-        /// Gets or sets the MobileNo
+        /// Gets or sets the Gender
+        /// </summary>
+        public string CompanyName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Gender
+        /// </summary>
+        public string Gender { get; set; }
+
+        /// <summary>
+        /// Gets or sets the mobile number
         /// </summary>
         public string MobileNo { get; set; }
+
+        /// <summary>
+        /// Gets or sets is registered
+        /// </summary>
+        public bool IsRegistered { get; set; }
+
+        /// <summary>
+        /// Gets or sets is approved
+        /// </summary>
+        public bool IsApproved { get; set; }
 
         #region Navigation properties
 
@@ -168,14 +188,11 @@ namespace Orbio.Core.Domain.Customers
         //    protected set { _externalAuthenticationRecords = value; }
         //}
 
-        ///// <summary>
-        ///// Gets or sets the customer roles
-        ///// </summary>
-        //public virtual ICollection<CustomerRole> CustomerRoles
-        //{
-        //    get { return _customerRoles ?? (_customerRoles = new List<CustomerRole>()); }
-        //    protected set { _customerRoles = value; }
-        //}
+        public virtual ICollection<CustomerRole> CustomerRole
+        {
+            get { return customerRoles ?? (customerRoles = new List<CustomerRole>()); }
+            protected set { customerRoles = value; }
+        }
 
         ///// <summary>
         ///// Gets or sets shopping cart items

@@ -35,5 +35,9 @@ namespace Orbio.Services.Customers
         CustomerLoginResults GetCustomerDetailsByEmail(string email, string password);
 
         ChangePasswordResult ChangePassword(int id, string newpassword, int PasswordFormat);
+
+        CustomerRegistrationResult RegisterCustomer(CustomerRegistrationRequest request);
+
+        CustomerRegistrationResult ValidateNewCustomer(string username);
     }
 }
