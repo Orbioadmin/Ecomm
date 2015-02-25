@@ -78,7 +78,7 @@ BEGIN
   --SKIPPING IMPERSONATED USER 
   IF(@customerByCookieGuid IS NOT NULL)
   BEGIN
-	IF NOT EXISTS(SELECT 1 FROM Customer INNER JOIN Customer_CustomerRole_Mapping CCM ON 
+	IF EXISTS(SELECT 1 FROM Customer WHERE CustomerGuid=@customerByCookieGuid) AND NOT EXISTS(SELECT 1 FROM Customer INNER JOIN Customer_CustomerRole_Mapping CCM ON 
 	Customer.Id = CCM.Customer_Id INNER JOIN CustomerRole ON CCM.CustomerRole_Id = CustomerRole.Id
 	 WHERE CustomerGuid = @customerByCookieGuid
 		AND Deleted = 0 AND Customer.Active=1 AND CustomerRole.Active=1
