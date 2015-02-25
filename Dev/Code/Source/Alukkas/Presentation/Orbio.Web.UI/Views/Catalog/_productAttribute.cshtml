@@ -1,0 +1,24 @@
+﻿@model List<Orbio.Web.UI.Models.Catalog.ProductVariantAttributeModel>
+
+@foreach(var pva in this.Model)
+{
+    switch (pva.AttributeControlType)
+    {
+        case Orbio.Core.Domain.Catalog.AttributeControlType.TableBlock:
+            <div class="avab_size">
+                    <ul class="size_li clearfix">
+                       
+                        <li>@pva.TextPrompt :</li>
+                         @foreach(var pvav in pva.Values){
+                        <li><a href="">@pvav.Name</a></li>                       
+                        }
+                        <li class="pull-right no_brd">
+                            <a href="" class="size_guide">SIZE GUIDE</a>
+                            <div class="Popup_img"><img src="images/Basic_image/SizeChart-popup.jpg"></div>
+                        </li>
+                    </ul>
+                </div>
+            break;
+    }
+
+}

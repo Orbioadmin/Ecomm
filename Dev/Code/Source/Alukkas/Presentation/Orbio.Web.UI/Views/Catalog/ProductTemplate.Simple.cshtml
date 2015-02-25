@@ -50,19 +50,9 @@
                     </div>
                 </div>
 
-                <div class="avab_size">
-                    <ul class="size_li clearfix">
-                        <li>AVAILABLE SIZE :</li>
-                        <li><a href="">6</a></li>
-                        <li><a href="">9.5</a></li>
-                        <li><a href="">11</a></li>
-                        <li><a href="">13.5</a></li>
-                        <li class="pull-right no_brd">
-                            <a href="" class="size_guide">SIZE GUIDE</a>
-                            <div class="Popup_img"><img src="images/Basic_image/SizeChart-popup.jpg"></div>
-                        </li>
-                    </ul>
-                </div>
+                @{
+                    Html.RenderPartial("_productAttribute", this.Model.ProductVariantAttributes);
+                }
 
                 <div class="quan_expect">
                     <div class="row">

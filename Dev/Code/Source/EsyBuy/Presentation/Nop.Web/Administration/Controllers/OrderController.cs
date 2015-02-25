@@ -1868,6 +1868,7 @@ namespace Nop.Admin.Controllers
                 string controlId = string.Format("product_attribute_{0}_{1}", attribute.ProductAttributeId, attribute.Id);
                 switch (attribute.AttributeControlType)
                 {
+                    case AttributeControlType.TableBlock:
                     case AttributeControlType.DropdownList:
                     case AttributeControlType.RadioList:
                     case AttributeControlType.ColorSquares:

@@ -28,6 +28,7 @@
 
             switch (attribute.AttributeControlType)
             {
+                case AttributeControlType.TableBlock:
                 case AttributeControlType.DropdownList:
                     {
                         priceAdjustmentTableScripts.AppendFormat("{0}['{1}'] = new Array(", priceAdjustmentTableName, controlId);
@@ -100,6 +101,7 @@
 
         switch (attribute.AttributeControlType)
         {
+            case AttributeControlType.TableBlock:
             case AttributeControlType.DropdownList:
                 {
                     pictureAttributeScripts.AppendFormat("$('#{0}').change(function(){{{1}('{2}',{3});}});\n", controlId, pictureAdjustmentFuncName, controlId, attribute.ProductId);
@@ -285,6 +287,7 @@
 
                 @switch (attribute.AttributeControlType)
                     {
+                        case AttributeControlType.TableBlock:
                         case AttributeControlType.DropdownList:
                             {
                         <select name="@(controlId)" id="@(controlId)">

@@ -73,6 +73,31 @@ namespace Orbio.Web.UI.Models.Catalog
 
                 this.DefaultPicture = this.ProductPictures.First();
             }
+            else
+            {
+                //TODO: set default picture
+                if (this.ProductPictures == null || this.ProductPictures.Count==0)
+                {
+                    this.ProductPictures = new List<PictureModel>();
+                    this.DefaultPicture = new PictureModel();
+                }
+            }
+
+            this.ProductVariantAttributes = (from pv in productDetail.ProductAttributeVariants
+                                             select new ProductVariantAttributeModel
+                                             {
+                                                  
+                                                  AttributeControlType = pv.AttributeControlType,
+                                                 TextPrompt = pv.TextPrompt,
+                                                 IsRequired = pv.IsRequired,
+                                                 ProductAttributeId = pv.ProductAttributeId,
+                                                 Values = new List<ProductVariantAttributeValueModel>((from pvv in pv.ProductVariantAttributeValues
+                                                                                                       select new ProductVariantAttributeValueModel {
+                                                                                                        ColorSquaresRgb=pvv.ColorSquaresRgb, Name=pvv.Name,
+                                                                                                        PictureUrl = pvv.PictureUrl, PriceAdjustment=pvv.PriceAdjustment.ToString("N")
+                                                                                                        //PriceAdjustmentValue =  need TODO: format + or -
+                                                                                                        }))
+                                             }).ToList();
 
             this.StockAvailability = productDetail.FormatStockMessage();
             this.IsFreeShipping = productDetail.IsFreeShipping;

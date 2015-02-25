@@ -57,13 +57,42 @@ DECLARE @currencyCode nvarchar(5)
 	
 
 --WITH XMLNAMESPACES ('http://schemas.datacontract.org/2004/07/Orbio.Core.Domain.Catalog' AS ns)
-SELECT @XmlResult = (SELECT  (SELECT Name, Slug AS SeName from Category INNER JOIN #temp ON Category.Id = #temp.data
+SELECT @XmlResult = (SELECT 
+--breadcrumps 
+(SELECT Name, Slug AS SeName from Category INNER JOIN #temp ON Category.Id = #temp.data
  LEFT JOIN UrlRecord UR ON Category.Id = UR.EntityId AND UR.IsActive=1
  AND UR.LanguageId = 0 AND EntityName = 'Category' ORDER BY #temp.OrderBy
-FOR XML PATH('Category'), ROOT('BreadCrumbs'), TYPE), product.Id Id,product.Name Name,product.ShortDescription ShortDescription,product.FullDescription 'FullDescription',product.Price Price,(SELECT Pic.Id PictureId, PPM.DisplayOrder, Pic.RelativeUrl,Pic.MimeType , Pic.SeoFilename, Pic.IsNew FROM [dbo].[Product]  P INNER JOIN [dbo].[Product_Picture_Mapping] PPM ON PPM.ProductId = P.Id
+FOR XML PATH('Category'), ROOT('BreadCrumbs'), TYPE),
+ product.Id Id,
+ product.Name Name,
+ product.ShortDescription ShortDescription,
+ product.FullDescription 'FullDescription',
+ product.Price Price,
+ --productpictures
+ (SELECT Pic.Id PictureId, PPM.DisplayOrder, Pic.RelativeUrl,Pic.MimeType , Pic.SeoFilename, Pic.IsNew FROM [dbo].[Product]  P INNER JOIN [dbo].[Product_Picture_Mapping] PPM ON PPM.ProductId = P.Id
 INNER JOIN [dbo].[Picture] Pic ON Pic.Id = PPM.PictureId WHERE P.Id = product.Id
 ORDER BY PPM.DisplayOrder FOR XML PATH ('ProductPicture'),ROOT('ProductPictures'), Type),
-dbo.ufn_GetAllspecificationattributes(@productid), dbo.ufn_GetAllproductattributes(@productid),dbo.ufn_GetAllproductattributevarientvalue(@productid), Delivery_date.Name as DeliveredIn, pt.ViewPath, @currencyCode as CurrencyCode,ManageInventoryMethodId, DisplayStockAvailability,DisplayStockQuantity,IsShipEnabled,IsFreeShipping, StockQuantity
+dbo.ufn_GetAllspecificationattributes(@productid), 
+--productattributes
+(SELECT  PPM.Id , PPM.ProductAttributeId, CASE WHEN ISNULL(PPM.TextPrompt, '')<>'' THEN PPM.TextPrompt ELSE PA.Name END 
+AS TextPrompt, IsRequired, AttributeControlTypeId, (SELECT  PVA.Id, Name, ColorSquaresRgb, PriceAdjustment,
+IsPreSelected, PIC.RelativeUrl PictureUrl   FROM ProductVariantAttributeValue
+PVA  LEFT OUTER JOIN Picture PIC ON PVA.PictureId = PIC.Id WHERE PVA.ProductVariantAttributeId = PPM.Id order by DisplayOrder 
+FOR XML PATH('ProductVarientAttributeValue'), ROOT('ProductVarientAttributeValues'), type)
+--, (SELECT * FROM ProductVariantAttributeCombination PVAC
+--WHERE PVAC.ProductId=product.Id FOR XML PATH('ProductVariantAttributeCombination'),TYPE)
+ FROM Product_ProductAttribute_Mapping PPM
+INNER JOIN ProductAttribute PA ON PPM.ProductAttributeId = PA.Id
+WHERE PPM.ProductId = product.Id FOR XML PATH('ProductAttributeVariant'), ROOT('ProductAttributeVariants'), TYPE),
+ Delivery_date.Name as DeliveredIn, 
+ pt.ViewPath, 
+ @currencyCode as CurrencyCode,
+ ManageInventoryMethodId,
+  DisplayStockAvailability,
+  DisplayStockQuantity,
+  IsShipEnabled,
+  IsFreeShipping,
+   StockQuantity
 from [dbo].[Product] product 
 INNER JOIN ProductTemplate PT ON product.ProductTemplateId = PT.Id
  Left join [dbo].[DeliveryDate] Delivery_date on product.DeliveryDateId= Delivery_date.Id  

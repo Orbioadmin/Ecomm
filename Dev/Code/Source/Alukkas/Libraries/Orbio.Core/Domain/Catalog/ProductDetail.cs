@@ -79,13 +79,9 @@ namespace Orbio.Core.Domain.Catalog
         /// gets all Product Attributes
         /// </summary>
         [DataMember]
-        public List<ProductAttribute> ProductAttributes { get; set; }
+        public List<ProductAttributeVariant> ProductAttributeVariants { get; set; }
 
-        /// <summary>
-        /// gets all ProductvarientAttributevalues
-        /// </summary>
-        [DataMember]
-        public List<ProductVarientAttributeValue> ProductVarientAttributeValues { get; set; }
+      
 
     }
 }

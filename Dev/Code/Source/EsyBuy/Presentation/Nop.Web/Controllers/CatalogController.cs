@@ -911,6 +911,7 @@ namespace Nop.Web.Controllers
                 {
                     switch (attribute.AttributeControlType)
                     {
+                        case AttributeControlType.TableBlock:
                         case AttributeControlType.DropdownList:
                         case AttributeControlType.RadioList:
                         case AttributeControlType.Checkboxes:

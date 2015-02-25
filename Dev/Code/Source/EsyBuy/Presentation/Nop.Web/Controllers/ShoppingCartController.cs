@@ -340,6 +340,7 @@ namespace Nop.Web.Controllers
                 string selectedCheckoutAttributes = _workContext.CurrentCustomer.GetAttribute<string>(SystemCustomerAttributeNames.CheckoutAttributes, _genericAttributeService);
                 switch (attribute.AttributeControlType)
                 {
+                    case AttributeControlType.TableBlock:
                     case AttributeControlType.DropdownList:
                     case AttributeControlType.RadioList:
                     case AttributeControlType.Checkboxes:
@@ -823,6 +824,7 @@ namespace Nop.Web.Controllers
                 string controlId = string.Format("checkout_attribute_{0}", attribute.Id);
                 switch (attribute.AttributeControlType)
                 {
+                    case AttributeControlType.TableBlock:
                     case AttributeControlType.DropdownList:
                     case AttributeControlType.RadioList:
                     case AttributeControlType.ColorSquares:
@@ -1186,6 +1188,7 @@ namespace Nop.Web.Controllers
                 string controlId = string.Format("product_attribute_{0}_{1}_{2}", attribute.ProductId, attribute.ProductAttributeId, attribute.Id);
                 switch (attribute.AttributeControlType)
                 {
+                    case AttributeControlType.TableBlock:
                     case AttributeControlType.DropdownList:
                     case AttributeControlType.RadioList:
                     case AttributeControlType.ColorSquares:
