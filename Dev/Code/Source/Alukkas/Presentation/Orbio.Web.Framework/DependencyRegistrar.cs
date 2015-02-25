@@ -18,6 +18,7 @@ namespace Orbio.Web.Framework
             //added by madhu mb 
             builder.RegisterType<WebWorkContext>().As<IWorkContext>().InstancePerHttpRequest();
             builder.RegisterType<EncryptionService>().As<IEncryptionService>().InstancePerHttpRequest();
+            builder.RegisterType<WebStoreContext>().As<IStoreContext>().InstancePerHttpRequest();
         }
 
         public int Order

@@ -52,6 +52,12 @@
     <Compile Include="Customers\CustomerRegistrationRequest.cs" />
     <Compile Include="Customers\CustomerService.cs" />
     <Compile Include="Customers\ICustomerService.cs" />
+    <Compile Include="Messages\IMessageService.cs" />
+    <Compile Include="Messages\MessageService.cs" />
+    <Compile Include="Messages\IMessageTokenProvider.cs" />
+    <Compile Include="Messages\ITokenizer.cs" />
+    <Compile Include="Messages\MessageTokenProvider.cs" />
+    <Compile Include="Messages\Tokenizer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\EncryptionService.cs" />
     <Compile Include="Security\IEncryptionService.cs" />

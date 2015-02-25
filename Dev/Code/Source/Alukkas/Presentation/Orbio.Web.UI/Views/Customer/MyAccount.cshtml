@@ -35,7 +35,7 @@
                                         @Html.ValidationSummary(true)
                                         <div id="viewinfo">
                                             <div>
-                                                @if (Model.Result != null)
+                                                @if (!String.IsNullOrEmpty(Model.Result))
                                                 {
                                                     <span>@Model.Result</span>
                                                 }

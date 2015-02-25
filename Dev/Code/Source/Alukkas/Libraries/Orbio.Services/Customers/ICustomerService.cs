@@ -29,11 +29,43 @@ namespace Orbio.Services.Customers
         /// <param name="password">Password</param>
         /// <returns>Result</returns>
         CustomerLoginResults ValidateCustomer(string usernameOrEmail, string password, ref Customer customerOut);
-
+        
+        /// <summary>
+        /// Get customer details
+        /// </summary>
+        /// <param name="action">action</param>
+        /// <param name="id">id</param>
+        /// <param name="firstname">firstname</param>
+        /// <param name="lastname">lastname</param>
+        /// <param name="gender">gender</param>
+        /// <param name="dob">dob</param>
+        /// <param name="email">email</param>
+        /// <param name="mobile">mobile</param>
+        /// <returns>void</returns>
         void GetCustomerDetails(string action, int id, string firstname, string lastname, string gender, string dob, string email, string mobile);
 
+        /// <summary>
+        /// Get customer details by email and password
+        /// </summary>
+        /// <param name="email">email</param>
+        /// <param name="password">password</param>
+        /// <returns>returns a customer</returns>
         CustomerLoginResults GetCustomerDetailsByEmail(string email, string password);
 
+        /// <summary>
+        /// Get customer details by email
+        /// </summary>
+        /// <param name="email">email</param>
+        /// <returns>returns a customer</returns>
+        CustomerLoginResults GetCustomerDetailsByEmail(string email, ref Customer customerOut);
+
+        /// <summary>
+        /// Update customer password
+        /// </summary>
+        /// <param name="id">id</param>
+        /// <param name="newpassword">newpassword</param>
+        /// <param name="PasswordFormat">PasswordFormat</param>
+        /// <returns>Update Password</returns>
         ChangePasswordResult ChangePassword(int id, string newpassword, int PasswordFormat);
 
         CustomerRegistrationResult RegisterCustomer(CustomerRegistrationRequest request);

@@ -128,6 +128,12 @@ namespace Orbio.Services.Customers
                       new SqlParameter() { ParameterName = "@mobileno", Value = mobile, DbType = System.Data.DbType.String });
         }
 
+        /// <summary>
+        /// Get customer details by email and password
+        /// </summary>
+        /// <param name="email">email</param>
+        /// <param name="password">password</param>
+        /// <returns>returns a customer</returns>
         public CustomerLoginResults GetCustomerDetailsByEmail(string email, string password)
         {
             var outputSqlParam = new SqlParameter() { ParameterName = "@loginResult", Direction = System.Data.ParameterDirection.Output, DbType = System.Data.DbType.Int32 };
@@ -168,13 +174,47 @@ namespace Orbio.Services.Customers
 
         }
 
+        /// <summary>
+        /// Get customer details by email
+        /// </summary>
+        /// <param name="email">email</param>
+        /// <returns>returns a customer</returns>
+        public CustomerLoginResults GetCustomerDetailsByEmail(string email, ref Customer customerOut)
+        {
+            var outputSqlParam = new SqlParameter() { ParameterName = "@loginResult", Direction = System.Data.ParameterDirection.Output, DbType = System.Data.DbType.Int32 };
+            var result = context.ExecuteFunction<Customer>("usp_Customer_ValidateAndGetCustomer",
+                  new SqlParameter() { ParameterName = "@usernameOrEmail", Value = email, DbType = System.Data.DbType.String },
+                 outputSqlParam);
+
+            var customer = result.FirstOrDefault();
+
+            if (customer == null)
+            {
+                return (CustomerLoginResults)outputSqlParam.Value;
+            }
+            else
+            {
+                customerOut = customer;
+                return CustomerLoginResults.Successful;
+            }
+
+        }
+        /// <summary>
+        /// Update customer password
+        /// </summary>
+        /// <param name="id">id</param>
+        /// <param name="newpassword">newpassword</param>
+        /// <param name="PasswordFormat">PasswordFormat</param>
+        /// <returns>Update Password</returns>
         public ChangePasswordResult ChangePassword(int id, string newpassword, int passwordformat)
         {
             string pwd = "";
-            pwd = encryptionService.CreatePasswordHash(newpassword, PasswordFormat.Hashed.ToString(), ConfigurationManager.AppSettings["HashedPasswordFormat"]);
+            string saltKey = encryptionService.CreateSaltKey(5);
+            pwd = encryptionService.CreatePasswordHash(newpassword, saltKey, ConfigurationManager.AppSettings["HashedPasswordFormat"]);
             context.ExecuteFunction<Customer>("usp_Customer_ChangePassword",
                     new SqlParameter() { ParameterName = "@cust_id", Value = id, DbType = System.Data.DbType.Int32 },
                      new SqlParameter() { ParameterName = "@newpwd", Value = pwd, DbType = System.Data.DbType.String },
+                      new SqlParameter() { ParameterName = "@passwordsalt", Value = saltKey, DbType = System.Data.DbType.String },
                       new SqlParameter() { ParameterName = "@passwordformat", Value = passwordformat, DbType = System.Data.DbType.Int32 });
 
             return ChangePasswordResult.Successful;

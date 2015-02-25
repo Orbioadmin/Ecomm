@@ -152,6 +152,9 @@ namespace Nop.Web.Framework
             //added by madhu mb 
             builder.RegisterType<OBS.Catalog.ProductService>().As<OBS.Catalog.IProductService>().InstancePerHttpRequest();
 
+            //added by Sankar 
+            builder.RegisterType<OBS.Messages.MessageService>().As<OBS.Messages.IMessageService>().InstancePerHttpRequest();
+
             builder.RegisterType<OBS.Seo.UrlRecordService>().As<OBS.Seo.IUrlRecordService>().InstancePerHttpRequest();
             builder.RegisterType<OBC.WebHelper>().As<OBC.IWebHelper>().InstancePerHttpRequest();
             builder.RegisterType<OBS.Stores.StoreService>().As<OBS.Stores.IStoreService>().InstancePerHttpRequest();
@@ -243,7 +246,11 @@ namespace Nop.Web.Framework
             builder.RegisterType<EmailAccountService>().As<IEmailAccountService>().InstancePerHttpRequest();
             builder.RegisterType<WorkflowMessageService>().As<IWorkflowMessageService>().InstancePerHttpRequest();
             builder.RegisterType<MessageTokenProvider>().As<IMessageTokenProvider>().InstancePerHttpRequest();
+            //added by Sankar 
+            builder.RegisterType<OBS.Messages.MessageTokenProvider>().As<OBS.Messages.IMessageTokenProvider>().InstancePerHttpRequest();
             builder.RegisterType<Tokenizer>().As<ITokenizer>().InstancePerHttpRequest();
+            //added by Sankar 
+            builder.RegisterType<OBS.Messages.Tokenizer>().As<OBS.Messages.ITokenizer>().InstancePerHttpRequest();
             builder.RegisterType<EmailSender>().As<IEmailSender>().InstancePerHttpRequest();
 
             builder.RegisterType<CheckoutAttributeFormatter>().As<ICheckoutAttributeFormatter>().InstancePerHttpRequest();
