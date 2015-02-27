@@ -474,10 +474,20 @@ namespace Nop.Core.Domain.Catalog
         /// </summary>
         public DateTime UpdatedOnUtc { get; set; }
 
+        /// <summary>
+        /// Gets or sets the gold price
+        /// </summary>
+        public decimal GoldCost { get; set; }
 
+        /// <summary>
+        /// Gets or sets the stone price
+        /// </summary>
+        public decimal StoneCost { get; set; }
 
-
-
+        /// <summary>
+        /// Gets or sets the making price
+        /// </summary>
+        public decimal MakingCost { get; set; }
 
         /// <summary>
         /// Gets or sets the product type

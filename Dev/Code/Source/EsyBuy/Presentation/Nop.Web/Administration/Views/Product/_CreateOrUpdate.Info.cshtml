@@ -190,18 +190,19 @@
             }
         }
 
-        function toggleManageStock() {
-            var selectedManageInventoryMethodId = $("#@Html.FieldIdFor(model => model.ManageInventoryMethodId)").val();
-            if (selectedManageInventoryMethodId == @(((int)ManageInventoryMethod.DontManageStock).ToString())) {
-                $('#pnlStockQuantity').hide();
-            $('#pnlDisplayStockAvailability').hide();
-            $('#pnlDisplayStockQuantity').hide();
-            $('#pnlMinStockQuantity').hide();
-            $('#pnlLowStockActivity').hide();
-            $('#pnlNotifyForQuantityBelow').hide();
-            $('#pnlAllowBackInStockSubscriptions').hide();            
-            $('#pnlBackorders').hide();
-        }
+    function toggleManageStock() {
+        var selectedManageInventoryMethodId = $("#@Html.FieldIdFor(model => model.ManageInventoryMethodId)").val();
+        if (selectedManageInventoryMethodId == @(((int)ManageInventoryMethod.DontManageStock).ToString()))
+        {
+            $('#pnlStockQuantity').hide();
+        $('#pnlDisplayStockAvailability').hide();
+        $('#pnlDisplayStockQuantity').hide();
+        $('#pnlMinStockQuantity').hide();
+        $('#pnlLowStockActivity').hide();
+        $('#pnlNotifyForQuantityBelow').hide();
+        $('#pnlAllowBackInStockSubscriptions').hide();            
+        $('#pnlBackorders').hide();}
+    
         else if (selectedManageInventoryMethodId == @(((int)ManageInventoryMethod.ManageStock).ToString())) {
         $('#pnlStockQuantity').show();
         $('#pnlDisplayStockAvailability').show();
@@ -516,6 +517,33 @@
         <td class="adminData">
             @Html.EditorFor(model => model.SpecialPriceEndDateTimeUtc)
             @Html.ValidationMessageFor(model => model.SpecialPriceEndDateTimeUtc)
+        </td>
+    </tr>
+    <tr>
+        <td class="adminTitle">
+            @Html.NopLabelFor(model => model.GoldCost):
+        </td>
+        <td class="adminData">
+            @Html.EditorFor(model => model.GoldCost) [@Model.PrimaryStoreCurrencyCode]
+            @Html.ValidationMessageFor(model => model.GoldCost)
+        </td>
+    </tr>
+    <tr>
+        <td class="adminTitle">
+            @Html.NopLabelFor(model => model.StoneCost):
+        </td>
+        <td class="adminData">
+            @Html.EditorFor(model => model.StoneCost) [@Model.PrimaryStoreCurrencyCode]
+            @Html.ValidationMessageFor(model => model.StoneCost)
+        </td>
+    </tr>
+    <tr>
+        <td class="adminTitle">
+            @Html.NopLabelFor(model => model.MakingCost):
+        </td>
+        <td class="adminData">
+            @Html.EditorFor(model => model.MakingCost) [@Model.PrimaryStoreCurrencyCode]
+            @Html.ValidationMessageFor(model => model.MakingCost)
         </td>
     </tr>
     <tr>
