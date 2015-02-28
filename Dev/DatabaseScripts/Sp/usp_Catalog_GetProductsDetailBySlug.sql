@@ -78,7 +78,7 @@ dbo.ufn_GetAllspecificationattributes(@productid),
 AS TextPrompt, IsRequired, AttributeControlTypeId, (SELECT  PVA.Id, Name, ColorSquaresRgb, PriceAdjustment,
 IsPreSelected, PIC.RelativeUrl PictureUrl   FROM ProductVariantAttributeValue
 PVA  LEFT OUTER JOIN Picture PIC ON PVA.PictureId = PIC.Id WHERE PVA.ProductVariantAttributeId = PPM.Id order by DisplayOrder 
-FOR XML PATH('ProductVarientAttributeValue'), ROOT('ProductVarientAttributeValues'), type)
+FOR XML PATH('ProductVariantAttributeValue'), ROOT('ProductVariantAttributeValues'), type)
 --, (SELECT * FROM ProductVariantAttributeCombination PVAC
 --WHERE PVAC.ProductId=product.Id FOR XML PATH('ProductVariantAttributeCombination'),TYPE)
  FROM Product_ProductAttribute_Mapping PPM
@@ -92,7 +92,10 @@ WHERE PPM.ProductId = product.Id FOR XML PATH('ProductAttributeVariant'), ROOT('
   DisplayStockQuantity,
   IsShipEnabled,
   IsFreeShipping,
-   StockQuantity
+   StockQuantity,
+   OrderMinimumQuantity,
+   OrderMaximumQuantity,
+   AllowedQuantities
 from [dbo].[Product] product 
 INNER JOIN ProductTemplate PT ON product.ProductTemplateId = PT.Id
  Left join [dbo].[DeliveryDate] Delivery_date on product.DeliveryDateId= Delivery_date.Id  

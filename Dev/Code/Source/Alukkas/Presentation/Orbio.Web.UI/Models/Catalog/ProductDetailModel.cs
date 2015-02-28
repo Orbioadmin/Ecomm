@@ -19,6 +19,7 @@ namespace Orbio.Web.UI.Models.Catalog
         public ProductDetailModel(ProductDetail productDetail) : base(productDetail)
             
         {
+            
             this.Id = productDetail.Id;
             this.Name = productDetail.Name;
             this.ShortDescription = productDetail.ShortDescription;
@@ -103,6 +104,26 @@ namespace Orbio.Web.UI.Models.Catalog
             this.IsFreeShipping = productDetail.IsFreeShipping;
             this.IsShipEnabled = productDetail.IsShipEnabled;
             this.DeliveredIn = productDetail.DeliveredIn;
+            this.OrderMaximumQuantity = productDetail.OrderMaximumQuantity;
+            this.OrderMinimumQuantity = productDetail.OrderMinimumQuantity;
+            this.AllowedQuantities = new List<int>();
+            if (!String.IsNullOrWhiteSpace(productDetail.AllowedQuantities))
+            {
+               
+                 productDetail
+                    .AllowedQuantities
+                    .Split(new [] {','}, StringSplitOptions.RemoveEmptyEntries)
+                    .ToList()
+                    .ForEach(qtyStr =>
+                                 {
+                                     int qty = 0;
+                                     if (int.TryParse(qtyStr.Trim(), out qty))
+                                     {
+                                         this.AllowedQuantities.Add(qty);
+                                     }
+                                 } ); 
+            }
+
         }
         public List<ProductVariantAttributeModel> ProductVariantAttributes { get; private set; }
 
@@ -120,6 +141,12 @@ namespace Orbio.Web.UI.Models.Catalog
         public bool IsShipEnabled { get; set; }
 
         public bool IsFreeShipping { get; set; }
+
+        public int OrderMinimumQuantity { get; set; }
+
+        public int OrderMaximumQuantity { get; set; }
+
+        public List<int> AllowedQuantities { get; set; }
 
         private static string GetThumbImageFileName(string imageUrl)
         {

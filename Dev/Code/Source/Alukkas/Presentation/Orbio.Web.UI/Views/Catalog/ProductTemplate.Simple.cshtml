@@ -51,14 +51,29 @@
                 </div>
 
                 @{
-                    Html.RenderPartial("_productAttribute", this.Model.ProductVariantAttributes);
+                    if(this.Model.ProductVariantAttributes!=null )
+                    {
+                        Html.RenderPartial("_productAttribute", this.Model.ProductVariantAttributes);
+                    }
                 }
 
                 <div class="quan_expect">
                     <div class="row">
                         <div class="col-sm-3">
                             Quantity <select class="quantity">
-                                <option>1</option>
+                                @if (this.Model.AllowedQuantities.Count > 0)
+                                {
+                                    foreach(var qty in this.Model.AllowedQuantities)
+                                    {
+                                        <option>@qty</option>
+                                    }
+                                }
+                                else{
+                                    for(var i=this.Model.OrderMinimumQuantity;i<=this.Model.OrderMaximumQuantity;i++)
+                                    {
+                                        <option>@i</option>
+                                    }
+                                }
                             </select>
                             <a href="shopping_cart.html"><input type="submit" class="Buynow" value="BUY NOW"></a>
                         </div>
@@ -115,91 +130,27 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">SPECFICATION <i class="plus_icon"></i></a>
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">SPECIFICATION <i class="plus_icon"></i></a>
                             </h4>
                         </div>
+                        @if(this.Model.SpecificationAttributes!=null)
+                        {
                         <div id="collapseOne" class="panel-collapse collapse in">
                             <div class="panel-body">
 
-                                <table width="100%" cellpadding="0" cellspacing="0" class="descrip">
-                                    <tr>
-                                        <td>
-                                            <table width="100%" cellpadding="0" cellspacing="0">
-                                                <tr>
-                                                    <td>
-                                                        <h1>Network</h1>
-                                                        <table width="100%" cellpadding="0" cellspacing="0" class="specfic_phone">
-                                                            <tr>
-                                                                <td width="30%" class="table_brd">Model No.</td>
-                                                                <td width="70%">Samsung Galaxy S5</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td width="30%" class="table_brd">Model No.</td>
-                                                                <td width="70%">Samsung Galaxy S5</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td width="30%" class="table_brd">Model No.</td>
-                                                                <td width="70%">Samsung Galaxy S5</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td width="30%" class="table_brd">Model No.</td>
-                                                                <td width="70%">Samsung Galaxy S5</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td width="30%" class="table_brd">Model No.</td>
-                                                                <td width="70%">Samsung Galaxy S5</td>
-                                                            </tr>
-                                                        </table>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-                                            <table width="100%" cellpadding="0" cellspacing="0">
-                                                <tr>
-                                                    <td>
-                                                        <h1>Display</h1>
-                                                        <table width="100%" cellpadding="0" cellspacing="0" class="specfic_phone">
-                                                            <tr>
-                                                                <td width="30%" class="table_brd">Model No.</td>
-                                                                <td width="70%">Samsung Galaxy S5</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td width="30%" class="table_brd">Model No.</td>
-                                                                <td width="70%">Samsung Galaxy S5</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td width="30%" class="table_brd">Model No.</td>
-                                                                <td width="70%">Samsung Galaxy S5</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td width="30%" class="table_brd">Model No.</td>
-                                                                <td width="70%">Samsung Galaxy S5</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td width="30%" class="table_brd">Model No.</td>
-                                                                <td width="70%">Samsung Galaxy S5</td>
-                                                            </tr>
-                                                        </table>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                    </tr>
-
-
-
-                                </table>
+                                @{
+                                    Html.RenderPartial("ProductSpecification", this.Model.SpecificationAttributes);
+                                }
 
                             </div>
                         </div>
+                        }
                     </div>
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title">
                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="collapsed">
-                                    DESCRIPATION
+                                    DESCRIPTION
                                     <i class="plus_icon"></i>
                                 </a>
                             </h4>
@@ -207,76 +158,7 @@
                         <div id="collapseTwo" class="panel-collapse collapse">
                             <div class="panel-body">
 
-                                <table width="100%" cellpadding="0" cellspacing="0" class="descrip">
-                                    <tr>
-                                        <td>
-                                            <table width="100%" cellpadding="0" cellspacing="0">
-                                                <tr>
-                                                    <td>
-                                                        <h1>Network</h1>
-                                                        <table width="100%" cellpadding="0" cellspacing="0" class="specfic_phone">
-                                                            <tr>
-                                                                <td width="30%" class="table_brd">Model No.</td>
-                                                                <td width="70%">Samsung Galaxy S5</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td width="30%" class="table_brd">Model No.</td>
-                                                                <td width="70%">Samsung Galaxy S5</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td width="30%" class="table_brd">Model No.</td>
-                                                                <td width="70%">Samsung Galaxy S5</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td width="30%" class="table_brd">Model No.</td>
-                                                                <td width="70%">Samsung Galaxy S5</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td width="30%" class="table_brd">Model No.</td>
-                                                                <td width="70%">Samsung Galaxy S5</td>
-                                                            </tr>
-                                                        </table>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-                                            <table width="100%" cellpadding="0" cellspacing="0">
-                                                <tr>
-                                                    <td>
-                                                        <h1>Display</h1>
-                                                        <table width="100%" cellpadding="0" cellspacing="0" class="specfic_phone">
-                                                            <tr>
-                                                                <td width="30%" class="table_brd">Model No.</td>
-                                                                <td width="70%">Samsung Galaxy S5</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td width="30%" class="table_brd">Model No.</td>
-                                                                <td width="70%">Samsung Galaxy S5</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td width="30%" class="table_brd">Model No.</td>
-                                                                <td width="70%">Samsung Galaxy S5</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td width="30%" class="table_brd">Model No.</td>
-                                                                <td width="70%">Samsung Galaxy S5</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td width="30%" class="table_brd">Model No.</td>
-                                                                <td width="70%">Samsung Galaxy S5</td>
-                                                            </tr>
-                                                        </table>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                    </tr>
-
-
-
-                                </table>
+                                @Html.Raw(this.Model.FullDescription)
 
 
                             </div>
