@@ -32,7 +32,7 @@ CREATE PROCEDURE [dbo].[usp_Catalog_GetProductsDetailBySlug] (@slug nvarchar(400
 AS    
 BEGIN    
 
- DECLARE @productid INT , @categoryId INT, @parentCategoryIds NVARCHAR(1000)
+DECLARE @productid INT , @categoryId INT, @parentCategoryIds NVARCHAR(1000)
  
  SELECT @productid = EntityId FROM UrlRecord where Slug = @slug and EntityName = @entityName
 and IsActive = 1 and LanguageId = 0
@@ -57,21 +57,13 @@ DECLARE @currencyCode nvarchar(5)
 	
 
 --WITH XMLNAMESPACES ('http://schemas.datacontract.org/2004/07/Orbio.Core.Domain.Catalog' AS ns)
-SELECT @XmlResult = (SELECT 
---breadcrumps 
-(SELECT Name, Slug AS SeName from Category INNER JOIN #temp ON Category.Id = #temp.data
+SELECT @XmlResult = (SELECT  (SELECT Name, Slug AS SeName from Category INNER JOIN #temp ON Category.Id = #temp.data
  LEFT JOIN UrlRecord UR ON Category.Id = UR.EntityId AND UR.IsActive=1
  AND UR.LanguageId = 0 AND EntityName = 'Category' ORDER BY #temp.OrderBy
-FOR XML PATH('Category'), ROOT('BreadCrumbs'), TYPE),
- product.Id Id,
- product.Name Name,
- product.ShortDescription ShortDescription,
- product.FullDescription 'FullDescription',
- product.Price Price,
- --productpictures
- (SELECT Pic.Id PictureId, PPM.DisplayOrder, Pic.RelativeUrl,Pic.MimeType , Pic.SeoFilename, Pic.IsNew FROM [dbo].[Product]  P INNER JOIN [dbo].[Product_Picture_Mapping] PPM ON PPM.ProductId = P.Id
+FOR XML PATH('Category'), ROOT('BreadCrumbs'), TYPE), product.Id Id,product.Name Name,product.ShortDescription ShortDescription,product.FullDescription 'FullDescription',product.Price Price,Product.GoldCost Gold,Product.StoneCost Stones,Product.MakingCost Making,(SELECT Pic.Id PictureId, PPM.DisplayOrder, Pic.RelativeUrl,Pic.MimeType , Pic.SeoFilename, Pic.IsNew FROM [dbo].[Product]  P INNER JOIN [dbo].[Product_Picture_Mapping] PPM ON PPM.ProductId = P.Id
 INNER JOIN [dbo].[Picture] Pic ON Pic.Id = PPM.PictureId WHERE P.Id = product.Id
 ORDER BY PPM.DisplayOrder FOR XML PATH ('ProductPicture'),ROOT('ProductPictures'), Type),
+
 dbo.ufn_GetAllspecificationattributes(@productid), 
 --productattributes
 (SELECT  PPM.Id , PPM.ProductAttributeId, CASE WHEN ISNULL(PPM.TextPrompt, '')<>'' THEN PPM.TextPrompt ELSE PA.Name END 
@@ -96,6 +88,7 @@ WHERE PPM.ProductId = product.Id FOR XML PATH('ProductAttributeVariant'), ROOT('
    OrderMinimumQuantity,
    OrderMaximumQuantity,
    AllowedQuantities
+
 from [dbo].[Product] product 
 INNER JOIN ProductTemplate PT ON product.ProductTemplateId = PT.Id
  Left join [dbo].[DeliveryDate] Delivery_date on product.DeliveryDateId= Delivery_date.Id  

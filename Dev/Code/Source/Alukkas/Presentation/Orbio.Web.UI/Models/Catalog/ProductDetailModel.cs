@@ -29,6 +29,9 @@ namespace Orbio.Web.UI.Models.Catalog
             this.ImageRelativeUrl = productDetail.ImageRelativeUrl;
             this.CurrencyCode = productDetail.CurrencyCode;
             this.ProductPrice.Price = productDetail.Price.ToString("0.00");
+            this.Gold = productDetail.Gold.ToString("0.00");
+            this.Stones = productDetail.Stones.ToString("0.00");
+            this.Making = productDetail.Making.ToString("0.00");
 
              if (productDetail.BreadCrumbs != null && productDetail.BreadCrumbs.Count > 0)
             {               
@@ -142,11 +145,19 @@ namespace Orbio.Web.UI.Models.Catalog
 
         public bool IsFreeShipping { get; set; }
 
+
         public int OrderMinimumQuantity { get; set; }
 
         public int OrderMaximumQuantity { get; set; }
 
         public List<int> AllowedQuantities { get; set; }
+
+        public string Gold { get; set; }
+
+        public string Stones { get; set; }
+
+        public string Making { get; set; }
+
 
         private static string GetThumbImageFileName(string imageUrl)
         {

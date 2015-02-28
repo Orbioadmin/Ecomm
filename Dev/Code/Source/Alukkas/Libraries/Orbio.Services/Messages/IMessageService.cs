@@ -13,5 +13,6 @@ namespace Orbio.Services.Messages
     public partial interface IMessageService
     {
         int SendCustomerPasswordRecoveryMessage(Customer customer);
+        int SendCustomerWelcomeMessage(Customer customer);
     }
 }

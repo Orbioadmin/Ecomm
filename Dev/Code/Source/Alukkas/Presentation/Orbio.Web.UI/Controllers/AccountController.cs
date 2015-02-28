@@ -14,6 +14,7 @@ using Orbio.Services.Customers;
 using Orbio.Core.Domain.Customers;
 using Orbio.Services.Authentication;
 using Nop.Core.Infrastructure;
+using Orbio.Services.Messages;
 
 namespace Orbio.Web.UI.Controllers
 {
@@ -21,11 +22,13 @@ namespace Orbio.Web.UI.Controllers
     {
         private readonly ICustomerService customerService;
         private readonly IAuthenticationService authenticationService;
+        private readonly IMessageService messageService;
 
-        public AccountController(ICustomerService customerService, IAuthenticationService authenticationService)
+        public AccountController(ICustomerService customerService, IAuthenticationService authenticationService, IMessageService  messageService)
         {
             this.customerService = customerService;
             this.authenticationService = authenticationService;
+            this.messageService = messageService;
         }
         public ActionResult Login(string returnUrl)
         {
@@ -163,6 +166,7 @@ namespace Orbio.Web.UI.Controllers
                         {
                             if (customer.IsApproved)
                               authenticationService.SignIn(customer, true);
+                            int mailresult = messageService.SendCustomerWelcomeMessage(customer);
                             return RedirectToAction("MyAccount", "Customer");
                         }
 
@@ -176,10 +180,6 @@ namespace Orbio.Web.UI.Controllers
 
                     case CustomerRegistrationResult.BackgroundTask:
                         ModelState.AddModelError("", "Background task account can't be registered");
-                        break;
-
-                    case CustomerRegistrationResult.InvalidEmail:
-                        ModelState.AddModelError("", "Email is not valid");
                         break;
 
                     case CustomerRegistrationResult.ProvidePassword:

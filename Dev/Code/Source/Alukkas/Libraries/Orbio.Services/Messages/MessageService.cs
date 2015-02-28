@@ -69,6 +69,50 @@ namespace Orbio.Services.Messages
                 toEmail, toName);
         }
 
+        /// <summary>
+        /// Sends welcome message to a customer after registration
+        /// </summary>
+        /// <param name="customer">Customer instance</param>
+        /// <param name="languageId">Message language identifier</param>
+        /// <returns>Queued email identifier</returns>
+        public int SendCustomerWelcomeMessage(Customer customer)
+        {
+            if (customer == null)
+                throw new ArgumentNullException("customer");
+            var store = storeContext.CurrentStore;
+
+            var result = context.ExecuteFunction<MessageTemplate>("usp_MessaeTemplate",
+                 new SqlParameter() { ParameterName = "@messagename", Value = "Customer.WelcomeMessage", DbType = System.Data.DbType.String });
+            var messageTemplate = new MessageTemplate();
+            messageTemplate = result.FirstOrDefault();
+
+            if (messageTemplate == null)
+                return 0;
+
+            //tokens
+            var tokens = new List<Token>();
+            messageTokenProvider.AddStoreTokens(tokens, store);
+            messageTokenProvider.AddCustomerTokens(tokens, customer);
+
+            string fullName = "";
+            if (String.IsNullOrWhiteSpace(customer.FirstName) && String.IsNullOrWhiteSpace(customer.LastName))
+                fullName = string.Format("{0}","Customer");
+            else
+            {
+                if (!String.IsNullOrWhiteSpace(customer.FirstName))
+                    fullName = customer.FirstName;
+
+                if (!String.IsNullOrWhiteSpace(customer.LastName))
+                    fullName = customer.LastName;
+            }
+
+            var toEmail = customer.Email;
+            var toName = fullName;
+            return SendNotification(messageTemplate, tokens,
+                toEmail, toName);
+        }
+
+
         protected int SendNotification(MessageTemplate messageTemplate, IEnumerable<Token> tokens, string toEmailAddress,
                                                string toName, string attachmentFilePath = null, string attachmentFileName = null)
         {
