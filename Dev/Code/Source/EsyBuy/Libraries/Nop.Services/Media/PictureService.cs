@@ -537,10 +537,20 @@ namespace Nop.Services.Media
                 }
                 else
                 {
-                    thumbFileName = !String.IsNullOrEmpty(seoFileName) ?
-                        string.Format("{0}_{1}_{2}.{3}", picture.Id.ToString("0000000"), seoFileName, targetSize, lastPart) :
-                        string.Format("{0}_{1}.{2}", picture.Id.ToString("0000000"), targetSize, lastPart);
-                    var thumbFilePath = GetThumbLocalPath(thumbFileName);
+                    string target = "";
+                    if (targetSize!=0)
+                    {
+                        target ="tb";
+                    }
+                    else
+                    {
+                        target = targetSize.ToString();
+                    }
+                        thumbFileName = !String.IsNullOrEmpty(seoFileName) ?
+                            string.Format("{0}_{1}_{2}.{3}", picture.Id.ToString("0000000"), seoFileName, target, lastPart) :
+                            string.Format("{0}_{1}.{2}", picture.Id.ToString("0000000"), target, lastPart);
+                        var thumbFilePath = GetThumbLocalPath(thumbFileName);
+                    
                     if (!File.Exists(thumbFilePath))
                     {
                         using (var stream = new MemoryStream(pictureBinary))
