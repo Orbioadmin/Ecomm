@@ -152,11 +152,24 @@ namespace Orbio.Web.UI.Controllers
             return model;
         }
 
+        [HttpPost]
+        public ActionResult Product(ProductDetailModel product)
+        {
+
+            TempData.Add("qty", product.SelectedQuantity);
+            return RedirectToRoute("Category", new {p="pt", seName = product.SeName});
+        }
+
         public ActionResult Product(string seName)
         {
             var model = PrepareProductdetailsModel(seName);
-            var queryString = new NameValueCollection(ControllerContext.HttpContext.Request.QueryString);
-            webHelper.RemoveQueryFromPath(ControllerContext.HttpContext, new List<string> { { "spec" } });
+            model.SeName = seName;
+            if (TempData.ContainsKey("qty") )
+            {
+                model.SelectedQuantity = TempData["qty"].ToString();
+            }
+           
+            webHelper.RemoveQueryFromPath(ControllerContext.HttpContext, new List<string> { { "spec"},{ "selectedQty" } });
             return View(model);
         }
 

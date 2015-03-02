@@ -75,7 +75,7 @@ FOR XML PATH('ProductVariantAttributeValue'), ROOT('ProductVariantAttributeValue
 --WHERE PVAC.ProductId=product.Id FOR XML PATH('ProductVariantAttributeCombination'),TYPE)
  FROM Product_ProductAttribute_Mapping PPM
 INNER JOIN ProductAttribute PA ON PPM.ProductAttributeId = PA.Id
-WHERE PPM.ProductId = product.Id FOR XML PATH('ProductAttributeVariant'), ROOT('ProductAttributeVariants'), TYPE),
+WHERE PPM.ProductId = product.Id FOR XML PATH('ProductAttributeVariant'), ROOT('ProductAttributeVariants'), TYPE), OldPrice,
  Delivery_date.Name as DeliveredIn, 
  pt.ViewPath, 
  @currencyCode as CurrencyCode,

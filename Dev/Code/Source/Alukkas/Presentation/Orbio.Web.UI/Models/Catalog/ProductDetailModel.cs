@@ -90,13 +90,13 @@ namespace Orbio.Web.UI.Models.Catalog
             this.ProductVariantAttributes = (from pv in productDetail.ProductAttributeVariants
                                              select new ProductVariantAttributeModel
                                              {
-                                                  
+                                                  Id = pv.Id,
                                                   AttributeControlType = pv.AttributeControlType,
                                                  TextPrompt = pv.TextPrompt,
                                                  IsRequired = pv.IsRequired,
                                                  ProductAttributeId = pv.ProductAttributeId,
                                                  Values = new List<ProductVariantAttributeValueModel>((from pvv in pv.ProductVariantAttributeValues
-                                                                                                       select new ProductVariantAttributeValueModel {
+                                                                                                       select new ProductVariantAttributeValueModel {Id = pvv.Id,
                                                                                                         ColorSquaresRgb=pvv.ColorSquaresRgb, Name=pvv.Name,
                                                                                                         PictureUrl = pvv.PictureUrl, PriceAdjustment=pvv.PriceAdjustment.ToString("N")
                                                                                                         //PriceAdjustmentValue =  need TODO: format + or -
@@ -158,6 +158,7 @@ namespace Orbio.Web.UI.Models.Catalog
 
         public string Making { get; set; }
 
+        public string SelectedQuantity { get; set; }
 
         private static string GetThumbImageFileName(string imageUrl)
         {
