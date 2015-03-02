@@ -6,7 +6,7 @@ BEGIN
 	IF  NOT EXISTS (SELECT 1 FROM sys.columns WHERE object_id = OBJECT_ID(N'[dbo].[Product]') AND name='GoldCost')
 	Begin
 		ALTER TABLE [dbo].[Product]
-		ADD [GoldCost] decimal(18,4) NOT NULL
+		ADD [GoldCost] decimal(18,4) NULL
 		PRINT 'Added column GoldCost for the table Product'	
 	End
 	Else
@@ -15,7 +15,7 @@ BEGIN
 	IF  NOT EXISTS (SELECT 1 FROM sys.columns WHERE object_id = OBJECT_ID(N'[dbo].[Product]') AND name='StoneCost')
 	Begin
 		ALTER TABLE [dbo].[Product]
-		ADD [StoneCost] decimal(18,4) NOT NULL
+		ADD [StoneCost] decimal(18,4) NULL
 		PRINT 'Added column StoneCost for the table Product'	
 	End
 	Else
@@ -24,7 +24,7 @@ BEGIN
 	IF  NOT EXISTS (SELECT 1 FROM sys.columns WHERE object_id = OBJECT_ID(N'[dbo].[Product]') AND name='MakingCost')
 	Begin
 		ALTER TABLE [dbo].[Product]
-		ADD [MakingCost] decimal(18,4) NOT NULL
+		ADD [MakingCost] decimal(18,4)NULL
 		PRINT 'Added column MakingCost for the table Product'	
 	End
 	Else
