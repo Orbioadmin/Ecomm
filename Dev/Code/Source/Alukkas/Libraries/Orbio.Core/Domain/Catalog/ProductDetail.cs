@@ -99,22 +99,6 @@ namespace Orbio.Core.Domain.Catalog
         [DataMember]
         public double Making { get; set; }
 
-        /// <summary>
-        /// Gets or sets OrderMinimumQuantity
-        /// </summary>
-        [DataMember]
-        public int OrderMinimumQuantity { get; set; }
 
-        /// <summary>
-        /// Gets or sets OrderMaximumQuantity
-        /// </summary>
-        [DataMember]
-        public int OrderMaximumQuantity { get; set; }
-
-        /// <summary>
-        /// Gets or sets AllowedQuantities
-        /// </summary>
-        [DataMember]
-        public string AllowedQuantities { get; set; }
     }
 }
