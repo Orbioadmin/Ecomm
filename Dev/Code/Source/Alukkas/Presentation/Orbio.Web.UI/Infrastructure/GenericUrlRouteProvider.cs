@@ -26,6 +26,25 @@ namespace Orbio.Web.UI.Infrastructure
                             new { controller = "Catalog", action = "Category" },
                             new[] { "Orbio.Web.UI.Controllers" });
 
+
+            //shopping cart
+            routes.MapCommonPathRoute("ShoppingCart",
+                            "cart/",
+                            new { controller = "ShoppingCart", action = "Cart" },
+                            new[] { "Orbio.Web.UI.Controllers" });
+
+
+            //checkout
+            routes.MapCommonPathRoute("Checkout",
+                            "checkout/",
+                            new { controller = "Checkout", action = "Index" },
+                            new[] { "Orbio.Web.UI.Controllers" });
+            ////////wishlist
+            //////routes.MapCommonPathRoute("Wishlist",
+            //////                "wishlist/{customerGuid}",
+            //////                new { controller = "ShoppingCart", action = "Wishlist", customerGuid = UrlParameter.Optional },
+            //////                new[] { "Nop.Web.Controllers" });
+
             //routes.MapLocalizedRoute("Manufacturer",
             //                "{SeName}",
             //                new { controller = "Catalog", action = "Manufacturer" },
