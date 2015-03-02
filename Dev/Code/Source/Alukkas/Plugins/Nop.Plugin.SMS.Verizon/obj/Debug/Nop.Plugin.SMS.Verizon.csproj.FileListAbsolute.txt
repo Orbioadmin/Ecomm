@@ -80,3 +80,10 @@ C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Presentation
 C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.SMS.Verizon\obj\Debug\Nop.Plugin.SMS.Verizon.dll
 C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.SMS.Verizon\obj\Debug\Nop.Plugin.SMS.Verizon.pdb
 C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.SMS.Verizon\obj\Debug\Nop.Plugin.SMS.Verizon.csprojResolveAssemblyReference.cache
+F:\Excercises\Rakesh\Git\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.Web\Plugins\SMS.Verizon\Description.txt
+F:\Excercises\Rakesh\Git\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.Web\Plugins\SMS.Verizon\logo.jpg
+F:\Excercises\Rakesh\Git\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.Web\Plugins\SMS.Verizon\Nop.Plugin.SMS.Verizon.dll
+F:\Excercises\Rakesh\Git\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.Web\Plugins\SMS.Verizon\Nop.Plugin.SMS.Verizon.pdb
+F:\Excercises\Rakesh\Git\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.SMS.Verizon\obj\Debug\Nop.Plugin.SMS.Verizon.csprojResolveAssemblyReference.cache
+F:\Excercises\Rakesh\Git\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.SMS.Verizon\obj\Debug\Nop.Plugin.SMS.Verizon.dll
+F:\Excercises\Rakesh\Git\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.SMS.Verizon\obj\Debug\Nop.Plugin.SMS.Verizon.pdb
