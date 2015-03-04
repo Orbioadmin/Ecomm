@@ -3,7 +3,7 @@
         <div class="navbar-header">
             <a class="navbar-brand" href="@Url.Action("Index", "Home")"><img src="images/Basic_image/logo.png"></a>
         </div>
-        <ul class="menu_desc">
+        @*<ul class="menu_desc">
             <li class="select_menu">
                 <a>
                     <select class="menu_select">
@@ -14,7 +14,8 @@
                     <input type="submit" class="search_butt" value="">
                 </a>
             </li>
-        </ul>
+        </ul>*@
+        @Html.Action("SearchBox", "Catalog")
         <div class=" collapse head_main in">
             <ul class="nav navbar-nav navbar-right">
                 <li class="cart_item"><a href="@Url.RouteUrl("ShoppingCart")">0 ITEMS <i class="mnu_item_icon"></i></a></li>
