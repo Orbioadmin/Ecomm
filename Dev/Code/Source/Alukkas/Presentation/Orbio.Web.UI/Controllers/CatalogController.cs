@@ -90,6 +90,42 @@ namespace Orbio.Web.UI.Controllers
             }
         }
 
+        [ChildActionOnly]
+        public ActionResult SearchBox()
+        {
+
+                var cachedModel = cacheManager.Get(string.Format(ModelCacheEventConsumer.CATEGORY_MENU_MODEL_KEY, 1, 4, 1),
+                    () => PrepareCategorySimpleModels());
+                var model = new SearchModel()
+                {
+                    Categories = cachedModel
+                };
+                var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
+
+                ViewBag.UserName = string.IsNullOrEmpty(workContext.CurrentCustomer.Username) ? "Guest" : workContext.CurrentCustomer.Username;
+                return PartialView("SearchBox",model);
+        }
+
+        public ActionResult Search(string seName, string spec, string minPrice, string maxPrice,string keyword)
+        {
+            var model = new SearchModel();
+            if (keyword.Length >= 3)
+            {
+
+                model = PrepareCategoryProductModelBySearch(seName, spec, minPrice, maxPrice, keyword);
+                //ViewBag.MetaDescription = model.MetaDescription;
+                //ViewBag.MetaKeywords = model.MetaKeywords;
+            }
+            else
+            {
+                model = PrepareCategoryProductModelBySearch(seName, spec, minPrice, maxPrice, "0");
+                ViewBag.Error = "Search term minimum length is 3 characters";
+            }
+            var queryString = new NameValueCollection(ControllerContext.HttpContext.Request.QueryString);
+            webHelper.RemoveQueryFromPath(ControllerContext.HttpContext, new List<string> { { "spec" } });
+            return View(model);
+        }
+
         public ActionResult Category(string seName,string spec, string minPrice, string maxPrice)
         {
             var model = PrepareCategoryProductModel(seName, spec,  minPrice, maxPrice);
@@ -108,7 +144,13 @@ namespace Orbio.Web.UI.Controllers
 
             return PartialView(model);
         }
+        [ChildActionOnly]
+        public ActionResult ProductFilterBySearch(string categoryId, int minPrice, int maxPrice, int[] selectedSpecs,string keyword)
+        {
+            var model = PrepareSpecificationFilterModelBySearch(categoryId, minPrice, maxPrice, selectedSpecs, keyword);
 
+            return PartialView("ProductFilter",model);
+        }
         private List<SpecificationAttribute> PrepareSpecificationFilterModel(int categoryId,int minPrice, int maxPrice, int[] selectedSpecs)
         {
             var specFilterModels = categoryService.GetSpecificationFiltersByCategoryId(categoryId);
@@ -152,6 +194,49 @@ namespace Orbio.Web.UI.Controllers
             return model;
         }
 
+        private List<SpecificationAttribute> PrepareSpecificationFilterModelBySearch(string categoryId, int minPrice, int maxPrice, int[] selectedSpecs,string keyword)
+        {
+            var specFilterModels = categoryService.GetSpecificationFiltersByCategory(string.IsNullOrEmpty(categoryId) ? "0" : categoryId, keyword);
+            var specFilterByspecAttribute = from sa in specFilterModels
+                                            group sa by sa.SpecificationAttributeName;
+            var currentUrl = ControllerContext.RequestContext.HttpContext.Request.Url.AbsoluteUri;
+
+            //var specs = selectedSpecs.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries); 
+            var model = (from sag in specFilterByspecAttribute
+                         select new SpecificationAttribute
+                         {
+                             Type = "Specification",
+                             Name = sag.Key,
+                             SpecificationAttributeOptions =
+                                 new List<SpecificationAttributeOption>((from sao in sag
+                                                                         select new SpecificationAttributeOption
+                                                                         {
+                                                                             Id = sao.SpecificationAttributeOptionId,
+                                                                             Name = sao.SpecificationAttributeOptionName,
+                                                                             FilterUrl = currentUrl,
+                                                                             Selected = selectedSpecs != null && selectedSpecs.Length > 0 && selectedSpecs.Any(i => i == sao.SpecificationAttributeOptionId)
+                                                                         }))
+                         }).ToList();
+            if (model.Count > 0)
+            {
+                var priceFilterIndex = Convert.ToInt32(ConfigurationManager.AppSettings["PriceFilterIndex"] == null ? "1" : ConfigurationManager.AppSettings["PriceFilterIndex"]);
+                if (priceFilterIndex > model.Count)
+                {
+                    priceFilterIndex = model.Count;
+                }
+                model.Insert(priceFilterIndex, new SpecificationAttribute
+                {
+                    Name = "Price",
+                    Type = "Price",
+                    SpecificationAttributeOptions = new List<SpecificationAttributeOption> { 
+                {new SpecificationAttributeOption{Name=minPrice.ToString(), ElementName="productPriceFilterMinValue"}},
+                {new SpecificationAttributeOption{Name=maxPrice.ToString(), ElementName="productPriceFilterMaxValue"}}
+                }
+                });
+            }
+            return model;
+        }
+
         public ActionResult Product(string seName)
         {
             var model = PrepareProductdetailsModel(seName);
@@ -171,6 +256,20 @@ namespace Orbio.Web.UI.Controllers
                 model.SelectedSpecificationAttributeIds = (from f in filterIds.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
                                                            select Convert.ToInt32(f)).ToArray();
             }
+            return model;
+        }
+
+        private SearchModel PrepareCategoryProductModelBySearch(string seName, string filterIds, string minPrice, string maxPrice, string keyword)
+        {
+
+            var model = new SearchModel(categoryService.GetProductsBySearch(seName, string.IsNullOrEmpty(filterIds) ? null : filterIds,
+                string.IsNullOrEmpty(minPrice) ? (decimal?)null : Convert.ToDecimal(minPrice), string.IsNullOrEmpty(maxPrice) ? (decimal?)null : Convert.ToDecimal(maxPrice),keyword));
+            if (filterIds != null)
+            {
+                model.SelectedSpecificationAttributeIds = (from f in filterIds.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+                                                           select Convert.ToInt32(f)).ToArray();
+            }
+            
             return model;
         }
 

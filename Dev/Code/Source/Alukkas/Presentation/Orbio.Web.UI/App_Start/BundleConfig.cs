@@ -13,7 +13,7 @@ namespace Orbio.Web.UI
                         "~/Scripts/jquery-{version}.js","~/Scripts/bootstrap.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
-                        "~/Scripts/cloud-zoom.js", "~/Scripts/main.js", "~/Scripts/html5shiv.js", "~/Scripts/price-range.js", "~/Scripts/datepicker.js"));
+                        "~/Scripts/cloud-zoom.js", "~/Scripts/price-range.js", "~/Scripts/html5shiv.js", "~/Scripts/main.js", "~/Scripts/datepicker.js"));
            
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're

@@ -213,11 +213,14 @@
     <Compile Include="Models\Catalog\ProductOverViewModel.cs" />
     <Compile Include="Models\Catalog\ProductVariantAttributeModel.cs" />
     <Compile Include="Models\Catalog\ProductVariantAttributeValueModel.cs" />
+    <Compile Include="Models\Catalog\SearchModel.cs" />
     <Compile Include="Models\Catalog\SpecificationAttribute.cs" />
     <Compile Include="Models\Catalog\SpecificationAttributeOption.cs" />
     <Compile Include="Models\Catalog\TopMenuModel.cs" />
     <Compile Include="Models\Customer\ChangePasswordModel.cs" />
     <Compile Include="Models\Customer\CustomerModel.cs" />
+    <Compile Include="Models\Customer\PasswordRecoveryConfirmModel.cs" />
+    <Compile Include="Models\Customer\PasswordRecoveryModel.cs" />
     <Compile Include="Models\Home\PriceBarModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -548,6 +551,20 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Catalog\ProductTemplate.Simple.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Customer\PasswordRecovery.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Customer\PasswordRecoveryConfirm.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Catalog\SearchBox.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\Alukkas.pubxml" />
+    <Content Include="Views\Catalog\Search.cshtml" />
+    <Content Include="Views\Catalog\SearchTemplate.ProductsInGridOrLines.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
