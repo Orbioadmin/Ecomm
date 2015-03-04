@@ -237,11 +237,38 @@ namespace Orbio.Web.UI.Controllers
             return model;
         }
 
+        [HttpPost]
+        public ActionResult Product(ProductDetailModel product)
+        {
+            TempData.Add("product", product);
+            return RedirectToRoute("Category", new { p = "pt", seName = product.SeName });
+        }
+
         public ActionResult Product(string seName)
         {
-            var model = PrepareProductdetailsModel(seName);
+            ProductDetailModel selectedProduct=null;
+            ViewBag.Errors = string.Empty;
+            if (TempData.ContainsKey("product"))
+            {
+               selectedProduct = (ProductDetailModel)TempData["product"];
+               var errorString = string.Empty;
+               if (selectedProduct.ProductVariantAttributes.Count > 0)
+               {
+
+                   errorString = selectedProduct.ProductVariantAttributes.GetProductVariantErrors();
+               }
+
+               ViewBag.Errors = errorString;
+                
+            }
+             var model = PrepareProductdetailsModel(seName);
             var queryString = new NameValueCollection(ControllerContext.HttpContext.Request.QueryString);
-            webHelper.RemoveQueryFromPath(ControllerContext.HttpContext, new List<string> { { "spec" } });
+            model.SeName = seName;
+            if (selectedProduct != null)
+            {
+                model.SelectedQuantity = selectedProduct.SelectedQuantity;
+            }
+            webHelper.RemoveQueryFromPath(ControllerContext.HttpContext, new List<string> { { "spec" }, { "selectedQty" } });
             return View(model);
         }
 
@@ -273,7 +300,7 @@ namespace Orbio.Web.UI.Controllers
             return model;
         }
 
-        private ProductOverViewModel PrepareProductdetailsModel(string seName)
+        private ProductDetailModel PrepareProductdetailsModel(string seName)
         {
             var model = new ProductDetailModel(productService.GetProductsDetailsBySlug(seName));
 

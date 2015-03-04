@@ -43,5 +43,9 @@ namespace Orbio.Core.Domain.Catalog
         /// Color squares
         /// </summary>
         ColorSquares = 40,
+        /// <summary>
+        /// Td blocks
+        /// </summary>
+        TableBlock = 50
     }
 }

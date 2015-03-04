@@ -2,6 +2,10 @@
 @{
     ViewBag.Title = "Product";
 }
+@if(!string.IsNullOrEmpty((string) ViewBag.Errors)){
+
+    @Html.Hidden("tosterMsg", (string)ViewBag.Errors)
+}
   <div class="container">
 
         <ol class="breadcrumb">
@@ -299,4 +303,18 @@
     </div>
 
 </section>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var errMsg = $('#tosterMsg');
+        if (errMsg.length > 0 && errMsg.val().length > 0) {
+            var splits = errMsg.val().split(';');
+            for (var i = 0; i < splits.length; i++) {
+                if (splits[i].length > 0) {
+                    ShowError(splits[i]);
+                }
+            }
+        }
+    });
+</script>
 

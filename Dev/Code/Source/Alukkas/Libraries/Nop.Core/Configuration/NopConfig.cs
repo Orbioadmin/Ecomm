@@ -110,10 +110,18 @@ namespace Nop.Core.Configuration
             config.ProbingRequired = new Dictionary<string, bool>();
             if (probingNode != null && probingNode.Attributes.Count>0)
             {
-                var depedencyAttribute = probingNode.Attributes["DependencyRegistrar"];
-                if (depedencyAttribute != null)
+                foreach (var attr in probingNode.Attributes)
                 {
-                    config.ProbingRequired.Add("DependencyRegistrar", Convert.ToBoolean(depedencyAttribute.Value));
+                    var depedencyAttribute = probingNode.Attributes["DependencyRegistrar"];
+                    if (depedencyAttribute != null)
+                    {
+
+                        if (attr != null)
+                        {
+                            config.ProbingRequired.Add(((XmlAttribute)attr).Name, Convert.ToBoolean(((XmlAttribute)attr).Value));
+                        }
+                       
+                    }
                 }
             }
 
