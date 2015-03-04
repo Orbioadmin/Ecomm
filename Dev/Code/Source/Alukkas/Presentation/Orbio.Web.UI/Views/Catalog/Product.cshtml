@@ -428,9 +428,9 @@
 @section scripts{
 <script type="text/javascript">
       $(document).ready(function(){
-            $.each($("[Id^='ProductVariantAttributes_']"), function(){
+            $.each($('a[Id^=ProductVariantAttributes_]'), function(){
                     $(this).click(function(){
-                        $($(this).attr('data-ParentId')).val($(this).attr('data-ParentVal'));
+                        $('#' + $(this).attr('data-Id')).val($(this).attr('data-Val'));
                 });
                 });
     });

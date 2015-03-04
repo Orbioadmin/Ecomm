@@ -293,6 +293,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\toastr.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\20080567-calibrib.svg" />
     <Content Include="fonts\241271973-calibril_light.svg" />
@@ -446,6 +447,7 @@
     <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\price-range.js" />
+    <Content Include="Scripts\toastr.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
