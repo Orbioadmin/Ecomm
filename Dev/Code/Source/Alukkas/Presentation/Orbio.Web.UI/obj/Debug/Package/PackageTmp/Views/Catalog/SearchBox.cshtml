@@ -1,0 +1,36 @@
+﻿@model Orbio.Web.UI.Models.Catalog.SearchModel
+<ul class="menu_desc">
+    <li class="select_menu">
+        <a>
+            <select class="menu_select" id="drpcategorysearch">
+                <option value="Search">All Categories</option>
+                @foreach (var category in Model.Categories)
+                {
+                    @*<option value="@category.Id">@category.Name</option>*@
+                    <option value="@category.SeName">@category.Name</option>
+
+                }
+            </select>
+            <input type="text" class="select_text" placeholder="Enter Your Keyword..." id="twotabsearchtextbox">
+            <input type="submit" class="search_butt" value="" id="search_button">
+        </a>
+    </li>
+</ul>
+<script src="~/Scripts/jquery.js"></script>
+<script>
+    $(document).ready(function () {
+    @*$("#drpcategorysearch").change(function () {
+        var Search_Str = $(this).val();;
+        var wid = $(this).width();
+        $("#nav-search-in-content").text(Search_Str);
+        });*@
+    $('#search_button').click(function(e){
+        e.preventDefault();
+
+            var url = $("#drpcategorysearch").val() + '?p=sr&q=' + $('#twotabsearchtextbox').val();
+            window.location.href = url;
+        
+
+    });         });
+
+</script>
