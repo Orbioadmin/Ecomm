@@ -8,8 +8,13 @@ using System.Threading.Tasks;
 namespace Orbio.Core.Domain.Catalog
 {
     [DataContract]
-    public class ProductVarientAttributeValue
+    public class ProductVariantAttributeValue
     {
+        /// <summary>
+        /// Gets or sets the Id
+        /// </summary>
+        [DataMember]
+        public int Id { get; set; }
         /// <summary>
         /// Gets or sets the product variant attribute mapping identifier
         /// </summary>
@@ -70,16 +75,31 @@ namespace Orbio.Core.Domain.Catalog
          [DataMember]
         public bool IsPreSelected { get; set; }
 
-        /// <summary>
-        /// Gets or sets the display order
-        /// </summary>
-         [DataMember]
-        public int DisplayOrder { get; set; }
+        ///// <summary>
+        ///// Gets or sets the display order
+        ///// </summary>
+        // [DataMember]
+        //public int DisplayOrder { get; set; }
 
         /// <summary>
-        /// Gets or sets the picture (identifier) associated with this value
+        /// Gets or sets the picture (url) associated with this value
         /// </summary>
          [DataMember]
-        public int PictureId { get; set; }
+         public string PictureUrl { get; set; }
+
+         /// <summary>
+         /// Gets or sets the attribute value type
+         /// </summary>
+         public AttributeValueType AttributeValueType
+         {
+             get
+             {
+                 return (AttributeValueType)this.AttributeValueTypeId;
+             }
+             set
+             {
+                 this.AttributeValueTypeId = (int)value;
+             }
+         }
     }
 }

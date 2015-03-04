@@ -20,6 +20,7 @@
                 <dd>
                     @switch (attribute.AttributeControlType)
                     {
+                        case AttributeControlType.TableBlock:
                         case AttributeControlType.DropdownList:
                             {
                         <select name="@(controlId)" id="@(controlId)">
@@ -34,7 +35,7 @@
                             }
                         </select>
                             }
-                            break;
+                            break;                        
                         case AttributeControlType.RadioList:
                         case AttributeControlType.ColorSquares:
                             {

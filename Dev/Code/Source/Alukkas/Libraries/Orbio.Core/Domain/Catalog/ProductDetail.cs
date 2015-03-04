@@ -79,13 +79,42 @@ namespace Orbio.Core.Domain.Catalog
         /// gets all Product Attributes
         /// </summary>
         [DataMember]
-        public List<ProductAttribute> ProductAttributes { get; set; }
+        public List<ProductAttributeVariant> ProductAttributeVariants { get; set; }
 
         /// <summary>
-        /// gets all ProductvarientAttributevalues
+        /// Gets or sets gold value
         /// </summary>
         [DataMember]
-        public List<ProductVarientAttributeValue> ProductVarientAttributeValues { get; set; }
+        public double Gold { get; set; }
 
+        /// <summary>
+        /// Gets or sets other stone value
+        /// </summary>
+        [DataMember]
+        public double Stones { get; set; }
+
+        /// <summary>
+        /// Gets or sets making charges
+        /// </summary>
+        [DataMember]
+        public double Making { get; set; }
+
+        /// <summary>
+        /// Gets or sets OrderMinimumQuantity
+        /// </summary>
+        [DataMember]
+        public int OrderMinimumQuantity { get; set; }
+
+        /// <summary>
+        /// Gets or sets OrderMaximumQuantity
+        /// </summary>
+        [DataMember]
+        public int OrderMaximumQuantity { get; set; }
+
+        /// <summary>
+        /// Gets or sets AllowedQuantities
+        /// </summary>
+        [DataMember]
+        public string AllowedQuantities { get; set; }
     }
 }

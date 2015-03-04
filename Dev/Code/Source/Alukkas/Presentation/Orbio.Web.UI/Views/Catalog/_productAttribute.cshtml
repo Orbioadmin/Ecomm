@@ -1,0 +1,35 @@
+﻿@model List<Orbio.Web.UI.Models.Catalog.ProductVariantAttributeModel>
+@{
+    var count = 0;
+foreach(var pva in this.Model)
+{
+    var pvaId = string.Format("ProductVariantAttributes[{0}].Id", count);
+    Html.Hidden(pvaId, 0);
+    switch (pva.AttributeControlType)
+    {
+        case Orbio.Core.Domain.Catalog.AttributeControlType.TableBlock:
+            <div class="avab_size">
+                    <ul class="size_li clearfix">
+                       
+                        <li>@pva.TextPrompt :</li>
+                        @{var valueCount = 0;
+                         foreach(var pvav in pva.Values){
+                             var pvavId = string.Format("ProductVariantAttributes[{0}].Values[{1}].Id", count, valueCount);
+                             var pvavAnchId = string.Format("ProductVariantAttributes_{0}__Values_{1}__Id", count, valueCount);
+                        <li> @Html.Hidden(pvavId, 0)<a id="pvavAnchId" data-ParentId="pvaId" data-ParentVal="@pva.Id" data-Id="@pvavId" data-Val="@pvav.Id" href="#">@pvav.Name</a></li>     
+                             valueCount++;                  
+                          }
+                        }
+                        <li class="pull-right no_brd">
+                            <a href="" class="size_guide">SIZE GUIDE</a>
+                            <div class="Popup_img"><img src="images/Basic_image/SizeChart-popup.jpg"></div>
+                        </li>
+                    </ul>
+                </div>
+            break;
+    }
+    count++;
+}
+}
+  
+    

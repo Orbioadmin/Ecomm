@@ -18,6 +18,11 @@ namespace Orbio.Web.UI.Models.Catalog
 
         public ProductOverViewModel(Product product):this()
         {
+            //TODO: throw custom exception and show not found page
+            if (product == null)
+            {
+                throw new Exception("Page not found");
+            }
             // TODO: Complete member initialization
             this.Name = product.Name;
             this.ShortDescription = product.ShortDescription;
@@ -27,6 +32,7 @@ namespace Orbio.Web.UI.Models.Catalog
             this.ImageRelativeUrl = product.ImageRelativeUrl;
             this.CurrencyCode = product.CurrencyCode;
             this.ProductPrice.Price = product.Price.ToString("0.00");
+            this.ProductPrice.OldPrice = product.OldPrice.ToString("0.00");
         }
 
         

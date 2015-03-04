@@ -19,6 +19,7 @@ namespace Orbio.Web.UI.Models.Catalog
         public ProductDetailModel(ProductDetail productDetail) : base(productDetail)
             
         {
+            
             this.Id = productDetail.Id;
             this.Name = productDetail.Name;
             this.ShortDescription = productDetail.ShortDescription;
@@ -28,6 +29,9 @@ namespace Orbio.Web.UI.Models.Catalog
             this.ImageRelativeUrl = productDetail.ImageRelativeUrl;
             this.CurrencyCode = productDetail.CurrencyCode;
             this.ProductPrice.Price = productDetail.Price.ToString("0.00");
+            this.Gold = productDetail.Gold.ToString("0.00");
+            this.Stones = productDetail.Stones.ToString("0.00");
+            this.Making = productDetail.Making.ToString("0.00");
 
              if (productDetail.BreadCrumbs != null && productDetail.BreadCrumbs.Count > 0)
             {               
@@ -73,11 +77,56 @@ namespace Orbio.Web.UI.Models.Catalog
 
                 this.DefaultPicture = this.ProductPictures.First();
             }
+            else
+            {
+                //TODO: set default picture
+                if (this.ProductPictures == null || this.ProductPictures.Count==0)
+                {
+                    this.ProductPictures = new List<PictureModel>();
+                    this.DefaultPicture = new PictureModel();
+                }
+            }
+
+            this.ProductVariantAttributes = (from pv in productDetail.ProductAttributeVariants
+                                             select new ProductVariantAttributeModel
+                                             {
+                                                  Id = pv.Id,
+                                                  AttributeControlType = pv.AttributeControlType,
+                                                 TextPrompt = pv.TextPrompt,
+                                                 IsRequired = pv.IsRequired,
+                                                 ProductAttributeId = pv.ProductAttributeId,
+                                                 Values = new List<ProductVariantAttributeValueModel>((from pvv in pv.ProductVariantAttributeValues
+                                                                                                       select new ProductVariantAttributeValueModel {Id = pvv.Id,
+                                                                                                        ColorSquaresRgb=pvv.ColorSquaresRgb, Name=pvv.Name,
+                                                                                                        PictureUrl = pvv.PictureUrl, PriceAdjustment=pvv.PriceAdjustment.ToString("N")
+                                                                                                        //PriceAdjustmentValue =  need TODO: format + or -
+                                                                                                        }))
+                                             }).ToList();
 
             this.StockAvailability = productDetail.FormatStockMessage();
             this.IsFreeShipping = productDetail.IsFreeShipping;
             this.IsShipEnabled = productDetail.IsShipEnabled;
             this.DeliveredIn = productDetail.DeliveredIn;
+            this.OrderMaximumQuantity = productDetail.OrderMaximumQuantity;
+            this.OrderMinimumQuantity = productDetail.OrderMinimumQuantity;
+            this.AllowedQuantities = new List<int>();
+            if (!String.IsNullOrWhiteSpace(productDetail.AllowedQuantities))
+            {
+               
+                 productDetail
+                    .AllowedQuantities
+                    .Split(new [] {','}, StringSplitOptions.RemoveEmptyEntries)
+                    .ToList()
+                    .ForEach(qtyStr =>
+                                 {
+                                     int qty = 0;
+                                     if (int.TryParse(qtyStr.Trim(), out qty))
+                                     {
+                                         this.AllowedQuantities.Add(qty);
+                                     }
+                                 } ); 
+            }
+
         }
         public List<ProductVariantAttributeModel> ProductVariantAttributes { get; private set; }
 
@@ -95,6 +144,21 @@ namespace Orbio.Web.UI.Models.Catalog
         public bool IsShipEnabled { get; set; }
 
         public bool IsFreeShipping { get; set; }
+
+
+        public int OrderMinimumQuantity { get; set; }
+
+        public int OrderMaximumQuantity { get; set; }
+
+        public List<int> AllowedQuantities { get; set; }
+
+        public string Gold { get; set; }
+
+        public string Stones { get; set; }
+
+        public string Making { get; set; }
+
+        public string SelectedQuantity { get; set; }
 
         private static string GetThumbImageFileName(string imageUrl)
         {

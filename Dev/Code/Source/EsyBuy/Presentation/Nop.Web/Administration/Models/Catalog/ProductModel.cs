@@ -272,6 +272,18 @@ namespace Nop.Admin.Models.Catalog
         [UIHint("DateTimeNullable")]
         public DateTime? SpecialPriceEndDateTimeUtc { get; set; }
 
+        [NopResourceDisplayName("Gold Price")]
+        [UIHint("DecimalNullable")]
+        public decimal? GoldCost { get; set; }
+
+        [NopResourceDisplayName("Stone Cost")]
+        [UIHint("DecimalNullable")]
+        public decimal? StoneCost { get; set; }
+
+        [NopResourceDisplayName("Making Cost")]
+        [UIHint("DecimalNullable")]
+        public decimal? MakingCost { get; set; }
+
         [NopResourceDisplayName("Admin.Catalog.Products.Fields.CustomerEntersPrice")]
         public bool CustomerEntersPrice { get; set; }
 

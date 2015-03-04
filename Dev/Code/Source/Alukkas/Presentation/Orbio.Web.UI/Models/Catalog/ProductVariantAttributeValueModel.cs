@@ -7,6 +7,7 @@ namespace Orbio.Web.UI.Models.Catalog
 {
     public partial class ProductVariantAttributeValueModel 
     {
+        public int Id { get; set; }
         public string Name { get; set; }
 
         public string ColorSquaresRgb { get; set; }

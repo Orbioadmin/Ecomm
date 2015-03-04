@@ -216,8 +216,32 @@ namespace Nop.Web.Framework.Seo
             }
             else if(data!=null)
             {
-                data.Values["controller"] = "Common";
-                data.Values["action"] = "PageNotFound";
+                path = data.Values["generic_se_name"] as string;
+
+                switch (path)
+                {
+                    case "cart":
+                        {
+                            data.Values["controller"] = "ShoppingCart";
+                            data.Values["action"] = "Cart";
+                            //data.Values["blogPostId"] = urlRecord.EntityId;
+                            
+                        }
+                        break;
+                    case "checkout":
+                        {
+                            data.Values["controller"] = "CheckOut";
+                            data.Values["action"] = "Index";
+                            //data.Values["blogPostId"] = urlRecord.EntityId;
+
+                        }
+                        break;
+                    default:
+                          data.Values["controller"] = "Common";
+                           data.Values["action"] = "PageNotFound";
+                        break;
+                }
+              
                 //return data;
             }
             return data;
