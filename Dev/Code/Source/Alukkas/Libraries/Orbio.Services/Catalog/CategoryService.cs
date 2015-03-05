@@ -47,11 +47,12 @@ namespace Orbio.Services.Catalog
         /// <param name="slug">the slug value</param>
         /// <param name="entityName">the entity name</param>
         /// <returns>list of products</returns>
-        public CategoryProduct GetProductsBySlug(string slug, string filterIds, decimal? minPrice, decimal? maxPrice)
+        public CategoryProduct GetProductsBySlug(string slug, string filterIds, decimal? minPrice, decimal? maxPrice, string keyword)
         {
             var sqlParamList = new List<SqlParameter>();
             sqlParamList.Add(new SqlParameter() { ParameterName = "@slug", Value = slug, DbType = System.Data.DbType.String });
             sqlParamList.Add(new SqlParameter { ParameterName = "@entityName", Value = entityName, DbType = System.Data.DbType.String });
+            sqlParamList.Add(new SqlParameter { ParameterName = "@keyword", Value = keyword, DbType = System.Data.DbType.String });
 
             if (!string.IsNullOrEmpty(filterIds))
             {
@@ -127,10 +128,11 @@ namespace Orbio.Services.Catalog
         /// </summary>
         /// <param name="categoryId">the category id</param>
         /// <returns>list of specification filter model</returns>
-        public List<SpecificationFilterModel> GetSpecificationFiltersByCategoryId(int categoryId)
+        public List<SpecificationFilterModel> GetSpecificationFiltersByCategoryId(int categoryId,string keyword)
         {
             var result = context.ExecuteFunction<SpecificationFilterModel>("usp_Catalog_GetFiltersByCategoryId",
-              new SqlParameter() { ParameterName = "@categoryId", Value = categoryId, DbType = System.Data.DbType.Int32 } );
+              new SqlParameter() { ParameterName = "@categoryId", Value = categoryId, DbType = System.Data.DbType.Int32 },
+              new SqlParameter() { ParameterName = "@keyword", Value = keyword, DbType = System.Data.DbType.String });
            
             return result!=null?result : new List<SpecificationFilterModel>();
         }

@@ -24,11 +24,5 @@ namespace Orbio.Core.Domain.Catalog
         /// </summary>
         [DataMember]
         public List<Product> Products { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value of used category template viewpath
-        /// </summary>
-        [DataMember]
-        public string TemplateViewPath { get; set; }
     }
 }
