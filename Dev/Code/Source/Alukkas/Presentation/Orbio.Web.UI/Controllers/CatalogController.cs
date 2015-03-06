@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using Nop.Core.Caching;
 using Nop.Core.Infrastructure;
 using Orbio.Core;
+using Orbio.Core.Domain.Orders;
 using Orbio.Services.Catalog;
 using Orbio.Web.UI.Infrastructure.Cache;
 using Orbio.Web.UI.Models.Catalog;
@@ -238,9 +239,10 @@ namespace Orbio.Web.UI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Product(ProductDetailModel product)
+        public ActionResult Product(ProductDetailModel product, ShoppingCartType cartType)
         {
             TempData.Add("product", product);
+            TempData.Add("cartType", cartType);
             return RedirectToRoute("Category", new { p = "pt", seName = product.SeName });
         }
 

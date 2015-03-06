@@ -31,7 +31,7 @@
 
                 </div>
             </div>
-            @using (Html.BeginForm("product", "catalog", new { Id = this.Model.Id, SeName=this.Model.SeName }, FormMethod.Post, new { Id = "formProduct" }))
+            @using (Html.BeginForm("product", "catalog", new { Id = this.Model.Id, SeName=this.Model.SeName, cartType= Orbio.Core.Domain.Orders.ShoppingCartType.ShoppingCart }, FormMethod.Post, new { Id = "formProduct" }))
             {
             <div class="col-sm-6">
                 <div class="row res_det">
