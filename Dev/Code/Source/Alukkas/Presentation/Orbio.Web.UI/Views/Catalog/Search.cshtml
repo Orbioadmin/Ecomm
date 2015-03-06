@@ -9,11 +9,11 @@
         <ol class="breadcrumb">
             <li><a href="@Url.Action("Index", "Home")">Home</a></li>
             @*@{
-                foreach (var breadCrumb in this.Model.BreadCrumbs)
-                {
-                    <li><a href="@Url.RouteUrl("Category", new { SeName = breadCrumb.SeName })?p=ct">@breadCrumb.Name</a></li>
-                }
-            }*@
+                    foreach (var breadCrumb in this.Model.BreadCrumbs)
+                    {
+                        <li><a href="@Url.RouteUrl("Category", new { SeName = breadCrumb.SeName })?p=ct">@breadCrumb.Name</a></li>
+                    }
+                }*@
             <li><a href="#">Search</a></li>
             @*<li class="active">@this.Model.Totalcount </li>*@
         </ol>
@@ -50,10 +50,24 @@
 
 
             </div>
+            <div class="col-sm-10">
 
-            @{
-                Html.RenderPartial(this.Model.ViewPath, this.Model);
-            }
+
+                <div class="filter_cat">@this.Model.Totalcount</div>
+                <div class="featured_items" align="center">
+                    <ul class="feature_li four_items">
+                        @{
+                            foreach (var product in this.Model.Products)
+                            {
+                                Html.RenderPartial("ProductThumbNail", product);
+                            }
+                        }
+
+                    </ul>
+                    <div class="clear"></div>
+                    <div class="no-product"><span>NO @(this.Model.Products.Count > 0 ? "MORE" : "") PRODUCT TO DISPLAY</span></div>
+                </div>
+            </div>
 
 
 
@@ -67,23 +81,23 @@
 </section>
 @section scripts{
     <script type="text/javascript">
-            $(function () {
+        $(function () {
 
-                $('input[id=specFilterCheckBox]').on('change', function (e) {
-                    // if ($(this).is(':checked')) {
-                    var specboxes = $('input[id=specFilterCheckBox');
-                    var specs = '';
-                    $.each(specboxes, function () {
-                        if ($(this).is(':checked')) {
-                            specs += $(this).attr('data-id') + ",";
-                        }
-                    });
-               window.location.href = $(this).attr('data-url') + '&spec=' + specs;
-           //}
-           //else {
-           //    //NEED TO REMOVE SPEC FORM URL
-           //}
-       });
+            $('input[id=specFilterCheckBox]').on('change', function (e) {
+                // if ($(this).is(':checked')) {
+                var specboxes = $('input[id=specFilterCheckBox');
+                var specs = '';
+                $.each(specboxes, function () {
+                    if ($(this).is(':checked')) {
+                        specs += $(this).attr('data-id') + ",";
+                    }
+                });
+                window.location.href = $(this).attr('data-url') + '&spec=' + specs;
+                //}
+                //else {
+                //    //NEED TO REMOVE SPEC FORM URL
+                //}
+            });
 
 
             //    $('#ei-slider').eislideshow({
@@ -92,120 +106,120 @@
             //        slideshow_interval  : 3000,
             //        titlesFactor        : 0
             //});
+        });
+
+
+        // Carousel Auto-Cycle
+        $(document).ready(function () {
+            function lastPostFunc() {
+                alert('scroll');
+                //$('#divPostsLoader').html('<img src="images/bigLoader.gif">');
+
+                ////send a query to server side to present new content
+                //$.ajax({
+                //    type: "POST",
+                //    url: "Articles.aspx/ItemsGet",
+                //    data: "{}",
+                //    contentType: "application/json; charset=utf-8",
+                //    dataType: "json",
+                //    success: function (data) {
+
+                //        if (data != "") {
+                //            $('.divLoadData:last').after(data.d);
+                //        }
+                //        $('#divPostsLoader').empty();
+                //    }
+
+                //})
+            };
+
+            $(window).scroll(function () {
+                if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+                    lastPostFunc();
+                }
             });
 
-
-            // Carousel Auto-Cycle
-            $(document).ready(function () {
-                function lastPostFunc() {
-                    alert('scroll');
-                    //$('#divPostsLoader').html('<img src="images/bigLoader.gif">');
-
-                    ////send a query to server side to present new content
-                    //$.ajax({
-                    //    type: "POST",
-                    //    url: "Articles.aspx/ItemsGet",
-                    //    data: "{}",
-                    //    contentType: "application/json; charset=utf-8",
-                    //    dataType: "json",
-                    //    success: function (data) {
-
-                    //        if (data != "") {
-                    //            $('.divLoadData:last').after(data.d);
-                    //        }
-                    //        $('#divPostsLoader').empty();
-                    //    }
-
-                    //})
-                };
-
-                $(window).scroll(function () {
-                    if ($(window).scrollTop() == $(document).height()  - $(window).height()) {
-                        lastPostFunc();
-                    }
-                });
-
-    $('.carousel').carousel({
-      interval: 3000
-    })
-  });
+            $('.carousel').carousel({
+                interval: 3000
+            })
+        });
 
 
         //Listview
 
-//$('.listview button').on('click',function(e) {
-//    if ($(this).hasClass('three_view')) {
-//        $('.featured_items ul').removeClass('four_items');
-//    }
-//    else if($(this).hasClass('four_view')) {
-//        $('.featured_items ul').addClass('four_items');
-//    }
-//});
+        //$('.listview button').on('click',function(e) {
+        //    if ($(this).hasClass('three_view')) {
+        //        $('.featured_items ul').removeClass('four_items');
+        //    }
+        //    else if($(this).hasClass('four_view')) {
+        //        $('.featured_items ul').addClass('four_items');
+        //    }
+        //});
 
-//$('.listview button').click(function(e) {
-//    e.preventDefault(); //prevent the link from being followed
-//    $('.listview button').removeClass('selected');
-//    $(this).addClass('selected');
-//});
+        //$('.listview button').click(function(e) {
+        //    e.preventDefault(); //prevent the link from being followed
+        //    $('.listview button').removeClass('selected');
+        //    $(this).addClass('selected');
+        //});
 
 
-/*Price slider */
-     $("[data-slider]")
-    .each(function () {
-      var input = $(this);
-      $("<span>")
-        .addClass("output")
-        .insertAfter($(this));
-    })
-    .bind("slider:ready slider:changed", function (event, data) {
-      $(this)
-        .nextAll(".output:first")
-          .html(data.value.toFixed(3));
-    });
+        /*Price slider */
+        $("[data-slider]")
+       .each(function () {
+           var input = $(this);
+           $("<span>")
+             .addClass("output")
+             .insertAfter($(this));
+       })
+       .bind("slider:ready slider:changed", function (event, data) {
+           $(this)
+             .nextAll(".output:first")
+               .html(data.value.toFixed(3));
+       });
     </script>
     <script type="text/javascript">
-    $(document).ready(function(){
-        var minPrice = 0;
-        var maxPrice = 0;
-        if ($('#productPriceFilterMinValue').length > 0) {
-            minPrice = $('#productPriceFilterMinValue').val();
-        }
+        $(document).ready(function () {
+            var minPrice = 0;
+            var maxPrice = 0;
+            if ($('#productPriceFilterMinValue').length > 0) {
+                minPrice = $('#productPriceFilterMinValue').val();
+            }
 
-        if ($('#productPriceFilterMaxValue').length > 0) {
-            maxPrice = $('#productPriceFilterMaxValue').val();
-        }
-        if (minPrice == 0 && maxPrice == 0) {
-            $("div[id='priceFilter']").hide();
-        }
-        else {
-            $("#sl2").attr('data-slider-min', minPrice);
-            $("#sl2").attr('data-slider-max', maxPrice);
-            $("#sl2").attr('data-slider-value', "[" + minPrice + "," + maxPrice + "]");
-            $("#sl2").slider(
-                //{
-                //range: true,
-                //min: 0,
-                //max: 500,
-                //values: [35, 200],
-                //slide: function (event, ui) {
+            if ($('#productPriceFilterMaxValue').length > 0) {
+                maxPrice = $('#productPriceFilterMaxValue').val();
+            }
+            if (minPrice == 0 && maxPrice == 0) {
+                $("div[id='priceFilter']").hide();
+            }
+            else {
+                $("#sl2").attr('data-slider-min', minPrice);
+                $("#sl2").attr('data-slider-max', maxPrice);
+                $("#sl2").attr('data-slider-value', "[" + minPrice + "," + maxPrice + "]");
+                $("#sl2").slider(
+                    //{
+                    //range: true,
+                    //min: 0,
+                    //max: 500,
+                    //values: [35, 200],
+                    //slide: function (event, ui) {
 
-                //    $("#slidevalue")
-                //       .val("$" + ui.values[0] + " - $" + ui.values[1]);
-                //}
-                //}
-            );
-        }
-
-
-
-    });
-
-    //scroll
+                    //    $("#slidevalue")
+                    //       .val("$" + ui.values[0] + " - $" + ui.values[1]);
+                    //}
+                    //}
+                );
+            }
 
 
-$(document).ready(function() {
+
+        });
+
+        //scroll
+
+
+        $(document).ready(function () {
             // Show or hide the sticky footer button
-            $(window).scroll(function() {
+            $(window).scroll(function () {
                 if ($(this).scrollTop() > 200) {
                     $('.to-top').fadeIn(200);
                 } else {
@@ -214,12 +228,11 @@ $(document).ready(function() {
             });
 
             // Animate the scroll to top
-            $('.to-top').click(function(event) {
+            $('.to-top').click(function (event) {
                 event.preventDefault();
 
-                $('html, body').animate({scrollTop: 0}, 300);
+                $('html, body').animate({ scrollTop: 0 }, 300);
             })
         });
     </script>
-
 }

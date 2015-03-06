@@ -25,7 +25,7 @@ namespace Orbio.Services.Catalog
         /// <param name="slug">the slug value</param>
         /// <param name="entityName">the entity name</param>
         /// <returns>instance of CategoryProduct</returns>
-        CategoryProduct GetProductsBySlug(string slug, string filterIds, decimal? minPrice, decimal? maxPrice);
+        CategoryProduct GetProductsBySlug(string slug, string filterIds, decimal? minPrice, decimal? maxPrice, string keyword);
 
         /// <summary>
         /// gets all products by search
@@ -40,7 +40,7 @@ namespace Orbio.Services.Catalog
         /// </summary>
         /// <param name="categoryId">the category id</param>
         /// <returns>list of specification filter model</returns>
-        List<SpecificationFilterModel> GetSpecificationFiltersByCategoryId(int categoryId);
+        List<SpecificationFilterModel> GetSpecificationFiltersByCategoryId(int categoryId, string keyword);
 
         /// <summary>
         /// gets specification filters by Search

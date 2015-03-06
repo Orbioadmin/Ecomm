@@ -150,6 +150,7 @@ namespace Nop.Web.Framework.Seo
                             data.Values["action"] = "Category";
                            // data.Values["categoryid"] = urlRecord.EntityId;
                             data.Values["SeName"] = slug;// urlRecord.Slug;
+                            data.Values["keyword"] = GetQueryParam(httpContext, "q");
                             data.Values["filterIds"] = GetQueryParam(httpContext, "filterIds");
                             data.Values["minPrice"] = GetQueryParam(httpContext, "minPrice");
                             data.Values["maxPrice"] = GetQueryParam(httpContext, "maxPrice");

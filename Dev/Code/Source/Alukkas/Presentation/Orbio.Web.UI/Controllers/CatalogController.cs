@@ -127,9 +127,9 @@ namespace Orbio.Web.UI.Controllers
             return View(model);
         }
 
-        public ActionResult Category(string seName,string spec, string minPrice, string maxPrice)
+        public ActionResult Category(string seName, string spec, string minPrice, string maxPrice, string keyword)
         {
-            var model = PrepareCategoryProductModel(seName, spec,  minPrice, maxPrice);
+            var model = PrepareCategoryProductModel(seName, spec, minPrice, maxPrice, keyword);
            
             var queryString = new NameValueCollection(ControllerContext.HttpContext.Request.QueryString);
             webHelper.RemoveQueryFromPath(ControllerContext.HttpContext, new List<string>{{"spec"}});
@@ -139,9 +139,9 @@ namespace Orbio.Web.UI.Controllers
         }
 
         [ChildActionOnly]
-        public ActionResult ProductFilter(int categoryId, int minPrice, int maxPrice, int[] selectedSpecs)
+        public ActionResult ProductFilter(int categoryId, int minPrice, int maxPrice, int[] selectedSpecs, string keyword)
         {
-            var model = PrepareSpecificationFilterModel(categoryId, minPrice, maxPrice, selectedSpecs);
+            var model = PrepareSpecificationFilterModel(categoryId, minPrice, maxPrice, selectedSpecs, keyword);
 
             return PartialView(model);
         }
@@ -152,9 +152,9 @@ namespace Orbio.Web.UI.Controllers
 
             return PartialView("ProductFilter",model);
         }
-        private List<SpecificationAttribute> PrepareSpecificationFilterModel(int categoryId,int minPrice, int maxPrice, int[] selectedSpecs)
+        private List<SpecificationAttribute> PrepareSpecificationFilterModel(int categoryId,int minPrice, int maxPrice, int[] selectedSpecs,string keyword)
         {
-            var specFilterModels = categoryService.GetSpecificationFiltersByCategoryId(categoryId);
+            var specFilterModels = categoryService.GetSpecificationFiltersByCategoryId(categoryId, keyword);
             var specFilterByspecAttribute = from sa in specFilterModels
                                             group sa by sa.SpecificationAttributeName;
             var currentUrl = ControllerContext.RequestContext.HttpContext.Request.Url.AbsoluteUri;
@@ -275,11 +275,11 @@ namespace Orbio.Web.UI.Controllers
         }
 
 
-        private CategoryModel PrepareCategoryProductModel(string seName, string filterIds, string minPrice, string maxPrice)
+        private CategoryModel PrepareCategoryProductModel(string seName, string filterIds, string minPrice, string maxPrice,string keyword)
         {
             
             var model = new CategoryModel(categoryService.GetProductsBySlug(seName, string.IsNullOrEmpty(filterIds)?null:filterIds,
-                string.IsNullOrEmpty(minPrice) ? (decimal?)null : Convert.ToDecimal(minPrice), string.IsNullOrEmpty(maxPrice) ? (decimal?)null : Convert.ToDecimal(maxPrice)));
+                string.IsNullOrEmpty(minPrice) ? (decimal?)null : Convert.ToDecimal(minPrice), string.IsNullOrEmpty(maxPrice) ? (decimal?)null : Convert.ToDecimal(maxPrice), keyword));
             if (filterIds != null)
             {
                 model.SelectedSpecificationAttributeIds = (from f in filterIds.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)

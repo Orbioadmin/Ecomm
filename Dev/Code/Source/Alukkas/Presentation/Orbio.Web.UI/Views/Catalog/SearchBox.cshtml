@@ -26,8 +26,13 @@
         });*@
     $('#search_button').click(function(e){
         e.preventDefault();
-
-            var url = $("#drpcategorysearch").val() + '?p=sr&q=' + $('#twotabsearchtextbox').val();
+        var url = "";
+        if ($("#drpcategorysearch").val() == "Search") {
+            url = $("#drpcategorysearch").val() + '?p=sr&q=' + $('#twotabsearchtextbox').val();
+        }
+        else {
+            url = $("#drpcategorysearch").val() + '?p=ct&q=' + $('#twotabsearchtextbox').val();
+        }
             window.location.href = url;
         
 

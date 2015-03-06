@@ -29,7 +29,7 @@ GO
 
 CREATE PROCEDURE [dbo].[usp_Catalog_GetProductsBySlug] (@slug nvarchar(400),  
 @entityName nvarchar(400), @specificationFilterIds nvarchar(500)=null, @minPrice decimal(18,4)=null,
-@maxPrice decimal(18,4)=null)  
+@maxPrice decimal(18,4)=null,@keyword varchar(max))  
    
 AS    
 BEGIN    
@@ -50,7 +50,7 @@ INTO #filterIds FROM  [dbo].[nop_splitstring_to_table](@specificationFilterIds, 
 INNER JOIN SpecificationAttributeOption SAO ON SAO.Id = FILTERS.data
 
 
-SELECT    * INTO #products FROM  ufn_GetProductsByCategoryId(@categoryId)
+SELECT    * INTO #products FROM  ufn_GetProductsBySearch(@categoryId,@keyword)
 DECLARE @filterId NVARCHAR(100)
 while EXISTS(SELECT 1 FROM #filterIds)
 BEGIN

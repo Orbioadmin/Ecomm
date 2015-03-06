@@ -5,7 +5,7 @@ using System.Web;
 using Orbio.Core.Domain.Catalog;
 namespace Orbio.Web.UI.Models.Catalog
 {
-    public partial class SearchModel : BaseCatalogModel
+    public partial class SearchModel
     {
         public SearchModel()
         {
@@ -18,7 +18,6 @@ namespace Orbio.Web.UI.Models.Catalog
             : this()
         {
             this.CategoryId = SearchProduct.CategoryId;
-            this.ViewPath = SearchProduct.TemplateViewPath;
             this.Totalcount = SearchProduct.Totalcount + "  Items Found";
             if (SearchProduct.Products != null && SearchProduct.Products.Count > 0)
             {
