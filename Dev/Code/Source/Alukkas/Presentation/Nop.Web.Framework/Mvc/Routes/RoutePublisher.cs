@@ -53,7 +53,8 @@ namespace Nop.Web.Framework.Mvc.Routes
         /// <param name="routes">Routes</param>
         public virtual void RegisterRoutes(RouteCollection routes)
         {            
-            var assemblyProbeRequired = !(ConfigurationManager.AppSettings["assemblyProbeRequired"] != null && ConfigurationManager.AppSettings["assemblyProbeRequired"].Equals("false"));
+             var config = ConfigurationManager.GetSection("NopConfig") as NopConfig;
+             var assemblyProbeRequired = (config.ProbingRequired.ContainsKey("RouteProviders") && config.ProbingRequired["RouteProviders"]);
 
             var routeProviderTypes = Enumerable.Empty<Type>();
             if (assemblyProbeRequired)
@@ -62,7 +63,7 @@ namespace Nop.Web.Framework.Mvc.Routes
             }
             else
             {
-                var config = ConfigurationManager.GetSection("NopConfig") as NopConfig;
+                
                 routeProviderTypes = config.RouteProviderTypes;
             }
             var routeProviders = new List<IRouteProvider>();

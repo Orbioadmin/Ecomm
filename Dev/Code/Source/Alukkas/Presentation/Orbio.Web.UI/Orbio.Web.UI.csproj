@@ -8,7 +8,7 @@
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{792EB613-2587-4DE8-B56F-75ED14145450}</ProjectGuid>
-    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Orbio.Web.UI</RootNamespace>
@@ -194,11 +194,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\CheckOutController.cs" />
-    <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\CatalogController.cs" />
+    <Compile Include="Controllers\CheckOutController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Filters\LoginRequiredAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -212,9 +212,11 @@
     <Compile Include="Models\Catalog\CategorySimpleModel.cs" />
     <Compile Include="Models\Catalog\PictureModel.cs" />
     <Compile Include="Models\Catalog\ProductDetailModel.cs" />
+    <Compile Include="Models\Catalog\ProductExtension.cs" />
     <Compile Include="Models\Catalog\ProductOverViewModel.cs" />
     <Compile Include="Models\Catalog\ProductVariantAttributeModel.cs" />
     <Compile Include="Models\Catalog\ProductVariantAttributeValueModel.cs" />
+    <Compile Include="Models\Catalog\SearchModel.cs" />
     <Compile Include="Models\Catalog\SpecificationAttribute.cs" />
     <Compile Include="Models\Catalog\SpecificationAttributeOption.cs" />
     <Compile Include="Models\Catalog\TopMenuModel.cs" />
@@ -226,6 +228,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Settings.txt" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\datepicker.css" />
     <Content Include="Content\font-awesome.min.css" />
@@ -293,6 +296,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\toastr.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\20080567-calibrib.svg" />
     <Content Include="fonts\241271973-calibril_light.svg" />
@@ -446,6 +450,7 @@
     <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\price-range.js" />
+    <Content Include="Scripts\toastr.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -481,9 +486,7 @@
     <Content Include="Views\Catalog\PriceFilter.cshtml" />
     <Content Include="Views\Catalog\Product.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
@@ -554,15 +557,20 @@
     <Content Include="Views\Catalog\ProductTemplate.Simple.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Views\Customer\PasswordRecovery.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Customer\PasswordRecoveryConfirm.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Catalog\SearchBox.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\Alukkas.pubxml" />
+    <Content Include="Views\Catalog\Search.cshtml" />
     <Content Include="Views\Catalog\_productAttribute.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Catalog\ProductSpecification.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\ShoppingCart\Cart.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\CheckOut\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>

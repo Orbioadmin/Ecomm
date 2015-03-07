@@ -4,19 +4,20 @@
 foreach(var pva in this.Model)
 {
     var pvaId = string.Format("ProductVariantAttributes[{0}].Id", count);
-    Html.Hidden(pvaId, 0);
+    var pvaTextPrompt = string.Format("ProductVariantAttributes[{0}].TextPrompt", count);
     switch (pva.AttributeControlType)
     {
         case Orbio.Core.Domain.Catalog.AttributeControlType.TableBlock:
             <div class="avab_size">
+                
                     <ul class="size_li clearfix">
                        
-                        <li>@pva.TextPrompt :</li>
+                        <li>@pva.TextPrompt :  @Html.Hidden(pvaId, pva.Id)  @Html.Hidden(pvaTextPrompt, pva.TextPrompt) </li>
                         @{var valueCount = 0;
                          foreach(var pvav in pva.Values){
                              var pvavId = string.Format("ProductVariantAttributes[{0}].Values[{1}].Id", count, valueCount);
                              var pvavAnchId = string.Format("ProductVariantAttributes_{0}__Values_{1}__Id", count, valueCount);
-                        <li> @Html.Hidden(pvavId, 0)<a id="pvavAnchId" data-ParentId="pvaId" data-ParentVal="@pva.Id" data-Id="@pvavId" data-Val="@pvav.Id" href="#">@pvav.Name</a></li>     
+                        <li> @Html.Hidden(pvavId, 0)<a id="@pvavAnchId"  data-Id="@Html.Id(pvavId)" data-Val="@pvav.Id" href="#">@pvav.Name</a></li>     
                              valueCount++;                  
                           }
                         }

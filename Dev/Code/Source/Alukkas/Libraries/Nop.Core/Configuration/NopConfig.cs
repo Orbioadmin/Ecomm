@@ -112,10 +112,15 @@ namespace Nop.Core.Configuration
             {
                 foreach (var attr in probingNode.Attributes)
                 {
-
-                    if (attr != null)
+                    var depedencyAttribute = probingNode.Attributes["DependencyRegistrar"];
+                    if (depedencyAttribute != null)
                     {
-                        config.ProbingRequired.Add(((XmlAttribute)attr).Name, Convert.ToBoolean(((XmlAttribute)attr).Value));
+
+                        if (attr != null)
+                        {
+                            config.ProbingRequired.Add(((XmlAttribute)attr).Name, Convert.ToBoolean(((XmlAttribute)attr).Value));
+                        }
+                       
                     }
                 }
             }

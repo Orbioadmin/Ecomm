@@ -36,6 +36,12 @@ namespace Orbio.Core.Domain.Catalog
         public decimal Price { get; set; }
 
         /// <summary>
+        /// Gets or sets the price
+        /// </summary>
+        [DataMember]
+        public decimal OldPrice { get; set; }
+
+        /// <summary>
         /// Gets or sets the view path
         /// </summary>
         [DataMember]

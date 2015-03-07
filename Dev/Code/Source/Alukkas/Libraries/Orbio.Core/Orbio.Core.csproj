@@ -52,6 +52,7 @@
     <Compile Include="Domain\Catalog\ProductExtensions.cs" />
     <Compile Include="Domain\Catalog\ProductPicture.cs" />
     <Compile Include="Domain\Catalog\ProductVarientAttributeValue.cs" />
+    <Compile Include="Domain\Catalog\Search.cs" />
     <Compile Include="Domain\Catalog\SpecificationFilterModel.cs" />
     <Compile Include="Domain\Customers\ChangePasswordResult.cs" />
     <Compile Include="Domain\Customers\Customer.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="Domain\Customers\SystemCustomerNames.cs" />
     <Compile Include="Domain\Messages\MessageTemplate.cs" />
     <Compile Include="Domain\Messages\Token.cs" />
+    <Compile Include="Domain\Orders\ShoppingCartType.cs" />
     <Compile Include="Domain\Seo\UrlRecord.cs" />
     <Compile Include="Domain\Stores\Store.cs" />
     <Compile Include="Domain\Stores\StoreExtensions.cs" />
