@@ -130,12 +130,12 @@ namespace Orbio.Core.Domain.Customers
         /// <summary>
         /// Gets or sets the Billing Address
         /// </summary>
-        public string BillingAddressId { get; set; }
+        public int? BillingAddress_Id { get; set; }
 
         /// <summary>
         /// Gets or sets the Shipping Address
         /// </summary>
-        public string ShippingAddressId { get; set; }
+        public int? ShippingAddress_Id { get; set; }
 
         /// <summary>
         /// Gets or sets the First Name

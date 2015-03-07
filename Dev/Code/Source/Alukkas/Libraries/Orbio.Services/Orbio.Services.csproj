@@ -48,6 +48,8 @@
     <Compile Include="Catalog\ICategoryService.cs" />
     <Compile Include="Catalog\IProductService.cs" />
     <Compile Include="Catalog\ProductService.cs" />
+    <Compile Include="Checkout\CheckoutService.cs" />
+    <Compile Include="Checkout\ICheckoutService.cs" />
     <Compile Include="Customers\ChangePasswordRequest.cs" />
     <Compile Include="Customers\CustomerRegistrationRequest.cs" />
     <Compile Include="Customers\CustomerService.cs" />

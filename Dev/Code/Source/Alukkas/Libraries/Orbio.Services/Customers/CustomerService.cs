@@ -7,9 +7,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Nop.Data;
 using Orbio.Core.Domain.Customers;
+using Orbio.Core.Domain.Checkout;
 using Orbio.Services.Customers;
 using Orbio.Services.Security;
 using System.Text.RegularExpressions;
+
 
 namespace Orbio.Services.Customers
 {
@@ -197,7 +199,6 @@ namespace Orbio.Services.Customers
                 customerOut = customer;
                 return CustomerLoginResults.Successful;
             }
-
         }
         /// <summary>
         /// Update customer password
@@ -397,8 +398,8 @@ namespace Orbio.Services.Customers
                  new SqlParameter() { ParameterName = "@CreatedOnUtc", Value = customer.CreatedOnUtc, DbType = System.Data.DbType.DateTime },
                  new SqlParameter() { ParameterName = "@LastLoginDateUtc", Value = customer.LastLoginDateUtc, DbType = System.Data.DbType.DateTime },
                  new SqlParameter() { ParameterName = "@LastActivityDateUtc", Value = customer.LastActivityDateUtc, DbType = System.Data.DbType.DateTime },
-                 new SqlParameter() { ParameterName = "@BillingAddress_Id", Value = customer.BillingAddressId, DbType = System.Data.DbType.String },
-                 new SqlParameter() { ParameterName = "@ShippingAddress_Id", Value = customer.ShippingAddressId, DbType = System.Data.DbType.String },
+                 new SqlParameter() { ParameterName = "@BillingAddress_Id", Value = customer.BillingAddress_Id, DbType = System.Data.DbType.String },
+                 new SqlParameter() { ParameterName = "@ShippingAddress_Id", Value = customer.ShippingAddress_Id, DbType = System.Data.DbType.String },
                  new SqlParameter() { ParameterName = "@firstname", Value = customer.FirstName, DbType = System.Data.DbType.String },
                  new SqlParameter() { ParameterName = "@lastname", Value = customer.LastName, DbType = System.Data.DbType.String },
                  new SqlParameter() { ParameterName = "@gender", Value = customer.Gender, DbType = System.Data.DbType.String },

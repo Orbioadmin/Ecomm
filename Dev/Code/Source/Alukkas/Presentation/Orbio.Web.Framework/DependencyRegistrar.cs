@@ -6,19 +6,19 @@ using Nop.Core.Infrastructure;
 using Nop.Core.Infrastructure.DependencyManagement;
 using Orbio.Core;
 using Orbio.Services.Security;
- 
+using OBS = Orbio.Services;
 namespace Orbio.Web.Framework
 {
     public class DependencyRegistrar : IDependencyRegistrar
     {
         public virtual void Register(ContainerBuilder builder, ITypeFinder typeFinder)
         {
-            
-            
             //added by madhu mb 
             builder.RegisterType<WebWorkContext>().As<IWorkContext>().InstancePerHttpRequest();
             builder.RegisterType<EncryptionService>().As<IEncryptionService>().InstancePerHttpRequest();
             builder.RegisterType<WebStoreContext>().As<IStoreContext>().InstancePerHttpRequest();
+
+            builder.RegisterType<OBS.Checkout.CheckoutService>().As<OBS.Checkout.ICheckoutService>().InstancePerHttpRequest();
         }
 
         public int Order
