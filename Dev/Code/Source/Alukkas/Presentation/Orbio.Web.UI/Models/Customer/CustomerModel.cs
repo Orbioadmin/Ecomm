@@ -48,21 +48,21 @@ namespace Orbio.Web.UI.Models.Customer
         public string Email { get; set; }
 
         [Required(ErrorMessage="Mobile Number Required")]
-        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Entered mobile number is not valid.")]
         [DataType(DataType.PhoneNumber)]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Entered mobile number is not valid.")]
         [Display(Name = "Mobile")]
         public string Mobile { get; set; }
 
 
-        [Required(ErrorMessage = "Old Password Required")]
+      //  [Required(ErrorMessage = "Old Password Required")]
         [DataType(DataType.Password)]
         public string OldPassword { get; set; }
 
-        [Required(ErrorMessage = "New Password Required")]
+      //  [Required(ErrorMessage = "New Password Required")]
         [DataType(DataType.Password)]
         public string NewPassword { get; set; }
 
-        [Required(ErrorMessage = "Confirm New Password Required")]
+       // [Required(ErrorMessage = "Confirm New Password Required")]
         [DataType(DataType.Password)]
         [Compare("NewPassword", ErrorMessage = "Passwords does not match")]
         public string ConfirmNewPassword { get; set; }

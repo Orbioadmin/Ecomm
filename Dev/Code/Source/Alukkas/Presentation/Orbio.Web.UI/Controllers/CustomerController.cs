@@ -37,14 +37,15 @@ namespace Orbio.Web.UI.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
+        [LoginRequiredAttribute]
+        //[ValidateAntiForgeryToken]
         public ActionResult MyAccount(CustomerModel model, string returnUrl)
         {
-            var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
-            var curcustomer = workContext.CurrentCustomer;
-            var infomodel = Customerinfo(model, curcustomer);
-            ViewBag.ReturnUrl = returnUrl;
-            return View(infomodel);
+                var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
+                var curcustomer = workContext.CurrentCustomer;
+                var infomodel = Customerinfo(model, curcustomer);
+                ViewBag.ReturnUrl = returnUrl;
+                return View(infomodel);
         }
 
         public CustomerModel Customerinfo(CustomerModel model, Customer customer)
@@ -75,7 +76,8 @@ namespace Orbio.Web.UI.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
+        [LoginRequiredAttribute]
+        //[ValidateAntiForgeryToken]
         public ActionResult ChangePassword(ChangePasswordModel model, string returnUrl)
         {
             var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
@@ -158,7 +160,8 @@ namespace Orbio.Web.UI.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
+        [LoginRequiredAttribute]
+        //[ValidateAntiForgeryToken]
         public ActionResult PasswordRecoveryConfirm(string token, string email,PasswordRecoveryConfirmModel model)
         {
             var curcustomer = new Customer();
@@ -234,7 +237,8 @@ namespace Orbio.Web.UI.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
+        [LoginRequiredAttribute]
+        //[ValidateAntiForgeryToken]
         public ActionResult PasswordRecovery(PasswordRecoveryModel model)
         {
             var customer = new Customer();
