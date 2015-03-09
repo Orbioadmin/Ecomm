@@ -18,6 +18,7 @@ namespace Orbio.Services.Customers
         public string MobileNo { get; set; }
         public PasswordFormat PasswordFormat { get; set; }
         public bool IsApproved { get; set; }
+        public int Id { get; set; }
 
         public CustomerRegistrationRequest(Customer customer, string email,
             string gender, string mobileno, string password,
@@ -32,6 +33,7 @@ namespace Orbio.Services.Customers
             this.MobileNo = mobileno;
             this.PasswordFormat = passwordFormat;
             this.IsApproved = isApproved;
+            this.Id = customer.Id;
         }
     }
 }

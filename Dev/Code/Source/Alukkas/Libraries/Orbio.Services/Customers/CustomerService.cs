@@ -378,28 +378,39 @@ namespace Orbio.Services.Customers
         {
             //if (String.IsNullOrWhiteSpace(customer.ToString()))
             //    return CustomerRegistrationResult.;
+            string action = "";
+            if (customer.Id == null)
+            {
+                action = "Insert";
+            }
+            else
+            {
+                action = "Update";
+            }
 
-            var outputSqlParam = new SqlParameter() { ParameterName = "@insertResult", Direction = System.Data.ParameterDirection.Output, DbType = System.Data.DbType.Int32 };
+            var outputSqlParam = new SqlParameter() { ParameterName = "@insertresult", Direction = System.Data.ParameterDirection.Output, DbType = System.Data.DbType.Int32 };
             var result = context.ExecuteFunction<Customer>("usp_Customer_InsertCustomer",
-                 new SqlParameter() { ParameterName = "@Action", Value = "Insert", DbType = System.Data.DbType.String },
+
+                 new SqlParameter() { ParameterName = "@action", Value = action, DbType = System.Data.DbType.String },
+                 new SqlParameter() { ParameterName = "@id", Value = customer.Id, DbType = System.Data.DbType.Int16 },
                  new SqlParameter() { ParameterName = "@email", Value = customer.Email, DbType = System.Data.DbType.String },
-                 new SqlParameter() { ParameterName = "@Password", Value = customer.Password, DbType = System.Data.DbType.String },
-                 new SqlParameter() { ParameterName = "@PasswordFormatId", Value = customer.PasswordFormatId, DbType = System.Data.DbType.Int16 },
-                 new SqlParameter() { ParameterName = "@PasswordSalt", Value = customer.PasswordSalt, DbType = System.Data.DbType.String },
-                 new SqlParameter() { ParameterName = "@AdminComment", Value = customer.AdminComment, DbType = System.Data.DbType.String },
-                 new SqlParameter() { ParameterName = "@IsTaxExempt", Value = customer.IsTaxExempt, DbType = System.Data.DbType.Boolean },
-                 new SqlParameter() { ParameterName = "@AffiliateId", Value = customer.AffiliateId, DbType = System.Data.DbType.Int16 },
-                 new SqlParameter() { ParameterName = "@VendorId", Value = customer.VendorId, DbType = System.Data.DbType.Int16 },
-                 new SqlParameter() { ParameterName = "@Active", Value = customer.Active, DbType = System.Data.DbType.Boolean },
-                 new SqlParameter() { ParameterName = "@Deleted", Value = customer.Deleted, DbType = System.Data.DbType.Boolean },
-                 new SqlParameter() { ParameterName = "@IsSystemAccount", Value = customer.IsSystemAccount, DbType = System.Data.DbType.Boolean },
-                 new SqlParameter() { ParameterName = "@SystemName", Value = customer.SystemName, DbType = System.Data.DbType.String },
-                 new SqlParameter() { ParameterName = "@LastIpAddress", Value = customer.LastIpAddress, DbType = System.Data.DbType.String },
-                 new SqlParameter() { ParameterName = "@CreatedOnUtc", Value = customer.CreatedOnUtc, DbType = System.Data.DbType.DateTime },
-                 new SqlParameter() { ParameterName = "@LastLoginDateUtc", Value = customer.LastLoginDateUtc, DbType = System.Data.DbType.DateTime },
-                 new SqlParameter() { ParameterName = "@LastActivityDateUtc", Value = customer.LastActivityDateUtc, DbType = System.Data.DbType.DateTime },
-                 new SqlParameter() { ParameterName = "@BillingAddress_Id", Value = customer.BillingAddress_Id, DbType = System.Data.DbType.String },
-                 new SqlParameter() { ParameterName = "@ShippingAddress_Id", Value = customer.ShippingAddress_Id, DbType = System.Data.DbType.String },
+                 new SqlParameter() { ParameterName = "@password", Value = customer.Password, DbType = System.Data.DbType.String },
+                 new SqlParameter() { ParameterName = "@passwordformatid", Value = customer.PasswordFormatId, DbType = System.Data.DbType.Int16 },
+                 new SqlParameter() { ParameterName = "@passwordsalt", Value = customer.PasswordSalt, DbType = System.Data.DbType.String },
+                 new SqlParameter() { ParameterName = "@admincomment", Value = customer.AdminComment, DbType = System.Data.DbType.String },
+                 new SqlParameter() { ParameterName = "@istaxexempt", Value = customer.IsTaxExempt, DbType = System.Data.DbType.Boolean },
+                 new SqlParameter() { ParameterName = "@affiliateid", Value = customer.AffiliateId, DbType = System.Data.DbType.Int16 },
+                 new SqlParameter() { ParameterName = "@vendorid", Value = customer.VendorId, DbType = System.Data.DbType.Int16 },
+                 new SqlParameter() { ParameterName = "@active", Value = customer.Active, DbType = System.Data.DbType.Boolean },
+                 new SqlParameter() { ParameterName = "@deleted", Value = customer.Deleted, DbType = System.Data.DbType.Boolean },
+                 new SqlParameter() { ParameterName = "@issystemaccount", Value = customer.IsSystemAccount, DbType = System.Data.DbType.Boolean },
+                 new SqlParameter() { ParameterName = "@systemname", Value = customer.SystemName, DbType = System.Data.DbType.String },
+                 new SqlParameter() { ParameterName = "@lastipaddress", Value = customer.LastIpAddress, DbType = System.Data.DbType.String },
+                 new SqlParameter() { ParameterName = "@createdonutc", Value = customer.CreatedOnUtc, DbType = System.Data.DbType.DateTime },
+                 new SqlParameter() { ParameterName = "@lastlogindateutc", Value = customer.LastLoginDateUtc, DbType = System.Data.DbType.DateTime },
+                 new SqlParameter() { ParameterName = "@lastactivitydateutc", Value = customer.LastActivityDateUtc, DbType = System.Data.DbType.DateTime },
+                 new SqlParameter() { ParameterName = "@billingaddress_id", Value = customer.BillingAddress_Id, DbType = System.Data.DbType.String },
+                 new SqlParameter() { ParameterName = "@shippingaddress_id", Value = customer.ShippingAddress_Id, DbType = System.Data.DbType.String },
                  new SqlParameter() { ParameterName = "@firstname", Value = customer.FirstName, DbType = System.Data.DbType.String },
                  new SqlParameter() { ParameterName = "@lastname", Value = customer.LastName, DbType = System.Data.DbType.String },
                  new SqlParameter() { ParameterName = "@gender", Value = customer.Gender, DbType = System.Data.DbType.String },

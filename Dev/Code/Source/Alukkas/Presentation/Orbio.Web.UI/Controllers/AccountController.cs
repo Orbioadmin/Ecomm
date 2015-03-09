@@ -167,7 +167,7 @@ namespace Orbio.Web.UI.Controllers
                             if (customer.IsApproved)
                               authenticationService.SignIn(customer, true);
                             int mailresult = messageService.SendCustomerWelcomeMessage(customer);
-                            return RedirectToAction("MyAccount", "Customer");
+                            return RedirectToLocal(returnUrl);
                         }
 
                     case CustomerRegistrationResult.ExistingUser:

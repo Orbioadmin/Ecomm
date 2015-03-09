@@ -29,32 +29,33 @@ GO
 
 CREATE PROCEDURE [dbo].[usp_Customer_InsertCustomer] 
 	-- Add the parameters for the stored procedure here
-	@Action varchar(50),
+	@action varchar(50),
+	@id int,
 	@email varchar(100),
-	@Password nvarchar(max),
-	@PasswordFormatId int,
-	@PasswordSalt nvarchar(max),
-	@AdminComment nvarchar(max)=NULL,
-	@IsTaxExempt bit,
-	@AffiliateId int,
-	@VendorId int,
-	@Active bit,
-	@Deleted bit,
-	@IsSystemAccount bit,
-	@SystemName nvarchar(max)=NULL,
-	@LastIpAddress nvarchar(max),
-	@CreatedOnUtc datetime,
-	@LastLoginDateUtc datetime=NULL,
-	@LastActivityDateUtc datetime,
-	@BillingAddress_Id int=NULL,
-	@ShippingAddress_Id int=NULL,
+	@password nvarchar(max),
+	@passwordformatid int,
+	@passwordsalt nvarchar(max),
+	@admincomment nvarchar(max)=NULL,
+	@istaxexempt bit,
+	@affiliateid int,
+	@vendorid int,
+	@active bit,
+	@deleted bit,
+	@issystemaccount bit,
+	@systemname nvarchar(max)=NULL,
+	@lastipaddress nvarchar(max),
+	@createdonutc datetime,
+	@lastlogindateutc datetime=NULL,
+	@lastactivitydateutc datetime,
+	@billingaddress_id int=NULL,
+	@shippingaddress_id int=NULL,
 	@firstname varchar(50)=NULL,
 	@lastname varchar(50)=NULL,
 	@gender varchar(100),
 	@dob varchar(15)=NULL,
 	@companyname varchar(50)=NULL,
 	@mobileno varchar(15),
-	@insertResult INT OUTPUT
+	@insertresult INT OUTPUT
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -75,20 +76,35 @@ BEGIN
 						,IsTaxExempt,AffiliateId,VendorId,Active,Deleted,IsSystemAccount,SystemName,LastIpAddress,CreatedOnUtc,LastLoginDateUtc
 						,LastActivityDateUtc,BillingAddress_Id,ShippingAddress_Id,FirstName,LastName,Gender,DOB,CompanyName,MobileNo)
  
-						values(newid(),@email,@email,@Password,@PasswordFormatId,@PasswordSalt,@AdminComment
-						,(select top 1 TaxExempt from dbo.CustomerRole where SystemName='Registered'),@AffiliateId,@VendorId,@Active,
-						@Deleted,@IsSystemAccount,@SystemName,@LastIpAddress,@CreatedOnUtc,@LastLoginDateUtc,@LastActivityDateUtc,
-						@BillingAddress_Id,@ShippingAddress_Id,@firstname,@lastname,@gender,@dob,@companyname,@mobileno)
+						values(newid(),@email,@email,@Password,@passwordformatid,@passwordsalt,@admincomment
+						,(select top 1 TaxExempt from dbo.CustomerRole where SystemName='Registered'),@affiliateid,@vendorid,@active,
+						@deleted,@issystemaccount,@systemname,@lastipaddress,@createdonutc,@lastlogindateutc,@lastactivitydateutc,
+						@billingaddress_id,@shippingaddress_id,@firstname,@lastname,@gender,@dob,@companyname,@mobileno)
 						
 						insert into dbo.Customer_CustomerRole_Mapping (Customer_Id,CustomerRole_Id) 
 						values((select Id from dbo.Customer where Username=@email AND Deleted='False')
 						,(select top 1 Id from dbo.CustomerRole where SystemName='Registered'))
 						
-						SET @insertResult=1;
+						SET @insertresult=1;
 					RETURN
 					END
 				END
-END
+			ELSE IF(@Action='Update')
+				BEGIN
+					UPDATE  dbo.Customer SET Username=@email,Email=@email,Password=@password,PasswordFormatId=@passwordformatid,
+					PasswordSalt=@PasswordSalt,AdminComment=@AdminComment,IsTaxExempt=(select top 1 TaxExempt from dbo.CustomerRole where SystemName='Registered')
+					,AffiliateId=@affiliateid,VendorId=@vendorid,Active=@active,Deleted=@deleted,IsSystemAccount=@issystemaccount,
+					SystemName=@systemname,LastIpAddress=@lastipaddress,CreatedOnUtc=@createdonutc,LastLoginDateUtc=@lastlogindateutc,
+					LastActivityDateUtc=@lastactivitydateutc,Gender=@gender,MobileNo=@mobileno
+					where Id=@id
+					
+					insert into dbo.Customer_CustomerRole_Mapping (Customer_Id,CustomerRole_Id) 
+					values(@id,(select top 1 Id from dbo.CustomerRole where SystemName='Registered'))
+					
+					SET @insertresult=1;
+					
+				END
+		END
 GO
 PRINT 'Created the procedure usp_Customer_InsertCustomer'
 GO  
