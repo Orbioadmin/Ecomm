@@ -138,6 +138,8 @@ namespace Orbio.Web.UI.Controllers
         [HttpPost]
         public ActionResult Register(RegisterModel model, string returnUrl)
         {
+            if (ModelState.IsValid)
+            {
                 var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
                 if (workContext.CurrentCustomer.IsRegistered)
                 {
@@ -165,7 +167,7 @@ namespace Orbio.Web.UI.Controllers
                     case CustomerRegistrationResult.NewUser:
                         {
                             if (customer.IsApproved)
-                              authenticationService.SignIn(customer, true);
+                                authenticationService.SignIn(customer, true);
                             int mailresult = messageService.SendCustomerWelcomeMessage(customer);
                             return RedirectToLocal(returnUrl);
                         }
@@ -186,6 +188,7 @@ namespace Orbio.Web.UI.Controllers
                         ModelState.AddModelError("", "Password is not provided");
                         break;
                 }
+            }
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }

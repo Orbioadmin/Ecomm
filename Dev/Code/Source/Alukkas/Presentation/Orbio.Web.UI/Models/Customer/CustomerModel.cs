@@ -25,20 +25,20 @@ namespace Orbio.Web.UI.Models.Customer
 
         }
 
-        [Required]
+        [Required(ErrorMessage = "First Name Required")]
         [DataType(DataType.Text)]
         [Display(Name = "FirstName")]
         public string FirstName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Last Name Required")]
         [Display(Name = "LastName")]
         public string LastName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Gender Required")]
         [Display(Name = "Gender")]
         public string Gender { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Date of Birth Required")]
         [Display(Name = "Date of Birth")]
         public string DOB { get; set; }
 
@@ -48,7 +48,8 @@ namespace Orbio.Web.UI.Models.Customer
         public string Email { get; set; }
 
         [Required(ErrorMessage="Mobile Number Required")]
-        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Entered Mobile format is not valid.")]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Entered mobile number is not valid.")]
+        [DataType(DataType.PhoneNumber)]
         [Display(Name = "Mobile")]
         public string Mobile { get; set; }
 

@@ -49,15 +49,17 @@ namespace Orbio.Web.UI.Controllers
 
         public CustomerModel Customerinfo(CustomerModel model, Customer customer)
         {
+            if (ModelState.IsValid)
+            {
+                customerService.GetCustomerDetails("Update", customer.Id, model.FirstName, model.LastName, model.Gender, model.DOB, model.Email, model.Mobile);
 
-             customerService.GetCustomerDetails("Update", customer.Id, model.FirstName, model.LastName, model.Gender, model.DOB, model.Email, model.Mobile);
-           
-            customer.FirstName = model.FirstName;
-            customer.LastName = model.LastName;
-            customer.Gender = model.Gender;
-            customer.DOB = model.DOB;
-            customer.Email = model.Email;
-            customer.MobileNo = model.Mobile;
+                customer.FirstName = model.FirstName;
+                customer.LastName = model.LastName;
+                customer.Gender = model.Gender;
+                customer.DOB = model.DOB;
+                customer.Email = model.Email;
+                customer.MobileNo = model.Mobile;
+            }
             return model;
         }
 
