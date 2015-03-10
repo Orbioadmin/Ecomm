@@ -38,7 +38,7 @@ namespace Orbio.Web.UI.Controllers
         [HttpPost]
         [AllowAnonymous]
         [LoginRequiredAttribute]
-        //[ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
         public ActionResult MyAccount(CustomerModel model, string returnUrl)
         {
                 var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
@@ -77,7 +77,7 @@ namespace Orbio.Web.UI.Controllers
         [HttpPost]
         [AllowAnonymous]
         [LoginRequiredAttribute]
-        //[ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
         public ActionResult ChangePassword(ChangePasswordModel model, string returnUrl)
         {
             var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
@@ -160,7 +160,6 @@ namespace Orbio.Web.UI.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        [LoginRequiredAttribute]
         //[ValidateAntiForgeryToken]
         public ActionResult PasswordRecoveryConfirm(string token, string email,PasswordRecoveryConfirmModel model)
         {
@@ -237,7 +236,6 @@ namespace Orbio.Web.UI.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        [LoginRequiredAttribute]
         //[ValidateAntiForgeryToken]
         public ActionResult PasswordRecovery(PasswordRecoveryModel model)
         {

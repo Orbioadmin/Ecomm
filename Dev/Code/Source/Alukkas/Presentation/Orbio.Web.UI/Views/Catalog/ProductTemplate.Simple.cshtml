@@ -24,10 +24,12 @@
                 <!--<img src="images/Basic_image/zoom.jpg" class="det_img" >-->
                 <div class="zoom_slide">
 
-                    <a href="@this.Model.DefaultPicture.ImageUrl" class="cloud-zoom" rel="transparentImage: 'data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==', useWrapper: false, showTitle: true, zoomWidth:'300', zoomHeight:'400', adjustY:0, adjustX:10">
+                    @*<a href="@this.Model.DefaultPicture.ImageUrl" title="@this.Model.Name"></a>
+            <img src="@this.Model.DefaultPicture.FullSizeImageUrl" class="cloud-zoom" rel="transparentImage: 'data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==', useWrapper: false, showTitle: true, zoomWidth:'300', zoomHeight:'400', adjustY:0, adjustX:10" />*@
+
+                    <a href="@this.Model.DefaultPicture.FullSizeImageUrl"  class="cloud-zoom" rel="transparentImage: 'data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==', useWrapper: false, showTitle: true, zoomWidth:'350', zoomHeight:'400', adjustY:0, adjustX:10">
                         <img src="@this.Model.DefaultPicture.FullSizeImageUrl" title="@this.Model.Name">
                     </a>
-
 
                 </div>
             </div>
@@ -115,7 +117,7 @@
                         <div class="col-sm-9">
                             @if (this.Model.IsShipEnabled)
                             {
-                                @:Excepted Delivered Date:  @this.Model.DeliveredIn @*Tuesday, Nov 25, 2014)*@
+                                @:Expected Delivered Date:  @this.Model.DeliveredIn @*Tuesday, Nov 25, 2014)*@
                                 if (this.Model.IsFreeShipping)
                                 {
                                       @: <p><i class=""></i>FREE SHIPPING IN INDIA</p>

@@ -167,30 +167,38 @@ namespace Orbio.Web.UI.Controllers
                     case CustomerRegistrationResult.NewUser:
                         {
                             if (customer.IsApproved)
-                                authenticationService.SignIn(customer, true);
+                            authenticationService.SignIn(customer, true);
                             int mailresult = messageService.SendCustomerWelcomeMessage(customer);
                             return RedirectToLocal(returnUrl);
                         }
 
                     case CustomerRegistrationResult.ExistingUser:
+                        customer.Username = "";
+                        customer.Email = "";
                         ModelState.AddModelError("", "Account is already registered");
                         break;
 
                     case CustomerRegistrationResult.SearchEngine:
+                        customer.Username = "";
+                        customer.Email = "";
                         ModelState.AddModelError("", "Search engine can't be registered");
                         break;
 
                     case CustomerRegistrationResult.BackgroundTask:
+                        customer.Username = "";
+                        customer.Email = "";
                         ModelState.AddModelError("", "Background task account can't be registered");
                         break;
 
                     case CustomerRegistrationResult.ProvidePassword:
+                        customer.Username = "";
+                        customer.Email = "";
                         ModelState.AddModelError("", "Password is not provided");
                         break;
                 }
             }
-            ViewBag.ReturnUrl = returnUrl;
-            return View();
+           ViewBag.ReturnUrl = returnUrl;
+            return View(model);
         }
 
         private ActionResult RedirectToLocal(string returnUrl)
