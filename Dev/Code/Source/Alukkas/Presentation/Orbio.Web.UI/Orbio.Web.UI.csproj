@@ -220,6 +220,7 @@
     <Compile Include="Models\Catalog\SpecificationAttribute.cs" />
     <Compile Include="Models\Catalog\SpecificationAttributeOption.cs" />
     <Compile Include="Models\Catalog\TopMenuModel.cs" />
+    <Compile Include="Models\CheckOut\AddressModel.cs" />
     <Compile Include="Models\Customer\ChangePasswordModel.cs" />
     <Compile Include="Models\Customer\CustomerModel.cs" />
     <Compile Include="Models\Customer\PasswordRecoveryConfirmModel.cs" />
@@ -572,6 +573,8 @@
     <Content Include="Views\Catalog\ProductSpecification.cshtml" />
     <Content Include="Views\ShoppingCart\Cart.cshtml" />
     <Content Include="Views\CheckOut\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\Ecomm.pubxml" />
+    <Content Include="Views\Catalog\Review.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
