@@ -54,6 +54,7 @@
     <Compile Include="Domain\Catalog\ProductVarientAttributeValue.cs" />
     <Compile Include="Domain\Catalog\Search.cs" />
     <Compile Include="Domain\Catalog\SpecificationFilterModel.cs" />
+    <Compile Include="Domain\Checkout\Address.cs" />
     <Compile Include="Domain\Customers\ChangePasswordResult.cs" />
     <Compile Include="Domain\Customers\Customer.cs" />
     <Compile Include="Domain\Customers\CustomerLoginResults.cs" />
