@@ -11,6 +11,8 @@ using Orbio.Core.Domain.Orders;
 using Orbio.Services.Catalog;
 using Orbio.Web.UI.Infrastructure.Cache;
 using Orbio.Web.UI.Models.Catalog;
+using Orbio.Web.UI.Filters;
+using Orbio.Core.Domain.Catalog;
 
 namespace Orbio.Web.UI.Controllers
 {
@@ -315,5 +317,71 @@ namespace Orbio.Web.UI.Controllers
                                 select new CategorySimpleModel(c)).ToList();
         }
 
+        
+        [LoginRequired]
+        public ActionResult Review(ProductDetailModel product,string seName)
+        {
+            if(TempData.ContainsKey("SeName"))
+            {
+            }
+            else
+            {
+                TempData.Add("SeName", seName);
+            }
+            //if (TempData.ContainsKey("Id"))
+            //{
+            //}
+            //else
+            //{
+            //    TempData.Add("Id", id);
+            //}
+            var model = new ReviewModel();
+            model.Rating = 5;
+            model.SeName = seName;
+            return View(model);
+        }
+
+       [HttpPost]
+        public ActionResult Review(ReviewModel model, string returnUrl, string seName)
+       {
+           int productid = 0;
+           string sename="";
+           if (TempData.ContainsKey("Id"))
+           {
+               productid = (int)TempData["Id"];
+           }
+           if (TempData.ContainsKey("SeName"))
+           {
+               model.SeName = seName;
+           }
+           if (ModelState.IsValid)
+           {
+               var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
+               if (workContext.CurrentCustomer.IsRegistered)
+               {
+                   workContext.CurrentCustomer.IsApproved = true;
+                   if (model.Rating > 0 || model.Rating <6)
+                   {
+                       var productdetails = PrepareProductdetailsModel(seName);
+                       var productresult = productService.InsertReviews(workContext.CurrentCustomer.Id, productdetails.Id
+                       , workContext.CurrentCustomer.IsApproved, model.ReviewTitle, model.ReviewText, model.Rating,model.CustomerName);
+                   }
+                   else
+                   {
+                       ModelState.AddModelError("", "Please rate the product");
+                   }
+               }
+               else
+               {
+                   ModelState.AddModelError("", "Only registered customers can write reviews");
+               }
+               return RedirectToRoute("Category", new { p = "pt", seName = sename });
+           }
+           else
+           {
+               return View(model);
+           }
+         
+       }
     }
 }

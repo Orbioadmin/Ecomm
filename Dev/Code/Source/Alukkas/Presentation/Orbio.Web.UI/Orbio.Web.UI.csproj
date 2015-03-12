@@ -216,6 +216,7 @@
     <Compile Include="Models\Catalog\ProductOverViewModel.cs" />
     <Compile Include="Models\Catalog\ProductVariantAttributeModel.cs" />
     <Compile Include="Models\Catalog\ProductVariantAttributeValueModel.cs" />
+    <Compile Include="Models\Catalog\ReviewModel.cs" />
     <Compile Include="Models\Catalog\SearchModel.cs" />
     <Compile Include="Models\Catalog\SpecificationAttribute.cs" />
     <Compile Include="Models\Catalog\SpecificationAttributeOption.cs" />
@@ -392,6 +393,7 @@
     <Content Include="Images\Basic_image\similar-products-3.png" />
     <Content Include="Images\Basic_image\similar-products-4.png" />
     <Content Include="Images\Basic_image\SizeChart-popup.jpg" />
+    <Content Include="Images\Basic_image\starrating.png" />
     <Content Include="Images\Basic_image\Stars_sprite.png" />
     <Content Include="Images\Basic_image\thumb_sliderbg.png" />
     <Content Include="Images\Basic_image\triangle-left.png" />
@@ -434,6 +436,8 @@
     <Content Include="Images\slider\main-banner1.png" />
     <Content Include="Images\slider\shop-gold-diamond-image.png" />
     <Content Include="Images\slider\shop-gold-diamond-image1.png" />
+    <Content Include="Images\Basic_image\star-x-active.png" />
+    <Content Include="Images\Basic_image\star-x-inactive.png" />
     <Content Include="Images\Thumbnail\1.jpg" />
     <Content Include="Images\Thumbnail\1_tb.jpg" />
     <Content Include="Images\Thumbnail\2.jpg" />
@@ -442,16 +446,16 @@
     <Content Include="Images\Thumbnail\Listing-product2.jpg" />
     <Content Include="Images\Thumbnail\Listing-product3.jpg" />
     <Content Include="Images\updates-bg-pattern.png" />
-    <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\cloud-zoom.js" />
-    <Content Include="Scripts\datepicker.js" />
-    <Content Include="Scripts\html5shiv.js" />
-    <Content Include="Scripts\ion.rangeSlider.min.js" />
-    <Content Include="Scripts\jquery.eislideshow.js" />
-    <Content Include="Scripts\jquery.js" />
-    <Content Include="Scripts\main.js" />
-    <Content Include="Scripts\price-range.js" />
-    <Content Include="Scripts\toastr.js" />
+    <Content Include="obj\Scripts\bootstrap.min.js" />
+    <Content Include="obj\Scripts\cloud-zoom.js" />
+    <Content Include="obj\Scripts\datepicker.js" />
+    <Content Include="obj\Scripts\html5shiv.js" />
+    <Content Include="obj\Scripts\ion.rangeSlider.min.js" />
+    <Content Include="obj\Scripts\jquery.eislideshow.js" />
+    <Content Include="obj\Scripts\jquery.js" />
+    <Content Include="obj\Scripts\main.js" />
+    <Content Include="obj\Scripts\price-range.js" />
+    <Content Include="obj\Scripts\toastr.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -575,6 +579,7 @@
     <Content Include="Views\CheckOut\Index.cshtml" />
     <None Include="Properties\PublishProfiles\Ecomm.pubxml" />
     <Content Include="Views\Catalog\Review.cshtml" />
+    <Content Include="Views\Catalog\ProductReview.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

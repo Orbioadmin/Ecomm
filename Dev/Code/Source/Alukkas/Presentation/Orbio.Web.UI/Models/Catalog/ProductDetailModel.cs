@@ -16,8 +16,7 @@ namespace Orbio.Web.UI.Models.Catalog
             this.ProductVariantAttributes = new List<ProductVariantAttributeModel>();
             this.SpecificationAttributes = new List<SpecificationAttribute>();
         }
-        public ProductDetailModel(ProductDetail productDetail) : base(productDetail)
-            
+        public ProductDetailModel(ProductDetail productDetail) : base(productDetail)  
         {
             
             this.Id = productDetail.Id;
@@ -86,7 +85,7 @@ namespace Orbio.Web.UI.Models.Catalog
                     this.DefaultPicture = new PictureModel();
                 }
             }
-
+           
             this.ProductVariantAttributes = (from pv in productDetail.ProductAttributeVariants
                                              select new ProductVariantAttributeModel
                                              {
@@ -102,7 +101,7 @@ namespace Orbio.Web.UI.Models.Catalog
                                                                                                         //PriceAdjustmentValue =  need TODO: format + or -
                                                                                                         }))
                                              }).ToList();
-
+           
             this.StockAvailability = productDetail.FormatStockMessage();
             this.IsFreeShipping = productDetail.IsFreeShipping;
             this.IsShipEnabled = productDetail.IsShipEnabled;
@@ -131,6 +130,7 @@ namespace Orbio.Web.UI.Models.Catalog
         public List<ProductVariantAttributeModel> ProductVariantAttributes { get; private set; }
 
         public List<SpecificationAttribute> SpecificationAttributes { get; private set; }
+
         public string DeliveredIn { get; set; }
 
         public IList<CategoryModel> BreadCrumbs { get; set; }

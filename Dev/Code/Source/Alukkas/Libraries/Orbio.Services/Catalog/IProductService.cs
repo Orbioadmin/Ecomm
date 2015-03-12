@@ -17,6 +17,6 @@ namespace Orbio.Services.Catalog
         /// <param name="entityName">the entity name</param>
         /// <returns>instance of Product details</returns>
         ProductDetail GetProductsDetailsBySlug(string slug);
-
+        int InsertReviews(int id,int productid,bool isapproved,string ReviewTitle,string ReviewText,int Rating,string CustomerName);
     }
 }
