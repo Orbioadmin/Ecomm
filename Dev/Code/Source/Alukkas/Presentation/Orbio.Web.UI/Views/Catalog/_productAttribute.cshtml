@@ -5,7 +5,6 @@ foreach(var pva in this.Model)
 {
     var pvaId = string.Format("ProductVariantAttributes[{0}].Id", count);
     var pvaTextPrompt = string.Format("ProductVariantAttributes[{0}].TextPrompt", count);
-    var pvaAttributeControlType = string.Format("ProductVariantAttributes[{0}].AttributeControlType", count);
     switch (pva.AttributeControlType)
     {
         case Orbio.Core.Domain.Catalog.AttributeControlType.TableBlock:
@@ -13,7 +12,7 @@ foreach(var pva in this.Model)
                 
                     <ul class="size_li clearfix">
                        
-                        <li>@pva.TextPrompt :  @Html.Hidden(pvaId, pva.Id)  @Html.Hidden(pvaTextPrompt, pva.TextPrompt) @Html.Hidden(pvaAttributeControlType, pva.AttributeControlType) </li>
+                        <li>@pva.TextPrompt :  @Html.Hidden(pvaId, pva.Id)  @Html.Hidden(pvaTextPrompt, pva.TextPrompt) </li>
                         @{var valueCount = 0;
                          foreach(var pvav in pva.Values){
                              var pvavId = string.Format("ProductVariantAttributes[{0}].Values[{1}].Id", count, valueCount);

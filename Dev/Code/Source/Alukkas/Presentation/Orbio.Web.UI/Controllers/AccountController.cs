@@ -15,8 +15,6 @@ using Orbio.Core.Domain.Customers;
 using Orbio.Services.Authentication;
 using Nop.Core.Infrastructure;
 using Orbio.Services.Messages;
-using Orbio.Services.Orders;
-using Orbio.Web.UI.Models.Orders;
 
 namespace Orbio.Web.UI.Controllers
 {
@@ -25,14 +23,12 @@ namespace Orbio.Web.UI.Controllers
         private readonly ICustomerService customerService;
         private readonly IAuthenticationService authenticationService;
         private readonly IMessageService messageService;
-        private readonly IShoppingCartService shoppingcartservice;
 
-        public AccountController(ICustomerService customerService, IAuthenticationService authenticationService, IMessageService messageService, IShoppingCartService shoppingcartservice)
+        public AccountController(ICustomerService customerService, IAuthenticationService authenticationService, IMessageService  messageService)
         {
             this.customerService = customerService;
             this.authenticationService = authenticationService;
             this.messageService = messageService;
-            this.shoppingcartservice = shoppingcartservice;
         }
         public ActionResult Login(string returnUrl)
         {
@@ -48,8 +44,6 @@ namespace Orbio.Web.UI.Controllers
 
             if (ModelState.IsValid)
             {
-                var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
-                var curcustomer = workContext.CurrentCustomer;
                 var customer = new Customer();
                 var loginResult = customerService.ValidateCustomer(model.UserName, model.Password, ref customer);
 
@@ -64,7 +58,7 @@ namespace Orbio.Web.UI.Controllers
 
                             //sign in new customer
                             authenticationService.SignIn(customer, model.RememberMe);
-                            shoppingcartservice.AddCartItem("update", customer.Id, curcustomer.Id, 0, "", 0);
+
                             //activity log
                             //_customerActivityService.InsertActivity("PublicStore.Login", _localizationService.GetResource("ActivityLog.PublicStore.Login"), customer);
 

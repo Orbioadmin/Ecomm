@@ -1,104 +1,129 @@
-﻿@model Orbio.Web.UI.Models.Orders.ShoppingCartItemModels
-<section class="main_shop_cart">
-    <div class="container">
-        <ol class="breadcrumb">
-            <li><a href="#">Home</a></li>
-            <li class="active">Shopping cart</li>
-        </ol>
+﻿<section class="main_shop_cart">
+<div class="container">
+<ol class="breadcrumb">
+  <li><a href="#">Home</a></li>
+  <li class="active">Shopping cart</li>
+</ol>
 
 
-        <div class="shopping_cart">
-            <h1>MY SHOPPING CART</h1>
-            @using (Html.BeginForm("Cart", "ShoppingCart", FormMethod.Post, new { Id = "formCartProduct" }))
-            {
-                <table cellpadding="0" cellspacing="0" width="100%" class="shopping_table">
-                    <tr>
-                        <th width="150" class="item_table">Item</th>
-                        <th width="30%"></th>
-                        <th>Remove</th>
-                        <th>Quantity</th>
-                        <th>Item Price</th>
-                        <th>Total Price</th>
-                    </tr>
-                    @{
-                        Html.RenderPartial("OrderSummary", this.Model.Products);
-                    }
-                </table>
+<div class="shopping_cart">
+<h1>MY SHOPPING CART</h1>
+
+<table cellpadding="0" cellspacing="0" width="100%" class="shopping_table">
+<tr>
+<th width="150" class="item_table">Item</th>
+<th width="30%"></th>
+<th>Remove</th>
+<th>Quantity</th>
+<th>Item Price</th>
+<th>Total Price</th>
+</tr>
+<tr>
+<td><img src="images/Basic_image/similar-products-1.png"></td>
+<td>Diamond Ring</td>
+<td><input type="checkbox" /></td>
+<td>
+  <select>
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+  </select>
+</td>
+<td>Rs. 13,000,00</td>
+<td>Rs. 13,000,00</td>
+</tr>
+
+<tr>
+<td><img src="images/Basic_image/similar-products-1.png"></td>
+<td>Diamond Ring</td>
+<td><input type="checkbox" /></td>
+<td>
+  <select>
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+  </select>
+</td>
+<td>Rs. 13,000,00</td>
+<td>Rs. 13,000,00</td>
+</tr>
+
+</table>
 
 
-                <div class="shop_promation">
-                    <ul>
-                        <li class="promat">ENTER A PROMOTIONAL CODE</li>
-                        <li><input type="text" class=""></li>
-                        <li><input type="submit" class="green_butt" value="update cart"></li>
-                    </ul>
-                </div>
-            }
-            <div class="shop_status">
-                <div class="row">
-                    <div class="col-sm-8">
-                        <div class="check_deliver">
-                            <p>Check Delivery Information</p>
-                            <input type="text" placeholder="Enter your pincode" class="pincode">
-                            <input type="submit" value="Check" class="blue_butt">
-                        </div>
+<div class="shop_promation">
+<ul>
+<li class="promat">ENTER A PROMOTIONAL CODE</li>
+<li><input type="text" class=""></li>
+<li><input type="submit" class="green_butt" value="update cart"></li>
+</ul>
+</div>
 
-                        <div class="shop_payment">
-                            <p>Payment Methods</p>
+<div class="shop_status">
+<div class="row">
+<div class="col-sm-8">
+<div class="check_deliver">
+<p>Check Delivery Information</p>
+<input type="text" placeholder="Enter your pincode" class="pincode">
+<input type="submit" value="Check" class="blue_butt">
+</div>
 
-                            <ul class="foot_menu clearfix">
-                                <li><a href="" class="visa_met"></a></li>
-                                <li><a href="" class="discover_met"></a></li>
-                                <li><a href="" class="american_met"></a></li>
-                                <li><a href="" class="master_met"></a></li>
-                            </ul>
+<div class="shop_payment">
+<p>Payment Methods</p>
 
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
+ <ul class="foot_menu clearfix">
+      <li><a href="" class="visa_met"></a></li>
+      <li><a href="" class="discover_met"></a></li>
+      <li><a href="" class="american_met"></a></li>
+      <li><a href="" class="master_met"></a></li>
+      </ul>
 
-                        <div class="cart_total">
-                            <dl class="dl-horizontal">
-                                <dt>Cart Sub Total</dt>
-                                <dd>Rs.@ViewBag.subtotal</dd>
-                                <dt>Shipping Charges</dt>
-                                <dd>0</dd>
-                                <dt>Promotional Discounts</dt>
-                                <dd>0</dd>
-                                <dt>Estimated Tax</dt>
-                                <dd>0</dd>
-                                <dt class="cart_total">Total</dt>
-                                <dd class="cart_total">Rs.@ViewBag.subtotal</dd>
-                            </dl>
-                        </div>
+</div>
+</div>
+<div class="col-sm-4">
 
-                    </div>
+<div class="cart_total">
+    <dl class="dl-horizontal">
+      <dt>Cart Sub Total</dt>
+      <dd>Rs.32,000,00</dd>
+      <dt>Shipping Charges</dt>
+      <dd>--</dd>
+      <dt>Promotional Discounts</dt>
+      <dd>--</dd>
+      <dt>Estimated Tax</dt>
+      <dd>--</dd>
+      <dt class="cart_total">Total</dt>
+      <dd class="cart_total">Rs.32,000,00</dd>
+    </dl>
+  </div>
 
-                </div>
+</div>
 
-            </div>
+</div>
 
-
-        </div>
+</div>
 
 
-
-
-
-        <div class="shop_stat_butt">
-            <div class="row">
-                <div class="col-sm-8">
-                    <input type="submit" class="continue_shop" value="CONTINUE SHOPPING">
-                </div>
-
-                <div class="col-sm-4">
-                    <a href="@Url.RouteUrl("Checkout")"><input type="submit" class="continue_check" value="PROCEED TO CHECKOUT"></a>
-                </div>
-            </div>
-        </div>
+</div>
 
 
 
 
-    </div>
+
+<div class="shop_stat_butt">
+<div class="row">
+<div class="col-sm-8">
+<input type="submit" class="continue_shop" value="CONTINUE SHOPPING">
+</div>
+
+<div class="col-sm-4">
+<a href="@Url.RouteUrl("Checkout")"><input type="submit" class="continue_check" value="PROCEED TO CHECKOUT"></a>
+</div>
+</div>
+</div>
+
+
+
+
+</div>	
 </section>
