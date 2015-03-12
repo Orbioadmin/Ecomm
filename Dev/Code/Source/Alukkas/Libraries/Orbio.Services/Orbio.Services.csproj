@@ -60,6 +60,8 @@
     <Compile Include="Messages\ITokenizer.cs" />
     <Compile Include="Messages\MessageTokenProvider.cs" />
     <Compile Include="Messages\Tokenizer.cs" />
+    <Compile Include="Orders\IShoppingCartService.cs" />
+    <Compile Include="Orders\ShoppingCartService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\EncryptionService.cs" />
     <Compile Include="Security\IEncryptionService.cs" />
