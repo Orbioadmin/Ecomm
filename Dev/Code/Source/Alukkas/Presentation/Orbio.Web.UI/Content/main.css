@@ -1367,7 +1367,8 @@ clear: both; overflow: hidden;}
 .cloud-zoom-lens {
   border: 2px solid #888;
   margin:-4px;  /* Set this to minus the border thickness. */
-  background-color:#fff;
+  /*background-color:#fff;*/
+
   cursor:move;
 }
 

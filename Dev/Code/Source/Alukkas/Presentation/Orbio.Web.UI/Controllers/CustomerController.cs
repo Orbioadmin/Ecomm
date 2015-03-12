@@ -37,7 +37,7 @@ namespace Orbio.Web.UI.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public ActionResult MyAccount(CustomerModel model, string returnUrl)
         {
             var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
@@ -49,15 +49,17 @@ namespace Orbio.Web.UI.Controllers
 
         public CustomerModel Customerinfo(CustomerModel model, Customer customer)
         {
+            if (ModelState.IsValid)
+            {
+                customerService.GetCustomerDetails("Update", customer.Id, model.FirstName, model.LastName, model.Gender, model.DOB, model.Email, model.Mobile);
 
-             customerService.GetCustomerDetails("Update", customer.Id, model.FirstName, model.LastName, model.Gender, model.DOB, model.Email, model.Mobile);
-           
-            customer.FirstName = model.FirstName;
-            customer.LastName = model.LastName;
-            customer.Gender = model.Gender;
-            customer.DOB = model.DOB;
-            customer.Email = model.Email;
-            customer.MobileNo = model.Mobile;
+                customer.FirstName = model.FirstName;
+                customer.LastName = model.LastName;
+                customer.Gender = model.Gender;
+                customer.DOB = model.DOB;
+                customer.Email = model.Email;
+                customer.MobileNo = model.Mobile;
+            }
             return model;
         }
 
@@ -73,7 +75,7 @@ namespace Orbio.Web.UI.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public ActionResult ChangePassword(ChangePasswordModel model, string returnUrl)
         {
             var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
@@ -156,7 +158,7 @@ namespace Orbio.Web.UI.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public ActionResult PasswordRecoveryConfirm(string token, string email,PasswordRecoveryConfirmModel model)
         {
             var curcustomer = new Customer();
@@ -232,7 +234,7 @@ namespace Orbio.Web.UI.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public ActionResult PasswordRecovery(PasswordRecoveryModel model)
         {
             var customer = new Customer();

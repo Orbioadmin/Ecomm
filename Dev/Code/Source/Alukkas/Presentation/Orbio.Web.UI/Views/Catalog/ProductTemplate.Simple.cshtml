@@ -23,13 +23,15 @@
             <div class="col-sm-6">
                 <!--<img src="images/Basic_image/zoom.jpg" class="det_img" >-->
                 <div class="zoom_slide">
+                    @*<a href="@this.Model.DefaultPicture.ImageUrl" title="@this.Model.Name"></a>
+        <img src="@this.Model.DefaultPicture.FullSizeImageUrl" class="cloud-zoom" rel="transparentImage: 'data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==', useWrapper: false, showTitle: true, zoomWidth:'300', zoomHeight:'400', adjustY:0, adjustX:10" />*@
 
-                    <a href="@this.Model.DefaultPicture.ImageUrl" class="cloud-zoom" rel="transparentImage: 'data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==', useWrapper: false, showTitle: true, zoomWidth:'300', zoomHeight:'400', adjustY:0, adjustX:10">
+                    <a href="@this.Model.DefaultPicture.FullSizeImageUrl" class="cloud-zoom" rel="transparentImage: 'data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==', useWrapper: false, showTitle: true, zoomWidth:'350', zoomHeight:'400', adjustY:0, adjustX:10">
                         <img src="@this.Model.DefaultPicture.FullSizeImageUrl" title="@this.Model.Name">
                     </a>
 
 
-                </div>
+</div>
             </div>
             @using (Html.BeginForm("product", "catalog", new { Id = this.Model.Id, SeName=this.Model.SeName, cartType= Orbio.Core.Domain.Orders.ShoppingCartType.ShoppingCart }, FormMethod.Post, new { Id = "formProduct" }))
             {

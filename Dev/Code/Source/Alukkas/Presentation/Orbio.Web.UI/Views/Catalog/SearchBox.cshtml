@@ -31,9 +31,9 @@
             url = $("#drpcategorysearch").val() + '?p=sr&q=' + $('#twotabsearchtextbox').val();
         }
         else {
-            url = $("#drpcategorysearch").val() + '?p=ct&q=' + $('#twotabsearchtextbox').val();
+            url =  $("#drpcategorysearch").val() + '?p=ct&q=' + $('#twotabsearchtextbox').val();
         }
-            window.location.href = url;
+        window.location.href = window.location.protocol + "//" + window.location.host+"/"+url;
         
 
     });         });
