@@ -19,8 +19,6 @@ namespace Orbio.Web.Framework
             builder.RegisterType<WebStoreContext>().As<IStoreContext>().InstancePerHttpRequest();
 
             builder.RegisterType<OBS.Checkout.CheckoutService>().As<OBS.Checkout.ICheckoutService>().InstancePerHttpRequest();
-            //added by sankar
-            builder.RegisterType<OBS.Orders.ShoppingCartService>().As<OBS.Orders.IShoppingCartService>().InstancePerHttpRequest();
         }
 
         public int Order
