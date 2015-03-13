@@ -93,9 +93,9 @@ namespace Orbio.Web.UI.Models
         [Display(Name = "Gender")]
         public string Gender { get; set; }
 
-        [Required(ErrorMessage="Mobile Number Required")]
-        //[StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 10)]
+        [Required(ErrorMessage = "Mobile Number Required")]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Entered mobile number is not valid.")]
+        //[StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 10)]
         [DataType(DataType.PhoneNumber)]
         [Display(Name = "Mobile Number")]
         public string MobileNo { get; set; }

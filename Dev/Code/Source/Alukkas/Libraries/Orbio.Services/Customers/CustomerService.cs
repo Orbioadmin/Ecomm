@@ -388,7 +388,7 @@ namespace Orbio.Services.Customers
                 action = "Update";
             }
 
-            var outputSqlParam = new SqlParameter() { ParameterName = "@insertresult", Direction = System.Data.ParameterDirection.Output, DbType = System.Data.DbType.Int32 };
+            var outputSqlParam = new SqlParameter() { ParameterName = "@insertresult", Direction = System.Data.ParameterDirection.Output, DbType = System.Data.DbType.Int32 }; 
             var result = context.ExecuteFunction<Customer>("usp_Customer_InsertCustomer",
 
                  new SqlParameter() { ParameterName = "@action", Value = action, DbType = System.Data.DbType.String },

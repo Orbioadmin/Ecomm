@@ -65,6 +65,8 @@
     <Compile Include="Domain\Customers\SystemCustomerNames.cs" />
     <Compile Include="Domain\Messages\MessageTemplate.cs" />
     <Compile Include="Domain\Messages\Token.cs" />
+    <Compile Include="Domain\Orders\ShoppingCartItem.cs" />
+    <Compile Include="Domain\Orders\ShoppingCartProduct.cs" />
     <Compile Include="Domain\Orders\ShoppingCartType.cs" />
     <Compile Include="Domain\Seo\UrlRecord.cs" />
     <Compile Include="Domain\Stores\Store.cs" />

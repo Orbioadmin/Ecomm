@@ -15,6 +15,8 @@ using Orbio.Core.Domain.Customers;
 using Orbio.Services.Authentication;
 using Nop.Core.Infrastructure;
 using Orbio.Services.Messages;
+using Orbio.Services.Orders;
+using Orbio.Web.UI.Models.Orders;
 
 namespace Orbio.Web.UI.Controllers
 {
@@ -23,12 +25,14 @@ namespace Orbio.Web.UI.Controllers
         private readonly ICustomerService customerService;
         private readonly IAuthenticationService authenticationService;
         private readonly IMessageService messageService;
+        private readonly IShoppingCartService shoppingcartservice;
 
-        public AccountController(ICustomerService customerService, IAuthenticationService authenticationService, IMessageService  messageService)
+        public AccountController(ICustomerService customerService, IAuthenticationService authenticationService, IMessageService messageService, IShoppingCartService shoppingcartservice)
         {
             this.customerService = customerService;
             this.authenticationService = authenticationService;
             this.messageService = messageService;
+            this.shoppingcartservice = shoppingcartservice;
         }
         public ActionResult Login(string returnUrl)
         {
@@ -44,6 +48,8 @@ namespace Orbio.Web.UI.Controllers
 
             if (ModelState.IsValid)
             {
+                var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
+                var curcustomer = workContext.CurrentCustomer;
                 var customer = new Customer();
                 var loginResult = customerService.ValidateCustomer(model.UserName, model.Password, ref customer);
 
@@ -58,7 +64,7 @@ namespace Orbio.Web.UI.Controllers
 
                             //sign in new customer
                             authenticationService.SignIn(customer, model.RememberMe);
-
+                            shoppingcartservice.AddCartItem("update", customer.Id, curcustomer.Id, 0, "", 0);
                             //activity log
                             //_customerActivityService.InsertActivity("PublicStore.Login", _localizationService.GetResource("ActivityLog.PublicStore.Login"), customer);
 
@@ -138,8 +144,6 @@ namespace Orbio.Web.UI.Controllers
         [HttpPost]
         public ActionResult Register(RegisterModel model, string returnUrl)
         {
-            if (ModelState.IsValid)
-            {
                 var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
                 if (workContext.CurrentCustomer.IsRegistered)
                 {
@@ -167,25 +171,25 @@ namespace Orbio.Web.UI.Controllers
                     case CustomerRegistrationResult.NewUser:
                         {
                             if (customer.IsApproved)
-                            authenticationService.SignIn(customer, true);
+                              authenticationService.SignIn(customer, true);
                             int mailresult = messageService.SendCustomerWelcomeMessage(customer);
                             return RedirectToLocal(returnUrl);
                         }
 
                     case CustomerRegistrationResult.ExistingUser:
-                        customer.Username = "";
+                         customer.Username = "";
                         customer.Email = "";
                         ModelState.AddModelError("", "Account is already registered");
                         break;
 
                     case CustomerRegistrationResult.SearchEngine:
-                        customer.Username = "";
+                         customer.Username = "";
                         customer.Email = "";
                         ModelState.AddModelError("", "Search engine can't be registered");
                         break;
 
                     case CustomerRegistrationResult.BackgroundTask:
-                        customer.Username = "";
+                         customer.Username = "";
                         customer.Email = "";
                         ModelState.AddModelError("", "Background task account can't be registered");
                         break;
@@ -196,9 +200,8 @@ namespace Orbio.Web.UI.Controllers
                         ModelState.AddModelError("", "Password is not provided");
                         break;
                 }
-            }
-           ViewBag.ReturnUrl = returnUrl;
-            return View(model);
+                ViewBag.ReturnUrl = returnUrl;
+                return View(model);
         }
 
         private ActionResult RedirectToLocal(string returnUrl)

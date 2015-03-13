@@ -369,13 +369,16 @@ namespace Orbio.Web.UI.Controllers
                    else
                    {
                        ModelState.AddModelError("", "Please rate the product");
+                       return View(model);
                    }
                }
                else
                {
                    ModelState.AddModelError("", "Only registered customers can write reviews");
+                   return View(model);
                }
-               return RedirectToRoute("Category", new { p = "pt", seName = sename });
+
+               return RedirectToRoute("Category", new { p = "pt", seName = seName });
            }
            else
            {
@@ -383,5 +386,18 @@ namespace Orbio.Web.UI.Controllers
            }
          
        }
+
+
+        [ChildActionOnly]
+        public ActionResult ProductReview(int id)
+       {
+           var model = GetCustomerReview(id);
+           return PartialView(model);
+       }
+
+        private List<ReviewModel> GetCustomerReview(int id)
+        {
+            var customerreview = productService.GetCustomerReviews(id);
+        }
     }
 }

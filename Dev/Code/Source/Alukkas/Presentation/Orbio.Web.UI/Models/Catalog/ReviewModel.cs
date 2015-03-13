@@ -14,12 +14,13 @@ namespace Orbio.Web.UI.Models.Catalog
           
         }
 
-        //public ReviewModel(ProductReview productReview):this()
-        //{
-        //    this.ReviewText = productReview.ReviewText;
-        //    this.ReviewTitle = productReview.ReviewText;
+        public ReviewModel(ProductReview productReview)
+            : this()
+        {
+            this.ReviewText = productReview.ReviewText;
+            this.ReviewTitle = productReview.ReviewText;
 
-        //}
+        }
 
         public string SeName { get; set; }
 
