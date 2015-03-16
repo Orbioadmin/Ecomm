@@ -75,14 +75,34 @@ DECLARE @currencyCode nvarchar(5)
  SELECT @currencyCode = CurrencyCode FROM Currency WHERE Id = (SELECT   
  CAST(value as INT) FROM Setting  WHERE Name = 'currencysettings.primarystorecurrencyid' )  
  
- DECLARE @XmlResult xml;
+-- DECLARE @XmlResult xml;
 
 	
 
---WITH XMLNAMESPACES ('http://schemas.datacontract.org/2004/07/Orbio.Core.Domain.Catalog' AS ns)
-SELECT @XmlResult = (SELECT (select count(#temp.ProductId) from #temp) as 'Itemcount',( select product.Id Id,product.Name Name,product.Price Price,(SELECT Pic.Id PictureId, PPM.DisplayOrder, Pic.RelativeUrl,Pic.MimeType , Pic.SeoFilename, Pic.IsNew FROM [dbo].[Product]  P INNER JOIN [dbo].[Product_Picture_Mapping] PPM ON PPM.ProductId = P.Id
-INNER JOIN [dbo].[Picture] Pic ON Pic.Id = PPM.PictureId WHERE P.Id = product.Id
-ORDER BY PPM.DisplayOrder FOR XML PATH ('ProductPicture'),ROOT('ProductPictures'), Type),
+----WITH XMLNAMESPACES ('http://schemas.datacontract.org/2004/07/Orbio.Core.Domain.Catalog' AS ns)
+--SELECT @XmlResult = (SELECT (select count(#temp.ProductId) from #temp) as 'Itemcount',( select product.Id Id,product.Name Name,product.Price Price,(SELECT Pic.Id PictureId, PPM.DisplayOrder, Pic.RelativeUrl,Pic.MimeType , Pic.SeoFilename, Pic.IsNew FROM [dbo].[Product]  P INNER JOIN [dbo].[Product_Picture_Mapping] PPM ON PPM.ProductId = P.Id
+--INNER JOIN [dbo].[Picture] Pic ON Pic.Id = PPM.PictureId WHERE P.Id = product.Id
+--ORDER BY PPM.DisplayOrder FOR XML PATH ('ProductPicture'),ROOT('ProductPictures'), Type),
+--  @currencyCode as CurrencyCode,
+--  DisplayStockAvailability,
+--  DisplayStockQuantity,
+--   StockQuantity,
+--	OrderMinimumQuantity,
+--   OrderMaximumQuantity,
+--   AllowedQuantities,
+--   sc.Id as 'CartId',
+--   sc.Quantity as 'CartQuantity',
+--   (product.Price*sc.Quantity) as 'Totalprice'
+--from [dbo].[Product] product 
+--inner join ShoppingCartItem sc on sc.ProductId = product.Id 
+--Left join [dbo].[DeliveryDate] Delivery_date on product.DeliveryDateId= Delivery_date.Id  
+--where sc.CustomerId=@customerid and sc.ShoppingCartTypeId=@shoppingcarttypeid and product.Deleted <> 1
+
+--FOR XML PATH('ShoppingCartProduct'),ROOT('ShoppingCartProducts'),type
+--)
+--FOR XML PATH('ShoppingCartItem'), type )
+-- SELECT @XmlResult as XmlResult
+SELECT (select count(#temp.ProductId) from #temp) as 'Itemcount',product.Id Id,product.Name Name,product.Price Price,Pic.Id PictureId, PPM.DisplayOrder, Pic.RelativeUrl,Pic.MimeType , Pic.SeoFilename, Pic.IsNew,
   @currencyCode as CurrencyCode,
   DisplayStockAvailability,
   DisplayStockQuantity,
@@ -91,18 +111,14 @@ ORDER BY PPM.DisplayOrder FOR XML PATH ('ProductPicture'),ROOT('ProductPictures'
    OrderMaximumQuantity,
    AllowedQuantities,
    sc.Id as 'CartId',
-   sc.Quantity as 'CartQuantity',
+   sc.Quantity as 'Quantity',
    (product.Price*sc.Quantity) as 'Totalprice'
 from [dbo].[Product] product 
 inner join ShoppingCartItem sc on sc.ProductId = product.Id 
+INNER JOIN [dbo].[Product_Picture_Mapping] PPM ON PPM.ProductId = product.Id
+INNER JOIN [dbo].[Picture] Pic ON Pic.Id = PPM.PictureId
 Left join [dbo].[DeliveryDate] Delivery_date on product.DeliveryDateId= Delivery_date.Id  
 where sc.CustomerId=@customerid and sc.ShoppingCartTypeId=@shoppingcarttypeid and product.Deleted <> 1
-
-FOR XML PATH('ShoppingCartProduct'),ROOT('ShoppingCartProducts'),type
-)
-FOR XML PATH('ShoppingCartItem'), type )
- SELECT @XmlResult as XmlResult
-
 end
 
 END
