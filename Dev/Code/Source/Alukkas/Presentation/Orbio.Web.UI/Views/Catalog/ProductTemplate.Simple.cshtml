@@ -6,6 +6,11 @@
 
     @Html.Hidden("tosterMsg", (string)ViewBag.Errors)
 }
+@if (!string.IsNullOrEmpty((string)ViewBag.Sucess))
+{
+
+    @Html.Hidden("tosterMsgsuccess", (string)ViewBag.Sucess)
+}
   <div class="container">
 
         <ol class="breadcrumb">
@@ -219,73 +224,7 @@
                     <!-- Carousel items -->
                     <div class="carousel-inner">
 
-                        <div class="item active">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <a href="#x" class="thumbnail">
-                                        <img src="images/Basic_image/related-products-1.png" alt="Image" style="max-width:100%;" />
-                                        <p class="thumb_title">TYPE OF INDIAN JEW</p>
-                                        <p class="thumb_date">Rs. 20,300.00</p>
-                                    </a>
-                                </div>
-                                <div class="col-md-4">
-                                    <a href="#x" class="thumbnail">
-                                        <img src="images/Basic_image/related-products-2.png" alt="Image" style="max-width:100%;" />
-                                        <p class="thumb_title">TYPE OF INDIAN JEW</p>
-                                        <p class="thumb_date">Rs. 20,300.00</p>
-                                    </a>
-                                </div>
-                                <div class="col-md-4">
-                                    <a href="#x" class="thumbnail">
-                                        <img src="images/Basic_image/related-products-3.png" alt="Image" style="max-width:100%;" />
-                                        <p class="thumb_title">TYPE OF INDIAN JEW</p>
-                                        <p class="thumb_date">Rs. 20,300.00</p>
-                                    </a>
-                                </div>
-                                <div class="col-md-4">
-                                    <a href="#x" class="thumbnail">
-                                        <img src="images/Basic_image/related-products-4.png" alt="Image" style="max-width:100%;" />
-                                        <p class="thumb_title">TYPE OF INDIAN JEW</p>
-                                        <p class="thumb_date">Rs. 20,300.00</p>
-                                    </a>
-                                </div>
-
-                            </div><!--/row-fluid-->
-                        </div><!--/item-->
-
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <a href="#x" class="thumbnail">
-                                        <img src="images/Basic_image/related-products-1.png" alt="Image" style="max-width:100%;" />
-                                        <p class="thumb_title">TYPE OF INDIAN JEW</p>
-                                        <p class="thumb_date">Rs. 20,300.00</p>
-                                    </a>
-                                </div>
-                                <div class="col-md-4">
-                                    <a href="#x" class="thumbnail">
-                                        <img src="images/Basic_image/related-products-2.png" alt="Image" style="max-width:100%;" />
-                                        <p class="thumb_title">TYPE OF INDIAN JEW</p>
-                                        <p class="thumb_date">Rs. 20,300.00</p>
-                                    </a>
-                                </div>
-                                <div class="col-md-4">
-                                    <a href="#x" class="thumbnail">
-                                        <img src="images/Basic_image/related-products-3.png" alt="Image" style="max-width:100%;" />
-                                        <p class="thumb_title">TYPE OF INDIAN JEW</p>
-                                        <p class="thumb_date">Rs. 20,300.00</p>
-                                    </a>
-                                </div>
-                                <div class="col-md-4">
-                                    <a href="#x" class="thumbnail">
-                                        <img src="images/Basic_image/related-products-4.png" alt="Image" style="max-width:100%;" />
-                                        <p class="thumb_title">TYPE OF INDIAN JEW</p>
-                                        <p class="thumb_date">Rs. 20,300.00</p>
-                                    </a>
-                                </div>
-
-                            </div><!--/row-fluid-->
-                        </div><!--/item-->
+                        @Html.Action("RelatedProducts", "Catalog", new { productId = this.Model.Id })
 
                     </div><!--/carousel-inner-->
 
@@ -316,6 +255,11 @@
                     ShowError(splits[i]);
                 }
             }
+        }
+
+        var sucMsg = $('#tosterMsgsuccess');
+        if (sucMsg.length > 0 && sucMsg.val().length > 0) {
+                    ShowSuccessMsg(sucMsg.val());
         }
     });
 </script>

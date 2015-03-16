@@ -1,0 +1,26 @@
+﻿@model List<Orbio.Web.UI.Models.Catalog.ProductDetailModel>
+@{
+    var i = 1;
+}
+
+@foreach (var products in this.Model)
+{
+    if (i % 4 == 0)
+    {
+        Html.Raw("<div class='item active'>");
+        Html.Raw("<div class='row'>");
+    }
+    <div class="col-md-4">
+        <a href="@Url.RouteUrl("Category", new { SeName = products.SeName })?p=pt" class="thumbnail">
+            <img src="@products.DefaultPicture.ImageUrl" alt="Image" style="max-width:100%;" />
+            <p class="thumb_title">@products.Name</p>
+            <p class="thumb_date">@products.CurrencyCode. @products.ProductPrice.Price</p>
+        </a>
+    </div>
+    if ((i + 1) % 4 == 0)
+    {
+        Html.Raw("</div>");
+        Html.Raw("</div>");
+    }
+}
+

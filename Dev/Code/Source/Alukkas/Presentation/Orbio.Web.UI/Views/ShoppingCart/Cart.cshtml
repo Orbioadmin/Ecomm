@@ -60,7 +60,7 @@
                         <div class="cart_total">
                             <dl class="dl-horizontal">
                                 <dt>Cart Sub Total</dt>
-                                <dd>Rs.@ViewBag.subtotal</dd>
+                                <dd>@Model.CurrencyCode.@ViewBag.subtotal</dd>
                                 <dt>Shipping Charges</dt>
                                 <dd>0</dd>
                                 <dt>Promotional Discounts</dt>
@@ -68,7 +68,7 @@
                                 <dt>Estimated Tax</dt>
                                 <dd>0</dd>
                                 <dt class="cart_total">Total</dt>
-                                <dd class="cart_total">Rs.@ViewBag.subtotal</dd>
+                                <dd class="cart_total">@Model.CurrencyCode.@ViewBag.subtotal</dd>
                             </dl>
                         </div>
 

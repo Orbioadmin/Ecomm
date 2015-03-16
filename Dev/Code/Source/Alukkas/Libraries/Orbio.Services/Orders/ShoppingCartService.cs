@@ -54,15 +54,15 @@ namespace Orbio.Services.Orders
             sqlParamList.Add(new SqlParameter { ParameterName = "@attributexml", Value = "", DbType = System.Data.DbType.String });
             sqlParamList.Add(new SqlParameter { ParameterName = "@quantity", Value = Quantity, DbType = System.Data.DbType.Int32 });
 
-            var result = context.ExecuteFunction<XmlResultSet>("usp_Shoppingcart_Items",
+            var result = context.ExecuteFunctionModel("usp_Shoppingcart_Items",
                            sqlParamList.ToArray()
-                           ).FirstOrDefault();
+                           ).ToList();
 
-            if (result != null)
-            {
-                var cartitems = Serializer.GenericDeSerializer<ShoppingCartItem>(result.XmlResult);
-                return cartitems;
-            }
+            //if (result != null)
+            //{
+            //    var cartitems = Serializer.GenericDeSerializer<ShoppingCartItem>(result.XmlResult);
+            //    return cartitems;
+            //}
   
             return new ShoppingCartItem();
         }

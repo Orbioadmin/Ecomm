@@ -47,5 +47,27 @@ namespace Orbio.Services.Catalog
 
             return new ProductDetail();
         }
+
+        /// <summary>
+        /// gets all related products by product id
+        /// </summary>
+        /// <param name="productid">the product id</param>
+        /// <returns>list of products</returns>
+        public RelatedProduct GetRelatedProductsById(int productid)
+        {
+            var sqlParamList = new List<SqlParameter>();
+            sqlParamList.Add(new SqlParameter() { ParameterName = "@productid", Value = productid, DbType = System.Data.DbType.Int32 });
+
+            var result = context.ExecuteFunction<XmlResultSet>("usp_Catlog_RealatedProducts",
+                sqlParamList.ToArray()
+                ).FirstOrDefault();
+            if (result != null)
+            {
+                var relatedProduct = Serializer.GenericDeSerializer<RelatedProduct>(result.XmlResult);
+                return relatedProduct;
+            }
+
+            return new RelatedProduct();
+        }
     }
 }

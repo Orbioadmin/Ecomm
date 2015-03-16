@@ -16,12 +16,12 @@ namespace Orbio.Web.UI.Models.Orders
         public ShoppingCartItemModels(ShoppingCartItem cartitem)
             : this()
         {
-            this.Itemcount = cartitem.Itemcount;
-            if (cartitem.ShoppingCartProducts != null && cartitem.ShoppingCartProducts.Count > 0)
-            {
-                this.Products = (from p in cartitem.ShoppingCartProducts
-                                 select new ShoppingCartProductDetailModel(p)).ToList();
-            }
+            //this.Itemcount = cartitem.Itemcount;
+            //if (cartitem.ShoppingCartProducts != null && cartitem.ShoppingCartProducts.Count > 0)
+            //{
+            //    this.Products = (from p in cartitem.ShoppingCartProducts
+            //                     select new ShoppingCartProductDetailModel(p)).ToList();
+            //}
         }
         public int Itemcount { get; set; }
         public List<ShoppingCartProductDetailModel> Products { get; set; }

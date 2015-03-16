@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using Nop.Core;
 using Nop.Data;
+using Orbio.Core.Domain.Orders;
 
 namespace Nop.Plugin.Feed.Froogle.Data
 {
@@ -94,6 +95,12 @@ namespace Nop.Plugin.Feed.Froogle.Data
 
 
         List<T> IDbContext.ExecuteFunction<T>(string commandText, params object[] parameters)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public List<ShoppingCartItem> ExecuteFunctionModel(string commandText, params  object[] parameters)
         {
             throw new NotImplementedException();
         }

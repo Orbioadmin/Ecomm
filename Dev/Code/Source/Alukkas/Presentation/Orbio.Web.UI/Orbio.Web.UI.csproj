@@ -216,6 +216,7 @@
     <Compile Include="Models\Catalog\ProductOverViewModel.cs" />
     <Compile Include="Models\Catalog\ProductVariantAttributeModel.cs" />
     <Compile Include="Models\Catalog\ProductVariantAttributeValueModel.cs" />
+    <Compile Include="Models\Catalog\RelatedProductsModel.cs" />
     <Compile Include="Models\Catalog\SearchModel.cs" />
     <Compile Include="Models\Catalog\SpecificationAttribute.cs" />
     <Compile Include="Models\Catalog\SpecificationAttributeOption.cs" />
@@ -577,6 +578,7 @@
     <Content Include="Views\CheckOut\Index.cshtml" />
     <Content Include="Views\ShoppingCart\CartItems.cshtml" />
     <Content Include="Views\ShoppingCart\OrderSummary.cshtml" />
+    <Content Include="Views\Catalog\RelatedProducts.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

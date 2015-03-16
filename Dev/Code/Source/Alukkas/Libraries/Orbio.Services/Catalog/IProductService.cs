@@ -18,5 +18,11 @@ namespace Orbio.Services.Catalog
         /// <returns>instance of Product details</returns>
         ProductDetail GetProductsDetailsBySlug(string slug);
 
+         /// <summary>
+        /// gets all related products by product id
+        /// </summary>
+        /// <param name="productid">the product id</param>
+        /// <returns>list of products</returns>
+        RelatedProduct GetRelatedProductsById(int productid);
     }
 }

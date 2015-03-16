@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using Nop.Core;
 using Nop.Data;
+using Orbio.Core.Domain.Orders;
 
 namespace Nop.Plugin.Shipping.ByWeight.Data
 {
@@ -92,6 +93,11 @@ namespace Nop.Plugin.Shipping.ByWeight.Data
 
 
         public List<T> ExecuteFunction<T>(string commandText, params  object[] parameters)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<ShoppingCartItem> ExecuteFunctionModel(string commandText, params  object[] parameters)
         {
             throw new NotImplementedException();
         }

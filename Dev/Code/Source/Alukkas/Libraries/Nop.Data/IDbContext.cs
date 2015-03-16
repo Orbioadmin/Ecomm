@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
 using Nop.Core;
+using Orbio.Core.Domain.Orders;
 
 namespace Nop.Data
 {
@@ -71,5 +72,7 @@ namespace Nop.Data
         ///// <param name="parameters">any parameters if required</param>
         ///// <returns>object result of type T</returns>
         //Tuple<T1,T2,T3> ExecuteMultipleResult<T1,T2,T3>(string commandText, params object[] parameters);
+
+        List<ShoppingCartItem> ExecuteFunctionModel(string commandText, params object[] parameters);
     }
 }
