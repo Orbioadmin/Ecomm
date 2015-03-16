@@ -5,6 +5,9 @@ using Orbio.Core.Domain.Catalog;
 using System.Linq;
 using Orbio.Services.Utility;
 using System.Data.SqlClient;
+using System.IO;
+using System.Xml;
+using System.Data;
 
 namespace Orbio.Services.Catalog
 {
@@ -60,6 +63,17 @@ namespace Orbio.Services.Catalog
                        new SqlParameter() { ParameterName = "@name", Value = name, DbType = System.Data.DbType.String});
 
             return 0;
+        }
+
+        public List<ProductReview> GetCustomerReviews(int productid)
+        {
+            DataSet dt = new DataSet();
+            var sqlParamList = new List<SqlParameter>();
+            sqlParamList.Add(new SqlParameter() { ParameterName = "@ProductId", Value = productid, DbType = System.Data.DbType.Int16 });
+
+            var result = context.ExecuteFunction<ProductReview>("usp_Catalog_GetCustomerReviews",
+             sqlParamList.ToArray());
+           return result;
         }
     }
 }

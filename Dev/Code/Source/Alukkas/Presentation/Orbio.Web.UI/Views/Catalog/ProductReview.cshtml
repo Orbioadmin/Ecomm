@@ -1,47 +1,6 @@
-﻿
+﻿@model List<Orbio.Web.UI.Models.Catalog.ReviewModel>
 
-<section id="review">
-    <div class="container">
-        @*@using (Html.BeginForm("Review", "Catalog", new {this.Model.SeName, this.Model.Id }, FormMethod.Post, new { @class = "form-horizontal " }))
-            {*@
-        <div class="row">
-            <h1 class="review_news">REVIEWS</h1>
 
-            <div class="col-md-3">
-
-                <div class="" align="center">
-                    <i class="big_star"></i>
-                    <p class="red_no">4.4</p>
-                    <p>Average Rating</p>
-                    <p>Based on 94 Rating</p>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <ul class="cust_rating">
-                    <li><p>5 star</p><div class="yell_rat"><img src="images/Basic_image/ratings-5.png"></div><p>(20)</p></li>
-                    <li><p>4 star</p><div class="yell_rat"><img src="images/Basic_image/ratings-4.png"></div><p>(20)</p></li>
-                    <li><p>3 star</p><div class="yell_rat"><img src="images/Basic_image/ratings-3.png"></div><p>(20)</p></li>
-                    <li><p>2 star</p><div class="yell_rat"><img src="images/Basic_image/ratings-2.png"></div><p>(20)</p></li>
-                    <li><p>1 star</p><div class="yell_rat"><img src="images/Basic_image/ratings-1.png"></div><p>(20)</p></li>
-                </ul>
-            </div>
-
-            <div class="col-md-3">
-                <div class="" align="center">
-                    <p>You can help other customers</p>
-                    <p class="product_red">Have you used this product?</p>
-                    <div class="rating" data-rating-max="5"></div>
-                    <div class="clear"></div>
-                    <p>Rate this Product!</p>
-                    <a href='@Url.Action("Review", "Catalog", new {this.Model.SeName })'>
-                        <input type="button" class="wrt_rview" value="Write A Review">
-                    </a>
-
-                </div>
-            </div>
-
-        </div>
 
         <div class="row disply_top">
             <div class="display_review">
@@ -49,39 +8,47 @@
             </div>
             <div class="col-md-12">
                 <ul class="comment">
+                    @foreach (var review in this.Model)
+                    {
                     <li>
                         <div class="review_post">
-                            <h1>Great Battery Life</h1>
-                            <p>Karthick</p>
-                            <div class="star_rt"></div>
+                            <h1>@review.ReviewTitle</h1>
+                            <p>@review.CustomerName</p>
+                            @if(review.Rating==1)
+                            {
+                            <div class="star_rt1">
+                            </div>
+                            }
+                            else if (review.Rating == 2)
+                            {
+                                <div class="star_rt2">
+                                </div>
+                            }
+                           else if(review.Rating==3)
+                            {
+                            <div class="star_rt3">
+                            </div>
+                            }
+                            else if (review.Rating == 4)
+                            {
+                                <div class="star_rt4">
+                                </div>
+                            }
+                            else if(review.Rating==5)
+                            {
+                            <div class="star_rt5">
+                            </div>
+                            }
+                            
                         </div>
                         <div class="review_line">
-                            disk is compact. loved the metal finish. uploading is a bit slow because of usb 2.0 for uploading. good product but no carrying case is vailable it has to be purchased separately.
+                            @review.ReviewText
                         </div>
                     </li>
-                    <li>
-                        <div class="review_post">
-                            <h1>Great Battery Life</h1>
-                            <p>Karthick</p>
-                            <div class="star_rt"></div>
-                        </div>
-                        <div class="review_line">
-                            disk is compact. loved the metal finish. uploading is a bit slow because of usb 2.0 for uploading. good product but no carrying case is vailable it has to be purchased separately.
-                        </div>
-                    </li>
+                    }
                 </ul>
+                
                 <div class="prev_nxt"> <a href="">Previous</a>|<a href="#">Next</a></div>
             </div>
         </div>
-     
-    </div>
-
-
-    @*</div>
-        </div>
-
-
-        </div>
-        </div>
-        </div>*@
-</section>
+   

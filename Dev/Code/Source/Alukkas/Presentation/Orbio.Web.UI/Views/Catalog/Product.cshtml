@@ -2,10 +2,10 @@
 @{
     ViewBag.Title = "Product";
 }
- @*@Html.Action("PriceBar", "Home")*@
- <section>
+@*@Html.Action("PriceBar", "Home")*@
+<section>
     @{
-       Html.RenderPartial(this.Model.ViewPath, this.Model); 
+        Html.RenderPartial(this.Model.ViewPath, this.Model);
     }
 </section>
 
@@ -13,7 +13,7 @@
 
 
 
- 
+
 
 
 
@@ -342,25 +342,66 @@
 </section>
 
 
-@*@if(this.Model.ProductReview)*@
+<section id="review">
+    <div class="container">
+        <div class="row">
+            <h1 class="review_news">REVIEWS</h1>
 
-@*@{
-    Html.RenderPartial("ProductReview", this.Model.ProductReview);
-}*@
+            <div class="col-md-3">
 
+                <div class="" align="center">
+                    <i class="big_star"></i>
+                    <p class="red_no">4.4</p>
+                    <p>Average Rating</p>
+                    <p>Based on 94 Rating</p>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <ul class="cust_rating">
+                    <li><p>5 star</p><div class="yell_rat"><img src="images/Basic_image/ratings-5.png"></div><p>(20)</p></li>
+                    <li><p>4 star</p><div class="yell_rat"><img src="images/Basic_image/ratings-4.png"></div><p>(20)</p></li>
+                    <li><p>3 star</p><div class="yell_rat"><img src="images/Basic_image/ratings-3.png"></div><p>(20)</p></li>
+                    <li><p>2 star</p><div class="yell_rat"><img src="images/Basic_image/ratings-2.png"></div><p>(20)</p></li>
+                    <li><p>1 star</p><div class="yell_rat"><img src="images/Basic_image/ratings-1.png"></div><p>(20)</p></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3">
+                <div class="" align="center">
+                    <p>You can help other customers</p>
+                    <p class="product_red">Have you used this product?</p>
+                    <div class="rating" data-rating-max="5"></div>
+                    <div class="clear"></div>
+                    <p>Rate this Product!</p>
+
+                    <a href='@Url.Action("Review", "Catalog", new {this.Model.SeName })'>
+                        <input type="button" class="wrt_rview" value="Write A Review">
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+
+        @{
+            Html.RenderAction("ProductReview", new { Id = this.Model.Id });
+        }
+
+    </div>
+
+</section>
 
 
 @section scripts{
-<script type="text/javascript">
-      $(document).ready(function(){
-            $.each($('a[Id^=ProductVariantAttributes_]'), function(){
-                    $(this).click(function(){
-                        $('#' + $(this).attr('data-Id')).val($(this).attr('data-Val'));
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.each($('a[Id^=ProductVariantAttributes_]'), function () {
+                $(this).click(function () {
+                    $('#' + $(this).attr('data-Id')).val($(this).attr('data-Val'));
                 });
-                });
-    });
-    
-</script>
+            });
+        });
 
-
+    </script>
 }

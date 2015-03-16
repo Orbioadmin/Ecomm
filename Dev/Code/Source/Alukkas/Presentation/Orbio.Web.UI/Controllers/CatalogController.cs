@@ -13,6 +13,7 @@ using Orbio.Web.UI.Infrastructure.Cache;
 using Orbio.Web.UI.Models.Catalog;
 using Orbio.Web.UI.Filters;
 using Orbio.Core.Domain.Catalog;
+using System.Data;
 
 namespace Orbio.Web.UI.Controllers
 {
@@ -321,19 +322,12 @@ namespace Orbio.Web.UI.Controllers
         [LoginRequired]
         public ActionResult Review(ProductDetailModel product,string seName)
         {
-            if(TempData.ContainsKey("SeName"))
-            {
-            }
-            else
-            {
-                TempData.Add("SeName", seName);
-            }
-            //if (TempData.ContainsKey("Id"))
+            //if(TempData.ContainsKey("SeName"))
             //{
             //}
             //else
             //{
-            //    TempData.Add("Id", id);
+            //    TempData.Add("SeName", seName);
             //}
             var model = new ReviewModel();
             model.Rating = 5;
@@ -344,16 +338,6 @@ namespace Orbio.Web.UI.Controllers
        [HttpPost]
         public ActionResult Review(ReviewModel model, string returnUrl, string seName)
        {
-           int productid = 0;
-           string sename="";
-           if (TempData.ContainsKey("Id"))
-           {
-               productid = (int)TempData["Id"];
-           }
-           if (TempData.ContainsKey("SeName"))
-           {
-               model.SeName = seName;
-           }
            if (ModelState.IsValid)
            {
                var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
@@ -389,15 +373,35 @@ namespace Orbio.Web.UI.Controllers
 
 
         [ChildActionOnly]
-        public ActionResult ProductReview(int id)
+        public ActionResult ProductReview(ReviewModel model, int id,string SeName)
        {
-           var model = GetCustomerReview(id);
-           return PartialView(model);
+           List<ReviewModel> list = new List<ReviewModel>();
+           list = GetCustomerReview(id);
+          return PartialView(list);
        }
 
         private List<ReviewModel> GetCustomerReview(int id)
         {
-            var customerreview = productService.GetCustomerReviews(id);
+            var customerReviews = productService.GetCustomerReviews(id);
+            var reviews = from cr in customerReviews
+                          group cr by cr.Rating;
+
+            var model = (from cr in customerReviews
+                         select new ReviewModel
+                         {
+                            ReviewTitle=cr.ReviewTitle,
+                            ReviewText=cr.ReviewText,
+                            Rating=cr.Rating,
+                            CustomerName=cr.CustomerName  
+                         }).ToList();
+            return model;
         }
+        //private List<ReviewModel> GetCustomerReview(int id)
+        //{
+        //    var customerReviews = productService.GetCustomerReviews(id);
+        //    //var customerReviewsById = from cr in customerReviews
+        //    //                                group cr by cr.;
+           
+        //}
     }
 }

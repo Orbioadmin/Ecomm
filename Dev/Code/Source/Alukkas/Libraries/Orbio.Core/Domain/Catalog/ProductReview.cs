@@ -33,13 +33,16 @@ namespace Orbio.Core.Domain.Catalog
         /// get or sets Customer Name
         /// </summary>
         [DataMember]
-        public string Customer { get; set; }
+        public string CustomerName { get; set; }
 
         /// <summary>
         /// get or sets starcount
         /// </summary>
         [DataMember]
         public int starcount{get;set;}
+
+        [DataMember]
+        public string SeName { get; set; }
 
         [DataMember]
         public List<ProductReview> ProductReviews { get; set; }

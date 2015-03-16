@@ -19,7 +19,9 @@ namespace Orbio.Web.UI.Models.Catalog
         {
             this.ReviewText = productReview.ReviewText;
             this.ReviewTitle = productReview.ReviewText;
-
+            this.Rating = productReview.Rating;
+            this.CustomerName = productReview.CustomerName;
+            this.SeName = productReview.SeName;
         }
 
         public string SeName { get; set; }
