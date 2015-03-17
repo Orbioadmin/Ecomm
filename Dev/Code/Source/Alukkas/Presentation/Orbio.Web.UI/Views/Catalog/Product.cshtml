@@ -2,10 +2,10 @@
 @{
     ViewBag.Title = "Product";
 }
- @*@Html.Action("PriceBar", "Home")*@
- <section>
+@*@Html.Action("PriceBar", "Home")*@
+<section>
     @{
-       Html.RenderPartial(this.Model.ViewPath, this.Model); 
+        Html.RenderPartial(this.Model.ViewPath, this.Model);
     }
 </section>
 
@@ -13,7 +13,7 @@
 
 
 
- 
+
 
 
 
@@ -342,15 +342,13 @@
 </section>
 
 
-
-
-
-
 <section id="review">
     <div class="container">
         <div class="row">
             <h1 class="review_news">REVIEWS</h1>
+
             <div class="col-md-3">
+
                 <div class="" align="center">
                     <i class="big_star"></i>
                     <p class="red_no">4.4</p>
@@ -376,63 +374,34 @@
                     <div class="rating" data-rating-max="5"></div>
                     <div class="clear"></div>
                     <p>Rate this Product!</p>
-                    <input type="button" class="wrt_rview" value="Write A Review">
+
+                    <a href='@Url.Action("Review", "Catalog", new {this.Model.SeName })'>
+                        <input type="button" class="wrt_rview" value="Write A Review">
+                    </a>
+
                 </div>
             </div>
 
         </div>
 
-        <div class="row disply_top">
-            <div class="display_review">
-                <h1>Displaying Top Reviews</h1>
-            </div>
-            <div class="col-md-12">
-                <ul class="comment">
-                    <li>
-                        <div class="review_post">
-                            <h1>Great Battery Life</h1>
-                            <p>Karthick</p>
-                            <div class="star_rt"></div>
-                        </div>
-                        <div class="review_line">
-                            disk is compact. loved the metal finish. uploading is a bit slow because of usb 2.0 for uploading. good product but no carrying case is vailable it has to be purchased separately.
-                        </div>
-                    </li>
-                    <li>
-                        <div class="review_post">
-                            <h1>Great Battery Life</h1>
-                            <p>Karthick</p>
-                            <div class="star_rt"></div>
-                        </div>
-                        <div class="review_line">
-                            disk is compact. loved the metal finish. uploading is a bit slow because of usb 2.0 for uploading. good product but no carrying case is vailable it has to be purchased separately.
-                        </div>
-                    </li>
-                </ul>
-                <div class="prev_nxt"> <a href="">Previous</a>|<a href="#">Next</a></div>
-            </div>
-        </div>
+        @{
+            Html.RenderAction("ProductReview", new { Id = this.Model.Id });
+        }
 
     </div>
 
-
-    </div>
-    </div>
-
-
-    </div>
-    </div>
-    </div>
 </section>
 
+
 @section scripts{
-<script type="text/javascript">
-      $(document).ready(function(){
-            $.each($('a[Id^=ProductVariantAttributes_]'), function(){
-                    $(this).click(function(){
-                        $('#' + $(this).attr('data-Id')).val($(this).attr('data-Val'));
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.each($('a[Id^=ProductVariantAttributes_]'), function () {
+                $(this).click(function () {
+                    $('#' + $(this).attr('data-Id')).val($(this).attr('data-Val'));
                 });
-                });
-    });
-    
-</script>}
+            });
+        });
+
+    </script>
+}

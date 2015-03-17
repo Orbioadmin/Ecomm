@@ -5,6 +5,9 @@ using Orbio.Core.Domain.Catalog;
 using System.Linq;
 using Orbio.Services.Utility;
 using System.Data.SqlClient;
+using System.IO;
+using System.Xml;
+using System.Data;
 
 namespace Orbio.Services.Catalog
 {
@@ -68,6 +71,31 @@ namespace Orbio.Services.Catalog
             }
 
             return new RelatedProduct();
+        }
+
+        public int InsertReviews(int id, int productid, bool isapproved, string ReviewTitle, string ReviewText, int Rating,string name)
+        {
+            var result = context.ExecuteFunction<ProductDetail>("usp_Customer_InsertCustomerReview",
+                  new SqlParameter() { ParameterName = "@customerid", Value = id, DbType = System.Data.DbType.Int16 },
+                   new SqlParameter() { ParameterName = "@productid", Value = productid, DbType = System.Data.DbType.Int16 },
+                    new SqlParameter() { ParameterName = "@isapproved", Value = isapproved, DbType = System.Data.DbType.Boolean },
+                     new SqlParameter() { ParameterName = "@reviewtitle", Value = ReviewTitle, DbType = System.Data.DbType.String },
+                      new SqlParameter() { ParameterName = "@reviewtext", Value = ReviewText, DbType = System.Data.DbType.String },
+                      new SqlParameter() { ParameterName = "@rating", Value = Rating, DbType = System.Data.DbType.Int16},
+                       new SqlParameter() { ParameterName = "@name", Value = name, DbType = System.Data.DbType.String});
+
+            return 0;
+        }
+
+        public List<ProductReview> GetCustomerReviews(int productid)
+        {
+            DataSet dt = new DataSet();
+            var sqlParamList = new List<SqlParameter>();
+            sqlParamList.Add(new SqlParameter() { ParameterName = "@ProductId", Value = productid, DbType = System.Data.DbType.Int16 });
+
+            var result = context.ExecuteFunction<ProductReview>("usp_Catalog_GetCustomerReviews",
+             sqlParamList.ToArray());
+           return result;
         }
     }
 }

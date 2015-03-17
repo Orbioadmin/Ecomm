@@ -14,6 +14,9 @@ using Orbio.Web.UI.Models.Catalog;
 using Orbio.Services.Orders;
 using System.Xml;
 using System.Diagnostics;
+using Orbio.Web.UI.Filters;
+using Orbio.Core.Domain.Catalog;
+using System.Data;
 
 namespace Orbio.Web.UI.Controllers
 {
@@ -48,8 +51,6 @@ namespace Orbio.Web.UI.Controllers
             this.categoryService = categoryService;
 
             this.productService = productService;
-
-            this.shoppingcartservice = shoppingcartservice;
             //this.workContext = workContext;
             //this.storeContext = storeContext;
 
@@ -57,6 +58,7 @@ namespace Orbio.Web.UI.Controllers
 
             this.cacheManager = cacheManager;
             this.webHelper = webHelper;
+            this.shoppingcartservice = shoppingcartservice;
         }
 
         /// <summary>
@@ -246,7 +248,7 @@ namespace Orbio.Web.UI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Product(ProductDetailModel product, ShoppingCartType cartType, FormCollection formkey)
+        public ActionResult Product(ProductDetailModel product, ShoppingCartType cartType)
         {
             TempData.Add("product", product);
             TempData.Add("cartType", cartType);
@@ -277,11 +279,13 @@ namespace Orbio.Web.UI.Controllers
             //    count++;
             //}
             //shoppingcartservice.AddCartItem("add", Convert.ToInt32(cartType), curcustomer.Id, product.Id, selectedAttributes,Convert.ToInt32(product.SelectedQuantity));
+
             return RedirectToRoute("Category", new { p = "pt", seName = product.SeName });
         }
 
         public ActionResult Product(string seName)
         {
+
             ProductDetailModel selectedProduct = null;
             ShoppingCartType selectedcarttype;
             ViewBag.Errors = string.Empty;
@@ -453,5 +457,81 @@ namespace Orbio.Web.UI.Controllers
             return result;
         }
 
+        [LoginRequired]
+        public ActionResult Review(ProductDetailModel product, string seName)
+        {
+                var model = new ReviewModel();
+                model.Rating = 5;
+                model.SeName = seName;
+                return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Review(ReviewModel model, string returnUrl, string seName)
+        {
+            if (ModelState.IsValid)
+            {
+                var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
+                if (workContext.CurrentCustomer.IsRegistered)
+                {
+                    workContext.CurrentCustomer.IsApproved = true;
+                    if (model.Rating > 0 || model.Rating < 6)
+                    {
+                        var productdetails = PrepareProductdetailsModel(seName);
+                        var productresult = productService.InsertReviews(workContext.CurrentCustomer.Id, productdetails.Id
+                        , workContext.CurrentCustomer.IsApproved, model.ReviewTitle, model.ReviewText, model.Rating, model.CustomerName);
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Please rate the product");
+                        return View(model);
+                    }
+                }
+                else
+                {
+
+                    ModelState.AddModelError("", "Only registered customers can write reviews");
+                    return View(model);
+                }
+                return RedirectToRoute("Category", new { p = "pt", seName = seName });
+            }
+            else
+            {
+                return View(model);
+            }
+        }
+
+
+        [ChildActionOnly]
+        public ActionResult ProductReview(ReviewModel model, int id, string SeName)
+        {
+            List<ReviewModel> list = new List<ReviewModel>();
+            list = GetCustomerReview(id);
+            return PartialView(list);
+        }
+
+        private List<ReviewModel> GetCustomerReview(int id)
+        {
+            var customerReviews = productService.GetCustomerReviews(id);
+            var reviews = from cr in customerReviews
+                          group cr by cr.Rating;
+
+            var model = (from cr in customerReviews
+                         select new ReviewModel
+                         {
+                             ReviewTitle = cr.ReviewTitle,
+                             ReviewText = cr.ReviewText,
+                             Rating = cr.Rating,
+                             CustomerName = cr.CustomerName
+                         }).ToList();
+            return model;
+        }
+        //private List<ReviewModel> GetCustomerReview(int id)
+        //{
+        //    var customerReviews = productService.GetCustomerReviews(id);
+        //    //var customerReviewsById = from cr in customerReviews
+        //    //                                group cr by cr.;
+
+        //}
     }
 }
