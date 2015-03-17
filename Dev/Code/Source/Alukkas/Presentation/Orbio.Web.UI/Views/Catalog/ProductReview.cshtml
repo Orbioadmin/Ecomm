@@ -2,53 +2,57 @@
 
 
 
-        <div class="row disply_top">
-            <div class="display_review">
-                <h1>Displaying Top Reviews</h1>
-            </div>
-            <div class="col-md-12">
-                <ul class="comment">
-                    @foreach (var review in this.Model)
-                    {
-                    <li>
-                        <div class="review_post">
-                            <h1>@review.ReviewTitle</h1>
-                            <p>@review.CustomerName</p>
-                            @if(review.Rating==1)
-                            {
+<div class="row disply_top">
+    <div class="display_review">
+        <h1>Displaying Top Reviews</h1>
+    </div>
+    <div class="col-md-12">
+        <ul class="comment">
+            @foreach (var review in this.Model)
+            {
+                <li>
+                    <div class="review_post">
+                        <h1>@review.ReviewTitle</h1>
+                        <p>@review.CustomerName</p>
+                        @if (review.Rating == 1)
+                        {
                             <div class="star_rt1">
                             </div>
-                            }
-                            else if (review.Rating == 2)
-                            {
-                                <div class="star_rt2">
-                                </div>
-                            }
-                           else if(review.Rating==3)
-                            {
+                        }
+                        else if (review.Rating == 2)
+                        {
+                            <div class="star_rt2">
+                            </div>
+                        }
+                        else if (review.Rating == 3)
+                        {
                             <div class="star_rt3">
                             </div>
-                            }
-                            else if (review.Rating == 4)
-                            {
-                                <div class="star_rt4">
-                                </div>
-                            }
-                            else if(review.Rating==5)
-                            {
+                        }
+                        else if (review.Rating == 4)
+                        {
+                            <div class="star_rt4">
+                            </div>
+                        }
+                        else if (review.Rating == 5)
+                        {
                             <div class="star_rt5">
                             </div>
-                            }
-                            
-                        </div>
-                        <div class="review_line">
-                            @review.ReviewText
-                        </div>
-                    </li>
-                    }
-                </ul>
-                
-                <div class="prev_nxt"> <a href="">Previous</a>|<a href="#">Next</a></div>
-            </div>
-        </div>
-   
+                        }
+                        else
+                        {
+                            <div class="star_rt0">
+                            </div>
+                        }
+
+                    </div>
+                    <div class="review_line">
+                        @review.ReviewText
+                    </div>
+                </li>
+            }
+        </ul>
+
+        <div class="prev_nxt"> <a href="">Previous</a>|<a href="#">Next</a></div>
+    </div>
+</div>

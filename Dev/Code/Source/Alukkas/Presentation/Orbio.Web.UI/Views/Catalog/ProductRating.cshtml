@@ -1,0 +1,23 @@
+﻿@model List<Orbio.Web.UI.Models.Catalog.ReviewModel>
+
+@foreach (var review in this.Model)
+{
+<div class="col-md-3">
+    <div class="" align="center">
+        <i class="big_star"></i>
+        <p class="red_no">@review.AvgRating</p>
+        <p>Average Rating</p>
+        <p>Based on (@review.StarCount) Rating</p>
+    </div>
+</div>
+
+<div class="col-md-3">
+    <ul class="cust_rating">
+        <li><p>5 star</p><div class="yell_rat"><img src="images/Basic_image/ratings-5.png"></div><p>@review.FiveStarRating</p></li>
+        <li><p>4 star</p><div class="yell_rat"><img src="images/Basic_image/ratings-4.png"></div><p>@review.FourStarRating</p></li>
+        <li><p>3 star</p><div class="yell_rat"><img src="images/Basic_image/ratings-3.png"></div><p>@review.ThreeStarRating</p></li>
+        <li><p>2 star</p><div class="yell_rat"><img src="images/Basic_image/ratings-2.png"></div><p>@review.TwoStarRating</p></li>
+        <li><p>1 star</p><div class="yell_rat"><img src="images/Basic_image/ratings-1.png"></div><p>@review.OneStarRating</p></li>
+    </ul>
+</div>
+    }

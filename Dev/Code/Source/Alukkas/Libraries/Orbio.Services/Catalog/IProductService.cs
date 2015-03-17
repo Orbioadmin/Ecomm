@@ -44,6 +44,6 @@ namespace Orbio.Services.Catalog
         /// </summary>
         /// <param name="productid"></param>
         /// <returns></returns>
-        List<ProductReview> GetCustomerReviews(int productid);
+        List<ProductReview> GetCustomerReviews(int productid,string value);
     }
 }

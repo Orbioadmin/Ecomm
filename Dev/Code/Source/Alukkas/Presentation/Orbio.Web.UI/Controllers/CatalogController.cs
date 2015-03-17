@@ -510,12 +510,25 @@ namespace Orbio.Web.UI.Controllers
             return PartialView(list);
         }
 
+        [ChildActionOnly]
+        public ActionResult ProductRating(ReviewModel model, int id)
+        {
+            var ratings = productService.GetCustomerReviews(id, "Rating");
+            var rating = GetRatings(ratings);
+            return PartialView(rating);
+        }
+
+        [ChildActionOnly]
+        public ActionResult ProductStar(ReviewModel model, int id)
+        {
+            var ratings = productService.GetCustomerReviews(id, "Rating");
+            var rating = GetRatings(ratings);
+            return PartialView(rating);
+        }
         private List<ReviewModel> GetCustomerReview(int id)
         {
-            var customerReviews = productService.GetCustomerReviews(id);
-            var reviews = from cr in customerReviews
-                          group cr by cr.Rating;
-
+            var customerReviews = productService.GetCustomerReviews(id,"Review");
+           
             var model = (from cr in customerReviews
                          select new ReviewModel
                          {
@@ -526,12 +539,24 @@ namespace Orbio.Web.UI.Controllers
                          }).ToList();
             return model;
         }
-        //private List<ReviewModel> GetCustomerReview(int id)
-        //{
-        //    var customerReviews = productService.GetCustomerReviews(id);
-        //    //var customerReviewsById = from cr in customerReviews
-        //    //                                group cr by cr.;
 
-        //}
+       
+        private List<ReviewModel> GetRatings(List<ProductReview> ratings)
+        {
+            var rating = (from cr in ratings
+                          select new ReviewModel
+                          {
+                              OneStarRating = cr.OneStarRating,
+                              TwoStarRating = cr.TwoStarRating,
+                              ThreeStarRating = cr.ThreeStarRating,
+                              FourStarRating = cr.FourStarRating,
+                              FiveStarRating = cr.FiveStarRating,
+                              StarCount = cr.StarCount,
+                              AvgRating = ((Convert.ToDouble(cr.OneStarRating * 1) + Convert.ToDouble(cr.TwoStarRating * 2) + Convert.ToDouble(cr.ThreeStarRating * 3) + Convert.ToDouble(cr.FourStarRating * 4) + Convert.ToDouble(cr.FiveStarRating * 5)) / Convert.ToDouble(cr.StarCount))
+                          }).ToList();
+
+            return rating;
+        }
+
     }
 }

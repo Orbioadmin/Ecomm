@@ -44,5 +44,18 @@ namespace Orbio.Web.UI.Models.Catalog
         [Display(Name = "Name")]
         public string CustomerName { get; set; }
 
+        public int OneStarRating { get; set; }
+
+        public int TwoStarRating { get; set; }
+
+        public int ThreeStarRating { get; set; }
+
+        public int FourStarRating { get; set; }
+
+        public int FiveStarRating { get; set; }
+
+        public int StarCount { get; set; }
+
+        public double AvgRating { get; set; }
     }
 }
