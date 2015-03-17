@@ -54,9 +54,6 @@
       <Private>False</Private>
       <HintPath>..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
-    <Reference Include="Orbio.Core">
-      <HintPath>..\..\Libraries\Orbio.Services\bin\Release\Orbio.Core.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -132,6 +129,10 @@
       <Project>{210541AD-F659-47DA-8763-16F36C5CD2F4}</Project>
       <Name>Nop.Services</Name>
       <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libraries\Orbio.Core\Orbio.Core.csproj">
+      <Project>{4298465c-c235-4d7c-82f1-9d3810c09f2b}</Project>
+      <Name>Orbio.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Presentation\Nop.Web.Framework\Nop.Web.Framework.csproj">
       <Project>{75FD4163-333C-4DD5-854D-2EF294E45D94}</Project>

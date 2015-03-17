@@ -43,10 +43,6 @@
     <Reference Include="EntityFramework.SqlServerCompact">
       <HintPath>..\..\packages\EntityFramework.SqlServerCompact.6.0.1\lib\net45\EntityFramework.SqlServerCompact.dll</HintPath>
     </Reference>
-    <Reference Include="Orbio.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Orbio.Core\bin\Release\Orbio.Core.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -176,6 +172,10 @@
     <ProjectReference Include="..\Nop.Core\Nop.Core.csproj">
       <Project>{6BDA8332-939F-45B7-A25E-7A797260AE59}</Project>
       <Name>Nop.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Orbio.Core\Orbio.Core.csproj">
+      <Project>{4298465c-c235-4d7c-82f1-9d3810c09f2b}</Project>
+      <Name>Orbio.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
