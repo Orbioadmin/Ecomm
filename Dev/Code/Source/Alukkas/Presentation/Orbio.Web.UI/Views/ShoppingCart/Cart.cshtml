@@ -1,4 +1,4 @@
-﻿@model Orbio.Web.UI.Models.Orders.ShoppingCartItemModels
+﻿@model List<Orbio.Web.UI.Models.Orders.ShoppingCartItemModels>
 <section class="main_shop_cart">
     <div class="container">
         <ol class="breadcrumb">
@@ -21,7 +21,53 @@
                         <th>Total Price</th>
                     </tr>
                     @{
-                        Html.RenderPartial("OrderSummary", this.Model.Products);
+                var count = 0;
+
+                foreach (var scpd in this.Model)
+                {
+                    var scpdr = string.Format("items[{0}].IsRemove", count);
+                    var scpdqu = string.Format("items[{0}].SelectedQuantity", count);
+                    var scpdId = string.Format("items[{0}].Id", count);
+                    var scpdTotalprice = string.Format("items[{0}].Totalprice", count);
+                    var scpdRemove = string.Format("items[{0}].IsRemove", count);
+                    var scpdQuantity = string.Format("items[{0}].SelectedQuantity", count);
+                    var scpdcartid = string.Format("items[{0}].CartId", count);
+                    <tr>
+                        <td><img src="@scpd.ProductPictures[count].ImageUrl"></td>
+                        <td>@scpd.Name </td>
+                        <td>@Html.CheckBox(scpdr, scpd.IsRemove)@*<input type="checkbox" name="Remove" value="@scpd.CartId" />*@</td>
+                        <td>
+                            @{
+                    var qtyList = new List<object>();
+                    if (scpd.AllowedQuantities.Count > 0)
+                    {
+                        foreach (var qty in scpd.AllowedQuantities)
+                        {
+                            qtyList.Add(new { Text = qty.ToString(), Value = qty.ToString() });
+                        }
+                    }
+                    else
+                    {
+                        for (var i = scpd.OrderMinimumQuantity; i <= scpd.OrderMaximumQuantity; i++)
+                        {
+                            qtyList.Add(new { Text = i.ToString(), Value = i.ToString() });
+                        }
+                    }
+                    //var selectedValue = qtyList.Where(qty => qty == scpd.SelectedQuantity).FirstOrDefault();
+                    //if (selectedValue == null)
+                    //{
+                    //    selectedValue = qtyList.FirstOrDefault();
+                    //}
+                    var qtySelectList = new SelectList(qtyList, "Value", "Text", scpd.SelectedQuantity);
+                            }
+
+                            @Html.DropDownList(scpdqu, (IEnumerable<SelectListItem>)qtySelectList)
+                            @Html.Hidden(scpdRemove, scpd.IsRemove)  @Html.Hidden(scpdQuantity, scpd.SelectedQuantity) @Html.Hidden(scpdcartid, scpd.CartId)
+                        <td>@scpd.CurrencyCode.@scpd.ProductPrice.Price @Html.Hidden(scpdId, scpd.Id)  @Html.Hidden(scpdTotalprice, scpd.Totalprice)</td>
+                        <td>@scpd.CurrencyCode.@scpd.Totalprice @Html.Hidden(scpd.Totalprice)</td>
+                    </tr>
+                    count++;
+                }
                     }
                 </table>
 
@@ -60,7 +106,7 @@
                         <div class="cart_total">
                             <dl class="dl-horizontal">
                                 <dt>Cart Sub Total</dt>
-                                <dd>@Model.CurrencyCode.@ViewBag.subtotal</dd>
+                                <dd>@ViewBag.Currencycode.@ViewBag.subtotal</dd>
                                 <dt>Shipping Charges</dt>
                                 <dd>0</dd>
                                 <dt>Promotional Discounts</dt>
@@ -68,7 +114,7 @@
                                 <dt>Estimated Tax</dt>
                                 <dd>0</dd>
                                 <dt class="cart_total">Total</dt>
-                                <dd class="cart_total">@Model.CurrencyCode.@ViewBag.subtotal</dd>
+                                <dd class="cart_total">@ViewBag.Currencycode.@ViewBag.subtotal</dd>
                             </dl>
                         </div>
 

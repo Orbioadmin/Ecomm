@@ -229,7 +229,6 @@
     <Compile Include="Models\Customer\PasswordRecoveryModel.cs" />
     <Compile Include="Models\Home\PriceBarModel.cs" />
     <Compile Include="Models\Orders\ShoppingCartItemModels.cs" />
-    <Compile Include="Models\Orders\ShoppingCartProductDetailModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -578,7 +577,6 @@
     <Content Include="Views\ShoppingCart\Cart.cshtml" />
     <Content Include="Views\CheckOut\Index.cshtml" />
     <Content Include="Views\ShoppingCart\CartItems.cshtml" />
-    <Content Include="Views\ShoppingCart\OrderSummary.cshtml" />
     <Content Include="Views\Catalog\RelatedProducts.cshtml" />
     <Content Include="Views\Catalog\ProductReview.cshtml" />
     <Content Include="Views\Catalog\Review.cshtml" />

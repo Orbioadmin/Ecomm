@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace Orbio.Services.Orders
 {
@@ -23,12 +24,12 @@ namespace Orbio.Services.Orders
         /// Get shopping cart items
         /// </summary>
         /// <param name="action">Action</param>
-        ShoppingCartItem GetCartItems(string action, int ShoppingCartTypeId, int CustomerId, int ProductId, int Quantity);
+        List<ShoppingCartItem> GetCartItems(string action, int ShoppingCartTypeId, int CustomerId, int ProductId, int Quantity);
 
         /// <summary>
         /// Update and delete shopping cart item
         /// </summary>
         /// <param name="action">Action</param>
-        void ModifyCartItem(DataTable cartitems);
+        void ModifyCartItem(string cartitems);
     }
 }

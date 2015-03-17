@@ -252,34 +252,6 @@ namespace Orbio.Web.UI.Controllers
         {
             TempData.Add("product", product);
             TempData.Add("cartType", cartType);
-            //TempData.Remove("cartType");
-            //var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
-            //var curcustomer = workContext.CurrentCustomer;
-            //string selectedAttributes = string.Empty;
-            //int count = 0;
-            //foreach (var attribute in product.ProductVariantAttributes)
-            //{
-            //    switch (attribute.AttributeControlType)
-            //    {
-            //        case Orbio.Core.Domain.Catalog.AttributeControlType.TableBlock:
-            //            {
-            //                foreach (var values in attribute.Values)
-            //                {
-            //                    if (values.Id !=0)
-            //                    {
-            //                        int selectedAttributeId = int.Parse(values.Id.ToString());
-            //                        selectedAttributes = AddCartProductAttribute(selectedAttributes,
-            //                                   attribute, selectedAttributeId.ToString());
-            //                    }
-            //                }
-
-            //                break;
-            //            }
-            //    }
-            //    count++;
-            //}
-            //shoppingcartservice.AddCartItem("add", Convert.ToInt32(cartType), curcustomer.Id, product.Id, selectedAttributes,Convert.ToInt32(product.SelectedQuantity));
-
             return RedirectToRoute("Category", new { p = "pt", seName = product.SeName });
         }
 
@@ -328,6 +300,11 @@ namespace Orbio.Web.UI.Controllers
                     }
                     shoppingcartservice.AddCartItem("add", Convert.ToInt32(selectedcarttype), curcustomer.Id, selectedProduct.Id, selectedAttributes, Convert.ToInt32(selectedProduct.SelectedQuantity));
                     ViewBag.Sucess = "Cart Added";
+                    bool flag = (ConfigurationManager.AppSettings["DisplayCartAfterAddingProduct"].ToString() != "") ? Convert.ToBoolean(ConfigurationManager.AppSettings["DisplayCartAfterAddingProduct"]) : false;
+                    if (flag)
+                    {
+                        return RedirectToRoute(new { seName = "cart" });
+                    }
                 }
                 ViewBag.Errors = errorString;
 

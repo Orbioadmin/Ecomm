@@ -19,30 +19,30 @@ namespace Orbio.Core.Domain.Orders
         /// </summary>
         public int CartId { get; set; }
 
-        ///// <summary>
-        ///// Gets or sets the shopping cart type identifier
-        ///// </summary>
-        //public int ShoppingCartTypeId { get; set; }
+        /// <summary>
+        /// Gets or sets the shopping cart type identifier
+        /// </summary>
+        public int ShoppingCartTypeId { get; set; }
 
-        ///// <summary>
-        ///// Gets or sets the customer identifier
-        ///// </summary>
-        //public int CustomerId { get; set; }
+        /// <summary>
+        /// Gets or sets the customer identifier
+        /// </summary>
+        public int CustomerId { get; set; }
 
-        ///// <summary>
-        ///// Gets or sets the product identifier
-        ///// </summary>
-        //public int ProductId { get; set; }
+        /// <summary>
+        /// Gets or sets the product identifier
+        /// </summary>
+        public int ProductId { get; set; }
 
-        ///// <summary>
-        ///// Gets or sets the product variant attributes
-        ///// </summary>
-        //public string AttributesXml { get; set; }
+        /// <summary>
+        /// Gets or sets the product variant attributes
+        /// </summary>
+        public string AttributesXml { get; set; }
 
-        ///// <summary>
-        ///// Gets or sets the price enter by a customer
-        ///// </summary>
-        //public decimal CustomerEnteredPrice { get; set; }
+        /// <summary>
+        /// Gets or sets the price enter by a customer
+        /// </summary>
+        public decimal CustomerEnteredPrice { get; set; }
 
         /// <summary>
         /// Gets or sets the quantity
@@ -54,11 +54,10 @@ namespace Orbio.Core.Domain.Orders
         /// </summary>
         public int Itemcount { get; set; }
 
-        ///// <summary>
-        ///// Gets or sets products
-        ///// </summary>
-        //[DataMember]
-        //public List<ProductDetail> ProductDetails { get; set; }
+        /// <summary>
+        /// Gets or sets the Total Price
+        /// </summary>
+        public decimal Totalprice { get; set; }
 
     }
 }

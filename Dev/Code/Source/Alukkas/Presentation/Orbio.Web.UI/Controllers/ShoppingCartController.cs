@@ -1,6 +1,7 @@
 ﻿using Nop.Core.Infrastructure;
 using Orbio.Core.Domain.Orders;
 using Orbio.Services.Orders;
+using Orbio.Services.Utility;
 using Orbio.Web.UI.Models.Orders;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Xml;
 
 namespace Orbio.Web.UI.Controllers
 {
@@ -29,25 +31,22 @@ namespace Orbio.Web.UI.Controllers
             ShoppingCartType carttype = ShoppingCartType.ShoppingCart;
             var model = PrepareShoppingCartItemModel(curcustomer.Id, Convert.ToInt32(carttype));
             double subtotal = 0.00;
-            foreach (var totalprice in model.Products)
+            foreach (var totalprice in model)
             {
                 subtotal = subtotal + Convert.ToDouble(totalprice.Totalprice);
             }
             ViewBag.subtotal = subtotal.ToString("0.00");
+            var currency = (from r in model.AsEnumerable()
+                                    select r.CurrencyCode).Take(1).ToList();
+            ViewBag.Currencycode = (currency.Count >0)?currency[0]:"Rs";
             return View(model);
         }
         [HttpPost]
         public ActionResult Cart(ShoppingCartItemModels detailmodel)
         {
-            var table = new DataTable();
-            table.Columns.Add("CartId", typeof(string));
-            table.Columns.Add("Remove", typeof(bool));
-            table.Columns.Add("Quantity", typeof(string));
-            foreach (var item in detailmodel.Products)
-            {
-                table.Rows.Add(item.CartId, item.IsRemove, item.SelectedQuantity);
-            }
-            shoppingcartservice.ModifyCartItem(table);
+
+            string xml = Serializer.GenericDataContractSerializer(detailmodel.items);
+            shoppingcartservice.ModifyCartItem(xml);
             return RedirectToRoute(new { seName = "cart"});
         }
         public ActionResult CartItem()
@@ -58,11 +57,10 @@ namespace Orbio.Web.UI.Controllers
             var model = PrepareShoppingCartItemModel(curcustomer.Id, Convert.ToInt32(carttype));
             return PartialView("CartItems",model);
         }
-        private ShoppingCartItemModels PrepareShoppingCartItemModel(int customerid,int carttype)
+        private IList<ShoppingCartItemModels> PrepareShoppingCartItemModel(int customerid,int carttype)
         {
-            var model = new ShoppingCartItemModels(shoppingcartservice.GetCartItems("select",carttype,customerid,0,0));
-
-            return model;
+            return (from c in shoppingcartservice.GetCartItems("select",carttype,customerid,0,0)
+                    select new ShoppingCartItemModels(c)).ToList();
         }
     }
 }

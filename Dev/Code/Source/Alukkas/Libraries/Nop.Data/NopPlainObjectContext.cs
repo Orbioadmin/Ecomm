@@ -10,6 +10,7 @@ using System.Linq;
 using System.Reflection;
 using Nop.Core;
 using Orbio.Core.Domain.Orders;
+using Orbio.Core.Domain.Catalog;
 namespace Nop.Data
 {
     /// <summary>
@@ -385,12 +386,29 @@ namespace Nop.Data
                 var reader = cmd.ExecuteReader();
                 //return reader.DataReaderToObjectList<TEntity>()
                 List<ShoppingCartItem> result = new List<ShoppingCartItem>();
-               
+                List<ProductPicture> pict = new List<ProductPicture>();
                 while (reader.Read())
                 {
                     ShoppingCartItem re = new ShoppingCartItem();
-                    //re.
+                    Orbio.Core.Domain.Catalog.ProductPicture pic = new Orbio.Core.Domain.Catalog.ProductPicture();
+                    re.CartId = Convert.ToInt32(reader["CartId"].ToString());
+                    re.Id = Convert.ToInt32(reader["Id"].ToString());
+                    re.Name = reader["Name"].ToString();
+                    re.Price = Convert.ToDecimal(reader["Price"].ToString());
+                    string RelativeUrl = reader["Picture"].ToString();
+                    pic.RelativeUrl = RelativeUrl;
+                    pict.Add(pic);
+                    re.ProductPictures = pict;
+                    re.CurrencyCode = reader["CurrencyCode"].ToString();
+                    re.DisplayStockAvailability = Convert.ToBoolean(reader["DisplayStockAvailability"].ToString());
+                    re.DisplayStockQuantity = Convert.ToBoolean(reader["DisplayStockQuantity"].ToString());
+                    re.StockQuantity = Convert.ToInt32(reader["StockQuantity"].ToString());
+                    re.OrderMinimumQuantity = Convert.ToInt32(reader["OrderMinimumQuantity"].ToString());
+                    re.OrderMaximumQuantity = Convert.ToInt32(reader["OrderMaximumQuantity"].ToString());
+                    re.AllowedQuantities = reader["AllowedQuantities"].ToString();
                     re.Quantity = Convert.ToInt32(reader["Quantity"].ToString());
+                    re.Itemcount = Convert.ToInt32(reader["Itemcount"].ToString());
+                    re.Totalprice = Convert.ToDecimal(reader["Totalprice"].ToString());
                     result.Add(re);
                 }
                 //var result = context.Translate<T>(reader).ToList();
