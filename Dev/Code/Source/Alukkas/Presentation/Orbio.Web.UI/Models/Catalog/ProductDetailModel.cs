@@ -85,22 +85,29 @@ namespace Orbio.Web.UI.Models.Catalog
                     this.DefaultPicture = new PictureModel();
                 }
             }
-           
-            this.ProductVariantAttributes = (from pv in productDetail.ProductAttributeVariants
-                                             select new ProductVariantAttributeModel
-                                             {
-                                                  Id = pv.Id,
-                                                  AttributeControlType = pv.AttributeControlType,
-                                                 TextPrompt = pv.TextPrompt,
-                                                 IsRequired = pv.IsRequired,
-                                                 ProductAttributeId = pv.ProductAttributeId,
-                                                 Values = new List<ProductVariantAttributeValueModel>((from pvv in pv.ProductVariantAttributeValues
-                                                                                                       select new ProductVariantAttributeValueModel {Id = pvv.Id,
-                                                                                                        ColorSquaresRgb=pvv.ColorSquaresRgb, Name=pvv.Name,
-                                                                                                        PictureUrl = pvv.PictureUrl, PriceAdjustment=pvv.PriceAdjustment.ToString("N")
-                                                                                                        //PriceAdjustmentValue =  need TODO: format + or -
-                                                                                                        }))
-                                             }).ToList();
+
+            if (productDetail.ProductAttributeVariants != null)
+            {
+                this.ProductVariantAttributes = (from pv in productDetail.ProductAttributeVariants
+                                                 select new ProductVariantAttributeModel
+                                                 {
+                                                     Id = pv.Id,
+                                                     AttributeControlType = pv.AttributeControlType,
+                                                     TextPrompt = pv.TextPrompt,
+                                                     IsRequired = pv.IsRequired,
+                                                     ProductAttributeId = pv.ProductAttributeId,
+                                                     Values = new List<ProductVariantAttributeValueModel>((from pvv in pv.ProductVariantAttributeValues
+                                                                                                           select new ProductVariantAttributeValueModel
+                                                                                                           {
+                                                                                                               Id = pvv.Id,
+                                                                                                               ColorSquaresRgb = pvv.ColorSquaresRgb,
+                                                                                                               Name = pvv.Name,
+                                                                                                               PictureUrl = pvv.PictureUrl,
+                                                                                                               PriceAdjustment = pvv.PriceAdjustment.ToString("N")
+                                                                                                               //PriceAdjustmentValue =  need TODO: format + or -
+                                                                                                           }))
+                                                 }).ToList();
+            }
            
             this.StockAvailability = productDetail.FormatStockMessage();
             this.IsFreeShipping = productDetail.IsFreeShipping;
@@ -171,7 +178,7 @@ namespace Orbio.Web.UI.Models.Catalog
             fileName = fileName.Substring(fileName.LastIndexOf('/') + 1, fileName.Length - fileName.LastIndexOf('/') - 1);
             fileName = Path.GetFileNameWithoutExtension(fileName);
 
-            return imageUrl.Replace(fileName, fileName + "_tb");
+            return fileName.Length > 0 ? imageUrl.Replace(fileName, fileName + "_tb") : fileName;
         }
     }
 }

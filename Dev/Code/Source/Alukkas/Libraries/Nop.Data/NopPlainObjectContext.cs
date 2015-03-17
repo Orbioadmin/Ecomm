@@ -395,8 +395,11 @@ namespace Nop.Data
                     re.Id = Convert.ToInt32(reader["Id"].ToString());
                     re.Name = reader["Name"].ToString();
                     re.Price = Convert.ToDecimal(reader["Price"].ToString());
-                    string RelativeUrl = reader["Picture"].ToString();
-                    pic.RelativeUrl = RelativeUrl;
+                    if (reader["RelativeUrl"] != null)
+                    {
+                        string RelativeUrl = reader["RelativeUrl"].ToString();
+                        pic.RelativeUrl = RelativeUrl;
+                    }
                     pict.Add(pic);
                     re.ProductPictures = pict;
                     re.CurrencyCode = reader["CurrencyCode"].ToString();
