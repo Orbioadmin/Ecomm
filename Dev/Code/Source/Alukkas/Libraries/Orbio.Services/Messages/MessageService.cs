@@ -38,7 +38,7 @@ namespace Orbio.Services.Messages
                 throw new ArgumentNullException("customer");
             var store = storeContext.CurrentStore;
 
-            var result = context.ExecuteFunction<MessageTemplate>("usp_MessaeTemplate",
+            var result = context.ExecuteFunction<MessageTemplate>("usp_MessageTemplate",
                  new SqlParameter() { ParameterName = "@messagename", Value = "Customer.PasswordRecovery", DbType = System.Data.DbType.String });
             var messageTemplate = new MessageTemplate();
             messageTemplate = result.FirstOrDefault();
@@ -81,7 +81,7 @@ namespace Orbio.Services.Messages
                 throw new ArgumentNullException("customer");
             var store = storeContext.CurrentStore;
 
-            var result = context.ExecuteFunction<MessageTemplate>("usp_MessaeTemplate",
+            var result = context.ExecuteFunction<MessageTemplate>("usp_MessageTemplate",
                  new SqlParameter() { ParameterName = "@messagename", Value = "Customer.WelcomeMessage", DbType = System.Data.DbType.String });
             var messageTemplate = new MessageTemplate();
             messageTemplate = result.FirstOrDefault();
