@@ -29,19 +29,42 @@ GO
 
 Create PROCEDURE [dbo].[usp_Catalog_GetCustomerReviews] 
 	-- Add the parameters for the stored procedure here
+	@Value varchar(10),
 	@ProductId int
 AS
 BEGIN
-declare @Result table(ReviewTitle varchar(50),ReviewText varchar(50),Rating int,CustomerName varchar(50))
+	if(@Value='Review')
+		BEGIN
+			declare @Result table(ReviewTitle varchar(50),ReviewText varchar(50),Rating int,CustomerName varchar(50))
 
-   
-  insert @Result select Title,ReviewText,Rating,CustomerName from ProductReview
-	where IsApproved='True' and ProductId=@ProductId order by Rating desc 
+			insert @Result select Title,ReviewText,Rating,CustomerName from ProductReview
+			where IsApproved='True' and ProductId=@ProductId order by Rating desc 
 	
+			select * from @Result
+		END
+		
+	ELSE IF(@Value='Rating')
+		BEGIN
+			declare @Results table(OneStarRating int, TwoStarRating int, ThreeStarRating int,FourStarRating int,FiveStarRating int,StarCount int)
 
-	select * from @Result
+			insert @Results select 0,0,0,0,0,0 
+			
+			update @Results set OneStarRating=(select count(Rating) from ProductReview
+			where IsApproved='True' and ProductId=@ProductId and Rating=1),
+			TwoStarRating=(select count(Rating) from ProductReview
+			where IsApproved='True' and ProductId=@ProductId and Rating=2),
+			ThreeStarRating=(select count(Rating) from ProductReview
+			where IsApproved='True' and ProductId=@ProductId and Rating=3),
+			FourStarRating=(select count(Rating) from ProductReview
+			where IsApproved='True' and ProductId=@ProductId and Rating=4),
+			FiveStarRating=(select count(Rating) from ProductReview
+			where IsApproved='True' and ProductId=@ProductId and Rating=5),
+			StarCount=(select count(Rating) from ProductReview
+			where IsApproved='True' and ProductId=@ProductId)
+	
+			select * from @Results
+		END
 END
-
 GO
 PRINT 'Created the procedure usp_Catalog_GetCustomerReviews'
 GO  

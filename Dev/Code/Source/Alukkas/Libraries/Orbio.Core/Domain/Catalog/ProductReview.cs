@@ -39,7 +39,22 @@ namespace Orbio.Core.Domain.Catalog
         /// get or sets starcount
         /// </summary>
         [DataMember]
-        public int starcount{get;set;}
+        public int StarCount { get; set; }
+
+        [DataMember]
+        public int OneStarRating { get; set; }
+
+        [DataMember]
+        public int TwoStarRating { get; set; }
+
+        [DataMember]
+        public int ThreeStarRating { get; set; }
+
+        [DataMember]
+        public int FourStarRating { get; set; }
+
+        [DataMember]
+        public int FiveStarRating { get; set; }
 
         [DataMember]
         public string SeName { get; set; }

@@ -87,10 +87,10 @@ namespace Orbio.Services.Catalog
             return 0;
         }
 
-        public List<ProductReview> GetCustomerReviews(int productid)
+        public List<ProductReview> GetCustomerReviews(int productid,string value)
         {
-            DataSet dt = new DataSet();
             var sqlParamList = new List<SqlParameter>();
+            sqlParamList.Add(new SqlParameter() { ParameterName = "@Value", Value = value, DbType = System.Data.DbType.String });
             sqlParamList.Add(new SqlParameter() { ParameterName = "@ProductId", Value = productid, DbType = System.Data.DbType.Int16 });
 
             var result = context.ExecuteFunction<ProductReview>("usp_Catalog_GetCustomerReviews",

@@ -1414,14 +1414,28 @@ clear: both; overflow: hidden;}
   height: 12px;
   width: 65px;
 }
+.star_rt05 {
+  background: url('../images/Basic_image/Stars_sprite.png') 0 -15px no-repeat;
+  height: 12px;
+  width: 65px;
+}
 .star_rt1 {
   background: url('../images/Basic_image/Stars_sprite.png') 0 -30px no-repeat;
   height: 12px;
   width: 65px;
 }
-
+.star_rt15 {
+  background: url('../images/Basic_image/Stars_sprite.png') 0 -44px no-repeat;
+  height: 12px;
+  width: 65px;
+}
 .star_rt2 {
   background: url('../images/Basic_image/Stars_sprite.png') 0 -58px no-repeat;
+  height: 12px;
+  width: 65px;
+}
+.star_rt25 {
+  background: url('../images/Basic_image/Stars_sprite.png') 0 -71px no-repeat;
   height: 12px;
   width: 65px;
 }
@@ -1430,8 +1444,18 @@ clear: both; overflow: hidden;}
     height: 12px;
     width: 65px;
 }
+.star_rt35 {
+    background: url('../images/Basic_image/Stars_sprite.png') 0 -99px no-repeat;
+    height: 12px;
+    width: 65px;
+}
 .star_rt4 {
-    background: url('../images/Basic_image/Stars_sprite.png') 0 -112px no-repeat;
+    background: url('../images/Basic_image/Stars_sprite.png') 0 -113px no-repeat;
+    height: 12px;
+    width: 65px;
+}
+.star_rt45 {
+    background: url('../images/Basic_image/Stars_sprite.png') 0 -127px no-repeat;
     height: 12px;
     width: 65px;
 }

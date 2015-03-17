@@ -50,7 +50,11 @@
                             {
                             <p>Availablity : <span>@this.Model.StockAvailability</span></p>
                             }
-                            <div class="star_rt"></div>
+                            
+                            @{
+                             Html.RenderAction("ProductStar", new { Id = this.Model.Id });
+                            }
+                            
                             <p class="price_rate">@this.Model.CurrencyCode:@this.Model.ProductPrice.Price</p>
                             @if(!string.IsNullOrEmpty(this.Model.ProductPrice.OldPrice))
                             {

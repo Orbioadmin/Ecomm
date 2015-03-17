@@ -580,6 +580,8 @@
     <Content Include="Views\Catalog\RelatedProducts.cshtml" />
     <Content Include="Views\Catalog\ProductReview.cshtml" />
     <Content Include="Views\Catalog\Review.cshtml" />
+    <Content Include="Views\Catalog\ProductRating.cshtml" />
+    <Content Include="Views\Catalog\ProductStar.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -346,32 +346,29 @@
     <div class="container">
         <div class="row">
             <h1 class="review_news">REVIEWS</h1>
-
-            <div class="col-md-3">
-
-                <div class="" align="center">
-                    <i class="big_star"></i>
-                    <p class="red_no">4.4</p>
-                    <p>Average Rating</p>
-                    <p>Based on 94 Rating</p>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <ul class="cust_rating">
-                    <li><p>5 star</p><div class="yell_rat"><img src="images/Basic_image/ratings-5.png"></div><p>(20)</p></li>
-                    <li><p>4 star</p><div class="yell_rat"><img src="images/Basic_image/ratings-4.png"></div><p>(20)</p></li>
-                    <li><p>3 star</p><div class="yell_rat"><img src="images/Basic_image/ratings-3.png"></div><p>(20)</p></li>
-                    <li><p>2 star</p><div class="yell_rat"><img src="images/Basic_image/ratings-2.png"></div><p>(20)</p></li>
-                    <li><p>1 star</p><div class="yell_rat"><img src="images/Basic_image/ratings-1.png"></div><p>(20)</p></li>
-                </ul>
-            </div>
+            @{
+                Html.RenderAction("ProductRating", new { Id = this.Model.Id });
+            }
+           
 
             <div class="col-md-3">
                 <div class="" align="center">
                     <p>You can help other customers</p>
                     <p class="product_red">Have you used this product?</p>
-                    <div class="rating" data-rating-max="5"></div>
+                    @*<div class="rating" data-rating-max="5">*@
+                        <span class="ratingStar" style="margin-left: 22px;">
+                            <input type="radio"id = "addproductrating_1" class = "rating-input" />
+                            <label for="addproductrating_1" class="rating-star"></label>
+                            <input type="radio" id="addproductrating_2" class="rating-input" />
+                            <label for="addproductrating_2" class="rating-star"></label>
+                            <input type="radio" id="addproductrating_3" class="rating-input" />
+                            <label for="addproductrating_3" class="rating-star"></label>
+                            <input type="radio" id="addproductrating_4" class="rating-input" />
+                            <label for="addproductrating_4" class="rating-star"></label>
+                            <input type="radio" id="addproductrating_5" class="rating-input" />
+                            <label for="addproductrating_5" class="rating-star"></label>
+                        </span>
+                    @*</div>*@
                     <div class="clear"></div>
                     <p>Rate this Product!</p>
 
