@@ -10,6 +10,7 @@ namespace Orbio.Web.UI.Models.Orders
     {
          public ShoppingCartItemsModel()
         {
+            this.CartDetail = new List<ShoppingCartItemModel>();
         }
          public ShoppingCartItemsModel(ShoppingCartItems productDetail)
              : this()
