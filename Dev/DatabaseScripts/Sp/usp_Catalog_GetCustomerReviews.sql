@@ -35,7 +35,7 @@ AS
 BEGIN
 	if(@Value='Review')
 		BEGIN
-			declare @Result table(ReviewTitle varchar(50),ReviewText varchar(50),Rating int,CustomerName varchar(50))
+			declare @Result table(ReviewTitle varchar(max),ReviewText varchar(max),Rating int,CustomerName varchar(max))
 
 			insert @Result select Title,ReviewText,Rating,CustomerName from ProductReview
 			where IsApproved='True' and ProductId=@ProductId order by Rating desc 

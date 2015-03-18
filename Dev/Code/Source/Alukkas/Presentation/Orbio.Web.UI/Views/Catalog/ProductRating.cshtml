@@ -1,7 +1,12 @@
 ﻿@model List<Orbio.Web.UI.Models.Catalog.ReviewModel>
 
-@foreach (var review in this.Model)
+@{
+  foreach (var review in this.Model)
 {
+    if (@review.StarCount==0)
+    {
+        review.AvgRating = 0;
+    }
 <div class="col-md-3">
     <div class="" align="center">
         <i class="big_star"></i>
@@ -20,4 +25,5 @@
         <li><p>1 star</p><div class="yell_rat"><img src="images/Basic_image/ratings-1.png"></div><p>@review.OneStarRating</p></li>
     </ul>
 </div>
+    }
     }

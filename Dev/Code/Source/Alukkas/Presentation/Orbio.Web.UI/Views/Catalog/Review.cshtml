@@ -56,9 +56,8 @@
                         </div>
                         </div>
                     
-                    <div class="form-group gender col-sm-12 span_error">
+                    <div class="form-group">
                         @Html.LabelFor(m => m.Rating, new { @class = "col-sm-4 control-label" })
-                        
                             <span class="ratingStar" style="margin-left: 22px;">
                                 @Html.RadioButtonFor(model => model.Rating, "5", new { id = "addproductrating_1", @class = "rating-input" })
                                 <label for="addproductrating_1" class="rating-star"></label>
