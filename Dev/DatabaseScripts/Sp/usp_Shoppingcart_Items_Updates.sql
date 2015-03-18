@@ -36,7 +36,7 @@ BEGIN
 	C.value('(sq:SelectedQuantity)[1]','INT') AS [SelectedQuantity],
 	C.value('(IsRemove)[1]','bit') AS [IsRemove]
     INTO #temptable
-    FROM @list.nodes('/ArrayOfShoppingCartItemModels/ShoppingCartItemModels') as T(C)
+    FROM @list.nodes('/ArrayOfShoppingCartItemModel/ShoppingCartItemModel') as T(C)
 	select * from #temptable
 
 	update sc set Quantity = t.SelectedQuantity
