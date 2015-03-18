@@ -16,62 +16,63 @@ namespace Orbio.Web.UI.Models.Orders
             this.items = new List<ShoppingCartItemModels>();
         }
         public ShoppingCartItemModels(ShoppingCartItem productDetail)
-            : this()
+            : base(productDetail)
         {
+            this.items = new List<ShoppingCartItemModels>();
             this.Itemcount = productDetail.Itemcount;
-            this.Id = productDetail.Id;
-            this.Name = productDetail.Name;
-            this.SeName = productDetail.SeName;
-            this.ImageRelativeUrl = productDetail.ImageRelativeUrl;
-            this.CurrencyCode = productDetail.CurrencyCode;
-            this.ProductPrice.Price = productDetail.Price.ToString("0.00");
+            //this.Id = productDetail.Id;
+            //this.Name = productDetail.Name;
+            //this.SeName = productDetail.SeName;
+            //this.ImageRelativeUrl = productDetail.ImageRelativeUrl;
+            //this.CurrencyCode = productDetail.CurrencyCode;
+            //this.ProductPrice.Price = productDetail.Price.ToString("0.00");
             this.Totalprice = productDetail.Totalprice.ToString("0.00");
             this.CartId = productDetail.CartId;
-            if (productDetail.ProductPictures != null && productDetail.ProductPictures.Count > 0)
-            {
-                var baseUrl = ConfigurationManager.AppSettings["ImageServerBaseUrl"];
-                this.ProductPictures = (from pp in productDetail.ProductPictures
-                                        select new PictureModel
-                                        {
-                                            ImageUrl = pp.RelativeUrl != null ? baseUrl + GetThumbImageFileName(pp.RelativeUrl) : string.Empty,
-                                            FullSizeImageUrl = pp.RelativeUrl != null ? baseUrl + pp.RelativeUrl : string.Empty,
-                                            AlternateText = productDetail.Name,
-                                            Title = productDetail.ShortDescription
-                                        }).ToList();
+            //if (productDetail.ProductPictures != null && productDetail.ProductPictures.Count > 0)
+            //{
+            //    var baseUrl = ConfigurationManager.AppSettings["ImageServerBaseUrl"];
+            //    this.ProductPictures = (from pp in productDetail.ProductPictures
+            //                            select new PictureModel
+            //                            {
+            //                                ImageUrl = pp.RelativeUrl != null ? baseUrl + GetThumbImageFileName(pp.RelativeUrl) : string.Empty,
+            //                                FullSizeImageUrl = pp.RelativeUrl != null ? baseUrl + pp.RelativeUrl : string.Empty,
+            //                                AlternateText = productDetail.Name,
+            //                                Title = productDetail.ShortDescription
+            //                            }).ToList();
 
-                this.DefaultPicture = this.ProductPictures.First();
-            }
-            else
-            {
-                //TODO: set default picture
-                if (this.ProductPictures == null || this.ProductPictures.Count == 0)
-                {
-                    this.ProductPictures = new List<PictureModel>();
-                    this.DefaultPicture = new PictureModel();
-                }
-            }
+            //    this.DefaultPicture = this.ProductPictures.First();
+            //}
+            //else
+            //{
+            //    //TODO: set default picture
+            //    if (this.ProductPictures == null || this.ProductPictures.Count == 0)
+            //    {
+            //        this.ProductPictures = new List<PictureModel>();
+            //        this.DefaultPicture = new PictureModel();
+            //    }
+            //}
 
-            this.AllowedQuantities = new List<int>();
-            if (!String.IsNullOrWhiteSpace(productDetail.AllowedQuantities))
-            {
-                productDetail.AllowedQuantities
-                   .Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
-                   .ToList()
-                   .ForEach(qtyStr =>
-                   {
-                       int qty = 0;
-                       if (int.TryParse(qtyStr.Trim(), out qty))
-                       {
-                           this.AllowedQuantities.Add(qty);
-                       }
-                   });
-            }
+            //this.AllowedQuantities = new List<int>();
+            //if (!String.IsNullOrWhiteSpace(productDetail.AllowedQuantities))
+            //{
+            //    productDetail.AllowedQuantities
+            //       .Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+            //       .ToList()
+            //       .ForEach(qtyStr =>
+            //       {
+            //           int qty = 0;
+            //           if (int.TryParse(qtyStr.Trim(), out qty))
+            //           {
+            //               this.AllowedQuantities.Add(qty);
+            //           }
+            //       });
+            //}
 
-            this.OrderMaximumQuantity = productDetail.OrderMaximumQuantity;
+            //this.OrderMaximumQuantity = productDetail.OrderMaximumQuantity;
 
-            this.OrderMinimumQuantity = productDetail.OrderMinimumQuantity;
+            //this.OrderMinimumQuantity = productDetail.OrderMinimumQuantity;
 
-            this.SelectedQuantity = productDetail.Quantity.ToString();
+            //this.SelectedQuantity = productDetail.Quantity.ToString();
 
             this.IsRemove = false;
         }
@@ -84,18 +85,18 @@ namespace Orbio.Web.UI.Models.Orders
 
         public List<ShoppingCartItemModels> items { get; set; }
 
-        private static string GetThumbImageFileName(string imageUrl)
-        {
-            var fileName = imageUrl;
-            if (imageUrl.IndexOf('?') > 0)
-            {
-                fileName = imageUrl.Substring(0, imageUrl.IndexOf('?'));
-            }
+        //private static string GetThumbImageFileName(string imageUrl)
+        //{
+        //    var fileName = imageUrl;
+        //    if (imageUrl.IndexOf('?') > 0)
+        //    {
+        //        fileName = imageUrl.Substring(0, imageUrl.IndexOf('?'));
+        //    }
 
-            fileName = fileName.Substring(fileName.LastIndexOf('/') + 1, fileName.Length - fileName.LastIndexOf('/') - 1);
-            fileName = Path.GetFileNameWithoutExtension(fileName);
+        //    fileName = fileName.Substring(fileName.LastIndexOf('/') + 1, fileName.Length - fileName.LastIndexOf('/') - 1);
+        //    fileName = Path.GetFileNameWithoutExtension(fileName);
 
-            return imageUrl.Replace(fileName, fileName + "_tb");
-        }
+        //    return fileName.Length>0? imageUrl.Replace(fileName, fileName + "_tb"):fileName;
+        //}
     }
 }

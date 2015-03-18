@@ -1,15 +1,15 @@
-IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[usp_Catlog_RelatedProducts]') AND type in (N'P', N'PC'))
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[usp_Catalog_RelatedProducts]') AND type in (N'P', N'PC'))
 BEGIN
-	DROP PROCEDURE [dbo].[usp_Catlog_RelatedProducts]
-	PRINT 'Dropped [dbo].[usp_Catlog_RelatedProducts]'
+	DROP PROCEDURE [dbo].[usp_Catalog_RelatedProducts]
+	PRINT 'Dropped [dbo].[usp_Catalog_RelatedProducts]'
 END	
 GO
 
-PRINT 'Creating [dbo].[usp_Catlog_RelatedProducts]'
+PRINT 'Creating [dbo].[usp_Catalog_RelatedProducts]'
 GO
 
 /* ******************************** PROLOG *******************************************
-# Procedure Name: usp_Catlog_RelatedProducts
+# Procedure Name: usp_Catalog_RelatedProducts
 # File Path:
 # CreatedDate: 24-feb-2015
 # Author: Sankar T.S
@@ -25,7 +25,7 @@ GO
 
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE PROCEDURE [dbo].[usp_Catlog_RelatedProducts]
+CREATE PROCEDURE [dbo].[usp_Catalog_RelatedProducts]
 @productid int
 AS
 BEGIN
@@ -60,7 +60,7 @@ SELECT @XmlResult1 as XmlResult
 END
 
 GO
-PRINT 'Created the procedure usp_Catlog_RelatedProducts'
+PRINT 'Created the procedure usp_Catalog_RelatedProducts'
 GO  
 
 

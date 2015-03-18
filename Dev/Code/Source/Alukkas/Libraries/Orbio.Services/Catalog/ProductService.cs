@@ -61,7 +61,7 @@ namespace Orbio.Services.Catalog
             var sqlParamList = new List<SqlParameter>();
             sqlParamList.Add(new SqlParameter() { ParameterName = "@productid", Value = productid, DbType = System.Data.DbType.Int32 });
 
-            var result = context.ExecuteFunction<XmlResultSet>("usp_Catlog_RelatedProducts",
+            var result = context.ExecuteFunction<XmlResultSet>("usp_Catalog_RelatedProducts",
                 sqlParamList.ToArray()
                 ).FirstOrDefault();
             if (result != null)
