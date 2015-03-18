@@ -582,6 +582,7 @@
     <Content Include="Views\Catalog\Review.cshtml" />
     <Content Include="Views\Catalog\ProductRating.cshtml" />
     <Content Include="Views\Catalog\ProductStar.cshtml" />
+    <None Include="Properties\PublishProfiles\Alukkas_Ecom.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

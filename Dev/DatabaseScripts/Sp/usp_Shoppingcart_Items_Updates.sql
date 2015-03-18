@@ -27,65 +27,27 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-Create PROCEDURE [dbo].[usp_Shoppingcart_Items_Updates]
-	@list ShoppingCartItem READONLY
+CREATE PROCEDURE [dbo].[usp_Shoppingcart_Items_Updates]
+	@list XML
 AS
 BEGIN
+	;WITH XMLNAMESPACES(DEFAULT 'http://schemas.datacontract.org/2004/07/Orbio.Web.UI.Models.Orders','http://schemas.datacontract.org/2004/07/Orbio.Web.UI.Models.Catalog' as sq)
+    SELECT C.value('(CartId)[1]','INT') AS [CartId],
+	C.value('(sq:SelectedQuantity)[1]','INT') AS [SelectedQuantity],
+	C.value('(IsRemove)[1]','bit') AS [IsRemove]
+    INTO #temptable
+    FROM @list.nodes('/ArrayOfShoppingCartItemModels/ShoppingCartItemModels') as T(C)
+	select * from #temptable
 
-select * into #temptable from @list
+	update sc set Quantity = t.SelectedQuantity
+		from [dbo].[ShoppingCartItem] sc
+			inner join #temptable t on
+				sc.Id = t.CartId
 
-declare @i int =1
-declare @totalrowupdata int = (SELECT COUNT([CartId]) FROM #temptable)
-WHILE @i <= @totalrowupdata BEGIN
-
-	declare @cartid int
-	
-set @cartid = (SELECT [CartId]
-		FROM 
-			(
-			SELECT ROW_NUMBER() OVER(ORDER BY  getdate() DESC) AS RowNumber, 
-			[CartId] FROM #temptable 
-			)#temptable
-			WHERE #temptable.RowNumber = @i
-			)
-
-	declare @remove varchar(10)
-	
-set @remove = (SELECT [Remove]
-		FROM 
-			(
-			SELECT ROW_NUMBER() OVER(ORDER BY  getdate() DESC) AS RowNumber, 
-			[Remove] FROM #temptable
-			)#temptable
-			WHERE #temptable.RowNumber = @i
-			)
-
-	declare @quantity varchar(20)
-	
-set @quantity = (SELECT [Quantity]
-		FROM 
-			(
-			SELECT ROW_NUMBER() OVER(ORDER BY  getdate() DESC) AS RowNumber, 
-			[Quantity] FROM #temptable
-			)#temptable
-			WHERE #temptable.RowNumber = @i
-			)
-
-if(@remove = '1')
-begin
-	delete from [dbo].[ShoppingCartItem] where Id = @cartid
-end
-
-else
-begin
-	update [dbo].[ShoppingCartItem] set Quantity = convert(int,@quantity) where Id = @cartid
-end
-set @i=@i+1
+				delete sc from [dbo].[ShoppingCartItem] sc
+					inner join #temptable t on
+					sc.Id = t.CartId where t.IsRemove = 1
 END
-
-END
-
-
 
 GO
 PRINT 'Created the procedure usp_Shoppingcart_Items_Updates'
