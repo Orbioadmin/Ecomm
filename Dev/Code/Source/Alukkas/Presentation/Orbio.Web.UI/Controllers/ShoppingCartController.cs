@@ -31,18 +31,18 @@ namespace Orbio.Web.UI.Controllers
             ShoppingCartType carttype = ShoppingCartType.ShoppingCart;
             var model = PrepareShoppingCartItemModel(curcustomer.Id, Convert.ToInt32(carttype));
             double subtotal = 0.00;
-            foreach (var totalprice in model)
+            foreach (var totalprice in model.CartDetail)
             {
                 subtotal = subtotal + Convert.ToDouble(totalprice.Totalprice);
             }
             ViewBag.subtotal = subtotal.ToString("0.00");
-            var currency = (from r in model.AsEnumerable()
-                                    select r.CurrencyCode).Take(1).ToList();
-            ViewBag.Currencycode = (currency.Count >0)?currency[0]:"Rs";
+            var currency = (from r in model.CartDetail.AsEnumerable()
+                            select r.CurrencyCode).Take(1).ToList();
+            ViewBag.Currencycode = (currency.Count > 0) ? currency[0] : "Rs";
             return View(model);
         }
         [HttpPost]
-        public ActionResult Cart(ShoppingCartItemModels detailmodel)
+        public ActionResult Cart(ShoppingCartItemModel detailmodel)
         {
 
             string xml = Serializer.GenericDataContractSerializer(detailmodel.items);
@@ -57,10 +57,11 @@ namespace Orbio.Web.UI.Controllers
             var model = PrepareShoppingCartItemModel(curcustomer.Id, Convert.ToInt32(carttype));
             return PartialView("CartItems",model);
         }
-        private IList<ShoppingCartItemModels> PrepareShoppingCartItemModel(int customerid,int carttype)
+        private ShoppingCartItemsModel PrepareShoppingCartItemModel(int customerid, int carttype)
         {
-            return (from c in shoppingcartservice.GetCartItems("select",carttype,customerid,0,0)
-                    select new ShoppingCartItemModels(c)).ToList();
+            var model = new ShoppingCartItemsModel(shoppingcartservice.GetCartItems("select", carttype, customerid, 0, 0));
+
+            return model;
         }
     }
 }

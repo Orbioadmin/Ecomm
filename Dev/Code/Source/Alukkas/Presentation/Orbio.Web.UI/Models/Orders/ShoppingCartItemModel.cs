@@ -9,16 +9,16 @@ using System.Web;
 
 namespace Orbio.Web.UI.Models.Orders
 {
-    public class ShoppingCartItemModels : ProductDetailModel
+    public class ShoppingCartItemModel : ProductDetailModel
     {
-        public ShoppingCartItemModels()
+        public ShoppingCartItemModel()
         {
-            this.items = new List<ShoppingCartItemModels>();
+            this.items = new List<ShoppingCartItemModel>();
         }
-        public ShoppingCartItemModels(ShoppingCartItem productDetail)
+        public ShoppingCartItemModel(ShoppingCartItem productDetail)
             : base(productDetail)
         {
-            this.items = new List<ShoppingCartItemModels>();
+            this.items = new List<ShoppingCartItemModel>();
             this.Itemcount = productDetail.Itemcount;
             //this.Id = productDetail.Id;
             //this.Name = productDetail.Name;
@@ -72,7 +72,7 @@ namespace Orbio.Web.UI.Models.Orders
 
             //this.OrderMinimumQuantity = productDetail.OrderMinimumQuantity;
 
-            //this.SelectedQuantity = productDetail.Quantity.ToString();
+            this.SelectedQuantity = productDetail.Quantity.ToString();
 
             this.IsRemove = false;
         }
@@ -83,7 +83,7 @@ namespace Orbio.Web.UI.Models.Orders
 
         public bool IsRemove { get; set; }
 
-        public List<ShoppingCartItemModels> items { get; set; }
+        public List<ShoppingCartItemModel> items { get; set; }
 
         //private static string GetThumbImageFileName(string imageUrl)
         //{

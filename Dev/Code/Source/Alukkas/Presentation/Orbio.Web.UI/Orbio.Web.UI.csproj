@@ -228,7 +228,8 @@
     <Compile Include="Models\Customer\PasswordRecoveryConfirmModel.cs" />
     <Compile Include="Models\Customer\PasswordRecoveryModel.cs" />
     <Compile Include="Models\Home\PriceBarModel.cs" />
-    <Compile Include="Models\Orders\ShoppingCartItemModels.cs" />
+    <Compile Include="Models\Orders\ShoppingCartItemModel.cs" />
+    <Compile Include="Models\Orders\ShoppingCartItemsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -583,6 +584,7 @@
     <Content Include="Views\Catalog\ProductRating.cshtml" />
     <Content Include="Views\Catalog\ProductStar.cshtml" />
     <None Include="Properties\PublishProfiles\Alukkas_Ecom.pubxml" />
+    <Content Include="Views\ShoppingCart\OrderSummary.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
