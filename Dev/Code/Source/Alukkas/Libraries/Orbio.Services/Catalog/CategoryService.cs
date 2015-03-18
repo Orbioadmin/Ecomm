@@ -31,7 +31,7 @@ namespace Orbio.Services.Catalog
         public List<Category> GetTopMenuCategories()
         {
             var result = context.ExecuteFunction<XmlResultSet>("usp_Catalog_GetTopMenu", null).FirstOrDefault();
-            if (result != null)
+            if (result != null && result.XmlResult != null)
             {
                 var categories = Serializer.GenericDataContractDeSerializer<List<Category>>(result.XmlResult);
                 return categories;
