@@ -1,6 +1,6 @@
-﻿@model List<Orbio.Web.UI.Models.Orders.ShoppingCartItemModels>
+﻿@model Orbio.Web.UI.Models.Orders.ShoppingCartItemsModel
            @{
-                   var count = (from r in Model.AsEnumerable()
+               var count = (from r in Model.CartDetail.AsEnumerable()
                                     select r).Take(1).ToList();
            }
 <li class="cart_item"><a href="@Url.RouteUrl("ShoppingCart")">@((count.Count > 0)?count[0].Itemcount :0) ITEMS <i class="mnu_item_icon"></i></a></li>
