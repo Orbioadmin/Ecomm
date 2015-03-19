@@ -61,7 +61,25 @@ begin
 	
 	if exists(select Id from [dbo].[ShoppingCartItem] where CustomerId = @customerid)
 		begin
-			update [dbo].[ShoppingCartItem] set CustomerId =@shoppingcarttypeid ,UpdatedOnUtc = CONVERT(VARCHAR(30),GETDATE(),121) where CustomerId = @customerid
+			select Id,ProductId,AttributesXml into #tempcart from ShoppingCartItem where CustomerId = @customerid
+			select Id,ProductId,AttributesXml into #tempcart1 from ShoppingCartItem where CustomerId = @shoppingcarttypeid
+			SELECT Id,ProductId
+			into #tempcart2
+			FROM #tempcart b
+			WHERE NOT EXISTS (
+								SELECT *
+								FROM #tempcart1 a
+								WHERE a.ProductId = b.ProductId and a.AttributesXml = b.AttributesXml)
+
+			declare @cartIds VARCHAR(MAX) = (SELECT DISTINCT STUFF((SELECT distinct ',' + convert(varchar,p1.Id)
+			FROM #tempcart2 p1
+            FOR XML PATH(''), TYPE
+            ).value('.', 'VARCHAR(MAX)')
+			,1,1,'') Id
+			FROM #tempcart2 p)
+
+			update [dbo].[ShoppingCartItem] set CustomerId =@shoppingcarttypeid ,UpdatedOnUtc = CONVERT(VARCHAR(30),GETDATE(),121) where ','+@cartIds+',' LIKE '%,'+CAST(Id AS varchar)+',%'
+		
 		end
 end
 
