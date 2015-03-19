@@ -1,14 +1,21 @@
 ﻿@model List<Orbio.Web.UI.Models.Catalog.ProductDetailModel>
 @{
     var i = 0;
+    var j = 0;
 }
 
-@foreach (var products in this.Model)
+@if(this.Model.Count > 0)
 {
-    if (i == 0)
+foreach (var products in this.Model)
+{
+    if ((i % 2) == 0)
     {
-        @Html.Raw("<div class='item active'>");
-    @Html.Raw("<div class='row'>");
+        if (j == 0)
+        {
+            @Html.Raw("<div class='item active'>");
+            @Html.Raw("<div class='row'>");
+        }
+        j++;
     }
     <div class="col-md-4">
         <a href="@Url.RouteUrl("Category", new { SeName = products.SeName })?p=pt" class="thumbnail">
@@ -17,16 +24,22 @@
             <p class="thumb_date">@products.CurrencyCode. @products.ProductPrice.Price</p>
         </a>
     </div>
-    if (i == 3)
+    if (((i + 1) % 2) == 0)
     {
         @Html.Raw("</div>");
-        @Html.Raw("</div>");
-        @Html.Raw("<div class='item'>");
-        @Html.Raw("<div class='row'>");
-        i = 0;
+    @Html.Raw("</div>");
+    @Html.Raw("<div class='item'>");
+    @Html.Raw("<div class='row'>");
+        i = -1;
     }
     i++;
 }
+}
+else
+{
+    @Html.Raw("<div class='item active'>");
+    @Html.Raw("<div class='row'>");
+}
+@Html.Raw("</div>")
+@Html.Raw("</div>")
 
-@Html.Raw("</div>")
-@Html.Raw("</div>")
