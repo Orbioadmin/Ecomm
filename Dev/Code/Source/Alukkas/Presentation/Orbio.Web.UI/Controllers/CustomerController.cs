@@ -78,11 +78,10 @@ namespace Orbio.Web.UI.Controllers
         //[ValidateAntiForgeryToken]
         public ActionResult ChangePassword(ChangePasswordModel model, string returnUrl)
         {
-            var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
-            var curcustomer = workContext.CurrentCustomer;
-
-            if (ModelState.IsValid)
-            {
+                var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
+                var curcustomer = workContext.CurrentCustomer;
+                if (ModelState.IsValid)
+                {
                 var changePasswordRequest = new ChangePasswordRequest(curcustomer.Email,
                     true, PasswordFormat.Hashed, model.NewPassword, model.OldPassword);
 
@@ -137,7 +136,6 @@ namespace Orbio.Web.UI.Controllers
                             break;
                     }
                 }
-
             }
             var acmodel = new CustomerModel(curcustomer);
             ViewBag.ReturnUrl = returnUrl;
