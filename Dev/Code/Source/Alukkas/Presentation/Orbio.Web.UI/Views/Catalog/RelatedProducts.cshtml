@@ -1,14 +1,14 @@
 ﻿@model List<Orbio.Web.UI.Models.Catalog.ProductDetailModel>
 @{
-    var i = 1;
+    var i = 0;
 }
 
 @foreach (var products in this.Model)
 {
-    if (i % 4 == 0)
+    if (i == 0)
     {
-        Html.Raw("<div class='item active'>");
-        Html.Raw("<div class='row'>");
+        @Html.Raw("<div class='item active'>");
+    @Html.Raw("<div class='row'>");
     }
     <div class="col-md-4">
         <a href="@Url.RouteUrl("Category", new { SeName = products.SeName })?p=pt" class="thumbnail">
@@ -17,10 +17,16 @@
             <p class="thumb_date">@products.CurrencyCode. @products.ProductPrice.Price</p>
         </a>
     </div>
-    if ((i + 1) % 4 == 0)
+    if (i == 3)
     {
-        Html.Raw("</div>");
-        Html.Raw("</div>");
+        @Html.Raw("</div>");
+        @Html.Raw("</div>");
+        @Html.Raw("<div class='item'>");
+        @Html.Raw("<div class='row'>");
+        i = 0;
     }
+    i++;
 }
 
+@Html.Raw("</div>")
+@Html.Raw("</div>")
