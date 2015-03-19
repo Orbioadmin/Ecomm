@@ -396,6 +396,9 @@
     <Content Include="Images\Basic_image\similar-products-3.png" />
     <Content Include="Images\Basic_image\similar-products-4.png" />
     <Content Include="Images\Basic_image\SizeChart-popup.jpg" />
+    <Content Include="Images\Basic_image\star-x-active.png" />
+    <Content Include="Images\Basic_image\star-x-inactive.png" />
+    <Content Include="Images\Basic_image\starrating.png" />
     <Content Include="Images\Basic_image\Stars_sprite.png" />
     <Content Include="Images\Basic_image\thumb_sliderbg.png" />
     <Content Include="Images\Basic_image\triangle-left.png" />
