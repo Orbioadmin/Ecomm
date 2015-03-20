@@ -25,6 +25,7 @@ namespace Orbio.Web.UI.Models.Catalog
         }
 
         public string SeName { get; set; }
+        public string Name { get; set; }
 
         [Required(ErrorMessage="Review title required")]
         [DataType(DataType.Text)]

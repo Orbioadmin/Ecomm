@@ -426,6 +426,27 @@
                  var url = '@Url.Action("CheckboxDetails", "CheckOut")';
                  var formData = form.serialize();
                  $.post(url, formData, function (result) {
+                     if (result.model.SameAddress)
+                     {
+                         $("#BillFirstName").attr("disabled", "disabled");
+                         $("#BillLastName").attr("disabled", "disabled");
+                         $("#BillPhone").attr("disabled", "disabled");
+                         $("#BillAddress").attr("disabled", "disabled");
+                         $("#BillCity").attr("disabled", "disabled");
+                         $("#BillPincode").attr("disabled", "disabled");
+                         $("#BillState").attr("disabled", "disabled");
+                         $("#BillCountry").attr("disabled", "disabled");
+                     }
+                     else {
+                         $("#BillFirstName").removeAttr("disabled");
+                         $("#BillLastName").removeAttr("disabled");
+                         $("#BillPhone").removeAttr("disabled");
+                         $("#BillAddress").removeAttr("disabled");
+                         $("#BillCity").removeAttr("disabled");
+                         $("#BillPincode").removeAttr("disabled");
+                         $("#BillState").removeAttr("disabled");
+                         $("#BillCountry").removeAttr("disabled");
+                     }
                      $("#BillFirstName").val(result.model.BillFirstName)
                      $("#BillLastName").val(result.model.BillLastName)
                      $("#BillPhone").val(result.model.BillPhone)

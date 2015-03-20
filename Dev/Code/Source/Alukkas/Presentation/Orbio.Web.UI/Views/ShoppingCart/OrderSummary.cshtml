@@ -13,7 +13,7 @@
         var scpdQuantity = string.Format("items[{0}].SelectedQuantity", count);
         var scpdcartid = string.Format("items[{0}].CartId", count);
         <tr>
-            <td><img src="@scpd.DefaultPicture.ImageUrl"></td>
+            <td><img src="@scpd.DefaultPicture.ImageUrl" width="120px" height="65px"></td>
             <td>@scpd.Name <br />
             @foreach (var attribute in scpd.ProductVariantAttributes)
             {

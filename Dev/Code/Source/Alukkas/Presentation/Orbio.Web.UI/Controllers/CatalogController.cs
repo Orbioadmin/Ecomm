@@ -435,16 +435,17 @@ namespace Orbio.Web.UI.Controllers
         }
 
         [LoginRequired]
-        public ActionResult Review(ProductDetailModel product, string seName)
+        public ActionResult Review(ProductDetailModel product, string Name,string seName)
         {
                 var model = new ReviewModel();
                 model.Rating = 5;
+                model.Name = Name;
                 model.SeName = seName;
                 return View(model);
         }
 
         [HttpPost]
-        public ActionResult Review(ReviewModel model, string returnUrl, string seName)
+        public ActionResult Review(ReviewModel model, string returnUrl, string seName,string Name)
         {
             if (ModelState.IsValid)
             {

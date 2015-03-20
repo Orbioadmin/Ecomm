@@ -4,47 +4,51 @@
 @{
   foreach (var review in this.Model)
   {
-    if (review.AvgRating <= 0.5)
+    if (review.AvgRating>0 && review.AvgRating <= 0.5)
     {
         <div class="star_rt0.5"></div>
     }
-    else if (review.AvgRating <= 1)
+    else if (review.AvgRating>0.5 && review.AvgRating <= 1)
     { 
         <div class="star_rt1"></div>
     }
-    else if (review.AvgRating <= 1.5)
+    else if (review.AvgRating > 1 && review.AvgRating <= 1.5)
     {
         <div class="star_rt15"></div>
     }
-    else if (review.AvgRating <= 2)
+    else if (review.AvgRating > 1.5 && review.AvgRating <= 2)
     {
         <div class="star_rt2"></div>
     }
-    else if (review.AvgRating <= 2.5)
+    else if (review.AvgRating > 2 && review.AvgRating <= 2.5)
     {
         <div class="star_rt25"></div>
     }
-    else if (review.AvgRating <= 3)
+    else if (review.AvgRating > 2.5 && review.AvgRating <= 3)
     {
         <div class="star_rt3"></div>
     }
-    else if (review.AvgRating <= 3.5)
+    else if (review.AvgRating > 3 && review.AvgRating <= 3.5)
     {
         <div class="star_rt35"></div>
     }
-    else if (review.AvgRating <= 4)
+    else if (review.AvgRating > 3.5 && review.AvgRating <= 4)
     {
         <div class="star_rt4"></div>
     }
-    else if (review.AvgRating <= 4.5)
+    else if (review.AvgRating > 4 && review.AvgRating <= 4.5)
     {
         <div class="star_rt45"></div>
     }
-    else if (review.AvgRating <= 5)
+    else if (review.AvgRating > 4.5 && review.AvgRating <= 5)
     {
         <div class="star_rt5"></div>
     }
+    else
+    {
+        <div class="star_rt0"></div>
+    }
 
-}
+  }
 }
 

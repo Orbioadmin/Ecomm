@@ -115,7 +115,7 @@
                                             }
 
                                         </div>
-                                        <div id="changepwd" style="display:none">
+                                        <div id="changepwd" style="display:none; width:786px">
                                             @using (Html.BeginForm("ChangePassword", "Customer", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal " }))
                                             {
                                                 @Html.AntiForgeryToken()
