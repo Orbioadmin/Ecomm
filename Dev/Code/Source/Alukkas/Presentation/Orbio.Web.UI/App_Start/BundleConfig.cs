@@ -22,7 +22,7 @@ namespace Orbio.Web.UI
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/bootstrap.min.css", "~/Content/font-awesome.min.css", "~/Content/*.css", "~/Content/datepicker.css"));
+            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/bootstrap.min.css", "~/Content/font-awesome.min.css", "~/Content/*.css", "~/Content/datepicker.css", "~/Content/toastr.css"));
 
             //bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
             //            "~/Content/themes/base/jquery.ui.core.css",

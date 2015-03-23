@@ -265,12 +265,15 @@ namespace Orbio.Web.UI.Controllers
             {
                 selectedProduct = (ProductDetailModel)TempData["product"];
                 selectedcarttype = (ShoppingCartType)TempData["cartType"];
+                int selectedquantity = Convert.ToInt32(selectedProduct.SelectedQuantity);
                 var errorString = string.Empty;
                 if (selectedProduct.ProductVariantAttributes.Count > 0)
                 {
 
                     errorString = selectedProduct.ProductVariantAttributes.GetProductVariantErrors();
                 }
+                if (selectedquantity < selectedProduct.OrderMinimumQuantity || selectedquantity > selectedProduct.OrderMaximumQuantity)
+                { errorString = "Select a quantity between " + selectedProduct.OrderMinimumQuantity + " and " + selectedProduct.OrderMaximumQuantity; }
                 if (string.IsNullOrEmpty(errorString))
                 {
                     var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();

@@ -22,7 +22,7 @@
             </td>
             <td>@Html.CheckBox(scpdr, scpd.IsRemove)@*<input type="checkbox" name="Remove" value="@scpd.CartId" />*@</td>
             <td>
-                @{
+                @*@{
         var qtyList = new List<object>();
         if (scpd.AllowedQuantities.Count > 0)
         {
@@ -44,9 +44,10 @@
         //    selectedValue = qtyList.FirstOrDefault();
         //}
         var qtySelectList = new SelectList(qtyList, "Value", "Text", scpd.SelectedQuantity);
-                }
+                }*@
 
-                @Html.DropDownList(scpdqu, (IEnumerable<SelectListItem>)qtySelectList)
+                @*@Html.DropDownList(scpdqu, (IEnumerable<SelectListItem>)qtySelectList)*@
+                @Html.TextBox(scpdqu, scpd.SelectedQuantity, new { type = "Number", @class = "form-control", Style = "width:40px;height: 23px;padding: 0 4px;border-radius: 2px;" })
                 @Html.Hidden(scpdRemove, scpd.IsRemove)  @Html.Hidden(scpdQuantity, scpd.SelectedQuantity) @Html.Hidden(scpdcartid, scpd.CartId)
             <td>@scpd.CurrencyCode.@scpd.ProductPrice.Price @Html.Hidden(scpdId, scpd.Id)  @Html.Hidden(scpdTotalprice, scpd.Totalprice)</td>
             <td>@scpd.CurrencyCode.@scpd.Totalprice @Html.Hidden(scpd.Totalprice)</td>
