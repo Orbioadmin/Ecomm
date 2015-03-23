@@ -10,14 +10,17 @@ namespace Orbio.Web.UI.Models.Customer
     {
         [Required(ErrorMessage = "Old Password Required")]
         [DataType(DataType.Password)]
+        [Display(Name = "Old Password")]
         public string OldPassword { get; set; }
 
         [Required(ErrorMessage = "New Password Required")]
         [DataType(DataType.Password)]
+        [Display(Name = "New Password")]
         public string NewPassword { get; set; }
 
         [Required(ErrorMessage = "Confirm New Password Required")]
         [DataType(DataType.Password)]
+        [Display(Name = "Confirm New Password")]
         [Compare("NewPassword", ErrorMessage = "Passwords does not match")]
         public string ConfirmNewPassword { get; set; }
 
