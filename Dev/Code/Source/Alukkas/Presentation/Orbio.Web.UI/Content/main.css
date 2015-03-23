@@ -644,13 +644,13 @@ height: 17px; vertical-align: bottom; border:0; float: right;}
 #myCarousel2 .thumb_date {color: #383737; font-size: 14px; line-height: 10px; margin-bottom: 0;
     text-align: center;padding-bottom: 10px;font-family: "Calibri_bold";}
 #myCarousel2 .thumbnail img{ padding-bottom: 15px;}
-.static_page{ background:#fff url('../images/Basic_image/Bg-image-static.jpg') top center no-repeat; text-align: center;
-padding-top: 170px; width: 100%; height: 100%; -webkit-background-size: cover;  -moz-background-size: cover;  -o-background-size: cover;
+.static_page{ background:#fff url('../images/Basic_image/Bg-image-static.jpg') center 0px no-repeat fixed; text-align: center;
+padding-top: 35px; width: 100%; height: 100%; -webkit-background-size: cover;  -moz-background-size: cover;  -o-background-size: cover;
   background-size: cover;}
 .static_page ul#myTab { margin-bottom: 20px;
         width:100%; text-align:center; border-bottom: 0;}
 .static_page .nav-tabs > li.active > a, .static_page .nav-tabs > li.active > a:hover, .static_page .nav-tabs > li.active > a:focus{ border-radius: 0; border:0; background:url('../images/Basic_image/yellow-tab.png')repeat; }
-.static_page .nav-tabs > li > a{ background:url('../images/Basic_image/grey-tab.png')repeat; color:#000; border-radius: 0; border: 0; padding: 4px 45px; margin-right: 6px; width: 200px;}
+.static_page .nav-tabs > li > a{ background:url('../images/Basic_image/grey-tab.png')repeat; color:#000; border-radius: 0; border: 0; /*padding: 4px 45px;*/ margin-right: 6px; width: 200px;}
 .static_page #myTabContent{text-align: left;}.Main_head{text-align: center;}
 .static_head{margin: 0 0 20px 0; text-align: center;font-family: "Calibri Light";   background:url('../images/Basic_image/Heding-line.png') bottom center no-repeat; font-size: 24px;}
 .static_head > span { font-weight: bold; line-height: 50px;}
@@ -1671,3 +1671,5 @@ header{position: relative;}
 .writeReview h4 {
     margin: 0 0 26px;
 }
+
+.detail_page{ min-height:700px}

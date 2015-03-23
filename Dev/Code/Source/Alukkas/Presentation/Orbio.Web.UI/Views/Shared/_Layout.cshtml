@@ -21,11 +21,7 @@
     </head>
     <body>
       <header>
-   
                              @Html.Action("TopMenu", "Catalog")
-
-
-  
   </header>
 
       
@@ -37,12 +33,12 @@
      <div class="col-md-3 col-sm-3">
      <h1>FRANCIS ALUKKAS</h1>
      <ul>
-     <li><a href="">About us</a></li>
-     <li><a href="">Jewellery</a></li>
-     <li><a href="">Brands</a></li>
+     <li><a href="@Url.RouteUrl("Category", new { SeName = "AboutUs" })?p=ft">About Us</a></li>
+     <li><a href="@Url.RouteUrl("Category", new { SeName = "jewellery" })?p=ct">Jewellery</a></li>
+     <li><a href="@Url.RouteUrl("Category", new { SeName = "jewellery" })?p=ct">Brands</a></li>
      <li><a href="">Easy Gold</a></li>
-     <li><a href="">Double value</a></li>
-     <li><a href="">Gift Vouchers</a></li>
+     <li><a href="@Url.RouteUrl("Category", new { SeName = "DoubleValue" })?p=ft">Double value</a></li>
+     <li><a href="@Url.RouteUrl("Category", new { SeName = "GiftVoucher" })?p=ft">Gift Vouchers</a></li>
      </ul>
      </div>
 
@@ -50,11 +46,11 @@
     <div class="col-md-3 col-sm-3">
      <h1>CUSTOMER DELIGHT</h1>
      <ul>
-     <li><a href="">FAQ</a></li>
+     <li><a href="@Url.RouteUrl("Category", new { SeName = "FAQ" })?p=ft">FAQ</a></li>
      <li><a href="">Our Blog</a></li>
-     <li><a href="">Contact Us</a></li>
+     <li><a href="@Url.RouteUrl("Category", new { SeName = "ContactUs" })?p=ft">Contact Us</a></li>
      <li><a href="">Our Certification</a></li>
-     <li><a href="">Career</a></li>
+     <li><a href="@Url.RouteUrl("Category", new { SeName = "Career" })?p=ft">Career</a></li>
      <li><a href="">News</a></li>
      </ul>
      </div>
@@ -62,11 +58,11 @@
      <div class="col-md-3 col-sm-3">
      <h1>OUR POLICIES</h1>
      <ul>
-     <li><a href="">Shipping Policy</a></li>
-     <li><a href="">Cancellation Policy</a></li>
-     <li><a href="">Refund Policy</a></li>
-     <li><a href="">Buyback Policy</a></li>
-     <li><a href="">Exchange Policy</a></li>
+     <li><a href="@Url.RouteUrl("Category", new { SeName = "ShippingPolicy" })?p=ft">Shipping Policy</a></li>
+     <li><a href="@Url.RouteUrl("Category", new { SeName = "CancellationPolicy" })?p=ft">Cancellation Policy</a></li>
+     <li><a href="@Url.RouteUrl("Category", new { SeName = "RefundPolicy" })?p=ft">Refund Policy</a></li>
+     <li><a href="@Url.RouteUrl("Category", new { SeName = "BuyBackPolicy" })?p=ft">Buyback Policy</a></li>
+     <li><a href="@Url.RouteUrl("Category", new { SeName = "ExchangePolicy" })?p=ft">Exchange Policy</a></li>
      <li><a href="">Privacy Policy</a></li>
      </ul>
      </div>

@@ -38,5 +38,10 @@ namespace Orbio.Web.UI.Controllers
             var model = new PriceBarModel { UserNameOrEmail =  string.IsNullOrEmpty(curcustomer.Username)?"Guest":curcustomer.Username };
             return PartialView(model);
         }
+
+        public ActionResult Policies(string SeName)
+        {
+            return View(SeName);
+        }
     }
 }
