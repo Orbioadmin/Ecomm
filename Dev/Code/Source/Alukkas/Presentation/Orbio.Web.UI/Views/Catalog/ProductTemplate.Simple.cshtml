@@ -38,7 +38,7 @@
 
 </div>
             </div>
-            @using (Html.BeginForm("product", "catalog", new { Id = this.Model.Id, SeName=this.Model.SeName, cartType= Orbio.Core.Domain.Orders.ShoppingCartType.ShoppingCart }, FormMethod.Post, new { Id = "formProduct" }))
+            @using (Html.BeginForm("product", "catalog", new { Id = this.Model.Id, SeName=this.Model.SeName,OrderMinimumQuantity=this.Model.OrderMinimumQuantity,OrderMaximumQuantity=this.Model.OrderMaximumQuantity, cartType= Orbio.Core.Domain.Orders.ShoppingCartType.ShoppingCart }, FormMethod.Post, new { Id = "formProduct" }))
             {
             <div class="col-sm-6">
                 <div class="row res_det">
@@ -81,7 +81,7 @@
                 <div class="quan_expect">
                     <div class="row">
                         <div class="col-sm-3">
-                            @{
+                            @*@{
                                 var qtyList = new List<object>();
                                  if (this.Model.AllowedQuantities.Count > 0)
                                 {
@@ -104,7 +104,7 @@
                                  }
                                  var qtySelectList = new SelectList(qtyList, "Value", "Text", selectedValue );
                             }                            
-                            Quantity @Html.DropDownListFor(m=>m.SelectedQuantity, qtySelectList) @*<select id="product.CustomerEnteredPrice" class="quantity">
+                            Quantity @Html.DropDownListFor(m=>m.SelectedQuantity, qtySelectList)*@ @*<select id="product.CustomerEnteredPrice" class="quantity">
                                 @if (this.Model.AllowedQuantities.Count > 0)
                                 {
                                     foreach (var qty in this.Model.AllowedQuantities)
@@ -120,6 +120,8 @@
                                     }
                                 }
                             </select>*@
+                            @if (string.IsNullOrEmpty(Model.SelectedQuantity)) { Model.SelectedQuantity = "1"; }
+                            @Html.TextBoxFor(m => m.SelectedQuantity, new { type = "Number", @class = "form-control", Style = "width:40px;height: 23px;padding: 0 4px;border-radius: 2px;" })
                             @*<a href="@Url.RouteUrl("ShoppingCart")"><input type="submit" class="Buynow" value="BUY NOW"></a>*@
                             <input type="submit" class="Buynow" value="BUY NOW">
                         </div>
