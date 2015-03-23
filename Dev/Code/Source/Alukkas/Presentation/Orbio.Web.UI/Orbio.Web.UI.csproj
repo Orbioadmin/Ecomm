@@ -478,7 +478,6 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
@@ -588,6 +587,17 @@
     <Content Include="Views\Catalog\ProductStar.cshtml" />
     <None Include="Properties\PublishProfiles\Alukkas_Ecom.pubxml" />
     <Content Include="Views\ShoppingCart\OrderSummary.cshtml" />
+    <Content Include="Views\Home\AboutUs.cshtml" />
+    <Content Include="Views\Home\ContactUs.cshtml" />
+    <Content Include="Views\Home\Career.cshtml" />
+    <Content Include="Views\Home\ShippingPolicy.cshtml" />
+    <Content Include="Views\Home\RefundPolicy.cshtml" />
+    <Content Include="Views\Home\BuyBackPolicy.cshtml" />
+    <Content Include="Views\Home\CancellationPolicy.cshtml" />
+    <Content Include="Views\Home\ExchangePolicy.cshtml" />
+    <Content Include="Views\Home\DoubleValue.cshtml" />
+    <Content Include="Views\Home\GiftVoucher.cshtml" />
+    <Content Include="Views\Home\FAQ.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

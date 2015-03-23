@@ -3,25 +3,15 @@
     ViewBag.Title = "Review";
 }
 
-@*<section>
-    @{
-        Html.RenderPartial(this.Model.ViewPath, this.Model);
-    }
-</section>*@
-
-
+<ol class="breadcrumb">
+    <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+    <li><a href="@Url.RouteUrl("Category", new { SeName = "jewellery" })?p=ct">Jewellery</a></li>
+    <li><a href="">@Html.ValueFor(m => m.Name)</a></li>
+    <li class="active">Review</li>
+</ol>
 
 <section id="Login" class="Login_home">
-    @*<ol class="breadcrumb">
-        <li><a href="@Url.Action("Index", "Home")">Home</a></li>
-        @{
-            foreach (var breadCrumb in this.Model.BreadCrumbs)
-            {
-                <li><a href="@Url.RouteUrl("Category", new { SeName = breadCrumb.SeName })?p=ct">@breadCrumb.Name</a></li>
-            }
-        }
-       @*// <li class="active"> @this.Model.Name</li>*@
-    @*</ol>*@
+   
   
     <div class="container" align="center">
         <div class="col-md-6 col-sm-6 col-xs-12">
