@@ -47,7 +47,7 @@
                 }*@
 
                 @*@Html.DropDownList(scpdqu, (IEnumerable<SelectListItem>)qtySelectList)*@
-                @Html.TextBox(scpdqu, scpd.SelectedQuantity, new { type = "Number", @class = "form-control", Style = "width:40px;height: 23px;padding: 0 4px;border-radius: 2px;" })
+                @Html.TextBox(scpdqu, scpd.SelectedQuantity, new { type = "Number", @class = "form-control",min="1", Style = "width:40px;height: 23px;padding: 0 4px;border-radius: 2px;" })
                 @Html.Hidden(scpdRemove, scpd.IsRemove)  @Html.Hidden(scpdQuantity, scpd.SelectedQuantity) @Html.Hidden(scpdcartid, scpd.CartId)
             <td>@scpd.CurrencyCode.@scpd.ProductPrice.Price @Html.Hidden(scpdId, scpd.Id)  @Html.Hidden(scpdTotalprice, scpd.Totalprice)</td>
             <td>@scpd.CurrencyCode.@scpd.Totalprice @Html.Hidden(scpd.Totalprice)</td>

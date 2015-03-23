@@ -121,7 +121,7 @@
                                 }
                             </select>*@
                             @if (string.IsNullOrEmpty(Model.SelectedQuantity)) { Model.SelectedQuantity = "1"; }
-                            @Html.TextBoxFor(m => m.SelectedQuantity, new { type = "Number", @class = "form-control", Style = "width:40px;height: 23px;padding: 0 4px;border-radius: 2px;" })
+                            @Html.TextBoxFor(m => m.SelectedQuantity, new { type = "Number", @class = "form-control",min="1", Style = "width:40px;height: 23px;padding: 0 4px;border-radius: 2px;" })
                             @*<a href="@Url.RouteUrl("ShoppingCart")"><input type="submit" class="Buynow" value="BUY NOW"></a>*@
                             <input type="submit" class="Buynow" value="BUY NOW">
                         </div>
