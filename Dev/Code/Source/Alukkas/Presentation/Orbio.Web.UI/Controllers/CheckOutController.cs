@@ -10,22 +10,32 @@ using Orbio.Services.Checkout;
 using Orbio.Web.UI.Models.CheckOut;
 using Orbio.Core.Domain.Customers;
 using System.Globalization;
+using Orbio.Web.UI.Models.Orders;
+using Orbio.Services.Orders;
+using Orbio.Core.Domain.Orders;
 
 namespace Orbio.Web.UI.Controllers
 {
     public class CheckOutController : Controller
     {
+        private readonly IShoppingCartService shoppingcartservice;
+
         private readonly ICheckoutService checkoutService;
         //
         // GET: /CheckOut/
-        public CheckOutController(ICheckoutService checkoutService)
+        public CheckOutController(ICheckoutService checkoutService, IShoppingCartService shoppingcartservice)
         {
             this.checkoutService = checkoutService;
+            this.shoppingcartservice = shoppingcartservice;
         }
 
         [LoginRequired]
         public ActionResult Index()
         {
+            var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
+            var curcustomer = workContext.CurrentCustomer;
+            ShoppingCartType carttype = ShoppingCartType.ShoppingCart;
+            PrepareShoppingCartItemModel(curcustomer.Id, Convert.ToInt32(carttype));
             return View();
 
         }
@@ -35,6 +45,8 @@ namespace Orbio.Web.UI.Controllers
         {
             var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
             var customer = workContext.CurrentCustomer;
+            ShoppingCartType carttype = ShoppingCartType.ShoppingCart;
+            PrepareShoppingCartItemModel(customer.Id, Convert.ToInt32(carttype));
             if (customer.Email == null)
             {
                 return RedirectToAction("MyAccount", "Login");
@@ -139,6 +151,20 @@ namespace Orbio.Web.UI.Controllers
             model.ShipPhone, model.ShipAddress, model.ShipCity, model.ShipPincode,model.ShipState, model.ShipCountry);
 
             return Json("Success");
+        }
+
+        private void PrepareShoppingCartItemModel(int customerid, int carttype)
+        {
+            var model = new ShoppingCartItemsModel(shoppingcartservice.GetCartItems("select", carttype, customerid, 0, 0));
+            double subtotal = 0.00;
+            foreach (var totalprice in model.CartDetail)
+            {
+                subtotal = subtotal + Convert.ToDouble(totalprice.Totalprice);
+            }
+            ViewBag.subtotal = subtotal.ToString("0.00");
+            var currency = (from r in model.CartDetail.AsEnumerable()
+                            select r.CurrencyCode).Take(1).ToList();
+            ViewBag.Currencycode = (currency.Count > 0) ? currency[0] : "Rs";
         }
     }
 }
