@@ -362,15 +362,6 @@ namespace Orbio.Web.UI.Controllers
                 return model;
         }
 
-        public void Delete(int Id)
-        {
-            UpdateWishList(Id,"delete");
-        }
-        public void AddtoCart(int Id)
-        {
-            UpdateWishList(Id,"addtocart");
-        }
-
         public ActionResult UpdateWishList(int Id,string value)
         {
             var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
@@ -378,6 +369,7 @@ namespace Orbio.Web.UI.Controllers
             ShoppingCartType carttype = ShoppingCartType.Wishlist;
             DeleteOrUpdateWishList(Id, Convert.ToInt32(carttype), value);
             var model = PrepareShoppingCartItemModel(curcustomer.Id, Convert.ToInt32(carttype));
+
             return View("WishList", model);
         }
 

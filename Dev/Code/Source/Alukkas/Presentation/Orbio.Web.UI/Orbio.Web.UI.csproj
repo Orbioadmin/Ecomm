@@ -608,17 +608,11 @@
     <Content Include="Views\Home\DoubleValue.cshtml" />
     <Content Include="Views\Home\GiftVoucher.cshtml" />
     <Content Include="Views\Home\FAQ.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\Customer\EmailFriend.cshtml" />
     <Content Include="Views\Customer\WishList.cshtml" />
     <Content Include="Views\Customer\WishListSummary.cshtml" />
-=======
     <Content Include="Views\Catalog\AssociatedProducts.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\Customer\EmailFriend.cshtml" />
-=======
->>>>>>> origin/master
->>>>>>> fa72e82045a04ae09402e1f1814be7497c498b68
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
