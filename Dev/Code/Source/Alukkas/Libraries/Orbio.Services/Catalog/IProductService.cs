@@ -26,6 +26,14 @@ namespace Orbio.Services.Catalog
         /// <param name="productid">the product id</param>
         /// <returns>list of products</returns>
         RelatedProduct GetRelatedProductsById(int productid);
+
+         /// <summary>
+        /// gets all associated products by product id
+        /// </summary>
+        /// <param name="productid">the product id</param>
+        /// <returns>list of products</returns>
+        AssociatedProduct GetAssociatedProductsById(int productid);
+
         /// <summary>
         /// insert customer reviews
         /// </summary>

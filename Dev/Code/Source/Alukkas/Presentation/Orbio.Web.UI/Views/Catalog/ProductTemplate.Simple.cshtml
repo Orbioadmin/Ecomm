@@ -55,7 +55,7 @@
                              Html.RenderAction("ProductStar", new { Id = this.Model.Id });
                             }
                             
-                            <p class="price_rate">@this.Model.CurrencyCode:@this.Model.ProductPrice.Price</p>
+                            <p class="price_rate">@this.Model.CurrencyCode.@this.Model.ProductPrice.Price</p>
                             @if(!string.IsNullOrEmpty(this.Model.ProductPrice.OldPrice))
                             {
                             <s>@this.Model.CurrencyCode.@this.Model.ProductPrice.OldPrice</s>
@@ -146,22 +146,22 @@
                     <tr>
                         <td>
                             GOLD
-                            <p>@this.Model.CurrencyCode:@this.Model.Gold</p>
+                            <p>@this.Model.CurrencyCode.@this.Model.Gold</p>
                         </td>
 
                         <td>
                             Other St.
-                            <p>@this.Model.CurrencyCode:@this.Model.Stones</p>
+                            <p>@this.Model.CurrencyCode.@this.Model.Stones</p>
                         </td>
 
                         <td>
                             Making
-                            <p>@this.Model.CurrencyCode:@this.Model.Making</p>
+                            <p>@this.Model.CurrencyCode.@this.Model.Making</p>
                         </td>
 
                         <td>
                             Tax
-                            <p>Rs.312.23</p>
+                            <p>Rs.0.00</p>
                         </td>
                     </tr>
                 </table>
@@ -221,7 +221,7 @@
 
             </div>
             <div class="col-md-5">
-                <h1 class="related">RELEATED PRODUCTS</h1>
+                <h1 class="related">RELATED PRODUCTS</h1>
 
                 <div id="myCarousel2" class="carousel slide">
 

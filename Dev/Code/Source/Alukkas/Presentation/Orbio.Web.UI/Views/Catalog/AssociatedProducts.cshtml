@@ -1,0 +1,61 @@
+﻿@model List<Orbio.Web.UI.Models.Catalog.ProductDetailModel>
+@{
+    var i = 0;
+    var j = 0;
+}
+
+@if (this.Model.Count > 0)
+{
+    foreach (var products in this.Model)
+    {
+        if ((i % 4) == 0)
+        {
+            if (j == 0)
+            {
+                @Html.Raw("<div class='item active'>");
+                @Html.Raw("<ul class='similar'>");
+            }
+            j++;
+        }
+    <li class="col-sm-3">
+        <div class="main_thumb">
+            <div class="thumbnail">
+                <a href="@Url.RouteUrl("Category", new { SeName = products.SeName })?p=pt"><img alt="" src="@products.DefaultPicture.ImageUrl"></a>
+            </div>
+            <div class="caption">
+                <div class="list_light_dark">@products.Name</div>
+                <div class="detail_list_cart">
+                    <ul class="list_cart">
+                        <li>
+                            <input type="submit" value="" class="add_it_icon">
+                        </li>
+                        <li>
+                            <input type="submit" value="" class="save_it_icon">
+                        </li>
+                        <li>
+                            <input type="submit" value="" class="share_it_icon">
+                        </li>
+                    </ul>
+                </div>
+                <div class="list_thumb_offer">@products.CurrencyCode. @products.ProductPrice.Price</div>
+            </div>
+        </div>
+    </li>
+        if (((i + 1) % 4) == 0)
+        {
+            @Html.Raw("</ul>");
+    @Html.Raw("</div>");
+    @Html.Raw("<div class='item'>");
+    @Html.Raw("<div class='row'>");
+                                  i = -1;
+        }
+        i++;
+    }
+}
+else
+{
+    @Html.Raw("<div class='item active'>");
+    @Html.Raw("<ul class='similar'>");
+}
+@Html.Raw("</ul>")
+@Html.Raw("</div>")
