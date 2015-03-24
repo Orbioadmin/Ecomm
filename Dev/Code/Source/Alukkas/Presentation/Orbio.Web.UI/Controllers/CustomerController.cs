@@ -10,6 +10,10 @@ using Orbio.Web.UI.Models.Customer;
 using Orbio.Services.Customers;
 using Orbio.Core.Domain.Customers;
 using Orbio.Services.Messages;
+using Orbio.Web.UI.Models.Catalog;
+using Orbio.Services.Catalog;
+using Orbio.Core.Domain.Catalog;
+using System.Text;
 
 namespace Orbio.Web.UI.Controllers
 {
@@ -18,11 +22,13 @@ namespace Orbio.Web.UI.Controllers
 
         private readonly ICustomerService customerService;
         private readonly IMessageService MessageService;
+        private readonly IProductService productService;
 
-        public CustomerController(ICustomerService customerService, IMessageService MessageService)
+        public CustomerController(ICustomerService customerService, IMessageService MessageService , IProductService productService)
         {
             this.customerService = customerService;
             this.MessageService = MessageService;
+            this.productService = productService;
         }
 
         [LoginRequiredAttribute]
@@ -78,10 +84,10 @@ namespace Orbio.Web.UI.Controllers
         //[ValidateAntiForgeryToken]
         public ActionResult ChangePassword(ChangePasswordModel model, string returnUrl)
         {
-                var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
-                var curcustomer = workContext.CurrentCustomer;
-                if (ModelState.IsValid)
-                {
+            var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
+            var curcustomer = workContext.CurrentCustomer;
+            if (ModelState.IsValid)
+            {
                 var changePasswordRequest = new ChangePasswordRequest(curcustomer.Email,
                     true, PasswordFormat.Hashed, model.NewPassword, model.OldPassword);
 
@@ -157,7 +163,7 @@ namespace Orbio.Web.UI.Controllers
         [HttpPost]
         [AllowAnonymous]
         //[ValidateAntiForgeryToken]
-        public ActionResult PasswordRecoveryConfirm(string token, string email,PasswordRecoveryConfirmModel model)
+        public ActionResult PasswordRecoveryConfirm(string token, string email, PasswordRecoveryConfirmModel model)
         {
             var curcustomer = new Customer();
 
@@ -265,11 +271,75 @@ namespace Orbio.Web.UI.Controllers
                         ModelState.AddModelError("", "Old Password Doesnt Match");
                         break;
                 }
-                
+
             }
 
             //If we got this far, something failed, redisplay form
             return View(model);
+        }
+
+        [LoginRequired]
+        public ActionResult EmailFriend(EmailFriendModel model,string SeName, string Name)
+        {
+            ModelState.Clear();
+            var uri = Request.Url;
+            string host = uri.GetLeftPart(UriPartial.Authority);
+            string code = GenerateCaptcha();
+            model.SeName = SeName;
+            model.Name = Name;
+            model.CaptchaCode = code;
+            model.url = host + "/" + SeName+"?p=pt";
+            return View(model);
+        }
+
+        
+        [HttpPost]
+        public ActionResult EmailFriend(EmailFriendModel model, string SeName, string Name, string Url, string CaptchaCode)
+        {
+            if (ModelState.IsValid)
+            {
+                if (CaptchaCode == model.Captcha)
+                {
+                    var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
+                    if (workContext.CurrentCustomer.IsRegistered)
+                    {
+                        var customer = workContext.CurrentCustomer;
+                        var product = new ProductDetail();
+                        product = productService.GetProductsDetailsBySlug(SeName);
+                        int mailresult = MessageService.SendCustomerEmailFrendMessage(customer, product, model.Email, model.Message, Name, Url);
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Only registered customers can sent email");
+                    }
+                    return RedirectToRoute("Category", new { p = "pt", seName = SeName });
+                }
+                else
+                {
+                    model.Captcha = "";
+                    model.CaptchaCode = CaptchaCode;
+                    ModelState.AddModelError("", "Captcha code does not match");
+                    return View(model);
+                }
+            }
+            else
+            {
+                string code = GenerateCaptcha();
+                model.CaptchaCode = code;
+                return View(model);
+            }
+          
+        }
+
+        public string GenerateCaptcha()
+        {
+            Random random = new Random();
+            string combination = "0123456789";
+            StringBuilder captcha = new StringBuilder();
+            for (int i = 0; i < 4; i++)
+            captcha.Append(combination[random.Next(combination.Length)]);
+            string result = captcha.ToString();
+            return result;
         }
     }
 }

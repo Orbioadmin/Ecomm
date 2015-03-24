@@ -66,7 +66,7 @@
                         <ul class="desc_butt">
                             <li><a href='@Url.Action("Review", "Catalog", new {this.Model.Name,this.Model.SeName})'>WRITE A REVIEW</a></li>
                             <li><a href="">ADD TO WISHLIST</a></li>
-                            <li><a href="">EMAIL TO FRIEND</a></li>
+                            <li><a href='@Url.Action("EmailFriend", "Customer", new { this.Model.Name,this.Model.SeName})'>EMAIL TO FRIEND</a></li>
                         </ul>
                     </div>
                 </div>
