@@ -198,53 +198,7 @@
                         </div>
                         <!-- My account -->
                         <!-- My Wishlist -->
-                        <div class="tab-pane" id="mywishlist">
-                            <div class="table-responsive">
-                                <table cellspacing="0" cellpadding="0" width="100%" class="Order_table table">
-                                    <tbody>
-                                        <tr>
-                                            <th width="10%">Item</th>
-                                            <th></th>
-                                            <th>QTY</th>
-                                            <th>Price</th>
-                                            <th>Remove</th>
-                                            <th>Add To Cart</th>
-                                        </tr>
-                                        <tr>
-                                            <td><img src="images/Thumbnail/Listing-product1.jpg" class="wishlist_img"></td>
-                                            <td class="p_wish">
-                                                <p>Diamond Chain</p>
-                                            </td>
-                                            <td>
-                                                <select>
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                </select>
-                                            </td>
-                                            <td>Rs.12,300.00</td>
-                                            <td><input type="checkbox"></td>
-                                            <td><input type="checkbox"></td>
-                                        </tr>
-                                        <tr>
-                                            <td><img src="images/Thumbnail/Listing-product1.jpg" class="wishlist_img"></td>
-                                            <td class="p_wish">
-                                                <p>Diamond Chain</p>
-                                            </td>
-                                            <td>
-                                                <select>
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                </select>
-                                            </td>
-                                            <td>Rs.12,300.00</td>
-                                            <td><input type="checkbox"></td>
-                                            <td><input type="checkbox"></td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                       @Html.Action("WishList", "Customer")
                         <!-- My Wishlist -->
                     </div>
                 </div>

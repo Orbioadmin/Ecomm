@@ -14,6 +14,9 @@ using Orbio.Web.UI.Models.Catalog;
 using Orbio.Services.Catalog;
 using Orbio.Core.Domain.Catalog;
 using System.Text;
+using Orbio.Core.Domain.Orders;
+using Orbio.Web.UI.Models.Orders;
+using Orbio.Services.Orders;
 
 namespace Orbio.Web.UI.Controllers
 {
@@ -23,12 +26,15 @@ namespace Orbio.Web.UI.Controllers
         private readonly ICustomerService customerService;
         private readonly IMessageService MessageService;
         private readonly IProductService productService;
+        private readonly IShoppingCartService shoppingcartservice;
 
-        public CustomerController(ICustomerService customerService, IMessageService MessageService , IProductService productService)
+        public CustomerController(ICustomerService customerService, IMessageService MessageService , IProductService productService
+            , IShoppingCartService shoppingcartservice)
         {
             this.customerService = customerService;
             this.MessageService = MessageService;
             this.productService = productService;
+            this.shoppingcartservice = shoppingcartservice;
         }
 
         [LoginRequiredAttribute]
@@ -340,6 +346,44 @@ namespace Orbio.Web.UI.Controllers
             captcha.Append(combination[random.Next(combination.Length)]);
             string result = captcha.ToString();
             return result;
+        }
+
+        public ActionResult WishList()
+        {
+            var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
+            var curcustomer = workContext.CurrentCustomer;
+            ShoppingCartType carttype = ShoppingCartType.Wishlist;
+            var model = PrepareShoppingCartItemModel(curcustomer.Id, Convert.ToInt32(carttype));
+            return View("WishList", model);
+        }
+        private ShoppingCartItemsModel PrepareShoppingCartItemModel(int customerid, int carttype)
+        {
+                var model = new ShoppingCartItemsModel(shoppingcartservice.GetCartItems("select", 0, carttype, customerid, 0, 0));
+                return model;
+        }
+
+        public void Delete(int Id)
+        {
+            UpdateWishList(Id,"delete");
+        }
+        public void AddtoCart(int Id)
+        {
+            UpdateWishList(Id,"addtocart");
+        }
+
+        public ActionResult UpdateWishList(int Id,string value)
+        {
+            var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
+            var curcustomer = workContext.CurrentCustomer;
+            ShoppingCartType carttype = ShoppingCartType.Wishlist;
+            DeleteOrUpdateWishList(Id, Convert.ToInt32(carttype), value);
+            var model = PrepareShoppingCartItemModel(curcustomer.Id, Convert.ToInt32(carttype));
+            return View("WishList", model);
+        }
+
+        private void DeleteOrUpdateWishList(int Id, int carttype, string value)
+        {
+            shoppingcartservice.GetCartItems(value, Id, carttype, 0, 0, 0);
         }
     }
 }

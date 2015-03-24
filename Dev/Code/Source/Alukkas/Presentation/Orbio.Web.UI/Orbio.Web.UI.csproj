@@ -346,6 +346,8 @@
     <Content Include="Images\Basic_image\banner5.png" />
     <Content Include="Images\Basic_image\Bg-image-static.jpg" />
     <Content Include="Images\Basic_image\black_menu.png" />
+    <Content Include="Images\Basic_image\cart-black.png" />
+    <Content Include="Images\Basic_image\cart-yellow.png" />
     <Content Include="Images\Basic_image\category-bangles.png" />
     <Content Include="Images\Basic_image\category-bg-pattern.jpg" />
     <Content Include="Images\Basic_image\Category-divider.png" />
@@ -404,6 +406,8 @@
     <Content Include="Images\Basic_image\starrating.png" />
     <Content Include="Images\Basic_image\Stars_sprite.png" />
     <Content Include="Images\Basic_image\thumb_sliderbg.png" />
+    <Content Include="Images\Basic_image\trash-black.png" />
+    <Content Include="Images\Basic_image\trash-yellow.png" />
     <Content Include="Images\Basic_image\triangle-left.png" />
     <Content Include="Images\Basic_image\triangle-right.png" />
     <Content Include="Images\Basic_image\up-arrow.png" />
@@ -604,8 +608,17 @@
     <Content Include="Views\Home\DoubleValue.cshtml" />
     <Content Include="Views\Home\GiftVoucher.cshtml" />
     <Content Include="Views\Home\FAQ.cshtml" />
-    <Content Include="Views\Catalog\AssociatedProducts.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Customer\EmailFriend.cshtml" />
+    <Content Include="Views\Customer\WishList.cshtml" />
+    <Content Include="Views\Customer\WishListSummary.cshtml" />
+=======
+    <Content Include="Views\Catalog\AssociatedProducts.cshtml" />
+<<<<<<< HEAD
+    <Content Include="Views\Customer\EmailFriend.cshtml" />
+=======
+>>>>>>> origin/master
+>>>>>>> fa72e82045a04ae09402e1f1814be7497c498b68
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

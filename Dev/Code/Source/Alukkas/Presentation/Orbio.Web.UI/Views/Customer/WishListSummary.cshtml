@@ -1,0 +1,18 @@
+﻿@model List<Orbio.Web.UI.Models.Orders.ShoppingCartItemModel>
+
+@{
+    foreach(var wishlist in this.Model)
+    { 
+<tr>
+    <td><img src="@wishlist.DefaultPicture.ImageUrl" width="120px" height="65px"></td>
+    <td class="p_wish">
+        <p>@wishlist.Name</p>
+    </td>
+    <td>@wishlist.ProductPrice.Price</td>
+    @*<td><a href="#" onclick="location.href='@Html.Action("Delete", "Customer", new {Id=wishlist.CartId})'"><img src="~/Images/Basic_image/trash-black.png" id="delete" /></a></td>
+    <td><a href="#" onclick="location.href='@Html.Action("AddtoCart", "Customer", new {Id=wishlist.CartId})'"><img src="~/Images/Basic_image/cart-yellow.png" /></a></td>*@
+    <td><a href="#"><img src="~/Images/Basic_image/trash-black.png" id="delete" /></a></td>
+    <td><a href="#"><img src="~/Images/Basic_image/cart-yellow.png" /></a></td>
+</tr>
+    }
+}

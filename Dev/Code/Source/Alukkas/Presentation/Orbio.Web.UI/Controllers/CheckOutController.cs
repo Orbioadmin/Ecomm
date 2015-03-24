@@ -155,7 +155,7 @@ namespace Orbio.Web.UI.Controllers
 
         private void PrepareShoppingCartItemModel(int customerid, int carttype)
         {
-            var model = new ShoppingCartItemsModel(shoppingcartservice.GetCartItems("select", carttype, customerid, 0, 0));
+            var model = new ShoppingCartItemsModel(shoppingcartservice.GetCartItems("select",0, carttype, customerid, 0, 0));
             double subtotal = 0.00;
             foreach (var totalprice in model.CartDetail)
             {
