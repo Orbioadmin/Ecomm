@@ -122,14 +122,14 @@ namespace Orbio.Web.UI.Controllers
             if (keyword.Length >= 3)
             {
 
-                model = PrepareCategoryProductModelBySearch(seName, spec, minPrice, maxPrice, keyword);
+                model = PrepareCategoryProductModelBySearch(seName, spec,keyword);
                 ViewBag.searchkeyword = " BY KEYWORD ''" + keyword+"''";
                 //ViewBag.MetaDescription = model.MetaDescription;
                 //ViewBag.MetaKeywords = model.MetaKeywords;
             }
             else
             {
-                model = PrepareCategoryProductModelBySearch(seName, spec, minPrice, maxPrice, "0");
+                model = PrepareCategoryProductModelBySearch(seName, spec, "0");
                 ViewBag.Error = "Search term minimum length is 3 characters";
             }
             var queryString = new NameValueCollection(ControllerContext.HttpContext.Request.QueryString);
@@ -157,9 +157,9 @@ namespace Orbio.Web.UI.Controllers
             return PartialView(model);
         }
         [ChildActionOnly]
-        public ActionResult ProductFilterBySearch(string categoryId, int minPrice, int maxPrice, int[] selectedSpecs, string keyword)
+        public ActionResult ProductFilterBySearch(string categoryId, int minPrice, int maxPrice, int[] selectedSpecs, string selectedPriceRange, string keyword)
         {
-            var model = PrepareSpecificationFilterModelBySearch(categoryId, minPrice, maxPrice, selectedSpecs, keyword);
+            var model = PrepareSpecificationFilterModelBySearch(categoryId, minPrice, maxPrice, selectedSpecs,selectedPriceRange, keyword);
 
             return PartialView("ProductFilter", model);
         }
@@ -207,7 +207,7 @@ namespace Orbio.Web.UI.Controllers
             return model;
         }
 
-        private List<SpecificationAttribute> PrepareSpecificationFilterModelBySearch(string categoryId, int minPrice, int maxPrice, int[] selectedSpecs, string keyword)
+        private List<SpecificationAttribute> PrepareSpecificationFilterModelBySearch(string categoryId, int minPrice, int maxPrice, int[] selectedSpecs, string selectedPriceRange, string keyword)
         {
             var specFilterModels = categoryService.GetSpecificationFiltersByCategory(string.IsNullOrEmpty(categoryId) ? "0" : categoryId, keyword);
             var specFilterByspecAttribute = from sa in specFilterModels
@@ -241,9 +241,10 @@ namespace Orbio.Web.UI.Controllers
                 {
                     Name = "Price",
                     Type = "Price",
+                    SelectedAttributeOptions = selectedPriceRange,
                     SpecificationAttributeOptions = new List<SpecificationAttributeOption> { 
-                {new SpecificationAttributeOption{Name=minPrice.ToString(), ElementName="productPriceFilterMinValue"}},
-                {new SpecificationAttributeOption{Name=maxPrice.ToString(), ElementName="productPriceFilterMaxValue"}}
+                {new SpecificationAttributeOption{Name=minPrice.ToString(), ElementName="productPriceFilterMinValue" ,  FilterUrl = currentUrl}},
+                {new SpecificationAttributeOption{Name=maxPrice.ToString(), ElementName="productPriceFilterMaxValue" , FilterUrl = currentUrl}}
                 }
                 });
             }
@@ -421,15 +422,76 @@ namespace Orbio.Web.UI.Controllers
             return model;
         }
 
-        private SearchModel PrepareCategoryProductModelBySearch(string seName, string filterIds, string minPrice, string maxPrice, string keyword)
+        private SearchModel PrepareCategoryProductModelBySearch(string seName, string filterIds,string keyword)
         {
+            var specificationAttributeIds = string.IsNullOrWhiteSpace(filterIds) ? new List<string>() : (from f in filterIds.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+                                                                                                         where f.Split('~').Length <= 1
+                                                                                                         select f).ToList();
 
-            var model = new SearchModel(categoryService.GetProductsBySearch(seName, string.IsNullOrEmpty(filterIds) ? null : filterIds,
-                string.IsNullOrEmpty(minPrice) ? (decimal?)null : Convert.ToDecimal(minPrice), string.IsNullOrEmpty(maxPrice) ? (decimal?)null : Convert.ToDecimal(maxPrice), keyword));
+            var model = new SearchModel(categoryService.GetProductsBySearch(seName, specificationAttributeIds.Count == 0 ? null : specificationAttributeIds.Aggregate((f1, f2) => f1 + "," + f2),
+                (decimal?)null, (decimal?)null, keyword));
+            var minPrice = 0M;
+            var maxPrice = 0M;
+            var priceModel = (from pr in
+                                  (
+                                      from p in model.Products
+                                      select p.ProductPrice)
+                              select Convert.ToDecimal(pr.Price)).ToList();
+            if (priceModel.Count > 0)
+            {
+                minPrice = priceModel.Min();
+                maxPrice = priceModel.Max();
+            }
+
+            model.MinPrice = minPrice;
+            model.MaxPrice = maxPrice;
             if (filterIds != null)
             {
-                model.SelectedSpecificationAttributeIds = (from f in filterIds.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+
+                model.SelectedSpecificationAttributeIds = (from f in specificationAttributeIds
                                                            select Convert.ToInt32(f)).ToArray();
+                var selectedPriceRange = (from f in filterIds.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+                                          where f.Split('~').Length > 1
+                                          select f).FirstOrDefault();
+
+                model.SelectedPriceRange = selectedPriceRange;
+
+
+
+
+                if (!string.IsNullOrWhiteSpace(model.SelectedPriceRange))
+                {
+
+                    var priceRanges = model.SelectedPriceRange.Split('~');
+
+                    if (priceRanges.Length > 1)
+                    {
+                        var selectedMinPrice = 0M;
+                        if (decimal.TryParse(priceRanges[0], out selectedMinPrice))
+                        {
+                            if (selectedMinPrice >= minPrice)
+                            {
+                                minPrice = selectedMinPrice;
+                            }
+                        }
+
+                        var selectedMaxPrice = 0M;
+                        if (decimal.TryParse(priceRanges[1], out selectedMaxPrice))
+                        {
+                            if (selectedMaxPrice <= maxPrice)
+                            {
+                                maxPrice = selectedMaxPrice;
+                            }
+                        }
+
+                        var filteredProducts = (from p in model.Products
+                                                where Convert.ToDecimal(p.ProductPrice.Price) >= minPrice &&
+                                             Convert.ToDecimal(p.ProductPrice.Price) <= maxPrice
+                                                select p).ToList();
+                        model.Products = filteredProducts;
+                    }
+                }
+
             }
 
             return model;
