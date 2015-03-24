@@ -1,17 +1,49 @@
 ﻿@model Orbio.Web.UI.Models.Catalog.SpecificationAttribute
   <div class="list_products" id="priceFilter">
                             <h2>@this.Model.Name </h2>
-  
-                            @foreach (var option in this.Model.SpecificationAttributeOptions)
-        {
-            @Html.Hidden(option.ElementName, option.Name)
-                            }
+ @{
+     var minPrice= 0;
+     var maxPrice=0;
+     var filterUrl = string.Empty;
     
+    foreach (var option in this.Model.SpecificationAttributeOptions)
+    {
+            if(option.ElementName=="productPriceFilterMinValue"){
+                int.TryParse(option.Name, out minPrice);
+            }
+
+            if (option.ElementName == "productPriceFilterMaxValue")
+            {
+                int.TryParse(option.Name, out maxPrice);
+            }
+            if(string.IsNullOrEmpty(filterUrl))
+            {
+                filterUrl = option.FilterUrl;
+            }
+                            
+    }
+    var priceRanges = !string.IsNullOrWhiteSpace(this.Model.SelectedAttributeOptions) ? this.Model.SelectedAttributeOptions.Split('~') : null;
+    var selectedMinPrice = minPrice;
+    var selectedMaxPrice = maxPrice;
+    if (priceRanges != null && priceRanges.Length > 1)
+    {
+        if (!int.TryParse(priceRanges[0], out selectedMinPrice))
+        {
+            selectedMinPrice = minPrice;
+        }
+        if (!int.TryParse(priceRanges[1], out selectedMaxPrice))
+        {
+            selectedMaxPrice = maxPrice;
+        }
+    }
+    }
 
     <div class="price-range">
         <!--price-range-->
-        <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]"  id="sl2"><br />
-        <b class="pull-left">$ 0</b> <b class="pull-right">$ 600</b>
+         @Html.Raw("<input type=\"text\" class=\"span2\" value=\"\" data-slider-min=\"" +  minPrice +"\" data-slider-max=\"" + maxPrice
+         + "\" data-slider-step=\"5\" data-slider-value=\"[ " + selectedMinPrice + "," + selectedMaxPrice + "]\" data-url= \"" + filterUrl + "\" id=\"sl2\"/>")<br />
+        <b class="pull-left">$ @minPrice</b> <b class="pull-right">$ @maxPrice</b>
 
                         </div>
+                           
 </div><!--/price-range-->

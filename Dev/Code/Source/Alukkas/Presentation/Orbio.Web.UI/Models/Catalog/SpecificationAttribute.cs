@@ -34,7 +34,7 @@ namespace Orbio.Web.UI.Models.Catalog
         /// </summary>
         public string Type { get; set; }
 
-
+        public string SelectedAttributeOptions { get; set; }
         /// <summary>
         /// gets or sets the attribute options
         /// </summary>
