@@ -48,6 +48,11 @@ namespace Orbio.Web.UI.Models.Catalog
         public IList<ProductOverViewModel> Products { get; set; }
         public IList<CategoryModel> BreadCrumbs { get; set; }
         public int[] SelectedSpecificationAttributeIds { get; set; }
+
+        public string SelectedPriceRange { get; set; }
+
+        public decimal MinPrice { get; set; }
+        public decimal MaxPrice { get; set; }
         
     }
 }

@@ -136,9 +136,9 @@ namespace Orbio.Web.UI.Controllers
             return View(model);
         }
 
-        public ActionResult Category(string seName, string spec, string minPrice, string maxPrice, string keyword)
+        public ActionResult Category(string seName, string spec, string keyword)
         {
-            var model = PrepareCategoryProductModel(seName, spec, minPrice, maxPrice, keyword);
+            var model = PrepareCategoryProductModel(seName, spec, keyword);
 
             var queryString = new NameValueCollection(ControllerContext.HttpContext.Request.QueryString);
             webHelper.RemoveQueryFromPath(ControllerContext.HttpContext, new List<string> { { "spec" } });
@@ -148,9 +148,9 @@ namespace Orbio.Web.UI.Controllers
         }
 
         [ChildActionOnly]
-        public ActionResult ProductFilter(int categoryId, int minPrice, int maxPrice, int[] selectedSpecs, string keyword)
+        public ActionResult ProductFilter(int categoryId, int minPrice, int maxPrice, int[] selectedSpecs, string selectedPriceRange, string keyword)
         {
-            var model = PrepareSpecificationFilterModel(categoryId, minPrice, maxPrice, selectedSpecs, keyword);
+            var model = PrepareSpecificationFilterModel(categoryId, minPrice, maxPrice, selectedSpecs,  selectedPriceRange, keyword);
 
             return PartialView(model);
         }
@@ -161,7 +161,7 @@ namespace Orbio.Web.UI.Controllers
 
             return PartialView("ProductFilter", model);
         }
-        private List<SpecificationAttribute> PrepareSpecificationFilterModel(int categoryId, int minPrice, int maxPrice, int[] selectedSpecs, string keyword)
+        private List<SpecificationAttribute> PrepareSpecificationFilterModel(int categoryId, int minPrice, int maxPrice, int[] selectedSpecs, string selectedPriceRange, string keyword)
         {
             var specFilterModels = categoryService.GetSpecificationFiltersByCategoryId(categoryId, keyword);
             var specFilterByspecAttribute = from sa in specFilterModels
@@ -195,9 +195,10 @@ namespace Orbio.Web.UI.Controllers
                 {
                     Name = "Price",
                     Type = "Price",
+                    SelectedAttributeOptions = selectedPriceRange,
                     SpecificationAttributeOptions = new List<SpecificationAttributeOption> { 
-                {new SpecificationAttributeOption{Name=minPrice.ToString(), ElementName="productPriceFilterMinValue"}},
-                {new SpecificationAttributeOption{Name=maxPrice.ToString(), ElementName="productPriceFilterMaxValue"}}
+                {new SpecificationAttributeOption{Name=minPrice.ToString(), ElementName="productPriceFilterMinValue" ,  FilterUrl = currentUrl}},
+                {new SpecificationAttributeOption{Name=maxPrice.ToString(), ElementName="productPriceFilterMaxValue" , FilterUrl = currentUrl}}
                 }
                 });
             }
@@ -302,7 +303,7 @@ namespace Orbio.Web.UI.Controllers
                         count++;
                     }
                     shoppingcartservice.AddCartItem("add", Convert.ToInt32(selectedcarttype), curcustomer.Id, selectedProduct.Id, selectedAttributes, Convert.ToInt32(selectedProduct.SelectedQuantity));
-                    ViewBag.Sucess = "Cart Added";
+                    ViewBag.Sucess = "Item added to the Cart";
                     bool flag = (ConfigurationManager.AppSettings["DisplayCartAfterAddingProduct"].ToString() != "") ? Convert.ToBoolean(ConfigurationManager.AppSettings["DisplayCartAfterAddingProduct"]) : false;
                     if (flag)
                     {
@@ -331,15 +332,89 @@ namespace Orbio.Web.UI.Controllers
             return PartialView(model.ProductDetail);
         }
 
-        private CategoryModel PrepareCategoryProductModel(string seName, string filterIds, string minPrice, string maxPrice, string keyword)
+ 
+       
+ 
+        [ChildActionOnly]
+        public ActionResult AssociatedProducts(int productId)
+        {
+            var model = PrepareAssociatedProductdetailsModel(productId);
+
+            return PartialView(model.ProductDetail);
+        }
+
+        private CategoryModel PrepareCategoryProductModel(string seName, string filterIds, string keyword)
         {
 
-            var model = new CategoryModel(categoryService.GetProductsBySlug(seName, string.IsNullOrEmpty(filterIds) ? null : filterIds,
-                string.IsNullOrEmpty(minPrice) ? (decimal?)null : Convert.ToDecimal(minPrice), string.IsNullOrEmpty(maxPrice) ? (decimal?)null : Convert.ToDecimal(maxPrice), keyword));
+            var specificationAttributeIds = string.IsNullOrWhiteSpace(filterIds)?new List<string>():(from f in filterIds.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+                                             where f.Split('~').Length <=1
+                                             select f).ToList();
+
+            var model = new CategoryModel(categoryService.GetProductsBySlug(seName, specificationAttributeIds.Count==0 ? null : specificationAttributeIds.Aggregate((f1,f2)=>f1+","+f2),
+                (decimal?)null, (decimal?)null, keyword));
+            var minPrice = 0M;
+            var maxPrice = 0M;
+            var priceModel = (from pr in
+                                  (
+                                      from p in model.Products
+                                      select p.ProductPrice)
+                              select Convert.ToDecimal(pr.Price)).ToList();
+            if (priceModel.Count > 0)
+            {
+                minPrice = priceModel.Min();
+                maxPrice = priceModel.Max();
+            }
+
+            model.MinPrice = minPrice;
+            model.MaxPrice = maxPrice;
+
             if (filterIds != null)
             {
-                model.SelectedSpecificationAttributeIds = (from f in filterIds.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+
+                model.SelectedSpecificationAttributeIds = (from f in specificationAttributeIds
                                                            select Convert.ToInt32(f)).ToArray();
+                var selectedPriceRange = (from f in filterIds.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+                                      where f.Split('~').Length > 1
+                                      select f).FirstOrDefault();
+
+                model.SelectedPriceRange = selectedPriceRange;
+                 
+               
+             
+
+                if (!string.IsNullOrWhiteSpace(model.SelectedPriceRange))
+                {
+                    
+                    var priceRanges = model.SelectedPriceRange.Split('~');
+
+                    if (priceRanges.Length > 1)
+                    {
+                        var selectedMinPrice = 0M;
+                        if (decimal.TryParse(priceRanges[0], out selectedMinPrice))
+                        {
+                            if (selectedMinPrice >= minPrice)
+                            {
+                                minPrice = selectedMinPrice;
+                            }
+                        }
+
+                        var selectedMaxPrice = 0M;
+                        if (decimal.TryParse(priceRanges[1], out selectedMaxPrice))
+                        {
+                            if (selectedMaxPrice <= maxPrice)
+                            {
+                                maxPrice = selectedMaxPrice;
+                            }
+                        }
+
+                        var filteredProducts = (from p in model.Products
+                                                where Convert.ToDecimal(p.ProductPrice.Price) >= minPrice &&
+                                             Convert.ToDecimal(p.ProductPrice.Price) <= maxPrice
+                                                select p).ToList();
+                        model.Products = filteredProducts;
+                    }
+                }
+
             }
             return model;
         }
@@ -370,6 +445,13 @@ namespace Orbio.Web.UI.Controllers
 
             return model;
         }
+        private AssociatedProductsModel PrepareAssociatedProductdetailsModel(int productId)
+        {
+            var model = new AssociatedProductsModel(productService.GetAssociatedProductsById(productId));
+
+            return model;
+        }
+        
         private IList<CategorySimpleModel> PrepareCategorySimpleModels()
         {
             return (from c in categoryService.GetTopMenuCategories()

@@ -207,6 +207,7 @@
     <Compile Include="Infrastructure\Cache\ModelCacheEventConsumer.cs" />
     <Compile Include="Infrastructure\GenericUrlRouteProvider.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Catalog\AssociatedProductsModel.cs" />
     <Compile Include="Models\Catalog\BaseCatalogModel.cs" />
     <Compile Include="Models\Catalog\CategoryModel.cs" />
     <Compile Include="Models\Catalog\CategorySimpleModel.cs" />
@@ -225,7 +226,6 @@
     <Compile Include="Models\CheckOut\AddressModel.cs" />
     <Compile Include="Models\Customer\ChangePasswordModel.cs" />
     <Compile Include="Models\Customer\CustomerModel.cs" />
-    <Compile Include="Models\Customer\EmailFriendModel.cs" />
     <Compile Include="Models\Customer\PasswordRecoveryConfirmModel.cs" />
     <Compile Include="Models\Customer\PasswordRecoveryModel.cs" />
     <Compile Include="Models\Home\PriceBarModel.cs" />
@@ -335,6 +335,7 @@
     <Content Include="Content\fonts\fontawesome-webfont.ttf" />
     <Content Include="Content\fonts\fontawesome-webfont.woff" />
     <Content Include="Content\fonts\FontAwesome.otf" />
+    <Content Include="Images\Basic_image\Alukkas_-_Bangle_Size.png" />
     <Content Include="Images\Basic_image\apple-touch-icon-144-precomposed.png" />
     <Content Include="Images\Basic_image\apple-touch-icon-57-precomposed.png" />
     <Content Include="Images\Basic_image\banner1.jpg" />
@@ -603,9 +604,13 @@
     <Content Include="Views\Home\DoubleValue.cshtml" />
     <Content Include="Views\Home\GiftVoucher.cshtml" />
     <Content Include="Views\Home\FAQ.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Customer\EmailFriend.cshtml" />
     <Content Include="Views\Customer\WishList.cshtml" />
     <Content Include="Views\Customer\WishListSummary.cshtml" />
+=======
+    <Content Include="Views\Catalog\AssociatedProducts.cshtml" />
+>>>>>>> origin/master
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

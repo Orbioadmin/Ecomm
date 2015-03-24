@@ -31,8 +31,8 @@ namespace Orbio.Web.UI.Models.Catalog
             this.ViewPath = product.ViewPath;
             this.ImageRelativeUrl = product.ImageRelativeUrl;
             this.CurrencyCode = product.CurrencyCode;
-            this.ProductPrice.Price = product.Price.ToString("0.00");
-            this.ProductPrice.OldPrice = product.OldPrice.ToString("0.00");
+            this.ProductPrice.Price = product.Price.ToString("#,##0.00");
+            this.ProductPrice.OldPrice = product.OldPrice.ToString("#,##0.00");
         }
 
         
