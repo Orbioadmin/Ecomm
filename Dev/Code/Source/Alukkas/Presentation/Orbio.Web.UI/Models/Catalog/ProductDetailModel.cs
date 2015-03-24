@@ -27,10 +27,10 @@ namespace Orbio.Web.UI.Models.Catalog
             this.ViewPath = productDetail.ViewPath;
             this.ImageRelativeUrl = productDetail.ImageRelativeUrl;
             this.CurrencyCode = productDetail.CurrencyCode;
-            this.ProductPrice.Price = productDetail.Price.ToString("0.00");
-            this.Gold = productDetail.Gold.ToString("0.00");
-            this.Stones = productDetail.Stones.ToString("0.00");
-            this.Making = productDetail.Making.ToString("0.00");
+            this.ProductPrice.Price = productDetail.Price.ToString("#,##0.00");
+            this.Gold = productDetail.Gold.ToString("#,##0.00");
+            this.Stones = productDetail.Stones.ToString("#,##0.00");
+            this.Making = productDetail.Making.ToString("#,##0.00");
 
              if (productDetail.BreadCrumbs != null && productDetail.BreadCrumbs.Count > 0)
             {               

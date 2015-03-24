@@ -303,7 +303,7 @@ namespace Orbio.Web.UI.Controllers
                         count++;
                     }
                     shoppingcartservice.AddCartItem("add", Convert.ToInt32(selectedcarttype), curcustomer.Id, selectedProduct.Id, selectedAttributes, Convert.ToInt32(selectedProduct.SelectedQuantity));
-                    ViewBag.Sucess = "Cart Added";
+                    ViewBag.Sucess = "Item added to the Cart";
                     bool flag = (ConfigurationManager.AppSettings["DisplayCartAfterAddingProduct"].ToString() != "") ? Convert.ToBoolean(ConfigurationManager.AppSettings["DisplayCartAfterAddingProduct"]) : false;
                     if (flag)
                     {
@@ -328,6 +328,17 @@ namespace Orbio.Web.UI.Controllers
         public ActionResult RelatedProducts(int productId)
         {
             var model = PrepareRelatedProductdetailsModel(productId);
+
+            return PartialView(model.ProductDetail);
+        }
+
+ 
+       
+ 
+        [ChildActionOnly]
+        public ActionResult AssociatedProducts(int productId)
+        {
+            var model = PrepareAssociatedProductdetailsModel(productId);
 
             return PartialView(model.ProductDetail);
         }
@@ -434,6 +445,13 @@ namespace Orbio.Web.UI.Controllers
 
             return model;
         }
+        private AssociatedProductsModel PrepareAssociatedProductdetailsModel(int productId)
+        {
+            var model = new AssociatedProductsModel(productService.GetAssociatedProductsById(productId));
+
+            return model;
+        }
+        
         private IList<CategorySimpleModel> PrepareCategorySimpleModels()
         {
             return (from c in categoryService.GetTopMenuCategories()

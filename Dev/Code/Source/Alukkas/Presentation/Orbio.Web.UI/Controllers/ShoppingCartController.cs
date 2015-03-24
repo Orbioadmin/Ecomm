@@ -35,7 +35,7 @@ namespace Orbio.Web.UI.Controllers
             {
                 subtotal = subtotal + Convert.ToDouble(totalprice.Totalprice);
             }
-            ViewBag.subtotal = subtotal.ToString("0.00");
+            ViewBag.subtotal = subtotal.ToString("#,##0.00");
             var currency = (from r in model.CartDetail.AsEnumerable()
                             select r.CurrencyCode).Take(1).ToList();
             ViewBag.Currencycode = (currency.Count > 0) ? currency[0] : "Rs";
