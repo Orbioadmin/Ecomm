@@ -13,9 +13,9 @@
         var scpdQuantity = string.Format("items[{0}].SelectedQuantity", count);
         var scpdcartid = string.Format("items[{0}].CartId", count);
         <tr>
-            <td><a href="@Url.RouteUrl("Category", new { SeName = scpd.Name })?p=pt"><img src="@scpd.DefaultPicture.ImageUrl" width="120px" height="65px"></a></td>
+            <td><a href="@Url.RouteUrl("Category", new { SeName = scpd.SeName })?p=pt"><img src="@scpd.DefaultPicture.ImageUrl" width="120px" height="65px"></a></td>
             <td>
-                <a class="cartitem" href="@Url.RouteUrl("Category", new { SeName = scpd.Name })?p=pt">
+                <a class="cartitem" href="@Url.RouteUrl("Category", new { SeName = scpd.SeName })?p=pt">
                     @scpd.Name
                 </a><br />
                 @foreach (var attribute in scpd.ProductVariantAttributes)

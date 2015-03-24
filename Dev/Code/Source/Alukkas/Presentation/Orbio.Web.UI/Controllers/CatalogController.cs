@@ -123,6 +123,7 @@ namespace Orbio.Web.UI.Controllers
             {
 
                 model = PrepareCategoryProductModelBySearch(seName, spec, minPrice, maxPrice, keyword);
+                ViewBag.searchkeyword = " BY KEYWORD " + keyword;
                 //ViewBag.MetaDescription = model.MetaDescription;
                 //ViewBag.MetaKeywords = model.MetaKeywords;
             }
@@ -139,7 +140,8 @@ namespace Orbio.Web.UI.Controllers
         public ActionResult Category(string seName, string spec, string keyword)
         {
             var model = PrepareCategoryProductModel(seName, spec, keyword);
-
+            if (!string.IsNullOrEmpty(keyword))
+            { ViewBag.searchkeyword = " ITEMS FOUND BY KEYWORD " + keyword; }
             var queryString = new NameValueCollection(ControllerContext.HttpContext.Request.QueryString);
             webHelper.RemoveQueryFromPath(ControllerContext.HttpContext, new List<string> { { "spec" } });
             ViewBag.MetaDescription = model.MetaDescription;

@@ -5,9 +5,9 @@
     { 
 <tr>
     <td><input type="hidden" id="result" value="" />
-    <a class="cartitem" href="@Url.RouteUrl("Category", new { SeName = wishlist.Name })?p=pt"><img src="@wishlist.DefaultPicture.ImageUrl" width="120px" height="65px"></a></td>
+    <a class="cartitem" href="@Url.RouteUrl("Category", new { SeName = wishlist.SeName })?p=pt"><img src="@wishlist.DefaultPicture.ImageUrl" width="120px" height="65px"></a></td>
     <td class="p_wish" style="text-align:left;padding-top:20px">
-        <a class="cartitem" href="@Url.RouteUrl("Category", new { SeName = wishlist.Name })?p=pt">
+        <a class="cartitem" href="@Url.RouteUrl("Category", new { SeName = wishlist.SeName })?p=pt">
             @wishlist.Name
             </a>
         <br />

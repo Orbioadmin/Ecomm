@@ -110,7 +110,7 @@ DECLARE @XmlResult xml;
 	
 
 --WITH XMLNAMESPACES ('http://schemas.datacontract.org/2004/07/Orbio.Core.Domain.Catalog' AS ns)
-SELECT @XmlResult = (Select(SELECT (select count(#temp.ProductId) from #temp) as 'Itemcount',product.Id Id,product.Name Name,product.Price Price,(SELECT Pic.Id PictureId, PPM.DisplayOrder, Pic.RelativeUrl,Pic.MimeType , Pic.SeoFilename, Pic.IsNew FROM [dbo].[Product]  P INNER JOIN [dbo].[Product_Picture_Mapping] PPM ON PPM.ProductId = P.Id
+SELECT @XmlResult = (Select(SELECT (select count(#temp.ProductId) from #temp) as 'Itemcount',product.Id Id,product.Name Name,ur.Slug as SeName,product.Price Price,(SELECT Pic.Id PictureId, PPM.DisplayOrder, Pic.RelativeUrl,Pic.MimeType , Pic.SeoFilename, Pic.IsNew FROM [dbo].[Product]  P INNER JOIN [dbo].[Product_Picture_Mapping] PPM ON PPM.ProductId = P.Id
 INNER JOIN [dbo].[Picture] Pic ON Pic.Id = PPM.PictureId WHERE P.Id = product.Id
 ORDER BY PPM.DisplayOrder FOR XML PATH ('ProductPicture'),ROOT('ProductPictures'), Type),
   @currencyCode as CurrencyCode,
@@ -129,7 +129,8 @@ ORDER BY PPM.DisplayOrder FOR XML PATH ('ProductPicture'),ROOT('ProductPictures'
    (product.Price*sc.Quantity) as 'Totalprice'
 from [dbo].[Product] product 
 inner join ShoppingCartItem sc on sc.ProductId = product.Id 
-Left join [dbo].[DeliveryDate] Delivery_date on product.DeliveryDateId= Delivery_date.Id  
+Left join [dbo].[DeliveryDate] Delivery_date on product.DeliveryDateId= Delivery_date.Id
+Left  join UrlRecord ur on product.Id = ur.EntityId AND EntityName='Product' AND ur.IsActive=1    
 where sc.CustomerId=@customerid and sc.ShoppingCartTypeId=@shoppingcarttypeid and product.Deleted <> 1 order by product.Id 
 FOR XML PATH('ShoppingCartItem'),Root('ShoppingCartProductItems'), type )For XML PATH('ShoppingCartItems'),type)
 SELECT @XmlResult as XmlResult
