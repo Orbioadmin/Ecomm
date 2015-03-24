@@ -9,6 +9,7 @@ using Orbio.Core.Domain.Messages;
 using Orbio.Services.Messages;
 using Orbio.Core;
 using System.Data.SqlClient;
+using Orbio.Core.Domain.Catalog;
 
 namespace Orbio.Services.Messages
 {
@@ -110,6 +111,36 @@ namespace Orbio.Services.Messages
             var toName = fullName;
             return SendNotification(messageTemplate, tokens,
                 toEmail, toName);
+        }
+
+        public int SendCustomerEmailFrendMessage(Customer customer, ProductDetail product, string mail, string message, string Name, string url)
+        {
+            if (customer == null)
+                throw new ArgumentNullException("customer");
+            var store = storeContext.CurrentStore;
+            var result = context.ExecuteFunction<MessageTemplate>("usp_MessageTemplate",
+                new SqlParameter() { ParameterName = "@messagename", Value = "Service.EmailAFriend", DbType = System.Data.DbType.String });
+
+            var messageTemplate = new MessageTemplate();
+            messageTemplate = result.FirstOrDefault();
+            if (messageTemplate == null)
+                return 0;
+
+            //tokens
+            var tokens = new List<Token>();
+            messageTokenProvider.AddStoreTokens(tokens, store);
+            messageTokenProvider.AddCustomerTokens(tokens, customer);
+            tokens.Add(new Token("EmailAFriend.PersonalMessage", message, true));
+            tokens.Add(new Token("EmailAFriend.Email", mail));
+            tokens.Add(new Token("Product.ProductURLForCustomer", url));
+            tokens.Add(new Token("Product.Name", Name));
+            tokens.Add(new Token("Product.ShortDescription", product.ShortDescription));
+
+            var toEmail = mail;
+            var toName = "";
+
+            return SendNotification(messageTemplate, tokens,
+               toEmail, toName);
         }
 
 

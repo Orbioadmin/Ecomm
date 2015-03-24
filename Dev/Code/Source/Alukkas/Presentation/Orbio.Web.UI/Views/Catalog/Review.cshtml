@@ -21,7 +21,7 @@
                     
                     <h1>Write reviews for @Html.ValueFor(m=>m.Name)</h1>
 
-                    @using (Html.BeginForm("Review", "Catalog", new { ReturnUrl = ViewBag.ReturnUrl,seName=Model.SeName,Name=Model.Name }, FormMethod.Post, new { @class = "form-horizontal " }))
+                    @using (Html.BeginForm("Review", "Catalog", new { ReturnUrl = ViewBag.ReturnUrl,seName=Model.SeName, Name=Model.Name }, FormMethod.Post, new { @class = "form-horizontal " }))
                     {
                         @Html.AntiForgeryToken()
                         @Html.ValidationSummary(true)

@@ -1,0 +1,82 @@
+﻿@model Orbio.Web.UI.Models.Customer.EmailFriendModel
+@{
+    ViewBag.Title = "EmailFriend";
+}
+
+<section id="Login" class="Login_home">
+
+
+    <div class="container" align="center">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="login_inner">
+
+                <div class="login_form">
+
+                    <h1>Email a Friend</h1>
+
+                    @using (Html.BeginForm("EmailFriend", "Customer", new { ReturnUrl = ViewBag.ReturnUrl,seName = Model.SeName, Name = Model.Name, Url = Model.url,CaptchaCode=Model.CaptchaCode }, FormMethod.Post, new { @class = "form-horizontal " }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-4 control-label">Friend's Email<span style="color:red">*</span></label>
+                            <div class="col-sm-8">
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                <span style="color:red">@Html.ValidationMessageFor(m => m.Email)</span>
+                            </div>
+
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-4 control-label">Personal Message</label>
+                          
+                            <div class="col-sm-8">
+                                @Html.TextBoxFor(m => m.Message, new { @class = "form-control" })
+                                <span style="color:red">@Html.ValidationMessageFor(m => m.Message)</span>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-4 control-label">Enter the code<span style="color:red">*</span></label>
+                            <div class="col-sm-8">
+                                @Html.TextBoxFor(m => m.Captcha, new { @class = "form-control" })
+                                <span style="color:red">@Html.ValidationMessageFor(m => m.Captcha)</span>
+                            </div>
+                        </div>
+
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-4 control-label"></label>
+                    <div class="col-sm-8">
+                        <div style="text-align: center; margin-left: initial; padding-top: 6px; width: 118px; height: 44px; font-style: italic; font-weight: bold; font-size: x-large; color: darkgrey; background-color: #f2f2f2;">
+                            @Html.ValueFor(m => m.CaptchaCode)
+                        </div>
+                    </div>
+                    </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-4 col-sm-8">
+                                <button id="submitbtn" class="Buynow">SUBMIT</button>
+                                   
+                            </div>
+                        </div>
+                    }
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+@section scripts{
+    <script type="text/javascript">
+        $('#submitbtn').on('click', function (e) {
+                if (($("#Email").val() == "") || ($("#Captcha").val() == "")) {
+                    if ($("#Email").val() == "") {
+                        $("#email").css("display", "");
+                    }
+                    if ($("#Captcha").val() == "") {
+                        $("#captcha").css("display", "");
+                    }
+                }
+            })
+    </script>
+}
