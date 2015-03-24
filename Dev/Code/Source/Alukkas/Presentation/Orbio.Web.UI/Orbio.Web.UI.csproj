@@ -226,6 +226,7 @@
     <Compile Include="Models\CheckOut\AddressModel.cs" />
     <Compile Include="Models\Customer\ChangePasswordModel.cs" />
     <Compile Include="Models\Customer\CustomerModel.cs" />
+    <Compile Include="Models\Customer\EmailFriendModel.cs" />
     <Compile Include="Models\Customer\PasswordRecoveryConfirmModel.cs" />
     <Compile Include="Models\Customer\PasswordRecoveryModel.cs" />
     <Compile Include="Models\Home\PriceBarModel.cs" />
@@ -421,7 +422,9 @@
     <Content Include="Images\Basic_image\zoom-product2.png" />
     <Content Include="Images\Basic_image\zoom-product3.png" />
     <Content Include="Images\Basic_image\zoom.jpg" />
+    <Content Include="Images\bis.png" />
     <Content Include="Images\cart.png" />
+    <Content Include="Images\certified.png" />
     <Content Include="Images\collection1.png" />
     <Content Include="Images\collection2.png" />
     <Content Include="Images\collection3.png" />
@@ -432,6 +435,7 @@
     <Content Include="Images\new-user-bg.png" />
     <Content Include="Images\pattern-bg-1.png" />
     <Content Include="Images\pattern-bg-2.png" />
+    <Content Include="Images\return.png" />
     <Content Include="Images\section-separator.png" />
     <Content Include="Images\section-separator1.png" />
     <Content Include="Images\slider\1.jpg" />
@@ -601,6 +605,7 @@
     <Content Include="Views\Home\GiftVoucher.cshtml" />
     <Content Include="Views\Home\FAQ.cshtml" />
     <Content Include="Views\Catalog\AssociatedProducts.cshtml" />
+    <Content Include="Views\Customer\EmailFriend.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

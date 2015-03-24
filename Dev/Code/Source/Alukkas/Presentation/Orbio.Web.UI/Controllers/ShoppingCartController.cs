@@ -26,6 +26,15 @@ namespace Orbio.Web.UI.Controllers
 
         public ActionResult Cart()
         {
+            string returnurl = null;
+            if (Request.RawUrl.ToString() != "/")
+            {
+                returnurl = Request.UrlReferrer.ToString();
+            }
+            else
+            {
+                returnurl = "";
+            }
             var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
             var curcustomer = workContext.CurrentCustomer;
             ShoppingCartType carttype = ShoppingCartType.ShoppingCart;
@@ -39,14 +48,24 @@ namespace Orbio.Web.UI.Controllers
             var currency = (from r in model.CartDetail.AsEnumerable()
                             select r.CurrencyCode).Take(1).ToList();
             ViewBag.Currencycode = (currency.Count > 0) ? currency[0] : "Rs";
+            ViewBag.ReturnUrl = returnurl;
             return View(model);
         }
         [HttpPost]
         public ActionResult Cart(ShoppingCartItemModel detailmodel)
         {
-
+            string returnurl = null;
+            if (Request.RawUrl.ToString() != "/")
+            {
+                returnurl = Request.UrlReferrer.ToString();
+            }
+            else
+            {
+                returnurl = "";
+            }
             string xml = Serializer.GenericDataContractSerializer(detailmodel.items);
             shoppingcartservice.ModifyCartItem(xml);
+            ViewBag.ReturnUrl = returnurl;
             return RedirectToRoute(new { seName = "cart"});
         }
         public ActionResult CartItem()
@@ -57,6 +76,17 @@ namespace Orbio.Web.UI.Controllers
             var model = PrepareShoppingCartItemModel(curcustomer.Id, Convert.ToInt32(carttype));
             return PartialView("CartItems",model);
         }
+
+        public ActionResult Continueshopping(string returnurl)
+        {
+             string previousurl ="";
+             if (!string.IsNullOrEmpty(returnurl))
+                 previousurl = returnurl;
+             else
+                 previousurl = Request.Url.Scheme+"://"+Request.Url.Authority;
+            return Redirect(previousurl);
+        }
+
         private ShoppingCartItemsModel PrepareShoppingCartItemModel(int customerid, int carttype)
         {
             var model = new ShoppingCartItemsModel(shoppingcartservice.GetCartItems("select", carttype, customerid, 0, 0));

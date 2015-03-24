@@ -88,8 +88,8 @@
         <div class="shop_stat_butt">
             <div class="row">
                 <div class="col-sm-8">
-                    <input type="submit" class="continue_shop" value="CONTINUE SHOPPING">
-                </div>
+                    <a href="@Url.Action("Continueshopping", "ShoppingCart", new { returnurl = ViewBag.ReturnUrl })"><input type="submit" class="continue_shop" value="CONTINUE SHOPPING"></a>
+</div>
 
                 <div class="col-sm-4">
                     <a href="@Url.Action("Address","CheckOut")"><input type="submit" class="continue_check" value="PROCEED TO CHECKOUT"></a>
