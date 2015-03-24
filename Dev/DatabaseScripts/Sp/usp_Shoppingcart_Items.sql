@@ -83,6 +83,18 @@ begin
 		end
 end
 
+if(@action='delete')
+begin
+if exists(select Id from [dbo].[ShoppingCartItem] where Id = @id)
+delete from [dbo].[ShoppingCartItem] where Id = @id
+end
+
+if(@action='addtocart')
+begin
+if exists(select Id from [dbo].[ShoppingCartItem] where Id = @id)
+update [dbo].[ShoppingCartItem] set ShoppingCartTypeId=1,StoreId=0 where Id=@id
+end
+
 if(@action = 'select')
 begin
 

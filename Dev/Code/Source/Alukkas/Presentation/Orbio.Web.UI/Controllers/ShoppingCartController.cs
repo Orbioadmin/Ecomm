@@ -59,7 +59,7 @@ namespace Orbio.Web.UI.Controllers
         }
         private ShoppingCartItemsModel PrepareShoppingCartItemModel(int customerid, int carttype)
         {
-            var model = new ShoppingCartItemsModel(shoppingcartservice.GetCartItems("select", carttype, customerid, 0, 0));
+            var model = new ShoppingCartItemsModel(shoppingcartservice.GetCartItems("select",0, carttype, customerid, 0, 0));
 
             return model;
         }

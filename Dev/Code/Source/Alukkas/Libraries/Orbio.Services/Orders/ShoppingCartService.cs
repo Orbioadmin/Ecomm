@@ -44,11 +44,11 @@ namespace Orbio.Services.Orders
         /// Get shopping cart items
         /// </summary>
         /// <param name="action">Action</param>
-        public ShoppingCartItems GetCartItems(string action, int ShoppingCartTypeId, int CustomerId, int ProductId, int Quantity)
+        public ShoppingCartItems GetCartItems(string action,int id, int ShoppingCartTypeId, int CustomerId, int ProductId, int Quantity)
         {
             var sqlParamList = new List<SqlParameter>();
             sqlParamList.Add(new SqlParameter() { ParameterName = "@action", Value = action, DbType = System.Data.DbType.String });
-            sqlParamList.Add(new SqlParameter { ParameterName = "@id", Value = 0, DbType = System.Data.DbType.Int32 });
+            sqlParamList.Add(new SqlParameter { ParameterName = "@id", Value = id, DbType = System.Data.DbType.Int32 });
             sqlParamList.Add(new SqlParameter { ParameterName = "@shoppingcarttypeid", Value = ShoppingCartTypeId, DbType = System.Data.DbType.Int32 });
             sqlParamList.Add(new SqlParameter { ParameterName = "@customerid", Value = CustomerId, DbType = System.Data.DbType.Int32 });
             sqlParamList.Add(new SqlParameter { ParameterName = "@productid", Value = ProductId, DbType = System.Data.DbType.Int32 });
