@@ -277,7 +277,7 @@ namespace Orbio.Web.UI.Controllers
                     errorString = selectedProduct.ProductVariantAttributes.GetProductVariantErrors();
                 }
                 if (selectedquantity < selectedProduct.OrderMinimumQuantity || selectedquantity > selectedProduct.OrderMaximumQuantity)
-                { errorString = "Select a quantity between " + selectedProduct.OrderMinimumQuantity + " and " + selectedProduct.OrderMaximumQuantity; }
+                { errorString += "Select a quantity between " + selectedProduct.OrderMinimumQuantity + " and " + selectedProduct.OrderMaximumQuantity; }
                 if (string.IsNullOrEmpty(errorString))
                 {
                     var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
