@@ -17,6 +17,7 @@ using System.Text;
 using Orbio.Core.Domain.Orders;
 using Orbio.Web.UI.Models.Orders;
 using Orbio.Services.Orders;
+using System.Threading.Tasks;
 
 namespace Orbio.Web.UI.Controllers
 {
@@ -361,16 +362,15 @@ namespace Orbio.Web.UI.Controllers
                 var model = new ShoppingCartItemsModel(shoppingcartservice.GetCartItems("select", 0, carttype, customerid, 0, 0));
                 return model;
         }
-
-        public ActionResult UpdateWishList(int Id,string value)
+        [HttpGet]
+        public async Task<ActionResult> UpdateWishList(int Id, string value)
         {
             var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
             var curcustomer = workContext.CurrentCustomer;
             ShoppingCartType carttype = ShoppingCartType.Wishlist;
             DeleteOrUpdateWishList(Id, Convert.ToInt32(carttype), value);
             var model = PrepareShoppingCartItemModel(curcustomer.Id, Convert.ToInt32(carttype));
-
-            return View("WishList", model);
+            return PartialView("WishListSummary", model.CartDetail);
         }
 
         private void DeleteOrUpdateWishList(int Id, int carttype, string value)

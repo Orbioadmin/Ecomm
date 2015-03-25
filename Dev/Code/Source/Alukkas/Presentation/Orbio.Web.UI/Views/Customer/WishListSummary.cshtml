@@ -1,37 +1,58 @@
 ﻿@model List<Orbio.Web.UI.Models.Orders.ShoppingCartItemModel>
 
-@{
-    foreach(var wishlist in this.Model)
-    { 
-<tr>
-    <td><input type="hidden" id="result" value="" />
-    <a class="cartitem" href="@Url.RouteUrl("Category", new { SeName = wishlist.SeName })?p=pt"><img src="@wishlist.DefaultPicture.ImageUrl" width="120px" height="65px"></a></td>
-    <td class="p_wish" style="text-align:left;padding-top:20px">
-        <a class="cartitem" href="@Url.RouteUrl("Category", new { SeName = wishlist.SeName })?p=pt">
-            @wishlist.Name
-            </a>
-        <br />
-        @foreach (var attribute in wishlist.ProductVariantAttributes)
-        {
-            @attribute.TextPrompt <span>:</span>@attribute.Values[0].Name
-        }
-</td>
-    <td>@wishlist.ProductPrice.Price</td>
-    <td><a href="#" onclick="updatewhishlist('@wishlist.CartId','delete');"><img src="~/Images/Basic_image/trash-black.png" id="delete" /></a></td>
-   <td><a href="#" onclick="updatewhishlist('@wishlist.CartId','addtocart');"><img src="~/Images/Basic_image/cart-yellow.png" /></a></td>
-   
-    
-</tr>
-    }
-}
-<script>
-    function updatewhishlist(id,val) {
-        $.ajax({
-            url: 'UpdateWishList',
-            data: { id: id, value: val },
-            success: function () {
-                location.reload();
+<div class="table-responsive">
+    <input type="hidden" id="result" value="" />
+    <table cellspacing="0" cellpadding="0" width="100%" class="Order_table table">
+        <tbody>
+            <tr>
+                <th width="10%">Item</th>
+                <th></th>
+                <th>Price</th>
+                <th>Remove</th>
+                <th>Add To Cart</th>
+            </tr>
+            @foreach (var wishlist in this.Model)
+            {
+                <tr>
+                    <td>
+                       
+                        <a class="cartitem" href="@Url.RouteUrl("Category", new { SeName = wishlist.SeName })?p=pt"><img src="@wishlist.DefaultPicture.ImageUrl" width="120px" height="65px"></a>
+                    </td>
+                    <td class="p_wish" style="text-align:left;padding-top:20px">
+                        <a class="cartitem" href="@Url.RouteUrl("Category", new { SeName = wishlist.SeName })?p=pt">
+                            @wishlist.Name
+                        </a>
+                        <br />
+                        @foreach (var attribute in wishlist.ProductVariantAttributes)
+                        {
+                            @attribute.TextPrompt <span>:</span>@attribute.Values[0].Name
+                        }
+                    </td>
+                    <td>@wishlist.ProductPrice.Price</td>
+                    <td><a href="javascript://" onclick="updatewhishlist('@wishlist.CartId','delete');"><img src="~/Images/Basic_image/trash-black.png" id="delete" /></a></td>
+                    <td><a href="javascript://" onclick="updatewhishlist('@wishlist.CartId','addtocart');"><img src="~/Images/Basic_image/cart-yellow.png" /></a></td>
+
+
+                </tr>
             }
-        });
+        </tbody>
+    </table>
+</div>
+<script>
+    function updatewhishlist(id, val) {
+        //$.ajax({
+        //    url: 'UpdateWishList',
+        //    data: { id: id, value: val },
+        //    success: function () {
+        //        location.reload();
+        //    }
+        //});
+        if (val == "delete") {
+            ShowSuccessMsg("The item has been deleted from your Wishlist.");
+        }
+        else {
+            ShowSuccessMsg("The item has been moved to your shopping cart.");
+        }
+        $("#mywishlist").load('@(Url.Action("UpdateWishList", "Customer"))?id=' + id + '&value=' + val);
     }
 </script>

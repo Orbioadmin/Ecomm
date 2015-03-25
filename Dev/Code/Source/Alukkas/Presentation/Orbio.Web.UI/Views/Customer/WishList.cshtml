@@ -5,7 +5,7 @@
 }
 
 <div class="tab-pane" id="mywishlist">
-    <div class="table-responsive">
+    @*<div class="table-responsive">
         <table cellspacing="0" cellpadding="0" width="100%" class="Order_table table">
             <tbody>
                 <tr>
@@ -14,7 +14,7 @@
                     <th>Price</th>
                     <th>Remove</th>
                     <th>Add To Cart</th>
-                </tr>
+                </tr>*@
                 @*<tr>
                     <td><img src="images/Thumbnail/Listing-product1.jpg" class="wishlist_img"></td>
                     <td class="p_wish">
@@ -48,8 +48,8 @@
                 @{
                     Html.RenderPartial("WishListSummary", this.Model.CartDetail);
                 }
-            </tbody>
+            @*</tbody>
         </table>
-    </div>
+    </div>*@
 </div>
 
