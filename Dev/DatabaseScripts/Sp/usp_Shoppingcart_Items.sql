@@ -91,8 +91,15 @@ end
 
 if(@action='addtocart')
 begin
-if exists(select Id from [dbo].[ShoppingCartItem] where Id = @id)
+if not exists(select Id from [dbo].[ShoppingCartItem] where ShoppingCartTypeId=(select ShoppingCartTypeId from [dbo].[ShoppingCartItem] where Id = @id ) 
+and CustomerId = (select CustomerId from [dbo].[ShoppingCartItem] where Id = @id )  and
+				ProductId = (select ProductId from [dbo].[ShoppingCartItem] where Id = @id ) and AttributesXml =(select AttributesXml from [dbo].[ShoppingCartItem] where Id = @id ))
 update [dbo].[ShoppingCartItem] set ShoppingCartTypeId=1,StoreId=0 where Id=@id
+
+else if exists(select Id from [dbo].[ShoppingCartItem] where ShoppingCartTypeId=(select ShoppingCartTypeId from [dbo].[ShoppingCartItem] where Id = @id ) 
+and CustomerId = (select CustomerId from [dbo].[ShoppingCartItem] where Id = @id )  and
+				ProductId = (select ProductId from [dbo].[ShoppingCartItem] where Id = @id ) and AttributesXml =(select AttributesXml from [dbo].[ShoppingCartItem] where Id = @id ))
+delete from [dbo].[ShoppingCartItem] where Id=@id
 end
 
 if(@action = 'select')
