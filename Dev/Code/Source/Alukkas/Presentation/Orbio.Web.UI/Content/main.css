@@ -60,6 +60,21 @@
          url('../fonts/cinzeldecorative-bold.svg#CinzelDecorativeBold') format('svg');
 }
 
+/* Rupees Symbol */ 
+@font-face{font-family: 'WebRupee';src: url('fonts/WebRupee.V2.0.eot');
+           src:local('WebRupee'), 
+               url('fonts/WebRupee.V2.0.ttf') format('truetype'),  
+               url('fonts/WebRupee.V2.0.woff') format('woff'), 
+               url('fonts/WebRupee.V2.0.svg') format('svg');font-weight: normal;font-style: normal; 
+
+}
+.WebRupee{font-family: 'WebRupee';font-size: 24px;}
+.rupee{font-family: WebRupee;font-size: 24px;font-weight: bold;color: #000000;padding-left: 5px;}
+.rupees{font-family: WebRupee;font-size: 11px;font-weight: bold;color: #393939;padding-left: 5px;}
+.GridRupees{font-family: WebRupee;font-size: 11px;font-weight: normal;color: #000000;padding-right: 2px;padding-left: 2px;}
+.smallBRupee{font-family: WebRupee;font-size: 10px;font-weight: normal;color: #083356;}
+.qtblackRupee{font-family: WebRupee;font-size: 11px;font-weight: normal;color: #000000;}
+/* End Rupees */
 
 
 
