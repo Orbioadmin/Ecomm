@@ -26,14 +26,18 @@ namespace Orbio.Web.UI.Controllers
 
         public ActionResult Cart()
         {
-            string returnurl = null;
             if (Request.RawUrl.ToString() != "/")
             {
-                returnurl = Request.UrlReferrer.ToString();
-            }
-            else
-            {
-                returnurl = "";
+                if (Request.RawUrl.ToString() != "/cart?seName=cart")
+                {
+                    HttpCookie myCookie = new HttpCookie("Returnurl");
+                    DateTime now = DateTime.Now;
+                    myCookie.Value = Request.UrlReferrer.ToString();
+
+                    myCookie.Expires = now.AddHours(2);
+
+                    Response.Cookies.Add(myCookie);
+                }
             }
             var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
             var curcustomer = workContext.CurrentCustomer;
@@ -48,24 +52,13 @@ namespace Orbio.Web.UI.Controllers
             var currency = (from r in model.CartDetail.AsEnumerable()
                             select r.CurrencyCode).Take(1).ToList();
             ViewBag.Currencycode = (currency.Count > 0) ? currency[0] : "Rs";
-            ViewBag.ReturnUrl = returnurl;
             return View(model);
         }
         [HttpPost]
         public ActionResult Cart(ShoppingCartItemModel detailmodel)
         {
-            string returnurl = null;
-            if (Request.RawUrl.ToString() != "/")
-            {
-                returnurl = Request.UrlReferrer.ToString();
-            }
-            else
-            {
-                returnurl = "";
-            }
             string xml = Serializer.GenericDataContractSerializer(detailmodel.items);
             shoppingcartservice.ModifyCartItem(xml);
-            ViewBag.ReturnUrl = returnurl;
             return RedirectToRoute(new { seName = "cart"});
         }
         public ActionResult CartItem()
@@ -77,13 +70,24 @@ namespace Orbio.Web.UI.Controllers
             return PartialView("CartItems",model);
         }
 
-        public ActionResult Continueshopping(string returnurl)
+        public ActionResult Continueshopping()
         {
+            string returnurl = "";
+            HttpCookie myCookie = new HttpCookie("Returnurl");
+            myCookie = Request.Cookies["Returnurl"];
+            if (myCookie != null)
+            {
+                returnurl = myCookie.Value;
+            }
+            else
+            { returnurl = ""; }
              string previousurl ="";
              if (!string.IsNullOrEmpty(returnurl))
                  previousurl = returnurl;
              else
                  previousurl = Request.Url.Scheme+"://"+Request.Url.Authority;
+
+             Request.Cookies.Remove("Returnurl");
             return Redirect(previousurl);
         }
 
