@@ -16,12 +16,12 @@ namespace Orbio.Web.UI.Controllers
     public class ShoppingCartController : Controller
     {
 
-        private readonly IShoppingCartService shoppingcartservice;
+        private readonly IShoppingCartService ShoppingCartService;
 
-        public ShoppingCartController(IShoppingCartService shoppingcartservice)
+        public ShoppingCartController(IShoppingCartService ShoppingCartService)
         {
 
-            this.shoppingcartservice = shoppingcartservice;
+            this.ShoppingCartService = ShoppingCartService;
         }
 
         public ActionResult Cart()
@@ -58,7 +58,7 @@ namespace Orbio.Web.UI.Controllers
         public ActionResult Cart(ShoppingCartItemModel detailmodel)
         {
             string xml = Serializer.GenericDataContractSerializer(detailmodel.items);
-            shoppingcartservice.ModifyCartItem(xml);
+            ShoppingCartService.ModifyCartItem(xml);
             return RedirectToRoute("ShoppingCart");
         }
         public ActionResult CartItem()
@@ -93,7 +93,7 @@ namespace Orbio.Web.UI.Controllers
 
         private ShoppingCartItemsModel PrepareShoppingCartItemModel(int customerid, int carttype)
         {
-            var model = new ShoppingCartItemsModel(shoppingcartservice.GetCartItems("select",0, carttype, customerid, 0, 0));
+            var model = new ShoppingCartItemsModel(ShoppingCartService.GetCartItems("select", 0, carttype, customerid, 0, 0));
 
             return model;
         }
