@@ -28,7 +28,7 @@ namespace Orbio.Web.UI.Controllers
         {
             if (Request.RawUrl.ToString() != "/")
             {
-                if (Request.RawUrl.ToString() != "/cart?seName=cart")
+                if (Request.RawUrl.ToString() != "/cart")
                 {
                     HttpCookie myCookie = new HttpCookie("Returnurl");
                     DateTime now = DateTime.Now;
@@ -59,7 +59,7 @@ namespace Orbio.Web.UI.Controllers
         {
             string xml = Serializer.GenericDataContractSerializer(detailmodel.items);
             shoppingcartservice.ModifyCartItem(xml);
-            return RedirectToRoute(new { seName = "cart"});
+            return RedirectToRoute("Shopping");
         }
         public ActionResult CartItem()
         {
