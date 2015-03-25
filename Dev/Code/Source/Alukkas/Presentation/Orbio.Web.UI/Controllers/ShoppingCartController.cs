@@ -59,7 +59,7 @@ namespace Orbio.Web.UI.Controllers
         {
             string xml = Serializer.GenericDataContractSerializer(detailmodel.items);
             shoppingcartservice.ModifyCartItem(xml);
-            return RedirectToRoute("Shopping");
+            return RedirectToRoute("ShoppingCart");
         }
         public ActionResult CartItem()
         {
