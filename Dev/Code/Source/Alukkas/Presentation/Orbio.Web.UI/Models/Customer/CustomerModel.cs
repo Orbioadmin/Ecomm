@@ -27,11 +27,11 @@ namespace Orbio.Web.UI.Models.Customer
 
         [Required(ErrorMessage = "First Name Required")]
         [DataType(DataType.Text)]
-        [Display(Name = "FirstName")]
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
         [Required(ErrorMessage = "Last Name Required")]
-        [Display(Name = "LastName")]
+        [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
         [Required(ErrorMessage = "Gender Required")]
@@ -55,13 +55,16 @@ namespace Orbio.Web.UI.Models.Customer
 
 
         [DataType(DataType.Password)]
+        [Display(Name = "Old Password")]
         public string OldPassword { get; set; }
 
         [DataType(DataType.Password)]
+        [Display(Name = "New Password")]
         public string NewPassword { get; set; }
 
         [DataType(DataType.Password)]
         [Compare("NewPassword", ErrorMessage = "Passwords does not match")]
+        [Display(Name = "Confirm Password")]
         public string ConfirmNewPassword { get; set; }
 
         public string Result { get; set; }

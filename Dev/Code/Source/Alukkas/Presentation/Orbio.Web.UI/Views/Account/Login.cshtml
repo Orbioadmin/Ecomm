@@ -5,7 +5,7 @@
       <div class="login_inner">
 
       <div class="login_form">
-				<h1>RETURNING USER LOGIN HERE</h1>
+				<h1>LOGIN HERE</h1>
 
         @using (Html.BeginForm("Login", "Account",new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class="form-horizontal "})){ 
              @Html.AntiForgeryToken()
@@ -52,7 +52,7 @@
 
 <div class="new_user">
 <h1>NEW USER REGISTER HERE</h1>
-<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500</p>
+@*<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500</p>*@
 <a   class="size_guide"  href="@Url.Action("Register", "Account", new {returnUrl = ViewBag.ReturnUrl })">REGISTER</a>
 
 </div>

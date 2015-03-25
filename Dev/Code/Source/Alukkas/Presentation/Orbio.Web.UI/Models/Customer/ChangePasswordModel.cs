@@ -20,7 +20,7 @@ namespace Orbio.Web.UI.Models.Customer
 
         [Required(ErrorMessage = "Confirm New Password Required")]
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm New Password")]
+        [Display(Name = "Confirm Password")]
         [Compare("NewPassword", ErrorMessage = "Passwords does not match")]
         public string ConfirmNewPassword { get; set; }
 

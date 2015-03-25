@@ -1689,7 +1689,7 @@ display: inline-block; line-height: 24px; right: -15px;}
 .certification li img{vertical-align: middle;}
 .face_api{width: 65px; padding-top: 15px;}
 .size_li li.no_bg:hover, .size_li li.no_bg.select{background:none;}
-
+.size_li li:hover, .size_li li.select{padding: 17px 10px;}
 .cartitem {
 color:#000;}
     .cartitem:hover {
