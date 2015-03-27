@@ -310,7 +310,7 @@ namespace Orbio.Web.UI.Controllers
                     bool flag = (ConfigurationManager.AppSettings["DisplayCartAfterAddingProduct"].ToString() != "") ? Convert.ToBoolean(ConfigurationManager.AppSettings["DisplayCartAfterAddingProduct"]) : false;
                     if (flag)
                     {
-                        return RedirectToRoute(new { seName = "cart" });
+                        return RedirectToRoute("ShoppingCart");
                     }
                 }
                 ViewBag.Errors = errorString;
