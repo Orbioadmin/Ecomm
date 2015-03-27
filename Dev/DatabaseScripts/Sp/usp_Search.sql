@@ -29,7 +29,7 @@ GO
 
 Create PROCEDURE [dbo].[usp_Search] (@slug nvarchar(400),  
 @entityName nvarchar(400), @specificationFilterIds nvarchar(500)=null, @minPrice decimal(18,4)=null,
-@maxPrice decimal(18,4)=null,@keyword varchar(max))  
+@maxPrice decimal(18,4)=null,@keyWord varchar(max))  
    
 AS    
 BEGIN    
@@ -38,7 +38,7 @@ SELECT SAO.SpecificationAttributeId,FILTERS.* , IDENTITY(int, 1,1) AS OrderBy
 INTO #temptablefilterIds FROM  [dbo].[nop_splitstring_to_table](@specificationFilterIds, ',') FILTERS
 INNER JOIN SpecificationAttributeOption SAO ON SAO.Id = FILTERS.data
 
-SELECT  * INTO #temptableproduct FROM  ufn_GetProductsBySearch(0,@keyword)
+SELECT  * INTO #temptableproduct FROM  ufn_GetProductsBySearch(0,@keyWord)
 
 
 declare @catIds VARCHAR(MAX) = (SELECT DISTINCT STUFF((SELECT distinct ',' + convert(varchar,p1.CategoryId)

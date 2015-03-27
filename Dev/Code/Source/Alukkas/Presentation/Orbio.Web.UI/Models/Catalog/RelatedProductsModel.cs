@@ -15,9 +15,9 @@ namespace Orbio.Web.UI.Models.Catalog
         public RelatedProductsModel(RelatedProduct relatedProduct)
             : this()
         {
-            if (relatedProduct.Productdetails != null && relatedProduct.Productdetails.Count > 0)
+            if (relatedProduct.ProductDetails != null && relatedProduct.ProductDetails.Count > 0)
             {
-                this.ProductDetail = (from p in relatedProduct.Productdetails
+                this.ProductDetail = (from p in relatedProduct.ProductDetails
                                       select new ProductDetailModel(p)).ToList();
             }
         }

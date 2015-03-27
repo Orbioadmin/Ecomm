@@ -52,7 +52,7 @@ ORDER BY PPM.DisplayOrder FOR XML PATH ('ProductPicture'),ROOT('ProductPictures'
 from [dbo].[Product] product
 Left  join UrlRecord ur on product.Id = ur.EntityId AND EntityName='Product' AND ur.IsActive=1
 where ','+@productIds+',' LIKE '%,'+CAST(product.Id AS varchar)+',%' and product.Deleted <> 1
-FOR XML PATH ('ProductDetail'),ROOT('Productdetails'), Type) 
+FOR XML PATH ('ProductDetail'),ROOT('ProductDetails'), Type) 
 FOR XML PATH('RelatedProduct'))
 
 SELECT @XmlResult1 as XmlResult

@@ -28,25 +28,29 @@ namespace Orbio.Web.UI.Controllers
         {
             if (Request.RawUrl.ToString() != "/")
             {
-                if (Request.RawUrl.ToString() != "/cart")
+                string Currenturl = Request.Url.Scheme + "://" + Request.Url.Authority + "/cart";
+                if (Request.UrlReferrer != null)
                 {
-                    HttpCookie myCookie = new HttpCookie("Returnurl");
-                    DateTime now = DateTime.Now;
-                    myCookie.Value = Request.UrlReferrer.ToString();
+                    if (Request.UrlReferrer.ToString() != Currenturl)
+                    {
+                        HttpCookie myCookie = new HttpCookie("Returnurl");
+                        DateTime now = DateTime.Now;
+                        myCookie.Value = Request.UrlReferrer.ToString();
 
-                    myCookie.Expires = now.AddHours(2);
+                        myCookie.Expires = now.AddHours(2);
 
-                    Response.Cookies.Add(myCookie);
+                        Response.Cookies.Add(myCookie);
+                    }
                 }
             }
             var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
             var curcustomer = workContext.CurrentCustomer;
-            ShoppingCartType carttype = ShoppingCartType.ShoppingCart;
-            var model = PrepareShoppingCartItemModel(curcustomer.Id, Convert.ToInt32(carttype));
+            ShoppingCartType cartType = ShoppingCartType.ShoppingCart;
+            var model = PrepareShoppingCartItemModel(curcustomer.Id, Convert.ToInt32(cartType));
             double subtotal = 0.00;
             foreach (var totalprice in model.CartDetail)
             {
-                subtotal = subtotal + Convert.ToDouble(totalprice.Totalprice);
+                subtotal = subtotal + Convert.ToDouble(totalprice.TotalPrice);
             }
             ViewBag.subtotal = subtotal.ToString("#,##0.00");
             var currency = (from r in model.CartDetail.AsEnumerable()
@@ -55,18 +59,20 @@ namespace Orbio.Web.UI.Controllers
             return View(model);
         }
         [HttpPost]
-        public ActionResult Cart(ShoppingCartItemModel detailmodel)
+        public ActionResult Cart(ShoppingCartItemModel detailModel)
         {
-            string xml = Serializer.GenericDataContractSerializer(detailmodel.items);
-            ShoppingCartService.ModifyCartItem(xml);
+            List<ShoppingCartItem> cartUpdateItems = new List<ShoppingCartItem>();
+            cartUpdateItems = (from r in detailModel.items.AsEnumerable()
+                               select new ShoppingCartItem { CartId=r.CartId,Quantity=Convert.ToInt32(r.SelectedQuantity),IsRemove=r.IsRemove}).ToList();
+            ShoppingCartService.ModifyCartItem(cartUpdateItems);
             return RedirectToRoute("ShoppingCart");
         }
         public ActionResult CartItem()
         {
             var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
             var curcustomer = workContext.CurrentCustomer;
-            ShoppingCartType carttype = ShoppingCartType.ShoppingCart;
-            var model = PrepareShoppingCartItemModel(curcustomer.Id, Convert.ToInt32(carttype));
+            ShoppingCartType cartType = ShoppingCartType.ShoppingCart;
+            var model = PrepareShoppingCartItemModel(curcustomer.Id, Convert.ToInt32(cartType));
             return PartialView("CartItems",model);
         }
 
@@ -91,9 +97,9 @@ namespace Orbio.Web.UI.Controllers
             return Redirect(previousurl);
         }
 
-        private ShoppingCartItemsModel PrepareShoppingCartItemModel(int customerid, int carttype)
+        private ShoppingCartItemsModel PrepareShoppingCartItemModel(int customerId, int cartType)
         {
-            var model = new ShoppingCartItemsModel(ShoppingCartService.GetCartItems("select", 0, carttype, customerid, 0, 0));
+            var model = new ShoppingCartItemsModel(ShoppingCartService.GetCartItems("select", 0, cartType, customerId, 0, 0));
 
             return model;
         }

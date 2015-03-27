@@ -15,14 +15,14 @@ namespace Orbio.Services.Checkout
         /// <param name="email"></param>
         /// <param name="billorship"></param>
         /// <returns></returns>
-        Address GetCustomerAddress(string email, string billorship);
+        Address GetCustomerAddress(string email, string billorShip);
 
         /// <summary>
         /// update customer address
         /// </summary>
         /// 
-        void UpdateCustomerAddress(string email, bool sameaddress, string BillFirstName, string BillLastName, string BillPhone, string BillAddress,
-                string BillCity, string BillPincode, string BillState, string BillCountry, string ShipFirstName, string ShipLastName,
-                string ShipPhone, string ShipAddress, string ShipCity, string ShipPincode, string ShipState, string ShipCountry);
+        void UpdateCustomerAddress(string email, bool sameAddress, string billFirstName, string billLastName, string billPhone, string billAddress,
+                string billCity, string billPincode, string billState, string billCountry, string shipFirstName, string shipLastName,
+                string shipPhone, string shipAddress, string shipCity, string shipPincode, string shipState, string shipCountry);
     }
 }

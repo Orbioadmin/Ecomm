@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
-
 namespace Orbio.Web.UI.Models.Customer
 {
     public class CustomerModel
@@ -13,15 +12,15 @@ namespace Orbio.Web.UI.Models.Customer
             // TODO: Complete member initialization
         }
 
-        public CustomerModel(Orbio.Core.Domain.Customers.Customer Customer)
+        public CustomerModel(Orbio.Core.Domain.Customers.Customer customer)
             : this()
         {
-            this.FirstName = Customer.FirstName;
-            this.LastName = Customer.LastName;
-            this.Gender = Customer.Gender;
-            this.DOB = Customer.DOB;
-            this.Email = Customer.Email;
-            this.Mobile = Customer.MobileNo;
+            this.FirstName = customer.FirstName;
+            this.LastName = customer.LastName;
+            this.Gender = customer.Gender;
+            this.DOB = customer.DOB;
+            this.Email = customer.Email;
+            this.Mobile = customer.MobileNo;
 
         }
 

@@ -19,14 +19,14 @@ namespace Orbio.Web.UI.Models.Orders
             : base(productDetail)
         {
             this.items = new List<ShoppingCartItemModel>();
-            this.Itemcount = productDetail.Itemcount;
+            this.ItemCount = productDetail.ItemCount;
             //this.Id = productDetail.Id;
             //this.Name = productDetail.Name;
             //this.SeName = productDetail.SeName;
             //this.ImageRelativeUrl = productDetail.ImageRelativeUrl;
             //this.CurrencyCode = productDetail.CurrencyCode;
             //this.ProductPrice.Price = productDetail.Price.ToString("0.00");
-            this.Totalprice = productDetail.Totalprice.ToString("#,##0.00");
+            this.TotalPrice = productDetail.TotalPrice.ToString("#,##0.00");
             this.CartId = productDetail.CartId;
             //if (productDetail.ProductPictures != null && productDetail.ProductPictures.Count > 0)
             //{
@@ -76,8 +76,8 @@ namespace Orbio.Web.UI.Models.Orders
 
             this.IsRemove = false;
         }
-        public int Itemcount { get; set; }
-        public string Totalprice { get; set; }
+        public int ItemCount { get; set; }
+        public string TotalPrice { get; set; }
 
         public int CartId { get; set; }
 

@@ -26,42 +26,42 @@ namespace Orbio.Services.Checkout
             this.encryptionService = encryptionService;
         }
 
-        public Address GetCustomerAddress(string email, string billorship)
+        public Address GetCustomerAddress(string email, string billorShip)
         {
             if (String.IsNullOrWhiteSpace(email))
                 return null;
 
             var result = context.ExecuteFunction<Address>("usp_Customer_GetCustomerAddressDetails",
-                  new SqlParameter() { ParameterName = "@username", Value = email, DbType = System.Data.DbType.String },
-                   new SqlParameter() { ParameterName = "@value", Value = billorship, DbType = System.Data.DbType.String });
+                  new SqlParameter() { ParameterName = "@userName", Value = email, DbType = System.Data.DbType.String },
+                   new SqlParameter() { ParameterName = "@value", Value = billorShip, DbType = System.Data.DbType.String });
 
             var customerAddress = result.FirstOrDefault();
             return customerAddress;
         }
 
-        public void UpdateCustomerAddress(string email, bool sameaddress, string BillFirstName, string BillLastName, string BillPhone, string BillAddress,
-                string BillCity, string BillPincode, string BillState, string BillCountry, string ShipFirstName, string ShipLastName,
-                string ShipPhone, string ShipAddress, string ShipCity, string ShipPincode, string ShipState, string ShipCountry)
+        public void UpdateCustomerAddress(string email, bool sameAddress, string billFirstName, string billLastName, string billPhone, string billAddress,
+                string billCity, string billPincode, string billState, string billCountry, string shipFirstName, string shipLastName,
+                string shipPhone, string shipAddress, string shipCity, string shipPincode, string shipState, string shipCountry)
         {
             var result = context.ExecuteFunction<Customer>("usp_Customer_UpdateCustomerAddress",
-                new SqlParameter() { ParameterName = "@sameaddress", Value = sameaddress, DbType = System.Data.DbType.Boolean },
+                new SqlParameter() { ParameterName = "@sameAddress", Value = sameAddress, DbType = System.Data.DbType.Boolean },
                 new SqlParameter() { ParameterName = "@email", Value = email, DbType = System.Data.DbType.String },
-                 new SqlParameter() { ParameterName = "@billfirstname", Value = BillFirstName, DbType = System.Data.DbType.String },
-                 new SqlParameter() { ParameterName = "@billlastname", Value = BillLastName, DbType = System.Data.DbType.String },
-                 new SqlParameter() { ParameterName = "@billphoneno", Value = BillPhone, DbType = System.Data.DbType.String },
-                 new SqlParameter() { ParameterName = "@billaddress", Value = BillAddress, DbType = System.Data.DbType.String },
-                 new SqlParameter() { ParameterName = "@billcity", Value = BillCity, DbType = System.Data.DbType.String },
-                 new SqlParameter() { ParameterName = "@billpincode", Value = BillPincode, DbType = System.Data.DbType.String },
-                 new SqlParameter() { ParameterName = "@billstate", Value = BillState, DbType = System.Data.DbType.String },
-                 new SqlParameter() { ParameterName = "@billcountry", Value = BillCountry, DbType = System.Data.DbType.String },
-                 new SqlParameter() { ParameterName = "@shipfirstname", Value = ShipFirstName, DbType = System.Data.DbType.String },
-                 new SqlParameter() { ParameterName = "@shiplastname", Value = ShipLastName, DbType = System.Data.DbType.String },
-                 new SqlParameter() { ParameterName = "@shipphone", Value = ShipPhone, DbType = System.Data.DbType.String },
-                 new SqlParameter() { ParameterName = "@shipaddress", Value = ShipAddress, DbType = System.Data.DbType.String },
-                 new SqlParameter() { ParameterName = "@shipcity", Value = ShipCity, DbType = System.Data.DbType.String },
-                 new SqlParameter() { ParameterName = "@shippincode", Value = ShipPincode, DbType = System.Data.DbType.String },
-                 new SqlParameter() { ParameterName = "@shipstate", Value = ShipState, DbType = System.Data.DbType.String },
-                 new SqlParameter() { ParameterName = "@shipcountry", Value = ShipCountry, DbType = System.Data.DbType.String });
+                 new SqlParameter() { ParameterName = "@billFirstName", Value = billFirstName, DbType = System.Data.DbType.String },
+                 new SqlParameter() { ParameterName = "@billLastName", Value = billLastName, DbType = System.Data.DbType.String },
+                 new SqlParameter() { ParameterName = "@billPhoneNo", Value = billPhone, DbType = System.Data.DbType.String },
+                 new SqlParameter() { ParameterName = "@billAddress", Value = billAddress, DbType = System.Data.DbType.String },
+                 new SqlParameter() { ParameterName = "@billCity", Value = billCity, DbType = System.Data.DbType.String },
+                 new SqlParameter() { ParameterName = "@billPincode", Value = billPincode, DbType = System.Data.DbType.String },
+                 new SqlParameter() { ParameterName = "@billState", Value = billState, DbType = System.Data.DbType.String },
+                 new SqlParameter() { ParameterName = "@billCountry", Value = billCountry, DbType = System.Data.DbType.String },
+                 new SqlParameter() { ParameterName = "@shipFirstName", Value = shipFirstName, DbType = System.Data.DbType.String },
+                 new SqlParameter() { ParameterName = "@shipLastName", Value = shipLastName, DbType = System.Data.DbType.String },
+                 new SqlParameter() { ParameterName = "@shipPhone", Value = shipPhone, DbType = System.Data.DbType.String },
+                 new SqlParameter() { ParameterName = "@shipAddress", Value = shipAddress, DbType = System.Data.DbType.String },
+                 new SqlParameter() { ParameterName = "@shipCity", Value = shipCity, DbType = System.Data.DbType.String },
+                 new SqlParameter() { ParameterName = "@shipPincode", Value = shipPincode, DbType = System.Data.DbType.String },
+                 new SqlParameter() { ParameterName = "@shipState", Value = shipState, DbType = System.Data.DbType.String },
+                 new SqlParameter() { ParameterName = "@shipCountry", Value = shipCountry, DbType = System.Data.DbType.String });
         }
 
     }

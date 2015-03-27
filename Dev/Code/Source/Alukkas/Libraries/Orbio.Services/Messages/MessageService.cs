@@ -113,7 +113,7 @@ namespace Orbio.Services.Messages
                 toEmail, toName);
         }
 
-        public int SendCustomerEmailFrendMessage(Customer customer, ProductDetail product, string mail, string message, string Name, string url)
+        public int SendCustomerEmailFrendMessage(Customer customer, ProductDetail product, string mail, string message, string name, string url)
         {
             if (customer == null)
                 throw new ArgumentNullException("customer");
@@ -133,7 +133,7 @@ namespace Orbio.Services.Messages
             tokens.Add(new Token("EmailAFriend.PersonalMessage", message, true));
             tokens.Add(new Token("EmailAFriend.Email", mail));
             tokens.Add(new Token("Product.ProductURLForCustomer", url));
-            tokens.Add(new Token("Product.Name", Name));
+            tokens.Add(new Token("Product.Name", name));
             tokens.Add(new Token("Product.ShortDescription", product.ShortDescription));
 
             var toEmail = mail;

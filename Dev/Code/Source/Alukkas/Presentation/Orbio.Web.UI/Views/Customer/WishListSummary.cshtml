@@ -11,7 +11,9 @@
                 <th>Remove</th>
                 <th>Add To Cart</th>
             </tr>
-            @foreach (var wishlist in this.Model)
+            @if(this.Model.Count > 0)
+            {
+            foreach (var wishlist in this.Model)
             {
                 <tr>
                     <td>
@@ -33,6 +35,13 @@
                     <td><a href="javascript://" onclick="updatewhishlist('@wishlist.CartId','addtocart');"><img src="~/Images/Basic_image/cart-yellow.png" /></a></td>
 
 
+                </tr>
+            }
+            }
+            else
+            { 
+                <tr>
+                    <td colspan="5" class="cart_empty_msg">Your Wishlist is empty!</td>
                 </tr>
             }
         </tbody>

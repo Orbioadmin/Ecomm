@@ -29,7 +29,7 @@ GO
 
 CREATE PROCEDURE [dbo].[usp_Customer_GetCustomerAddressDetails] 
 	-- Add the parameters for the stored procedure here
-	@username varchar(50),
+	@userName varchar(50),
 	@value varchar(50)
 AS
 BEGIN
@@ -44,7 +44,7 @@ BEGIN
 	inner join dbo.Address Ad on  Cust.BillingAddress_Id = Ad.Id
 	left outer join dbo.StateProvince st on Ad.StateProvinceId=st.Id
 	left outer join dbo.Country ct on Ad.CountryId=ct.Id
-	where Cust.Username=@username
+	where Cust.Username=@userName
 	return
 	END
 	
@@ -55,7 +55,7 @@ select Cust.BillingAddress_Id,Cust.ShippingAddress_Id,Ad.Id,Ad.FirstName,Ad.Last
 	inner join dbo.Address Ad on  Cust.ShippingAddress_Id = Ad.Id
 	left outer join dbo.StateProvince st on Ad.StateProvinceId=st.Id
 	left outer join dbo.Country ct on Ad.CountryId=ct.Id
-	where Cust.Username=@username
+	where Cust.Username=@userName
 	return
 	END
 END

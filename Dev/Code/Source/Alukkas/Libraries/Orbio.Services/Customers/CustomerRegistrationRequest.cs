@@ -10,30 +10,30 @@ namespace Orbio.Services.Customers
 {
     public class CustomerRegistrationRequest
     {
-        public Customer Customer { get; set; }
-        public string Email { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public string Gender { get; set; }
-        public string MobileNo { get; set; }
-        public PasswordFormat PasswordFormat { get; set; }
-        public bool IsApproved { get; set; }
-        public int Id { get; set; }
+        public Customer customer { get; set; }
+        public string email { get; set; }
+        public string userName { get; set; }
+        public string password { get; set; }
+        public string gender { get; set; }
+        public string mobileNo { get; set; }
+        public PasswordFormat passwordFormat { get; set; }
+        public bool isApproved { get; set; }
+        public int id { get; set; }
 
         public CustomerRegistrationRequest(Customer customer, string email,
-            string gender, string mobileno, string password,
+            string gender, string mobileNo, string password,
             PasswordFormat passwordFormat,
             bool isApproved = true)
         {
-            this.Customer = customer;
-            this.Email = email;
-            this.Username = email;
-            this.Password = password;
-            this.Gender = gender;
-            this.MobileNo = mobileno;
-            this.PasswordFormat = passwordFormat;
-            this.IsApproved = isApproved;
-            this.Id = customer.Id;
+            this.customer = customer;
+            this.email = email;
+            this.userName = email;
+            this.password = password;
+            this.gender = gender;
+            this.mobileNo = mobileNo;
+            this.passwordFormat = passwordFormat;
+            this.isApproved = isApproved;
+            this.id = customer.Id;
         }
     }
 }

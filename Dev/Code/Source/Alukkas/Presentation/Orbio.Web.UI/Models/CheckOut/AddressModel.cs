@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Orbio.Core.Domain.Checkout;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -13,72 +14,72 @@ namespace Orbio.Web.UI.Models.CheckOut
 
         }
 
-        public AddressModel(Orbio.Core.Domain.Checkout.Address Address)
+        public AddressModel(Address address)
             :this()
         {
-            this.BillFirstName = Address.FirstName;
-            this.BillLastName = Address.LastName;
-            this.BillPhone = Address.PhoneNumber;
-            this.BillAddress = Address.Address1 + Address.Address2;
-            this.BillCity = Address.City;
-            this.BillPincode = Address.ZipPostalCode;
-            this.BillState = Address.States;
-            this.BillCountry = Address.Country;
-            this.ShipFirstName = Address.FirstName;
-            this.ShipLastName = Address.LastName;
-            this.ShipPhone = Address.PhoneNumber;
-            this.ShipAddress = Address.Address1 + Address.Address2;
-            this.ShipCity = Address.City;
-            this.ShipPincode = Address.ZipPostalCode;
-            this.ShipState = Address.States;
-            this.ShipCountry = Address.Country;
+            this.BillFirstName = address.FirstName;
+            this.BillLastName = address.LastName;
+            this.BillPhone = address.PhoneNumber;
+            this.BillAddress = address.Address1 + address.Address2;
+            this.BillCity = address.City;
+            this.BillPincode = address.ZipPostalCode;
+            this.BillState = address.States;
+            this.BillCountry = address.Country;
+            this.ShipFirstName = address.FirstName;
+            this.ShipLastName = address.LastName;
+            this.ShipPhone = address.PhoneNumber;
+            this.ShipAddress = address.Address1 + address.Address2;
+            this.ShipCity = address.City;
+            this.ShipPincode = address.ZipPostalCode;
+            this.ShipState = address.States;
+            this.ShipCountry = address.Country;
             this.SameAddress = checked(true);
         }
-        public AddressModel(Orbio.Core.Domain.Checkout.Address BillAddress, Orbio.Core.Domain.Checkout.Address ShipAddress)
+        public AddressModel(Address billAddress, Address shipAddress)
             : this()
         {
-            this.BillFirstName = BillAddress.FirstName;
-            this.BillLastName = BillAddress.LastName;
-            this.BillPhone = BillAddress.PhoneNumber;
-            this.BillAddress = BillAddress.Address1 + BillAddress.Address2;
-            this.BillCity = BillAddress.City;
-            this.BillPincode = BillAddress.ZipPostalCode;
-            this.BillState = BillAddress.States;
-            this.BillCountry = BillAddress.Country;
-            this.ShipFirstName = ShipAddress.FirstName;
-            this.ShipLastName = ShipAddress.LastName;
-            this.ShipPhone = ShipAddress.PhoneNumber;
-            this.ShipAddress = ShipAddress.Address1 + ShipAddress.Address2;
-            this.ShipCity = ShipAddress.City;
-            this.ShipPincode = ShipAddress.ZipPostalCode;
-            this.ShipState = ShipAddress.States;
-            this.ShipCountry = ShipAddress.Country;
+            this.BillFirstName = billAddress.FirstName;
+            this.BillLastName = billAddress.LastName;
+            this.BillPhone = billAddress.PhoneNumber;
+            this.BillAddress = billAddress.Address1 + billAddress.Address2;
+            this.BillCity = billAddress.City;
+            this.BillPincode = billAddress.ZipPostalCode;
+            this.BillState = billAddress.States;
+            this.BillCountry = billAddress.Country;
+            this.ShipFirstName = shipAddress.FirstName;
+            this.ShipLastName = shipAddress.LastName;
+            this.ShipPhone = shipAddress.PhoneNumber;
+            this.ShipAddress = shipAddress.Address1 + shipAddress.Address2;
+            this.ShipCity = shipAddress.City;
+            this.ShipPincode = shipAddress.ZipPostalCode;
+            this.ShipState = shipAddress.States;
+            this.ShipCountry = shipAddress.Country;
             this.SameAddress = checked(false);
         }
-         public AddressModel(Orbio.Core.Domain.Checkout.Address Address,string name)
+         public AddressModel(Address address,string name)
             :this()
          {
              if(name=="Billing")
              {
-                 this.BillFirstName = Address.FirstName;
-                 this.BillLastName = Address.LastName;
-                 this.BillPhone = Address.PhoneNumber;
-                 this.BillAddress = Address.Address1  + Address.Address2;
-                 this.BillCity = Address.City;
-                 this.BillPincode = Address.ZipPostalCode;
-                 this.BillState = Address.States;
-                 this.BillCountry = Address.Country;
+                 this.BillFirstName = address.FirstName;
+                 this.BillLastName = address.LastName;
+                 this.BillPhone = address.PhoneNumber;
+                 this.BillAddress = address.Address1  + address.Address2;
+                 this.BillCity = address.City;
+                 this.BillPincode = address.ZipPostalCode;
+                 this.BillState = address.States;
+                 this.BillCountry = address.Country;
              }
              else
              {
-                 this.ShipFirstName = Address.FirstName;
-                 this.ShipLastName = Address.LastName;
-                 this.ShipPhone = Address.PhoneNumber;
-                 this.ShipAddress = Address.Address1 + "," + Address.Address2;
-                 this.ShipCity = Address.City;
-                 this.ShipPincode = Address.ZipPostalCode;
-                 this.ShipState = Address.States;
-                 this.ShipCountry = Address.Country;
+                 this.ShipFirstName = address.FirstName;
+                 this.ShipLastName = address.LastName;
+                 this.ShipPhone = address.PhoneNumber;
+                 this.ShipAddress = address.Address1 + "," + address.Address2;
+                 this.ShipCity = address.City;
+                 this.ShipPincode = address.ZipPostalCode;
+                 this.ShipState = address.States;
+                 this.ShipCountry = address.Country;
              }
          }
         [Required]

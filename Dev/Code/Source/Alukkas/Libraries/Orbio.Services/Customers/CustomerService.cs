@@ -117,17 +117,17 @@ namespace Orbio.Services.Customers
         /// <param name="dob">DOB</param>
         /// <param name="email">Email</param>
         /// <param name="mobile">Mobile</param>
-        public void GetCustomerDetails(string action, int id, string firstname, string lastname, string gender, string dob, string email, string mobile)
+        public void GetCustomerDetails(string action, int id, string firstName, string lastName, string gender, string dob, string email, string mobile)
         {
             context.ExecuteFunction<Customer>("usp_Customer_updateCustomer",
                    new SqlParameter() { ParameterName = "@Action", Value = action, DbType = System.Data.DbType.String },
                     new SqlParameter() { ParameterName = "@cust_id", Value = id, DbType = System.Data.DbType.Int32 },
-                     new SqlParameter() { ParameterName = "@firstname", Value = firstname, DbType = System.Data.DbType.String },
-                      new SqlParameter() { ParameterName = "@lastname", Value = lastname, DbType = System.Data.DbType.String },
+                     new SqlParameter() { ParameterName = "@firstName", Value = firstName, DbType = System.Data.DbType.String },
+                      new SqlParameter() { ParameterName = "@lastName", Value = lastName, DbType = System.Data.DbType.String },
                       new SqlParameter() { ParameterName = "@gender", Value = gender, DbType = System.Data.DbType.String },
                       new SqlParameter() { ParameterName = "@dob", Value = dob, DbType = System.Data.DbType.String },
                       new SqlParameter() { ParameterName = "@email", Value = email, DbType = System.Data.DbType.String },
-                      new SqlParameter() { ParameterName = "@mobileno", Value = mobile, DbType = System.Data.DbType.String });
+                      new SqlParameter() { ParameterName = "@mobileNo", Value = mobile, DbType = System.Data.DbType.String });
         }
 
         /// <summary>
@@ -207,16 +207,16 @@ namespace Orbio.Services.Customers
         /// <param name="newpassword">newpassword</param>
         /// <param name="PasswordFormat">PasswordFormat</param>
         /// <returns>Update Password</returns>
-        public ChangePasswordResult ChangePassword(int id, string newpassword, int passwordformat)
+        public ChangePasswordResult ChangePassword(int id, string newPassword, int passwordformat)
         {
             string pwd = "";
             string saltKey = encryptionService.CreateSaltKey(5);
-            pwd = encryptionService.CreatePasswordHash(newpassword, saltKey, ConfigurationManager.AppSettings["HashedPasswordFormat"]);
+            pwd = encryptionService.CreatePasswordHash(newPassword, saltKey, ConfigurationManager.AppSettings["HashedPasswordFormat"]);
             context.ExecuteFunction<Customer>("usp_Customer_ChangePassword",
                     new SqlParameter() { ParameterName = "@cust_id", Value = id, DbType = System.Data.DbType.Int32 },
                      new SqlParameter() { ParameterName = "@newpwd", Value = pwd, DbType = System.Data.DbType.String },
-                      new SqlParameter() { ParameterName = "@passwordsalt", Value = saltKey, DbType = System.Data.DbType.String },
-                      new SqlParameter() { ParameterName = "@passwordformat", Value = passwordformat, DbType = System.Data.DbType.Int32 });
+                      new SqlParameter() { ParameterName = "@passwordSalt", Value = saltKey, DbType = System.Data.DbType.String },
+                      new SqlParameter() { ParameterName = "@passwordFormat", Value = passwordformat, DbType = System.Data.DbType.Int32 });
 
             return ChangePasswordResult.Successful;
         }
@@ -278,7 +278,7 @@ namespace Orbio.Services.Customers
             //    result.AddError(_localizationService.GetResource("Account.Register.Errors.EmailIsNotProvided"));
             //    return result;
             //}
-            if (String.IsNullOrWhiteSpace(request.Password))
+            if (String.IsNullOrWhiteSpace(request.password))
             {
                 return CustomerRegistrationResult.ProvidePassword;
             }
@@ -307,37 +307,37 @@ namespace Orbio.Services.Customers
             //}
 
             //at this point request is valid
-            request.Customer.Username = request.Username;
-            request.Customer.Email = request.Email;
-            request.Customer.PasswordFormat = request.PasswordFormat;
-            request.Customer.Gender = request.Gender;
-            request.Customer.MobileNo = request.MobileNo;
-            request.Customer.IsApproved = request.IsApproved;
+            request.customer.Username = request.userName;
+            request.customer.Email = request.email;
+            request.customer.PasswordFormat = request.passwordFormat;
+            request.customer.Gender = request.gender;
+            request.customer.MobileNo = request.mobileNo;
+            request.customer.IsApproved = request.isApproved;
 
-            switch (request.PasswordFormat)
+            switch (request.passwordFormat)
             {
                 case PasswordFormat.Clear:
                     {
-                        request.Customer.Password = request.Password;
+                        request.customer.Password = request.password;
                     }
                     break;
                 case PasswordFormat.Encrypted:
                     {
-                        request.Customer.Password = encryptionService.EncryptText(request.Password);
+                        request.customer.Password = encryptionService.EncryptText(request.password);
                     }
                     break;
                 case PasswordFormat.Hashed:
                     {
                         string saltKey = encryptionService.CreateSaltKey(5);
-                        request.Customer.PasswordSalt = saltKey;
-                        request.Customer.Password = encryptionService.CreatePasswordHash(request.Password, saltKey, ConfigurationManager.AppSettings["HashedPasswordFormat"]);
+                        request.customer.PasswordSalt = saltKey;
+                        request.customer.Password = encryptionService.CreatePasswordHash(request.password, saltKey, ConfigurationManager.AppSettings["HashedPasswordFormat"]);
                     }
                     break;
                 default:
                     break;
             }
 
-            request.Customer.Active = request.IsApproved;
+            request.customer.Active = request.isApproved;
 
             //add to 'Registered' role
             //var registeredRole = GetCustomerRoleBySystemName(SystemCustomerNames.Registered);
@@ -357,7 +357,7 @@ namespace Orbio.Services.Customers
             //    _rewardPointsSettings.PointsForRegistration > 0)
             //    request.Customer.AddRewardPointsHistoryEntry(_rewardPointsSettings.PointsForRegistration, _localizationService.GetResource("RewardPoints.Message.EarnedForRegistration"));
 
-            var updatedresult = UpdateCustomer(request.Customer);
+            var updatedresult = UpdateCustomer(request.customer);
 
             return (CustomerRegistrationResult)updatedresult;
 

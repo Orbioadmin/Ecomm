@@ -25,14 +25,14 @@ namespace Orbio.Web.UI.Controllers
         private readonly ICustomerService customerService;
         private readonly IAuthenticationService authenticationService;
         private readonly IMessageService messageService;
-        private readonly IShoppingCartService shoppingcartservice;
+        private readonly IShoppingCartService shoppingCartService;
 
-        public AccountController(ICustomerService customerService, IAuthenticationService authenticationService, IMessageService messageService, IShoppingCartService shoppingcartservice)
+        public AccountController(ICustomerService customerService, IAuthenticationService authenticationService, IMessageService messageService, IShoppingCartService shoppingCartService)
         {
             this.customerService = customerService;
             this.authenticationService = authenticationService;
             this.messageService = messageService;
-            this.shoppingcartservice = shoppingcartservice;
+            this.shoppingCartService = shoppingCartService;
         }
         public ActionResult Login(string returnUrl)
         {
@@ -64,7 +64,7 @@ namespace Orbio.Web.UI.Controllers
 
                             //sign in new customer
                             authenticationService.SignIn(customer, model.RememberMe);
-                            shoppingcartservice.AddCartItem("update", customer.Id, curcustomer.Id, 0, "", 0);
+                            shoppingCartService.AddCartItem("update", customer.Id, curcustomer.Id, 0, "", 0);
                             //activity log
                             //_customerActivityService.InsertActivity("PublicStore.Login", _localizationService.GetResource("ActivityLog.PublicStore.Login"), customer);
 

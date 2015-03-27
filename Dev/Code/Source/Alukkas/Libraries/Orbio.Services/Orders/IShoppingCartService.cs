@@ -29,7 +29,7 @@ namespace Orbio.Services.Orders
         /// <summary>
         /// Update and delete shopping cart item
         /// </summary>
-        /// <param name="action">Action</param>
-        void ModifyCartItem(string cartitems);
+        /// <param name="cartItems">cartItems</param>
+        void ModifyCartItem(List<ShoppingCartItem> cartItems);
     }
 }

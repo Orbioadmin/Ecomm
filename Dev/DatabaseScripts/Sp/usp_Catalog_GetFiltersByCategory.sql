@@ -27,7 +27,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-Create PROCEDURE [dbo].[usp_Catalog_GetFiltersByCategory] (@categoryId Varchar(max),@keyword Varchar(max)) 
+Create PROCEDURE [dbo].[usp_Catalog_GetFiltersByCategory] (@categoryId Varchar(max),@keyWord Varchar(max)) 
 AS    
 BEGIN 
  
@@ -42,7 +42,7 @@ inner join  Product_SpecificationAttribute_Mapping PSM on p.Id = psm.ProductId
 inner join SpecificationAttributeOption SAO on psm.SpecificationAttributeOptionId = sao.Id
 inner join SpecificationAttribute SA on SAO.SpecificationAttributeId = sa.Id
 inner join Product_Category_Mapping pcm on p.Id = pcm.ProductId
-inner join  ufn_GetProductsBySearch(0,@keyword) PC on p.Id = pc.Id
+inner join  ufn_GetProductsBySearch(0,@keyWord) PC on p.Id = pc.Id
 where --PSM.AllowFiltering = 1 temp commented for dev   
 --AND
 ','+@categoryId+',' LIKE '%,'+CAST(pcm.CategoryId AS varchar)+',%' 

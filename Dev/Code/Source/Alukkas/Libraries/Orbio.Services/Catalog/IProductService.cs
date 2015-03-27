@@ -25,14 +25,14 @@ namespace Orbio.Services.Catalog
         /// </summary>
         /// <param name="productid">the product id</param>
         /// <returns>list of products</returns>
-        RelatedProduct GetRelatedProductsById(int productid);
+        RelatedProduct GetRelatedProductsById(int productId);
 
          /// <summary>
         /// gets all associated products by product id
         /// </summary>
         /// <param name="productid">the product id</param>
         /// <returns>list of products</returns>
-        AssociatedProduct GetAssociatedProductsById(int productid);
+        AssociatedProduct GetAssociatedProductsById(int productId);
 
         /// <summary>
         /// insert customer reviews
@@ -45,13 +45,13 @@ namespace Orbio.Services.Catalog
         /// <param name="Rating"></param>
         /// <param name="CustomerName"></param>
         /// <returns></returns>
-        int InsertReviews(int id,int productid,bool isapproved,string ReviewTitle,string ReviewText,int Rating,string CustomerName);
+        int InsertReviews(int id, int productId, bool isApproved, string reviewTitle, string reviewText, int rating, string customerName);
 
         /// <summary>
         /// getting customer reviews
         /// </summary>
         /// <param name="productid"></param>
         /// <returns></returns>
-        List<ProductReview> GetCustomerReviews(int productid,string value);
+        List<ProductReview> GetCustomerReviews(int productId, string value);
     }
 }

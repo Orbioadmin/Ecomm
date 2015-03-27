@@ -32,17 +32,17 @@ CREATE PROCEDURE [dbo].[usp_Customer_updateCustomer]
 	@Action varchar(50),
 	@cust_id int,
 	@email varchar(100),
-	@firstname varchar(50),
-	@lastname varchar(50),
+	@firstName varchar(50),
+	@lastName varchar(50),
 	@gender varchar(10),
 	@dob varchar(15),
-	@mobileno varchar(15)
+	@mobileNo varchar(15)
 AS
 BEGIN
 
 if(@Action = 'Update')
 begin
-	update [dbo].[Customer] set FirstName=@firstname,LastName=@lastname, Gender=@gender, DOB=@dob, MobileNo=@mobileno,
+	update [dbo].[Customer] set FirstName=@firstName,LastName=@lastName, Gender=@gender, DOB=@dob, MobileNo=@mobileNo,
 	Email=@email where Id=@cust_id
  End
 END

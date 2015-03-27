@@ -42,7 +42,7 @@ namespace Orbio.Services.Customers
         /// <param name="email">email</param>
         /// <param name="mobile">mobile</param>
         /// <returns>void</returns>
-        void GetCustomerDetails(string action, int id, string firstname, string lastname, string gender, string dob, string email, string mobile);
+        void GetCustomerDetails(string action, int id, string firstName, string lastName, string gender, string dob, string email, string mobile);
 
         /// <summary>
         /// Get customer details by email and password
@@ -66,10 +66,10 @@ namespace Orbio.Services.Customers
         /// <param name="newpassword">newpassword</param>
         /// <param name="PasswordFormat">PasswordFormat</param>
         /// <returns>Update Password</returns>
-        ChangePasswordResult ChangePassword(int id, string newpassword, int PasswordFormat);
+        ChangePasswordResult ChangePassword(int id, string newPassword, int passwordFormat);
 
         CustomerRegistrationResult RegisterCustomer(CustomerRegistrationRequest request);
 
-        CustomerRegistrationResult ValidateNewCustomer(string username);
+        CustomerRegistrationResult ValidateNewCustomer(string userName);
     }
 }

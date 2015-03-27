@@ -27,15 +27,15 @@ namespace Orbio.Web.UI.Controllers
         private readonly ICustomerService customerService;
         private readonly IMessageService MessageService;
         private readonly IProductService productService;
-        private readonly IShoppingCartService shoppingcartservice;
+        private readonly IShoppingCartService shoppingCartService;
 
         public CustomerController(ICustomerService customerService, IMessageService MessageService , IProductService productService
-            , IShoppingCartService shoppingcartservice)
+            , IShoppingCartService shoppingCartService)
         {
             this.customerService = customerService;
             this.MessageService = MessageService;
             this.productService = productService;
-            this.shoppingcartservice = shoppingcartservice;
+            this.shoppingCartService = shoppingCartService;
         }
 
         [LoginRequiredAttribute]
@@ -286,45 +286,45 @@ namespace Orbio.Web.UI.Controllers
         }
 
         [LoginRequired]
-        public ActionResult EmailFriend(EmailFriendModel model,string SeName, string Name)
+        public ActionResult EmailFriend(EmailFriendModel model,string seName, string name)
         {
             ModelState.Clear();
             var uri = Request.Url;
             string host = uri.GetLeftPart(UriPartial.Authority);
             string code = GenerateCaptcha();
-            model.SeName = SeName;
-            model.Name = Name;
+            model.SeName = seName;
+            model.Name = name;
             model.CaptchaCode = code;
-            model.url = host + "/" + SeName+"?p=pt";
+            model.url = host + "/" + seName+"?p=pt";
             return View(model);
         }
 
         
         [HttpPost]
-        public ActionResult EmailFriend(EmailFriendModel model, string SeName, string Name, string Url, string CaptchaCode)
+        public ActionResult EmailFriend(EmailFriendModel model, string seName, string name, string url, string captchaCode)
         {
             if (ModelState.IsValid)
             {
-                if (CaptchaCode == model.Captcha)
+                if (captchaCode == model.Captcha)
                 {
                     var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
                     if (workContext.CurrentCustomer.IsRegistered)
                     {
                         var customer = workContext.CurrentCustomer;
                         var product = new ProductDetail();
-                        product = productService.GetProductsDetailsBySlug(SeName);
-                        int mailresult = MessageService.SendCustomerEmailFrendMessage(customer, product, model.Email, model.Message, Name, Url);
+                        product = productService.GetProductsDetailsBySlug(seName);
+                        int mailresult = MessageService.SendCustomerEmailFrendMessage(customer, product, model.Email, model.Message, name, url);
                     }
                     else
                     {
                         ModelState.AddModelError("", "Only registered customers can sent email");
                     }
-                    return RedirectToRoute("Category", new { p = "pt", seName = SeName });
+                    return RedirectToRoute("Category", new { p = "pt", seName = seName });
                 }
                 else
                 {
                     model.Captcha = "";
-                    model.CaptchaCode = CaptchaCode;
+                    model.CaptchaCode = captchaCode;
                     ModelState.AddModelError("", "Captcha code does not match");
                     return View(model);
                 }
@@ -359,23 +359,31 @@ namespace Orbio.Web.UI.Controllers
         }
         private ShoppingCartItemsModel PrepareShoppingCartItemModel(int customerid, int carttype)
         {
-                var model = new ShoppingCartItemsModel(shoppingcartservice.GetCartItems("select", 0, carttype, customerid, 0, 0));
+            var model = new ShoppingCartItemsModel(shoppingCartService.GetCartItems("select", 0, carttype, customerid, 0, 0));
                 return model;
         }
         [HttpGet]
-        public async Task<ActionResult> UpdateWishList(int Id, string value)
+        public ActionResult UpdateWishList(int Id, string value)
         {
             var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
             var curcustomer = workContext.CurrentCustomer;
-            ShoppingCartType carttype = ShoppingCartType.Wishlist;
-            DeleteOrUpdateWishList(Id, Convert.ToInt32(carttype), value);
-            var model = PrepareShoppingCartItemModel(curcustomer.Id, Convert.ToInt32(carttype));
+            ShoppingCartType cartType = ShoppingCartType.Wishlist;
+            if (value == "addtocart")
+            {
+                ShoppingCartType shoppingCartType = ShoppingCartType.ShoppingCart;
+                DeleteOrUpdateWishList(Id, Convert.ToInt32(shoppingCartType), value);
+            }
+            else
+            {
+                DeleteOrUpdateWishList(Id, Convert.ToInt32(cartType), value);
+            }
+            var model = PrepareShoppingCartItemModel(curcustomer.Id, Convert.ToInt32(cartType));
             return PartialView("WishListSummary", model.CartDetail);
         }
 
-        private void DeleteOrUpdateWishList(int Id, int carttype, string value)
+        private void DeleteOrUpdateWishList(int Id, int cartType, string value)
         {
-            shoppingcartservice.GetCartItems(value, Id, carttype, 0, 0, 0);
+            shoppingCartService.GetCartItems(value, Id, cartType, 0, 0, 0);
         }
     }
 }

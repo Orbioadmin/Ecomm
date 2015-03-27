@@ -29,7 +29,7 @@ namespace Orbio.Web.UI.Controllers
 
         private readonly IProductService productService;
 
-        private readonly IShoppingCartService shoppingcartservice;
+        private readonly IShoppingCartService shoppingCartService;
         // private readonly IWorkContext workContext;
         // private readonly IStoreContext storeContext;
 
@@ -40,7 +40,7 @@ namespace Orbio.Web.UI.Controllers
         /// <summary>
         /// instantiates catalog controller
         /// </summary>
-        public CatalogController(ICategoryService categoryService, IProductService productService, IShoppingCartService shoppingcartservice,
+        public CatalogController(ICategoryService categoryService, IProductService productService, IShoppingCartService shoppingCartService,
             //IWorkContext workContext,
             //IStoreContext storeContext,       
             //CatalogSettings catalogSettings,          
@@ -58,7 +58,7 @@ namespace Orbio.Web.UI.Controllers
 
             this.cacheManager = cacheManager;
             this.webHelper = webHelper;
-            this.shoppingcartservice = shoppingcartservice;
+            this.shoppingCartService = shoppingCartService;
         }
 
         /// <summary>
@@ -116,14 +116,14 @@ namespace Orbio.Web.UI.Controllers
             return PartialView("SearchBox", model);
         }
 
-        public ActionResult Search(string seName, string spec, string minPrice, string maxPrice, string keyword)
+        public ActionResult Search(string seName, string spec, string minPrice, string maxPrice, string keyWord)
         {
             var model = new SearchModel();
-            if (keyword.Length >= 3)
+            if (keyWord.Length >= 3)
             {
 
-                model = PrepareCategoryProductModelBySearch(seName, spec,keyword);
-                ViewBag.searchkeyword = " BY KEYWORD ''" + keyword+"''";
+                model = PrepareCategoryProductModelBySearch(seName, spec, keyWord);
+                ViewBag.searchkeyword = " BY KEYWORD ''" + keyWord + "''";
                 //ViewBag.MetaDescription = model.MetaDescription;
                 //ViewBag.MetaKeywords = model.MetaKeywords;
             }
@@ -137,11 +137,11 @@ namespace Orbio.Web.UI.Controllers
             return View(model);
         }
 
-        public ActionResult Category(string seName, string spec, string keyword)
+        public ActionResult Category(string seName, string spec, string keyWord)
         {
-            var model = PrepareCategoryProductModel(seName, spec, keyword);
-            if (!string.IsNullOrEmpty(keyword))
-            { ViewBag.searchkeyword = " ITEMS FOUND BY KEYWORD ''" + keyword + "''"; }
+            var model = PrepareCategoryProductModel(seName, spec, keyWord);
+            if (!string.IsNullOrEmpty(keyWord))
+            { ViewBag.searchkeyword = " ITEMS FOUND BY KEYWORD ''" + keyWord + "''"; }
             var queryString = new NameValueCollection(ControllerContext.HttpContext.Request.QueryString);
             webHelper.RemoveQueryFromPath(ControllerContext.HttpContext, new List<string> { { "spec" } });
             ViewBag.MetaDescription = model.MetaDescription;
@@ -150,22 +150,22 @@ namespace Orbio.Web.UI.Controllers
         }
 
         [ChildActionOnly]
-        public ActionResult ProductFilter(int categoryId, int minPrice, int maxPrice, int[] selectedSpecs, string selectedPriceRange, string keyword)
+        public ActionResult ProductFilter(int categoryId, int minPrice, int maxPrice, int[] selectedSpecs, string selectedPriceRange, string keyWord)
         {
-            var model = PrepareSpecificationFilterModel(categoryId, minPrice, maxPrice, selectedSpecs,  selectedPriceRange, keyword);
+            var model = PrepareSpecificationFilterModel(categoryId, minPrice, maxPrice, selectedSpecs, selectedPriceRange, keyWord);
 
             return PartialView(model);
         }
         [ChildActionOnly]
-        public ActionResult ProductFilterBySearch(string categoryId, int minPrice, int maxPrice, int[] selectedSpecs, string selectedPriceRange, string keyword)
+        public ActionResult ProductFilterBySearch(string categoryId, int minPrice, int maxPrice, int[] selectedSpecs, string selectedPriceRange, string keyWord)
         {
-            var model = PrepareSpecificationFilterModelBySearch(categoryId, minPrice, maxPrice, selectedSpecs,selectedPriceRange, keyword);
+            var model = PrepareSpecificationFilterModelBySearch(categoryId, minPrice, maxPrice, selectedSpecs, selectedPriceRange, keyWord);
 
             return PartialView("ProductFilter", model);
         }
-        private List<SpecificationAttribute> PrepareSpecificationFilterModel(int categoryId, int minPrice, int maxPrice, int[] selectedSpecs, string selectedPriceRange, string keyword)
+        private List<SpecificationAttribute> PrepareSpecificationFilterModel(int categoryId, int minPrice, int maxPrice, int[] selectedSpecs, string selectedPriceRange, string keyWord)
         {
-            var specFilterModels = categoryService.GetSpecificationFiltersByCategoryId(categoryId, keyword);
+            var specFilterModels = categoryService.GetSpecificationFiltersByCategoryId(categoryId, keyWord);
             var specFilterByspecAttribute = from sa in specFilterModels
                                             group sa by sa.SpecificationAttributeName;
             var currentUrl = ControllerContext.RequestContext.HttpContext.Request.Url.AbsoluteUri;
@@ -207,9 +207,9 @@ namespace Orbio.Web.UI.Controllers
             return model;
         }
 
-        private List<SpecificationAttribute> PrepareSpecificationFilterModelBySearch(string categoryId, int minPrice, int maxPrice, int[] selectedSpecs, string selectedPriceRange, string keyword)
+        private List<SpecificationAttribute> PrepareSpecificationFilterModelBySearch(string categoryId, int minPrice, int maxPrice, int[] selectedSpecs, string selectedPriceRange, string keyWord)
         {
-            var specFilterModels = categoryService.GetSpecificationFiltersByCategory(string.IsNullOrEmpty(categoryId) ? "0" : categoryId, keyword);
+            var specFilterModels = categoryService.GetSpecificationFiltersByCategory(string.IsNullOrEmpty(categoryId) ? "0" : categoryId, keyWord);
             var specFilterByspecAttribute = from sa in specFilterModels
                                             group sa by sa.SpecificationAttributeName;
             var currentUrl = ControllerContext.RequestContext.HttpContext.Request.Url.AbsoluteUri;
@@ -305,7 +305,7 @@ namespace Orbio.Web.UI.Controllers
                         }
                         count++;
                     }
-                    shoppingcartservice.AddCartItem("add", Convert.ToInt32(selectedcarttype), curcustomer.Id, selectedProduct.Id, selectedAttributes, Convert.ToInt32(selectedProduct.SelectedQuantity));
+                    shoppingCartService.AddCartItem("add", Convert.ToInt32(selectedcarttype), curcustomer.Id, selectedProduct.Id, selectedAttributes, Convert.ToInt32(selectedProduct.SelectedQuantity));
                     ViewBag.Sucess = "Item added to the Cart";
                     bool flag = (ConfigurationManager.AppSettings["DisplayCartAfterAddingProduct"].ToString() != "") ? Convert.ToBoolean(ConfigurationManager.AppSettings["DisplayCartAfterAddingProduct"]) : false;
                     if (flag)
@@ -346,7 +346,7 @@ namespace Orbio.Web.UI.Controllers
             return PartialView(model.ProductDetail);
         }
 
-        private CategoryModel PrepareCategoryProductModel(string seName, string filterIds, string keyword)
+        private CategoryModel PrepareCategoryProductModel(string seName, string filterIds, string keyWord)
         {
 
             var specificationAttributeIds = string.IsNullOrWhiteSpace(filterIds)?new List<string>():(from f in filterIds.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
@@ -354,7 +354,7 @@ namespace Orbio.Web.UI.Controllers
                                              select f).ToList();
 
             var model = new CategoryModel(categoryService.GetProductsBySlug(seName, specificationAttributeIds.Count==0 ? null : specificationAttributeIds.Aggregate((f1,f2)=>f1+","+f2),
-                (decimal?)null, (decimal?)null, keyword));
+                (decimal?)null, (decimal?)null, keyWord));
             var minPrice = 0M;
             var maxPrice = 0M;
             var priceModel = (from pr in
@@ -422,14 +422,14 @@ namespace Orbio.Web.UI.Controllers
             return model;
         }
 
-        private SearchModel PrepareCategoryProductModelBySearch(string seName, string filterIds,string keyword)
+        private SearchModel PrepareCategoryProductModelBySearch(string seName, string filterIds, string keyWord)
         {
             var specificationAttributeIds = string.IsNullOrWhiteSpace(filterIds) ? new List<string>() : (from f in filterIds.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
                                                                                                          where f.Split('~').Length <= 1
                                                                                                          select f).ToList();
 
             var model = new SearchModel(categoryService.GetProductsBySearch(seName, specificationAttributeIds.Count == 0 ? null : specificationAttributeIds.Aggregate((f1, f2) => f1 + "," + f2),
-                (decimal?)null, (decimal?)null, keyword));
+                (decimal?)null, (decimal?)null, keyWord));
             var minPrice = 0M;
             var maxPrice = 0M;
             var priceModel = (from pr in
@@ -584,17 +584,17 @@ namespace Orbio.Web.UI.Controllers
         }
 
         [LoginRequired]
-        public ActionResult Review(ProductDetailModel product, string Name,string seName)
+        public ActionResult Review(ProductDetailModel product, string name,string seName)
         {
                 var model = new ReviewModel();
                 model.Rating = 5;
-                model.Name = Name;
+                model.Name = name;
                 model.SeName = seName;
                 return View(model);
         }
 
         [HttpPost]
-        public ActionResult Review(ReviewModel model, string returnUrl, string seName,string Name)
+        public ActionResult Review(ReviewModel model, string returnUrl, string seName, string name)
         {
             if (ModelState.IsValid)
             {

@@ -14,6 +14,6 @@ namespace Orbio.Core.Domain.Catalog
         /// Gets or sets products
         /// </summary>
         [DataMember]
-        public List<ProductDetail> Productdetails { get; set; }
+        public List<ProductDetail> ProductDetails { get; set; }
     }
 }

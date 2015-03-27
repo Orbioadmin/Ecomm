@@ -29,13 +29,13 @@ Create PROCEDURE [dbo].[usp_Customer_ChangePassword]
 	-- Add the parameters for the stored procedure here
 	@cust_id int,
 	@newpwd varchar(100),
-	@passwordformat int,
-	@passwordsalt varchar(30)
+	@passwordFormat int,
+	@passwordSalt varchar(30)
 
 AS
 BEGIN
 
-	update dbo.Customer set Password=@newpwd,PasswordFormatId=PasswordFormatId,PasswordSalt=@passwordsalt where Id=@cust_id
+	update dbo.Customer set Password=@newpwd,PasswordFormatId=@passwordFormat,PasswordSalt=@passwordSalt where Id=@cust_id
 END
 
 GO

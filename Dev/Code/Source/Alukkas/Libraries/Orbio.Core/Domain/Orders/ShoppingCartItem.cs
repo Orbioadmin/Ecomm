@@ -52,12 +52,17 @@ namespace Orbio.Core.Domain.Orders
         /// <summary>
         /// Gets or sets the Item count
         /// </summary>
-        public int Itemcount { get; set; }
+        public int ItemCount { get; set; }
 
         /// <summary>
         /// Gets or sets the Total Price
         /// </summary>
-        public decimal Totalprice { get; set; }
+        public decimal TotalPrice { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Total Price
+        /// </summary>
+        public bool IsRemove { get; set; }
 
     }
 }
