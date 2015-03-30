@@ -35,7 +35,7 @@ namespace Orbio.Web.UI.Controllers
             var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
             var curcustomer = workContext.CurrentCustomer;
             ShoppingCartType carttype = ShoppingCartType.ShoppingCart;
-            PrepareShoppingCartItemModel(curcustomer.Id, Convert.ToInt32(carttype));
+            PrepareShoppingCartItemModel(curcustomer.Id, carttype);
             return View();
 
         }
@@ -46,7 +46,7 @@ namespace Orbio.Web.UI.Controllers
             var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
             var customer = workContext.CurrentCustomer;
             ShoppingCartType carttype = ShoppingCartType.ShoppingCart;
-            PrepareShoppingCartItemModel(customer.Id, Convert.ToInt32(carttype));
+            PrepareShoppingCartItemModel(customer.Id, carttype);
             if (customer.Email == null)
             {
                 return RedirectToAction("MyAccount", "Login");
@@ -153,7 +153,7 @@ namespace Orbio.Web.UI.Controllers
             return Json("Success");
         }
 
-        private void PrepareShoppingCartItemModel(int customerId, int cartType)
+        private void PrepareShoppingCartItemModel(int customerId, ShoppingCartType cartType)
         {
             var model = new ShoppingCartItemsModel(shoppingCartService.GetCartItems("select", 0, cartType, customerId, 0, 0));
             double subtotal = 0.00;

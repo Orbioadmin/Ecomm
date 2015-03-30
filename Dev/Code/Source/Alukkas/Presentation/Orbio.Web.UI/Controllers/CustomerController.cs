@@ -354,10 +354,10 @@ namespace Orbio.Web.UI.Controllers
             var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
             var curcustomer = workContext.CurrentCustomer;
             ShoppingCartType carttype = ShoppingCartType.Wishlist;
-            var model = PrepareShoppingCartItemModel(curcustomer.Id, Convert.ToInt32(carttype));
+            var model = PrepareShoppingCartItemModel(curcustomer.Id, carttype);
             return View("WishList", model);
         }
-        private ShoppingCartItemsModel PrepareShoppingCartItemModel(int customerid, int carttype)
+        private ShoppingCartItemsModel PrepareShoppingCartItemModel(int customerid, ShoppingCartType carttype)
         {
             var model = new ShoppingCartItemsModel(shoppingCartService.GetCartItems("select", 0, carttype, customerid, 0, 0));
                 return model;
@@ -367,21 +367,20 @@ namespace Orbio.Web.UI.Controllers
         {
             var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
             var curcustomer = workContext.CurrentCustomer;
-            ShoppingCartType cartType = ShoppingCartType.Wishlist;
+           
             if (value == "addtocart")
-            {
-                ShoppingCartType shoppingCartType = ShoppingCartType.ShoppingCart;
-                DeleteOrUpdateWishList(Id, Convert.ToInt32(shoppingCartType), value);
+            {                
+                DeleteOrUpdateWishList(Id, ShoppingCartType.ShoppingCart, value);
             }
             else
             {
-                DeleteOrUpdateWishList(Id, Convert.ToInt32(cartType), value);
+                DeleteOrUpdateWishList(Id, ShoppingCartType.Wishlist, value);
             }
-            var model = PrepareShoppingCartItemModel(curcustomer.Id, Convert.ToInt32(cartType));
+            var model = PrepareShoppingCartItemModel(curcustomer.Id, ShoppingCartType.Wishlist);
             return PartialView("WishListSummary", model.CartDetail);
         }
 
-        private void DeleteOrUpdateWishList(int Id, int cartType, string value)
+        private void DeleteOrUpdateWishList(int Id, ShoppingCartType cartType, string value)
         {
             shoppingCartService.GetCartItems(value, Id, cartType, 0, 0, 0);
         }

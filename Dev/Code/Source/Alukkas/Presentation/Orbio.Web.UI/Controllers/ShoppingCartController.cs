@@ -46,7 +46,7 @@ namespace Orbio.Web.UI.Controllers
             var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
             var curcustomer = workContext.CurrentCustomer;
             ShoppingCartType cartType = ShoppingCartType.ShoppingCart;
-            var model = PrepareShoppingCartItemModel(curcustomer.Id, Convert.ToInt32(cartType));
+            var model = PrepareShoppingCartItemModel(curcustomer.Id, cartType);
             double subtotal = 0.00;
             foreach (var totalprice in model.CartDetail)
             {
@@ -72,7 +72,7 @@ namespace Orbio.Web.UI.Controllers
             var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
             var curcustomer = workContext.CurrentCustomer;
             ShoppingCartType cartType = ShoppingCartType.ShoppingCart;
-            var model = PrepareShoppingCartItemModel(curcustomer.Id, Convert.ToInt32(cartType));
+            var model = PrepareShoppingCartItemModel(curcustomer.Id, cartType);
             return PartialView("CartItems",model);
         }
 
@@ -97,7 +97,7 @@ namespace Orbio.Web.UI.Controllers
             return Redirect(previousurl);
         }
 
-        private ShoppingCartItemsModel PrepareShoppingCartItemModel(int customerId, int cartType)
+        private ShoppingCartItemsModel PrepareShoppingCartItemModel(int customerId, ShoppingCartType cartType)
         {
             var model = new ShoppingCartItemsModel(ShoppingCartService.GetCartItems("select", 0, cartType, customerId, 0, 0));
 
