@@ -29,12 +29,12 @@ namespace Orbio.Services.Orders
         /// Add shopping cart item
         /// </summary>
         /// <param name="action">Action</param>
-        public void AddCartItem(string action, int ShoppingCartTypeId, int CustomerId, int ProductId, string attributexml, int quantity)
+        public void AddCartItem(string action, ShoppingCartType shoppingCartType, int CustomerId, int ProductId, string attributexml, int quantity)
         {
             context.ExecuteFunction<ShoppingCartItem>("usp_Shoppingcart_Items",
                    new SqlParameter() { ParameterName = "@action", Value = action, DbType = System.Data.DbType.String },
                    new SqlParameter() { ParameterName = "@id", Value = 0, DbType = System.Data.DbType.Int32 },
-                   new SqlParameter() { ParameterName = "@shoppingCartTypeid", Value = ShoppingCartTypeId, DbType = System.Data.DbType.Int32 },
+                   new SqlParameter() { ParameterName = "@shoppingCartTypeid", Value = (int)shoppingCartType, DbType = System.Data.DbType.Int32 },
                    new SqlParameter() { ParameterName = "@customerId", Value = CustomerId, DbType = System.Data.DbType.Int32 },
                    new SqlParameter() { ParameterName = "@productId", Value = ProductId, DbType = System.Data.DbType.Int32 },
                     new SqlParameter() { ParameterName = "@attributexml", Value = attributexml, DbType = System.Data.DbType.String },
@@ -44,12 +44,12 @@ namespace Orbio.Services.Orders
         /// Get shopping cart items
         /// </summary>
         /// <param name="action">Action</param>
-        public ShoppingCartItems GetCartItems(string action,int id, int ShoppingCartTypeId, int CustomerId, int ProductId, int quantity)
+        public ShoppingCartItems GetCartItems(string action, int id, ShoppingCartType shoppingCartType, int CustomerId, int ProductId, int quantity)
         {
             var sqlParamList = new List<SqlParameter>();
             sqlParamList.Add(new SqlParameter() { ParameterName = "@action", Value = action, DbType = System.Data.DbType.String });
             sqlParamList.Add(new SqlParameter { ParameterName = "@id", Value = id, DbType = System.Data.DbType.Int32 });
-            sqlParamList.Add(new SqlParameter { ParameterName = "@shoppingCartTypeid", Value = ShoppingCartTypeId, DbType = System.Data.DbType.Int32 });
+            sqlParamList.Add(new SqlParameter { ParameterName = "@shoppingCartTypeid", Value = (int)shoppingCartType, DbType = System.Data.DbType.Int32 });
             sqlParamList.Add(new SqlParameter { ParameterName = "@customerId", Value = CustomerId, DbType = System.Data.DbType.Int32 });
             sqlParamList.Add(new SqlParameter { ParameterName = "@productId", Value = ProductId, DbType = System.Data.DbType.Int32 });
             sqlParamList.Add(new SqlParameter { ParameterName = "@attributexml", Value = "", DbType = System.Data.DbType.String });

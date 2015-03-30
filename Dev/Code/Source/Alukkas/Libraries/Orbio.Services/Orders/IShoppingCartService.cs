@@ -18,13 +18,13 @@ namespace Orbio.Services.Orders
         /// Add shopping cart item
         /// </summary>
         /// <param name="action">Action</param>
-        void AddCartItem(string action, int ShoppingCartTypeId, int CustomerId, int ProductId, string attributexml, int Quantity);
+        void AddCartItem(string action, ShoppingCartType shoppingCartType, int CustomerId, int ProductId, string attributexml, int Quantity);
 
          /// <summary>
         /// Get shopping cart items
         /// </summary>
         /// <param name="action">Action</param>
-        ShoppingCartItems GetCartItems(string action, int id, int ShoppingCartTypeId, int CustomerId, int ProductId, int Quantity);
+        ShoppingCartItems GetCartItems(string action, int id, ShoppingCartType shoppingCartType, int CustomerId, int ProductId, int Quantity);
 
         /// <summary>
         /// Update and delete shopping cart item

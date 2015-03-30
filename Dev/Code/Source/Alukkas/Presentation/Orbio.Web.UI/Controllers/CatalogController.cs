@@ -252,8 +252,13 @@ namespace Orbio.Web.UI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Product(ProductDetailModel product, ShoppingCartType cartType)
+        public ActionResult Product(ProductDetailModel product, FormCollection formCollection)
         {
+            var cartType = ShoppingCartType.ShoppingCart;
+            if (formCollection["WishList"] != null)
+            {
+                cartType = ShoppingCartType.Wishlist;
+            }
             TempData.Add("product", product);
             TempData.Add("cartType", cartType);
             return RedirectToRoute("Category", new { p = "pt", seName = product.SeName });
@@ -305,7 +310,7 @@ namespace Orbio.Web.UI.Controllers
                         }
                         count++;
                     }
-                    shoppingCartService.AddCartItem("add", Convert.ToInt32(selectedcarttype), curcustomer.Id, selectedProduct.Id, selectedAttributes, Convert.ToInt32(selectedProduct.SelectedQuantity));
+                    shoppingCartService.AddCartItem("add", selectedcarttype , curcustomer.Id, selectedProduct.Id, selectedAttributes, Convert.ToInt32(selectedProduct.SelectedQuantity));
                     ViewBag.Sucess = "Item added to the Cart";
                     bool flag = (ConfigurationManager.AppSettings["DisplayCartAfterAddingProduct"].ToString() != "") ? Convert.ToBoolean(ConfigurationManager.AppSettings["DisplayCartAfterAddingProduct"]) : false;
                     if (flag)
