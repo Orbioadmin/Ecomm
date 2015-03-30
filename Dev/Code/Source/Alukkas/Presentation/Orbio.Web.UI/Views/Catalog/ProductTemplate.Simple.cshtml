@@ -65,7 +65,7 @@
                     <div class="col-sm-6">
                         <ul class="desc_butt">
                             <li><a href='@Url.Action("Review", "Catalog", new {this.Model.Name,this.Model.SeName})'>WRITE A REVIEW</a></li>
-                            <li><a href="">ADD TO WISHLIST</a></li>
+                            <li><a href=""><input type="submit" name="WishList" value="ADD TO WISHLIST"></a></li>
                             <li><a href='@Url.Action("EmailFriend", "Customer", new { this.Model.Name,this.Model.SeName})'>EMAIL TO FRIEND</a></li>
                         </ul>
                     </div>
@@ -123,7 +123,7 @@
                             @if (string.IsNullOrEmpty(Model.SelectedQuantity)) { Model.SelectedQuantity = "1"; }
                             @Html.TextBoxFor(m => m.SelectedQuantity, new { type = "Number", @class = "form-control",min="1", Style = "width:40px;height: 23px;padding: 0 4px;border-radius: 2px;" })
                             @*<a href="@Url.RouteUrl("ShoppingCart")"><input type="submit" class="Buynow" value="BUY NOW"></a>*@
-                            <input type="submit" class="Buynow" value="BUY NOW">
+                            <input type="submit" name="Buy" class="Buynow" value="BUY NOW">
                         </div>
                         <div class="col-sm-9">
                             @if (this.Model.IsShipEnabled)

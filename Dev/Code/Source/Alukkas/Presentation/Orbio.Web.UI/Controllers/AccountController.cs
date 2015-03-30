@@ -64,7 +64,7 @@ namespace Orbio.Web.UI.Controllers
 
                             //sign in new customer
                             authenticationService.SignIn(customer, model.RememberMe);
-                            shoppingCartService.AddCartItem("update", customer.Id, curcustomer.Id, 0, "", 0);
+                           // shoppingCartService.AddCartItem("update", customer.Id, curcustomer.Id, 0, "", 0);
                             //activity log
                             //_customerActivityService.InsertActivity("PublicStore.Login", _localizationService.GetResource("ActivityLog.PublicStore.Login"), customer);
 

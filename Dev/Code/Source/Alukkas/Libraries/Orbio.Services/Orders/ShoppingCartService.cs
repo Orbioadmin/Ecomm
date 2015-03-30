@@ -37,7 +37,7 @@ namespace Orbio.Services.Orders
                    new SqlParameter() { ParameterName = "@shoppingCartTypeid", Value = (int)shoppingCartType, DbType = System.Data.DbType.Int32 },
                    new SqlParameter() { ParameterName = "@customerId", Value = CustomerId, DbType = System.Data.DbType.Int32 },
                    new SqlParameter() { ParameterName = "@productId", Value = ProductId, DbType = System.Data.DbType.Int32 },
-                    new SqlParameter() { ParameterName = "@attributexml", Value = attributexml, DbType = System.Data.DbType.String },
+                   new SqlParameter() { ParameterName = "@attributexml", Value = (object)attributexml??DBNull.Value, DbType = System.Data.DbType.String },
                    new SqlParameter() { ParameterName = "@quantity", Value = quantity, DbType = System.Data.DbType.Int32 }); 
         }
         /// <summary>
