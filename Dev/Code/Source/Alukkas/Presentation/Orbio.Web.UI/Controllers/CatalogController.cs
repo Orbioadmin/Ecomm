@@ -254,8 +254,13 @@ namespace Orbio.Web.UI.Controllers
         [HttpPost]
         public ActionResult Product(ProductDetailModel product, FormCollection formCollection)
         {
-            var cartType = ShoppingCartType.ShoppingCart;
-            if (formCollection["WishList"] != null)
+            var cartType = ShoppingCartType.None;
+
+            if (formCollection["Buy"] != null)
+            {
+                cartType = ShoppingCartType.Wishlist;
+            }
+            else if (formCollection["WishList"] != null)
             {
                 cartType = ShoppingCartType.Wishlist;
             }
@@ -266,7 +271,7 @@ namespace Orbio.Web.UI.Controllers
 
         public ActionResult Product(string seName)
         {
-
+            var model = PrepareProductdetailsModel(seName);
             ProductDetailModel selectedProduct = null;
             ShoppingCartType selectedcarttype;
             ViewBag.Errors = string.Empty;
@@ -282,15 +287,15 @@ namespace Orbio.Web.UI.Controllers
                 if (selectedProduct.ProductVariantAttributes.Count > 0)
                 {
 
-                    errorString = selectedProduct.ProductVariantAttributes.GetProductVariantErrors();
+                    errorString = selectedProduct.ProductVariantAttributes.GetProductVariantErrors(model.ProductVariantAttributes);
                 }
-                if (selectedquantity < selectedProduct.OrderMinimumQuantity || selectedquantity > selectedProduct.OrderMaximumQuantity)
-                { errorString += "Select a quantity between " + selectedProduct.OrderMinimumQuantity + " and " + selectedProduct.OrderMaximumQuantity; }
+                if (selectedquantity < model.OrderMinimumQuantity || selectedquantity > model.OrderMaximumQuantity)
+                { errorString += "Select a quantity between " + model.OrderMinimumQuantity + " and " + model.OrderMaximumQuantity; }
                 if (selectedcarttype == ShoppingCartType.ShoppingCart)
                 {
                     if (string.IsNullOrEmpty(errorString))
                     {
-                       
+
                         string selectedAttributes = string.Empty;
                         int count = 0;
                         foreach (var attribute in selectedProduct.ProductVariantAttributes)
@@ -322,6 +327,10 @@ namespace Orbio.Web.UI.Controllers
                             return RedirectToRoute("ShoppingCart");
                         }
                     }
+                    else
+                    {
+                        ViewBag.Errors = errorString;
+                    }
                 }
                 else if (selectedcarttype == ShoppingCartType.Wishlist)
                 {
@@ -333,10 +342,10 @@ namespace Orbio.Web.UI.Controllers
                         return RedirectToAction("MyAccount", "Customer");
                     }
                 }
-                ViewBag.Errors = errorString;
+               
 
             }
-            var model = PrepareProductdetailsModel(seName);
+           
             var queryString = new NameValueCollection(ControllerContext.HttpContext.Request.QueryString);
             model.SeName = seName;
             if (selectedProduct != null)
