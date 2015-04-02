@@ -78,8 +78,10 @@ namespace Orbio.Web.UI.Controllers
             var currency = (from r in model.CartDetail.AsEnumerable()
                             select r.CurrencyCode).Take(1).ToList();
             ViewBag.Currencycode = (currency.Count > 0) ? currency[0] : "Rs";
+            
             return model;
         }
+
         private ActionResult RedirectToLocal(string returnUrl)
         {
             if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
@@ -91,5 +93,13 @@ namespace Orbio.Web.UI.Controllers
                 return RedirectToAction("Index", "Home");
             }
         }
+
+        [ChildActionOnly]
+        public ActionResult CartSummary()
+        {
+            var model = PrepareShoppingCartItemModel();
+            return PartialView(model);
+        }
+
     }
 }

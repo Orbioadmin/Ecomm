@@ -619,6 +619,8 @@
     <Content Include="Views\Customer\WishListSummary.cshtml" />
     <Content Include="Views\Catalog\AssociatedProducts.cshtml" />
     <Content Include="Views\Customer\EmailFriend.cshtml" />
+    <Content Include="Views\ShoppingCart\Summary.cshtml" />
+    <Content Include="Views\ShoppingCart\CartSummary.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

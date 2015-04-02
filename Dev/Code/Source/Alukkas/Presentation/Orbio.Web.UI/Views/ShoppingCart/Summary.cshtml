@@ -1,0 +1,31 @@
+﻿@model List<Orbio.Web.UI.Models.Orders.ShoppingCartItemModel>
+
+<div class="well summary">
+    <div class="cart_total">
+        <h1 class="order_sum">CART SUMMARY</h1>
+
+        <div class="table-responsive">
+            <table cellspacing="0" cellpadding="0" class="bar_summary table">
+                <tbody>
+                    @foreach (var items in this.Model)
+                    {
+                        <tr>
+                            <td><img src="@items.DefaultPicture.ImageUrl" width="120px" height="65px"></td>
+                            <td>@items.Name</td>
+                            <td>@items.SelectedQuantity</td>
+                            <td align="center">@items.TotalPrice</td>
+                        </tr>
+                    }
+
+                    @*<tr>
+                        <td colspan="3" align="right" style="font-weight:600">TOTAL</td>
+                        <td align="center" style="font-weight:600">@ViewBag.Currencycode.@ViewBag.subtotal</td>
+                    </tr>*@
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
