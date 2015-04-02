@@ -1714,3 +1714,12 @@ color:#000;}
   font-weight: normal;
   padding: 13px 0 0px;
 }
+.well.summary {
+background: #e1e1e1;
+padding: 10px; margin-bottom: 20px;
+}
+.well.summary .cart_total h1.order_sum {
+margin:0px; font-size:18px; text-align: left;
+padding: 5px 10px 8px 10px;
+}.bar_summary.table img{width: 50px;}
+.payment_detail .cart_total{padding: 0;}

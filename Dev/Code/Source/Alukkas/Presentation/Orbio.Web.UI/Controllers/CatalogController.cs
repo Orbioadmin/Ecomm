@@ -630,7 +630,7 @@ namespace Orbio.Web.UI.Controllers
                 var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
                 if (workContext.CurrentCustomer.IsRegistered)
                 {
-                    workContext.CurrentCustomer.IsApproved = true;
+                    workContext.CurrentCustomer.IsApproved = false;
                     if (model.Rating > 0 || model.Rating < 6)
                     {
                         var productdetails = PrepareProductdetailsModel(seName);
