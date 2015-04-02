@@ -258,7 +258,7 @@ namespace Orbio.Web.UI.Controllers
 
             if (formCollection["Buy"] != null)
             {
-                cartType = ShoppingCartType.Wishlist;
+                cartType = ShoppingCartType.ShoppingCart;
             }
             else if (formCollection["WishList"] != null)
             {
@@ -271,6 +271,7 @@ namespace Orbio.Web.UI.Controllers
 
         public ActionResult Product(string seName)
         {
+
             var model = PrepareProductdetailsModel(seName);
             ProductDetailModel selectedProduct = null;
             ShoppingCartType selectedCartType;
@@ -291,9 +292,10 @@ namespace Orbio.Web.UI.Controllers
                 }
 
                 if (selectedquantity < model.OrderMinimumQuantity || selectedquantity > model.OrderMaximumQuantity)
-                { errorString += "Select a quantity between " + model.OrderMinimumQuantity + " and " + model.OrderMaximumQuantity; }
+                { 
+                    errorString += "Select a quantity between " + model.OrderMinimumQuantity + " and " + model.OrderMaximumQuantity; 
+                }
                 if (selectedCartType == ShoppingCartType.ShoppingCart)
-
                 {
                     if (string.IsNullOrEmpty(errorString))
                     {
@@ -306,11 +308,11 @@ namespace Orbio.Web.UI.Controllers
                             {
                                 case Orbio.Core.Domain.Catalog.AttributeControlType.TableBlock:
                                     {
-                                        foreach (var values in attribute.Values)
+                                        foreach (var value in attribute.Values)
                                         {
-                                            if (values.Id != 0)
+                                            if (value.Id != 0)
                                             {
-                                                int selectedAttributeId = int.Parse(values.Id.ToString());
+                                                int selectedAttributeId = int.Parse(value.Id.ToString());
                                                 selectedAttributes = AddCartProductAttribute(selectedAttributes,
                                                            attribute, selectedAttributeId.ToString());
                                             }
@@ -321,7 +323,9 @@ namespace Orbio.Web.UI.Controllers
                             }
                             count++;
                         }
+
                         shoppingCartService.AddCartItem("add", selectedCartType, 0, curCustomer.Id, selectedProduct.Id, selectedAttributes, Convert.ToInt32(selectedProduct.SelectedQuantity));
+ 
                         ViewBag.Sucess = "Item added to the Cart";
                         bool flag = (ConfigurationManager.AppSettings["DisplayCartAfterAddingProduct"].ToString() != "") ? Convert.ToBoolean(ConfigurationManager.AppSettings["DisplayCartAfterAddingProduct"]) : false;
                         if (flag)
@@ -336,7 +340,9 @@ namespace Orbio.Web.UI.Controllers
                 }
                 else if (selectedCartType == ShoppingCartType.Wishlist)
                 {
+ 
                     string result = shoppingCartService.AddWishlistItem("addWishList", selectedCartType, 0, curCustomer.Id, selectedProduct.Id, "", Convert.ToInt32(selectedProduct.SelectedQuantity));
+
                     ViewBag.Sucess = "Item added to the WishList";
                     bool flag = (ConfigurationManager.AppSettings["DisplayWishListAfterAddingProduct"].ToString() != "") ? Convert.ToBoolean(ConfigurationManager.AppSettings["DisplayWishListAfterAddingProduct"]) : false;
                     if (result == "updated")
@@ -348,6 +354,14 @@ namespace Orbio.Web.UI.Controllers
                         return RedirectToAction("MyAccount", "Customer", new {wish="#wish" });
                     }
                 }
+ 
+                else
+                {
+                    model.ProductVariantAttributes.ValidateProductVariantAttributes(selectedProduct.ProductVariantAttributes);
+                     //add/substract price
+                }
+               
+ 
             }
            
             var queryString = new NameValueCollection(ControllerContext.HttpContext.Request.QueryString);
