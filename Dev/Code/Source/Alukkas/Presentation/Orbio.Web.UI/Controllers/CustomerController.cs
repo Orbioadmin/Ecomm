@@ -25,15 +25,15 @@ namespace Orbio.Web.UI.Controllers
     {
 
         private readonly ICustomerService customerService;
-        private readonly IMessageService MessageService;
+        private readonly IMessageService messageService;
         private readonly IProductService productService;
         private readonly IShoppingCartService shoppingCartService;
 
-        public CustomerController(ICustomerService customerService, IMessageService MessageService , IProductService productService
+        public CustomerController(ICustomerService customerService, IMessageService messageService , IProductService productService
             , IShoppingCartService shoppingCartService)
         {
             this.customerService = customerService;
-            this.MessageService = MessageService;
+            this.messageService = messageService;
             this.productService = productService;
             this.shoppingCartService = shoppingCartService;
         }
@@ -42,8 +42,8 @@ namespace Orbio.Web.UI.Controllers
         public ActionResult MyAccount(string returnUrl)
         {
             var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
-            var curcustomer = workContext.CurrentCustomer;
-            var model = new CustomerModel(curcustomer);
+            var curCustomer = workContext.CurrentCustomer;
+            var model = new CustomerModel(curCustomer);
             ViewBag.ReturnUrl = returnUrl;
             return View(model);
         }
@@ -51,12 +51,11 @@ namespace Orbio.Web.UI.Controllers
         [HttpPost]
         [AllowAnonymous]
         //[ValidateAntiForgeryToken]
-        public ActionResult MyAccount(CustomerModel model, string returnUrl)
+        public ActionResult MyAccount(CustomerModel model)
         {
             var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
-            var curcustomer = workContext.CurrentCustomer;
-            var infomodel = Customerinfo(model, curcustomer);
-            ViewBag.ReturnUrl = returnUrl;
+            var curCustomer = workContext.CurrentCustomer;
+            var infomodel = Customerinfo(model, curCustomer);
             return View(infomodel);
         }
 
@@ -77,25 +76,24 @@ namespace Orbio.Web.UI.Controllers
         }
 
         [LoginRequiredAttribute]
-        public ActionResult ChangePassword(string returnUrl)
+        public ActionResult ChangePassword()
         {
             var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
-            var curcustomer = workContext.CurrentCustomer;
-            var model = new CustomerModel(curcustomer);
-            ViewBag.ReturnUrl = returnUrl;
+            var curCustomer = workContext.CurrentCustomer;
+            var model = new CustomerModel(curCustomer);
             return View("~/Views/Customer/MyAccount.cshtml", model);
         }
 
         [HttpPost]
         [AllowAnonymous]
         //[ValidateAntiForgeryToken]
-        public ActionResult ChangePassword(ChangePasswordModel model, string returnUrl)
+        public ActionResult ChangePassword(ChangePasswordModel model)
         {
             var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
-            var curcustomer = workContext.CurrentCustomer;
+            var curCustomer = workContext.CurrentCustomer;
             if (ModelState.IsValid)
             {
-                var changePasswordRequest = new ChangePasswordRequest(curcustomer.Email,
+                var changePasswordRequest = new ChangePasswordRequest(curCustomer.Email,
                     true, PasswordFormat.Hashed, model.NewPassword, model.OldPassword);
 
                 if (changePasswordRequest == null)
@@ -117,14 +115,13 @@ namespace Orbio.Web.UI.Controllers
                         case CustomerLoginResults.Successful:
                             {
 
-                                var changePasswordResult = customerService.ChangePassword(curcustomer.Id, changePasswordRequest.NewPassword, (int)PasswordFormat.Hashed);
+                                var changePasswordResult = customerService.ChangePassword(curCustomer.Id, changePasswordRequest.NewPassword, (int)PasswordFormat.Hashed);
                                 switch (changePasswordResult)
                                 {
                                     case ChangePasswordResult.Successful:
                                         {
-                                            var model1 = new CustomerModel(curcustomer);
+                                            var model1 = new CustomerModel(curCustomer);
                                             model1.Result = "Your Password has been successfully changed";
-                                            ViewBag.ReturnUrl = returnUrl;
                                             return View("~/Views/Customer/MyAccount.cshtml", model1);
                                             //return RedirectToLocal(returnUrl);
                                         }
@@ -150,18 +147,16 @@ namespace Orbio.Web.UI.Controllers
                     }
                 }
             }
-            var acmodel = new CustomerModel(curcustomer);
-            ViewBag.ReturnUrl = returnUrl;
+            var acmodel = new CustomerModel(curCustomer);
             return View("~/Views/Customer/MyAccount.cshtml", acmodel);
         }
 
 
-        public ActionResult PasswordRecoveryConfirm(string token, string email, string returnUrl)
+        public ActionResult PasswordRecoveryConfirm(string token, string email)
         {
             var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
-            var curcustomer = workContext.CurrentCustomer;
-            var model = new CustomerModel(curcustomer);
-            ViewBag.ReturnUrl = returnUrl;
+            var curCustomer = workContext.CurrentCustomer;
+            var model = new CustomerModel(curCustomer);
             ViewBag.token = token;
             ViewBag.email = email;
             return View(model);
@@ -172,7 +167,7 @@ namespace Orbio.Web.UI.Controllers
         //[ValidateAntiForgeryToken]
         public ActionResult PasswordRecoveryConfirm(string token, string email, PasswordRecoveryConfirmModel model)
         {
-            var curcustomer = new Customer();
+            var curCustomer = new Customer();
 
             if (ModelState.IsValid)
             {
@@ -192,18 +187,18 @@ namespace Orbio.Web.UI.Controllers
                 }
                 else
                 {
-                    var loginResult = customerService.GetCustomerDetailsByEmail(email, ref curcustomer);
+                    var loginResult = customerService.GetCustomerDetailsByEmail(email, ref curCustomer);
                     switch (loginResult)
                     {
                         case CustomerLoginResults.Successful:
                             {
 
-                                var changePasswordResult = customerService.ChangePassword(curcustomer.Id, changePasswordRequest.NewPassword, (int)PasswordFormat.Hashed);
+                                var changePasswordResult = customerService.ChangePassword(curCustomer.Id, changePasswordRequest.NewPassword, (int)PasswordFormat.Hashed);
                                 switch (changePasswordResult)
                                 {
                                     case ChangePasswordResult.Successful:
                                         {
-                                            var model1 = new CustomerModel(curcustomer);
+                                            var model1 = new CustomerModel(curCustomer);
                                             model1.Result = "Your Password has been successfully changed";
                                             model1.NewPassword = "";
                                             model1.ConfirmNewPassword = "";
@@ -233,7 +228,7 @@ namespace Orbio.Web.UI.Controllers
                 }
 
             }
-            var acmodel = new CustomerModel(curcustomer);
+            var acmodel = new CustomerModel(curCustomer);
             return View(acmodel);
         }
 
@@ -257,7 +252,7 @@ namespace Orbio.Web.UI.Controllers
                 {
                     case CustomerLoginResults.Successful:
                         {
-                            MessageService.SendCustomerPasswordRecoveryMessage(customer);
+                            messageService.SendCustomerPasswordRecoveryMessage(customer);
                             model.Result = "Email with instructions has been sent to you.";
                             return View(model);
                         }
@@ -313,7 +308,7 @@ namespace Orbio.Web.UI.Controllers
                         var customer = workContext.CurrentCustomer;
                         var product = new ProductDetail();
                         product = productService.GetProductsDetailsBySlug(seName);
-                        int mailresult = MessageService.SendCustomerEmailFrendMessage(customer, product, model.Email, model.Message, name, url);
+                        int mailresult = messageService.SendCustomerEmailFrendMessage(customer, product, model.Email, model.Message, name, url);
                     }
                     else
                     {
@@ -352,37 +347,37 @@ namespace Orbio.Web.UI.Controllers
         public ActionResult WishList()
         {
             var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
-            var curcustomer = workContext.CurrentCustomer;
-            ShoppingCartType carttype = ShoppingCartType.Wishlist;
-            var model = PrepareShoppingCartItemModel(curcustomer.Id, carttype);
+            var curCustomer = workContext.CurrentCustomer;
+            ShoppingCartType cartType = ShoppingCartType.Wishlist;
+            var model = PrepareShoppingCartItemModel(curCustomer.Id, cartType);
             return View("WishList", model);
         }
-        private ShoppingCartItemsModel PrepareShoppingCartItemModel(int customerid, ShoppingCartType carttype)
+        private ShoppingCartItemsModel PrepareShoppingCartItemModel(int customerId, ShoppingCartType cartType)
         {
-            var model = new ShoppingCartItemsModel(shoppingCartService.GetCartItems("select", 0, carttype, customerid, 0, 0));
+            var model = new ShoppingCartItemsModel(shoppingCartService.GetCartItems("select", 0, cartType, 0, customerId, 0, 0));
                 return model;
         }
         [HttpGet]
-        public ActionResult UpdateWishList(int Id, string value)
+        public ActionResult UpdateWishList(int id, string value)
         {
             var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
-            var curcustomer = workContext.CurrentCustomer;
+            var curCustomer = workContext.CurrentCustomer;
            
             if (value == "addtocart")
             {                
-                DeleteOrUpdateWishList(Id, ShoppingCartType.ShoppingCart, value);
+                DeleteOrUpdateWishList(id, ShoppingCartType.ShoppingCart, value);
             }
             else
             {
-                DeleteOrUpdateWishList(Id, ShoppingCartType.Wishlist, value);
+                DeleteOrUpdateWishList(id, ShoppingCartType.Wishlist, value);
             }
-            var model = PrepareShoppingCartItemModel(curcustomer.Id, ShoppingCartType.Wishlist);
+            var model = PrepareShoppingCartItemModel(curCustomer.Id, ShoppingCartType.Wishlist);
             return PartialView("WishListSummary", model.CartDetail);
         }
 
-        private void DeleteOrUpdateWishList(int Id, ShoppingCartType cartType, string value)
+        private void DeleteOrUpdateWishList(int id, ShoppingCartType cartType, string value)
         {
-            shoppingCartService.GetCartItems(value, Id, cartType, 0, 0, 0);
+            shoppingCartService.GetCartItems(value, id, cartType,0, 0, 0, 0);
         }
     }
 }

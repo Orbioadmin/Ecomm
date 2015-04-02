@@ -15,11 +15,11 @@
             <div class="row">
 
                 <!-- Navigation Buttons -->
-                <div class="col-md-2 col-sm-2">
+                <div id="accountTab" class="col-md-2 col-sm-2">
                     <ul class="nav nav-pills nav-stacked" id="myTabs">
-                        <li class="active"><a href="#detail">MY DETAILS</a></li>
-                        <li><a href="#myaccount">MY ACCOUNT</a></li>
-                        <li><a href="#mywishlist">MY WISHLIST</a></li>
+                        <li id="cDetail" class="active"><a href="#detail">MY DETAILS</a></li>
+                        <li id="cAccount"><a href="#myaccount">MY ACCOUNT</a></li>
+                        <li id="cWishlist"><a href="#mywishlist">MY WISHLIST</a></li>
                     </ul>
                 </div>
 
@@ -213,7 +213,17 @@
 </section>
 
 @section scripts{
-
+    <script>
+        var strURL = decodeURIComponent(window.location.href)
+        var strTab = strURL.substring(strURL.indexOf("#") + 1);
+        if (strTab == "wish") {
+            $("#accountTab>ul>li.active").removeClass("active");
+            $("#mywishlist").css("display", "block");
+            $("#detail").css("display", "none");
+            $("#myaccount").css("display", "none");
+            $("#cWishlist").addClass("active");
+        }
+    </script>
     <script>
         // Enable the Tabs
 

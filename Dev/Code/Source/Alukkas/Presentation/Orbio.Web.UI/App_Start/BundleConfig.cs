@@ -13,7 +13,7 @@ namespace Orbio.Web.UI
                         "~/Scripts/jquery-{version}.js","~/Scripts/bootstrap.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
-                        "~/Scripts/cloud-zoom.js", "~/Scripts/html5shiv.js", "~/Scripts/toastr.js", "~/Scripts/price-range.js", "~/Scripts/main.js",
+                        "~/Scripts/cloudzoom.js", "~/Scripts/html5shiv.js", "~/Scripts/toastr.js", "~/Scripts/price-range.js", "~/Scripts/main.js",
                         "~/Scripts/datepicker.js"));
            
 

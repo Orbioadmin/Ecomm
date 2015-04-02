@@ -279,7 +279,7 @@ namespace Orbio.Web.UI.Controllers
             if (TempData.ContainsKey("product"))
             {
                 var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
-                var curcustomer = workContext.CurrentCustomer;
+                var curCustomer = workContext.CurrentCustomer;
                 selectedProduct = (ProductDetailModel)TempData["product"];
                 selectedCartType = (ShoppingCartType)TempData["cartType"];
                
@@ -290,8 +290,11 @@ namespace Orbio.Web.UI.Controllers
 
                     errorString = selectedProduct.ProductVariantAttributes.GetProductVariantErrors(model.ProductVariantAttributes);
                 }
+
                 if (selectedquantity < model.OrderMinimumQuantity || selectedquantity > model.OrderMaximumQuantity)
-                { errorString += "Select a quantity between " + model.OrderMinimumQuantity + " and " + model.OrderMaximumQuantity; }
+                { 
+                    errorString += "Select a quantity between " + model.OrderMinimumQuantity + " and " + model.OrderMaximumQuantity; 
+                }
                 if (selectedCartType == ShoppingCartType.ShoppingCart)
                 {
                     if (string.IsNullOrEmpty(errorString))
@@ -320,7 +323,9 @@ namespace Orbio.Web.UI.Controllers
                             }
                             count++;
                         }
-                        shoppingCartService.AddCartItem("add", selectedCartType, curcustomer.Id, selectedProduct.Id, selectedAttributes, Convert.ToInt32(selectedProduct.SelectedQuantity));
+
+                        shoppingCartService.AddCartItem("add", selectedCartType, 0, curCustomer.Id, selectedProduct.Id, selectedAttributes, Convert.ToInt32(selectedProduct.SelectedQuantity));
+ 
                         ViewBag.Sucess = "Item added to the Cart";
                         bool flag = (ConfigurationManager.AppSettings["DisplayCartAfterAddingProduct"].ToString() != "") ? Convert.ToBoolean(ConfigurationManager.AppSettings["DisplayCartAfterAddingProduct"]) : false;
                         if (flag)
@@ -335,21 +340,28 @@ namespace Orbio.Web.UI.Controllers
                 }
                 else if (selectedCartType == ShoppingCartType.Wishlist)
                 {
-                    shoppingCartService.AddCartItem("add", selectedCartType, curcustomer.Id, selectedProduct.Id, null, Convert.ToInt32(selectedProduct.SelectedQuantity));
+ 
+                    string result = shoppingCartService.AddWishlistItem("addWishList", selectedCartType, 0, curCustomer.Id, selectedProduct.Id, "", Convert.ToInt32(selectedProduct.SelectedQuantity));
+
                     ViewBag.Sucess = "Item added to the WishList";
                     bool flag = (ConfigurationManager.AppSettings["DisplayWishListAfterAddingProduct"].ToString() != "") ? Convert.ToBoolean(ConfigurationManager.AppSettings["DisplayWishListAfterAddingProduct"]) : false;
+                    if (result == "updated")
+                    {
+                        return RedirectToAction("MyAccount", "Customer", new { wish = "#wish" });
+                    }
                     if (flag)
                     {
-                        return RedirectToAction("MyAccount", "Customer");
+                        return RedirectToAction("MyAccount", "Customer", new {wish="#wish" });
                     }
                 }
+ 
                 else
                 {
                     model.ProductVariantAttributes.ValidateProductVariantAttributes(selectedProduct.ProductVariantAttributes);
                      //add/substract price
                 }
                
-
+ 
             }
            
             var queryString = new NameValueCollection(ControllerContext.HttpContext.Request.QueryString);
@@ -629,14 +641,14 @@ namespace Orbio.Web.UI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Review(ReviewModel model, string returnUrl, string seName, string name)
+        public ActionResult Review(ReviewModel model, string seName, string name)
         {
             if (ModelState.IsValid)
             {
                 var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
                 if (workContext.CurrentCustomer.IsRegistered)
                 {
-                    workContext.CurrentCustomer.IsApproved = true;
+                    workContext.CurrentCustomer.IsApproved = false;
                     if (model.Rating > 0 || model.Rating < 6)
                     {
                         var productdetails = PrepareProductdetailsModel(seName);
@@ -665,7 +677,7 @@ namespace Orbio.Web.UI.Controllers
 
 
         [ChildActionOnly]
-        public ActionResult ProductReview(ReviewModel model, int id, string SeName)
+        public ActionResult ProductReview(ReviewModel model, int id, string seName)
         {
             List<ReviewModel> list = new List<ReviewModel>();
             list = GetCustomerReview(id);
