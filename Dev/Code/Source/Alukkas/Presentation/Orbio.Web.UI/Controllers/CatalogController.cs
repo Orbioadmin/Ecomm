@@ -258,7 +258,7 @@ namespace Orbio.Web.UI.Controllers
 
             if (formCollection["Buy"] != null)
             {
-                cartType = ShoppingCartType.Wishlist;
+                cartType = ShoppingCartType.ShoppingCart;
             }
             else if (formCollection["WishList"] != null)
             {
@@ -271,16 +271,17 @@ namespace Orbio.Web.UI.Controllers
 
         public ActionResult Product(string seName)
         {
+
             var model = PrepareProductdetailsModel(seName);
             ProductDetailModel selectedProduct = null;
-            ShoppingCartType selectedcarttype;
+            ShoppingCartType selectedCartType;
             ViewBag.Errors = string.Empty;
             if (TempData.ContainsKey("product"))
             {
                 var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
                 var curcustomer = workContext.CurrentCustomer;
                 selectedProduct = (ProductDetailModel)TempData["product"];
-                selectedcarttype = (ShoppingCartType)TempData["cartType"];
+                selectedCartType = (ShoppingCartType)TempData["cartType"];
                
                 int selectedquantity = Convert.ToInt32(selectedProduct.SelectedQuantity);
                 var errorString = string.Empty;
@@ -291,7 +292,7 @@ namespace Orbio.Web.UI.Controllers
                 }
                 if (selectedquantity < model.OrderMinimumQuantity || selectedquantity > model.OrderMaximumQuantity)
                 { errorString += "Select a quantity between " + model.OrderMinimumQuantity + " and " + model.OrderMaximumQuantity; }
-                if (selectedcarttype == ShoppingCartType.ShoppingCart)
+                if (selectedCartType == ShoppingCartType.ShoppingCart)
                 {
                     if (string.IsNullOrEmpty(errorString))
                     {
@@ -304,11 +305,11 @@ namespace Orbio.Web.UI.Controllers
                             {
                                 case Orbio.Core.Domain.Catalog.AttributeControlType.TableBlock:
                                     {
-                                        foreach (var values in attribute.Values)
+                                        foreach (var value in attribute.Values)
                                         {
-                                            if (values.Id != 0)
+                                            if (value.Id != 0)
                                             {
-                                                int selectedAttributeId = int.Parse(values.Id.ToString());
+                                                int selectedAttributeId = int.Parse(value.Id.ToString());
                                                 selectedAttributes = AddCartProductAttribute(selectedAttributes,
                                                            attribute, selectedAttributeId.ToString());
                                             }
@@ -319,7 +320,7 @@ namespace Orbio.Web.UI.Controllers
                             }
                             count++;
                         }
-                        shoppingCartService.AddCartItem("add", selectedcarttype, curcustomer.Id, selectedProduct.Id, selectedAttributes, Convert.ToInt32(selectedProduct.SelectedQuantity));
+                        shoppingCartService.AddCartItem("add", selectedCartType, curcustomer.Id, selectedProduct.Id, selectedAttributes, Convert.ToInt32(selectedProduct.SelectedQuantity));
                         ViewBag.Sucess = "Item added to the Cart";
                         bool flag = (ConfigurationManager.AppSettings["DisplayCartAfterAddingProduct"].ToString() != "") ? Convert.ToBoolean(ConfigurationManager.AppSettings["DisplayCartAfterAddingProduct"]) : false;
                         if (flag)
@@ -332,15 +333,20 @@ namespace Orbio.Web.UI.Controllers
                         ViewBag.Errors = errorString;
                     }
                 }
-                else if (selectedcarttype == ShoppingCartType.Wishlist)
+                else if (selectedCartType == ShoppingCartType.Wishlist)
                 {
-                    shoppingCartService.AddCartItem("add", selectedcarttype, curcustomer.Id, selectedProduct.Id, null, Convert.ToInt32(selectedProduct.SelectedQuantity));
+                    shoppingCartService.AddCartItem("add", selectedCartType, curcustomer.Id, selectedProduct.Id, null, Convert.ToInt32(selectedProduct.SelectedQuantity));
                     ViewBag.Sucess = "Item added to the WishList";
                     bool flag = (ConfigurationManager.AppSettings["DisplayWishListAfterAddingProduct"].ToString() != "") ? Convert.ToBoolean(ConfigurationManager.AppSettings["DisplayWishListAfterAddingProduct"]) : false;
                     if (flag)
                     {
                         return RedirectToAction("MyAccount", "Customer");
                     }
+                }
+                else
+                {
+                    model.ProductVariantAttributes.ValidateProductVariantAttributes(selectedProduct.ProductVariantAttributes);
+                     //add/substract price
                 }
                
 
