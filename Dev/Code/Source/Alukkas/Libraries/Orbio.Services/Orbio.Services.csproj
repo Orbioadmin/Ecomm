@@ -50,6 +50,9 @@
     <Compile Include="Catalog\ProductService.cs" />
     <Compile Include="Checkout\CheckoutService.cs" />
     <Compile Include="Checkout\ICheckoutService.cs" />
+    <Compile Include="Common\GenericAttributeExtentions.cs" />
+    <Compile Include="Common\GenericAttributeService.cs" />
+    <Compile Include="Common\IGenericAttributeService.cs" />
     <Compile Include="Customers\ChangePasswordRequest.cs" />
     <Compile Include="Customers\CustomerRegistrationRequest.cs" />
     <Compile Include="Customers\CustomerService.cs" />

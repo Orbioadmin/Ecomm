@@ -58,12 +58,14 @@
     <Compile Include="Domain\Catalog\Search.cs" />
     <Compile Include="Domain\Catalog\SpecificationFilterModel.cs" />
     <Compile Include="Domain\Checkout\Address.cs" />
+    <Compile Include="Domain\Common\GenericAttribute.cs" />
     <Compile Include="Domain\Customers\ChangePasswordResult.cs" />
     <Compile Include="Domain\Customers\Customer.cs" />
     <Compile Include="Domain\Customers\CustomerLoginResults.cs" />
     <Compile Include="Domain\Customers\CustomerRegistrationResult.cs" />
     <Compile Include="Domain\Customers\CustomerSettings.cs" />
     <Compile Include="Domain\Customers\PasswordFormat.cs" />
+    <Compile Include="Domain\Customers\SystemCustomerAttributeNames.cs" />
     <Compile Include="Domain\Customers\SystemCustomerNames.cs" />
     <Compile Include="Domain\Messages\MessageTemplate.cs" />
     <Compile Include="Domain\Messages\Token.cs" />

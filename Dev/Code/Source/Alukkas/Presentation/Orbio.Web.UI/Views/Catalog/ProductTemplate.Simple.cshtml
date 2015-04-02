@@ -11,6 +11,8 @@
 
     @Html.Hidden("tosterMsgsuccess", (string)ViewBag.Sucess)
 }
+
+
   <div class="container">
 
         <ol class="breadcrumb">
@@ -27,16 +29,31 @@
 
             <div class="col-sm-6">
                 <!--<img src="images/Basic_image/zoom.jpg" class="det_img" >-->
-                <div class="zoom_slide">
+                @*<div class="zoom_slide">*@
                     @*<a href="@this.Model.DefaultPicture.ImageUrl" title="@this.Model.Name"></a>
         <img src="@this.Model.DefaultPicture.FullSizeImageUrl" class="cloud-zoom" rel="transparentImage: 'data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==', useWrapper: false, showTitle: true, zoomWidth:'300', zoomHeight:'400', adjustY:0, adjustX:10" />*@
 
-                    <a href="@this.Model.DefaultPicture.FullSizeImageUrl" class="cloud-zoom" rel="transparentImage: 'data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==', useWrapper: false, showTitle: true, zoomWidth:'350', zoomHeight:'400', adjustY:0, adjustX:10">
+                    @*<a href="@this.Model.DefaultPicture.FullSizeImageUrl" class="cloud-zoom" rel="transparentImage: 'data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==', useWrapper: false, showTitle: true, zoomWidth:'350', zoomHeight:'400', adjustY:0, adjustX:10">
                         <img src="@this.Model.DefaultPicture.FullSizeImageUrl" title="@this.Model.Name">
-                    </a>
+                    </a>*@
 
 
-</div>
+@*</div>*@
+
+                <div class="detail_slider">
+                    <img class="cloudzoom" src="@this.Model.DefaultPicture.FullSizeImageUrl" width="555" height="350"
+                         data-cloudzoom="zoomImage: '@this.Model.DefaultPicture.FullSizeImageUrl'" />
+                    <br />
+                    @if (this.Model.ProductPictures.Count > 0)
+                    {
+                        foreach (var pic in this.Model.ProductPictures)
+                        {
+                            <img class='cloudzoom-gallery' src="@pic.ImageUrl" data-cloudzoom="useZoom: '.cloudzoom', image: '@pic.FullSizeImageUrl', zoomImage: '@pic.FullSizeImageUrl' " width="112" height="82">
+                        }
+                    @*<img class='cloudzoom-gallery' src="images/Thumbnail/thumbs/2.jpg" data-cloudzoom="useZoom: '.cloudzoom', image: 'images/Thumbnail/small/2.jpg', zoomImage: 'images/Thumbnail/large/2.jpg' ">
+                    <img class='cloudzoom-gallery' src="images/Thumbnail/thumbs/1.jpg" data-cloudzoom="useZoom: '.cloudzoom', image: 'images/Thumbnail/small/1.jpg', zoomImage: 'images/Thumbnail/large/1.jpg' ">*@
+                    }
+                </div> 
             </div>
             @using (Html.BeginForm("product", "catalog", new { Id = this.Model.Id, SeName=this.Model.SeName,OrderMinimumQuantity=this.Model.OrderMinimumQuantity,OrderMaximumQuantity=this.Model.OrderMaximumQuantity, cartType= Orbio.Core.Domain.Orders.ShoppingCartType.ShoppingCart }, FormMethod.Post, new { Id = "formProduct" }))
             {
@@ -65,7 +82,7 @@
                     <div class="col-sm-6">
                         <ul class="desc_butt">
                             <li><a href='@Url.Action("Review", "Catalog", new {this.Model.Name,this.Model.SeName})'>WRITE A REVIEW</a></li>
-                            <li><a href=""><input type="submit" name="WishList" value="ADD TO WISHLIST"></a></li>
+                            <li><a href=""><input type="submit" style="opacity:0" name="WishList" value="ADD TO WISHLIST"><span style="float:left;margin-top:-20px;margin-left:30px">ADD TO WISHLIST</span></a></li>
                             <li><a href='@Url.Action("EmailFriend", "Customer", new { this.Model.Name,this.Model.SeName})'>EMAIL TO FRIEND</a></li>
                         </ul>
                     </div>

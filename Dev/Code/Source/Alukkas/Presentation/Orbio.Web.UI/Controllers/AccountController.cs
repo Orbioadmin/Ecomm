@@ -17,6 +17,8 @@ using Nop.Core.Infrastructure;
 using Orbio.Services.Messages;
 using Orbio.Services.Orders;
 using Orbio.Web.UI.Models.Orders;
+using Orbio.Services.Common;
+using Orbio.Core;
 
 namespace Orbio.Web.UI.Controllers
 {
@@ -26,13 +28,15 @@ namespace Orbio.Web.UI.Controllers
         private readonly IAuthenticationService authenticationService;
         private readonly IMessageService messageService;
         private readonly IShoppingCartService shoppingCartService;
+        private readonly IStoreContext storeContext;
 
-        public AccountController(ICustomerService customerService, IAuthenticationService authenticationService, IMessageService messageService, IShoppingCartService shoppingCartService)
+        public AccountController(ICustomerService customerService, IAuthenticationService authenticationService, IMessageService messageService, IShoppingCartService shoppingCartService, IStoreContext storeContext)
         {
             this.customerService = customerService;
             this.authenticationService = authenticationService;
             this.messageService = messageService;
             this.shoppingCartService = shoppingCartService;
+            this.storeContext = storeContext;
         }
         public ActionResult Login(string returnUrl)
         {
@@ -43,7 +47,7 @@ namespace Orbio.Web.UI.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(LoginModel model, string returnUrl)
+        public ActionResult Login(LoginModel model)
         {
 
             if (ModelState.IsValid)
@@ -59,12 +63,13 @@ namespace Orbio.Web.UI.Controllers
                         {
                             //var customer = _customerSettings.UsernamesEnabled ? _customerService.GetCustomerByUsername(model.Username) : _customerService.GetCustomerByEmail(model.Email);
 
-                            ////migrate shopping cart
-                            //_shoppingCartService.MigrateShoppingCart(_workContext.CurrentCustomer, customer, true);
-
                             //sign in new customer
                             authenticationService.SignIn(customer, model.RememberMe);
-                           // shoppingCartService.AddCartItem("update", customer.Id, curcustomer.Id, 0, "", 0);
+
+                            ////migrate shopping cart
+                            shoppingCartService.MigrateShoppingCart("update", 0, customer.Id, curcustomer.Id, 0, "", 0);
+
+                            string returnUrl = curcustomer.GetAttribute<string>("select", SystemCustomerAttributeNames.LastContinueShoppingPage, storeContext.CurrentStore.Id);
                             //activity log
                             //_customerActivityService.InsertActivity("PublicStore.Login", _localizationService.GetResource("ActivityLog.PublicStore.Login"), customer);
 
@@ -103,7 +108,7 @@ namespace Orbio.Web.UI.Controllers
 
             // If we got this far, something failed, redisplay form
             //ModelState.AddModelError("", "The user name or password provided is incorrect.");
-            ViewBag.ReturnUrl = returnUrl;
+            //ViewBag.ReturnUrl = "";
             return View(model);
         }
 
@@ -135,14 +140,13 @@ namespace Orbio.Web.UI.Controllers
         }
 
         [HttpGet]
-        public ActionResult Register(string returnUrl)
+        public ActionResult Register()
         {
-            ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
         [HttpPost]
-        public ActionResult Register(RegisterModel model, string returnUrl)
+        public ActionResult Register(RegisterModel model)
         {
             if (ModelState.IsValid)
             {
@@ -175,6 +179,7 @@ namespace Orbio.Web.UI.Controllers
                             if (customer.IsApproved)
                                 authenticationService.SignIn(customer, true);
                             int mailresult = messageService.SendCustomerWelcomeMessage(customer);
+                            string returnUrl = workContext.CurrentCustomer.GetAttribute<string>("select", SystemCustomerAttributeNames.LastContinueShoppingPage, storeContext.CurrentStore.Id);
                             return RedirectToLocal(returnUrl);
                         }
 
@@ -203,7 +208,7 @@ namespace Orbio.Web.UI.Controllers
                         break;
                 }
             }
-                ViewBag.ReturnUrl = returnUrl;
+                //ViewBag.ReturnUrl = returnUrl;
                 return View(model);
         }
 

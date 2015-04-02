@@ -27,10 +27,11 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-Create PROCEDURE [dbo].[usp_Shoppingcart_Items]
+CREATE PROCEDURE [dbo].[usp_Shoppingcart_Items]
 	@action varchar(30),
 	@id int,
-	@shoppingCartTypeid int,
+	@shoppingCartTypeId int,
+	@curCustomerId int,
 	@customerId int,
 	@productId int,
 	@attributexml varchar(max),
@@ -41,17 +42,37 @@ BEGIN
 if(@action = 'add')
 begin
 	
-	if exists(select Id from [dbo].[ShoppingCartItem] where ShoppingCartTypeId=@shoppingCartTypeid and CustomerId = @customerId and
+	if exists(select Id from [dbo].[ShoppingCartItem] where ShoppingCartTypeId=@shoppingCartTypeId and CustomerId = @customerId and
 				ProductId = @productId and AttributesXml =@attributexml)
 		begin
 			update [dbo].[ShoppingCartItem] set [AttributesXml] =@attributexml ,[Quantity] = (@quantity+Quantity),UpdatedOnUtc = CONVERT(VARCHAR(30),GETDATE(),121) where  
-			ShoppingCartTypeId=@shoppingCartTypeid and CustomerId = @customerId and ProductId = @productId and AttributesXml =@attributexml
+			ShoppingCartTypeId=@shoppingCartTypeId and CustomerId = @customerId and ProductId = @productId and AttributesXml =@attributexml
 		end
 
 	else
 		begin
 			insert into [dbo].[ShoppingCartItem](StoreId,ShoppingCartTypeId,CustomerId,ProductId,CustomerEnteredPrice,AttributesXml,Quantity,CreatedOnUtc,UpdatedOnUtc)
-			values(0,@shoppingCartTypeid,@customerId,@productId,0.00,@attributexml,@quantity,CONVERT(VARCHAR(30),GETDATE(),121),CONVERT(VARCHAR(30),GETDATE(),121))
+			values(0,@shoppingCartTypeId,@customerId,@productId,0.00,@attributexml,@quantity,CONVERT(VARCHAR(30),GETDATE(),121),CONVERT(VARCHAR(30),GETDATE(),121))
+		end
+
+end
+
+if(@action = 'addWishList')
+begin
+	
+	if exists(select Id from [dbo].[ShoppingCartItem] where ShoppingCartTypeId=@shoppingCartTypeId and CustomerId = @customerId and
+				ProductId = @productId and AttributesXml =@attributexml)
+		begin
+			update [dbo].[ShoppingCartItem] set [AttributesXml] =@attributexml ,[Quantity] = (@quantity+Quantity),UpdatedOnUtc = CONVERT(VARCHAR(30),GETDATE(),121) where  
+			ShoppingCartTypeId=@shoppingCartTypeId and CustomerId = @customerId and ProductId = @productId and AttributesXml =@attributexml
+			select 'updated'
+		end
+
+	else
+		begin
+			insert into [dbo].[ShoppingCartItem](StoreId,ShoppingCartTypeId,CustomerId,ProductId,CustomerEnteredPrice,AttributesXml,Quantity,CreatedOnUtc,UpdatedOnUtc)
+			values(0,@shoppingCartTypeId,@customerId,@productId,0.00,@attributexml,@quantity,CONVERT(VARCHAR(30),GETDATE(),121),CONVERT(VARCHAR(30),GETDATE(),121))
+			select 'inserted'
 		end
 
 end
@@ -61,15 +82,15 @@ begin
 	
 	if exists(select Id from [dbo].[ShoppingCartItem] where CustomerId = @customerId)
 		begin
-			select Id,ProductId,AttributesXml into #tempcart from ShoppingCartItem where CustomerId = @customerId
-			select Id,ProductId,AttributesXml into #tempcart1 from ShoppingCartItem where CustomerId = @shoppingCartTypeid
+			select Id,ProductId,ShoppingCartTypeId,AttributesXml into #tempcart from ShoppingCartItem where CustomerId = @customerId 
+			select Id,ProductId,ShoppingCartTypeId,AttributesXml into #tempcart1 from ShoppingCartItem where CustomerId = @curCustomerId
 			SELECT Id,ProductId
 			into #tempcart2
 			FROM #tempcart b
 			WHERE NOT EXISTS (
 								SELECT *
 								FROM #tempcart1 a
-								WHERE a.ProductId = b.ProductId and a.AttributesXml = b.AttributesXml)
+								WHERE a.ProductId = b.ProductId and a.AttributesXml = b.AttributesXml and a.ShoppingCartTypeId=b.ShoppingCartTypeId)
 
 			declare @cartIds VARCHAR(MAX) = (SELECT DISTINCT STUFF((SELECT distinct ',' + convert(varchar,p1.Id)
 			FROM #tempcart2 p1
@@ -78,7 +99,7 @@ begin
 			,1,1,'') Id
 			FROM #tempcart2 p)
 
-			update [dbo].[ShoppingCartItem] set CustomerId =@shoppingCartTypeid ,UpdatedOnUtc = CONVERT(VARCHAR(30),GETDATE(),121) where ','+@cartIds+',' LIKE '%,'+CAST(Id AS varchar)+',%'
+			update [dbo].[ShoppingCartItem] set CustomerId =@curCustomerId ,UpdatedOnUtc = CONVERT(VARCHAR(30),GETDATE(),121) where ','+@cartIds+',' LIKE '%,'+CAST(Id AS varchar)+',%'
 		
 		end
 end
@@ -94,7 +115,7 @@ begin
 if not exists(select Id from [dbo].[ShoppingCartItem] where ShoppingCartTypeId=(select ShoppingCartTypeId from [dbo].[ShoppingCartItem] where Id = @id ) 
 and CustomerId = (select CustomerId from [dbo].[ShoppingCartItem] where Id = @id )  and
 				ProductId = (select ProductId from [dbo].[ShoppingCartItem] where Id = @id ) and AttributesXml =(select AttributesXml from [dbo].[ShoppingCartItem] where Id = @id ))
-update [dbo].[ShoppingCartItem] set ShoppingCartTypeId=1,StoreId=0 where Id=@id
+update [dbo].[ShoppingCartItem] set ShoppingCartTypeId=@shoppingCartTypeId where Id=@id
 
 else if exists(select Id from [dbo].[ShoppingCartItem] where ShoppingCartTypeId=(select ShoppingCartTypeId from [dbo].[ShoppingCartItem] where Id = @id ) 
 and CustomerId = (select CustomerId from [dbo].[ShoppingCartItem] where Id = @id )  and
@@ -105,7 +126,7 @@ end
 if(@action = 'select')
 begin
 
-select ProductId into #temp from ShoppingCartItem where shoppingCartTypeId=@shoppingCartTypeid and CustomerId = @customerId group by ProductId
+select ProductId into #temp from ShoppingCartItem where shoppingCartTypeId=@shoppingCartTypeId and CustomerId = @customerId group by ProductId
 
 DECLARE @currencyCode nvarchar(5) 
  
@@ -138,12 +159,13 @@ from [dbo].[Product] product
 inner join ShoppingCartItem sc on sc.ProductId = product.Id 
 Left join [dbo].[DeliveryDate] Delivery_date on product.DeliveryDateId= Delivery_date.Id
 Left  join UrlRecord ur on product.Id = ur.EntityId AND EntityName='Product' AND ur.IsActive=1    
-where sc.CustomerId=@customerId and sc.ShoppingCartTypeId=@shoppingCartTypeid and product.Deleted <> 1 order by product.Id 
+where sc.CustomerId=@customerId and sc.ShoppingCartTypeId=@shoppingCartTypeId and product.Deleted <> 1 order by product.Id 
 FOR XML PATH('ShoppingCartItem'),Root('ShoppingCartProductItems'), type )For XML PATH('ShoppingCartItems'),type)
 SELECT @XmlResult as XmlResult
 end
 
 END
+
 
 
 GO

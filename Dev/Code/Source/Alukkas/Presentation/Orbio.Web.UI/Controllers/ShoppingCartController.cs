@@ -1,4 +1,6 @@
 ﻿using Nop.Core.Infrastructure;
+using Orbio.Core;
+using Orbio.Core.Domain.Customers;
 using Orbio.Core.Domain.Orders;
 using Orbio.Services.Orders;
 using Orbio.Services.Utility;
@@ -10,43 +12,63 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Xml;
+using Orbio.Services.Common;
+using Orbio.Web.UI.Filters;
 
 namespace Orbio.Web.UI.Controllers
 {
     public class ShoppingCartController : Controller
     {
 
-        private readonly IShoppingCartService ShoppingCartService;
+        private readonly IShoppingCartService shoppingCartService;
+        private readonly IStoreContext storeContext;
 
-        public ShoppingCartController(IShoppingCartService ShoppingCartService)
+        public ShoppingCartController(IShoppingCartService shoppingCartService, IStoreContext storeContext)
         {
 
-            this.ShoppingCartService = ShoppingCartService;
+            this.shoppingCartService = shoppingCartService;
+            this.storeContext = storeContext;
         }
 
+        [ContinueShoppingAttribute]
         public ActionResult Cart()
         {
-            if (Request.RawUrl.ToString() != "/")
-            {
-                string Currenturl = Request.Url.Scheme + "://" + Request.Url.Authority + "/cart";
-                if (Request.UrlReferrer != null)
-                {
-                    if (Request.UrlReferrer.ToString() != Currenturl)
-                    {
-                        HttpCookie myCookie = new HttpCookie("Returnurl");
-                        DateTime now = DateTime.Now;
-                        myCookie.Value = Request.UrlReferrer.ToString();
+           
+            var model = PrepareShoppingCartItemModel();
 
-                        myCookie.Expires = now.AddHours(2);
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult Cart(ShoppingCartItemModel detailModel)
+        {
+            List<ShoppingCartItem> cartUpdateItems = new List<ShoppingCartItem>();
+            cartUpdateItems = (from r in detailModel.items.AsEnumerable()
+                               select new ShoppingCartItem { CartId=r.CartId,Quantity=Convert.ToInt32(r.SelectedQuantity),IsRemove=r.IsRemove}).ToList();
+            shoppingCartService.ModifyCartItem(cartUpdateItems);
+            
+            var model = PrepareShoppingCartItemModel();
 
-                        Response.Cookies.Add(myCookie);
-                    }
-                }
-            }
+            return View(model);
+        }
+        public ActionResult CartItem()
+        {
+            var model = PrepareShoppingCartItemModel();
+            return PartialView("CartItems",model);
+        }
+
+        public ActionResult Continueshopping()
+        {
             var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
-            var curcustomer = workContext.CurrentCustomer;
+            string returnUrl = workContext.CurrentCustomer.GetAttribute<string>("select", SystemCustomerAttributeNames.LastContinueShoppingPage, storeContext.CurrentStore.Id);
+            return RedirectToLocal(returnUrl);
+        }
+
+        private ShoppingCartItemsModel PrepareShoppingCartItemModel()
+        {
+            var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
+            var curCustomer = workContext.CurrentCustomer;
             ShoppingCartType cartType = ShoppingCartType.ShoppingCart;
-            var model = PrepareShoppingCartItemModel(curcustomer.Id, cartType);
+            var model = new ShoppingCartItemsModel(shoppingCartService.GetCartItems("select", 0, cartType, 0, curCustomer.Id, 0, 0));
             double subtotal = 0.00;
             foreach (var totalprice in model.CartDetail)
             {
@@ -56,52 +78,18 @@ namespace Orbio.Web.UI.Controllers
             var currency = (from r in model.CartDetail.AsEnumerable()
                             select r.CurrencyCode).Take(1).ToList();
             ViewBag.Currencycode = (currency.Count > 0) ? currency[0] : "Rs";
-            return View(model);
+            return model;
         }
-        [HttpPost]
-        public ActionResult Cart(ShoppingCartItemModel detailModel)
+        private ActionResult RedirectToLocal(string returnUrl)
         {
-            List<ShoppingCartItem> cartUpdateItems = new List<ShoppingCartItem>();
-            cartUpdateItems = (from r in detailModel.items.AsEnumerable()
-                               select new ShoppingCartItem { CartId=r.CartId,Quantity=Convert.ToInt32(r.SelectedQuantity),IsRemove=r.IsRemove}).ToList();
-            ShoppingCartService.ModifyCartItem(cartUpdateItems);
-            return RedirectToRoute("ShoppingCart");
-        }
-        public ActionResult CartItem()
-        {
-            var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
-            var curcustomer = workContext.CurrentCustomer;
-            ShoppingCartType cartType = ShoppingCartType.ShoppingCart;
-            var model = PrepareShoppingCartItemModel(curcustomer.Id, cartType);
-            return PartialView("CartItems",model);
-        }
-
-        public ActionResult Continueshopping()
-        {
-            string returnurl = "";
-            HttpCookie myCookie = new HttpCookie("Returnurl");
-            myCookie = Request.Cookies["Returnurl"];
-            if (myCookie != null)
+            if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
             {
-                returnurl = myCookie.Value;
+                return Redirect(returnUrl);
             }
             else
-            { returnurl = ""; }
-             string previousurl ="";
-             if (!string.IsNullOrEmpty(returnurl))
-                 previousurl = returnurl;
-             else
-                 previousurl = Request.Url.Scheme+"://"+Request.Url.Authority;
-
-             Request.Cookies.Remove("Returnurl");
-            return Redirect(previousurl);
-        }
-
-        private ShoppingCartItemsModel PrepareShoppingCartItemModel(int customerId, ShoppingCartType cartType)
-        {
-            var model = new ShoppingCartItemsModel(ShoppingCartService.GetCartItems("select", 0, cartType, customerId, 0, 0));
-
-            return model;
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
     }
 }

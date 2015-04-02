@@ -199,6 +199,7 @@
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
+    <Compile Include="Filters\ContinueShoppingAttribute.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Filters\LoginRequiredAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -461,6 +462,7 @@
     <Content Include="Images\updates-bg-pattern.png" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\cloud-zoom.js" />
+    <Content Include="Scripts\cloudzoom.js" />
     <Content Include="Scripts\datepicker.js" />
     <Content Include="Scripts\html5shiv.js" />
     <Content Include="Scripts\ion.rangeSlider.min.js" />
