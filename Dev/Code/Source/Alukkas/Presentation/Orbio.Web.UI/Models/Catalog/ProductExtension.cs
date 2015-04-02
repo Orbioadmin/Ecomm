@@ -7,7 +7,7 @@ namespace Orbio.Web.UI.Models.Catalog
 {
     public static class ProductExtension
     {
-        public static string GetProductVariantErrors(this List<ProductVariantAttributeModel> productVariants)
+        public static string GetProductVariantErrors(this List<ProductVariantAttributeModel> productVariants, List<ProductVariantAttributeModel> orginalProductVariants)
         {
             var errorString = string.Empty;
             foreach (var pva in productVariants)
@@ -17,7 +17,11 @@ namespace Orbio.Web.UI.Models.Catalog
                 {
                     if (pvav.Id > 0)
                     {
-                        attrSelected = true;
+                        var attrForProduct = (from opva in orginalProductVariants 
+                                              from opvav in pva.Values
+                                              where opva.Id == pva.Id && opvav.Id==pvav.Id
+                                                  select opvav).FirstOrDefault();
+                        attrSelected = true && (attrForProduct!=null);
                         break;
                     }
                 }

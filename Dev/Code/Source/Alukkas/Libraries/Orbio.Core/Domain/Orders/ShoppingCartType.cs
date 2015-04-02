@@ -11,6 +11,7 @@ namespace Orbio.Core.Domain.Orders
     /// </summary>
     public enum ShoppingCartType
     {
+        None = 0,
         /// <summary>
         /// Shopping cart
         /// </summary>

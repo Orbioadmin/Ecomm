@@ -1768,3 +1768,14 @@ color:#000;}
 .cloudzoom-lens > img{height:79%}
 .cloudzoom{width: 100%!important; border: 1px #ccc solid;}
 .cloudzoom-gallery{border: 1px #ccc solid; margin: 5px 0;}
+
+.well.summary {
+background: #e1e1e1;
+padding: 10px; margin-bottom: 20px;
+}
+.well.summary .cart_total h1.order_sum {
+margin:0px; font-size:18px; text-align: left;
+padding: 5px 10px 8px 10px;
+}.bar_summary.table img{width: 50px;}
+.payment_detail .cart_total{padding: 0;}
+

@@ -2,7 +2,8 @@
 @{
     ViewBag.Title = "Product";
 }
-@if(!string.IsNullOrEmpty((string) ViewBag.Errors)){
+@if (!string.IsNullOrEmpty((string)ViewBag.Errors))
+{
 
     @Html.Hidden("tosterMsg", (string)ViewBag.Errors)
 }
@@ -13,192 +14,192 @@
 }
 
 
-  <div class="container">
+<div class="container">
 
-        <ol class="breadcrumb">
-                          <li><a href="@Url.Action("Index", "Home")">Home</a></li>
-             @{
-                foreach(var breadCrumb in this.Model.BreadCrumbs)
-                {
-                     <li><a href="@Url.RouteUrl("Category", new { SeName = breadCrumb.SeName })?p=ct">@breadCrumb.Name</a></li> 
-                }
-             }
-            <li class="active"> @this.Model.Name</li>
-        </ol>
-        <div class="row">
-
-            <div class="col-sm-6">
-                <!--<img src="images/Basic_image/zoom.jpg" class="det_img" >-->
-                @*<div class="zoom_slide">*@
-                    @*<a href="@this.Model.DefaultPicture.ImageUrl" title="@this.Model.Name"></a>
-        <img src="@this.Model.DefaultPicture.FullSizeImageUrl" class="cloud-zoom" rel="transparentImage: 'data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==', useWrapper: false, showTitle: true, zoomWidth:'300', zoomHeight:'400', adjustY:0, adjustX:10" />*@
-
-                    @*<a href="@this.Model.DefaultPicture.FullSizeImageUrl" class="cloud-zoom" rel="transparentImage: 'data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==', useWrapper: false, showTitle: true, zoomWidth:'350', zoomHeight:'400', adjustY:0, adjustX:10">
-                        <img src="@this.Model.DefaultPicture.FullSizeImageUrl" title="@this.Model.Name">
-                    </a>*@
-
-
-@*</div>*@
-
-                <div class="detail_slider">
-                    <img class="cloudzoom" src="@this.Model.DefaultPicture.FullSizeImageUrl" width="555" height="350"
-                         data-cloudzoom="zoomImage: '@this.Model.DefaultPicture.FullSizeImageUrl'" />
-                    <br />
-                    @if (this.Model.ProductPictures.Count > 0)
-                    {
-                        foreach (var pic in this.Model.ProductPictures)
-                        {
-                            <img class='cloudzoom-gallery' src="@pic.ImageUrl" data-cloudzoom="useZoom: '.cloudzoom', image: '@pic.FullSizeImageUrl', zoomImage: '@pic.FullSizeImageUrl' " width="112" height="82">
-                        }
-                    @*<img class='cloudzoom-gallery' src="images/Thumbnail/thumbs/2.jpg" data-cloudzoom="useZoom: '.cloudzoom', image: 'images/Thumbnail/small/2.jpg', zoomImage: 'images/Thumbnail/large/2.jpg' ">
-                    <img class='cloudzoom-gallery' src="images/Thumbnail/thumbs/1.jpg" data-cloudzoom="useZoom: '.cloudzoom', image: 'images/Thumbnail/small/1.jpg', zoomImage: 'images/Thumbnail/large/1.jpg' ">*@
-                    }
-                </div> 
-            </div>
-            @using (Html.BeginForm("product", "catalog", new { Id = this.Model.Id, SeName=this.Model.SeName,OrderMinimumQuantity=this.Model.OrderMinimumQuantity,OrderMaximumQuantity=this.Model.OrderMaximumQuantity, cartType= Orbio.Core.Domain.Orders.ShoppingCartType.ShoppingCart }, FormMethod.Post, new { Id = "formProduct" }))
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+        @{
+            foreach (var breadCrumb in this.Model.BreadCrumbs)
             {
+                <li><a href="@Url.RouteUrl("Category", new { SeName = breadCrumb.SeName })?p=ct">@breadCrumb.Name</a></li>
+            }
+        }
+        <li class="active"> @this.Model.Name</li>
+    </ol>
+    <div class="row">
+
+        <div class="col-sm-6">
+            <!--<img src="images/Basic_image/zoom.jpg" class="det_img" >-->
+            @*<div class="zoom_slide">*@
+            @*<a href="@this.Model.DefaultPicture.ImageUrl" title="@this.Model.Name"></a>
+                <img src="@this.Model.DefaultPicture.FullSizeImageUrl" class="cloud-zoom" rel="transparentImage: 'data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==', useWrapper: false, showTitle: true, zoomWidth:'300', zoomHeight:'400', adjustY:0, adjustX:10" />*@
+
+            @*<a href="@this.Model.DefaultPicture.FullSizeImageUrl" class="cloud-zoom" rel="transparentImage: 'data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==', useWrapper: false, showTitle: true, zoomWidth:'350', zoomHeight:'400', adjustY:0, adjustX:10">
+                    <img src="@this.Model.DefaultPicture.FullSizeImageUrl" title="@this.Model.Name">
+                </a>*@
+
+
+            @*</div>*@
+
+            <div class="detail_slider">
+                <img class="cloudzoom" src="@this.Model.DefaultPicture.FullSizeImageUrl" width="555" height="350"
+                     data-cloudzoom="zoomImage: '@this.Model.DefaultPicture.FullSizeImageUrl'" />
+                <br />
+                @if (this.Model.ProductPictures.Count > 0)
+                {
+                    foreach (var pic in this.Model.ProductPictures)
+                    {
+                        <img class='cloudzoom-gallery' src="@pic.ImageUrl" data-cloudzoom="useZoom: '.cloudzoom', image: '@pic.FullSizeImageUrl', zoomImage: '@pic.FullSizeImageUrl' " width="112" height="82">
+                    }
+                    @*<img class='cloudzoom-gallery' src="images/Thumbnail/thumbs/2.jpg" data-cloudzoom="useZoom: '.cloudzoom', image: 'images/Thumbnail/small/2.jpg', zoomImage: 'images/Thumbnail/large/2.jpg' ">
+                        <img class='cloudzoom-gallery' src="images/Thumbnail/thumbs/1.jpg" data-cloudzoom="useZoom: '.cloudzoom', image: 'images/Thumbnail/small/1.jpg', zoomImage: 'images/Thumbnail/large/1.jpg' ">*@
+                }
+            </div>
+        </div>
+        @using (Html.BeginForm("product", "catalog", new { Id = this.Model.Id, SeName = this.Model.SeName, cartType = Orbio.Core.Domain.Orders.ShoppingCartType.ShoppingCart }, FormMethod.Post, new { Id = "formProduct" }))
+        {
             <div class="col-sm-6">
                 <div class="row res_det">
                     <div class="col-sm-6">
                         <div class="detail_descrip">
-                            
+
                             <h1>@this.Model.Name</h1>
                             @if (!string.IsNullOrEmpty(this.Model.StockAvailability))
                             {
-                            <p>Availablity : <span>@this.Model.StockAvailability</span></p>
+                                <p>Availablity : <span>@this.Model.StockAvailability</span></p>
                             }
-                            
+
                             @{
-                             Html.RenderAction("ProductStar", new { Id = this.Model.Id });
+                                Html.RenderAction("ProductStar", new { Id = this.Model.Id });
                             }
-                            
+
                             <p class="price_rate">@this.Model.CurrencyCode.@this.Model.ProductPrice.Price</p>
-                            @if(!string.IsNullOrEmpty(this.Model.ProductPrice.OldPrice))
+                            @if (!string.IsNullOrEmpty(this.Model.ProductPrice.OldPrice))
                             {
-                            <s>@this.Model.CurrencyCode.@this.Model.ProductPrice.OldPrice</s>
+                                <s>@this.Model.CurrencyCode.@this.Model.ProductPrice.OldPrice</s>
                             }
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <ul class="desc_butt">
                             <li><a href='@Url.Action("Review", "Catalog", new {this.Model.Name,this.Model.SeName})'>WRITE A REVIEW</a></li>
-                            <li><a href=""><input type="submit" style="opacity:0" name="WishList" value="ADD TO WISHLIST"><span style="float:left;margin-top:-20px;margin-left:30px">ADD TO WISHLIST</span></a></li>
+                            <li><a href="#"><input type="submit" style="outline:none;width:100%;height:100%; border-style:none;background:none" name="WishList" value="ADD TO WISHLIST" /></a></li>
                             <li><a href='@Url.Action("EmailFriend", "Customer", new { this.Model.Name,this.Model.SeName})'>EMAIL TO FRIEND</a></li>
                         </ul>
                     </div>
                 </div>
 
                 @{
-                            if (this.Model.ProductVariantAttributes != null)
-                            {
-                                Html.RenderPartial("_productAttribute", this.Model.ProductVariantAttributes);
-                            }
+            if (this.Model.ProductVariantAttributes != null)
+            {
+                Html.RenderPartial("_productAttribute", this.Model.ProductVariantAttributes);
+            }
                 }
 
                 <div class="quan_expect">
                     <div class="row">
                         <div class="col-sm-3">
                             @*@{
-                                var qtyList = new List<object>();
-                                 if (this.Model.AllowedQuantities.Count > 0)
-                                {
-                                    foreach (var qty in this.Model.AllowedQuantities)
+                                    var qtyList = new List<object>();
+                                     if (this.Model.AllowedQuantities.Count > 0)
                                     {
-                                        qtyList.Add(new  { Text = qty.ToString(), Value = qty.ToString() });
+                                        foreach (var qty in this.Model.AllowedQuantities)
+                                        {
+                                            qtyList.Add(new  { Text = qty.ToString(), Value = qty.ToString() });
+                                        }
                                     }
-                                }
-                                else
-                                {
-                                    for (var i = this.Model.OrderMinimumQuantity; i <= this.Model.OrderMaximumQuantity; i++)
+                                    else
                                     {
-                                         qtyList.Add(new  { Text = i.ToString(), Value = i.ToString() });
+                                        for (var i = this.Model.OrderMinimumQuantity; i <= this.Model.OrderMaximumQuantity; i++)
+                                        {
+                                             qtyList.Add(new  { Text = i.ToString(), Value = i.ToString() });
+                                        }
                                     }
+                                     var selectedValue = qtyList.Where(qty => qty == this.Model.SelectedQuantity).FirstOrDefault();
+                                     if(selectedValue==null)
+                                     {
+                                         selectedValue = qtyList.FirstOrDefault();
+                                     }
+                                     var qtySelectList = new SelectList(qtyList, "Value", "Text", selectedValue );
                                 }
-                                 var selectedValue = qtyList.Where(qty => qty == this.Model.SelectedQuantity).FirstOrDefault();
-                                 if(selectedValue==null)
-                                 {
-                                     selectedValue = qtyList.FirstOrDefault();
-                                 }
-                                 var qtySelectList = new SelectList(qtyList, "Value", "Text", selectedValue );
-                            }                            
-                            Quantity @Html.DropDownListFor(m=>m.SelectedQuantity, qtySelectList)*@ @*<select id="product.CustomerEnteredPrice" class="quantity">
-                                @if (this.Model.AllowedQuantities.Count > 0)
-                                {
-                                    foreach (var qty in this.Model.AllowedQuantities)
+                                Quantity @Html.DropDownListFor(m=>m.SelectedQuantity, qtySelectList)*@ @*<select id="product.CustomerEnteredPrice" class="quantity">
+                                    @if (this.Model.AllowedQuantities.Count > 0)
                                     {
-                                        <option>@qty</option>
+                                        foreach (var qty in this.Model.AllowedQuantities)
+                                        {
+                                            <option>@qty</option>
+                                        }
                                     }
-                                }
-                                else
-                                {
-                                    for (var i = this.Model.OrderMinimumQuantity; i <= this.Model.OrderMaximumQuantity; i++)
+                                    else
                                     {
-                                        <option>@i</option>
+                                        for (var i = this.Model.OrderMinimumQuantity; i <= this.Model.OrderMaximumQuantity; i++)
+                                        {
+                                            <option>@i</option>
+                                        }
                                     }
-                                }
-                            </select>*@
-                            @if (string.IsNullOrEmpty(Model.SelectedQuantity)) { Model.SelectedQuantity = "1"; }
-                            @Html.TextBoxFor(m => m.SelectedQuantity, new { type = "Number", @class = "form-control",min="1", Style = "width:40px;height: 23px;padding: 0 4px;border-radius: 2px;" })
-                            @*<a href="@Url.RouteUrl("ShoppingCart")"><input type="submit" class="Buynow" value="BUY NOW"></a>*@
-                            <input type="submit" name="Buy" class="Buynow" value="BUY NOW">
-                        </div>
-                        <div class="col-sm-9">
-                            @if (this.Model.IsShipEnabled)
-                            {
-                                @:Excepted Delivered Date:  @this.Model.DeliveredIn @*Tuesday, Nov 25, 2014)*@
+                                </select>*@
+                                @if (string.IsNullOrEmpty(Model.SelectedQuantity)) { Model.SelectedQuantity = "1"; }
+                                @Html.TextBoxFor(m => m.SelectedQuantity, new { type = "Number", @class = "form-control", min = "1", Style = "width:40px;height: 23px;padding: 0 4px;border-radius: 2px;" })
+                                @*<a href="@Url.RouteUrl("ShoppingCart")"><input type="submit" class="Buynow" value="BUY NOW"></a>*@
+                                <input type="submit" name="Buy" class="Buynow" value="BUY NOW">
+                            </div>
+                            <div class="col-sm-9">
+                                @if (this.Model.IsShipEnabled)
+                                {
+                                    @:Excepted Delivered Date:  @this.Model.DeliveredIn @*Tuesday, Nov 25, 2014)*@
                                 if (this.Model.IsFreeShipping)
                                 {
-                                      @: <p><i class=""></i>FREE SHIPPING IN INDIA</p>
+                                    @: <p><i class=""></i>FREE SHIPPING IN INDIA</p>
                                 }
-                            }
-                            <p>Need Help? Call<span>+91 495-2722288</span></p>
+                                }
+                                <p>Need Help? Call<span>+91 495-2722288</span></p>
+                            </div>
                         </div>
                     </div>
+
+                    <table cellpadding="0" cellspacing="0" class="Price_breakup" width="100%" align="center">
+                        <tr>
+                            <th colspan="4">Price Breakup</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                GOLD
+                                <p>@this.Model.CurrencyCode.@this.Model.Gold</p>
+                            </td>
+
+                            <td>
+                                Other St.
+                                <p>@this.Model.CurrencyCode.@this.Model.Stones</p>
+                            </td>
+
+                            <td>
+                                Making
+                                <p>@this.Model.CurrencyCode.@this.Model.Making</p>
+                            </td>
+
+                            <td>
+                                Tax
+                                <p>Rs.0.00</p>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <div class="certification">
+                        <ul class="clearfix">
+                            <li><img src="images/bis.png"></li>
+                            <li><img src="images/certified.png"></li>
+                            <li><img src="images/return.png"></li>
+
+                        </ul><div class="clear"></div>
+
+
+                    </div>
                 </div>
-
-                <table cellpadding="0" cellspacing="0" class="Price_breakup" width="100%" align="center">
-                    <tr>
-                        <th colspan="4">Price Breakup</th>
-                    </tr>
-                    <tr>
-                        <td>
-                            GOLD
-                            <p>@this.Model.CurrencyCode.@this.Model.Gold</p>
-                        </td>
-
-                        <td>
-                            Other St.
-                            <p>@this.Model.CurrencyCode.@this.Model.Stones</p>
-                        </td>
-
-                        <td>
-                            Making
-                            <p>@this.Model.CurrencyCode.@this.Model.Making</p>
-                        </td>
-
-                        <td>
-                            Tax
-                            <p>Rs.0.00</p>
-                        </td>
-                    </tr>
-                </table>
-
-                <div class="certification">
-                    <ul class="clearfix">
-                        <li><img src="images/bis.png"></li>
-                        <li><img src="images/certified.png"></li>
-                        <li><img src="images/return.png"></li>
-
-                    </ul><div class="clear"></div>
-
-
-                </div>
-            </div>
-            }
-        </div>
+        }
     </div>
+</div>
 
-    <section class="technical_spec">
+<section class="technical_spec">
     <div class="container">
         <div class="row">
             <div class="col-md-7">
@@ -210,17 +211,17 @@
                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">SPECIFICATION <i class="plus_icon"></i></a>
                             </h4>
                         </div>
-                        @if(this.Model.SpecificationAttributes!=null)
+                        @if (this.Model.SpecificationAttributes != null)
                         {
-                        <div id="collapseOne" class="panel-collapse collapse in">
-                            <div class="panel-body">
+                            <div id="collapseOne" class="panel-collapse collapse in">
+                                <div class="panel-body">
 
-                                @{
-                                    Html.RenderPartial("ProductSpecification", this.Model.SpecificationAttributes);
-                                }
+                                    @{
+                            Html.RenderPartial("ProductSpecification", this.Model.SpecificationAttributes);
+                                    }
 
+                                </div>
                             </div>
-                        </div>
                         }
                     </div>
                     <div class="panel panel-default">
@@ -293,7 +294,7 @@
 
         var sucMsg = $('#tosterMsgsuccess');
         if (sucMsg.length > 0 && sucMsg.val().length > 0) {
-                    ShowSuccessMsg(sucMsg.val());
+            ShowSuccessMsg(sucMsg.val());
         }
     });
 </script>
