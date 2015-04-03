@@ -19,11 +19,11 @@ namespace Orbio.Services.Common
         /// <param name="genericAttributeService">GenericAttributeService</param>
         /// <param name="storeId">Load a value specific for a certain store; pass 0 to load a value shared for all stores</param>
         /// <returns>Attribute</returns>
-        public static TPropType GetAttribute<TPropType>(this Customer customer, string action,string key, int storeId)
+        public static TPropType GetAttribute<TPropType>(this Customer customer, string key, int storeId)
         {
             var genericAttributeService = EngineContext.Current.Resolve<IGenericAttributeService>();
 
-            var props = genericAttributeService.GetGenericAttributes(action, customer.Id, "", key, "", storeId);
+            var props = genericAttributeService.GetGenericAttributes(customer.Id, "", key, "", storeId);
             //little hack here (only for unit testing). we should write ecpect-return rules in unit tests for such cases
 
             if (props == null || string.IsNullOrEmpty(props.Value))

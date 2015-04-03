@@ -43,5 +43,11 @@ namespace Orbio.Services.Orders
         /// </summary>
         /// <param name="cartItems">cartItems</param>
         void ModifyCartItem(List<ShoppingCartItem> cartItems);
+
+        /// <summary>
+        /// Update wishlist items
+        /// </summary>
+        /// <param name="action">Action</param>
+        string UpdateWishListItems(string action, int id, ShoppingCartType shoppingCartType, int curCustomerId, int customerId, int productId, int quantity);
     }
 }

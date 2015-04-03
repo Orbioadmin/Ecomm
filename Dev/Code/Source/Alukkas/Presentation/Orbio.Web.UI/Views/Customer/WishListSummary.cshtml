@@ -31,8 +31,8 @@
                         }
                     </td>
                     <td>@wishlist.ProductPrice.Price</td>
-                    <td><a href="javascript://" onclick="updatewhishlist('@wishlist.CartId','delete');"><img src="~/Images/Basic_image/trash-black.png" id="delete" /></a></td>
-                    <td><a href="javascript://" onclick="updatewhishlist('@wishlist.CartId','addtocart');"><img src="~/Images/Basic_image/cart-yellow.png" /></a></td>
+                    <td><a href="@Url.Action("UpdateWishList", "Customer", new { itemId = wishlist.CartId, value = "delete" })"><img src="~/Images/Basic_image/trash-black.png" id="delete" /></a></td>
+                    <td><a href="@Url.Action("updatewishlist", "Customer", new { itemId = wishlist.CartId, value = "addtocart" })"><img src="~/Images/Basic_image/cart-yellow.png" /></a></td>
 
 
                 </tr>
@@ -47,21 +47,4 @@
         </tbody>
     </table>
 </div>
-<script>
-    function updatewhishlist(id, val) {
-        //$.ajax({
-        //    url: 'UpdateWishList',
-        //    data: { id: id, value: val },
-        //    success: function () {
-        //        location.reload();
-        //    }
-        //});
-        if (val == "delete") {
-            ShowSuccessMsg("The item has been deleted from your Wishlist.");
-        }
-        else {
-            ShowSuccessMsg("The item has been moved to your shopping cart.");
-        }
-        $("#mywishlist").load('@(Url.Action("UpdateWishList", "Customer"))?id=' + id + '&value=' + val);
-    }
-</script>
+

@@ -358,26 +358,24 @@ namespace Orbio.Web.UI.Controllers
                 return model;
         }
         [HttpGet]
-        public ActionResult UpdateWishList(int id, string value)
+        public ActionResult UpdateWishList(int itemId, string value)
         {
             var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
             var curCustomer = workContext.CurrentCustomer;
            
             if (value == "addtocart")
-            {                
-                DeleteOrUpdateWishList(id, ShoppingCartType.ShoppingCart, value);
+            {
+                string result = shoppingCartService.UpdateWishListItems(value, itemId, ShoppingCartType.ShoppingCart, 0, 0, 0, 0);
+                if (result == "ShoppingCart")
+                    return RedirectToRoute("ShoppingCart");
+                else
+                    return RedirectToRoute("Category", new { p = "pt", seName = result });
             }
             else
             {
-                DeleteOrUpdateWishList(id, ShoppingCartType.Wishlist, value);
+                shoppingCartService.UpdateWishListItems(value, itemId, ShoppingCartType.Wishlist, 0, 0, 0, 0);
+                return RedirectToAction("MyAccount", "Customer", new { wish = "#wish" });
             }
-            var model = PrepareShoppingCartItemModel(curCustomer.Id, ShoppingCartType.Wishlist);
-            return PartialView("WishListSummary", model.CartDetail);
-        }
-
-        private void DeleteOrUpdateWishList(int id, ShoppingCartType cartType, string value)
-        {
-            shoppingCartService.GetCartItems(value, id, cartType,0, 0, 0, 0);
         }
     }
 }

@@ -69,7 +69,7 @@ namespace Orbio.Web.UI.Controllers
                             ////migrate shopping cart
                             shoppingCartService.MigrateShoppingCart("update", 0, customer.Id, curcustomer.Id, 0, "", 0);
 
-                            string returnUrl = curcustomer.GetAttribute<string>("select", SystemCustomerAttributeNames.LastContinueShoppingPage, storeContext.CurrentStore.Id);
+                            string returnUrl = curcustomer.GetAttribute<string>(SystemCustomerAttributeNames.LastContinueShoppingPage, storeContext.CurrentStore.Id);
                             //activity log
                             //_customerActivityService.InsertActivity("PublicStore.Login", _localizationService.GetResource("ActivityLog.PublicStore.Login"), customer);
 
@@ -179,7 +179,7 @@ namespace Orbio.Web.UI.Controllers
                             if (customer.IsApproved)
                                 authenticationService.SignIn(customer, true);
                             int mailresult = messageService.SendCustomerWelcomeMessage(customer);
-                            string returnUrl = workContext.CurrentCustomer.GetAttribute<string>("select", SystemCustomerAttributeNames.LastContinueShoppingPage, storeContext.CurrentStore.Id);
+                            string returnUrl = workContext.CurrentCustomer.GetAttribute<string>(SystemCustomerAttributeNames.LastContinueShoppingPage, storeContext.CurrentStore.Id);
                             return RedirectToLocal(returnUrl);
                         }
 

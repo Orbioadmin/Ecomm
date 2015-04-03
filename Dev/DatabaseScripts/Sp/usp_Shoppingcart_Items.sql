@@ -108,25 +108,58 @@ if(@action='delete')
 begin
 if exists(select Id from [dbo].[ShoppingCartItem] where Id = @id)
 delete from [dbo].[ShoppingCartItem] where Id = @id
+select 'deleted'
 end
 
 if(@action='addtocart')
 begin
-if not exists(select Id from [dbo].[ShoppingCartItem] where ShoppingCartTypeId=(select ShoppingCartTypeId from [dbo].[ShoppingCartItem] where Id = @id ) 
-and CustomerId = (select CustomerId from [dbo].[ShoppingCartItem] where Id = @id )  and
+if not exists(select Id from [dbo].[ShoppingCartItem] where ShoppingCartTypeId=@shoppingCartTypeId and CustomerId = (select CustomerId from [dbo].[ShoppingCartItem] where Id = @id ) and
 				ProductId = (select ProductId from [dbo].[ShoppingCartItem] where Id = @id ) and AttributesXml =(select AttributesXml from [dbo].[ShoppingCartItem] where Id = @id ))
-update [dbo].[ShoppingCartItem] set ShoppingCartTypeId=@shoppingCartTypeId where Id=@id
+			begin
+				
+				if exists(select Id from [dbo].[ShoppingCartItem] where Id = @id and AttributesXml = '')
+					begin
+						
+						declare @productVarient int = (select dbo.ufn_GetProductAttributeVarientValueById((select ProductId from [dbo].[ShoppingCartItem] where Id = @id )))
+						if (@productVarient IS NOT NULL)
+								begin
+									select slug from UrlRecord where EntityId = (select ProductId from [dbo].[ShoppingCartItem] where Id = @id ) and EntityName='Product' and IsActive=1 
+								end
 
-else if exists(select Id from [dbo].[ShoppingCartItem] where ShoppingCartTypeId=(select ShoppingCartTypeId from [dbo].[ShoppingCartItem] where Id = @id ) 
-and CustomerId = (select CustomerId from [dbo].[ShoppingCartItem] where Id = @id )  and
-				ProductId = (select ProductId from [dbo].[ShoppingCartItem] where Id = @id ) and AttributesXml =(select AttributesXml from [dbo].[ShoppingCartItem] where Id = @id ))
-delete from [dbo].[ShoppingCartItem] where Id=@id
+						else
+							begin
+								
+								insert into [dbo].[ShoppingCartItem](StoreId,ShoppingCartTypeId,CustomerId,ProductId,CustomerEnteredPrice,AttributesXml,Quantity,CreatedOnUtc,UpdatedOnUtc)
+								values(0,@shoppingCartTypeId, (select CustomerId from [dbo].[ShoppingCartItem] where Id = @id ),(select ProductId from [dbo].[ShoppingCartItem] where Id = @id ),0.00,(select AttributesXml from [dbo].[ShoppingCartItem] where Id = @id ),(select Quantity from [dbo].[ShoppingCartItem] where Id = @id ),(select CreatedOnUtc from [dbo].[ShoppingCartItem] where Id = @id ),(select UpdatedOnUtc from [dbo].[ShoppingCartItem] where Id = @id ))
+								select 'ShoppingCart'
+
+							end
+
+					end
+
+				else
+					begin
+
+						insert into [dbo].[ShoppingCartItem](StoreId,ShoppingCartTypeId,CustomerId,ProductId,CustomerEnteredPrice,AttributesXml,Quantity,CreatedOnUtc,UpdatedOnUtc)
+						values(0,@shoppingCartTypeId, (select CustomerId from [dbo].[ShoppingCartItem] where Id = @id ),(select ProductId from [dbo].[ShoppingCartItem] where Id = @id ),0.00,(select AttributesXml from [dbo].[ShoppingCartItem] where Id = @id ),(select Quantity from [dbo].[ShoppingCartItem] where Id = @id ),(select CreatedOnUtc from [dbo].[ShoppingCartItem] where Id = @id ),(select UpdatedOnUtc from [dbo].[ShoppingCartItem] where Id = @id ))
+						select 'ShoppingCart'
+
+					end
+
+			end
+	else
+		begin
+			
+			select 'ShoppingCart'
+
+		end
 end
+
 
 if(@action = 'select')
 begin
 
-select ProductId into #temp from ShoppingCartItem where shoppingCartTypeId=@shoppingCartTypeId and CustomerId = @customerId group by ProductId
+select ProductId into #temp from ShoppingCartItem where shoppingCartTypeId=@shoppingCartTypeId and CustomerId = @customerId 
 
 DECLARE @currencyCode nvarchar(5) 
  

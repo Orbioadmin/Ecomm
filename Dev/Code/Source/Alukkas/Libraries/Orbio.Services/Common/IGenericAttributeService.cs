@@ -21,7 +21,7 @@ namespace Orbio.Services.Common
         ///<param name="key">the key value</param>
         ///<param name="value">the keyValue value</param>
         ///<param name="storeId">the storeId value</param>
-        GenericAttribute GetGenericAttributes(string action, int entityId, string keyGroup, string key, string value, int storeId);
+        GenericAttribute GetGenericAttributes(int entityId, string keyGroup, string key, string value, int storeId);
 
         ///<summary>
         ///insert all customer generic attributes to table
@@ -32,6 +32,6 @@ namespace Orbio.Services.Common
         ///<param name="key">the key value</param>
         ///<param name="value">the keyValue value</param>
         ///<param name="storeId">the storeId value</param>
-        void SaveGenericAttributes(string action, int entityId, string keyGroup, string key, string value, int storeId);
+        void SaveGenericAttributes(int entityId, string keyGroup, string key, string value, int storeId);
     }
 }
