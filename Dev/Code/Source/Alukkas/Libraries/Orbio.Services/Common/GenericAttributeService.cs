@@ -36,10 +36,10 @@ namespace Orbio.Services.Common
         ///<param name="key">the key value</param>
         ///<param name="value">the keyValue value</param>
         ///<param name="storeId">the storeId value</param>
-        public GenericAttribute GetGenericAttributes(string action,int entityId, string keyGroup, string key, string value, int storeId)
+        public GenericAttribute GetGenericAttributes(int entityId, string keyGroup, string key, string value, int storeId)
         {
             var sqlParamList = new List<SqlParameter>();
-            sqlParamList.Add(new SqlParameter { ParameterName = "@action", Value = action, DbType = System.Data.DbType.String });
+            sqlParamList.Add(new SqlParameter { ParameterName = "@action", Value = "select", DbType = System.Data.DbType.String });
             sqlParamList.Add(new SqlParameter { ParameterName = "@entityId", Value = entityId, DbType = System.Data.DbType.Int32 });
             sqlParamList.Add(new SqlParameter { ParameterName = "@keyGroup", Value = keyGroup, DbType = System.Data.DbType.String });
             sqlParamList.Add(new SqlParameter { ParameterName = "@key", Value = key, DbType = System.Data.DbType.String });
@@ -66,10 +66,10 @@ namespace Orbio.Services.Common
         ///<param name="key">the key value</param>
         ///<param name="value">the keyValue value</param>
         ///<param name="storeId">the storeId value</param>
-        public void SaveGenericAttributes(string action, int entityId, string keyGroup, string key, string value, int storeId)
+        public void SaveGenericAttributes(int entityId, string keyGroup, string key, string value, int storeId)
         {
             var sqlParamList = new List<SqlParameter>();
-            sqlParamList.Add(new SqlParameter { ParameterName = "@action", Value = action, DbType = System.Data.DbType.String });
+            sqlParamList.Add(new SqlParameter { ParameterName = "@action", Value = "save", DbType = System.Data.DbType.String });
             sqlParamList.Add(new SqlParameter { ParameterName = "@entityId", Value = entityId, DbType = System.Data.DbType.Int32 });
             sqlParamList.Add(new SqlParameter { ParameterName = "@keyGroup", Value = keyGroup, DbType = System.Data.DbType.String });
             sqlParamList.Add(new SqlParameter { ParameterName = "@key", Value = key, DbType = System.Data.DbType.String });

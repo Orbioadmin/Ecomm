@@ -18,7 +18,7 @@ namespace Orbio.Web.UI.Filters
             var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
             var store = EngineContext.Current.Resolve<IStoreContext>();
             if (filterContext.HttpContext.Request.UrlReferrer != null && filterContext.HttpContext.Request.UrlReferrer.PathAndQuery != "/cart")
-                genericAttributeService.SaveGenericAttributes("save", workContext.CurrentCustomer.Id, "Customer", SystemCustomerAttributeNames.LastContinueShoppingPage, filterContext.HttpContext.Request.UrlReferrer.PathAndQuery, store.CurrentStore.Id);
+                genericAttributeService.SaveGenericAttributes(workContext.CurrentCustomer.Id, "Customer", SystemCustomerAttributeNames.LastContinueShoppingPage, filterContext.HttpContext.Request.UrlReferrer.PathAndQuery, store.CurrentStore.Id);
 
         }
     }

@@ -282,7 +282,8 @@ namespace Orbio.Web.UI.Controllers
                 var curCustomer = workContext.CurrentCustomer;
                 selectedProduct = (ProductDetailModel)TempData["product"];
                 selectedCartType = (ShoppingCartType)TempData["cartType"];
-               
+                TempData.Remove("product");
+                TempData.Remove("cartType");
                 int selectedquantity = Convert.ToInt32(selectedProduct.SelectedQuantity);
                 var errorString = string.Empty;
                 if (selectedProduct.ProductVariantAttributes.Count > 0)
@@ -295,34 +296,36 @@ namespace Orbio.Web.UI.Controllers
                 { 
                     errorString += "Select a quantity between " + model.OrderMinimumQuantity + " and " + model.OrderMaximumQuantity; 
                 }
+
+                /*selected product attribute varient value*/
+                string selectedAttributes = string.Empty;
+                int count = 0;
+                foreach (var attribute in selectedProduct.ProductVariantAttributes)
+                {
+                    switch (attribute.AttributeControlType)
+                    {
+                        case Orbio.Core.Domain.Catalog.AttributeControlType.TableBlock:
+                            {
+                                foreach (var value in attribute.Values)
+                                {
+                                    if (value.Id != 0)
+                                    {
+                                        int selectedAttributeId = int.Parse(value.Id.ToString());
+                                        selectedAttributes = AddCartProductAttribute(selectedAttributes,
+                                                   attribute, selectedAttributeId.ToString());
+                                    }
+                                }
+
+                                break;
+                            }
+                    }
+                    count++;
+                }
+
                 if (selectedCartType == ShoppingCartType.ShoppingCart)
                 {
                     if (string.IsNullOrEmpty(errorString))
                     {
-
-                        string selectedAttributes = string.Empty;
-                        int count = 0;
-                        foreach (var attribute in selectedProduct.ProductVariantAttributes)
-                        {
-                            switch (attribute.AttributeControlType)
-                            {
-                                case Orbio.Core.Domain.Catalog.AttributeControlType.TableBlock:
-                                    {
-                                        foreach (var value in attribute.Values)
-                                        {
-                                            if (value.Id != 0)
-                                            {
-                                                int selectedAttributeId = int.Parse(value.Id.ToString());
-                                                selectedAttributes = AddCartProductAttribute(selectedAttributes,
-                                                           attribute, selectedAttributeId.ToString());
-                                            }
-                                        }
-
-                                        break;
-                                    }
-                            }
-                            count++;
-                        }
 
                         shoppingCartService.AddCartItem("add", selectedCartType, 0, curCustomer.Id, selectedProduct.Id, selectedAttributes, Convert.ToInt32(selectedProduct.SelectedQuantity));
  
@@ -341,7 +344,7 @@ namespace Orbio.Web.UI.Controllers
                 else if (selectedCartType == ShoppingCartType.Wishlist)
                 {
  
-                    string result = shoppingCartService.AddWishlistItem("addWishList", selectedCartType, 0, curCustomer.Id, selectedProduct.Id, "", Convert.ToInt32(selectedProduct.SelectedQuantity));
+                    string result = shoppingCartService.AddWishlistItem("addWishList", selectedCartType, 0, curCustomer.Id, selectedProduct.Id, selectedAttributes, Convert.ToInt32(selectedProduct.SelectedQuantity));
 
                     ViewBag.Sucess = "Item added to the WishList";
                     bool flag = (ConfigurationManager.AppSettings["DisplayWishListAfterAddingProduct"].ToString() != "") ? Convert.ToBoolean(ConfigurationManager.AppSettings["DisplayWishListAfterAddingProduct"]) : false;

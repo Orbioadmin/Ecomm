@@ -59,7 +59,7 @@ namespace Orbio.Web.UI.Controllers
         public ActionResult Continueshopping()
         {
             var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
-            string returnUrl = workContext.CurrentCustomer.GetAttribute<string>("select", SystemCustomerAttributeNames.LastContinueShoppingPage, storeContext.CurrentStore.Id);
+            string returnUrl = workContext.CurrentCustomer.GetAttribute<string>(SystemCustomerAttributeNames.LastContinueShoppingPage, storeContext.CurrentStore.Id);
             return RedirectToLocal(returnUrl);
         }
 

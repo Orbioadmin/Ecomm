@@ -298,4 +298,13 @@
         }
     });
 </script>
-
+<script src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
+<script type="text/javascript">
+    $('ul.size_li li a').click(
+function (e) {
+    e.preventDefault();
+    e.stopPropagation;
+    $(this).closest('ul').find('.select').removeClass('select');
+    $(this).parent().addClass('select');
+});
+</script>

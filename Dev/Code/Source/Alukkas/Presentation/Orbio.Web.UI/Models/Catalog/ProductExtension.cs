@@ -30,7 +30,7 @@ namespace Orbio.Web.UI.Models.Catalog
 
                 if (!attrSelected)
                 {
-                    errorString += "Select a " + textPrompt + ";";
+                    errorString += "Select a " + pva.TextPrompt + ";";
                 }
             }
 

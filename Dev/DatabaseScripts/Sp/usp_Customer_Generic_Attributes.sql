@@ -47,11 +47,11 @@ if(@action = 'select')
 if(@action = 'save')
 	begin
 
-	if not exists(select Id from [dbo].[GenericAttribute] where [EntityId] = @entityId and [Key] = @key)
+	if not exists(select Id from [dbo].[GenericAttribute] where [EntityId] = @entityId and [Key] = @key and [KeyGroup] = @keyGroup)
 		begin
 			insert into [dbo].[GenericAttribute](EntityId,KeyGroup,[Key],Value,StoreId) values(@entityId,@keyGroup,@key,@value,@storeId)
 		end
-	else if exists(select Id from [dbo].[GenericAttribute] where [EntityId] = @entityId and [Key] = @key)
+	else if exists(select Id from [dbo].[GenericAttribute] where [EntityId] = @entityId and [Key] = @key and [KeyGroup] = @keyGroup)
 		begin
 			update [dbo].[GenericAttribute] set Value = @value where [EntityId] = @entityId and [Key] = @key
 		end
