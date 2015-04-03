@@ -1775,3 +1775,5 @@ color:#000;}
 .well.summary .bar_summary.table img{width: 50px; height: 50px;}
 .well.summary .bar_summary.table tr:last-child td{border-bottom: 0px}
 .payment_detail .cart_total{padding: 0;}
+div.mousetrap {width: 100%!important; border: 1px #ccc solid;}
+.zoom-tiny-image {border: 1px #ccc solid;}div.cloud-zoom-lens, div.cloud-zoom-big{border:0;}

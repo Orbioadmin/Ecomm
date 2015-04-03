@@ -42,18 +42,26 @@
             @*</div>*@
 
             <div class="detail_slider">
-                <img class="cloudzoom" src="@this.Model.DefaultPicture.FullSizeImageUrl" width="555" height="350"
-                     data-cloudzoom="zoomImage: '@this.Model.DefaultPicture.FullSizeImageUrl'" />
-                <br />
-                @if (this.Model.ProductPictures.Count > 0)
-                {
-                    foreach (var pic in this.Model.ProductPictures)
-                    {
-                        <img class='cloudzoom-gallery' src="@pic.ImageUrl" data-cloudzoom="useZoom: '.cloudzoom', image: '@pic.FullSizeImageUrl', zoomImage: '@pic.FullSizeImageUrl' " width="112" height="82">
-                    }
-                    @*<img class='cloudzoom-gallery' src="images/Thumbnail/thumbs/2.jpg" data-cloudzoom="useZoom: '.cloudzoom', image: 'images/Thumbnail/small/2.jpg', zoomImage: 'images/Thumbnail/large/2.jpg' ">
-                        <img class='cloudzoom-gallery' src="images/Thumbnail/thumbs/1.jpg" data-cloudzoom="useZoom: '.cloudzoom', image: 'images/Thumbnail/small/1.jpg', zoomImage: 'images/Thumbnail/large/1.jpg' ">*@
-                }
+
+                <div class="zoom-section">
+                    <div class="zoom-small-image">
+                        <a href='@this.Model.DefaultPicture.FullSizeImageUrl' class='cloud-zoom' id='zoom1' rel="position:'inside',showTitle:false,adjustX:-4,adjustY:-4"><img src="@this.Model.DefaultPicture.FullSizeImageUrl" alt='' title="" width="555" height="350" /></a>
+                    </div>
+                    <div class="zoom-desc">
+                        <h3 style="margin-top:2px"></h3>
+                        <p>
+                            @if (this.Model.ProductPictures.Count > 0)
+                            {
+                                foreach (var pic in this.Model.ProductPictures)
+                                {
+                                    <a href='@pic.FullSizeImageUrl' class='cloud-zoom-gallery' title='Red' rel="useZoom: 'zoom1', smallImage: '@pic.FullSizeImageUrl' "><img class="zoom-tiny-image" src="@pic.ImageUrl" alt="Thumbnail 1" width="112" height="82"/></a>
+                                }
+                            }
+                        </p>
+
+                    </div>
+                </div>
+
             </div>
         </div>
         @using (Html.BeginForm("product", "catalog", new { Id = this.Model.Id, SeName = this.Model.SeName, cartType = Orbio.Core.Domain.Orders.ShoppingCartType.ShoppingCart }, FormMethod.Post, new { Id = "formProduct" }))
