@@ -46,9 +46,7 @@ namespace Orbio.Web.UI.Controllers
                                select new ShoppingCartItem { CartId=r.CartId,Quantity=Convert.ToInt32(r.SelectedQuantity),IsRemove=r.IsRemove}).ToList();
             shoppingCartService.ModifyCartItem(cartUpdateItems);
             
-            var model = PrepareShoppingCartItemModel();
-
-            return View(model);
+            return RedirectToRoute("ShoppingCart");
         }
         public ActionResult CartItem()
         {
