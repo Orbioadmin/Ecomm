@@ -125,10 +125,16 @@
                 <button id="activate-step-2" class="Proceed_pay">PROCEED TO PAYMENT</button>
                 @*<a id="activate-step-2" class="Proceed_pay" href="@Url.Action("updatecustomer", "CheckOut", new { returnUrl = ViewBag.ReturnUrl })">PROCEED TO PAYMENT</a>*@
 </div>
+       
 
             <div class="col-md-4  col-sm-4">
-            <div class="well">
+            
+                <!-- Order Summary -->
+                @Html.Action("CartSummary", "ShoppingCart")
+                <!-- Order Summary -->
                 
+                <div class="well">
+
             <div class="cart_total">
             <h1 class="order_sum">ORDER SUMMARY</h1>
     <dl class="dl-horizontal">
