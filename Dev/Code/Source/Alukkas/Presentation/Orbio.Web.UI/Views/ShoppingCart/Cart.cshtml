@@ -86,10 +86,19 @@
                 <div class="col-sm-8">
                     <a href="@Url.Action("ContinueShopping", "ShoppingCart")"><input type="submit" class="continue_shop" value="CONTINUE SHOPPING"></a>
 </div>
-
+                @if(ViewBag.subtotal !="0.00")
+                { 
                 <div class="col-sm-4">
                     <a href="@Url.Action("Address","CheckOut")"><input type="submit" class="continue_check" value="PROCEED TO CHECKOUT"></a>
                 </div>
+                }
+                else
+                {
+                    <div class="col-sm-4">
+                        <a href="@Url.Action("Address","CheckOut")"><input type="submit" class="continue_check" value="PROCEED TO CHECKOUT" disabled="disabled"></a>
+                    </div>
+                }
+                
             </div>
         </div>
     </div>
