@@ -88,32 +88,64 @@
      @Html.AntiForgeryToken()
     // @Html.ValidationSummary()*@
 <div class="same_bill">@Html.CheckBoxFor(m => m.SameAddress, new { onclick="fnCheckSelection();"}) Billing Address same as shipping address</div>
+    @if(@Model.SameAddress)
+    {
   <dl class="dl-horizontal">
   <dt>First Name<span style="color:red">*</span></dt>
-  <dd>@Html.TextBoxFor(m => m.BillFirstName)</dd>
+  <dd>@Html.TextBoxFor(m => m.BillFirstName, new { disabled = "disabled" })</dd>
   <span id="billfirstname" style="display:none" class="field-validation-error" data-valmsg-for="BillFirstName" data-valmsg-replace="true">First Name Required</span>
   <dt>Last Name<span style="color:red">*</span></dt>
-  <dd>@Html.TextBoxFor(m => m.BillLastName)</dd>
+  <dd>@Html.TextBoxFor(m => m.BillLastName, new { disabled = "disabled" })</dd>
   <span id="billlastname" style="display:none" class="field-validation-error" data-valmsg-for="BillLastName" data-valmsg-replace="true">Last Name Required</span>
   <dt>Phone<span style="color:red">*</span></dt>
-  <dd>@Html.TextBoxFor(m => m.BillPhone)</dd>
+  <dd>@Html.TextBoxFor(m => m.BillPhone, new { disabled = "disabled" })</dd>
   <span id="billphone" style="display:none" class="field-validation-error" data-valmsg-for="BillPhone" data-valmsg-replace="true">Phone Number Required</span>
   <dt>Address<span style="color:red">*</span></dt>
-  <dd>@Html.TextBoxFor(m => m.BillAddress)</dd>
+  <dd>@Html.TextBoxFor(m => m.BillAddress, new { disabled = "disabled" })</dd>
   <span id="billaddress" style="display:none" class="field-validation-error" data-valmsg-for="BillAddress" data-valmsg-replace="true">Address Required</span>
   <dt>City<span style="color:red">*</span></dt>
-  <dd>@Html.TextBoxFor(m => m.BillCity)</dd>
+  <dd>@Html.TextBoxFor(m => m.BillCity, new { disabled = "disabled" })</dd>
   <span id="billcity" style="display:none" class="field-validation-error" data-valmsg-for="BillCity" data-valmsg-replace="true">City Required</span>
   <dt>Pincode<span style="color:red">*</span></dt>
-  <dd>@Html.TextBoxFor(m => m.BillPincode)</dd>
+  <dd>@Html.TextBoxFor(m => m.BillPincode, new { disabled = "disabled" })</dd>
   <span id="billpincode" style="display:none" class="field-validation-error" data-valmsg-for="BillPincode" data-valmsg-replace="true">Pincode Required</span>
   <dt>State<span style="color:red">*</span></dt>
-  <dd>@Html.TextBoxFor(m => m.BillState)</dd>
+  <dd>@Html.TextBoxFor(m => m.BillState, new { disabled = "disabled" })</dd>
   <span id="billstate" style="display:none" class="field-validation-error" data-valmsg-for="BillState" data-valmsg-replace="true">State Required</span>
   <dt>Country<span style="color:red">*</span></dt>
-  <dd>@Html.TextBoxFor(m => m.BillCountry)</dd>
+  <dd>@Html.TextBoxFor(m => m.BillCountry, new { disabled = "disabled" })</dd>
   <span id="billcountry" style="display:none" class="field-validation-error" data-valmsg-for="BillCountry" data-valmsg-replace="true">Country Required</span>
   </dl>
+    }
+    else
+    {
+        <dl class="dl-horizontal">
+            <dt>First Name<span style="color:red">*</span></dt>
+            <dd>@Html.TextBoxFor(m => m.BillFirstName)</dd>
+            <span id="billfirstname" style="display:none" class="field-validation-error" data-valmsg-for="BillFirstName" data-valmsg-replace="true">First Name Required</span>
+            <dt>Last Name<span style="color:red">*</span></dt>
+            <dd>@Html.TextBoxFor(m => m.BillLastName)</dd>
+            <span id="billlastname" style="display:none" class="field-validation-error" data-valmsg-for="BillLastName" data-valmsg-replace="true">Last Name Required</span>
+            <dt>Phone<span style="color:red">*</span></dt>
+            <dd>@Html.TextBoxFor(m => m.BillPhone)</dd>
+            <span id="billphone" style="display:none" class="field-validation-error" data-valmsg-for="BillPhone" data-valmsg-replace="true">Phone Number Required</span>
+            <dt>Address<span style="color:red">*</span></dt>
+            <dd>@Html.TextBoxFor(m => m.BillAddress)</dd>
+            <span id="billaddress" style="display:none" class="field-validation-error" data-valmsg-for="BillAddress" data-valmsg-replace="true">Address Required</span>
+            <dt>City<span style="color:red">*</span></dt>
+            <dd>@Html.TextBoxFor(m => m.BillCity)</dd>
+            <span id="billcity" style="display:none" class="field-validation-error" data-valmsg-for="BillCity" data-valmsg-replace="true">City Required</span>
+            <dt>Pincode<span style="color:red">*</span></dt>
+            <dd>@Html.TextBoxFor(m => m.BillPincode)</dd>
+            <span id="billpincode" style="display:none" class="field-validation-error" data-valmsg-for="BillPincode" data-valmsg-replace="true">Pincode Required</span>
+            <dt>State<span style="color:red">*</span></dt>
+            <dd>@Html.TextBoxFor(m => m.BillState)</dd>
+            <span id="billstate" style="display:none" class="field-validation-error" data-valmsg-for="BillState" data-valmsg-replace="true">State Required</span>
+            <dt>Country<span style="color:red">*</span></dt>
+            <dd>@Html.TextBoxFor(m => m.BillCountry)</dd>
+            <span id="billcountry" style="display:none" class="field-validation-error" data-valmsg-for="BillCountry" data-valmsg-replace="true">Country Required</span>
+        </dl>
+    }
 
                </div>
 
