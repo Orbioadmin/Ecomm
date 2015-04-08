@@ -29,7 +29,7 @@ namespace Orbio.Web.UI.Controllers
         private readonly IProductService productService;
         private readonly IShoppingCartService shoppingCartService;
 
-        public CustomerController(ICustomerService customerService, IMessageService messageService , IProductService productService
+        public CustomerController(ICustomerService customerService, IMessageService messageService, IProductService productService
             , IShoppingCartService shoppingCartService)
         {
             this.customerService = customerService;
@@ -281,7 +281,7 @@ namespace Orbio.Web.UI.Controllers
         }
 
         [LoginRequired]
-        public ActionResult EmailFriend(EmailFriendModel model,string seName, string name)
+        public ActionResult EmailFriend(EmailFriendModel model, string seName, string name)
         {
             ModelState.Clear();
             var uri = Request.Url;
@@ -290,11 +290,11 @@ namespace Orbio.Web.UI.Controllers
             model.SeName = seName;
             model.Name = name;
             model.CaptchaCode = code;
-            model.url = host + "/" + seName+"?p=pt";
+            model.url = host + "/" + seName + "?p=pt";
             return View(model);
         }
 
-        
+
         [HttpPost]
         public ActionResult EmailFriend(EmailFriendModel model, string seName, string name, string url, string captchaCode)
         {
@@ -330,7 +330,7 @@ namespace Orbio.Web.UI.Controllers
                 model.CaptchaCode = code;
                 return View(model);
             }
-          
+
         }
 
         public string GenerateCaptcha()
@@ -339,7 +339,7 @@ namespace Orbio.Web.UI.Controllers
             string combination = "0123456789";
             StringBuilder captcha = new StringBuilder();
             for (int i = 0; i < 4; i++)
-            captcha.Append(combination[random.Next(combination.Length)]);
+                captcha.Append(combination[random.Next(combination.Length)]);
             string result = captcha.ToString();
             return result;
         }
@@ -355,14 +355,14 @@ namespace Orbio.Web.UI.Controllers
         private ShoppingCartItemsModel PrepareShoppingCartItemModel(int customerId, ShoppingCartType cartType)
         {
             var model = new ShoppingCartItemsModel(shoppingCartService.GetCartItems("select", 0, cartType, 0, customerId, 0, 0));
-                return model;
+            return model;
         }
         [HttpGet]
         public ActionResult UpdateWishList(int itemId, string value)
         {
             var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
             var curCustomer = workContext.CurrentCustomer;
-           
+
             if (value == "addtocart")
             {
                 string result = shoppingCartService.UpdateWishListItems(value, itemId, ShoppingCartType.ShoppingCart, 0, 0, 0, 0);
@@ -376,6 +376,21 @@ namespace Orbio.Web.UI.Controllers
                 shoppingCartService.UpdateWishListItems(value, itemId, ShoppingCartType.Wishlist, 0, 0, 0, 0);
                 return RedirectToAction("MyAccount", "Customer", new { wish = "#wish" });
             }
+        }
+
+        /*Add product to wishlist from list page*/
+        [HttpPost]
+        public ActionResult AddItemToWishList(int id)
+        {
+            var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
+            var curCustomer = workContext.CurrentCustomer;
+            string result = shoppingCartService.UpdateWishListItems("addWishList", 0, ShoppingCartType.Wishlist, 0, curCustomer.Id, id, 1);
+            if (result == "updated" || result == "inserted")
+            {
+                return Json("Success");
+            }
+            else
+                return Json(result);
         }
     }
 }

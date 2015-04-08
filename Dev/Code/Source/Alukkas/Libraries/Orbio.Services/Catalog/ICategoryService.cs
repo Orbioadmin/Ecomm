@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Orbio.Core.Domain.Catalog;
- 
+
 
 namespace Orbio.Services.Catalog
 {
@@ -25,7 +25,7 @@ namespace Orbio.Services.Catalog
         /// <param name="slug">the slug value</param>
         /// <param name="entityName">the entity name</param>
         /// <returns>instance of CategoryProduct</returns>
-        CategoryProduct GetProductsBySlug(string slug, string filterIds, decimal? minPrice, decimal? maxPrice, string keyWord);
+        CategoryProduct GetProductsBySlug(string slug, string filterIds, decimal? minPrice, decimal? maxPrice, string keyWord, int? pageNumber, int? pageSize);
 
         /// <summary>
         /// gets all products by search
@@ -49,7 +49,7 @@ namespace Orbio.Services.Catalog
         /// <param name="categoryId">the keyword</param>
         /// <returns>list of specification filter model</returns>
         List<SpecificationFilterModel> GetSpecificationFiltersByCategory(string categoryId, string keyWord);
-        
+
     }
 
 

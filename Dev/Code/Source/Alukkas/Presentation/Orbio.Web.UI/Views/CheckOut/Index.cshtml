@@ -350,7 +350,7 @@
 
         $('ul.setup-panel li.active a').trigger('click');
 
-        // DEMO ONLY //
+        
         $('#activate-step-2').on('click', function (e) {
             if (($("#ShipFirstName").val() == "") || ($("#ShipLastName").val() == "") || ($("#ShipPhone").val() == "")
                 || ($("#ShipAddress").val() == "") || ($("#ShipCity").val() == "") || ($("#ShipPincode").val() == "")
@@ -415,14 +415,6 @@
                 var url = '@Url.Action("UpdateCustomer", "CheckOut")';
                 var formData = form.serialize();
                 $.post(url, formData, function (response) {
-
-                    @*$.ajax({
-                url: '@Url.Action("UpdateCustomer", "CheckOut")',
-                type: 'post',
-                cache: false,
-                beforeSend: function () {
-                },*@
-                    //success: function (response) {
                     if (response != null && response == "Success") {
                         $('ul.setup-panel li:eq(1)').removeClass('disabled');
                         $('ul.setup-panel li a[href="#step-2"]').trigger('click');
@@ -431,15 +423,7 @@
                 })
             }
             });
-                    //}
-        //        },
-        //        complete: function () {
-        //        },
-        //        error: function () {
-        //        }s
-        //    });
-
-        //})
+                    
 
         $('#activate-step-3').on('click', function(e) {
             $('ul.setup-panel li:eq(2)').removeClass('disabled');
