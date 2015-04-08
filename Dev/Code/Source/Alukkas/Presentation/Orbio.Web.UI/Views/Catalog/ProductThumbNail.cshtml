@@ -13,14 +13,14 @@
                   <div class="item-img have-additional clearfix">
                   <a href="@Url.RouteUrl("Category", new { SeName = this.Model.SeName })?p=pt" class="product-image have-additional">
                       <span class="image-main">
-                    <img src="@imageUrl" alt="@Model.Name " />
+                    <img src="@imageUrl" alt="@Model.Name"/>
                       </span>
                   </a>
                         <div class="actions">
                             <ul class="add-to-links">
-                          <li><a title="Add to cart" href="myaccount.html" class="link-share" data-toggle="tooltip" data-original-title="Add to Wishlist" >
+                          <li><a title="Add to cart" href="javascript://" onclick="AddItemToCart(@Model.Id)" class="link-share" data-toggle="tooltip" data-original-title="Add to Wishlist" >
                           </a></li>
-                          <li><a title="Add to Wishlist" href="myaccount.html" class="link-wishlist" data-toggle="tooltip" data-original-title="Add to Compare"></a></li>
+                          <li><a title="Add to Wishlist" href="javascript://" onclick="AddItemToWishlist(@Model.Id);" class="link-wishlist" data-toggle="tooltip" data-original-title="Add to Compare"></a></li>
                                                             </ul>
                                                 <div class="quickview-wrap">
                                                     <a href='@Url.Action("EmailFriend", "Customer", new { this.Model.Name,this.Model.SeName})' title="Share ">

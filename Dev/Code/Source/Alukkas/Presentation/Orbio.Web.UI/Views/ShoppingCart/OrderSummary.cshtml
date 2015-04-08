@@ -57,12 +57,13 @@
             <td>@scpd.CurrencyCode.@scpd.TotalPrice @Html.Hidden(scpd.TotalPrice)</td>
         </tr>
                 count++;
-    }
-    }
+                }
+                
+          }
     else
     {
         <tr>
-            <td colspan="6" class="cart_empty_msg">Your Shopping Cart is empty!</td>
+            <td colspan="6" class="cart_empty_msg">Your shopping cart is empty!</td>
         </tr> 
     }
 }

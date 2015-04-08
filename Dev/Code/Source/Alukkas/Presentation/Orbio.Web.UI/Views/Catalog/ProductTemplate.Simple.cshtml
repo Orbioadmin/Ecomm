@@ -113,7 +113,7 @@
                                     {
                                         foreach (var qty in this.Model.AllowedQuantities)
                                         {
-                                            qtyList.Add(new  { Text = qty.ToString(), Value = qty.ToString() });
+                                            qtyList.Add(new{ Text = qty.ToString(), Value = qty.ToString() });
                                         }
                                     }
                                     else
@@ -199,8 +199,6 @@
                             <li><img src="images/return.png"></li>
 
                         </ul><div class="clear"></div>
-
-
                     </div>
                 </div>
         }
@@ -253,9 +251,6 @@
 
                 </div>
 
-
-
-
             </div>
             <div class="col-md-5">
                 <h1 class="related">RELATED PRODUCTS</h1>
@@ -274,14 +269,6 @@
                     <a class="left carousel-control" href="#myCarousel2" data-slide="prev">‹</a>
                     <a class="right carousel-control" href="#myCarousel2" data-slide="next">›</a>
                 </div><!--/myCarousel-->
-
-
-
-
-
-
-
-
             </div>
         </div>
     </div>
@@ -306,7 +293,7 @@
         }
     });
 </script>
-<script src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
+@*<script src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
 <script type="text/javascript">
     $('ul.size_li li a').click(
 function (e) {
@@ -315,4 +302,4 @@ function (e) {
     $(this).closest('ul').find('.select').removeClass('select');
     $(this).parent().addClass('select');
 });
-</script>
+</script>*@

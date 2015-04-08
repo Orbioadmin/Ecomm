@@ -25,7 +25,6 @@ namespace Orbio.Web.UI.Controllers
 
         public ShoppingCartController(IShoppingCartService shoppingCartService, IStoreContext storeContext)
         {
-
             this.shoppingCartService = shoppingCartService;
             this.storeContext = storeContext;
         }
@@ -33,11 +32,11 @@ namespace Orbio.Web.UI.Controllers
         [ContinueShoppingAttribute]
         public ActionResult Cart()
         {
-           
             var model = PrepareShoppingCartItemModel();
 
             return View(model);
         }
+
         [HttpPost]
         public ActionResult Cart(ShoppingCartItemModel detailModel)
         {
@@ -68,9 +67,10 @@ namespace Orbio.Web.UI.Controllers
             ShoppingCartType cartType = ShoppingCartType.ShoppingCart;
             var model = new ShoppingCartItemsModel(shoppingCartService.GetCartItems("select", 0, cartType, 0, curCustomer.Id, 0, 0));
             double subtotal = 0.00;
+           
             foreach (var totalprice in model.CartDetail)
             {
-                subtotal = subtotal + Convert.ToDouble(totalprice.TotalPrice);
+              subtotal = subtotal + Convert.ToDouble(totalprice.TotalPrice);
             }
             ViewBag.subtotal = subtotal.ToString("#,##0.00");
             var currency = (from r in model.CartDetail.AsEnumerable()
@@ -98,6 +98,5 @@ namespace Orbio.Web.UI.Controllers
             var model = PrepareShoppingCartItemModel();
             return PartialView(model);
         }
-
     }
 }
