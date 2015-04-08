@@ -99,5 +99,19 @@ namespace Orbio.Web.UI.Controllers
             return PartialView(model);
         }
 
-    }
+        /*Add product to cart from list page*/
+        [HttpPost]
+        public ActionResult AddItemToCart(int id)
+        {
+            var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
+            var curCustomer = workContext.CurrentCustomer;
+            string result = shoppingCartService.UpdateWishListItems("addCartItem",0, ShoppingCartType.ShoppingCart, 0, curCustomer.Id, id, 1);
+            if (result == "Updated" || result == "Inserted")
+                {
+                    return Json("Success");
+                }
+                else
+                    return Json(result);
+            }
+        }
 }

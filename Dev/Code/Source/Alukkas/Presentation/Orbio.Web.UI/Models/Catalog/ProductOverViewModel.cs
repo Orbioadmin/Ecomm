@@ -24,6 +24,7 @@ namespace Orbio.Web.UI.Models.Catalog
                 throw new Exception("Page not found");
             }
             // TODO: Complete member initialization
+            this.Id = product.Id;
             this.Name = product.Name;
             this.ShortDescription = product.ShortDescription;
             this.FullDescription = product.FullDescription;

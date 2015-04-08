@@ -18,9 +18,9 @@
                   </a>
                         <div class="actions">
                             <ul class="add-to-links">
-                          <li><a title="Add to cart" href="myaccount.html" class="link-share" data-toggle="tooltip" data-original-title="Add to Wishlist" >
-                          </a></li>
-                          <li><a title="Add to Wishlist" href="myaccount.html" class="link-wishlist" data-toggle="tooltip" data-original-title="Add to Compare"></a></li>
+                          <li><a title="Add to cart" href="javascript://" onclick="addItemToCart('@Model.Id');" class="link-share" data-toggle="tooltip" data-original-title="Add to Wishlist">
+</a></li>
+                          <li><a title="Add to Wishlist" href="javascript://" onclick="addItemToWishList('@Model.Id');" class=" link-wishlist" data-toggle="tooltip" data-original-title="Add to Compare"></a></li>
                                                             </ul>
                                                 <div class="quickview-wrap">
                                                     <a href='@Url.Action("EmailFriend", "Customer", new { this.Model.Name,this.Model.SeName})' title="Share ">

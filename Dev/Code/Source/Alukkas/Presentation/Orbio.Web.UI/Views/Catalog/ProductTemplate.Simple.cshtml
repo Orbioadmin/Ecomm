@@ -310,8 +310,8 @@
 <script type="text/javascript">
     $('ul.size_li li a').click(
 function (e) {
-    e.preventDefault();
-    e.stopPropagation;
+    //e.preventDefault();
+    //e.stopPropagation;
     $(this).closest('ul').find('.select').removeClass('select');
     $(this).parent().addClass('select');
 });

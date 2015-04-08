@@ -29,7 +29,7 @@ GO
 
 CREATE PROCEDURE [dbo].[usp_Catalog_GetProductsBySlug] (@slug nvarchar(400),  
 @entityName nvarchar(400), @specificationFilterIds nvarchar(500)=null, @minPrice decimal(18,4)=null,
-@maxPrice decimal(18,4)=null,@keyWord varchar(max))  
+@maxPrice decimal(18,4)=null,@keyWord varchar(max),@pageNumber int, @pageSize int)  
    
 AS    
 BEGIN    
@@ -90,7 +90,8 @@ AS TemplateViewPath, Category.PageSize,
 FOR XML PATH('Category'), ROOT('BreadCrumbs'),type)
 ,
  
-(select   * FROM  #products PC  WHERE PC.CategoryId = Category.Id
+(select   *,ROW_NUMBER() OVER(ORDER BY PC.CategoryId) 
+FROM  #products PC  WHERE PC.CategoryId = Category.Id and PC.RowNum BETWEEN ((@pageNumber - 1) * @pageSize + 1) AND (@pageNumber * @pageSize)
 FOR XML PATH('Product'), ROOT('Products') , type)  from Category 
 LEFT JOIN CategoryTemplate CT ON Category.CategoryTemplateId = CT.Id  
 where Category.Id = @categoryId
@@ -99,6 +100,7 @@ FOR XML PATH('CategoryProduct') )
 SELECT @XmlResult as XmlResult
    
 END  
+
 GO
 PRINT 'Created the procedure usp_Catalog_GetProductsBySlug'
 GO  

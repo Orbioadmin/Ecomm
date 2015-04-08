@@ -2,174 +2,185 @@
 @{
     ViewBag.Title = "Category";
 }
-  @*@Html.Action("PriceBar", "Home")*@
+@*@Html.Action("PriceBar", "Home")*@
 <section class="listing_page">
-       <div class="container">
-
-         <ol class="breadcrumb">
-               <li><a href="@Url.Action("Index", "Home")">Home</a></li>
-             @{
-                foreach(var breadCrumb in this.Model.BreadCrumbs)
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+            @{
+                foreach (var breadCrumb in this.Model.BreadCrumbs)
                 {
-                     <li><a href="@Url.RouteUrl("Category", new { SeName = breadCrumb.SeName })?p=ct">@breadCrumb.Name</a></li> 
+                    <li><a href="@Url.RouteUrl("Category", new { SeName = breadCrumb.SeName })?p=ct">@breadCrumb.Name</a></li>
                 }
-             }
+            }
 
-  <li class="active">@this.Model.Name</li>
-</ol>
+            <li class="active">@this.Model.Name</li>
+        </ol>
 
-            <div class="row">
-                <div class="col-sm-2">
-
-
-
- 
+        <div class="row">
+            <div class="col-sm-2">
 
 
-            
-
-            @Html.Action("ProductFilter", "Catalog", new { categoryId = this.Model.Id, minPrice = this.Model.MinPrice, maxPrice = this.Model.MaxPrice,selectedSpecs= this.Model.SelectedSpecificationAttributeIds, selectedPriceRange=this.Model.SelectedPriceRange })
 
 
-       </div>
-      
-        @{
-            Html.RenderPartial(this.Model.ViewPath, this.Model); 
-           }
-      
 
 
-    
 
-    
+                
+                @Html.Action("ProductFilter", "Catalog", new { categoryId = this.Model.Id, minPrice = this.Model.MinPrice, maxPrice = this.Model.MaxPrice, selectedSpecs = this.Model.SelectedSpecificationAttributeIds, selectedPriceRange = this.Model.SelectedPriceRange})
 
-       </div>
-       </div>
-      
-   </section>
+
+            </div>
+
+            @{
+                Html.RenderPartial(this.Model.ViewPath, this.Model);
+            }
+
+
+            @Html.Hidden("specification") @Html.Hidden("searchKeyWord") @Html.Hidden("paging")
+
+
+
+
+        </div>
+    </div>
+
+</section>
 @section scripts{
-        <script type="text/javascript">
-            
-            $(function () {
-                $('#sl2').slider().on('slideStop', function (ev) {
-                    if (ev != null && ev.value != null && ev.value.length > 1) {
-                        var specboxes = $('input[id=specFilterCheckBox]');
-                        var specs = '';
-                        $.each(specboxes, function () {
-                            if ($(this).is(':checked')) {
-                                specs += $(this).attr('data-id') + ",";
-                            }
-                        });
-                        window.location.href = $(this).attr('data-url') + '&spec=' + specs + ev.value[0] + '~' + ev.value[1];
+    <script type="text/javascript">
+
+    $(function () {
+        jQuery($('#sl2').slider()).on('slideStop', function (ev) {
+            if (ev != null && ev.value != null && ev.value.length > 1) {
+                var specboxes = $('input[id=specFilterCheckBox]');
+                var specs = '';
+                $.each(specboxes, function () {
+                    if ($(this).is(':checked')) {
+                        specs += $(this).attr('data-id') + ",";
                     }
                 });
+                window.location.href = $(this).attr('data-url') + '&spec=' + specs + ev.value[0] + '~' + ev.value[1];
+            }
+        });
 
-                if (($("#sl2").attr('data-slider-min') == 0 && $("#sl2").attr('data-slider-max') == 0) || ($("#sl2").attr('data-slider-min') == $("#sl2").attr('data-slider-max'))) {
-                    $("div[id='priceFilter']").hide();
+        if (($("#sl2").attr('data-slider-min') == 0 && $("#sl2").attr('data-slider-max') == 0) || ($("#sl2").attr('data-slider-min') == $("#sl2").attr('data-slider-max'))) {
+            $("div[id='priceFilter']").hide();
+        }
+        jQuery($('input[id=specFilterCheckBox]')).on('change', function (e) {
+            // if ($(this).is(':checked')) {
+            var specboxes = $('input[id=specFilterCheckBox]');
+            var specs = '';
+            $.each(specboxes, function () {
+                if ($(this).is(':checked')) {
+                    specs += $(this).attr('data-id') + ",";
                 }
-                $('input[id=specFilterCheckBox]').on('change', function (e) {
-                    // if ($(this).is(':checked')) {
-                    var specboxes = $('input[id=specFilterCheckBox]');
-                    var specs = '';
-                    $.each(specboxes, function () {
-                        if ($(this).is(':checked')) {
-                            specs += $(this).attr('data-id') + ",";
-                        }
-                    });
-                    //var priceRange = $('div .price-range > div>div').children('.tooltip-inner').text();
-                    //var sliderMin = $('#sl2').data('slider-min');
-                    //var sliderMax = $('#sl2').data('slider-max');
-                    //var selectedRanges = priceRange.split(':');
-                    //var priceFilter = '';
-                    //if (selectedRanges[0].trim() != sliderMin || selectedRanges[1].trim() != sliderMax) {
-                    //    priceFilter = selectedRanges[0].trim() + '~' + selectedRanges[1].trim();
-                    //}
-                    window.location.href = $(this).attr('data-url') + '&spec=' + specs; //+ priceFilter;
-           //}
-           //else {
-           //    //NEED TO REMOVE SPEC FORM URL
-           //}
-       });
-   
-
-            //    $('#ei-slider').eislideshow({
-            //        animation           : 'center',
-            //        autoplay            : true,
-            //        slideshow_interval  : 3000,
-            //        titlesFactor        : 0
-            //});
             });
+            //var priceRange = $('div .price-range > div>div').children('.tooltip-inner').text();
+            //var sliderMin = $('#sl2').data('slider-min');
+            //var sliderMax = $('#sl2').data('slider-max');
+            //var selectedRanges = priceRange.split(':');
+            //var priceFilter = '';
+            //if (selectedRanges[0].trim() != sliderMin || selectedRanges[1].trim() != sliderMax) {
+            //    priceFilter = selectedRanges[0].trim() + '~' + selectedRanges[1].trim();
+            //}
+            window.location.href = $(this).attr('data-url') + '&spec=' + specs; //+ priceFilter;
+            //}
+            //else {
+            //    //NEED TO REMOVE SPEC FORM URL
+            //}
+        });
 
 
-            // Carousel Auto-Cycle
-            $(document).ready(function () {
-                function lastPostFunc() {
-                    //alert('scroll');
-                    //$('#divPostsLoader').html('<img src="images/bigLoader.gif">');
-
-                    ////send a query to server side to present new content
-                    //$.ajax({
-                    //    type: "POST",
-                    //    url: "Articles.aspx/ItemsGet",
-                    //    data: "{}",
-                    //    contentType: "application/json; charset=utf-8",
-                    //    dataType: "json",
-                    //    success: function (data) {
-
-                    //        if (data != "") {
-                    //            $('.divLoadData:last').after(data.d);
-                    //        }
-                    //        $('#divPostsLoader').empty();
-                    //    }
-
-                    //})
-                };
-
-                $(window).scroll(function () {
-                    if ($(window).scrollTop() == $(document).height()  - $(window).height()) {
-                        lastPostFunc();
-                    }
-                });
-
-    $('.carousel').carousel({
-      interval: 3000
-    })
-  });
-
-        
-        //Listview
-
-//$('.listview button').on('click',function(e) {
-//    if ($(this).hasClass('three_view')) {
-//        $('.featured_items ul').removeClass('four_items');
-//    }
-//    else if($(this).hasClass('four_view')) {
-//        $('.featured_items ul').addClass('four_items');
-//    }
-//});
-
-//$('.listview button').click(function(e) {
-//    e.preventDefault(); //prevent the link from being followed
-//    $('.listview button').removeClass('selected');
-//    $(this).addClass('selected');
-//});
-     
-
-/*Price slider */
-
-     $("[data-slider]")
-    .each(function () {
-      var input = $(this);
-      $("<span>")
-        .addClass("output")
-        .insertAfter($(this));
-    })
-    .bind("slider:ready slider:changed", function (event, data) {
-      $(this)
-        .nextAll(".output:first")
-          .html(data.value.toFixed(3));
+        //    $('#ei-slider').eislideshow({
+        //        animation           : 'center',
+        //        autoplay            : true,
+        //        slideshow_interval  : 3000,
+        //        titlesFactor        : 0
+        //});
     });
-        </script>
-        
 
+
+    // Carousel Auto-Cycle
+    $(document).ready(function () {
+        function lastPostFunc() {
+            var keyWord = $('#searchKeyWord').val(@ViewBag.keyWord);
+            var str = '@ViewBag.spec';
+            if(str.length > 0)
+            {
+                str = str.substring(0, str.length - 1);
+                $('#specification').val(str)
+            }
+            else
+            {
+                str="";
+                $('#specification').val(str)
+            }
+            var spec = $('#specification').val();
+            var pageNumber="";
+            if ($('#paging').val() == "")
+            { pageNumber = $('#paging').val(@ViewBag.pageNumber); pageNumber = parseInt(pageNumber.val()) + 1; }
+            else
+            { pageNumber = $('#paging').val(); pageNumber = parseInt(pageNumber) + 1; }
+
+            $('#paging').val(pageNumber);
+            $('#divPostsLoader').html('<img src="Content/themes/base/images/torus_loader.gif" />');
+            $.ajax({
+                type: "POST",
+                url: '@(Url.Action("CategoryPaging", "Catalog"))?seName=jewellery&spec=' + spec + '&keyWord=' + keyWord + '&pageNumber=' + pageNumber,
+                success: function (data) {
+
+                    if (data != "") {
+                        $('.feature_li:last').append(data);
+                    }
+                    $('#divPostsLoader').empty();
+                }
+
+            })
+        };
+
+        $(window).scroll(function () {
+            if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+                lastPostFunc();
+            }
+        });
+
+        $('.carousel').carousel({
+            interval: 3000
+        })
+    });
+
+
+    //Listview
+
+    //$('.listview button').on('click',function(e) {
+    //    if ($(this).hasClass('three_view')) {
+    //        $('.featured_items ul').removeClass('four_items');
+    //    }
+    //    else if($(this).hasClass('four_view')) {
+    //        $('.featured_items ul').addClass('four_items');
+    //    }
+    //});
+
+    //$('.listview button').click(function(e) {
+    //    e.preventDefault(); //prevent the link from being followed
+    //    $('.listview button').removeClass('selected');
+    //    $(this).addClass('selected');
+    //});
+
+
+    /*Price slider */
+
+    $("[data-slider]")
+   .each(function () {
+       var input = $(this);
+       $("<span>")
+         .addClass("output")
+         .insertAfter($(this));
+   })
+   .bind("slider:ready slider:changed", function (event, data) {
+       $(this)
+         .nextAll(".output:first")
+           .html(data.value.toFixed(3));
+   });
+</script>
 }

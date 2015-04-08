@@ -1,21 +1,100 @@
 ﻿@model Orbio.Web.UI.Models.Catalog.CategoryModel
-     <div class="col-sm-10">
+<div class="col-sm-10">
 
-      
-   <div class="filter_cat">@this.Model.Name @ViewBag.searchkeyword</div>   
-       <div class="featured_items"  align="center">
-       <ul class="feature_li four_items">
-        @{
-            foreach(var product in this.Model.Products)
-            {
-                Html.RenderPartial("ProductThumbNail", product);
+
+    <div class="filter_cat">@this.Model.Name @ViewBag.searchkeyword</div>
+    <div class="featured_items" align="center">
+        <ul class="feature_li four_items">
+            @{
+                Html.RenderPartial("_CategoryProducts", this.Model);
             }
-        }
-    
-       </ul>
+
+        </ul>
         <div class="clear"></div>
-        <div class="no-product"><span>NO @(this.Model.Products.Count>0?"MORE":"") PRODUCT TO DISPLAY</span></div>
-     </div>
-   </div>
+        <div id="divPostsLoader"></div>
+        <div class="no-product"><span>NO @(this.Model.Products.Count > 0 ? "MORE" : "") PRODUCT TO DISPLAY</span></div>
+    </div>
+</div>
 
 
+<script>
+    var ShowSuccessMsg = function (msg) {
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-full-width",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+
+        toastr.success(msg);
+    }
+</script>
+<script>
+    function addItemToCart(id) {
+        //if (val == "delete") {
+        //    ShowSuccessMsg("The item has been deleted from your Wishlist.");
+        //}
+        //else {
+
+        //}
+        $("#Intro").css("display", "inline");
+        $("#Inner").css("display", "inline");
+        $.ajax({
+            type: "POST",
+            url: '@(Url.Action("AddItemToCart", "ShoppingCart"))?id=' + id,
+            success: function (result) {
+                if (result == "Success") {
+                    setTimeout(function () {
+                        $("#Intro").css("display", "none");
+                        $("#Inner").css("display", "none");
+                    }, 2000)
+                    setTimeout(function () {
+                        ShowSuccessMsg("The item has been added to your shopping cart.");
+                    }, 1000)
+                    $(".cart_item").load('@(Url.Action("CartItem", "ShoppingCart"))');
+                }
+                else {
+                    setTimeout(function () {
+                        $("#Intro").css("display", "none");
+                        $("#Inner").css("display", "none");
+                    }, 2000)
+                    window.location.href = window.location.origin + "/" + result + "?p=pt";
+                }
+            }
+        });
+    }
+</script>
+
+
+<script type="text/javascript">
+    function addItemToWishList(id) {
+        $("#Intro").css("display", "inline");
+        $("#Inner").css("display", "inline");
+        $.ajax({
+            type: "POST",
+            url: '@(Url.Action("AddItemToWishList", "Customer"))?id=' + id,
+            success: function (result) {
+                if (result == "Success") {
+                    setTimeout(function () {
+                        $("#Intro").css("display", "none");
+                        $("#Inner").css("display", "none");
+                    }, 2000)
+                    setTimeout(function () {
+                        ShowSuccessMsg("The item has been added to your wishlist");
+                    }, 1000)
+                }
+            }
+        });
+    }
+</script>

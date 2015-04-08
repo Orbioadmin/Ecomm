@@ -47,13 +47,14 @@ namespace Orbio.Services.Catalog
         /// <param name="slug">the slug value</param>
         /// <param name="entityName">the entity name</param>
         /// <returns>list of products</returns>
-        public CategoryProduct GetProductsBySlug(string slug, string filterIds, decimal? minPrice, decimal? maxPrice, string keyWord)
+        public CategoryProduct GetProductsBySlug(string slug, string filterIds, decimal? minPrice, decimal? maxPrice, string keyWord, int? pageNumber, int? pageSize)
         {
             var sqlParamList = new List<SqlParameter>();
             sqlParamList.Add(new SqlParameter() { ParameterName = "@slug", Value = slug, DbType = System.Data.DbType.String });
             sqlParamList.Add(new SqlParameter { ParameterName = "@entityName", Value = entityName, DbType = System.Data.DbType.String });
             sqlParamList.Add(new SqlParameter { ParameterName = "@keyWord", Value = keyWord, DbType = System.Data.DbType.String });
-
+            sqlParamList.Add(new SqlParameter { ParameterName = "@pageNumber", Value = pageNumber, DbType = System.Data.DbType.Int32 });
+            sqlParamList.Add(new SqlParameter { ParameterName = "@pageSize", Value = pageSize, DbType = System.Data.DbType.Int32 });
             if (!string.IsNullOrEmpty(filterIds))
             {
                 sqlParamList.Add(new SqlParameter { ParameterName = "@specificationFilterIds", Value = filterIds, DbType = System.Data.DbType.String });
@@ -133,8 +134,7 @@ namespace Orbio.Services.Catalog
             var result = context.ExecuteFunction<SpecificationFilterModel>("usp_Catalog_GetFiltersByCategoryId",
               new SqlParameter() { ParameterName = "@categoryId", Value = categoryId, DbType = System.Data.DbType.Int32 },
               new SqlParameter() { ParameterName = "@keyWord", Value = keyWord, DbType = System.Data.DbType.String });
-           
-            return result!=null?result : new List<SpecificationFilterModel>();
+            return result != null ? result : new List<SpecificationFilterModel>();
         }
 
         /// <summary>

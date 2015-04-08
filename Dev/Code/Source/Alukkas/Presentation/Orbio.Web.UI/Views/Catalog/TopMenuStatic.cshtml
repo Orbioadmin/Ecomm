@@ -4,22 +4,24 @@
             <a class="navbar-brand" href="@Url.Action("Index", "Home")"><img src="~/images/Basic_image/logo.png"></a>
         </div>
         @*<ul class="menu_desc">
-            <li class="select_menu">
-                <a>
-                    <select class="menu_select">
-                        <option>All Categories</option>
-                        <option>2</option>
-                    </select>
-                    <input type="text" class="select_text" placeholder="Enter Your Keyword...">
-                    <input type="submit" class="search_butt" value="">
-                </a>
-            </li>
-        </ul>*@
+                <li class="select_menu">
+                    <a>
+                        <select class="menu_select">
+                            <option>All Categories</option>
+                            <option>2</option>
+                        </select>
+                        <input type="text" class="select_text" placeholder="Enter Your Keyword...">
+                        <input type="submit" class="search_butt" value="">
+                    </a>
+                </li>
+            </ul>*@
         @Html.Action("SearchBox", "Catalog")
         <div class=" collapse head_main in">
             <ul class="nav navbar-nav navbar-right">
                 @*<li class="cart_item"><a href="@Url.RouteUrl("ShoppingCart")">0 ITEMS <i class="mnu_item_icon"></i></a></li>*@
-                @Html.Action("CartItem", "ShoppingCart")
+                <li class="cart_item">
+                    @Html.Action("CartItem", "ShoppingCart")
+                </li>
                 <li>
                     <div class="dropdown">
                         <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">

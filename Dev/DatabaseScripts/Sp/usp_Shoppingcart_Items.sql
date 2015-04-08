@@ -57,6 +57,44 @@ begin
 
 end
 
+
+if(@action = 'addCartItem')
+begin
+	
+	if exists(select Id from [dbo].[ShoppingCartItem] where ShoppingCartTypeId=@shoppingCartTypeId and CustomerId = @customerId and
+				ProductId = @productId and AttributesXml =@attributexml)
+		begin
+				declare @productVarient int = (select dbo.ufn_GetProductAttributeVarientValueById(@productId))
+				if (@productVarient IS NOT NULL)
+					begin
+						select slug from UrlRecord where EntityId = @productId and EntityName='Product' and IsActive=1 
+					end
+				else
+					begin
+						update [dbo].[ShoppingCartItem] set [AttributesXml] =@attributexml ,[Quantity] = (@quantity+Quantity),UpdatedOnUtc = CONVERT(VARCHAR(30),GETDATE(),121) where  
+						ShoppingCartTypeId=@shoppingCartTypeId and CustomerId = @customerId and ProductId = @productId and AttributesXml =@attributexml
+						select 'Updated'
+					end
+		end
+
+	else
+		begin
+		declare @productVarientValue int = (select dbo.ufn_GetProductAttributeVarientValueById(@productId))
+				if (@productVarientValue IS NOT NULL)
+					begin
+						select slug from UrlRecord where EntityId = @productId and EntityName='Product' and IsActive=1 
+					end
+				else
+					begin
+						insert into [dbo].[ShoppingCartItem](StoreId,ShoppingCartTypeId,CustomerId,ProductId,CustomerEnteredPrice,AttributesXml,Quantity,CreatedOnUtc,UpdatedOnUtc)
+						values(0,@shoppingCartTypeId,@customerId,@productId,0.00,@attributexml,@quantity,CONVERT(VARCHAR(30),GETDATE(),121),CONVERT(VARCHAR(30),GETDATE(),121))
+						select 'Inserted'
+					end
+		end
+
+end
+
+
 if(@action = 'addWishList')
 begin
 	
@@ -120,8 +158,8 @@ if not exists(select Id from [dbo].[ShoppingCartItem] where ShoppingCartTypeId=@
 				if exists(select Id from [dbo].[ShoppingCartItem] where Id = @id and AttributesXml = '')
 					begin
 						
-						declare @productVarient int = (select dbo.ufn_GetProductAttributeVarientValueById((select ProductId from [dbo].[ShoppingCartItem] where Id = @id )))
-						if (@productVarient IS NOT NULL)
+						declare @productVarientValueId int = (select dbo.ufn_GetProductAttributeVarientValueById((select ProductId from [dbo].[ShoppingCartItem] where Id = @id )))
+						if (@productVarientValueId IS NOT NULL)
 								begin
 									select slug from UrlRecord where EntityId = (select ProductId from [dbo].[ShoppingCartItem] where Id = @id ) and EntityName='Product' and IsActive=1 
 								end
@@ -198,6 +236,7 @@ SELECT @XmlResult as XmlResult
 end
 
 END
+
 
 
 

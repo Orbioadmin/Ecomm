@@ -60,7 +60,6 @@ if(@action = 'save')
 
 END
 
-
 GO
 PRINT 'Created the procedure usp_Customer_Generic_Attributes'
 GO  

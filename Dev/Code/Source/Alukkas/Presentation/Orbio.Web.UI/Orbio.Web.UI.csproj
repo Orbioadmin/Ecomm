@@ -250,6 +250,7 @@
     <Content Include="Content\main.css" />
     <Content Include="Content\price-range.css" />
     <Content Include="Content\responsive.css" />
+    <Content Include="Content\themes\base\images\torus_loader.gif" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -622,6 +623,7 @@
     <Content Include="Views\Customer\EmailFriend.cshtml" />
     <Content Include="Views\ShoppingCart\Summary.cshtml" />
     <Content Include="Views\ShoppingCart\CartSummary.cshtml" />
+    <Content Include="Views\Catalog\_CategoryProducts.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
