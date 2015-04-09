@@ -158,7 +158,6 @@ namespace Orbio.Web.UI.Controllers
             int pageSize = (ConfigurationManager.AppSettings["CatelogProductsPageSize"].ToString() != "") ? Convert.ToInt32(ConfigurationManager.AppSettings["CatelogProductsPageSize"]) : 10;
             if (seName != "Search")
             {
-                CategoryModel categoryProductModel = new CategoryModel();
                 var model = PrepareCategoryProductModel(seName, spec, keyWord, pageNumber, pageSize);
                 return PartialView("_CategoryProducts", model);
             }
