@@ -27,7 +27,7 @@
 
 
                 
-                @Html.Action("ProductFilter", "Catalog", new { categoryId = this.Model.Id, minPrice = this.Model.MinPrice, maxPrice = this.Model.MaxPrice, selectedSpecs = this.Model.SelectedSpecificationAttributeIds, selectedPriceRange = this.Model.SelectedPriceRange})
+                @Html.Action("ProductFilter", "Catalog", new { categoryId = this.Model.Id, selectedSpecs = this.Model.SelectedSpecificationAttributeIds, selectedPriceRange = this.Model.SelectedPriceRange})
 
 
             </div>
@@ -49,7 +49,7 @@
 @section scripts{
     <script type="text/javascript">
 
-    $(function () {
+        $(function () {
         jQuery($('#sl2').slider()).on('slideStop', function (ev) {
             if (ev != null && ev.value != null && ev.value.length > 1) {
                 var specboxes = $('input[id=specFilterCheckBox]');
@@ -118,6 +118,18 @@
                     if (data.trim() != "") {
                         $('.feature_li:last').append(data);
                         $('.no-product').empty();
+                        //$("#sl2").attr('data-slider-value',"[ 5000,80000]");
+                        //$("#sl2").attr('data-slider-min',"5000");
+                        //$("#sl2").attr('data-slider-max', "80000");
+                        //$(".tooltip-inner").html('5000 : 80000');
+                        //$("#sl2").slider('refresh');
+                        //$slider = $('#sl2');
+                        //var value = $slider.data('slider').getValue();
+                        //value[1] = 80000;
+                        ////$slider.data('slider').max = 13;
+                        //$slider.slider('setValue', value);
+                        //$slider.
+                        //$('#sl2').slider('refresh');
                     }
                     else {
                         $('.no-product').html('<span>NO MORE PRODUCT TO DISPLAY</span>')

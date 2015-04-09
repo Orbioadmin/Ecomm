@@ -169,20 +169,20 @@ namespace Orbio.Web.UI.Controllers
         }
 
         [ChildActionOnly]
-        public ActionResult ProductFilter(int categoryId, int minPrice, int maxPrice, int[] selectedSpecs, string selectedPriceRange, string keyWord)
+        public ActionResult ProductFilter(int categoryId, int[] selectedSpecs, string selectedPriceRange, string keyWord)
         {
-            var model = PrepareSpecificationFilterModel(categoryId, minPrice, maxPrice, selectedSpecs, selectedPriceRange, keyWord);
+            var model = PrepareSpecificationFilterModel(categoryId, selectedSpecs, selectedPriceRange, keyWord);
 
             return PartialView(model);
         }
         [ChildActionOnly]
-        public ActionResult ProductFilterBySearch(string categoryId, int minPrice, int maxPrice, int[] selectedSpecs, string selectedPriceRange, string keyWord)
+        public ActionResult ProductFilterBySearch(string categoryId, int[] selectedSpecs, string selectedPriceRange, string keyWord)
         {
-            var model = PrepareSpecificationFilterModelBySearch(categoryId, minPrice, maxPrice, selectedSpecs, selectedPriceRange, keyWord);
+            var model = PrepareSpecificationFilterModelBySearch(categoryId, selectedSpecs, selectedPriceRange, keyWord);
 
             return PartialView("ProductFilter", model);
         }
-        private List<SpecificationAttribute> PrepareSpecificationFilterModel(int categoryId, int minPrice, int maxPrice, int[] selectedSpecs, string selectedPriceRange, string keyWord)
+        private List<SpecificationAttribute> PrepareSpecificationFilterModel(int categoryId, int[] selectedSpecs, string selectedPriceRange, string keyWord)
         {
             var specFilterModels = categoryService.GetSpecificationFiltersByCategoryId(categoryId, keyWord);
             var specFilterByspecAttribute = from sa in specFilterModels
@@ -205,6 +205,12 @@ namespace Orbio.Web.UI.Controllers
                                                                              Selected = selectedSpecs != null && selectedSpecs.Length > 0 && selectedSpecs.Any(i => i == sao.SpecificationAttributeOptionId)
                                                                          }))
                          }).ToList();
+            var minProductPrice = (from price in specFilterModels
+                                   select price.MinPrice).FirstOrDefault();
+            var maxProductPrice = (from price in specFilterModels
+                                   select price.MaxPrice).FirstOrDefault();
+            int minPrice = Convert.ToInt32(minProductPrice);
+            int maxPrice = Convert.ToInt32(maxProductPrice);
             if (model.Count > 0)
             {
                 var priceFilterIndex = Convert.ToInt32(ConfigurationManager.AppSettings["PriceFilterIndex"] == null ? "1" : ConfigurationManager.AppSettings["PriceFilterIndex"]);
@@ -226,7 +232,7 @@ namespace Orbio.Web.UI.Controllers
             return model;
         }
 
-        private List<SpecificationAttribute> PrepareSpecificationFilterModelBySearch(string categoryId, int minPrice, int maxPrice, int[] selectedSpecs, string selectedPriceRange, string keyWord)
+        private List<SpecificationAttribute> PrepareSpecificationFilterModelBySearch(string categoryId, int[] selectedSpecs, string selectedPriceRange, string keyWord)
         {
             var specFilterModels = categoryService.GetSpecificationFiltersByCategory(string.IsNullOrEmpty(categoryId) ? "0" : categoryId, keyWord);
             var specFilterByspecAttribute = from sa in specFilterModels
@@ -249,6 +255,12 @@ namespace Orbio.Web.UI.Controllers
                                                                              Selected = selectedSpecs != null && selectedSpecs.Length > 0 && selectedSpecs.Any(i => i == sao.SpecificationAttributeOptionId)
                                                                          }))
                          }).ToList();
+            var minProductPrice = (from price in specFilterModels
+                                   select price.MinPrice).FirstOrDefault();
+            var maxProductPrice = (from price in specFilterModels
+                                   select price.MaxPrice).FirstOrDefault();
+            int minPrice = Convert.ToInt32(minProductPrice);
+            int maxPrice = Convert.ToInt32(maxProductPrice);
             if (model.Count > 0)
             {
                 var priceFilterIndex = Convert.ToInt32(ConfigurationManager.AppSettings["PriceFilterIndex"] == null ? "1" : ConfigurationManager.AppSettings["PriceFilterIndex"]);

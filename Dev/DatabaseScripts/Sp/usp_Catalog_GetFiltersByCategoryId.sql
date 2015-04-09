@@ -36,7 +36,8 @@ BEGIN
 select distinct SA.DisplayOrder as SpecifiationAttributeOrder,
 SA.Id as SpecificationAttributeId,   SA.Name as SpecificationAttributeName,
  SAO.Id as SpecificationAttributeOptionId,SAO.Name as SpecificationAttributeOptionName
- ,SAO.DisplayOrder as SpecifiationAttributeOptionOrder
+ ,SAO.DisplayOrder as SpecifiationAttributeOptionOrder,(select Min(Price) from ufn_GetProductsBySearch(@categoryId,@keyWord)) as MinPrice ,
+ (select Max(Price) from ufn_GetProductsBySearch(@categoryId,@keyWord)) as MaxPrice 
 from Product p 
 inner join  Product_SpecificationAttribute_Mapping PSM on p.Id = psm.ProductId
 inner join SpecificationAttributeOption SAO on psm.SpecificationAttributeOptionId = sao.Id

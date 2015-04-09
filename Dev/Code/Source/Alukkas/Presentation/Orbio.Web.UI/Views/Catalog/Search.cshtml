@@ -31,7 +31,7 @@
                     var keyword = Request.QueryString["q"].ToString();
                 }
 
-                @Html.Action("ProductFilterBySearch", "Catalog", new { categoryId = this.Model.CategoryId, minPrice = this.Model.MinPrice, maxPrice = this.Model.MaxPrice, selectedSpecs = this.Model.SelectedSpecificationAttributeIds, selectedPriceRange = this.Model.SelectedPriceRange, keyword = keyword })
+                @Html.Action("ProductFilterBySearch", "Catalog", new { categoryId = this.Model.CategoryId, selectedSpecs = this.Model.SelectedSpecificationAttributeIds, selectedPriceRange = this.Model.SelectedPriceRange, keyword = keyword })
 
             </div>
             <div class="col-sm-10">
