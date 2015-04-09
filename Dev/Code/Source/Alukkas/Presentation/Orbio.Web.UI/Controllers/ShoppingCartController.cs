@@ -70,7 +70,28 @@ namespace Orbio.Web.UI.Controllers
            
             foreach (var totalprice in model.CartDetail)
             {
-              subtotal = subtotal + Convert.ToDouble(totalprice.TotalPrice);
+               double total = 0.00;
+                foreach(var prod_attribute in totalprice.ProductVariantAttributes)
+                {
+                    foreach(var values in prod_attribute.Values)
+                    {
+                        if (total == 0.00)
+                        {
+                            int count = Convert.ToInt32(totalprice.SelectedQuantity);
+                            total = (Convert.ToDouble(values.PriceAdjustment) * count) + Convert.ToDouble(totalprice.TotalPrice);
+                            totalprice.ProductPrice.Price = (Convert.ToDouble(values.PriceAdjustment) + Convert.ToDouble(totalprice.ProductPrice.Price)).ToString("#,##0.00");
+                            totalprice.TotalPrice = total.ToString("#,##0.00");
+                        }
+                    }
+                }
+
+                if (total == 0.00)
+                {
+                    total = Convert.ToDouble(totalprice.TotalPrice);
+                    totalprice.TotalPrice = total.ToString("#,##0.00");
+                }
+
+                subtotal = subtotal + Convert.ToDouble(totalprice.TotalPrice);
             }
             ViewBag.subtotal = subtotal.ToString("#,##0.00");
             var currency = (from r in model.CartDetail.AsEnumerable()

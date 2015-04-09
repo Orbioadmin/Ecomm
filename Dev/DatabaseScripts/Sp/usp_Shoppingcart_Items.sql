@@ -209,7 +209,8 @@ DECLARE @XmlResult xml;
 	
 
 --WITH XMLNAMESPACES ('http://schemas.datacontract.org/2004/07/Orbio.Core.Domain.Catalog' AS ns)
-SELECT @XmlResult = (Select(SELECT (select count(#temp.ProductId) from #temp) as 'ItemCount',product.Id Id,product.Name Name,ur.Slug as SeName,product.Price Price,(SELECT Pic.Id PictureId, PPM.DisplayOrder, Pic.RelativeUrl,Pic.MimeType , Pic.SeoFilename, Pic.IsNew FROM [dbo].[Product]  P INNER JOIN [dbo].[Product_Picture_Mapping] PPM ON PPM.ProductId = P.Id
+SELECT @XmlResult = (Select(SELECT (select count(#temp.ProductId) from #temp) as 'ItemCount',product.Id Id,
+product.Name Name,ur.Slug as SeName,product.Price Price,(SELECT Pic.Id PictureId, PPM.DisplayOrder, Pic.RelativeUrl,Pic.MimeType , Pic.SeoFilename, Pic.IsNew FROM [dbo].[Product]  P INNER JOIN [dbo].[Product_Picture_Mapping] PPM ON PPM.ProductId = P.Id
 INNER JOIN [dbo].[Picture] Pic ON Pic.Id = PPM.PictureId WHERE P.Id = product.Id
 ORDER BY PPM.DisplayOrder FOR XML PATH ('ProductPicture'),ROOT('ProductPictures'), Type),
   @currencyCode as CurrencyCode,
@@ -222,7 +223,7 @@ ORDER BY PPM.DisplayOrder FOR XML PATH ('ProductPicture'),ROOT('ProductPictures'
    sc.Id as 'CartId',
    sc.Quantity as 'Quantity',
    (Select TextPrompt,
-   (Select Name from ufn_GetCartProductAttribute(sc.AttributesXml,product.Id)  FOR XML PATH('ProductVariantAttributeValue'), ROOT('ProductVariantAttributeValues'), type)
+   (Select Name,PriceAdjustment from ufn_GetCartProductAttribute(sc.AttributesXml,product.Id)  FOR XML PATH('ProductVariantAttributeValue'), ROOT('ProductVariantAttributeValues'), type)
    from ufn_GetCartProductAttribute(sc.AttributesXml,product.Id)
    FOR XML PATH('ProductAttributeVariant'), ROOT('ProductAttributeVariants'),type),
    (product.Price*sc.Quantity) as 'TotalPrice'

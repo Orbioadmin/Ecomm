@@ -312,6 +312,7 @@ namespace Orbio.Web.UI.Controllers
                 /*selected product attribute varient value*/
                 string selectedAttributes = string.Empty;
                 int count = 0;
+                int selectedAttributeId=1;
                 foreach (var attribute in selectedProduct.ProductVariantAttributes)
                 {
                     switch (attribute.AttributeControlType)
@@ -322,7 +323,7 @@ namespace Orbio.Web.UI.Controllers
                                 {
                                     if (value.Id != 0)
                                     {
-                                        int selectedAttributeId = int.Parse(value.Id.ToString());
+                                        selectedAttributeId = int.Parse(value.Id.ToString());
                                         selectedAttributes = AddCartProductAttribute(selectedAttributes,
                                                    attribute, selectedAttributeId.ToString());
                                     }
@@ -374,9 +375,18 @@ namespace Orbio.Web.UI.Controllers
                 {
                     model.ProductVariantAttributes.ValidateProductVariantAttributes(selectedProduct.ProductVariantAttributes);
                     //add/substract price
+                    foreach(var prod_attribute in model.ProductVariantAttributes)
+                    {
+                        foreach(var values in prod_attribute.Values)
+                        {
+                            if(selectedAttributeId==values.Id)
+                            {
+                               double subtotal = double.Parse(model.ProductPrice.Price) + double.Parse(values.PriceAdjustment);
+                               model.ProductPrice.Price = subtotal.ToString();
+                            }
+                        }
+                    }
                 }
-
-
             }
 
             var queryString = new NameValueCollection(ControllerContext.HttpContext.Request.QueryString);
