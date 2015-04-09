@@ -1,0 +1,9 @@
+﻿@model Orbio.Web.UI.Models.Catalog.SearchModel
+@{
+    foreach (var product in this.Model.Products)
+    {
+        Html.RenderPartial("ProductThumbNail", product);
+    }
+}
+
+

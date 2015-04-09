@@ -116,22 +116,23 @@ namespace Orbio.Web.UI.Controllers
             return PartialView("SearchBox", model);
         }
 
-        public ActionResult Search(string seName, string spec, string minPrice, string maxPrice, string keyWord)
+        public ActionResult Search(string seName, string spec, string keyWord)
         {
             var model = new SearchModel();
+            int pageNumber = 1;
+            int pageSize = (ConfigurationManager.AppSettings["CatelogProductsPageSize"].ToString() != "") ? Convert.ToInt32(ConfigurationManager.AppSettings["CatelogProductsPageSize"]) : 10;
             if (keyWord.Length >= 3)
             {
 
-                model = PrepareCategoryProductModelBySearch(seName, spec, keyWord);
+                model = PrepareCategoryProductModelBySearch(seName, spec, keyWord, pageNumber, pageSize);
                 ViewBag.searchkeyword = " BY KEYWORD ''" + keyWord + "''";
-                //ViewBag.MetaDescription = model.MetaDescription;
-                //ViewBag.MetaKeywords = model.MetaKeywords;
             }
             else
             {
-                model = PrepareCategoryProductModelBySearch(seName, spec, "0");
+                model = PrepareCategoryProductModelBySearch(seName, spec, "0", pageNumber, pageSize);
                 ViewBag.Error = "Search term minimum length is 3 characters";
             }
+            ViewBag.slug = seName; ViewBag.spec = spec; ViewBag.keyWord = keyWord;
             var queryString = new NameValueCollection(ControllerContext.HttpContext.Request.QueryString);
             webHelper.RemoveQueryFromPath(ControllerContext.HttpContext, new List<string> { { "spec" } });
             return View(model);
@@ -139,7 +140,7 @@ namespace Orbio.Web.UI.Controllers
 
         public ActionResult Category(string seName, string spec, string keyWord)
         {
-            int pageNumber = (ConfigurationManager.AppSettings["CatelogProductsStartPagingNumber"].ToString() != "") ? Convert.ToInt32(ConfigurationManager.AppSettings["CatelogProductsStartPagingNumber"]) : 1;
+            int pageNumber = 1;
             int pageSize = (ConfigurationManager.AppSettings["CatelogProductsPageSize"].ToString() != "") ? Convert.ToInt32(ConfigurationManager.AppSettings["CatelogProductsPageSize"]) : 10;
             var model = PrepareCategoryProductModel(seName, spec, keyWord, pageNumber, pageSize);
             if (!string.IsNullOrEmpty(keyWord))
@@ -148,17 +149,24 @@ namespace Orbio.Web.UI.Controllers
             webHelper.RemoveQueryFromPath(ControllerContext.HttpContext, new List<string> { { "spec" } });
             ViewBag.MetaDescription = model.MetaDescription;
             ViewBag.MetaKeywords = model.MetaKeywords;
-            ViewBag.spec = spec;
-            ViewBag.keyWord = keyWord;
-            ViewBag.pageNumber = pageNumber; 
+            ViewBag.spec = spec; ViewBag.keyWord = keyWord;
             return View(model);
         }
         [HttpPost]
         public ActionResult CategoryPaging(string seName, string spec, string keyWord, int? pageNumber)
         {
             int pageSize = (ConfigurationManager.AppSettings["CatelogProductsPageSize"].ToString() != "") ? Convert.ToInt32(ConfigurationManager.AppSettings["CatelogProductsPageSize"]) : 10;
-            var model = PrepareCategoryProductModel(seName, spec, keyWord, pageNumber, pageSize);
-            return PartialView("_CategoryProducts", model);
+            if (seName != "Search")
+            {
+                CategoryModel categoryProductModel = new CategoryModel();
+                var model = PrepareCategoryProductModel(seName, spec, keyWord, pageNumber, pageSize);
+                return PartialView("_CategoryProducts", model);
+            }
+            else
+            {
+                var model = PrepareCategoryProductModelBySearch(seName, spec, keyWord, pageNumber, pageSize);
+                return PartialView("_CategoryProductBySearch", model);
+            }
         }
 
         [ChildActionOnly]
@@ -484,14 +492,14 @@ namespace Orbio.Web.UI.Controllers
             return model;
         }
 
-        private SearchModel PrepareCategoryProductModelBySearch(string seName, string filterIds, string keyWord)
+        private SearchModel PrepareCategoryProductModelBySearch(string seName, string filterIds, string keyWord, int? pageNumber, int? pageSize)
         {
             var specificationAttributeIds = string.IsNullOrWhiteSpace(filterIds) ? new List<string>() : (from f in filterIds.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
                                                                                                          where f.Split('~').Length <= 1
                                                                                                          select f).ToList();
 
             var model = new SearchModel(categoryService.GetProductsBySearch(seName, specificationAttributeIds.Count == 0 ? null : specificationAttributeIds.Aggregate((f1, f2) => f1 + "," + f2),
-                (decimal?)null, (decimal?)null, keyWord));
+                (decimal?)null, (decimal?)null, keyWord, pageNumber, pageSize));
             var minPrice = 0M;
             var maxPrice = 0M;
             var priceModel = (from pr in
@@ -691,18 +699,18 @@ namespace Orbio.Web.UI.Controllers
         }
 
 
-        [ChildActionOnly]
-        public ActionResult ProductReview(ReviewModel model, int id, string seName)
+        //[ChildActionOnly]
+        public ActionResult ProductReview(ReviewModel model, int id, string seName, int pageNumber)
         {
             List<ReviewModel> list = new List<ReviewModel>();
-            list = GetCustomerReview(id);
+            list = GetCustomerReview(id, pageNumber);
             return PartialView(list);
         }
 
         [ChildActionOnly]
         public ActionResult ProductRating(ReviewModel model, int id)
         {
-            var ratings = productService.GetCustomerReviews(id, "Rating");
+            var ratings = productService.GetCustomerReviews(id, "Rating", 0, 0);
             var rating = GetRatings(ratings);
             return PartialView(rating);
         }
@@ -710,13 +718,14 @@ namespace Orbio.Web.UI.Controllers
         [ChildActionOnly]
         public ActionResult ProductStar(ReviewModel model, int id)
         {
-            var ratings = productService.GetCustomerReviews(id, "Rating");
+            var ratings = productService.GetCustomerReviews(id, "Rating", 0, 0);
             var rating = GetRatings(ratings);
             return PartialView(rating);
         }
-        private List<ReviewModel> GetCustomerReview(int id)
+        private List<ReviewModel> GetCustomerReview(int id, int pageNumber)
         {
-            var customerReviews = productService.GetCustomerReviews(id, "Review");
+            int pageSize = (ConfigurationManager.AppSettings["CatelogProductsReviewPageSize"].ToString() != "") ? Convert.ToInt32(ConfigurationManager.AppSettings["CatelogProductsReviewPageSize"]) : 2;
+            var customerReviews = productService.GetCustomerReviews(id, "Review", pageNumber, pageSize);
 
             var model = (from cr in customerReviews
                          select new ReviewModel

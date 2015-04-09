@@ -17,62 +17,13 @@
 
 
 
-
-
-<section id="review">
-    <div class="container">
-        <div class="row">
-            <h1 class="review_news">REVIEWS</h1>
-            @{
-                Html.RenderAction("ProductRating", new { Id = this.Model.Id });
-            }
-           
-
-            <div class="col-md-3">
-                <div class="" align="center">
-                    <p>You can help other customers</p>
-                    <p class="product_red">Have you used this product?</p>
-                    @*<div class="rating" data-rating-max="5">*@
-                        <span class="ratingStar" style="margin-left: 22px;">
-                            <input type="radio"id = "addproductrating_1" class = "rating-input" />
-                            <label for="addproductrating_1" class="rating-star"></label>
-                            <input type="radio" id="addproductrating_2" class="rating-input" />
-                            <label for="addproductrating_2" class="rating-star"></label>
-                            <input type="radio" id="addproductrating_3" class="rating-input" />
-                            <label for="addproductrating_3" class="rating-star"></label>
-                            <input type="radio" id="addproductrating_4" class="rating-input" />
-                            <label for="addproductrating_4" class="rating-star"></label>
-                            <input type="radio" id="addproductrating_5" class="rating-input" />
-                            <label for="addproductrating_5" class="rating-star"></label>
-                        </span>
-                    @*</div>*@
-                    <div class="clear"></div>
-                    <p>Rate this Product!</p>
-
-                    <a href='@Url.Action("Review", "Catalog", new {this.Model.Name,this.Model.SeName })'>
-                        <input type="button" class="wrt_rview" value="Write A Review">
-                    </a>
-
-                </div>
-            </div>
-
-        </div>
-
-        @{
-            Html.RenderAction("ProductReview", new { Id = this.Model.Id });
-        }
-
-    </div>
-
-</section>
-
 <section class="similar_prod">
 
     <div class="container similar_main">
         <div class="similar_slider">
             <h1>SIMILAR PRODUCTS</h1>
 
-        </div> 
+        </div>
         <div align="left" class="new_carsol">
             <a data-slide="prev" href="#myCarousel4" class="carousel-control left"> <</a>
             <a data-slide="next" href="#myCarousel4" class="carousel-control right">></a>
@@ -90,6 +41,64 @@
 
 </section>
 
+<section id="review">
+    <div class="container">
+        <div class="row">
+            <h1 class="review_news">REVIEWS</h1>
+            @{
+                Html.RenderAction("ProductRating", new { Id = this.Model.Id });
+            }
+
+
+            <div class="col-md-3">
+                <div class="" align="center">
+                    <p>You can help other customers</p>
+                    <p class="product_red">Have you used this product?</p>
+                    @*<div class="rating" data-rating-max="5">*@
+                    <span class="ratingStar" style="margin-left: 22px;">
+                        <input type="radio" id="addproductrating_1" class="rating-input" />
+                        <label for="addproductrating_1" class="rating-star"></label>
+                        <input type="radio" id="addproductrating_2" class="rating-input" />
+                        <label for="addproductrating_2" class="rating-star"></label>
+                        <input type="radio" id="addproductrating_3" class="rating-input" />
+                        <label for="addproductrating_3" class="rating-star"></label>
+                        <input type="radio" id="addproductrating_4" class="rating-input" />
+                        <label for="addproductrating_4" class="rating-star"></label>
+                        <input type="radio" id="addproductrating_5" class="rating-input" />
+                        <label for="addproductrating_5" class="rating-star"></label>
+                    </span>
+                    @*</div>*@
+                    <div class="clear"></div>
+                    <p>Rate this Product!</p>
+
+                    <a href='@Url.Action("Review", "Catalog", new {this.Model.Name,this.Model.SeName })'>
+                        <input type="button" class="wrt_rview" value="Write A Review">
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="row disply_top">
+            <div class="display_review">
+                <h1>Displaying Top Reviews</h1>
+            </div>
+            <div class="col-md-12">
+                <ul class="comment">
+                    @{
+                        var paging = 1;
+                        Html.RenderAction("ProductReview", new { Id = this.Model.Id, pageNumber = paging });
+                    }
+                    @Html.Hidden("prodcutId", this.Model.Id)
+                    @Html.Hidden("paging",paging)
+                </ul>
+                <div id="divPostsLoader"></div>
+                <div class="prev_nxt"> <a href="javascript://" onclick="lastPostFunc();">View More</a></div>
+            </div>
+        </div>
+    </div>
+
+</section>
 
 @section scripts{
     <script type="text/javascript">
@@ -105,5 +114,31 @@
         });
 
     </script>
+
+<script>
+        function lastPostFunc() {
+            var pageNumber = "";
+            var productId = $('#prodcutId').val();
+            if ($('#paging').val() == "")
+            { pageNumber = $('#paging').val(@ViewBag.pageNumber); pageNumber = parseInt(pageNumber.val()) + 1; }
+            else
+            { pageNumber = $('#paging').val(); pageNumber = parseInt(pageNumber) + 1; }
+
+            $('#paging').val(pageNumber);
+            $('#divPostsLoader').html('<img src="Content/themes/base/images/torus_loader.gif" />');
+            $.ajax({
+                type: "POST",
+                url: '@(Url.Action("ProductReview", "Catalog"))?id=' + productId + '&pageNumber=' + pageNumber,
+                success: function (data) {
+
+                    if (data != "") {
+                        $('.comment:last').append(data);
+                    }
+                    $('#divPostsLoader').empty();
+                }
+
+            })
+        };
+</script>
 
 }

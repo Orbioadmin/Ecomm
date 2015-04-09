@@ -1,13 +1,6 @@
 ﻿@model List<Orbio.Web.UI.Models.Catalog.ReviewModel>
 
 
-
-<div class="row disply_top">
-    <div class="display_review">
-        <h1>Displaying Top Reviews</h1>
-    </div>
-    <div class="col-md-12">
-        <ul class="comment">
             @foreach (var review in this.Model)
             {
                 <li>
@@ -51,8 +44,4 @@
                     </div>
                 </li>
             }
-        </ul>
-
-        <div class="prev_nxt"> <a href="">View More</a></div>
-    </div>
-</div>
+        

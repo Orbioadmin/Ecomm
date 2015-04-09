@@ -27,9 +27,9 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-Create PROCEDURE [dbo].[usp_Search] (@slug nvarchar(400),  
+CREATE PROCEDURE [dbo].[usp_Search] (@slug nvarchar(400),  
 @entityName nvarchar(400), @specificationFilterIds nvarchar(500)=null, @minPrice decimal(18,4)=null,
-@maxPrice decimal(18,4)=null,@keyWord varchar(max))  
+@maxPrice decimal(18,4)=null,@keyWord varchar(max),@pageNumber int, @pageSize int)  
    
 AS    
 BEGIN    
@@ -39,7 +39,7 @@ INTO #temptablefilterIds FROM  [dbo].[nop_splitstring_to_table](@specificationFi
 INNER JOIN SpecificationAttributeOption SAO ON SAO.Id = FILTERS.data
 
 SELECT  * INTO #temptableproduct FROM  ufn_GetProductsBySearch(0,@keyWord)
-
+select *,ROW_NUMBER() OVER(ORDER BY CategoryId) as RowNumber into #temptableproducts from #temptableproduct
 
 declare @catIds VARCHAR(MAX) = (SELECT DISTINCT STUFF((SELECT distinct ',' + convert(varchar,p1.CategoryId)
          FROM #temptableproduct p1
@@ -82,18 +82,17 @@ SELECT @XmlResult1 = (select @catIds 'CategoryId',(select count(*) FROM  #tempta
 inner join Category on PC.CategoryId = Category.Id
 where ','+@catIds+',' LIKE '%,'+CAST(Category.Id AS varchar)+',%'
 and ParentCategoryId=0) 'Totalcount',
-(select * FROM  #temptableproduct  PC 
-inner join Category on PC.CategoryId = Category.Id
+(select PC.CategoryId,PC.Id,PC.Name,PC.ShortDescription,PC.Price,PC.ViewPath,
+PC.CurrencyCode,PC.ImageRelativeUrl,PC.SeName,Pc.RowNumber  FROM  #temptableproducts  PC 
+inner join Category on PC.CategoryId = Category.Id and PC.RowNumber BETWEEN ((@pageNumber - 1) * @pageSize + 1) AND (@pageNumber * @pageSize)
 where ','+@catIds+',' LIKE '%,'+CAST(Category.Id AS varchar)+',%'
 and ParentCategoryId=0
 FOR XML PATH('Product'), ROOT('Products') , type)
 FOR XML PATH('Search') )
 
-
 SELECT @XmlResult1 as XmlResult
 
 END
-
 
 
 GO

@@ -33,7 +33,7 @@ namespace Orbio.Services.Catalog
         /// <param name="slug">the slug value</param>
         /// <param name="entityName">the entity name</param>
         /// <returns>instance of CategoryProduct</returns>
-        Search GetProductsBySearch(string slug, string filterIds, decimal? minPrice, decimal? maxPrice, string keyWord);
+        Search GetProductsBySearch(string slug, string filterIds, decimal? minPrice, decimal? maxPrice, string keyWord, int? pageNumber, int? pageSize);
 
         /// <summary>
         /// gets specification filters by category id

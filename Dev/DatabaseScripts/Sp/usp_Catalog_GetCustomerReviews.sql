@@ -27,20 +27,29 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-Create PROCEDURE [dbo].[usp_Catalog_GetCustomerReviews] 
+CREATE PROCEDURE [dbo].[usp_Catalog_GetCustomerReviews] 
 	-- Add the parameters for the stored procedure here
 	@Value varchar(10),
-	@ProductId int
+	@ProductId int,
+	@pageNumber int, 
+	@pageSize int
 AS
 BEGIN
 	if(@Value='Review')
 		BEGIN
-			declare @Result table(ReviewTitle varchar(max),ReviewText varchar(max),Rating int,CustomerName varchar(max))
+			declare @Result table(RowNum int ,ReviewTitle varchar(max),ReviewText varchar(max),Rating int,CustomerName varchar(max),OneStarRating int, TwoStarRating int, ThreeStarRating int,FourStarRating int,FiveStarRating int,StarCount int)
 
-			insert @Result select Title,ReviewText,Rating,CustomerName from ProductReview
+			insert @Result select ROW_NUMBER() OVER(ORDER BY Rating) as RowNum,Title,ReviewText,Rating,CustomerName,0,0,0,0,0,0 from ProductReview
 			where IsApproved='True' and ProductId=@ProductId order by Rating desc 
-	
-			select * from @Result
+			
+			update @Result set OneStarRating=(select count(Rating) from @Result where Rating=1),
+			TwoStarRating=(select count(Rating) from @Result where Rating=2),
+			ThreeStarRating=(select count(Rating) from @Result where Rating=3),
+			FourStarRating=(select count(Rating) from @Result where Rating=4),
+			FiveStarRating=(select count(Rating) from @Result where Rating=5),
+			StarCount=(select count(Rating) from @Result)
+		
+			select * from @Result where RowNum BETWEEN ((@pageNumber - 1) * @pageSize + 1) AND (@pageNumber * @pageSize)
 		END
 		
 	ELSE IF(@Value='Rating')
@@ -65,6 +74,8 @@ BEGIN
 			select * from @Results
 		END
 END
+
+
 GO
 PRINT 'Created the procedure usp_Catalog_GetCustomerReviews'
 GO  

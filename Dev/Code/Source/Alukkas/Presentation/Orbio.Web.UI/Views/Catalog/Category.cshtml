@@ -37,7 +37,7 @@
             }
 
 
-            @Html.Hidden("specification") @Html.Hidden("searchKeyWord") @Html.Hidden("paging")
+            @Html.Hidden("slug", this.Model.SeName) @Html.Hidden("specification") @Html.Hidden("searchKeyWord") @Html.Hidden("paging")
 
 
 
@@ -83,56 +83,46 @@
             //if (selectedRanges[0].trim() != sliderMin || selectedRanges[1].trim() != sliderMax) {
             //    priceFilter = selectedRanges[0].trim() + '~' + selectedRanges[1].trim();
             //}
+            var n = specs.lastIndexOf(",");
+            var specs = specs.substring(0, n)
             window.location.href = $(this).attr('data-url') + '&spec=' + specs; //+ priceFilter;
             //}
             //else {
             //    //NEED TO REMOVE SPEC FORM URL
             //}
         });
-
-
-        //    $('#ei-slider').eislideshow({
-        //        animation           : 'center',
-        //        autoplay            : true,
-        //        slideshow_interval  : 3000,
-        //        titlesFactor        : 0
-        //});
     });
 
 
     // Carousel Auto-Cycle
     $(document).ready(function () {
         function lastPostFunc() {
+            var slug = $('#slug').val();
             var keyWord = $('#searchKeyWord').val(@ViewBag.keyWord);
             var str = '@ViewBag.spec';
-            if(str.length > 0)
-            {
-                str = str.substring(0, str.length - 1);
-                $('#specification').val(str)
-            }
-            else
-            {
-                str="";
-                $('#specification').val(str)
-            }
+            $('#specification').val(str)
             var spec = $('#specification').val();
             var pageNumber="";
             if ($('#paging').val() == "")
-            { pageNumber = $('#paging').val(@ViewBag.pageNumber); pageNumber = parseInt(pageNumber.val()) + 1; }
+            { pageNumber = $('#paging').val(1); pageNumber = parseInt(pageNumber.val()) + 1; }
             else
             { pageNumber = $('#paging').val(); pageNumber = parseInt(pageNumber) + 1; }
 
             $('#paging').val(pageNumber);
-            $('#divPostsLoader').html('<img src="Content/themes/base/images/torus_loader.gif" />');
+            $('.no-product').html('<img src="Content/themes/base/images/torus_loader.gif" />');
             $.ajax({
                 type: "POST",
-                url: '@(Url.Action("CategoryPaging", "Catalog"))?seName=jewellery&spec=' + spec + '&keyWord=' + keyWord + '&pageNumber=' + pageNumber,
+                url: '@(Url.Action("CategoryPaging", "Catalog"))?seName=' + slug + '&spec=' + spec + '&keyWord=' + keyWord + '&pageNumber=' + pageNumber,
                 success: function (data) {
 
-                    if (data != "") {
+                    if (data.trim() != "") {
                         $('.feature_li:last').append(data);
+                        $('.no-product').empty();
                     }
-                    $('#divPostsLoader').empty();
+                    else {
+                        $('.no-product').html('<span>NO MORE PRODUCT TO DISPLAY</span>')
+                    }
+
                 }
 
             })

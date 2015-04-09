@@ -110,11 +110,13 @@ namespace Orbio.Services.Catalog
             return 0;
         }
 
-        public List<ProductReview> GetCustomerReviews(int productId, string value)
+        public List<ProductReview> GetCustomerReviews(int productId, string value,int pageNumber,int pageSize)
         {
             var sqlParamList = new List<SqlParameter>();
             sqlParamList.Add(new SqlParameter() { ParameterName = "@Value", Value = value, DbType = System.Data.DbType.String });
             sqlParamList.Add(new SqlParameter() { ParameterName = "@ProductId", Value = productId, DbType = System.Data.DbType.Int16 });
+            sqlParamList.Add(new SqlParameter() { ParameterName = "@pageNumber", Value = pageNumber, DbType = System.Data.DbType.Int32 });
+            sqlParamList.Add(new SqlParameter() { ParameterName = "@pageSize", Value = pageSize, DbType = System.Data.DbType.Int32 });
 
             var result = context.ExecuteFunction<ProductReview>("usp_Catalog_GetCustomerReviews",
              sqlParamList.ToArray());

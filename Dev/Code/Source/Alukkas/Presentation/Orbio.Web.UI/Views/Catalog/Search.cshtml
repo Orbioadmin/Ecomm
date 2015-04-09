@@ -41,15 +41,12 @@
                 <div class="featured_items" align="center">
                     <ul class="feature_li four_items">
                         @{
-                            foreach (var product in this.Model.Products)
-                            {
-                                Html.RenderPartial("ProductThumbNail", product);
-                            }
+                            Html.RenderPartial("_CategoryProductBySearch", this.Model);
                         }
-
+                        @Html.Hidden("specification")  @Html.Hidden("paging")
                     </ul>
                     <div class="clear"></div>
-                    <div class="no-product"><span>NO @(this.Model.Products.Count > 0 ? "MORE" : "") PRODUCT TO DISPLAY</span></div>
+                    <div class="no-product"></div>
                 </div>
             </div>
 
@@ -66,25 +63,9 @@
 @section scripts{
     <script type="text/javascript">
 
-        $(function () {
-            $('#sl2').slider().on('slideStop', function (ev) {
-                if (ev != null && ev.value != null && ev.value.length > 1) {
-                    var specboxes = $('input[id=specFilterCheckBox]');
-                    var specs = '';
-                    $.each(specboxes, function () {
-                        if ($(this).is(':checked')) {
-                            specs += $(this).attr('data-id') + ",";
-                        }
-                    });
-                    window.location.href = $(this).attr('data-url') + '&spec=' + specs + ev.value[0] + '~' + ev.value[1];
-                }
-            });
-
-            if (($("#sl2").attr('data-slider-min') == 0 && $("#sl2").attr('data-slider-max') == 0) || ($("#sl2").attr('data-slider-min') == $("#sl2").attr('data-slider-max'))) {
-                $("div[id='priceFilter']").hide();
-            }
-            $('input[id=specFilterCheckBox]').on('change', function (e) {
-                // if ($(this).is(':checked')) {
+    $(function () {
+        $('#sl2').slider().on('slideStop', function (ev) {
+            if (ev != null && ev.value != null && ev.value.length > 1) {
                 var specboxes = $('input[id=specFilterCheckBox]');
                 var specs = '';
                 $.each(specboxes, function () {
@@ -92,53 +73,81 @@
                         specs += $(this).attr('data-id') + ",";
                     }
                 });
-                //var priceRange = $('div .price-range > div>div').children('.tooltip-inner').text();
-                //var sliderMin = $('#sl2').data('slider-min');
-                //var sliderMax = $('#sl2').data('slider-max');
-                //var selectedRanges = priceRange.split(':');
-                //var priceFilter = '';
-                //if (selectedRanges[0].trim() != sliderMin || selectedRanges[1].trim() != sliderMax) {
-                //    priceFilter = selectedRanges[0].trim() + '~' + selectedRanges[1].trim();
-                //}
-                window.location.href = $(this).attr('data-url') + '&spec=' + specs; //+ priceFilter;
-                //}
-                //else {
-                //    //NEED TO REMOVE SPEC FORM URL
-                //}
+                window.location.href = $(this).attr('data-url') + '&spec=' + specs + ev.value[0] + '~' + ev.value[1];
+            }
+        });
+
+        if (($("#sl2").attr('data-slider-min') == 0 && $("#sl2").attr('data-slider-max') == 0) || ($("#sl2").attr('data-slider-min') == $("#sl2").attr('data-slider-max'))) {
+            $("div[id='priceFilter']").hide();
+        }
+        $('input[id=specFilterCheckBox]').on('change', function (e) {
+            // if ($(this).is(':checked')) {
+            var specboxes = $('input[id=specFilterCheckBox]');
+            var specs = '';
+            $.each(specboxes, function () {
+                if ($(this).is(':checked')) {
+                    specs += $(this).attr('data-id') + ",";
+                }
             });
-
-
-            //    $('#ei-slider').eislideshow({
-            //        animation           : 'center',
-            //        autoplay            : true,
-            //        slideshow_interval  : 3000,
-            //        titlesFactor        : 0
-            //});
+            //var priceRange = $('div .price-range > div>div').children('.tooltip-inner').text();
+            //var sliderMin = $('#sl2').data('slider-min');
+            //var sliderMax = $('#sl2').data('slider-max');
+            //var selectedRanges = priceRange.split(':');
+            //var priceFilter = '';
+            //if (selectedRanges[0].trim() != sliderMin || selectedRanges[1].trim() != sliderMax) {
+            //    priceFilter = selectedRanges[0].trim() + '~' + selectedRanges[1].trim();
+            //}
+            var n = specs.lastIndexOf(",");
+            var specs = specs.substring(0, n)
+            window.location.href = $(this).attr('data-url') + '&spec=' + specs; //+ priceFilter;
+            //}
+            //else {
+            //    //NEED TO REMOVE SPEC FORM URL
+            //}
         });
 
 
-        // Carousel Auto-Cycle
-        $(document).ready(function () {
-            function lastPostFunc() {
-                //alert('scroll');
-                //$('#divPostsLoader').html('<img src="images/bigLoader.gif">');
+        //    $('#ei-slider').eislideshow({
+        //        animation           : 'center',
+        //        autoplay            : true,
+        //        slideshow_interval  : 3000,
+        //        titlesFactor        : 0
+        //});
+    });
 
-                ////send a query to server side to present new content
-                //$.ajax({
-                //    type: "POST",
-                //    url: "Articles.aspx/ItemsGet",
-                //    data: "{}",
-                //    contentType: "application/json; charset=utf-8",
-                //    dataType: "json",
-                //    success: function (data) {
 
-                //        if (data != "") {
-                //            $('.divLoadData:last').after(data.d);
-                //        }
-                //        $('#divPostsLoader').empty();
-                //    }
+    // Carousel Auto-Cycle
+    $(document).ready(function () {
+        function lastPostFunc() {
+            var slug = '@ViewBag.slug';
+            var keyWord = '@ViewBag.keyWord';
+            var str = '@ViewBag.spec';
+            $('#specification').val(str)
+            var spec = $('#specification').val();
+            var pageNumber = "";
+            if ($('#paging').val() == "")
+            { pageNumber = $('#paging').val(1); pageNumber = parseInt(pageNumber.val()) + 1; }
+            else
+            { pageNumber = $('#paging').val(); pageNumber = parseInt(pageNumber) + 1; }
 
-                //})
+            $('#paging').val(pageNumber);
+            $('#no-product').html('<img src="Content/themes/base/images/torus_loader.gif" />');
+            $.ajax({
+                type: "POST",
+                url: '@(Url.Action("CategoryPaging", "Catalog"))?seName=' + slug + '&spec=' + spec + '&keyWord=' + keyWord + '&pageNumber=' + pageNumber,
+                    success: function (data) {
+
+                        if (data.trim() != "") {
+                            $('.feature_li:last').append(data);
+                            $('#no-product').empty();
+                        }
+                        else {
+                            $('.no-product').html('<span>NO MORE PRODUCT TO DISPLAY</span>')
+                        }
+
+                    }
+
+                })
             };
 
             $(window).scroll(function () {
