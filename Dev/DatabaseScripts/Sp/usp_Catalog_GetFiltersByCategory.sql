@@ -27,7 +27,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-Create PROCEDURE [dbo].[usp_Catalog_GetFiltersByCategory] (@categoryId Varchar(max),@keyWord Varchar(max)) 
+CREATE PROCEDURE [dbo].[usp_Catalog_GetFiltersByCategory] (@categoryId Varchar(max),@keyWord Varchar(max)) 
 AS    
 BEGIN 
  
@@ -36,7 +36,8 @@ BEGIN
 select distinct SA.DisplayOrder as SpecifiationAttributeOrder,
 SA.Id as SpecificationAttributeId,   SA.Name as SpecificationAttributeName,
  SAO.Id as SpecificationAttributeOptionId,SAO.Name as SpecificationAttributeOptionName
- ,SAO.DisplayOrder as SpecifiationAttributeOptionOrder
+ ,SAO.DisplayOrder as SpecifiationAttributeOptionOrder,(select Min(Price) from ufn_GetProductsBySearch(0,@keyWord)) as MinPrice ,
+ (select Max(Price) from ufn_GetProductsBySearch(0,@keyWord)) as MaxPrice 
 from Product p 
 inner join  Product_SpecificationAttribute_Mapping PSM on p.Id = psm.ProductId
 inner join SpecificationAttributeOption SAO on psm.SpecificationAttributeOptionId = sao.Id
@@ -49,6 +50,7 @@ where --PSM.AllowFiltering = 1 temp commented for dev
  ORDER BY SA.DisplayOrder, SA.Name, SAO.DisplayOrder, SAO.Name
   
 END
+
 
 GO
 PRINT 'Created the procedure usp_Catalog_GetFiltersByCategory'

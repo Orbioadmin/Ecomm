@@ -39,5 +39,15 @@ namespace Orbio.Web.UI.Models.Catalog
         /// gets or sets the attribute options
         /// </summary>
         public List<SpecificationAttributeOption> SpecificationAttributeOptions { get; set; }
+
+        /// <summary>
+        /// Gets or sets minimum product price
+        /// </summary>
+        public decimal MinPrice { get; set; }
+
+        /// <summary>
+        /// Gets or sets maximum product price
+        /// </summary>
+        public decimal MaxPrice { get; set; }
     }
 }

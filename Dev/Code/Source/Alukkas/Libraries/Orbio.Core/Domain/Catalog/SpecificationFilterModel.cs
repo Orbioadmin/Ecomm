@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace Orbio.Core.Domain.Catalog
 {
@@ -28,5 +29,17 @@ namespace Orbio.Core.Domain.Catalog
         /// </summary>
         [DataMember]
         public string SpecificationAttributeOptionName { get; set; }
+
+        /// <summary>
+        /// Gets or sets minimum product price
+        /// </summary>
+        [DataMember]
+        public decimal MinPrice { get; set; }
+
+        /// <summary>
+        /// Gets or sets maximum product price
+        /// </summary>
+        [DataMember]
+        public decimal MaxPrice { get; set; }
     }
 }

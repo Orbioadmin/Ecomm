@@ -89,12 +89,14 @@ namespace Orbio.Services.Catalog
         /// <param name="slug">the slug value</param>
         /// <param name="entityName">the entity name</param>
         /// <returns>list of products</returns>
-        public Search GetProductsBySearch(string slug, string filterIds, decimal? minPrice, decimal? maxPrice, string keyWord)
+        public Search GetProductsBySearch(string slug, string filterIds, decimal? minPrice, decimal? maxPrice, string keyWord, int? pageNumber, int? pageSize)
         {
             var sqlParamList = new List<SqlParameter>();
             sqlParamList.Add(new SqlParameter() { ParameterName = "@slug", Value = slug, DbType = System.Data.DbType.String });
             sqlParamList.Add(new SqlParameter { ParameterName = "@entityName", Value = entityName, DbType = System.Data.DbType.String });
             sqlParamList.Add(new SqlParameter { ParameterName = "@keyWord", Value = keyWord, DbType = System.Data.DbType.String });
+            sqlParamList.Add(new SqlParameter { ParameterName = "@pageNumber", Value = pageNumber, DbType = System.Data.DbType.Int32 });
+            sqlParamList.Add(new SqlParameter { ParameterName = "@pageSize", Value = pageSize, DbType = System.Data.DbType.Int32 });
 
             if (!string.IsNullOrEmpty(filterIds))
             {
