@@ -328,7 +328,6 @@ namespace Orbio.Web.UI.Controllers
                                                    attribute, selectedAttributeId.ToString());
                                     }
                                 }
-
                                 break;
                             }
                     }
@@ -383,6 +382,7 @@ namespace Orbio.Web.UI.Controllers
                             {
                                double subtotal = double.Parse(model.ProductPrice.Price) + double.Parse(values.PriceAdjustment);
                                model.ProductPrice.Price = subtotal.ToString();
+                               
                             }
                         }
                     }
@@ -394,6 +394,20 @@ namespace Orbio.Web.UI.Controllers
             if (selectedProduct != null)
             {
                 model.SelectedQuantity = selectedProduct.SelectedQuantity;
+            }
+            else
+            {
+                foreach(var attributes in model.ProductVariantAttributes)
+                {
+                    int maxdisplayorder = 0;
+                       foreach(var value in attributes.Values)
+                       {
+                           if(value.DisplayOrder > maxdisplayorder)
+                           {
+                               maxdisplayorder = value.DisplayOrder;
+                           } 
+                       }
+                }
             }
             webHelper.RemoveQueryFromPath(ControllerContext.HttpContext, new List<string> { { "spec" }, { "selectedQty" } });
             return View(model);

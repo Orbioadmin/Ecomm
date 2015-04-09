@@ -75,6 +75,12 @@ namespace Orbio.Core.Domain.Catalog
          [DataMember]
         public bool IsPreSelected { get; set; }
 
+         /// <summary>
+         /// Gets or sets the order in which value is displayed
+         /// </summary>
+         [DataMember]
+         public int DisplayOrder { get; set; }
+
         ///// <summary>
         ///// Gets or sets the display order
         ///// </summary>
