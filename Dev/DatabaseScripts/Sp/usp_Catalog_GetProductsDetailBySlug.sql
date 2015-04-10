@@ -68,7 +68,7 @@ dbo.ufn_GetAllspecificationattributes(@productid),
 --productattributes
 (SELECT  PPM.Id , PPM.ProductAttributeId, CASE WHEN ISNULL(PPM.TextPrompt, '')<>'' THEN PPM.TextPrompt ELSE PA.Name END 
 AS TextPrompt, IsRequired, AttributeControlTypeId, (SELECT  PVA.Id, Name, ColorSquaresRgb, PriceAdjustment,
-IsPreSelected, PIC.RelativeUrl PictureUrl   FROM ProductVariantAttributeValue
+IsPreSelected, DisplayOrder, PIC.RelativeUrl PictureUrl   FROM ProductVariantAttributeValue
 PVA  LEFT OUTER JOIN Picture PIC ON PVA.PictureId = PIC.Id WHERE PVA.ProductVariantAttributeId = PPM.Id order by DisplayOrder 
 FOR XML PATH('ProductVariantAttributeValue'), ROOT('ProductVariantAttributeValues'), type)
 --, (SELECT * FROM ProductVariantAttributeCombination PVAC

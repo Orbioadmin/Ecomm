@@ -18,22 +18,23 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE FUNCTION [dbo].[ufn_GetCartProductAttribute] (@attribute xml,@productid int)  
-RETURNS @TABLE TABLE (TextPrompt varchar(500), Name Varchar(100))  
+RETURNS @TABLE TABLE (TextPrompt varchar(500), Name Varchar(100),PriceAdjustment decimal(18,4))  
 AS  
 BEGIN  
     INSERT @TABLE
-Select TextPrompt,Name from(
+ Select TextPrompt,Name,PriceAdjustment from(
 (SELECT C.value('@ID','int') AS Attributeid,
-C.value('(ProductVariantAttributeValue/Value)[1]','INT') AS [Value]
-    FROM @attribute.nodes('/Attributes/ProductVariantAttribute') as T(C) )t
-	inner join
-	(SELECT PPM.Id , CASE WHEN ISNULL(PPM.TextPrompt, '')<>'' THEN PPM.TextPrompt ELSE PA.Name END 
+C.value('(ProductVariantAttributeValue/Value)[1]','INT') AS [Value],
+C.value('(ProductVariantAttributeValue/Value)[2]','INT') AS [Price]
+FROM @attribute.nodes('/Attributes/ProductVariantAttribute') as T(C) )t
+inner join
+(SELECT PPM.Id , CASE WHEN ISNULL(PPM.TextPrompt, '')<>'' THEN PPM.TextPrompt ELSE PA.Name END 
 AS TextPrompt
  FROM Product_ProductAttribute_Mapping PPM
 INNER JOIN ProductAttribute PA ON PPM.ProductAttributeId = PA.Id
 WHERE PPM.ProductId =@productid)PPM on t.Attributeid = PPM.Id )
 inner join
-(Select  PV.Id,Pv.Name from [dbo].[ProductVariantAttributeValue] PV )Pv on PV.Id = t.Value
+(Select  PV.Id,Pv.Name,PV.PriceAdjustment from [dbo].[ProductVariantAttributeValue] PV )Pv on PV.Id = t.Value
  RETURN  
    
 END

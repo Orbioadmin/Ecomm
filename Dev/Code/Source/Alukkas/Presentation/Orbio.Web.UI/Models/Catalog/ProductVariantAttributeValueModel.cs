@@ -18,6 +18,8 @@ namespace Orbio.Web.UI.Models.Catalog
 
         public bool IsPreSelected { get; set; }
 
+        public int DisplayOrder { get; set; }
+
         public int PictureId { get; set; }
         public string PictureUrl { get; set; }
         public string FullSizePictureUrl { get; set; }
