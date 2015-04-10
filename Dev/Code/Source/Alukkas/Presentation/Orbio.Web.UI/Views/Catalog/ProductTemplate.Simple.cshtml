@@ -41,26 +41,52 @@
 
             @*</div>*@
 
+            @*<div class="detail_slider">
+
+                    <div class="zoom-section">
+                        <div class="zoom-small-image">
+                            <a href='@this.Model.DefaultPicture.FullSizeImageUrl' class='cloud-zoom' id='zoom1' rel="position:'inside',showTitle:false,adjustX:-4,adjustY:-4"><img src="@this.Model.DefaultPicture.FullSizeImageUrl" alt='' title="" width="555" height="350" /></a>
+                        </div>
+                        <div class="zoom-desc">
+                            <h3 style="margin-top:2px"></h3>
+                            <p>
+                                @if (this.Model.ProductPictures.Count > 0)
+                                {
+                                    foreach (var pic in this.Model.ProductPictures)
+                                    {
+                                        <a href='@pic.FullSizeImageUrl' class='cloud-zoom-gallery' title='Red' rel="useZoom: 'zoom1', smallImage: '@pic.FullSizeImageUrl' "><img class="zoom-tiny-image" src="@pic.ImageUrl" alt="Thumbnail 1" width="112" height="82"/></a>
+                                    }
+                                }
+                            </p>
+
+                        </div>
+                    </div>
+
+                </div>*@
             <div class="detail_slider">
 
-                <div class="zoom-section">
-                    <div class="zoom-small-image">
-                        <a href='@this.Model.DefaultPicture.FullSizeImageUrl' class='cloud-zoom' id='zoom1' rel="position:'inside',showTitle:false,adjustX:-4,adjustY:-4"><img src="@this.Model.DefaultPicture.FullSizeImageUrl" alt='' title="" width="555" height="350" /></a>
-                    </div>
-                    <div class="zoom-desc">
-                        <h3 style="margin-top:2px"></h3>
-                        <p>
-                            @if (this.Model.ProductPictures.Count > 0)
-                            {
-                                foreach (var pic in this.Model.ProductPictures)
-                                {
-                                    <a href='@pic.FullSizeImageUrl' class='cloud-zoom-gallery' title='Red' rel="useZoom: 'zoom1', smallImage: '@pic.FullSizeImageUrl' "><img class="zoom-tiny-image" src="@pic.ImageUrl" alt="Thumbnail 1" width="112" height="82"/></a>
-                                }
-                            }
-                        </p>
 
-                    </div>
-                </div>
+                <ul id="etalage">
+                    <li>
+                        <a>
+                            <img class="etalage_source_image" src="@this.Model.DefaultPicture.FullSizeImageUrl" title="" />
+                        </a>
+                    </li>
+                    @if (this.Model.ProductPictures.Count > 1)
+                    {
+                        var count = 0;
+                        foreach (var pic in this.Model.ProductPictures)
+                        {
+                            if (count > 0)
+                            {
+                                <li>
+                                    <img class="etalage_source_image" src="@pic.FullSizeImageUrl" title="" />
+                                </li>
+                            }
+                            count++;
+                        }
+                    }
+                </ul>
 
             </div>
         </div>
@@ -78,7 +104,7 @@
                             }
 
                             @{
-                                Html.RenderAction("ProductStar", new { Id = this.Model.Id });
+            Html.RenderAction("ProductStar", new { Id = this.Model.Id });
                             }
 
                             <p class="price_rate">@this.Model.CurrencyCode.@this.Model.ProductPrice.Price</p>
@@ -295,6 +321,7 @@
 </script>
 
 @*<script src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
+<<<<<<< HEAD
 <script type="text/javascript">
     $('ul.size_li li a').click(
 function (e) {
@@ -321,4 +348,35 @@ function (e) {
     </script>
 }
 
+    @*<script type="text/javascript">
+        $('ul.size_li li a').click(
+    function (e) {
+        //e.preventDefault();
+        //e.stopPropagation;
+        $(this).closest('ul').find('.select').removeClass('select');
+        $(this).parent().addClass('select');
+    });
+    </script>*@
+<script src="~/Scripts/jqueryzoom.js"></script>
+<script>
+    jQuery(document).ready(function ($) {
 
+        $('#etalage').etalage({
+            thumb_image_width: 515,
+            thumb_image_height: 400,
+            source_image_width: 900,
+            source_image_height: 1200,
+            show_hint: true,
+            click_callback: function (image_anchor, instance_id) {
+                alert('Callback example:\nYou clicked on an image with the anchor: "' + image_anchor + '"\n(in Etalage instance: "' + instance_id + '")');
+            }
+        });
+
+
+
+        $('.dropdownlist').change(function () {
+            etalage_show($(this).find('option:selected').attr('class'));
+        });
+
+    });
+</script>

@@ -470,6 +470,7 @@
     <Content Include="Scripts\jquery-zoom.js" />
     <Content Include="Scripts\jquery.eislideshow.js" />
     <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\jqueryzoom.js" />
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\price-range.js" />
     <Content Include="Scripts\toastr.js" />
