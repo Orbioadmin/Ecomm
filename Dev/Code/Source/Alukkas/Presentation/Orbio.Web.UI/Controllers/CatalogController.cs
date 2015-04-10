@@ -175,6 +175,7 @@ namespace Orbio.Web.UI.Controllers
 
             return PartialView(model);
         }
+
         [ChildActionOnly]
         public ActionResult ProductFilterBySearch(string categoryId, int[] selectedSpecs, string selectedPriceRange, string keyWord)
         {
@@ -302,7 +303,6 @@ namespace Orbio.Web.UI.Controllers
 
         public ActionResult Product(string seName)
         {
-
             var model = PrepareProductdetailsModel(seName);
             ProductDetailModel selectedProduct = null;
             ShoppingCartType selectedCartType;
@@ -340,7 +340,25 @@ namespace Orbio.Web.UI.Controllers
                             {
                                 foreach (var value in attribute.Values)
                                 {
+                                    int maxdisplayorder = 0;
+                                    int i = 0;
+                                    string name = "";
+                                    if (value.DisplayOrder > maxdisplayorder)
+                                    {
+                                        name = value.Name;
+                                        maxdisplayorder = value.DisplayOrder;
+                                    }
                                     if (value.Id != 0)
+                                    {
+                                        if (value.Name != name && i == 0)
+                                        {
+                                            selectedAttributeId = int.Parse(value.Id.ToString());
+                                            selectedAttributes = AddCartProductAttribute(selectedAttributes,
+                                                       attribute, selectedAttributeId.ToString());
+                                            i++;
+                                        }
+                                    }
+                                    if(value.Name==name && i==0)
                                     {
                                         selectedAttributeId = int.Parse(value.Id.ToString());
                                         selectedAttributes = AddCartProductAttribute(selectedAttributes,
@@ -357,7 +375,6 @@ namespace Orbio.Web.UI.Controllers
                 {
                     if (string.IsNullOrEmpty(errorString))
                     {
-
                         shoppingCartService.AddCartItem("add", selectedCartType, 0, curCustomer.Id, selectedProduct.Id, selectedAttributes, Convert.ToInt32(selectedProduct.SelectedQuantity));
 
                         ViewBag.Sucess = "Item added to the Cart";
@@ -393,6 +410,8 @@ namespace Orbio.Web.UI.Controllers
                 {
                     model.ProductVariantAttributes.ValidateProductVariantAttributes(selectedProduct.ProductVariantAttributes);
                     //add/substract price
+                    int attr_count = 0;
+                    int value_count = 0;
                     foreach(var prod_attribute in model.ProductVariantAttributes)
                     {
                         foreach(var values in prod_attribute.Values)
@@ -401,9 +420,12 @@ namespace Orbio.Web.UI.Controllers
                             {
                                double subtotal = double.Parse(model.ProductPrice.Price) + double.Parse(values.PriceAdjustment);
                                model.ProductPrice.Price = subtotal.ToString();
-                               
+                               string pvavliid = string.Format("liProductVariantAttributes_{0}__Values_{1}__Id", attr_count, value_count);
+                               ViewBag.productvariantid = pvavliid;
                             }
+                            value_count++;
                         }
+                        attr_count++;
                     }
                 }
             }
@@ -416,18 +438,26 @@ namespace Orbio.Web.UI.Controllers
             }
             else
             {
-                foreach(var attributes in model.ProductVariantAttributes)
-                {
+                var attributes=(from prod_attribute in model.ProductVariantAttributes
+                                   select prod_attribute).ToList().FirstOrDefault();
                     int maxdisplayorder = 0;
-                       foreach(var value in attributes.Values)
-                       {
-                           if(value.DisplayOrder > maxdisplayorder)
-                           {
-                               maxdisplayorder = value.DisplayOrder;
-                           } 
-                       }
+                    string name = "";
+                    bool ispreselected;
+                    foreach (var value in attributes.Values)
+                    {
+                        if (value.DisplayOrder > maxdisplayorder)
+                        {
+                            maxdisplayorder = value.DisplayOrder;
+                            name = value.Name;
+                            ispreselected = value.IsPreSelected;
+                            if (ispreselected)
+                            {
+                                ViewBag.name = name;
+                                model.ProductPrice.Price = (Convert.ToDouble(value.PriceAdjustment) + Convert.ToDouble(model.ProductPrice.Price)).ToString();
+                            }
+                        }
+                    }
                 }
-            }
             webHelper.RemoveQueryFromPath(ControllerContext.HttpContext, new List<string> { { "spec" }, { "selectedQty" } });
             return View(model);
         }
@@ -440,9 +470,6 @@ namespace Orbio.Web.UI.Controllers
             return PartialView(model.ProductDetail);
         }
 
-
-
-
         [ChildActionOnly]
         public ActionResult AssociatedProducts(int productId)
         {
@@ -453,7 +480,6 @@ namespace Orbio.Web.UI.Controllers
 
         private CategoryModel PrepareCategoryProductModel(string seName, string filterIds, string keyWord, int? pageNumber, int? pageSize)
         {
-
             var specificationAttributeIds = string.IsNullOrWhiteSpace(filterIds) ? new List<string>() : (from f in filterIds.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
                                                                                                          where f.Split('~').Length <= 1
                                                                                                          select f).ToList();
@@ -486,9 +512,6 @@ namespace Orbio.Web.UI.Controllers
                                           select f).FirstOrDefault();
 
                 model.SelectedPriceRange = selectedPriceRange;
-
-
-
 
                 if (!string.IsNullOrWhiteSpace(model.SelectedPriceRange))
                 {
@@ -596,7 +619,6 @@ namespace Orbio.Web.UI.Controllers
                         model.Products = filteredProducts;
                     }
                 }
-
             }
 
             return model;

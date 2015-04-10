@@ -293,6 +293,7 @@
         }
     });
 </script>
+
 @*<script src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
 <script type="text/javascript">
     $('ul.size_li li a').click(
@@ -303,3 +304,21 @@ function (e) {
     $(this).parent().addClass('select');
 });
 </script>*@
+
+@*<script type="text/javascript">
+    $('ul.size_li li a').click(
+        function (e) {
+            $(this).closest('ul').find('.select').removeClass('select');
+            $(this).parent().addClass('select');
+        }
+        );
+</script>*@
+
+@if (!string.IsNullOrEmpty(ViewBag.productvariantid))
+{
+    <script>
+        $('#@ViewBag.productvariantid').addClass('select');
+    </script>
+}
+
+
