@@ -13,7 +13,7 @@ namespace Orbio.Web.UI
                         "~/Scripts/jquery-{version}.js","~/Scripts/bootstrap.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
-                        "~/Scripts/cloudzoom.js", "~/Scripts/html5shiv.js", "~/Scripts/toastr.js", "~/Scripts/price-range.js", "~/Scripts/main.js",
+                        "~/Scripts/jqueryzoom.js", "~/Scripts/html5shiv.js", "~/Scripts/toastr.js", "~/Scripts/price-range.js", "~/Scripts/main.js",
                         "~/Scripts/datepicker.js"));
            
 
@@ -22,7 +22,7 @@ namespace Orbio.Web.UI
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/bootstrap.min.css", "~/Content/font-awesome.min.css", "~/Content/*.css", "~/Content/datepicker.css", "~/Content/toastr.css"));
+            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/bootstrap.min.css", "~/Content/font-awesome.min.css","~/Content/main.css", "~/Content/*.css", "~/Content/datepicker.css", "~/Content/toastr.css"));
 
             //bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
             //            "~/Content/themes/base/jquery.ui.core.css",
