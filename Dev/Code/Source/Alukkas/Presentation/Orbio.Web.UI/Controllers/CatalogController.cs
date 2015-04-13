@@ -356,13 +356,37 @@ namespace Orbio.Web.UI.Controllers
                                 {
                                     foreach (var value in attribute.Values)
                                     {
+                                        int maxdisplayorder = 0;
+                                        int i = 0;
+                                        string name = "";
+                                        if (value.DisplayOrder > maxdisplayorder)
+                                        {
+                                            name = value.Name;
+                                            maxdisplayorder = value.DisplayOrder;
+                                        }
                                         if (value.Id != 0)
                                         {
+                                            if (value.Name != name && i == 0)
+                                            {
+                                                selectedAttributes = string.Empty;
+                                                selectedAttributeId = int.Parse(value.Id.ToString());
+                                                selectedAttributes = AddCartProductAttribute(selectedAttributes,
+                                                           attribute, selectedAttributeId.ToString());
+                                                i++;
+                                            }
                                             if (TempData.ContainsKey("pvaid"))
                                             {
                                                 TempData.Remove("pvaid");
                                             }
+                                            //else
                                             TempData.Add("pvaid", value.Id);
+                                        }
+                                        if (value.Name == name && i == 0)
+                                        {
+                                            selectedAttributes = string.Empty;
+                                            selectedAttributeId = int.Parse(value.Id.ToString());
+                                            selectedAttributes = AddCartProductAttribute(selectedAttributes,
+                                                       attribute, selectedAttributeId.ToString());
                                         }
                                     }
                                 }
