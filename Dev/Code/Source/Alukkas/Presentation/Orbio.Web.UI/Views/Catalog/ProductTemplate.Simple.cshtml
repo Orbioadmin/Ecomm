@@ -332,19 +332,10 @@ function (e) {
 });
 </script>*@
 
-@*<script type="text/javascript">
-    $('ul.size_li li a').click(
-        function (e) {
-            $(this).closest('ul').find('.select').removeClass('select');
-            $(this).parent().addClass('select');
-        }
-        );
-</script>*@
-
-@if (!string.IsNullOrEmpty(ViewBag.productvariantid))
+@if (ViewData["productvariantid"] != null)
 {
     <script>
-        $('#@ViewBag.productvariantid').addClass('select');
+        $('#@ViewData["productvariantid"].ToString()').addClass('select');
     </script>
 }
 

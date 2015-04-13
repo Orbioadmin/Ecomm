@@ -305,7 +305,7 @@ namespace Orbio.Web.UI.Controllers
         {
             var model = PrepareProductdetailsModel(seName);
             ProductDetailModel selectedProduct = null;
-            ShoppingCartType selectedCartType;
+            ShoppingCartType selectedCartType = ShoppingCartType.None;
             ViewBag.Errors = string.Empty;
             if (TempData.ContainsKey("product"))
             {
@@ -331,38 +331,39 @@ namespace Orbio.Web.UI.Controllers
                 /*selected product attribute varient value*/
                 string selectedAttributes = string.Empty;
                 int count = 0;
-                int selectedAttributeId=1;
+                int selectedAttributeId = 1;
                 foreach (var attribute in selectedProduct.ProductVariantAttributes)
                 {
                     switch (attribute.AttributeControlType)
                     {
                         case Orbio.Core.Domain.Catalog.AttributeControlType.TableBlock:
                             {
-                                foreach (var value in attribute.Values)
+                                if (TempData.ContainsKey("pvaid"))
                                 {
-                                    int maxdisplayorder = 0;
-                                    int i = 0;
-                                    string name = "";
-                                    if (value.DisplayOrder > maxdisplayorder)
+                                    selectedAttributeId = int.Parse(TempData["pvaid"].ToString());
+                                    selectedAttributes = AddCartProductAttribute(selectedAttributes,
+                                               attribute, selectedAttributeId.ToString());
+                                    TempData.Remove("pvaid");
+                                }
+                                else if (TempData.ContainsKey("pvaidDefault"))
+                                {
+                                    selectedAttributeId = int.Parse(TempData["pvaidDefault"].ToString());
+                                    selectedAttributes = AddCartProductAttribute(selectedAttributes,
+                                               attribute, selectedAttributeId.ToString());
+                                    TempData.Remove("pvaidDefault");
+                                }
+                                else
+                                {
+                                    foreach (var value in attribute.Values)
                                     {
-                                        name = value.Name;
-                                        maxdisplayorder = value.DisplayOrder;
-                                    }
-                                    if (value.Id != 0)
-                                    {
-                                        if (value.Name != name && i == 0)
+                                        if (value.Id != 0)
                                         {
-                                            selectedAttributeId = int.Parse(value.Id.ToString());
-                                            selectedAttributes = AddCartProductAttribute(selectedAttributes,
-                                                       attribute, selectedAttributeId.ToString());
-                                            i++;
+                                            if (TempData.ContainsKey("pvaid"))
+                                            {
+                                                TempData.Remove("pvaid");
+                                            }
+                                            TempData.Add("pvaid", value.Id);
                                         }
-                                    }
-                                    if(value.Name==name && i==0)
-                                    {
-                                        selectedAttributeId = int.Parse(value.Id.ToString());
-                                        selectedAttributes = AddCartProductAttribute(selectedAttributes,
-                                                   attribute, selectedAttributeId.ToString());
                                     }
                                 }
                                 break;
@@ -412,16 +413,16 @@ namespace Orbio.Web.UI.Controllers
                     //add/substract price
                     int attr_count = 0;
                     int value_count = 0;
-                    foreach(var prod_attribute in model.ProductVariantAttributes)
+                    foreach (var prod_attribute in model.ProductVariantAttributes)
                     {
-                        foreach(var values in prod_attribute.Values)
+                        foreach (var values in prod_attribute.Values)
                         {
-                            if(selectedAttributeId==values.Id)
+                            if (selectedAttributeId == values.Id)
                             {
-                               double subtotal = double.Parse(model.ProductPrice.Price) + double.Parse(values.PriceAdjustment);
-                               model.ProductPrice.Price = subtotal.ToString();
-                               string pvavliid = string.Format("liProductVariantAttributes_{0}__Values_{1}__Id", attr_count, value_count);
-                               ViewBag.productvariantid = pvavliid;
+                                double subtotal = double.Parse(model.ProductPrice.Price) + double.Parse(values.PriceAdjustment);
+                                model.ProductPrice.Price = subtotal.ToString();
+                                string pvavliid = string.Format("liProductVariantAttributes_{0}__Values_{1}__Id", attr_count, value_count);
+                                ViewData["productvariantid"] = pvavliid;
                             }
                             value_count++;
                         }
@@ -438,11 +439,15 @@ namespace Orbio.Web.UI.Controllers
             }
             else
             {
-                var attributes=(from prod_attribute in model.ProductVariantAttributes
-                                   select prod_attribute).ToList().FirstOrDefault();
-                    int maxdisplayorder = 0;
-                    string name = "";
-                    bool ispreselected;
+                //var attributes = (from prod_attribute in model.ProductVariantAttributes
+                //                  select prod_attribute).ToList().FirstOrDefault();
+                int maxdisplayorder = 0;
+                string name = "";
+                bool ispreselected;
+                int attr_count = 0;
+                int value_count = 0;
+                foreach (var attributes in model.ProductVariantAttributes)
+                {
                     foreach (var value in attributes.Values)
                     {
                         if (value.DisplayOrder > maxdisplayorder)
@@ -452,12 +457,22 @@ namespace Orbio.Web.UI.Controllers
                             ispreselected = value.IsPreSelected;
                             if (ispreselected)
                             {
+                                if (TempData.ContainsKey("pvaidDefault"))
+                                {
+                                    TempData.Remove("pvaidDefault");
+                                }
+                                TempData.Add("pvaidDefault", value.Id);
                                 ViewBag.name = name;
                                 model.ProductPrice.Price = (Convert.ToDouble(value.PriceAdjustment) + Convert.ToDouble(model.ProductPrice.Price)).ToString();
+                                string pvavliid = string.Format("liProductVariantAttributes_{0}__Values_{1}__Id", attr_count, value_count);
+                                ViewData["productvariantid"] = pvavliid;
                             }
                         }
+                        value_count++;
                     }
+                    attr_count++;
                 }
+            }
             webHelper.RemoveQueryFromPath(ControllerContext.HttpContext, new List<string> { { "spec" }, { "selectedQty" } });
             return View(model);
         }

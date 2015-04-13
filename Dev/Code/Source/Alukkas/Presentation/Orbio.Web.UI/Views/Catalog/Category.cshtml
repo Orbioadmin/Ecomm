@@ -75,17 +75,22 @@
                     specs += $(this).attr('data-id') + ",";
                 }
             });
-            //var priceRange = $('div .price-range > div>div').children('.tooltip-inner').text();
-            //var sliderMin = $('#sl2').data('slider-min');
-            //var sliderMax = $('#sl2').data('slider-max');
-            //var selectedRanges = priceRange.split(':');
-            //var priceFilter = '';
-            //if (selectedRanges[0].trim() != sliderMin || selectedRanges[1].trim() != sliderMax) {
-            //    priceFilter = selectedRanges[0].trim() + '~' + selectedRanges[1].trim();
-            //}
+            var priceRange = $('div .price-range > div>div').children('.tooltip-inner').text();
+            var sliderMin = $('#sl2').data('slider-min');
+            var sliderMax = $('#sl2').data('slider-max');
+            var selectedRanges = priceRange.split(':');
+            var priceFilter = '';
+            if (selectedRanges[0].trim() != sliderMin || selectedRanges[1].trim() != sliderMax) {
+                priceFilter = selectedRanges[0].trim() + '~' + selectedRanges[1].trim()+',';
+            }
             var n = specs.lastIndexOf(",");
             var specs = specs.substring(0, n)
-            window.location.href = $(this).attr('data-url') + '&spec=' + specs; //+ priceFilter;
+            if (specs.length == 0)
+            {
+                var p = priceFilter.lastIndexOf(",");
+                var priceFilter = priceFilter.substring(0, p)
+            }
+            window.location.href = $(this).attr('data-url') + '&spec=' + priceFilter + specs;
             //}
             //else {
             //    //NEED TO REMOVE SPEC FORM URL

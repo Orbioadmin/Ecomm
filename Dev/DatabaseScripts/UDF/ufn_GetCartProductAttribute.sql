@@ -22,7 +22,7 @@ RETURNS @TABLE TABLE (TextPrompt varchar(500), Name Varchar(100),PriceAdjustment
 AS  
 BEGIN  
     INSERT @TABLE
- Select TextPrompt,Name,PriceAdjustment from(
+ Select TextPrompt,Name, case when PriceAdjustment is null then convert(int,'0') else PriceAdjustment end from(
 (SELECT C.value('@ID','int') AS Attributeid,
 C.value('(ProductVariantAttributeValue/Value)[1]','INT') AS [Value],
 C.value('(ProductVariantAttributeValue/Value)[2]','INT') AS [Price]
@@ -38,8 +38,6 @@ inner join
  RETURN  
    
 END
-
-
 
 GO
 PRINT 'Created UDF [dbo].[ufn_GetCartProductAttribute]`'
