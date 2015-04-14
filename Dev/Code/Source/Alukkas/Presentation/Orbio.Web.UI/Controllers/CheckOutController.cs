@@ -36,7 +36,8 @@ namespace Orbio.Web.UI.Controllers
             var curcustomer = workContext.CurrentCustomer;
             ShoppingCartType carttype = ShoppingCartType.ShoppingCart;
             PrepareShoppingCartItemModel(curcustomer.Id, carttype);
-            return View();
+            var address = new AddressModel();
+            return View(address);
 
         }
 

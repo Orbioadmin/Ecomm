@@ -68,7 +68,7 @@ SET @shipAddressId = (SELECT top 1 ShippingAddress_Id from dbo.Customer where Us
 			@shipCity,@shipAddress,'',@shipPincode,@shipPhone,'',GETUTCDATE())
 			SET @billId = SCOPE_IDENTITY()
 		
-			INSERT INTO dbo.CustomerAddresses (Customer_Id,Address_Id) VALUES((SELECT top 1 Id FROM dbo.Customer WHERE Username=@email and Deleted='False'),@shipId)
+			INSERT INTO dbo.CustomerAddresses (Customer_Id,Address_Id) VALUES((SELECT top 1 Id FROM dbo.Customer WHERE Username=@email and Deleted='False'),@billId)
 		
 			UPDATE dbo.Customer SET BillingAddress_Id=@shipId , ShippingAddress_Id= @shipId,LastActivityDateUtc=GETUTCDATE()
 			WHERE Username=@email and Deleted='False'
