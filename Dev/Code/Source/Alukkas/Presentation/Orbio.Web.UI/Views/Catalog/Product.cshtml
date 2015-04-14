@@ -11,25 +11,9 @@
 
 <section class="similar_prod">
 
-    <div class="container similar_main">
-        <div class="similar_slider">
-            <h1>SIMILAR PRODUCTS</h1>
 
-        </div>
-        <div align="left" class="new_carsol">
-            <a data-slide="prev" href="#myCarousel4" class="carousel-control left"> <</a>
-            <a data-slide="next" href="#myCarousel4" class="carousel-control right">></a>
-        </div>
-        <div class="carousel slide" id="myCarousel4">
-            <div class="carousel-inner">
                 @Html.Action("AssociatedProducts", "Catalog", new { productId = this.Model.Id })
-            </div>
-
-
-
-        </div><!-- /#myCarousel -->
-
-    </div>
+           
 
 </section>
 

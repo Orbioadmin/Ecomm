@@ -51,6 +51,8 @@ INNER JOIN SpecificationAttributeOption SAO ON SAO.Id = FILTERS.data
 
 
 SELECT    * INTO #products FROM  ufn_GetProductsBySearch(@categoryId,@keyWord)
+
+
 DECLARE @filterId NVARCHAR(100)
 while EXISTS(SELECT 1 FROM #filterIds)
 BEGIN
@@ -76,9 +78,12 @@ END
    DELETE FROM #products WHERE #products.Price<@minPrice OR #products.Price>@maxPrice
  END
  --TODO get all subcategories for the given slug and include products also
+ select *,ROW_NUMBER() OVER(ORDER BY CategoryId) as RowNumber into #temptableproducts from #products
 
 DECLARE @XmlResult xml
 
+if(@specificationFilterIds is null)
+begin
 --WITH XMLNAMESPACES ('http://schemas.datacontract.org/2004/07/Orbio.Core.Domain.Catalog' AS ns)
 SELECT @XmlResult = ( select Category.Id as 'CategoryId', Category.Name  as 'Name',  MetaKeywords as 'MetaKeywords',
 MetaTitle as 'MetaTitle', MetaDescription as 'MetaDescription', @slug as 'SeName',
@@ -98,9 +103,31 @@ where Category.Id = @categoryId
 FOR XML PATH('CategoryProduct') )
 
 SELECT @XmlResult as XmlResult
-   
-END  
+   end
 
+else
+	begin
+	--WITH XMLNAMESPACES ('http://schemas.datacontract.org/2004/07/Orbio.Core.Domain.Catalog' AS ns)
+SELECT @XmlResult = ( select Category.Id as 'CategoryId', Category.Name  as 'Name',  MetaKeywords as 'MetaKeywords',
+MetaTitle as 'MetaTitle', MetaDescription as 'MetaDescription', @slug as 'SeName',
+CASE WHEN CT.ViewPath IS NULL THEN 'CategoryTemplate.ProductsInGridOrLines' ELSE CT.ViewPath END
+AS TemplateViewPath, Category.PageSize,
+(SELECT Name, Slug AS SeName from Category INNER JOIN #temp ON Category.Id = #temp.data
+ LEFT JOIN UrlRecord UR ON Category.Id = UR.EntityId AND UR.IsActive=1
+ AND UR.LanguageId = 0 AND EntityName = @entityName ORDER BY #temp.OrderBy
+FOR XML PATH('Category'), ROOT('BreadCrumbs'),type)
+,
+ 
+(select   *,ROW_NUMBER() OVER(ORDER BY PC.CategoryId) 
+FROM  #temptableproducts  PC   WHERE PC.CategoryId = Category.Id and PC.RowNumber BETWEEN ((@pageNumber - 1) * @pageSize + 1) AND (@pageNumber * @pageSize)
+FOR XML PATH('Product'), ROOT('Products') , type)  from Category 
+LEFT JOIN CategoryTemplate CT ON Category.CategoryTemplateId = CT.Id  
+where Category.Id = @categoryId
+FOR XML PATH('CategoryProduct') )
+
+SELECT @XmlResult as XmlResult
+	end
+END  
 GO
 PRINT 'Created the procedure usp_Catalog_GetProductsBySlug'
 GO  

@@ -35,7 +35,7 @@
             @{
                 Html.RenderPartial(this.Model.ViewPath, this.Model);
             }
-
+            <div id="load"></div>
 
             @Html.Hidden("slug", this.Model.SeName) @Html.Hidden("specification")  @Html.Hidden("paging")
 
@@ -146,7 +146,7 @@
         };
 
         $(window).scroll(function () {
-            if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+            if (window.location.hash = '#load') {
                 lastPostFunc();
             }
         });

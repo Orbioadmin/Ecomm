@@ -278,26 +278,13 @@
                 </div>
 
             </div>
-            <div class="col-md-5">
-                <h1 class="related">RELATED PRODUCTS</h1>
-
-                <div id="myCarousel2" class="carousel slide">
 
 
+            @Html.Action("RelatedProducts", "Catalog", new { productId = this.Model.Id })
 
-                    <!-- Carousel items -->
-                    <div class="carousel-inner">
-
-                        @Html.Action("RelatedProducts", "Catalog", new { productId = this.Model.Id })
-
-                    </div><!--/carousel-inner-->
-
-                    <a class="left carousel-control" href="#myCarousel2" data-slide="prev">‹</a>
-                    <a class="right carousel-control" href="#myCarousel2" data-slide="next">›</a>
-                </div><!--/myCarousel-->
-            </div>
         </div>
     </div>
+
 
 </section>
 

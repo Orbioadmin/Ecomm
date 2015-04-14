@@ -435,7 +435,10 @@
     <Content Include="Images\collection2.png" />
     <Content Include="Images\collection3.png" />
     <Content Include="Images\collections-bg.png" />
+    <Content Include="Images\doublevalue_banner.jpg" />
     <Content Include="Images\footer-divider.png" />
+    <Content Include="Images\header5.jpg" />
+    <Content Include="Images\images_11.jpg" />
     <Content Include="Images\jwlry-1.png" />
     <Content Include="Images\login-facebook.png" />
     <Content Include="Images\new-user-bg.png" />

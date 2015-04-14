@@ -296,7 +296,15 @@ namespace Orbio.Web.UI.Controllers
             {
                 cartType = ShoppingCartType.Wishlist;
             }
+            if (TempData.ContainsKey("product"))
+            {
+                TempData.Remove("product");
+            }
             TempData.Add("product", product);
+            if (TempData.ContainsKey("cartType"))
+            {
+                TempData.Remove("cartType");
+            }
             TempData.Add("cartType", cartType);
             return RedirectToRoute("Category", new { p = "pt", seName = product.SeName });
         }
