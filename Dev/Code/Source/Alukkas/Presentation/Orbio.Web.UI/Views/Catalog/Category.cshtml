@@ -146,7 +146,7 @@
         };
 
         $(window).scroll(function () {
-            if ($(window).scrollTop() + $(window).height() == $(document).height()) {
+            if ($(document).height() - 500 <= $(window).scrollTop() + $(window).height()) {
                 lastPostFunc();
             }
         });
