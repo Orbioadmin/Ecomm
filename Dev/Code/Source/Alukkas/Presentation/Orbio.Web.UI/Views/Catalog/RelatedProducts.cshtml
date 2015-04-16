@@ -2,67 +2,75 @@
 @{
     var i = 0;
     var j = 0;
+    var count = 1;
 }
 <div class="col-md-5">
-@if (this.Model.Count > 0)
-            {
-    <h1 class="related">RELATED PRODUCTS</h1>
+    @if (this.Model.Count > 0)
+    {
+        <h1 class="related">RELATED PRODUCTS</h1>
 
-    <div id="myCarousel2" class="carousel slide">
+        <div id="myCarousel2" class="carousel slide">
 
 
 
-        <!-- Carousel items -->
-        <div class="carousel-inner">
-            @if (this.Model.Count > 0)
-            {
-                foreach (var products in this.Model)
+            <!-- Carousel items -->
+            <div class="carousel-inner">
+                @if (this.Model.Count > 0)
                 {
-                    if ((i % 2) == 0)
+                    foreach (var products in this.Model)
                     {
-                        if (j == 0)
+                        if ((i % 2) == 0)
                         {
-                            @Html.Raw("<div class='item active'>");
-                @Html.Raw("<div class='row'>");
+                            if (j == 0)
+                            {
+                                @Html.Raw("<div class='item active'>");
+                    @Html.Raw("<div class='row'>");
+                            }
+                            j++;
                         }
-                        j++;
+                        <div class="col-md-4">
+                            <a href="@Url.RouteUrl("Category", new { SeName = products.SeName })?p=pt" class="thumbnail">
+                                <img src="@products.DefaultPicture.ImageUrl" alt="Image" style="max-width:100%;" />
+                                <p class="thumb_title">@products.Name</p>
+                                <p class="thumb_date">@products.CurrencyCode. @products.ProductPrice.Price</p>
+                            </a>
+                        </div>
+                        if (((i + 1) % 2) == 0)
+                        {
+                            @Html.Raw("</div>");
+                    @Html.Raw("</div>");
+                                       if (this.Model.Count != count)
+                                   {
+                                    @Html.Raw("<div class='item'>");
+                                    @Html.Raw("<div class='row'>");
+                                   }
+                                   i = -1;
+                        }
+
+                        i++;
+                        count++;
                     }
-                    <div class="col-md-4">
-                        <a href="@Url.RouteUrl("Category", new { SeName = products.SeName })?p=pt" class="thumbnail">
-                            <img src="@products.DefaultPicture.ImageUrl" alt="Image" style="max-width:100%;" />
-                            <p class="thumb_title">@products.Name</p>
-                            <p class="thumb_date">@products.CurrencyCode. @products.ProductPrice.Price</p>
-                        </a>
-                    </div>
-                    if (((i + 1) % 2) == 0)
-                    {
-                        @Html.Raw("</div>");
-                @Html.Raw("</div>");
-                @Html.Raw("<div class='item'>");
-                @Html.Raw("<div class='row'>");
-                                              i = -1;
-                    }
-                    i++;
                 }
-            }
-            else
-            {
-                @Html.Raw("<div class='item active'>");
-                @Html.Raw("<div class='row'>");
-            }
-            @Html.Raw("</div>")
-            @Html.Raw("</div>")
-        </div><!--/carousel-inner-->
+                else
+                {
+                    @Html.Raw("<div class='item active'>");
+                    @Html.Raw("<div class='row'>");
+                }
+                @if (this.Model.Count > count)
+                {
+                @Html.Raw("</div>")
+                @Html.Raw("</div>")
+                }
+            </div><!--/carousel-inner-->
 
-        <a class="left carousel-control" href="#myCarousel2" data-slide="prev">‹</a>
-        <a class="right carousel-control" href="#myCarousel2" data-slide="next">›</a>
-    </div><!--/myCarousel-->
-}
-else
-{
-    <div>
-        <img src="~/Images/header5.jpg" width="550" height="240"/>
-    </div> 
-}
+            <a class="left carousel-control" href="#myCarousel2" data-slide="prev">‹</a>
+            <a class="right carousel-control" href="#myCarousel2" data-slide="next">›</a>
+        </div><!--/myCarousel-->
+    }
+    else
+    {
+        <div>
+            <img src="~/Images/header5.jpg" width="550" height="240" />
+        </div>
+    }
 </div>
-

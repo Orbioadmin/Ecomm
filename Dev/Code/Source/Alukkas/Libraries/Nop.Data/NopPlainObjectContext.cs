@@ -311,6 +311,7 @@ namespace Nop.Data
                 
                     //close up the reader, we're done saving results
                     reader.Close();
+                    connection.Close();
                     return result;
                 }
 
