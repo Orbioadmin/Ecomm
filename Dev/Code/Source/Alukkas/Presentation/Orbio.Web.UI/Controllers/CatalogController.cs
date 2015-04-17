@@ -287,7 +287,7 @@ namespace Orbio.Web.UI.Controllers
         public ActionResult Product(ProductDetailModel product, FormCollection formCollection)
         {
             var cartType = ShoppingCartType.None;
-
+             
             if (formCollection["Buy"] != null)
             {
                 cartType = ShoppingCartType.ShoppingCart;
@@ -296,16 +296,22 @@ namespace Orbio.Web.UI.Controllers
             {
                 cartType = ShoppingCartType.Wishlist;
             }
-            if (TempData.ContainsKey("product"))
-            {
-                TempData.Remove("product");
+            else
+            {               
+                var pvavElement = (from k in formCollection.AllKeys
+                                   where k.StartsWith("pvav_")
+                                   select k).FirstOrDefault();
+                if (!string.IsNullOrEmpty(pvavElement))
+                {
+                    TempData.AddTempData("pvavElement", pvavElement);
+                }
             }
-            TempData.Add("product", product);
-            if (TempData.ContainsKey("cartType"))
-            {
-                TempData.Remove("cartType");
-            }
-            TempData.Add("cartType", cartType);
+         
+            TempData.AddTempData("product", product);
+
+            TempData.AddTempData("cartType", cartType);           
+ 
+            
             return RedirectToRoute("Category", new { p = "pt", seName = product.SeName });
         }
 
@@ -324,90 +330,88 @@ namespace Orbio.Web.UI.Controllers
                 TempData.Remove("product");
                 TempData.Remove("cartType");
                 int selectedquantity = Convert.ToInt32(selectedProduct.SelectedQuantity);
-                var errorString = string.Empty;
-                if (selectedProduct.ProductVariantAttributes.Count > 0)
-                {
+               
 
-                    errorString = selectedProduct.ProductVariantAttributes.GetProductVariantErrors(model.ProductVariantAttributes);
-                }
-
-                if (selectedquantity < model.OrderMinimumQuantity || selectedquantity > model.OrderMaximumQuantity)
-                {
-                    errorString += "Select a quantity between " + model.OrderMinimumQuantity + " and " + model.OrderMaximumQuantity;
-                }
-
-                /*selected product attribute varient value*/
-                string selectedAttributes = string.Empty;
-                int count = 0;
-                int selectedAttributeId = 1;
-                foreach (var attribute in selectedProduct.ProductVariantAttributes)
-                {
-                    switch (attribute.AttributeControlType)
-                    {
-                        case Orbio.Core.Domain.Catalog.AttributeControlType.TableBlock:
-                            {
-                                if (TempData.ContainsKey("pvaid"))
-                                {
-                                    selectedAttributeId = int.Parse(TempData["pvaid"].ToString());
-                                    selectedAttributes = AddCartProductAttribute(selectedAttributes,
-                                               attribute, selectedAttributeId.ToString());
-                                    TempData.Remove("pvaid");
-                                }
-                                else if (TempData.ContainsKey("pvaidDefault"))
-                                {
-                                    selectedAttributeId = int.Parse(TempData["pvaidDefault"].ToString());
-                                    selectedAttributes = AddCartProductAttribute(selectedAttributes,
-                                               attribute, selectedAttributeId.ToString());
-                                    TempData.Remove("pvaidDefault");
-                                }
-                                else
-                                {
-                                    foreach (var value in attribute.Values)
-                                    {
-                                        int maxdisplayorder = 0;
-                                        int i = 0;
-                                        string name = "";
-                                        if (value.DisplayOrder > maxdisplayorder)
-                                        {
-                                            name = value.Name;
-                                            maxdisplayorder = value.DisplayOrder;
-                                        }
-                                        if (value.Id != 0)
-                                        {
-                                            if (value.Name != name && i == 0)
-                                            {
-                                                selectedAttributes = string.Empty;
-                                                selectedAttributeId = int.Parse(value.Id.ToString());
-                                                selectedAttributes = AddCartProductAttribute(selectedAttributes,
-                                                           attribute, selectedAttributeId.ToString());
-                                                i++;
-                                            }
-                                            if (TempData.ContainsKey("pvaid"))
-                                            {
-                                                TempData.Remove("pvaid");
-                                            }
-                                            //else
-                                            TempData.Add("pvaid", value.Id);
-                                        }
-                                        if (value.Name == name && i == 0)
-                                        {
-                                            selectedAttributes = string.Empty;
-                                            selectedAttributeId = int.Parse(value.Id.ToString());
-                                            selectedAttributes = AddCartProductAttribute(selectedAttributes,
-                                                       attribute, selectedAttributeId.ToString());
-                                        }
-                                    }
-                                }
-                                break;
-                            }
-                    }
-                    count++;
-                }
-
+                model.ProductVariantAttributes.ValidateProductVariantAttributes(selectedProduct.ProductVariantAttributes, TempData["pvavElement"]==null?null:TempData["pvavElement"].ToString());
+                //if (selectedCartType == ShoppingCartType.ShoppingCart || selectedCartType == ShoppingCartType.Wishlist)
+                //{
+                //    /*selected product attribute varient value*/
+                //    string selectedAttributes = string.Empty;
+                //    int count = 0;
+                //    int selectedAttributeId = 1;
+                //    foreach (var attribute in selectedProduct.ProductVariantAttributes)
+                //    {
+                //        switch (attribute.AttributeControlType)
+                //        {
+                //            case Orbio.Core.Domain.Catalog.AttributeControlType.TableBlock:
+                //                {
+                //                    if (TempData.ContainsKey("pvaid"))
+                //                    {
+                //                        selectedAttributeId = int.Parse(TempData["pvaid"].ToString());
+                //                        selectedAttributes = AddCartProductAttribute(selectedAttributes,
+                //                                   attribute, selectedAttributeId.ToString());
+                //                        TempData.Remove("pvaid");
+                //                    }
+                //                    else if (TempData.ContainsKey("pvaidDefault"))
+                //                    {
+                //                        selectedAttributeId = int.Parse(TempData["pvaidDefault"].ToString());
+                //                        selectedAttributes = AddCartProductAttribute(selectedAttributes,
+                //                                   attribute, selectedAttributeId.ToString());
+                //                        TempData.Remove("pvaidDefault");
+                //                    }
+                //                    else
+                //                    {
+                //                        foreach (var value in attribute.Values)
+                //                        {
+                //                            int maxdisplayorder = 0;
+                //                            int i = 0;
+                //                            string name = "";
+                //                            if (value.DisplayOrder > maxdisplayorder)
+                //                            {
+                //                                name = value.Name;
+                //                                maxdisplayorder = value.DisplayOrder;
+                //                            }
+                //                            if (value.Id != 0)
+                //                            {
+                //                                if (value.Name != name && i == 0)
+                //                                {
+                //                                    selectedAttributes = string.Empty;
+                //                                    selectedAttributeId = int.Parse(value.Id.ToString());
+                //                                    selectedAttributes = AddCartProductAttribute(selectedAttributes,
+                //                                               attribute, selectedAttributeId.ToString());
+                //                                    i++;
+                //                                }
+                //                                if (TempData.ContainsKey("pvaid"))
+                //                                {
+                //                                    TempData.Remove("pvaid");
+                //                                }
+                //                                //else
+                //                                TempData.Add("pvaid", value.Id);
+                //                            }
+                //                            if (value.Name == name && i == 0)
+                //                            {
+                //                                selectedAttributes = string.Empty;
+                //                                selectedAttributeId = int.Parse(value.Id.ToString());
+                //                                selectedAttributes = AddCartProductAttribute(selectedAttributes,
+                //                                           attribute, selectedAttributeId.ToString());
+                //                            }
+                //                        }
+                //                    }
+                //                    break;
+                //                }
+                //        }
+                //        count++;
+                //    }
+                //}
+              
                 if (selectedCartType == ShoppingCartType.ShoppingCart)
                 {
+                   
+                    var errorString = ValidateProduct(model, selectedProduct, selectedquantity);
+
                     if (string.IsNullOrEmpty(errorString))
                     {
+                        var selectedAttributes = GetSelectedAttributeXml(model);
                         shoppingCartService.AddCartItem("add", selectedCartType, 0, curCustomer.Id, selectedProduct.Id, selectedAttributes, Convert.ToInt32(selectedProduct.SelectedQuantity));
 
                         ViewBag.Sucess = "Item added to the Cart";
@@ -424,7 +428,7 @@ namespace Orbio.Web.UI.Controllers
                 }
                 else if (selectedCartType == ShoppingCartType.Wishlist)
                 {
-
+                    var selectedAttributes = GetSelectedAttributeXml(model);
                     string result = shoppingCartService.AddWishlistItem("addWishList", selectedCartType, 0, curCustomer.Id, selectedProduct.Id, selectedAttributes, Convert.ToInt32(selectedProduct.SelectedQuantity));
 
                     ViewBag.Sucess = "Item added to the WishList";
@@ -441,25 +445,25 @@ namespace Orbio.Web.UI.Controllers
 
                 else
                 {
-                    model.ProductVariantAttributes.ValidateProductVariantAttributes(selectedProduct.ProductVariantAttributes);
+                    UpdateProductPrice(model);
                     //add/substract price
-                    int attr_count = 0;
-                    int value_count = 0;
-                    foreach (var prod_attribute in model.ProductVariantAttributes)
-                    {
-                        foreach (var values in prod_attribute.Values)
-                        {
-                            if (selectedAttributeId == values.Id)
-                            {
-                                double subtotal = double.Parse(model.ProductPrice.Price) + double.Parse(values.PriceAdjustment);
-                                model.ProductPrice.Price = subtotal.ToString();
-                                string pvavliid = string.Format("liProductVariantAttributes_{0}__Values_{1}__Id", attr_count, value_count);
-                                ViewData["productvariantid"] = pvavliid;
-                            }
-                            value_count++;
-                        }
-                        attr_count++;
-                    }
+                    //int attr_count = 0;
+                    //int value_count = 0;
+                    //foreach (var prod_attribute in model.ProductVariantAttributes)
+                    //{
+                    //    foreach (var values in prod_attribute.Values)
+                    //    {
+                    //        if (selectedAttributeId == values.Id)
+                    //        {
+                    //            double subtotal = double.Parse(model.ProductPrice.Price) + double.Parse(values.PriceAdjustment);
+                    //            model.ProductPrice.Price = subtotal.ToString();
+                    //            string pvavliid = string.Format("liProductVariantAttributes_{0}__Values_{1}__Id", attr_count, value_count);
+                    //            ViewData["productvariantid"] = pvavliid;
+                    //        }
+                    //        value_count++;
+                    //    }
+                    //    attr_count++;
+                    //}
                 }
             }
 
@@ -471,42 +475,94 @@ namespace Orbio.Web.UI.Controllers
             }
             else
             {
+                model.ProductVariantAttributes.SetIsPreSelected();
+                UpdateProductPrice(model);
                 //var attributes = (from prod_attribute in model.ProductVariantAttributes
                 //                  select prod_attribute).ToList().FirstOrDefault();
-                int maxdisplayorder = 0;
-                string name = "";
-                bool ispreselected;
-                int attr_count = 0;
-                int value_count = 0;
-                foreach (var attributes in model.ProductVariantAttributes)
-                {
-                    foreach (var value in attributes.Values)
-                    {
-                        if (value.DisplayOrder > maxdisplayorder)
-                        {
-                            maxdisplayorder = value.DisplayOrder;
-                            name = value.Name;
-                            ispreselected = value.IsPreSelected;
-                            if (ispreselected)
-                            {
-                                if (TempData.ContainsKey("pvaidDefault"))
-                                {
-                                    TempData.Remove("pvaidDefault");
-                                }
-                                TempData.Add("pvaidDefault", value.Id);
-                                ViewBag.name = name;
-                                model.ProductPrice.Price = (Convert.ToDouble(value.PriceAdjustment) + Convert.ToDouble(model.ProductPrice.Price)).ToString();
-                                string pvavliid = string.Format("liProductVariantAttributes_{0}__Values_{1}__Id", attr_count, value_count);
-                                ViewData["productvariantid"] = pvavliid;
-                            }
-                        }
-                        value_count++;
-                    }
-                    attr_count++;
-                }
+                //int maxdisplayorder = 0;
+                //string name = "";
+                //bool ispreselected;
+                //int attr_count = 0;
+                //int value_count = 0;
+                //foreach (var attributes in model.ProductVariantAttributes)
+                //{
+                //    foreach (var value in attributes.Values)
+                //    {
+                //        if (value.DisplayOrder > maxdisplayorder)
+                //        {
+                //            maxdisplayorder = value.DisplayOrder;
+                //            name = value.Name;
+                //            ispreselected = value.IsPreSelected;
+                //            if (ispreselected)
+                //            {
+                //                if (TempData.ContainsKey("pvaidDefault"))
+                //                {
+                //                    TempData.Remove("pvaidDefault");
+                //                }
+                //                TempData.Add("pvaidDefault", value.Id);
+                //                ViewBag.name = name;
+                //                model.ProductPrice.Price = (Convert.ToDouble(value.PriceAdjustment) + Convert.ToDouble(model.ProductPrice.Price)).ToString();
+                //                string pvavliid = string.Format("liProductVariantAttributes_{0}__Values_{1}__Id", attr_count, value_count);
+                //                ViewData["productvariantid"] = pvavliid;
+                //            }
+                //        }
+                //        value_count++;
+                //    }
+                //    attr_count++;
+                //}
             }
             webHelper.RemoveQueryFromPath(ControllerContext.HttpContext, new List<string> { { "spec" }, { "selectedQty" } });
             return View(model);
+        }
+
+        private string GetSelectedAttributeXml(ProductDetailModel model)
+        {
+            var selectedAttributes = string.Empty;
+            var selectedPvas = (from pva in model.ProductVariantAttributes
+                                from pvav in pva.Values
+                                where pvav.IsPreSelected == true
+                                select new { Pva = pva, PvavId = pvav.Id }).ToList();
+            if (selectedPvas.Count > 0)
+            {
+                foreach (var spva in selectedPvas)
+                {
+                    selectedAttributes = AddCartProductAttribute(selectedAttributes, spva.Pva, spva.PvavId.ToString());
+                }
+            }
+            return selectedAttributes;
+        }
+
+        private static void UpdateProductPrice(ProductDetailModel model)
+        {
+            var pvValues = (from pva in model.ProductVariantAttributes
+                            from pvav in pva.Values
+                            where pvav.IsPreSelected == true
+                            select pvav).ToList();
+            if (pvValues.Count > 0)
+            {
+                foreach (var pvav in pvValues)
+                {
+                    model.ProductPrice.Price = (Convert.ToDouble(pvav.PriceAdjustment) + Convert.ToDouble(model.ProductPrice.Price)).ToString();
+                }
+                //string pvavliid = string.Format("liProductVariantAttributes_{0}__Values_{1}__Id", attr_count, value_count);
+                //ViewData["productvariantid"] = pvavliid;
+            }
+        }
+
+        private static string ValidateProduct(ProductDetailModel model, ProductDetailModel selectedProduct, int selectedquantity)
+        {
+            var errorString = string.Empty;
+            if (selectedProduct.ProductVariantAttributes.Count > 0)
+            {
+
+                errorString = selectedProduct.ProductVariantAttributes.GetProductVariantErrors(model.ProductVariantAttributes);
+            }
+
+            if (selectedquantity < model.OrderMinimumQuantity || selectedquantity > model.OrderMaximumQuantity)
+            {
+                errorString += "Select a quantity between " + model.OrderMinimumQuantity + " and " + model.OrderMaximumQuantity;
+            }
+            return errorString;
         }
 
         [ChildActionOnly]
@@ -858,8 +914,20 @@ namespace Orbio.Web.UI.Controllers
                           }).ToList();
 
             return rating;
+        }      
+
+
+    }
+
+    public static class TempDataExtension
+    {
+        public static void AddTempData(this TempDataDictionary tempData, string key, object value)
+        {
+            if (tempData.ContainsKey(key))
+            {
+                tempData.Remove(key);
+            }
+            tempData.Add(key, value);
         }
-
-
     }
 }

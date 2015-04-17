@@ -1,8 +1,10 @@
 ﻿@model List<Orbio.Web.UI.Models.Catalog.ProductVariantAttributeModel>
 @{
     var count = 0;
+   
 foreach(var pva in this.Model)
 {
+    var pvavScriptsIds = new List<string>();
     var pvaId = string.Format("ProductVariantAttributes[{0}].Id", count);
     var pvaTextPrompt = string.Format("ProductVariantAttributes[{0}].TextPrompt", count);
     var pvaAttributeControlType = string.Format("ProductVariantAttributes[{0}].AttributeControlType", count);
@@ -14,7 +16,8 @@ foreach(var pva in this.Model)
                     <ul class="size_li clearfix">
                        
                         <li class="no_bg">@pva.TextPrompt :  @Html.Hidden(pvaId, pva.Id)  @Html.Hidden(pvaTextPrompt, pva.TextPrompt) @Html.Hidden(pvaAttributeControlType, pva.AttributeControlType) </li>
-                        @{var valueCount = 0;
+                        @{
+                        var valueCount = 0;
                          foreach(var pvav in pva.Values){
                              var pvavId = string.Format("ProductVariantAttributes[{0}].Values[{1}].Id", count, valueCount);
                              var pvavAnchId = string.Format("ProductVariantAttributes_{0}__Values_{1}__Id", count, valueCount);
@@ -25,21 +28,40 @@ foreach(var pva in this.Model)
                              }
                              else
                              {*@
-                            <li id="@pvavAnchIdli" class="attrvalue"> @Html.Hidden(pvavId, (pvav.IsPreSelected?pvav.Id:0))<a id="@pvavAnchId" data-id="@Html.Id(pvavId)" data-val="@pvav.Id" href="#"><input type="submit" style="outline:none;width:100%;height:100%; border-style:none;background:none" name="@pvav.Id" value="@pvav.Name"/></a></li>
-                        //}
+                            <li id="@pvavAnchIdli" class="@(pvav.IsPreSelected?"select":"attrvalue")"> @Html.Hidden(pvavId, (pvav.IsPreSelected ? pvav.Id : 0))
+                                <a id="@pvavAnchId"  data-id="@Html.Id(pvavId)" data-val="@pvav.Id"  href="#"><input type="submit" style="outline:none;width:100%;height:100%; border-style:none;background:none" name="@string.Format("pvav_{0}_{1}", pva.Id, pvav.Id)" value="@pvav.Name"/></a></li>
+                        //}  
+                             pvavScriptsIds.Add(pvavAnchId);
                              valueCount++;
                          }
+                         if(pvavScriptsIds.Count>0){
+                            <script type="text/javascript">
+                                $(document).ready(function () {
+                                    //test
+                                    var pvavIds = "@pvavScriptsIds.Aggregate((p1, p2) => p1 + "," + p2)";
+                                    var pvavIdSplits = pvavIds.split(',');
+                                    for (var i = 0; i < pvavIdSplits.length; i++) {
+                                        $('#' + pvavIdSplits[i]).click(function () {
+                                            $('#' + $(this).attr('data-id')).val($(this).attr('data-val'));
+                                        });
+                                    }
+                                });
+                            </script>
                         }
+                         }
                         <li class="pull-right no_brd no_bg">
                             <a href="" class="size_guide">SIZE GUIDE</a>
                             <div class="Popup_img"><img src="images/Basic_image/Alukkas_-_Bangle_Size.png"></div>
                         </li>
                     </ul>
                 </div>
-            break;
+                         break;
+
+                         count++;
     }
-    count++;
+
 }
 }
+
   
     
