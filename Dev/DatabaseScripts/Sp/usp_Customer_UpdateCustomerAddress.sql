@@ -26,7 +26,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE PROCEDURE [dbo].[usp_Customer_UpdateCustomerAddress] (@sameAddress bit,
+Create PROCEDURE [dbo].[usp_Customer_UpdateCustomerAddress] (@sameAddress bit,
 @email varchar(50),
 @billFirstName varchar(50)=NULL,
 @billLastName varchar(50)=NULL,
