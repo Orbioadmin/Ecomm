@@ -39,6 +39,7 @@ namespace Orbio.Web.UI.Models.Catalog
 
         public static void ValidateProductVariantAttributes(this List<ProductVariantAttributeModel> orginalProductVariants, List<ProductVariantAttributeModel> selectedProductVariants, string productVariantId)
         {
+            //store to temp and make it null on match so that other product variant selection are mapped as it is
             var tempProductVariantId = productVariantId;
             foreach (var pva in orginalProductVariants)
             {                
@@ -56,6 +57,7 @@ namespace Orbio.Web.UI.Models.Catalog
                     }
                     else
                     {
+                        //match with ids from db and posted back from browser
                         var attrForProduct = (from sopva in selectedProductVariants
                                               from sopvav in sopva.Values
                                               where sopva.Id == pva.Id && sopvav.Id == pvav.Id
