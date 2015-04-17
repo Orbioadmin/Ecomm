@@ -18,7 +18,7 @@
                         <div class="top_inner_prod">
                             <ul class="nav nav-pills nav-justified thumbnail setup-panel">
                                 <li class="active">
-                                    <a href="#step-1">
+                                    <a id="step1" href="#step-1">
                                         <h4 class="list-group-item-heading">1</h4>
                                         <p class="list-group-item-text">Address</p>
                                     </a>
@@ -55,28 +55,28 @@
                                         <dl class="dl-horizontal">
                                             <dt>First Name<span style="color:red">*</span></dt>
                                             <dd>@Html.TextBoxFor(m => m.ShipFirstName)</dd>
-                                            <span id="shipfirstname" style="display:none" class="field-validation-error" data-valmsg-for="ShipFirstName" data-valmsg-replace="true">First Name Required</span>
+                                            <dd style="margin-left:10px"><span id="shipfirstname" style="display:none" class="field-validation-error" data-valmsg-for="ShipFirstName" data-valmsg-replace="true">First Name Required</span></dd>
                                             <dt>Last Name<span style="color:red">*</span></dt>
                                             <dd>@Html.TextBoxFor(m => m.ShipLastName)</dd>
-                                            <span id="shiplastname" style="display:none" class="field-validation-error" data-valmsg-for="ShipLastName" data-valmsg-replace="true">Last Name Required</span>
+                                            <dd style="margin-left:10px"><span id="shiplastname" style="display:none" class="field-validation-error" data-valmsg-for="ShipLastName" data-valmsg-replace="true">Last Name Required</span></dd>
                                             <dt>Phone<span style="color:red">*</span></dt>
                                             <dd>@Html.TextBoxFor(m => m.ShipPhone)</dd>
-                                            <span id="shipphone" style="display:none; padding-left:25px" class="field-validation-error" data-valmsg-for="ShipPhone" data-valmsg-replace="true">Phone Number Required</span>
+                                            <dd style="margin-left:10px"><span id="shipphone" style="display:none; padding-left:25px" class="field-validation-error" data-valmsg-for="ShipPhone" data-valmsg-replace="true">Phone Number Required</span></dd>
                                             <dt>Address<span style="color:red">*</span></dt>
                                             <dd>@Html.TextBoxFor(m => m.ShipAddress)</dd>
-                                            <span id="shipaddress" style="display:none; padding-right:10px" class="field-validation-error" data-valmsg-for="ShipAddress" data-valmsg-replace="true">Address Required</span>
+                                            <dd style="margin-left:10px"><span id="shipaddress" style="display:none; padding-right:10px" class="field-validation-error" data-valmsg-for="ShipAddress" data-valmsg-replace="true">Address Required</span></dd>
                                             <dt>City<span style="color:red">*</span></dt>
                                             <dd>@Html.TextBoxFor(m => m.ShipCity)</dd>
-                                            <span id="shipcity" style="display:none; padding-right:35px" class="field-validation-error" data-valmsg-for="ShipCity" data-valmsg-replace="true">City Required</span>
+                                            <dd style="margin-left:10px"><span id="shipcity" style="display:none; padding-right:35px" class="field-validation-error" data-valmsg-for="ShipCity" data-valmsg-replace="true">City Required</span></dd>
                                             <dt>Pincode<span style="color:red">*</span></dt>
                                             <dd>@Html.TextBoxFor(m => m.ShipPincode)</dd>
-                                            <span id="shippincode" style="display:none; padding-right:10px" class="field-validation-error" data-valmsg-for="ShipPincode" data-valmsg-replace="true">Pincode Required</span>
+                                            <dd style="margin-left:10px"><span id="shippincode" style="display:none; padding-right:10px" class="field-validation-error" data-valmsg-for="ShipPincode" data-valmsg-replace="true">Pincode Required</span></dd>
                                             <dt>State<span style="color:red">*</span></dt>
                                             <dd>@Html.TextBoxFor(m => m.ShipState)</dd>
-                                            <span id="shipstate" style="display:none; padding-right:25px" class="field-validation-error" data-valmsg-for="ShipState" data-valmsg-replace="true">State Required</span>
+                                            <dd style="margin-left:10px"><span id="shipstate" style="display:none; padding-right:25px" class="field-validation-error" data-valmsg-for="ShipState" data-valmsg-replace="true">State Required</span></dd>
                                             <dt>Country<span style="color:red">*</span></dt>
                                             <dd>@Html.TextBoxFor(m => m.ShipCountry)</dd>
-                                            <span id="shipcountry" style="display:none; padding-right:10px" class="field-validation-error" data-valmsg-for="ShipCountry" data-valmsg-replace="true">Country Required</span>
+                                            <dd style="margin-left:10px"><span id="shipcountry" style="display:none; padding-right:10px" class="field-validation-error" data-valmsg-for="ShipCountry" data-valmsg-replace="true">Country Required</span></dd>
                                         </dl>
                                     </div>
                                 </div>
@@ -94,28 +94,30 @@
                                             <dl class="dl-horizontal">
                                                 <dt>First Name<span style="color:red">*</span></dt>
                                                 <dd>@Html.TextBoxFor(m => m.BillFirstName, new { disabled = "disabled" })</dd>
-                                                <span id="billfirstname" style="display:none" class="field-validation-error" data-valmsg-for="BillFirstName" data-valmsg-replace="true">First Name Required</span>
+                                                <dd style="margin-left:10px">
+                                                    <span id="billfirstname" style="display:none" class="field-validation-error" data-valmsg-for="BillFirstName" data-valmsg-replace="true">First Name Required</span>
+                                                </dd>
                                                 <dt>Last Name<span style="color:red">*</span></dt>
                                                 <dd>@Html.TextBoxFor(m => m.BillLastName, new { disabled = "disabled" })</dd>
-                                                <span id="billlastname" style="display:none" class="field-validation-error" data-valmsg-for="BillLastName" data-valmsg-replace="true">Last Name Required</span>
+                                                <dd style="margin-left:10px"><span id="billlastname" style="display:none" class="field-validation-error" data-valmsg-for="BillLastName" data-valmsg-replace="true">Last Name Required</span></dd>
                                                 <dt>Phone<span style="color:red">*</span></dt>
                                                 <dd>@Html.TextBoxFor(m => m.BillPhone, new { disabled = "disabled" })</dd>
-                                                <span id="billphone" style="display:none; padding-left:25px" class="field-validation-error" data-valmsg-for="BillPhone" data-valmsg-replace="true">Phone Number Required</span>
+                                                <dd style="margin-left:10px"><span id="billphone" style="display:none; padding-left:25px" class="field-validation-error" data-valmsg-for="BillPhone" data-valmsg-replace="true">Phone Number Required</span></dd>
                                                 <dt>Address<span style="color:red">*</span></dt>
                                                 <dd>@Html.TextBoxFor(m => m.BillAddress, new { disabled = "disabled" })</dd>
-                                                <span id="billaddress" style="display:none; padding-right:10px" class="field-validation-error" data-valmsg-for="BillAddress" data-valmsg-replace="true">Address Required</span>
+                                                <dd style="margin-left:10px"><span id="billaddress" style="display:none; padding-right:10px" class="field-validation-error" data-valmsg-for="BillAddress" data-valmsg-replace="true">Address Required</span></dd>
                                                 <dt>City<span style="color:red">*</span></dt>
                                                 <dd>@Html.TextBoxFor(m => m.BillCity, new { disabled = "disabled" })</dd>
-                                                <span id="billcity" style="display:none; padding-right:35px" class="field-validation-error" data-valmsg-for="BillCity" data-valmsg-replace="true">City Required</span>
+                                                <dd style="margin-left:10px"><span id="billcity" style="display:none; padding-right:35px" class="field-validation-error" data-valmsg-for="BillCity" data-valmsg-replace="true">City Required</span></dd>
                                                 <dt>Pincode<span style="color:red">*</span></dt>
                                                 <dd>@Html.TextBoxFor(m => m.BillPincode, new { disabled = "disabled" })</dd>
-                                                <span id="billpincode" style="display:none; padding-right:10px" class="field-validation-error" data-valmsg-for="BillPincode" data-valmsg-replace="true">Pincode Required</span>
+                                                <dd style="margin-left:10px"><span id="billpincode" style="display:none; padding-right:10px" class="field-validation-error" data-valmsg-for="BillPincode" data-valmsg-replace="true">Pincode Required</span></dd>
                                                 <dt>State<span style="color:red">*</span></dt>
                                                 <dd>@Html.TextBoxFor(m => m.BillState, new { disabled = "disabled" })</dd>
-                                                <span id="billstate" style="display:none; padding-right:25px" class="field-validation-error" data-valmsg-for="BillState" data-valmsg-replace="true">State Required</span>
+                                                <dd style="margin-left:10px"><span id="billstate" style="display:none; padding-right:25px" class="field-validation-error" data-valmsg-for="BillState" data-valmsg-replace="true">State Required</span></dd>
                                                 <dt>Country<span style="color:red">*</span></dt>
                                                 <dd>@Html.TextBoxFor(m => m.BillCountry, new { disabled = "disabled" })</dd>
-                                                <span id="billcountry" style="display:none; padding-right:10px" class="field-validation-error" data-valmsg-for="BillCountry" data-valmsg-replace="true">Country Required</span>
+                                                <dd style="margin-left:10px"><span id="billcountry" style="display:none; padding-right:10px" class="field-validation-error" data-valmsg-for="BillCountry" data-valmsg-replace="true">Country Required</span></dd>
                                             </dl>
                                         }
                                         else
@@ -123,28 +125,28 @@
                                             <dl class="dl-horizontal">
                                                 <dt>First Name<span style="color:red">*</span></dt>
                                                 <dd>@Html.TextBoxFor(m => m.BillFirstName)</dd>
-                                                <span id="billfirstname" style="display:none" class="field-validation-error" data-valmsg-for="BillFirstName" data-valmsg-replace="true">First Name Required</span>
+                                                <dd style="margin-left:10px"><span id="billfirstname" style="display:none" class="field-validation-error" data-valmsg-for="BillFirstName" data-valmsg-replace="true">First Name Required</span></dd>
                                                 <dt>Last Name<span style="color:red">*</span></dt>
                                                 <dd>@Html.TextBoxFor(m => m.BillLastName)</dd>
-                                                <span id="billlastname" style="display:none" class="field-validation-error" data-valmsg-for="BillLastName" data-valmsg-replace="true">Last Name Required</span>
+                                                <dd style="margin-left:10px"><span id="billlastname" style="display:none" class="field-validation-error" data-valmsg-for="BillLastName" data-valmsg-replace="true">Last Name Required</span></dd>
                                                 <dt>Phone<span style="color:red">*</span></dt>
                                                 <dd>@Html.TextBoxFor(m => m.BillPhone)</dd>
-                                                <span id="billphone" style="display:none; padding-left:25px" class="field-validation-error" data-valmsg-for="BillPhone" data-valmsg-replace="true">Phone Number Required</span>
+                                                <dd style="margin-left:10px"><span id="billphone" style="display:none; padding-left:25px" class="field-validation-error" data-valmsg-for="BillPhone" data-valmsg-replace="true">Phone Number Required</span></dd>
                                                 <dt>Address<span style="color:red">*</span></dt>
                                                 <dd>@Html.TextBoxFor(m => m.BillAddress)</dd>
-                                                <span id="billaddress" style="display:none; padding-right:10px" class="field-validation-error" data-valmsg-for="BillAddress" data-valmsg-replace="true">Address Required</span>
+                                                <dd style="margin-left:10px"><span id="billaddress" style="display:none; padding-right:10px" class="field-validation-error" data-valmsg-for="BillAddress" data-valmsg-replace="true">Address Required</span></dd>
                                                 <dt>City<span style="color:red">*</span></dt>
                                                 <dd>@Html.TextBoxFor(m => m.BillCity)</dd>
-                                                <span id="billcity" style="display:none; padding-right:35px" class="field-validation-error" data-valmsg-for="BillCity" data-valmsg-replace="true">City Required</span>
+                                                <dd style="margin-left:10px"><span id="billcity" style="display:none; padding-right:35px" class="field-validation-error" data-valmsg-for="BillCity" data-valmsg-replace="true">City Required</span></dd>
                                                 <dt>Pincode<span style="color:red">*</span></dt>
                                                 <dd>@Html.TextBoxFor(m => m.BillPincode)</dd>
-                                                <span id="billpincode" style="display:none; padding-right:10px" class="field-validation-error" data-valmsg-for="BillPincode" data-valmsg-replace="true">Pincode Required</span>
+                                                <dd style="margin-left:10px"><span id="billpincode" style="display:none; padding-right:10px" class="field-validation-error" data-valmsg-for="BillPincode" data-valmsg-replace="true">Pincode Required</span></dd>
                                                 <dt>State<span style="color:red">*</span></dt>
                                                 <dd>@Html.TextBoxFor(m => m.BillState)</dd>
-                                                <span id="billstate" style="display:none; padding-right:25px" class="field-validation-error" data-valmsg-for="BillState" data-valmsg-replace="true">State Required</span>
+                                                <dd style="margin-left:10px"><span id="billstate" style="display:none; padding-right:25px" class="field-validation-error" data-valmsg-for="BillState" data-valmsg-replace="true">State Required</span></dd>
                                                 <dt>Country<span style="color:red">*</span></dt>
                                                 <dd>@Html.TextBoxFor(m => m.BillCountry)</dd>
-                                                <span id="billcountry" style="display:none; padding-right:10px" class="field-validation-error" data-valmsg-for="BillCountry" data-valmsg-replace="true">Country Required</span>
+                                                <dd style="margin-left:10px"><span id="billcountry" style="display:none; padding-right:10px" class="field-validation-error" data-valmsg-for="BillCountry" data-valmsg-replace="true">Country Required</span></dd>
                                             </dl>
                                         }
                                     </div>
@@ -326,6 +328,24 @@
 
             $('ul.setup-panel li.active a').trigger('click');
 
+            $('#step1').on('click', function (e) {
+                $("#shipfirstname").css("display", "none");
+                $("#shiplastname").css("display", "none");
+                $("#shipphone").css("display", "none");
+                $("#shipaddress").css("display", "none");
+                $("#shipcity").css("display", "none");
+                $("#shippincode").css("display", "none");
+                $("#shipstate").css("display", "none");
+                $("#shipcountry").css("display", "none");
+                $("#billfirstname").css("display", "none");
+                $("#billlastname").css("display", "none");
+                $("#billphone").css("display", "none");
+                $("#billaddress").css("display", "none");
+                $("#billcity").css("display", "none");
+                $("#billpincode").css("display", "none");
+                $("#billstate").css("display", "none");
+                $("#billcountry").css("display", "none");
+            });
 
             $('#activate-step-2').on('click', function (e) {
                 if (($("#ShipFirstName").val() == "") || ($("#ShipLastName").val() == "") || ($("#ShipPhone").val() == "" || $("#ShipPhone").val().length != 10)
@@ -337,9 +357,12 @@
                     if ($("#ShipFirstName").val() == "") {
                         $("#shipfirstname").css("display", "");
                     }
+                    else
+                    { $("#shipfirstname").css("display", "none"); }
                     if ($("#ShipLastName").val() == "") {
                         $("#shiplastname").css("display", "");
                     }
+                    else { $("#shiplastname").css("display", "none"); }
                     if ($("#ShipPhone").val() == "") {
                         $("#shipphone").html("Phone Number Required");
                         $("#shipphone").css("display", "");
@@ -348,52 +371,66 @@
                         $("#shipphone").html("Phone number is not valid");
                         $("#shipphone").css("display", "");
                     }
-
+                    else { $("#shipphone").css("display", "none"); }
                     if ($("#ShipAddress").val() == "") {
                         $("#shipaddress").css("display", "");
                     }
+                    else { $("#shipaddress").css("display", "none"); }
                     if ($("#ShipCity").val() == "") {
                         $("#shipcity").css("display", "");
                     }
+                    else { $("#shipcity").css("display", "none"); }
                     if ($("#ShipPincode").val() == "") {
                         $("#shippincode").css("display", "");
                     }
+                    else { $("#shippincode").css("display", "none"); }
                     if ($("#ShipState").val() == "") {
                         $("#shipstate").css("display", "");
                     }
+                    else { $("#shipstate").css("display", "none"); }
                     if ($("#ShipCountry").val() == "") {
                         $("#shipcountry").css("display", "");
                     }
+                    else { $("#shipcountry").css("display", "none"); }
 
                     if ($("#BillFirstName").val() == "") {
                         $("#billfirstname").css("display", "");
                     }
+                    else { $("#billfirstname").css("display", "none"); }
                     if ($("#BillLastName").val() == "") {
                         $("#billlastname").css("display", "");
                     }
+                    else { $("#billlastname").css("display", "none"); }
                     if ($("#BillPhone").val() == "") {
                         $("#billphone").html("Phone Number Required");
                         $("#billphone").css("display", "");
                     }
+
                     else if ($("#BillPhone").val().length != 10) {
                         $("#billphone").html("Phone number is not valid");
                         $("#billphone").css("display", "");
                     }
+                    else { $("#billphone").css("display", "none"); }
                     if ($("#BillAddress").val() == "") {
                         $("#billaddress").css("display", "");
                     }
+                    else { $("#billaddress").css("display", "none"); }
                     if ($("#BillCity").val() == "") {
                         $("#billcity").css("display", "");
                     }
+                    else { $("#billcity").css("display", "none"); }
                     if ($("#BillPincode").val() == "") {
                         $("#billpincode").css("display", "");
                     }
+                    else { $("#billpincode").css("display", "none"); }
                     if ($("#BillState").val() == "") {
                         $("#billstate").css("display", "");
                     }
+                    else { $("#billstate").css("display", "none"); }
                     if ($("#BillCountry").val() == "") {
                         $("#billcountry").css("display", "");
                     }
+                    else { $("#billcountry").css("display", "none"); }
 
                 }
                 else {
