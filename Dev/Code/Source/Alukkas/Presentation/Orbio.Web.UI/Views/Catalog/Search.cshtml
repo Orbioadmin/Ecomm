@@ -195,29 +195,7 @@
                .html(data.value.toFixed(3));
        });
     </script>
-<script>
-    var ShowSuccessMsg = function (msg) {
-        toastr.options = {
-            "closeButton": false,
-            "debug": false,
-            "newestOnTop": false,
-            "progressBar": false,
-            "positionClass": "toast-top-full-width",
-            "preventDuplicates": false,
-            "onclick": null,
-            "showDuration": "300",
-            "hideDuration": "1000",
-            "timeOut": "5000",
-            "extendedTimeOut": "1000",
-            "showEasing": "swing",
-            "hideEasing": "linear",
-            "showMethod": "fadeIn",
-            "hideMethod": "fadeOut"
-        }
 
-        toastr.success(msg);
-    }
-</script>
 <script>
     function addItemToCart(id) {
         //if (val == "delete") {
@@ -238,7 +216,7 @@
                         $("#Inner").css("display", "none");
                     }, 2000)
                     setTimeout(function () {
-                        ShowSuccessMsg("The item has been added to your shopping cart.");
+                        ShowSuccessMsg("The item added to your cart.");
                     }, 1000)
                     $(".cart_item").load('@(Url.Action("CartItem", "ShoppingCart"))');
                 }
@@ -269,7 +247,7 @@
                         $("#Inner").css("display", "none");
                     }, 2000)
                     setTimeout(function () {
-                        ShowSuccessMsg("The item has been added to your wishlist");
+                        ShowSuccessMsg("The item added to your wishlist");
                     }, 1000)
                 }
             }
