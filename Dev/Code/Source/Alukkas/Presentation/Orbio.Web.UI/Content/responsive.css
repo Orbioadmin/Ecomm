@@ -683,7 +683,7 @@ input.search_butt {left: 207px!important;}
 }
 
 @-moz-document url-prefix(){
-.select_text {left: 110px;}
+.select_text {left: 118px;}
 input.search_butt{left: 382px;}
 
 @media (min-width: 768px) and (max-width: 1000px) {

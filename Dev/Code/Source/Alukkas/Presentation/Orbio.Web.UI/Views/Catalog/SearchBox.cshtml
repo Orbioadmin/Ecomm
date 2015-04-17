@@ -19,24 +19,38 @@
 <script src="~/Scripts/jquery.js"></script>
 <script>
     $(document).ready(function () {
-    @*$("#drpcategorysearch").change(function () {
+        @*$("#drpcategorysearch").change(function () {
         var Search_Str = $(this).val();;
         var wid = $(this).width();
         $("#nav-search-in-content").text(Search_Str);
         });*@
-    $('#search_button').click(function(e){
-        e.preventDefault();
-        var url = "";
-        if ($("#drpcategorysearch").val() == "Search") {
-            url = $("#drpcategorysearch").val() + '?p=sr&q=' + $('#twotabsearchtextbox').val();
-        }
-        else {
-            url =  $("#drpcategorysearch").val() + '?p=ct&q=' + $('#twotabsearchtextbox').val();
-        }
-        window.location.href = window.location.origin +"/"+ url;
-        
+        $('#search_button').click(function (e) {
+            e.preventDefault();
+            var url = "";
+            if ($("#drpcategorysearch").val() == "Search") {
+                url = $("#drpcategorysearch").val() + '?p=sr&q=' + $('#twotabsearchtextbox').val();
+            }
+            else {
+                url = $("#drpcategorysearch").val() + '?p=ct&q=' + $('#twotabsearchtextbox').val();
+            }
+            window.location.href = window.location.origin + "/" + url;
 
-    });
+
+        });
+        $('#twotabsearchtextbox').keydown(function (e) {
+            if (e.keyCode == 13) {
+                e.preventDefault();
+                var url = "";
+                if ($("#drpcategorysearch").val() == "Search") {
+                    url = $("#drpcategorysearch").val() + '?p=sr&q=' + $('#twotabsearchtextbox').val();
+                }
+                else {
+                    url = $("#drpcategorysearch").val() + '?p=ct&q=' + $('#twotabsearchtextbox').val();
+                }
+                window.location.href = window.location.origin + "/" + url;
+            }
+
+        });
     });
 
 </script>

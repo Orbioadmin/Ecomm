@@ -230,6 +230,7 @@
         $('#myTabs a').click(function (e) {
             e.preventDefault()
             $(this).tab('show')
+
         });
 
         $('#edit').click(function (e) {
@@ -246,6 +247,9 @@
             $("#changepwd").css("display", "block");
             $('#edit').css("display", "none");
             $('#chpwd').css("display", "none");
+            $("#OldPassword").val("");
+            $("#NewPassword").val("");
+            $("#ConfirmNewPassword").val("");
         });
 
         $('#chpwds').click(function (e) {

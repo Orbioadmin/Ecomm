@@ -90,7 +90,7 @@ header .navbar{margin-bottom: 0;}
 .menu_desc li{float: left; padding: 8px 19px 7px 19px; height: 53px; }
 .menu_desc li a span{ color: #fff;}.menu_desc li.item_span a{color: #fff;}.menu_desc li.user a{color: #fff;}
 .menu_select{border: 1px #ccc solid; height: 24px; margin: 0; padding: 0; position: absolute; font-size: 12px;}
-.select_text{/*margin-left: -4px;*/ padding: 0 5px; width: 300px; border: 1px #ccc solid; position: absolute; left: 96px; height: 24px;  font-size: 12px;}
+.select_text{/*margin-left: -4px;*/ padding: 0 5px; width: 288px; border: 1px #ccc solid; position: absolute; left: 96px; height: 24px;  font-size: 12px;}
 input.search_butt {position: absolute;left: 371px; border-top: 1px #ccc solid; border-right: 1px #ccc solid;
 border-bottom: 1px #ccc solid; border-left: 0px #ccc solid;
  background: url("../images/Basic_image/image-sprites.png") no-repeat scroll -88px -220px #fff;
