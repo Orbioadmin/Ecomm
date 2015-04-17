@@ -39,7 +39,7 @@ INTO #temptablefilterIds FROM  [dbo].[nop_splitstring_to_table](@specificationFi
 INNER JOIN SpecificationAttributeOption SAO ON SAO.Id = FILTERS.data
 
 SELECT  * INTO #temptableproduct FROM  ufn_GetProductsBySearch(0,@keyWord)
-select *,ROW_NUMBER() OVER(ORDER BY CategoryId) as RowNumber into #temptableproducts from #temptableproduct
+
 
 declare @catIds VARCHAR(MAX) = (SELECT DISTINCT STUFF((SELECT distinct ',' + convert(varchar,p1.CategoryId)
          FROM #temptableproduct p1
@@ -73,7 +73,8 @@ END
    DELETE FROM #temptableproduct WHERE #temptableproduct.Price<@minPrice OR #temptableproduct.Price>@maxPrice
  END
 
-
+select *,ROW_NUMBER() OVER(ORDER BY CategoryId) as RowNumber into #temptableproducts from #temptableproduct
+ 
 DECLARE @XmlResult1 xml
 
 
