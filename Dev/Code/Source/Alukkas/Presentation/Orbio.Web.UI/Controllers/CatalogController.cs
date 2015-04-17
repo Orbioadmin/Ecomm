@@ -125,11 +125,12 @@ namespace Orbio.Web.UI.Controllers
             {
 
                 model = PrepareCategoryProductModelBySearch(seName, spec, keyWord, pageNumber, pageSize);
-                ViewBag.searchkeyword = " BY KEYWORD ''" + keyWord + "''";
+                ViewBag.searchkeyword = " ITEMS FOUND BY KEYWORD ''" + keyWord + "''";
             }
             else
             {
                 model = PrepareCategoryProductModelBySearch(seName, spec, "0", pageNumber, pageSize);
+                ViewBag.searchkeyword = " ITEMS FOUND";
                 ViewBag.Error = "Search term minimum length is 3 characters";
             }
             ViewBag.slug = seName; ViewBag.spec = spec; ViewBag.keyWord = keyWord;
