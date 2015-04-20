@@ -444,28 +444,28 @@ namespace Orbio.Web.UI.Controllers
                     }
                 }
 
-                else
-                {
-                    UpdateProductPrice(model);
-                    //add/substract price
-                    //int attr_count = 0;
-                    //int value_count = 0;
-                    //foreach (var prod_attribute in model.ProductVariantAttributes)
-                    //{
-                    //    foreach (var values in prod_attribute.Values)
-                    //    {
-                    //        if (selectedAttributeId == values.Id)
-                    //        {
-                    //            double subtotal = double.Parse(model.ProductPrice.Price) + double.Parse(values.PriceAdjustment);
-                    //            model.ProductPrice.Price = subtotal.ToString();
-                    //            string pvavliid = string.Format("liProductVariantAttributes_{0}__Values_{1}__Id", attr_count, value_count);
-                    //            ViewData["productvariantid"] = pvavliid;
-                    //        }
-                    //        value_count++;
-                    //    }
-                    //    attr_count++;
-                    //}
-                }
+                //else
+                //{
+                    
+                //    //add/substract price
+                //    //int attr_count = 0;
+                //    //int value_count = 0;
+                //    //foreach (var prod_attribute in model.ProductVariantAttributes)
+                //    //{
+                //    //    foreach (var values in prod_attribute.Values)
+                //    //    {
+                //    //        if (selectedAttributeId == values.Id)
+                //    //        {
+                //    //            double subtotal = double.Parse(model.ProductPrice.Price) + double.Parse(values.PriceAdjustment);
+                //    //            model.ProductPrice.Price = subtotal.ToString();
+                //    //            string pvavliid = string.Format("liProductVariantAttributes_{0}__Values_{1}__Id", attr_count, value_count);
+                //    //            ViewData["productvariantid"] = pvavliid;
+                //    //        }
+                //    //        value_count++;
+                //    //    }
+                //    //    attr_count++;
+                //    //}
+                //}
             }
 
             var queryString = new NameValueCollection(ControllerContext.HttpContext.Request.QueryString);
@@ -477,7 +477,7 @@ namespace Orbio.Web.UI.Controllers
             else
             {
                 model.ProductVariantAttributes.SetIsPreSelected();
-                UpdateProductPrice(model);
+                
                 //var attributes = (from prod_attribute in model.ProductVariantAttributes
                 //                  select prod_attribute).ToList().FirstOrDefault();
                 //int maxdisplayorder = 0;
@@ -512,6 +512,7 @@ namespace Orbio.Web.UI.Controllers
                 //    attr_count++;
                 //}
             }
+            UpdateProductPrice(model);
             webHelper.RemoveQueryFromPath(ControllerContext.HttpContext, new List<string> { { "spec" }, { "selectedQty" } });
             return View(model);
         }

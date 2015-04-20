@@ -39,31 +39,44 @@ namespace Orbio.Web.UI.Models.Catalog
 
         public static void ValidateProductVariantAttributes(this List<ProductVariantAttributeModel> orginalProductVariants, List<ProductVariantAttributeModel> selectedProductVariants, string productVariantId)
         {
-            //store to temp and make it null on match so that other product variant selection are mapped as it is
-            var tempProductVariantId = productVariantId;
+            ////store to temp and make it null on match so that other product variant selection are mapped as it is
+            if (!string.IsNullOrEmpty(productVariantId))
+            {
+                var selectedPva = (from pva in orginalProductVariants
+                                   from pvav in pva.Values
+                                   where string.Format("pvav_{0}_{1}", pva.Id, pvav.Id) == productVariantId
+                                   select new { pva = pva, pvav = pvav }).FirstOrDefault();
+                if (selectedPva != null)
+                {
+                    selectedPva.pva.ResetPreSelected();
+                    selectedPva.pvav.IsPreSelected = true;
+                }
+
+                var otherPvas = (from pva in orginalProductVariants                                
+                                 where  pva.Id != selectedPva.pva.Id
+                                 select pva).ToList();
+                SetProductVariantValues(otherPvas, selectedProductVariants);
+            }
+            else
+            {
+                SetProductVariantValues(orginalProductVariants, selectedProductVariants);
+            }
+        }
+
+        private static void SetProductVariantValues(List<ProductVariantAttributeModel> orginalProductVariants, List<ProductVariantAttributeModel> selectedProductVariants)
+        {
             foreach (var pva in orginalProductVariants)
-            {                
+            {
                 foreach (var pvav in pva.Values)
                 {
-                    if (!string.IsNullOrEmpty(tempProductVariantId))
-                    {
-                        var pvavId = string.Format("pvav_{0}_{1}", pva.Id, pvav.Id);
-                        if (pvavId == tempProductVariantId)
-                        {
-                            pva.ResetPreSelected();
-                            pvav.IsPreSelected = true;
-                            tempProductVariantId = null;
-                        }
-                    }
-                    else
-                    {
-                        //match with ids from db and posted back from browser
-                        var attrForProduct = (from sopva in selectedProductVariants
-                                              from sopvav in sopva.Values
-                                              where sopva.Id == pva.Id && sopvav.Id == pvav.Id
-                                              select sopvav).FirstOrDefault();
-                        pvav.IsPreSelected = (attrForProduct != null);
-                    }
+
+                    //match with ids from db and posted back from browser
+                    var attrForProduct = (from sopva in selectedProductVariants
+                                          from sopvav in sopva.Values
+                                          where sopva.Id == pva.Id && sopvav.Id == pvav.Id
+                                          select sopvav).FirstOrDefault();
+                    pvav.IsPreSelected = (attrForProduct != null);
+
                 }
             }
         }
