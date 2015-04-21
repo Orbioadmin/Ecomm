@@ -1851,7 +1851,7 @@ li input.search_butt{position: inherit; float:left;}
 
 #etalage{width:100%!important;}
 #etalage .etalage_thumb_image { width: 100% !important;}
-@media(min-width:480px){
+@media(max-width:480px){
 .review_news{padding:0 10px 10px 10px;}
 .disply_top .display_review h1{padding:10px;}
 ul.comment li{padding:10px 10px 20px!important;}
