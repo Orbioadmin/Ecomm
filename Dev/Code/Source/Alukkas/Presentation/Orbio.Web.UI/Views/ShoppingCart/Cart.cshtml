@@ -11,20 +11,21 @@
             <h1>MY SHOPPING CART</h1>
             @using (Html.BeginForm("Cart", "ShoppingCart", FormMethod.Post, new { Id = "formCartProduct" }))
             {
-                <table cellpadding="0" cellspacing="0" width="100%" class="shopping_table">
-                    <tr>
-                        <th width="150" class="item_table">Item</th>
-                        <th width="30%"></th>
-                        <th>Remove</th>
-                        <th>Quantity</th>
-                        <th>Item Price</th>
-                        <th>Total Price</th>
-                    </tr>
-                    @{
+                <div class="table-responsive">
+                    <table cellpadding="0" cellspacing="0" width="100%" class="shopping_table">
+                        <tr>
+                            <th width="150" class="item_table">Item</th>
+                            <th width="30%"></th>
+                            <th>Remove</th>
+                            <th>Quantity</th>
+                            <th>Item Price</th>
+                            <th>Total Price</th>
+                        </tr>
+                        @{
                 Html.RenderPartial("OrderSummary", this.Model.CartDetail);
-                    }
-                </table>
-
+                        }
+                    </table>
+                </div>
 
                 <div class="shop_promation">
                     <ul>
@@ -85,12 +86,12 @@
             <div class="row">
                 <div class="col-sm-8">
                     <a href="@Url.Action("ContinueShopping", "ShoppingCart")"><input type="submit" class="continue_shop" value="CONTINUE SHOPPING"></a>
-</div>
-                @if(ViewBag.subtotal !="0.00")
-                { 
-                <div class="col-sm-4">
-                    <a href="@Url.Action("Address","CheckOut")"><input type="submit" class="continue_check" value="PROCEED TO CHECKOUT"></a>
                 </div>
+                @if (ViewBag.subtotal != "0.00")
+                {
+                    <div class="col-sm-4">
+                        <a href="@Url.Action("Address","CheckOut")"><input type="submit" class="continue_check" value="PROCEED TO CHECKOUT"></a>
+                    </div>
                 }
                 else
                 {
@@ -98,7 +99,7 @@
                         <a href="@Url.Action("Address","CheckOut")"><input type="submit" class="continue_check" value="PROCEED TO CHECKOUT" disabled="disabled"></a>
                     </div>
                 }
-                
+
             </div>
         </div>
     </div>
