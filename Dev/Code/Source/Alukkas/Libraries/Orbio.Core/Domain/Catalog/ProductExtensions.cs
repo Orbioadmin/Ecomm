@@ -16,6 +16,7 @@ namespace Orbio.Core.Domain.Catalog
         /// <returns>The stock message</returns>
         public static string FormatStockMessage(this ProductDetail product)
         {
+            
             if (product == null)
                 throw new ArgumentNullException("product");
 
@@ -103,5 +104,57 @@ namespace Orbio.Core.Domain.Catalog
 
             return stockMessage;
         }
+
+        public static string CalculatePrice(this Product product)
+        {
+            IPriceCalculator priceCalculator = null;
+            if (product.ProductPriceDetail == null)
+            {
+                priceCalculator = new SimplePriceCalculator(product);
+            }
+            else
+            {
+                priceCalculator = new ComponentPriceCalculator(product);
+            }
+
+            return priceCalculator.FormattedPrice;
+        }
+       
     }
+
+
+    public interface IPriceCalculator { string FormattedPrice { get; } }
+
+    public class SimplePriceCalculator : IPriceCalculator
+    {
+        private Product product;
+
+        public SimplePriceCalculator(Product product)
+        {
+            this.product = product;
+        }
+
+        public string FormattedPrice
+        {
+            get { return product.Price.ToString("#,##0.00"); }
+        }
+    }
+
+    public class ComponentPriceCalculator : IPriceCalculator
+    {
+        private Product product;
+
+        public ComponentPriceCalculator(Product product)
+        {
+            this.product = product;
+        }
+
+        public string FormattedPrice
+        {
+            get {  throw new NotImplementedException(); }
+        }
+    }
+
+
+
 }

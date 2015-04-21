@@ -65,5 +65,22 @@ namespace Orbio.Core.Domain.Catalog
         [DataMember]
         public string SeName { get; set; }
 
+
+        /// <summary>
+        /// Gets or sets PriceUnit
+        /// </summary>
+        [DataMember]
+        public int PriceUnit { get; set; }
+
+        /// <summary>
+        /// Gets or sets MarketUnitPrice
+        /// </summary>
+        public decimal MarketUnitPrice { get; set; }
+
+        /// <summary>
+        /// Gets or sets ProductPriceDetail
+        /// </summary>
+        public ProductPriceDetail ProductPriceDetail { get; set; }
+
     }
 }

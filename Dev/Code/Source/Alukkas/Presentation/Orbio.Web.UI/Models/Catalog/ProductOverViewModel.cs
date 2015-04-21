@@ -32,9 +32,11 @@ namespace Orbio.Web.UI.Models.Catalog
             this.ViewPath = product.ViewPath;
             this.ImageRelativeUrl = product.ImageRelativeUrl;
             this.CurrencyCode = product.CurrencyCode;
-            this.ProductPrice.Price = product.Price.ToString("#,##0.00");
+            this.ProductPrice.Price = product.CalculatePrice();// product.Price.ToString("#,##0.00");
             this.ProductPrice.OldPrice = product.OldPrice.ToString("#,##0.00");
         }
+
+      
 
         
         public string ShortDescription { get; set; }
@@ -50,7 +52,7 @@ namespace Orbio.Web.UI.Models.Catalog
         //public IList<ProductSpecificationModel> SpecificationAttributeModels { get; set; }
         ////price
         //public ProductReviewOverviewModel ReviewOverviewModel { get; set; }
-
+       
 		#region Nested Classes
 
         public partial class ProductPriceModel

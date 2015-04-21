@@ -116,5 +116,6 @@ namespace Orbio.Core.Domain.Catalog
         /// </summary>
         [DataMember]
         public string AllowedQuantities { get; set; }
+
     }
 }

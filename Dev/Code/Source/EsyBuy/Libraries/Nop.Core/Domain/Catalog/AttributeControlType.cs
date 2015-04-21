@@ -40,7 +40,7 @@ namespace Nop.Core.Domain.Catalog
         /// <summary>
         /// Td blocks
         /// </summary>
-        TableBlock = 50
+        TableBlock = 50,
 
     }
 }
