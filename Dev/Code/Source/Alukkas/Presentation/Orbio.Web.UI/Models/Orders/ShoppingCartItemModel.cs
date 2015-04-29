@@ -26,7 +26,8 @@ namespace Orbio.Web.UI.Models.Orders
             //this.ImageRelativeUrl = productDetail.ImageRelativeUrl;
             //this.CurrencyCode = productDetail.CurrencyCode;
             //this.ProductPrice.Price = productDetail.Price.ToString("0.00");
-            this.TotalPrice = productDetail.TotalPrice.ToString("#,##0.00");
+            this.ProductPrice.Price = (productDetail.Price + productDetail.TotalPrice).ToString("#,##0.00");
+            this.TotalPrice = ((productDetail.Price+productDetail.TotalPrice)*productDetail.Quantity).ToString("#,##0.00");
             this.CartId = productDetail.CartId;
             //if (productDetail.ProductPictures != null && productDetail.ProductPictures.Count > 0)
             //{

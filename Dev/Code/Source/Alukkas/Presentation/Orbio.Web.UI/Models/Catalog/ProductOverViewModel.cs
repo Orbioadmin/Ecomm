@@ -32,6 +32,8 @@ namespace Orbio.Web.UI.Models.Catalog
             this.ViewPath = product.ViewPath;
             this.ImageRelativeUrl = product.ImageRelativeUrl;
             this.CurrencyCode = product.CurrencyCode;
+            this.GoldWeight = product.GoldWeight;
+            this.ProductUnit = product.ProductUnit;
             this.ProductPrice.Price = product.CalculatePrice();// product.Price.ToString("#,##0.00");
             this.ProductPrice.OldPrice = product.OldPrice.ToString("#,##0.00");
         }
@@ -44,6 +46,8 @@ namespace Orbio.Web.UI.Models.Catalog
        
         public string ImageRelativeUrl { get; set; }
         public string CurrencyCode { get; set; }
+        public decimal GoldWeight { get; set; }
+        public int ProductUnit { get; set; }
         //price
         public ProductPriceModel ProductPrice { get; set; }
         ////picture

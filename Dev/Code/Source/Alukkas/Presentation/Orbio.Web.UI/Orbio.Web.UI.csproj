@@ -385,6 +385,7 @@
     <Content Include="Images\Basic_image\overlay.png" />
     <Content Include="Images\Basic_image\plus-white.png" />
     <Content Include="Images\Basic_image\prev-arrow.png" />
+    <Content Include="Images\Basic_image\product_arrow.png" />
     <Content Include="Images\Basic_image\ratings-1.png" />
     <Content Include="Images\Basic_image\ratings-2.png" />
     <Content Include="Images\Basic_image\ratings-3.png" />
@@ -416,6 +417,7 @@
     <Content Include="Images\Basic_image\updates-image1.png" />
     <Content Include="Images\Basic_image\updates-image2.png" />
     <Content Include="Images\Basic_image\updates-image3.png" />
+    <Content Include="Images\Basic_image\user.png" />
     <Content Include="Images\Basic_image\white-bg.png" />
     <Content Include="Images\Basic_image\white-line.png" />
     <Content Include="Images\Basic_image\wishlist-button-bg.png" />
@@ -450,11 +452,17 @@
     <Content Include="Images\slider\1.jpg" />
     <Content Include="Images\slider\2.jpg" />
     <Content Include="Images\slider\3.jpg" />
+    <Content Include="Images\slider\Francis-Alukkas-banner1.jpg" />
     <Content Include="Images\slider\Francis-Alukkas-banner1.png" />
+    <Content Include="Images\slider\Francis-Alukkas-banner2.jpg" />
     <Content Include="Images\slider\Francis-Alukkas-banner2.png" />
+    <Content Include="Images\slider\Francis-Alukkas-banner3.jpg" />
     <Content Include="Images\slider\Francis-Alukkas-banner3.png" />
+    <Content Include="Images\slider\main-banner1.jpg" />
     <Content Include="Images\slider\main-banner1.png" />
+    <Content Include="Images\slider\shop-gold-diamond-image.jpg" />
     <Content Include="Images\slider\shop-gold-diamond-image.png" />
+    <Content Include="Images\slider\shop-gold-diamond-image1.jpg" />
     <Content Include="Images\slider\shop-gold-diamond-image1.png" />
     <Content Include="Images\Thumbnail\1.jpg" />
     <Content Include="Images\Thumbnail\1_tb.jpg" />
@@ -595,6 +603,8 @@
     <Content Include="Content\fonts\rupeefont.ttf" />
     <Content Include="Content\fonts\WebRupee.V2.0.eot" />
     <Content Include="Content\fonts\WebRupee.V2.0.ttf" />
+    <Content Include="Images\slider\Thumbs.db" />
+    <Content Include="Images\Thumbnail\Thumbs.db" />
     <None Include="Properties\PublishProfiles\Alukkas.pubxml" />
     <Content Include="Views\Catalog\Search.cshtml" />
     <Content Include="Views\Catalog\_productAttribute.cshtml" />

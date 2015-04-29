@@ -66,6 +66,7 @@ namespace Orbio.Web.UI.Controllers
             var curCustomer = workContext.CurrentCustomer;
             ShoppingCartType cartType = ShoppingCartType.ShoppingCart;
             var model = new ShoppingCartItemsModel(shoppingCartService.GetCartItems("select", 0, cartType, 0, curCustomer.Id, 0, 0));
+
             double subtotal = 0.00;
            
             foreach (var totalprice in model.CartDetail)

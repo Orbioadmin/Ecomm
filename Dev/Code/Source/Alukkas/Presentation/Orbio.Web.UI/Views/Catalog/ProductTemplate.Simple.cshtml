@@ -28,7 +28,7 @@
     </ol>
     <div class="row">
 
-        <div class="col-sm-6">
+        <div class="col-sm-5">
             <!--<img src="images/Basic_image/zoom.jpg" class="det_img" >-->
             @*<div class="zoom_slide">*@
             @*<a href="@this.Model.DefaultPicture.ImageUrl" title="@this.Model.Name"></a>
@@ -90,9 +90,12 @@
 
             </div>
         </div>
-        @using (Html.BeginForm("product", "catalog", new { Id = this.Model.Id, SeName = this.Model.SeName, cartType = Orbio.Core.Domain.Orders.ShoppingCartType.ShoppingCart }, FormMethod.Post, new { Id = "formProduct" }))
-        {
+
+<div class="col-sm-1"></div>
+
             <div class="col-sm-6">
+                    @using (Html.BeginForm("product", "catalog", new { Id = this.Model.Id, SeName = this.Model.SeName, cartType = Orbio.Core.Domain.Orders.ShoppingCartType.ShoppingCart }, FormMethod.Post, new { Id = "formProduct" }))
+        {
                 <div class="row res_det">
                     <div class="col-sm-6">
                         <div class="detail_descrip">
@@ -124,7 +127,7 @@
                     </div>
                 </div>
 
-                @{
+                {
             if (this.Model.ProductVariantAttributes != null)
             {
                 Html.RenderPartial("_productAttribute", this.Model.ProductVariantAttributes);
@@ -227,8 +230,9 @@
 
                         </ul><div class="clear"></div>
                     </div>
+                            }
                 </div>
-        }
+
     </div>
 </div>
 

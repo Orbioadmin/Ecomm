@@ -15,3 +15,23 @@
                                               
                         
                     </div>
+
+
+<script type="text/javascript">
+ 
+
+
+
+
+  (function($) {
+    
+  var allPanels = $('.brands-name').hide();
+    
+  $('.list_products .modern a').click(function() {
+    allPanels.slideUp();
+    $(this).parent().next().slideDown();
+    return false;
+  });
+
+})(jQuery);
+</script>

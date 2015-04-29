@@ -22,14 +22,20 @@
         @Html.Action("SearchBox", "Catalog")
         <div class=" collapse head_main in">
             <ul class="nav navbar-nav navbar-right">
-                @*<li class="cart_item"><a href="@Url.RouteUrl("ShoppingCart")">0 ITEMS <i class="mnu_item_icon"></i></a></li>*@
+                @*<li class="cart_item"><a href="@Url.RouteUrl("ShoppingCart")"><span>0 ITEMS</span> <i class="mnu_item_icon"></i></a></li>*@
                 <li class="cart_item">
                     @Html.Action("CartItem", "ShoppingCart")
                 </li>
-                <li>
+                <li class="guest">
                     <div class="dropdown">
                         <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                            Hi @ViewBag.UserName
+                            <img src="~/images/Basic_image/user.png">
+                            @if (workContext.CurrentCustomer.IsRegistered)
+                            {
+                                <span class="span-title">Hi @ViewBag.UserName</span>
+                            }
+                            else
+                            { <span class="span-title">Hi</span>}
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
@@ -47,16 +53,12 @@
                     </div>
                 </li>
             </ul>
-
         </div><!--/.nav-collapse -->
     </div>
 </div>
-
 <div class="second_menu">
     <div class="container">
-
         <div class="navbar navbar-default" role="navigation">
-
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -64,7 +66,6 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-
             </div>
             <div class="navbar-collapse collapse ">
                 <ul class="nav navbar-nav ">
@@ -74,10 +75,37 @@
                     <li><a href="">Blog</a></li>
                     <li><a href="@Url.RouteUrl("Category", new { SeName = "ContactUs" })?p=ft">Contact</a></li>
                 </ul>
-
             </div><!--/.nav-collapse -->
-
         </div>
-
     </div>
 </div>
+
+
+<script src="~/Scripts/jquery.js"></script>
+<script>
+    $(document).ready(function () {
+        @*$("#drpcategorysearch").change(function () {
+        var Search_Str = $(this).val();;
+        var wid = $(this).width();
+        $("#nav-search-in-content").text(Search_Str);
+        });*@
+        $('#search_button').click(function (e) {
+            e.preventDefault();
+            var url = "";
+            url = 'Search?p=sr&q=' + $('#twotabsearchtextbox').val();
+            window.location.href = window.location.origin + "/" + url;
+
+
+        });
+        $('#twotabsearchtextbox').keydown(function (e) {
+            if (e.keyCode == 13) {
+                e.preventDefault();
+                var url = "";
+                url = 'Search?p=sr&q=' + $('#twotabsearchtextbox').val();
+                window.location.href = window.location.origin + "/" + url;
+            }
+
+        });
+    });
+
+</script>

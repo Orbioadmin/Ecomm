@@ -16,7 +16,7 @@ namespace Orbio.Core.Domain.Catalog
         /// <returns>The stock message</returns>
         public static string FormatStockMessage(this ProductDetail product)
         {
-            
+
             if (product == null)
                 throw new ArgumentNullException("product");
 
@@ -33,24 +33,24 @@ namespace Orbio.Core.Domain.Catalog
                 //{
                 //    case BackorderMode.NoBackorders:
                 //        {
-                            if (product.StockQuantity > 0)
-                            {
-                                if (product.DisplayStockQuantity)
-                                {
-                                    //display "in stock" with stock quantity
-                                    stockMessage = string.Format("{0} in stock", product.StockQuantity);//localizationService.GetResource("Products.Availability.InStockWithQuantity")
-                                }
-                                else
-                                {
-                                    //display "in stock" without stock quantity
-                                    stockMessage = "In stock";//localizationService.GetResource("Products.Availability.InStock");
-                                }
-                            }
-                            else
-                            {
-                                //display "out of stock"
-                                stockMessage = "Out of stock"; // localizationService.GetResource("Products.Availability.OutOfStock");
-                            }
+                if (product.StockQuantity > 0)
+                {
+                    if (product.DisplayStockQuantity)
+                    {
+                        //display "in stock" with stock quantity
+                        stockMessage = string.Format("{0} in stock", product.StockQuantity);//localizationService.GetResource("Products.Availability.InStockWithQuantity")
+                    }
+                    else
+                    {
+                        //display "in stock" without stock quantity
+                        stockMessage = "In stock";//localizationService.GetResource("Products.Availability.InStock");
+                    }
+                }
+                else
+                {
+                    //display "out of stock"
+                    stockMessage = "Out of stock"; // localizationService.GetResource("Products.Availability.OutOfStock");
+                }
                 //        }
                 //        break;
                 //    case BackorderMode.AllowQtyBelow0:
@@ -108,7 +108,7 @@ namespace Orbio.Core.Domain.Catalog
         public static string CalculatePrice(this Product product)
         {
             IPriceCalculator priceCalculator = null;
-            if (product.ProductPriceDetail == null)
+            if (product.ProductPriceDetail.PriceComponents.Count == 0 && product.ProductPriceDetail.ProductComponents.Count == 0)
             {
                 priceCalculator = new SimplePriceCalculator(product);
             }
@@ -116,10 +116,9 @@ namespace Orbio.Core.Domain.Catalog
             {
                 priceCalculator = new ComponentPriceCalculator(product);
             }
-
             return priceCalculator.FormattedPrice;
         }
-       
+
     }
 
 
@@ -146,15 +145,39 @@ namespace Orbio.Core.Domain.Catalog
 
         public ComponentPriceCalculator(Product product)
         {
+            //Product component price total
+            var componentPriceTotal = (from componentPrice in product.ProductPriceDetail.ProductComponents
+                                       select componentPrice.UnitPrice).ToList().Sum();
+            //Product gold price
+            decimal goldRate = product.GoldWeight * ((product.ProductUnit * product.MarketUnitPrice / (product.PriceUnit)));
+
+            //Product price component total
+            decimal priceComponentTotal = 0;
+            foreach (var priceComponent in product.ProductPriceDetail.PriceComponents)
+            {
+                if (priceComponent.Price != null)
+                {
+                    priceComponentTotal += Convert.ToDecimal(priceComponent.Price);
+                }
+                else if (priceComponent.Percentage != null)
+                {
+                    priceComponentTotal += Convert.ToDecimal((goldRate * priceComponent.Percentage) / 100);
+                }
+                else if (priceComponent.ItemPrice != null)
+                {
+                    priceComponentTotal += Convert.ToDecimal(priceComponent.ItemPrice);
+                }
+            }
+            decimal productPrice = goldRate + componentPriceTotal + priceComponentTotal;
+            product.Price = productPrice;
             this.product = product;
         }
 
         public string FormattedPrice
         {
-            get {  throw new NotImplementedException(); }
+            get { return product.Price.ToString("#,##0.00"); }
         }
     }
-
 
 
 }

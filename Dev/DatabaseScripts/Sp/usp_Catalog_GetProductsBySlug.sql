@@ -95,7 +95,9 @@ AS TemplateViewPath, Category.PageSize,
 FOR XML PATH('Category'), ROOT('BreadCrumbs'),type)
 ,
  
-(select   *,ROW_NUMBER() OVER(ORDER BY PC.CategoryId) 
+(select   *,ROW_NUMBER() OVER(ORDER BY PC.CategoryId),[dbo].[ufn_GetProductPriceDetails](PC.Id),PC.[Weight] as 'GoldWeight',PC.ProductUnit as 'ProductUnit',
+(select value from [dbo].[Setting] where Name = 'Product.PriceUnit') as PriceUnit,
+(select value from [dbo].[Setting] where Name = 'Product.MarketUnitPrice') as MarketUnitPrice 
 FROM  #products PC  WHERE PC.CategoryId = Category.Id and PC.RowNum BETWEEN ((@pageNumber - 1) * @pageSize + 1) AND (@pageNumber * @pageSize)
 FOR XML PATH('Product'), ROOT('Products') , type)  from Category 
 LEFT JOIN CategoryTemplate CT ON Category.CategoryTemplateId = CT.Id  
@@ -118,7 +120,9 @@ AS TemplateViewPath, Category.PageSize,
 FOR XML PATH('Category'), ROOT('BreadCrumbs'),type)
 ,
  
-(select   *,ROW_NUMBER() OVER(ORDER BY PC.CategoryId) 
+(select   *,ROW_NUMBER() OVER(ORDER BY PC.CategoryId),[dbo].[ufn_GetProductPriceDetails](PC.Id),PC.[Weight] as 'GoldWeight',PC.ProductUnit as 'ProductUnit',
+(select value from [dbo].[Setting] where Name = 'Product.PriceUnit') as PriceUnit,
+(select value from [dbo].[Setting] where Name = 'Product.MarketUnitPrice') as MarketUnitPrice  
 FROM  #temptableproducts  PC   WHERE PC.CategoryId = Category.Id and PC.RowNumber BETWEEN ((@pageNumber - 1) * @pageSize + 1) AND (@pageNumber * @pageSize)
 FOR XML PATH('Product'), ROOT('Products') , type)  from Category 
 LEFT JOIN CategoryTemplate CT ON Category.CategoryTemplateId = CT.Id  
@@ -128,6 +132,7 @@ FOR XML PATH('CategoryProduct') )
 SELECT @XmlResult as XmlResult
 	end
 END  
+
 GO
 PRINT 'Created the procedure usp_Catalog_GetProductsBySlug'
 GO  

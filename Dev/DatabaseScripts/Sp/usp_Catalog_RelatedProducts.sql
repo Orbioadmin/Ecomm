@@ -45,7 +45,10 @@ DECLARE @currencyCode nvarchar(5)
 
 DECLARE @XmlResult1 xml
 
-SELECT @XmlResult1 = (select(select product.Id Id,product.Name Name,ur.Slug 'SeName',@currencyCode 'CurrencyCode', product.Price Price,(SELECT Pic.Id PictureId, PPM.DisplayOrder, Pic.RelativeUrl,Pic.MimeType , Pic.SeoFilename, Pic.IsNew FROM [dbo].[Product]  P INNER JOIN [dbo].[Product_Picture_Mapping] PPM ON PPM.ProductId = P.Id
+SELECT @XmlResult1 = (select(select product.Id Id,product.Name Name,ur.Slug 'SeName',@currencyCode 'CurrencyCode', product.Price Price,[dbo].[ufn_GetProductPriceDetails](product.Id),
+product.[Weight] as 'GoldWeight',product.ProductUnit as 'ProductUnit',
+(select value from [dbo].[Setting] where Name = 'Product.PriceUnit') as PriceUnit,
+(select value from [dbo].[Setting] where Name = 'Product.MarketUnitPrice') as MarketUnitPrice,(SELECT Pic.Id PictureId, PPM.DisplayOrder, Pic.RelativeUrl,Pic.MimeType , Pic.SeoFilename, Pic.IsNew FROM [dbo].[Product]  P INNER JOIN [dbo].[Product_Picture_Mapping] PPM ON PPM.ProductId = P.Id
 INNER JOIN [dbo].[Picture] Pic ON Pic.Id = PPM.PictureId WHERE P.Id = product.Id
 
 ORDER BY PPM.DisplayOrder FOR XML PATH ('ProductPicture'),ROOT('ProductPictures'), Type)
@@ -58,6 +61,7 @@ FOR XML PATH('RelatedProduct'))
 SELECT @XmlResult1 as XmlResult
 
 END
+
 
 GO
 PRINT 'Created the procedure usp_Catalog_RelatedProducts'

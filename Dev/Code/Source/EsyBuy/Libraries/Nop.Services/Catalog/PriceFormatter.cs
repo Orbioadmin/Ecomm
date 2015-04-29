@@ -69,7 +69,7 @@ namespace Nop.Services.Catalog
             {
                 if (!String.IsNullOrEmpty(targetCurrency.DisplayLocale))
                 {
-                    result = amount.ToString("C", new CultureInfo(targetCurrency.DisplayLocale));
+                    //result = amount.ToString("C", new CultureInfo(targetCurrency.DisplayLocale));
                 }
                 else
                 {

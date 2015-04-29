@@ -16,11 +16,11 @@
             foreach (var wishlist in this.Model)
             {
                 <tr>
-                    <td>
+                    <td data-title="Item">
                        
                         <a class="cartitem" href="@Url.RouteUrl("Category", new { SeName = wishlist.SeName })?p=pt"><img src="@wishlist.DefaultPicture.ImageUrl" width="120px" height="65px"></a>
                     </td>
-                    <td class="p_wish" style="text-align:left;padding-top:20px">
+                    <td data-title="Title" class="p_wish" style="text-align:left;padding-top:20px">
                         <a class="cartitem" href="@Url.RouteUrl("Category", new { SeName = wishlist.SeName })?p=pt">
                             @wishlist.Name
                         </a>
@@ -30,9 +30,9 @@
                             @attribute.TextPrompt <span>:</span>@attribute.Values[0].Name
                         }
                     </td>
-                    <td>@wishlist.ProductPrice.Price</td>
-                    <td><a href="@Url.Action("UpdateWishList", "Customer", new { itemId = wishlist.CartId, value = "delete" })"><img src="~/Images/Basic_image/trash-black.png" id="delete" /></a></td>
-                    <td><a href="@Url.Action("updatewishlist", "Customer", new { itemId = wishlist.CartId, value = "addtocart" })"><img src="~/Images/Basic_image/cart-yellow.png" /></a></td>
+                    <td data-title="Price">@wishlist.ProductPrice.Price</td>
+                    <td data-title="Remove"><a href="@Url.Action("UpdateWishList", "Customer", new { itemId = wishlist.CartId, value = "delete" })"><img src="~/Images/Basic_image/trash-black.png" id="delete" /></a></td>
+                    <td data-title="Add to cart"><a href="@Url.Action("updatewishlist", "Customer", new { itemId = wishlist.CartId, value = "addtocart" })"><img src="~/Images/Basic_image/cart-yellow.png" /></a></td>
 
 
                 </tr>

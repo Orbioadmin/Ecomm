@@ -94,6 +94,12 @@ namespace Orbio.Core.Domain.Catalog
          public string PictureUrl { get; set; }
 
          /// <summary>
+         /// Gets or sets ProductPriceDetail
+         /// </summary>
+         [DataMember]
+         public ProductPriceDetail ProductPriceDetail { get; set; }
+
+         /// <summary>
          /// Gets or sets the attribute value type
          /// </summary>
          public AttributeValueType AttributeValueType

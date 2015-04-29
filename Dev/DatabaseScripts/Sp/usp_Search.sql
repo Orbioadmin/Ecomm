@@ -73,8 +73,8 @@ END
    DELETE FROM #temptableproduct WHERE #temptableproduct.Price<@minPrice OR #temptableproduct.Price>@maxPrice
  END
 
-select *,ROW_NUMBER() OVER(ORDER BY CategoryId) as RowNumber into #temptableproducts from #temptableproduct
- 
+ select *,ROW_NUMBER() OVER(ORDER BY CategoryId) as RowNumber into #temptableproducts from #temptableproduct
+
 DECLARE @XmlResult1 xml
 
 
@@ -83,7 +83,9 @@ SELECT @XmlResult1 = (select @catIds 'CategoryId',(select count(*) FROM  #tempta
 inner join Category on PC.CategoryId = Category.Id
 where ','+@catIds+',' LIKE '%,'+CAST(Category.Id AS varchar)+',%'
 and ParentCategoryId=0) 'Totalcount',
-(select PC.CategoryId,PC.Id,PC.Name,PC.ShortDescription,PC.Price,PC.ViewPath,
+(select PC.CategoryId,PC.Id,PC.Name,PC.ShortDescription,PC.Price,[dbo].[ufn_GetProductPriceDetails](PC.Id),PC.[Weight] as 'GoldWeight',PC.ProductUnit as 'ProductUnit',
+(select value from [dbo].[Setting] where Name = 'Product.PriceUnit') as PriceUnit,
+(select value from [dbo].[Setting] where Name = 'Product.MarketUnitPrice') as MarketUnitPrice,PC.ViewPath,
 PC.CurrencyCode,PC.ImageRelativeUrl,PC.SeName,Pc.RowNumber  FROM  #temptableproducts  PC 
 inner join Category on PC.CategoryId = Category.Id and PC.RowNumber BETWEEN ((@pageNumber - 1) * @pageSize + 1) AND (@pageNumber * @pageSize)
 where ','+@catIds+',' LIKE '%,'+CAST(Category.Id AS varchar)+',%'
@@ -94,6 +96,7 @@ FOR XML PATH('Search') )
 SELECT @XmlResult1 as XmlResult
 
 END
+
 
 
 GO

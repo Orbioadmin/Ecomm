@@ -2,10 +2,12 @@
 
 @{
     var count = 0;
+    
     if(this.Model.Count > 0)
     {
     foreach (var scpd in this.Model)
     {
+        var valueCount = 0;
         var scpdr = string.Format("items[{0}].IsRemove", count);
         var scpdqu = string.Format("items[{0}].SelectedQuantity", count);
         var scpdId = string.Format("items[{0}].Id", count);
@@ -14,18 +16,24 @@
         var scpdQuantity = string.Format("items[{0}].SelectedQuantity", count);
         var scpdcartid = string.Format("items[{0}].CartId", count);
         <tr>
-            <td><a href="@Url.RouteUrl("Category", new { SeName = scpd.SeName })?p=pt"><img src="@scpd.DefaultPicture.ImageUrl" width="120px" height="65px"></a></td>
-            <td>
+            <td data-title="Item"><a href="@Url.RouteUrl("Category", new { SeName = scpd.SeName })?p=pt"><img src="@scpd.DefaultPicture.ImageUrl"></a></td>
+            <td data-title="Title">
                 <a class="cartitem" href="@Url.RouteUrl("Category", new { SeName = scpd.SeName })?p=pt">
                     @scpd.Name
                 </a><br />
                 @foreach (var attribute in scpd.ProductVariantAttributes)
                 {
-                    @attribute.TextPrompt <span>:</span>@attribute.Values[0].Name
+                    if (valueCount > 0)
+                    {
+                        <span>,</span>
+                    }
+                    @attribute.TextPrompt<span>:</span>
+                    @attribute.Values[valueCount].Name
+                    valueCount++;
                 }
             </td>
-            <td>@Html.CheckBox(scpdr, scpd.IsRemove)@*<input type="checkbox" name="Remove" value="@scpd.CartId" />*@</td>
-            <td>
+            <td data-title="Remove" class="remove-table">@Html.CheckBox(scpdr, scpd.IsRemove)@*<input type="checkbox" name="Remove" value="@scpd.CartId" />*@</td>
+            <td data-title="Quantity" class="quantity-table">
                 @*@{
                     var qtyList = new List<object>();
                     if (scpd.AllowedQuantities.Count > 0)
@@ -53,8 +61,8 @@
                 @*@Html.DropDownList(scpdqu, (IEnumerable<SelectListItem>)qtySelectList)*@
                 @Html.TextBox(scpdqu, scpd.SelectedQuantity, new { type = "Number", @class = "form-control", min = "1", Style = "width:40px;height: 23px;padding: 0 4px;border-radius: 2px;" })
                 @Html.Hidden(scpdRemove, scpd.IsRemove)  @Html.Hidden(scpdQuantity, scpd.SelectedQuantity) @Html.Hidden(scpdcartid, scpd.CartId)
-            <td>@scpd.CurrencyCode.@scpd.ProductPrice.Price @Html.Hidden(scpdId, scpd.Id)  @Html.Hidden(scpdTotalprice, scpd.TotalPrice)</td>
-            <td>@scpd.CurrencyCode.@scpd.TotalPrice @Html.Hidden(scpd.TotalPrice)</td>
+            <td data-title="Item Price">@scpd.CurrencyCode.@scpd.ProductPrice.Price @Html.Hidden(scpdId, scpd.Id)  @Html.Hidden(scpdTotalprice, scpd.TotalPrice)</td>
+            <td data-title="Total Price">@scpd.CurrencyCode.@scpd.TotalPrice @Html.Hidden(scpd.TotalPrice)</td>
         </tr>
                 count++;
                 }

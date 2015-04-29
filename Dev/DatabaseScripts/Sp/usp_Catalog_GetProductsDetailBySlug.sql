@@ -68,14 +68,20 @@ dbo.ufn_GetAllspecificationattributes(@productid),
 --productattributes
 (SELECT  PPM.Id , PPM.ProductAttributeId, CASE WHEN ISNULL(PPM.TextPrompt, '')<>'' THEN PPM.TextPrompt ELSE PA.Name END 
 AS TextPrompt, IsRequired, AttributeControlTypeId, (SELECT  PVA.Id, Name, ColorSquaresRgb, PriceAdjustment,
-IsPreSelected, DisplayOrder, PIC.RelativeUrl PictureUrl   FROM ProductVariantAttributeValue
+IsPreSelected, DisplayOrder, PIC.RelativeUrl PictureUrl,[dbo].[ufn_GetProductPriceDetailsByVarientValue](Product.Id) FROM ProductVariantAttributeValue
 PVA  LEFT OUTER JOIN Picture PIC ON PVA.PictureId = PIC.Id WHERE PVA.ProductVariantAttributeId = PPM.Id order by DisplayOrder 
 FOR XML PATH('ProductVariantAttributeValue'), ROOT('ProductVariantAttributeValues'), type)
 --, (SELECT * FROM ProductVariantAttributeCombination PVAC
 --WHERE PVAC.ProductId=product.Id FOR XML PATH('ProductVariantAttributeCombination'),TYPE)
  FROM Product_ProductAttribute_Mapping PPM
 INNER JOIN ProductAttribute PA ON PPM.ProductAttributeId = PA.Id
-WHERE PPM.ProductId = product.Id FOR XML PATH('ProductAttributeVariant'), ROOT('ProductAttributeVariants'), TYPE), OldPrice,
+WHERE PPM.ProductId = product.Id FOR XML PATH('ProductAttributeVariant'), ROOT('ProductAttributeVariants'), TYPE),
+--Product price details
+[dbo].[ufn_GetProductPriceDetails](@productid),
+[Weight] as 'GoldWeight',
+ProductUnit as 'ProductUnit',
+(select value from [dbo].[Setting] where Name = 'Product.PriceUnit') as PriceUnit,
+(select value from [dbo].[Setting] where Name = 'Product.MarketUnitPrice') as MarketUnitPrice,
  Delivery_date.Name as DeliveredIn, 
  pt.ViewPath, 
  @currencyCode as CurrencyCode,
@@ -99,6 +105,7 @@ FOR XML PATH('ProductDetail')
  SELECT @XmlResult as XmlResult
    
 END
+
 
 GO
 PRINT 'Created the procedure usp_Catalog_GetProductsDetailBySlug'
