@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\Catalog\Abstract\IPriceComponent.cs" />
     <Compile Include="Domain\Catalog\AssociatedProduct.cs" />
     <Compile Include="Domain\Catalog\AttributeControlType.cs" />
     <Compile Include="Domain\Catalog\AttributeValueType.cs" />

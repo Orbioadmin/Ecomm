@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Orbio.Core.Domain.Catalog.Abstract;
 
 namespace Orbio.Core.Domain.Catalog
 {
@@ -105,7 +106,7 @@ namespace Orbio.Core.Domain.Catalog
             return stockMessage;
         }
 
-        public static string CalculatePrice(this Product product)
+        public static string CalculatePrice(this IPriceComponent product)
         {
             IPriceCalculator priceCalculator = null;
             if (product.ProductPriceDetail.PriceComponents.Count == 0 && product.ProductPriceDetail.ProductComponents.Count == 0)
@@ -126,9 +127,9 @@ namespace Orbio.Core.Domain.Catalog
 
     public class SimplePriceCalculator : IPriceCalculator
     {
-        private Product product;
+        private IPriceComponent product;
 
-        public SimplePriceCalculator(Product product)
+        public SimplePriceCalculator(IPriceComponent product)
         {
             this.product = product;
         }
@@ -141,9 +142,9 @@ namespace Orbio.Core.Domain.Catalog
 
     public class ComponentPriceCalculator : IPriceCalculator
     {
-        private Product product;
+        private IPriceComponent product;
 
-        public ComponentPriceCalculator(Product product)
+        public ComponentPriceCalculator(IPriceComponent product)
         {
             //Product component price total
             var componentPriceTotal = (from componentPrice in product.ProductPriceDetail.ProductComponents

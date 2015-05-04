@@ -4,11 +4,12 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using Orbio.Core.Domain.Catalog.Abstract;
 
 namespace Orbio.Core.Domain.Catalog
 {
     [DataContract]
-    public class ProductVariantAttributeValue
+    public class ProductVariantAttributeValue : IPriceComponent
     {
         /// <summary>
         /// Gets or sets the Id
@@ -112,6 +113,48 @@ namespace Orbio.Core.Domain.Catalog
              {
                  this.AttributeValueTypeId = (int)value;
              }
+         }
+
+         public decimal Price
+         {
+             get
+             {
+                 return this.PriceAdjustment;
+             }
+             set
+             {
+                 this.PriceAdjustment = value;
+             }
+         }
+
+         public decimal GoldWeight
+         {
+             get
+             {
+                 return this.WeightAdjustment;
+             }
+             set
+             {
+                 this.WeightAdjustment = value;
+             }
+         }
+
+         public int ProductUnit
+         {
+             get;
+             set;
+         }
+
+         public int PriceUnit
+         {
+             get;
+             set;
+         }
+
+         public decimal MarketUnitPrice
+         {
+             get;
+             set;
          }
     }
 }

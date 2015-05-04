@@ -1,9 +1,10 @@
 ﻿using System.Runtime.Serialization;
+using Orbio.Core.Domain.Catalog.Abstract;
 
 namespace Orbio.Core.Domain.Catalog
 {
     [DataContract]
-    public class Product
+    public class Product : IPriceComponent
     {
         /// <summary>
         /// Gets or Sets the id

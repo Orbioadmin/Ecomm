@@ -103,7 +103,7 @@ namespace Orbio.Web.UI.Models.Catalog
                                                                                                                ColorSquaresRgb = pvv.ColorSquaresRgb,
                                                                                                                Name = pvv.Name,
                                                                                                                PictureUrl = pvv.PictureUrl,
-                                                                                                               PriceAdjustment = pvv.PriceAdjustment.ToString("N"),
+                                                                                                               PriceAdjustment = pvv.CalculatePrice(),
                                                                                                                IsPreSelected=pvv.IsPreSelected,
                                                                                                                DisplayOrder=pvv.DisplayOrder
                                                                                                                //PriceAdjustmentValue =  need TODO: format + or -
