@@ -30,13 +30,15 @@ Create PROCEDURE [dbo].[usp_EmailSending]
 	@profilename varchar(100),
 	@toaddress varchar(500),
 	@todisplayname varchar(500),
+	@fromaddress varchar(500),
+	@fromname varchar(500),
 	@subject varchar(1000),
 	@body varchar(max)
 AS
 BEGIN
 
-declare @fromaddress varchar(500) = (select email_address from msdb.dbo.sysmail_account where name=@profilename)
-declare @fromname varchar(500) = (select display_name from msdb.dbo.sysmail_account where name=@profilename)
+--declare @fromaddress varchar(500) = (select email_address from msdb.dbo.sysmail_account where name=@profilename)
+--declare @fromname varchar(500) = (select display_name from msdb.dbo.sysmail_account where name=@profilename)
 INSERT INTO [dbo].[QueuedEmail]
            ([Priority]
            ,[From]

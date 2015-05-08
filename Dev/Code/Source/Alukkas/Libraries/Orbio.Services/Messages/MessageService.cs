@@ -188,10 +188,13 @@ namespace Orbio.Services.Messages
             //};
 
             //_queuedEmailService.InsertQueuedEmail(email);
+
              context.ExecuteFunction<Mail_Sending>("usp_EmailSending",
                  new SqlParameter() { ParameterName = "@profilename", Value = "Emailsending", DbType = System.Data.DbType.String },
                  new SqlParameter() { ParameterName = "@toaddress", Value = toEmailAddress, DbType = System.Data.DbType.String },
                  new SqlParameter() { ParameterName = "@todisplayname", Value = toName, DbType = System.Data.DbType.String },
+                 new SqlParameter() { ParameterName = "@fromaddress", Value = ConfigurationManager.AppSettings["EmailFromAddress"], DbType = System.Data.DbType.String },
+                 new SqlParameter() { ParameterName = "@fromname", Value = ConfigurationManager.AppSettings["EmailFromName"], DbType = System.Data.DbType.String },
                  new SqlParameter() { ParameterName = "@subject", Value = subjectReplaced, DbType = System.Data.DbType.String },
                  new SqlParameter() { ParameterName = "@body", Value = bodyReplaced, DbType = System.Data.DbType.String });
 

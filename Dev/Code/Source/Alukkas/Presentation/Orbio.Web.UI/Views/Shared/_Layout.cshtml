@@ -52,7 +52,8 @@
                             <ul>
                                 <li><a href="@Url.RouteUrl("Category", new { SeName = "FAQ" })?p=ft">FAQ</a></li>
                                 <li><a href="">Our Blog</a></li>
-                                <li><a href="@Url.RouteUrl("Category", new { SeName = "ContactUs" })?p=ft">Contact Us</a></li>
+                                @*<li><a href="@Url.RouteUrl("Category", new { SeName = "ContactUs" })?p=ft">Contact Us</a></li>*@
+                                <li><a href="@Url.Action("ContactUs","Home", new { SeName = "ContactUs" })?p=ft">Contact Us</a></li>
                                 <li><a href="">Our Certification</a></li>
                                 <li><a href="@Url.RouteUrl("Category", new { SeName = "Career" })?p=ft">Career</a></li>
                                 <li><a href="">News</a></li>
@@ -104,7 +105,7 @@
     <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
       <div class="panel-body">
      <ul class="foot_menu_new">
-    <li><a href="@Url.RouteUrl("Category", new { SeName = "AboutUs" })?p=ft">About Us</a></li>
+                                <li><a href="@Url.RouteUrl("Category", new { SeName = "AboutUs" })?p=ft">About Us</a></li>
                                 <li><a href="@Url.RouteUrl("Category", new { SeName = "jewellery" })?p=ct">Jewellery</a></li>
                                 <li><a href="@Url.RouteUrl("Category", new { SeName = "jewellery" })?p=ct">Brands</a></li>
                                 <li><a href="">Easy Gold</a></li>
@@ -127,9 +128,9 @@
       <div class="panel-body">
         
      <ul class="foot_menu_new">
-               <li><a href="@Url.RouteUrl("Category", new { SeName = "FAQ" })?p=ft">FAQ</a></li>
+                                <li><a href="@Url.RouteUrl("Category", new { SeName = "FAQ" })?p=ft">FAQ</a></li>
                                 <li><a href="">Our Blog</a></li>
-                                <li><a href="@Url.RouteUrl("Category", new { SeName = "ContactUs" })?p=ft">Contact Us</a></li>
+                                <li><a href="@Url.Action("ContactUs","Home", new { SeName = "ContactUs" })?p=ft">Contact Us</a></li>
                                 <li><a href="">Our Certification</a></li>
                                 <li><a href="@Url.RouteUrl("Category", new { SeName = "Career" })?p=ft">Career</a></li>
                                 <li><a href="">News</a></li>

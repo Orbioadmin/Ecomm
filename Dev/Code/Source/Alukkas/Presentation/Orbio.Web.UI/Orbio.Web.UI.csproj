@@ -230,6 +230,7 @@
     <Compile Include="Models\Customer\EmailFriendModel.cs" />
     <Compile Include="Models\Customer\PasswordRecoveryConfirmModel.cs" />
     <Compile Include="Models\Customer\PasswordRecoveryModel.cs" />
+    <Compile Include="Models\Home\ContactModel.cs" />
     <Compile Include="Models\Home\PriceBarModel.cs" />
     <Compile Include="Models\Orders\ShoppingCartItemModel.cs" />
     <Compile Include="Models\Orders\ShoppingCartItemsModel.cs" />
