@@ -13,6 +13,7 @@ GO
 # File Path:
 # CreatedDate: 23-feb-2015
 # Author: Sankar T.S
+# UpdatedDate : 07-may-2015
 # Description: This stored procedure Send email
  # Return Parameter: None
 # History  of changes:
@@ -58,7 +59,7 @@ INSERT INTO [dbo].[QueuedEmail]
            ,CONVERT(VARCHAR(230),GETDATE(),21)
            ,3
            ,1)
-EXEC msdb.dbo.sp_send_dbmail @profile_name=@profilename, @recipients=@toaddress, @subject=@subject, @body=@body,@body_format = 'HTML'
+--EXEC msdb.dbo.sp_send_dbmail @profile_name=@profilename, @recipients=@toaddress, @subject=@subject, @body=@body,@body_format = 'HTML'
 
 END
 GO

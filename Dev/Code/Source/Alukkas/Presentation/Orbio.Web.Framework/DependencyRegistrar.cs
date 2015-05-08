@@ -18,7 +18,11 @@ namespace Orbio.Web.Framework
             builder.RegisterType<EncryptionService>().As<IEncryptionService>().InstancePerHttpRequest();
             builder.RegisterType<WebStoreContext>().As<IStoreContext>().InstancePerHttpRequest();
 
+            //added by roshni
             builder.RegisterType<OBS.Checkout.CheckoutService>().As<OBS.Checkout.ICheckoutService>().InstancePerHttpRequest();
+            
+            //added by roshni
+            builder.RegisterType<OBS.Email.EmailService>().As<OBS.Email.IEmailService>().InstancePerHttpRequest();
             //added by sankar
             builder.RegisterType<OBS.Orders.ShoppingCartService>().As<OBS.Orders.IShoppingCartService>().InstancePerHttpRequest();
             //added by sankar

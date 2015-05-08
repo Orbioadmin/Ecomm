@@ -71,6 +71,7 @@
     <Compile Include="Domain\Customers\PasswordFormat.cs" />
     <Compile Include="Domain\Customers\SystemCustomerAttributeNames.cs" />
     <Compile Include="Domain\Customers\SystemCustomerNames.cs" />
+    <Compile Include="Domain\Email\Mail Sending.cs" />
     <Compile Include="Domain\Messages\MessageTemplate.cs" />
     <Compile Include="Domain\Messages\Token.cs" />
     <Compile Include="Domain\Orders\ShoppingCartItem.cs" />

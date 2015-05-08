@@ -4,12 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Nop.Data;
+using Orbio.Core.Domain.Email;
 using Orbio.Core.Domain.Customers;
 using Orbio.Core.Domain.Messages;
 using Orbio.Services.Messages;
+using Orbio.Services.Email;
 using Orbio.Core;
 using System.Data.SqlClient;
 using Orbio.Core.Domain.Catalog;
+using System.Data;
+using System.Configuration;
 
 namespace Orbio.Services.Messages
 {
@@ -19,13 +23,15 @@ namespace Orbio.Services.Messages
         private readonly IMessageTokenProvider messageTokenProvider;
         private readonly ITokenizer tokenizer;
         private readonly IStoreContext storeContext;
+        private readonly IEmailService emailService;
 
-        public MessageService(IDbContext context, IMessageTokenProvider messageTokenProvider, ITokenizer tokenizer, IStoreContext store)
+        public MessageService(IDbContext context, IMessageTokenProvider messageTokenProvider, ITokenizer tokenizer, IStoreContext store, IEmailService emailService)
         {
             this.context = context;
             this.messageTokenProvider = messageTokenProvider;
             this.tokenizer = tokenizer;
             this.storeContext = store;
+            this.emailService = emailService;
         }
         /// <summary>
         /// Sends password recovery message to a customer
@@ -35,6 +41,7 @@ namespace Orbio.Services.Messages
         /// <returns>Queued email identifier</returns>
         public int SendCustomerPasswordRecoveryMessage(Customer customer)
         {
+            DataTable dt = new DataTable();
             if (customer == null)
                 throw new ArgumentNullException("customer");
             var store = storeContext.CurrentStore;
@@ -66,8 +73,9 @@ namespace Orbio.Services.Messages
 
             var toEmail = customer.Email;
             var toName = fullName;
-            return SendNotification(messageTemplate, tokens,
+            Mail_Sending sentemail = SendNotification(messageTemplate, tokens,
                 toEmail, toName);
+            return emailService.SentEmail(sentemail);
         }
 
         /// <summary>
@@ -78,6 +86,7 @@ namespace Orbio.Services.Messages
         /// <returns>Queued email identifier</returns>
         public int SendCustomerWelcomeMessage(Customer customer)
         {
+            DataTable dt = new DataTable();
             if (customer == null)
                 throw new ArgumentNullException("customer");
             var store = storeContext.CurrentStore;
@@ -109,12 +118,15 @@ namespace Orbio.Services.Messages
 
             var toEmail = customer.Email;
             var toName = fullName;
-            return SendNotification(messageTemplate, tokens,
+            Mail_Sending sentemail = SendNotification(messageTemplate, tokens,
                 toEmail, toName);
+            return emailService.SentEmail(sentemail);
+           
         }
 
         public int SendCustomerEmailFrendMessage(Customer customer, ProductDetail product, string mail, string message, string name, string url)
         {
+            DataTable dt = new DataTable();
             if (customer == null)
                 throw new ArgumentNullException("customer");
             var store = storeContext.CurrentStore;
@@ -139,14 +151,16 @@ namespace Orbio.Services.Messages
             var toEmail = mail;
             var toName = "";
 
-            return SendNotification(messageTemplate, tokens,
-               toEmail, toName);
+            Mail_Sending sentemail = SendNotification(messageTemplate, tokens,toEmail, toName);
+            return emailService.SentEmail(sentemail);
+
         }
 
 
-        protected int SendNotification(MessageTemplate messageTemplate, IEnumerable<Token> tokens, string toEmailAddress,
+        protected Mail_Sending SendNotification(MessageTemplate messageTemplate, IEnumerable<Token> tokens, string toEmailAddress,
                                                string toName, string attachmentFilePath = null, string attachmentFileName = null)
         {
+            DataTable dt = new DataTable();
             //retrieve localized message template data
             var bcc = messageTemplate.BccEmailAddresses;
             var subject = messageTemplate.Subject;
@@ -174,13 +188,23 @@ namespace Orbio.Services.Messages
             //};
 
             //_queuedEmailService.InsertQueuedEmail(email);
-            context.ExecuteFunction<Customer>("usp_EmailSending",
+             context.ExecuteFunction<Mail_Sending>("usp_EmailSending",
                  new SqlParameter() { ParameterName = "@profilename", Value = "Emailsending", DbType = System.Data.DbType.String },
                  new SqlParameter() { ParameterName = "@toaddress", Value = toEmailAddress, DbType = System.Data.DbType.String },
                  new SqlParameter() { ParameterName = "@todisplayname", Value = toName, DbType = System.Data.DbType.String },
                  new SqlParameter() { ParameterName = "@subject", Value = subjectReplaced, DbType = System.Data.DbType.String },
                  new SqlParameter() { ParameterName = "@body", Value = bodyReplaced, DbType = System.Data.DbType.String });
-            return 0;
+
+               var sentemail = new Mail_Sending();
+               sentemail.FromAddress = ConfigurationManager.AppSettings["EmailFromAddress"];
+               sentemail.FromName = ConfigurationManager.AppSettings["EmailFromName"];
+               sentemail.Password = ConfigurationManager.AppSettings["EmailPassword"]; 
+               sentemail.ToAddress = toEmailAddress;
+               sentemail.ToName = toName;
+               sentemail.Subject = subjectReplaced;
+               sentemail.Body = bodyReplaced; 
+
+              return sentemail;
         }
     }
 
