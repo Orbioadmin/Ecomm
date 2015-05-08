@@ -46,28 +46,28 @@ namespace Orbio.Web.UI.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult ContactUs(ContactModel model)
-        {
-            //ViewBag.Message = "Your contact page.";
-            if (ModelState.IsValid)
-            {
-                var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
-                string returnUrl = workContext.CurrentCustomer.GetAttribute<string>(SystemCustomerAttributeNames.LastContinueShoppingPage, storeContext.CurrentStore.Id);
-                var sentemail = new Mail_Sending();
-                sentemail.FromAddress = model.Email;
-                sentemail.FromName = model.Name;
-                sentemail.Password = ConfigurationManager.AppSettings["EmailPassword"];
-                sentemail.ToAddress = ConfigurationManager.AppSettings["EmailFromAddress"];
-                sentemail.ToName = ConfigurationManager.AppSettings["EmailFromName"];
-                sentemail.Subject = "Your contact page";
-                sentemail.Body = model.Message;
-                emailService.SendNotification(model.Email, model.Name, model.Message, sentemail.Subject);
-                emailService.SentEmail(sentemail);
-                return RedirectToLocal(returnUrl);
-            }
-            return View(model);
-        }
+        //[HttpPost]
+        //public ActionResult ContactUs(ContactModel model)
+        //{
+        //    //ViewBag.Message = "Your contact page.";
+        //    if (ModelState.IsValid)
+        //    {
+        //        var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
+        //        string returnUrl = workContext.CurrentCustomer.GetAttribute<string>(SystemCustomerAttributeNames.LastContinueShoppingPage, storeContext.CurrentStore.Id);
+        //        var Sent = new EmailDetail();
+        //        Sent.FromAddress = model.Email;
+        //        Sent.FromName = model.Name;
+        //        Sent.Password = ConfigurationManager.AppSettings["EmailPassword"];
+        //        Sent.ToAddress = ConfigurationManager.AppSettings["EmailAddress"];
+        //        Sent.ToName = ConfigurationManager.AppSettings["EmailName"];
+        //        Sent.Subject = "Your contact page";
+        //        Sent.Body = model.Message;
+        //        emailService.SendNotification(model.Email, model.Name, model.Message, Sent.Subject);
+        //        emailService.SentEmail(Sent);
+        //        return RedirectToLocal(returnUrl);
+        //    }
+        //    return View(model);
+        //}
 
         public ActionResult PriceBar()
         {
@@ -82,16 +82,5 @@ namespace Orbio.Web.UI.Controllers
             return View(SeName);
         }
 
-        private ActionResult RedirectToLocal(string returnUrl)
-        {
-            if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
-            {
-                return Redirect(returnUrl);
-            }
-            else
-            {
-                return RedirectToAction("Index", "Home");
-            }
-        }
     }
 }

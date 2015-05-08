@@ -11,20 +11,20 @@
             </ul>
 
             <div class="tab-content" id="myTabContent">
-                <div aria-labelledby="profile-tab" id="profile" class="tab-pane fade" role="tabpanel" style="display: inline;">
+                <div aria-labelledby="profile-tab" id="profile" class="tab-pane fade" role="tabpanel" style="display: inline;opacity: 1">
 
-                    <img class="" src="" />
+                    @*<img class="" src="" />*@
 
-                    <div class="row contacts ">
+                    @*<div class="row contacts ">
 
                         <div class="col-lg-9">
 
                             <div class="title"><h1>Leave Your Message</h1></div>
 
-                            <p>Francis Alukkas Jewellery always assure customer satisfaction. We give much more importance for the customer service for after sales , our schemes and customer queries. Feel free to contact us through email or our contact details. Submit your queries using our contact form given below. Our customer service team will contact you soon and avail their assistance.</p>
+                            <p>Francis Alukkas Jewellery always assure customer satisfaction. We give much more importance for the customer service for after sales , our schemes and customer queries. Feel free to contact us through email or our contact details. Submit your queries using our contact form given below. Our customer service team will contact you soon and avail their assistance.</p>*@
 
                             @*<form name="contact" method="post" action="http://francisalukkas.com/site/contact" class="af-form" id="af-form">*@
-                        @using (Html.BeginForm("ContactUs", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "af-form"}))
+                        @*@using (Html.BeginForm("ContactUs", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "af-form"}))
                             {
                                 @Html.AntiForgeryToken()
                                 @Html.ValidationSummary(true)
@@ -34,16 +34,16 @@
 
                                     <div class="af-outer af-required">
 
-                                        <div class="af-inner">
+                                        <div class="af-inner">*@
 
                                             @*<input type="text" name="name" id="name" size="30" value="" placeholder="Name" class="text-input span12 placeholder" style="background-color: rgb(255, 255, 255);width:95%;margin:10px;">*@
                                             
-                                            @Html.TextBoxFor(m => m.Name, new { id="name", size="30",placeholder="Name", @class="text-input span12 placeholder" ,@style="background-color: rgb(255, 255, 255);width:95%;margin:10px;"})
-                                            <span style="color:red;margin-left: 10px;">@Html.ValidationMessageFor(m => m.Name)</span>
+                                            @*@Html.TextBoxFor(m => m.Name, new { id="name", size="30",placeholder="Name", @class="text-input span12 placeholder" ,@style="background-color: rgb(255, 255, 255);width:95%;margin:10px;"})
+                                            <span style="color:red;margin-left: 10px;">@Html.ValidationMessageFor(m => m.Name)</span>*@
 
                                             @*<label class="error" for="name" id="name_error" style="display: none;">Name is required.</label>*@
 
-                                        </div>
+                                        @*</div>
 
                                     </div>
 
@@ -57,16 +57,16 @@
 
                                     <div class="af-outer af-required">
 
-                                        <div class="af-inner">
+                                        <div class="af-inner">*@
 
                                             @*<input type="text" name="email" id="email" size="30" value="" placeholder="Email" class="text-input span12 placeholder" style="background-color: rgb(255, 255, 255);width:95%;margin:10px;">*@
                                            
-                                             @Html.TextBoxFor(m => m.Email, new { name="email" , id="email", size="30", placeholder="Email", @class="text-input span12 placeholder", @style="background-color: rgb(255, 255, 255);width:95%;margin:10px;"})
-                                            <span style="color:red;margin-left: 10px;">@Html.ValidationMessageFor(m => m.Email)</span>
+                                             @*@Html.TextBoxFor(m => m.Email, new { name="email" , id="email", size="30", placeholder="Email", @class="text-input span12 placeholder", @style="background-color: rgb(255, 255, 255);width:95%;margin:10px;"})
+                                            <span style="color:red;margin-left: 10px;">@Html.ValidationMessageFor(m => m.Email)</span>*@
 
                                             @*<label class="error" for="email" id="email_error" style="display: none;">Email is required.</label>*@
 
-                                        </div>
+                                        @*</div>
 
                                     </div>
 
@@ -80,15 +80,15 @@
 
                                     <div class="af-outer af-required">
 
-                                        <div class="af-inner">
+                                        <div class="af-inner">*@
                                             @*<textarea name="message" id="input-message" cols="30" placeholder="Message" class="text-input span12 placeholder" style="background-color: rgb(255, 255, 255);width:95%;margin:10px;"></textarea>*@
                                             
-                                            @Html.TextAreaFor(m => m.Message, new {id="input-message", cols="30", placeholder="Message", @class="text-input span12 placeholder", @style="background-color: rgb(255, 255, 255);width:95%;margin:10px;" })
-                                            <span style="color:red;margin-left: 10px;">@Html.ValidationMessageFor(m => m.Message)</span>
+                                            @*@Html.TextAreaFor(m => m.Message, new {id="input-message", cols="30", placeholder="Message", @class="text-input span12 placeholder", @style="background-color: rgb(255, 255, 255);width:95%;margin:10px;" })
+                                            <span style="color:red;margin-left: 10px;">@Html.ValidationMessageFor(m => m.Message)</span>*@
 
                                             @*<label class="error" for="input-message" id="message_error" style="display: none;">Message is required.</label>*@
 
-                                        </div>
+                                        @*</div>
 
                                     </div>
 
@@ -102,21 +102,21 @@
 
                                     <div class="af-outer af-required">
 
-                                        <div class="af-inner">
+                                        <div class="af-inner">*@
                                             @*<a class="btn btn-primary" style="margin:20px;" href="@Url.Action("Contact", "Home", new { model = Model })">Send Message!</a>*@
-                                            <input type="submit" name="submit" class="btn btn-primary" value="Send Message!" style="margin:20px;">
+                                            @*<input type="submit" name="submit" class="btn btn-primary" value="Send Message!" style="margin:20px;">*@
                                             @*id="submit_btn"*@
-                                        </div>
+                                        @*</div>
 
                                     </div>
 
 
 
                                 </div>
-                            }
+                            }*@
                             @*</form>*@
 
-                        </div>
+                        @*</div>*@
 
                         <div class="col-lg-3">
 

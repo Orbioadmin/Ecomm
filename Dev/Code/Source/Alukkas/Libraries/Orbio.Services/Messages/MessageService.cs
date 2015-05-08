@@ -73,9 +73,9 @@ namespace Orbio.Services.Messages
 
             var toEmail = customer.Email;
             var toName = fullName;
-            Mail_Sending sentemail = SendNotification(messageTemplate, tokens,
+            EmailDetail Sent = SendNotification(messageTemplate, tokens,
                 toEmail, toName);
-            return emailService.SentEmail(sentemail);
+            return emailService.SentEmail(Sent);
         }
 
         /// <summary>
@@ -118,9 +118,9 @@ namespace Orbio.Services.Messages
 
             var toEmail = customer.Email;
             var toName = fullName;
-            Mail_Sending sentemail = SendNotification(messageTemplate, tokens,
+            EmailDetail Sent = SendNotification(messageTemplate, tokens,
                 toEmail, toName);
-            return emailService.SentEmail(sentemail);
+            return emailService.SentEmail(Sent);
            
         }
 
@@ -151,13 +151,12 @@ namespace Orbio.Services.Messages
             var toEmail = mail;
             var toName = "";
 
-            Mail_Sending sentemail = SendNotification(messageTemplate, tokens,toEmail, toName);
-            return emailService.SentEmail(sentemail);
-
+            EmailDetail Sent = SendNotification(messageTemplate, tokens,toEmail, toName);
+            return emailService.SentEmail(Sent);
         }
 
 
-        protected Mail_Sending SendNotification(MessageTemplate messageTemplate, IEnumerable<Token> tokens, string toEmailAddress,
+        protected EmailDetail SendNotification(MessageTemplate messageTemplate, IEnumerable<Token> tokens, string toEmailAddress,
                                                string toName, string attachmentFilePath = null, string attachmentFileName = null)
         {
             DataTable dt = new DataTable();
@@ -189,7 +188,7 @@ namespace Orbio.Services.Messages
 
             //_queuedEmailService.InsertQueuedEmail(email);
 
-             context.ExecuteFunction<Mail_Sending>("usp_EmailSending",
+             context.ExecuteFunction<EmailDetail>("usp_EmailSending",
                  new SqlParameter() { ParameterName = "@profilename", Value = "Emailsending", DbType = System.Data.DbType.String },
                  new SqlParameter() { ParameterName = "@toaddress", Value = toEmailAddress, DbType = System.Data.DbType.String },
                  new SqlParameter() { ParameterName = "@todisplayname", Value = toName, DbType = System.Data.DbType.String },
@@ -198,16 +197,16 @@ namespace Orbio.Services.Messages
                  new SqlParameter() { ParameterName = "@subject", Value = subjectReplaced, DbType = System.Data.DbType.String },
                  new SqlParameter() { ParameterName = "@body", Value = bodyReplaced, DbType = System.Data.DbType.String });
 
-               var sentemail = new Mail_Sending();
-               sentemail.FromAddress = ConfigurationManager.AppSettings["EmailFromAddress"];
-               sentemail.FromName = ConfigurationManager.AppSettings["EmailFromName"];
-               sentemail.Password = ConfigurationManager.AppSettings["EmailPassword"]; 
-               sentemail.ToAddress = toEmailAddress;
-               sentemail.ToName = toName;
-               sentemail.Subject = subjectReplaced;
-               sentemail.Body = bodyReplaced; 
+               var Sent = new EmailDetail();
+               Sent.FromAddress = ConfigurationManager.AppSettings["EmailFromAddress"];
+               Sent.FromName = ConfigurationManager.AppSettings["EmailFromName"];
+               Sent.Password = ConfigurationManager.AppSettings["EmailPassword"];
+               Sent.ToAddress = toEmailAddress;
+               Sent.ToName = toName;
+               Sent.Subject = subjectReplaced;
+               Sent.Body = bodyReplaced;
 
-              return sentemail;
+               return Sent;
         }
     }
 

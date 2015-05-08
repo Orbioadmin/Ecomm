@@ -22,7 +22,7 @@ namespace Orbio.Services.Email
             this.context = context;
         }
 
-        public int SentEmail(Mail_Sending email)
+        public int SentEmail(EmailDetail email)
         {
             try
             {
@@ -48,18 +48,18 @@ namespace Orbio.Services.Email
             return 0;
         }
 
-        public int SendNotification(string fromaddress, string fromname, string message, string subject)
-        {
-            context.ExecuteFunction<Mail_Sending>("usp_EmailSending",
-                new SqlParameter() { ParameterName = "@profilename", Value = "Emailsending", DbType = System.Data.DbType.String },
-                new SqlParameter() { ParameterName = "@toaddress", Value = ConfigurationManager.AppSettings["EmailFromAddress"], DbType = System.Data.DbType.String },
-                new SqlParameter() { ParameterName = "@todisplayname", Value = ConfigurationManager.AppSettings["EmailFromName"], DbType = System.Data.DbType.String },
-                new SqlParameter() { ParameterName = "@fromaddress", Value = fromaddress, DbType = System.Data.DbType.String },
-                new SqlParameter() { ParameterName = "@fromname", Value = ConfigurationManager.AppSettings["EmailFromName"], DbType = System.Data.DbType.String },
-                new SqlParameter() { ParameterName = "@subject", Value = fromname, DbType = System.Data.DbType.String },
-                new SqlParameter() { ParameterName = "@body", Value = message, DbType = System.Data.DbType.String });
+        //public int SendNotification(string fromaddress, string fromname, string message, string subject)
+        //{
+        //    context.ExecuteFunction<EmailDetail>("usp_EmailSending",
+        //        new SqlParameter() { ParameterName = "@profilename", Value = "Emailsending", DbType = System.Data.DbType.String },
+        //        new SqlParameter() { ParameterName = "@toaddress", Value = ConfigurationManager.AppSettings["EmailAddress"], DbType = System.Data.DbType.String },
+        //        new SqlParameter() { ParameterName = "@todisplayname", Value = ConfigurationManager.AppSettings["EmailName"], DbType = System.Data.DbType.String },
+        //        new SqlParameter() { ParameterName = "@fromaddress", Value = fromaddress, DbType = System.Data.DbType.String },
+        //        new SqlParameter() { ParameterName = "@fromname", Value = ConfigurationManager.AppSettings["EmailFromName"], DbType = System.Data.DbType.String },
+        //        new SqlParameter() { ParameterName = "@subject", Value = fromname, DbType = System.Data.DbType.String },
+        //        new SqlParameter() { ParameterName = "@body", Value = message, DbType = System.Data.DbType.String });
 
-            return 0;
-        }
+        //    return 0;
+        //}
     }
 }
