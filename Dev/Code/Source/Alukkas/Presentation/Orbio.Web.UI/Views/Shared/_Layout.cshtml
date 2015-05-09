@@ -51,12 +51,12 @@
                             <h1>CUSTOMER DELIGHT</h1>
                             <ul>
                                 <li><a href="@Url.RouteUrl("Category", new { SeName = "FAQ" })?p=ft">FAQ</a></li>
-                                <li><a href="">Our Blog</a></li>
+                                <li><a href="@Url.RouteUrl("Category", new { SeName = "OurBlog" })?p=ft">Our Blog</a></li>
                                 @*<li><a href="@Url.RouteUrl("Category", new { SeName = "ContactUs" })?p=ft">Contact Us</a></li>*@
                                 <li><a href="@Url.Action("ContactUs","Home", new { SeName = "ContactUs" })?p=ft">Contact Us</a></li>
-                                <li><a href="">Our Certification</a></li>
+                                <li><a href="@Url.RouteUrl("Category", new { SeName = "Certification" })?p=ft">Our Certification</a></li>
                                 <li><a href="@Url.RouteUrl("Category", new { SeName = "Career" })?p=ft">Career</a></li>
-                                <li><a href="">News</a></li>
+                                <li><a href="@Url.RouteUrl("Category", new { SeName = "News" })?p=ft">News</a></li>
                             </ul>
                         </div>
 
@@ -68,7 +68,7 @@
                                 <li><a href="@Url.RouteUrl("Category", new { SeName = "RefundPolicy" })?p=ft">Refund Policy</a></li>
                                 <li><a href="@Url.RouteUrl("Category", new { SeName = "BuyBackPolicy" })?p=ft">Buyback Policy</a></li>
                                 <li><a href="@Url.RouteUrl("Category", new { SeName = "ExchangePolicy" })?p=ft">Exchange Policy</a></li>
-                                <li><a href="">Privacy Policy</a></li>
+                                <li><a href="@Url.RouteUrl("Category", new { SeName = "PrivacyPolicy" })?p=ft">Privacy Policy</a></li>
                             </ul>
                         </div>
 
@@ -119,7 +119,7 @@
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingTwo">
       <h4 class="panel-title">
-        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" class="collapsed">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
          <i class="plus_icon"></i> CUSTOMER DELIGHT
         </a>
       </h4>
@@ -129,11 +129,11 @@
         
      <ul class="foot_menu_new">
                                 <li><a href="@Url.RouteUrl("Category", new { SeName = "FAQ" })?p=ft">FAQ</a></li>
-                                <li><a href="">Our Blog</a></li>
+                                <li><a href="@Url.RouteUrl("Category", new { SeName = "OurBlog" })?p=ft">Our Blog</a></li>
                                 <li><a href="@Url.Action("ContactUs","Home", new { SeName = "ContactUs" })?p=ft">Contact Us</a></li>
-                                <li><a href="">Our Certification</a></li>
+                                <li><a href="@Url.RouteUrl("Category", new { SeName = "Certification" })?p=ft">Our Certification</a></li>
                                 <li><a href="@Url.RouteUrl("Category", new { SeName = "Career" })?p=ft">Career</a></li>
-                                <li><a href="">News</a></li>
+                                <li><a href="@Url.RouteUrl("Category", new { SeName = "News" })?p=ft">News</a></li>
      </ul>
 
       </div>
@@ -156,7 +156,7 @@
                                 <li><a href="@Url.RouteUrl("Category", new { SeName = "RefundPolicy" })?p=ft">Refund Policy</a></li>
                                 <li><a href="@Url.RouteUrl("Category", new { SeName = "BuyBackPolicy" })?p=ft">Buyback Policy</a></li>
                                 <li><a href="@Url.RouteUrl("Category", new { SeName = "ExchangePolicy" })?p=ft">Exchange Policy</a></li>
-                                <li><a href="">Privacy Policy</a></li>
+                                <li><a href="@Url.RouteUrl("Category", new { SeName = "PrivacyPolicy" })?p=ft">Privacy Policy</a></li>
                                        </ul>
 
       </div>
@@ -193,10 +193,6 @@
 </div>
     
 </div>
-
-
-                
-
                 <div class="footer_bottom">
                     <div class="container">
                         <div class="col-md-4 col-sm-4">

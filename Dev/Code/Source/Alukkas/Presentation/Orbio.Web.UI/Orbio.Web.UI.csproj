@@ -640,6 +640,10 @@
     <Content Include="Views\ShoppingCart\CartSummary.cshtml" />
     <Content Include="Views\Catalog\_CategoryProducts.cshtml" />
     <Content Include="Views\Catalog\_CategoryProductBySearch.cshtml" />
+    <Content Include="Views\Home\OurBlog.cshtml" />
+    <Content Include="Views\Home\Certification.cshtml" />
+    <Content Include="Views\Home\News.cshtml" />
+    <Content Include="Views\Home\PrivacyPolicy.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
