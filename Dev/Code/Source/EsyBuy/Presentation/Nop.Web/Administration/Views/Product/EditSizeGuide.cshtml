@@ -1,0 +1,100 @@
+﻿@model ProductModel
+@using Telerik.Web.Mvc.UI;
+
+@if (Model.Id > 0)
+{
+    <div>
+        <p style="font-size:14px;color:#009FFF;font:bolder"><img src="/Administration/Content/images/ico-catalog.png" alt="">Add/Edit Size Guide - @Model.Name<a style="color:black;font-size:x-small" href="@Model.ReturnUrl">(back to product details)</a></p>
+
+        @(Html.Telerik().Grid<ProductModel.ProductVariantAttributeModel>()
+                    .Name("SizeGuideImage_grid")
+                    .DataKeys(x =>
+                    {
+                        x.Add(y => y.Id).RouteKey("Image");
+                    })
+                    .Columns(columns =>
+                    {
+                        columns.Bound(x => x.SizeGuideUrl)
+                            .ClientTemplate("<a href='<#= PictureUrl #>' target='_blank'><img alt='<#= PictureUrl #>' src='<#= PictureUrl #>' width='150' /><a/>")
+                            .ReadOnly();
+                        columns.Command(commands =>
+                        {
+                            //commands.Edit().Text(T("Admin.Common.Edit").Text);
+                            commands.Delete().Text(T("Admin.Common.Delete").Text);
+                        });
+
+                    })
+                    .Editable(x =>
+                    {
+                        x.Mode(GridEditMode.InLine);
+                    })
+                    .DataBinding(dataBinding =>
+                    {
+                        dataBinding.Ajax().Select("GetSizeGuideImage", "Product", new { productId = Model.Id })
+                            //.Update("ProductPictureUpdate", "Product")
+                            .Delete("ProductSizeGuideImageDelete", "Product");
+                    })
+                    .EnableCustomBinding(true))
+    </div>
+   @*@Html.Action("InsertSizeGuidePicture", "Product", new { productId = Model.ProductId })*@
+    
+    
+    <p>
+    <strong>@T("Admin.Catalog.Products.Pictures.AddNew")</strong>
+</p>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#addProductPicture').click(function () {
+            var pictureId = $("#@Html.FieldIdFor(model => model.AddPictureModel.PictureId)").val();
+            var displayOrder = $("#@Html.FieldIdFor(model => model.AddPictureModel.DisplayOrder)").val();
+                
+            if (pictureId == 0) {
+                alert('Upload picture first');
+                return;
+            }
+
+            $('#addProductPicture').attr('disabled', true);
+            $.ajax({
+                cache:false,
+                type: "POST",
+                url: "@(Url.Action("ProductSizeGuidePictureAdd", "Product"))",
+                data: { "pictureId": pictureId, "productId": @Model.Id },
+                success: function (data) {
+                    var productpicturesGrid = $("#SizeGuideImage_grid");
+                    productpicturesGrid.data('tGrid').ajaxRequest();
+                    $('#addProductPicture').attr('disabled', false);
+                },
+                error:function (xhr, ajaxOptions, thrownError){
+                    alert('Failed to add product picture.');
+                    $('#addProductPicture').attr('disabled', false);
+                }
+            });
+        });
+    });
+</script>
+<table class="adminContent">
+    <tr>
+        <td class="adminTitle">
+            @Html.NopLabelFor(model => model.AddPictureModel.PictureId):
+        </td>
+        <td class="adminData">
+            @Html.EditorFor(model => model.AddPictureModel.PictureId)
+            @Html.ValidationMessageFor(model => model.AddPictureModel.PictureId)
+        </td>
+    </tr>
+    @*<tr>
+        <td class="adminTitle">
+            @Html.NopLabelFor(model => model.AddPictureModel.DisplayOrder):
+        </td>
+        <td class="adminData">
+            @Html.EditorFor(model => model.AddPictureModel.DisplayOrder)
+            @Html.ValidationMessageFor(model => model.AddPictureModel.DisplayOrder)
+        </td>
+    </tr>*@
+    <tr>
+        <td colspan="2" align="left">
+            <input type="button" id="addProductPicture" class="t-button" value="@T("Admin.Catalog.Products.Pictures.AddButton")" />
+        </td>
+    </tr>
+</table>
+}

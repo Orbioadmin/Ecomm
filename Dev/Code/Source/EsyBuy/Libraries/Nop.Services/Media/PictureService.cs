@@ -478,7 +478,18 @@ namespace Nop.Services.Media
             var picture = GetPictureById(pictureId);
             return GetPictureUrl(picture, targetSize, showDefaultPicture, storeLocation, defaultPictureType);
         }
-        
+
+
+        //public virtual string GetSizeGuideUrl(int pictureName,
+        //   int targetSize = 0,
+        //   bool showDefaultPicture = true,
+        //   string storeLocation = null,
+        //   PictureType defaultPictureType = PictureType.Entity)
+        //{
+        //    var picture = GetPictureByName(pictureName);
+        //    return GetPictureUrl(picture, targetSize, showDefaultPicture, storeLocation, defaultPictureType);
+        //}
+
         /// <summary>
         /// Get a picture URL
         /// </summary>

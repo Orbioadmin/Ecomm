@@ -41,7 +41,7 @@ namespace Orbio.Services.Messages
         /// <returns>Queued email identifier</returns>
         public int SendCustomerPasswordRecoveryMessage(Customer customer)
         {
-            DataTable dt = new DataTable();
+            
             if (customer == null)
                 throw new ArgumentNullException("customer");
             var store = storeContext.CurrentStore;
@@ -86,7 +86,6 @@ namespace Orbio.Services.Messages
         /// <returns>Queued email identifier</returns>
         public int SendCustomerWelcomeMessage(Customer customer)
         {
-            DataTable dt = new DataTable();
             if (customer == null)
                 throw new ArgumentNullException("customer");
             var store = storeContext.CurrentStore;
@@ -126,7 +125,7 @@ namespace Orbio.Services.Messages
 
         public int SendCustomerEmailFrendMessage(Customer customer, ProductDetail product, string mail, string message, string name, string url)
         {
-            DataTable dt = new DataTable();
+            
             if (customer == null)
                 throw new ArgumentNullException("customer");
             var store = storeContext.CurrentStore;
@@ -159,7 +158,6 @@ namespace Orbio.Services.Messages
         protected EmailDetail SendNotification(MessageTemplate messageTemplate, IEnumerable<Token> tokens, string toEmailAddress,
                                                string toName, string attachmentFilePath = null, string attachmentFileName = null)
         {
-            DataTable dt = new DataTable();
             //retrieve localized message template data
             var bcc = messageTemplate.BccEmailAddresses;
             var subject = messageTemplate.Subject;

@@ -214,6 +214,7 @@ namespace Nop.Admin.Infrastructure
                 .ForMember(dest => dest.NumberOfAvailableCategories, mo => mo.Ignore())
                 .ForMember(dest => dest.NumberOfAvailableManufacturers, mo => mo.Ignore())
                 .ForMember(dest => dest.AddPictureModel, mo => mo.Ignore())
+                .ForMember(dest => dest.AddSizeGuideModel, mo => mo.Ignore())
                 .ForMember(dest => dest.ProductPictureModels, mo => mo.Ignore())
                 .ForMember(dest => dest.AddSpecificationAttributeModel, mo => mo.Ignore())
                 .ForMember(dest => dest.CopyProductModel, mo => mo.Ignore())

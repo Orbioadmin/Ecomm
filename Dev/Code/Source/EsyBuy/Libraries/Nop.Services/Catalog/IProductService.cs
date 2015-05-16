@@ -376,5 +376,10 @@ namespace Nop.Services.Catalog
         void DeleteProductReview(ProductReview productReview);
 
         #endregion
+
+        #region Size Guide Image
+
+        IList<ProductVariantAttribute> GetProductSizeGuideUrl(int productId);
+        #endregion 
     }
 }

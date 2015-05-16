@@ -269,6 +269,21 @@ namespace Nop.Services.Catalog
                 return productVariantAttributes;
             });
         }
+//sizeGuide
+        public virtual ProductVariantAttribute GetProductVariantAttributesOfSizeByProductId(int productId)
+        {
+            string key = string.Format(PRODUCTVARIANTATTRIBUTES_ALL_KEY, productId);
+
+            return _cacheManager.Get(key, () =>
+            {
+                var query = from pva in _productVariantAttributeRepository.Table
+                            orderby pva.DisplayOrder
+                            where pva.ProductId == productId && pva.ProductAttributeId==15
+                            select pva;
+                var productVariantAttributes = query.FirstOrDefault();
+                return productVariantAttributes;
+            });
+        }
 
         /// <summary>
         /// Gets a product variant attribute mapping
@@ -450,6 +465,8 @@ namespace Nop.Services.Catalog
             //event notification
             _eventPublisher.EntityDeleted(combination);
         }
+
+
 
         /// <summary>
         /// Gets all product variant attribute combinations

@@ -59,6 +59,11 @@ else
                     columns.Bound(x => x.AttributeControlType)
                         .Width(150)
                         .Centered();
+                    columns.Bound(x => x.SizeGuideUrl)
+                    .Width(200)
+                   .ClientTemplate("<a href=\"<#= SizeGuideUrl #>\"><#= ViewEditSizeGuide #></a>")
+                   .ReadOnly();
+                   
                     columns.Bound(x => x.DisplayOrder1)
                         .Width(150)
                         .Centered();
@@ -157,7 +162,6 @@ else
                     //return false to don't reload a page
                     return false;
                 });
-                
                 
                 //generate combinations
                 $('#btnGenerateAllCombinations').click(function () {

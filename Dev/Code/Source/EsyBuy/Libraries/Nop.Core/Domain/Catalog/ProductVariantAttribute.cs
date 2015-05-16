@@ -25,6 +25,8 @@ namespace Nop.Core.Domain.Catalog
         /// </summary>
         public string TextPrompt { get; set; }
 
+        public string SizeGuideUrl { get; set; }
+
         /// <summary>
         /// Gets or sets a value indicating whether the entity is required
         /// </summary>

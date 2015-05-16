@@ -27,6 +27,7 @@ namespace Nop.Admin.Models.Catalog
             AvailableDeliveryDates = new List<SelectListItem>();
             AvailableWarehouses = new List<SelectListItem>();
             AddPictureModel = new ProductPictureModel();
+            AddSizeGuideModel = new ProductVariantAttributeModel();
             AddSpecificationAttributeModel = new AddProductSpecificationAttributeModel();
         }
 
@@ -42,6 +43,7 @@ namespace Nop.Admin.Models.Catalog
         [NopResourceDisplayName("Admin.Catalog.Products.Fields.ProductType")]
         public string ProductTypeName { get; set; }
 
+        public string ReturnUrl { get; set; }
 
         [NopResourceDisplayName("Admin.Catalog.Products.Fields.AssociatedToProductName")]
         public int AssociatedToProductId { get; set; }
@@ -359,11 +361,12 @@ namespace Nop.Admin.Models.Catalog
 
         //product attributes
         public int NumberOfAvailableProductAttributes { get; set; }
-        
 
+        public ProductVariantAttributeModel AddSizeGuideModel { get; set; }
 
         //pictures
         public ProductPictureModel AddPictureModel { get; set; }
+
         public IList<ProductPictureModel> ProductPictureModels { get; set; }
 
         //discounts
@@ -423,6 +426,9 @@ namespace Nop.Admin.Models.Catalog
 
             [NopResourceDisplayName("Admin.Catalog.Products.Pictures.Fields.Picture")]
             public string PictureUrl { get; set; }
+
+            [NopResourceDisplayName("Image Url")]
+            public string ProductSizeGuideUrl { get; set; }
 
             [NopResourceDisplayName("Admin.Catalog.Products.Pictures.Fields.DisplayOrder")]
             public int DisplayOrder { get; set; }
@@ -632,6 +638,8 @@ namespace Nop.Admin.Models.Catalog
         {
             public int ProductId { get; set; }
 
+            public string ProductName { get; set; }
+
             public int ProductAttributeId { get; set; }
             [NopResourceDisplayName("Admin.Catalog.Products.ProductVariantAttributes.Attributes.Fields.Attribute")]
             [UIHint("ProductAttribute")]
@@ -640,6 +648,9 @@ namespace Nop.Admin.Models.Catalog
             [NopResourceDisplayName("Admin.Catalog.Products.ProductVariantAttributes.Attributes.Fields.TextPrompt")]
             [AllowHtml]
             public string TextPrompt { get; set; }
+
+            [NopResourceDisplayName("Size Guide")]
+            public string SizeGuideUrl { get; set; }
 
             [NopResourceDisplayName("Admin.Catalog.Products.ProductVariantAttributes.Attributes.Fields.IsRequired")]
             public bool IsRequired { get; set; }
@@ -657,6 +668,10 @@ namespace Nop.Admin.Models.Catalog
 
             public string ViewEditUrl { get; set; }
             public string ViewEditText { get; set; }
+            public string ViewEditSizeGuide { get; set; }
+            public string ProductPictureUrl { get; set; }
+
+           
         }
         public partial class ProductVariantAttributeValueListModel : BaseNopModel
         {
@@ -667,6 +682,10 @@ namespace Nop.Admin.Models.Catalog
             public int ProductVariantAttributeId { get; set; }
 
             public string ProductVariantAttributeName { get; set; }
+
+            public string ProductSizeGuideUrl { get; set; }
+
+            public int ProductSizeGuideId { get; set; }
         }
         [Validator(typeof(ProductVariantAttributeValueModelValidator))]
         public partial class ProductVariantAttributeValueModel : BaseNopEntityModel, ILocalizedModel<ProductVariantAttributeValueLocalizedModel>
@@ -676,7 +695,7 @@ namespace Nop.Admin.Models.Catalog
                 ProductPictureModels = new List<ProductPictureModel>();
                 Locales = new List<ProductVariantAttributeValueLocalizedModel>();
             }
-
+           
             public int ProductVariantAttributeId { get; set; }
 
             [NopResourceDisplayName("Admin.Catalog.Products.ProductVariantAttributes.Attributes.Values.Fields.AttributeValueType")]
@@ -729,6 +748,12 @@ namespace Nop.Admin.Models.Catalog
 
             public IList<ProductPictureModel> ProductPictureModels { get; set; }
             public IList<ProductVariantAttributeValueLocalizedModel> Locales { get; set; }
+
+            [NopResourceDisplayName("SizeGuide")]
+            public int ProductPictureId { get; set; }
+
+            [NopResourceDisplayName("Picture")]
+            public string ProductSizeGuideUrl { get; set; }
 
             #region Nested classes
 

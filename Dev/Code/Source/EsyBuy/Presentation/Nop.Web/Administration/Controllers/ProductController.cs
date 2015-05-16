@@ -34,6 +34,7 @@ using Nop.Web.Framework;
 using Nop.Web.Framework.Controllers;
 using Nop.Web.Framework.Mvc;
 using Telerik.Web.Mvc;
+using System.Text.RegularExpressions;
 
 namespace Nop.Admin.Controllers
 {
@@ -82,6 +83,7 @@ namespace Nop.Admin.Controllers
         private readonly IProductAttributeParser _productAttributeParser;
         private readonly CatalogSettings _catalogSettings;
         private readonly IDownloadService _downloadService;
+        private readonly IWebHelper _webHelper;
 
         #endregion
 
@@ -126,7 +128,8 @@ namespace Nop.Admin.Controllers
             IProductAttributeFormatter productAttributeFormatter,
             IProductAttributeParser productAttributeParser,
             CatalogSettings catalogSettings,
-            IDownloadService downloadService)
+            IDownloadService downloadService,
+            IWebHelper webHelper)
         {
             this._productService = productService;
             this._productTemplateService = productTemplateService;
@@ -168,6 +171,7 @@ namespace Nop.Admin.Controllers
             this._productAttributeParser = productAttributeParser;
             this._catalogSettings = catalogSettings;
             this._downloadService = downloadService;
+            this._webHelper = webHelper;
         }
 
         #endregion 
@@ -2838,6 +2842,7 @@ namespace Nop.Admin.Controllers
                         ProductAttribute = _productAttributeService.GetProductAttributeById(x.ProductAttributeId).Name,
                         ProductAttributeId = x.ProductAttributeId,
                         TextPrompt = x.TextPrompt,
+                        //SizeGuideUrl=x.SizeGuideUrl,
                         IsRequired = x.IsRequired,
                         AttributeControlType = x.AttributeControlType.GetLocalizedEnum(_localizationService, _workContext),
                         AttributeControlTypeId = x.AttributeControlTypeId,
@@ -2847,7 +2852,9 @@ namespace Nop.Admin.Controllers
                     if (x.ShouldHaveValues())
                     {
                         pvaModel.ViewEditUrl = Url.Action("EditAttributeValues", "Product", new { productVariantAttributeId = x.Id });
+                        pvaModel.SizeGuideUrl = Url.Action("EditSizeGuide", "Product", new { productVariantAttributeId = x.Id });
                         pvaModel.ViewEditText = string.Format(_localizationService.GetResource("Admin.Catalog.Products.ProductVariantAttributes.Attributes.Values.ViewLink"), x.ProductVariantAttributeValues != null ? x.ProductVariantAttributeValues.Count : 0);
+                        pvaModel.ViewEditSizeGuide = string.Format(("View/Edit Image"), x.ProductAttribute != null ? x.ProductVariantAttributeValues.Count : 0);
                     }
                     return pvaModel;
                 })
@@ -2886,6 +2893,7 @@ namespace Nop.Admin.Controllers
                 ProductId = model.ProductId,
                 ProductAttributeId = Int32.Parse(model.ProductAttribute), //use ProductAttribute property (not ProductAttributeId) because appropriate property is stored in it
                 TextPrompt = model.TextPrompt,
+                //SizeGuideUrl=model.SizeGuideUrl,
                 IsRequired = model.IsRequired,
                 AttributeControlTypeId = Int32.Parse(model.AttributeControlType), //use AttributeControlType property (not AttributeControlTypeId) because appropriate property is stored in it
                 DisplayOrder = model.DisplayOrder1
@@ -2905,6 +2913,9 @@ namespace Nop.Admin.Controllers
             if (pva == null)
                 throw new ArgumentException("No product variant attribute found with the specified id");
 
+                model.SizeGuideUrl = (model.SizeGuideUrl!=null)?model.SizeGuideUrl:pva.SizeGuideUrl;
+            
+
             var product = _productService.GetProductById(pva.ProductId);
             if (product == null)
                 throw new ArgumentException("No product found with the specified id");
@@ -2917,6 +2928,7 @@ namespace Nop.Admin.Controllers
             pva.ProductAttributeId = Int32.Parse(model.ProductAttribute);
             pva.TextPrompt = model.TextPrompt;
             pva.IsRequired = model.IsRequired;
+            pva.SizeGuideUrl =model.SizeGuideUrl;
             //use AttributeControlType property (not AttributeControlTypeId) because appropriate property is stored in it
             pva.AttributeControlTypeId = Int32.Parse(model.AttributeControlType);
             pva.DisplayOrder = model.DisplayOrder1;
@@ -2981,6 +2993,189 @@ namespace Nop.Admin.Controllers
             };
 
             return View(model);
+        }
+
+/// <summary>
+/// newly added
+/// </summary>
+/// <param name="productVariantAttributeId"></param>
+/// <returns></returns>
+        public ActionResult EditSizeGuide(int productVariantAttributeId,string storeLocation = null)
+        {
+            storeLocation = !String.IsNullOrEmpty(storeLocation)
+                                    ? storeLocation
+                                    : _webHelper.GetStoreLocation();
+            string url = Request.Url.ToString();
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageProducts))
+                return AccessDeniedView();
+
+            var pva = _productAttributeService.GetProductVariantAttributeById(productVariantAttributeId);
+            if (pva == null)
+                throw new ArgumentException("No product variant attribute found with the specified id");
+
+            var product = _productService.GetProductById(pva.ProductId);
+            if (product == null)
+                throw new ArgumentException("No product found with the specified id");
+
+            //a vendor should have access only to his products
+            if (_workContext.CurrentVendor != null && product.VendorId != _workContext.CurrentVendor.Id)
+                return RedirectToAction("List", "Product");
+
+            var model = new ProductModel()
+            {
+                Id = pva.ProductId,
+                Name = product.Name,
+                ReturnUrl=storeLocation+"Admin/Product/Edit/"+pva.ProductId,
+            };
+            model.AddSizeGuideModel.ProductAttribute = pva.ProductAttribute.Name;
+            model.AddSizeGuideModel.ProductAttributeId = pva.Id;
+            model.AddSizeGuideModel.SizeGuideUrl = pva.SizeGuideUrl;
+
+            return View(model);
+        }
+
+        [HttpPost, GridAction(EnableCustomBinding = true)]
+        public ActionResult GetSizeGuideImage(GridCommand command, int productId, int productVariantAttributeId, string storeLocation = null)
+        {
+            storeLocation = !String.IsNullOrEmpty(storeLocation)
+                                    ? storeLocation
+                                    : _webHelper.GetStoreLocation();
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageProducts))
+                return AccessDeniedView();
+
+            //a vendor should have access only to his products
+            var pva = _productAttributeService.GetProductVariantAttributeById(productVariantAttributeId);
+            var SizeGuideImage = new ProductModel.ProductVariantAttributeModel()
+            {
+                //ProductName = product.Name,
+                ProductId = pva.ProductId,
+                ProductAttribute = pva.ProductAttribute.Name,
+                Id = pva.Id,
+                SizeGuideUrl = pva.SizeGuideUrl,
+            };
+            
+            if(pva.SizeGuideUrl==null)
+                return Content("No images to display");
+
+                var productPictures = _productService.GetProductSizeGuideUrl(productId);
+                var productPicturesModel = productPictures
+                    .Select(x =>
+                    {
+                        return new ProductModel.ProductPictureModel()
+                        {
+                            ProductId = pva.ProductId,
+                            PictureUrl = (pva.SizeGuideUrl!=null)?storeLocation + "content/images/thumbs/" + pva.SizeGuideUrl:null,
+                        };
+                    })
+                    .ToList();
+            
+                var model = new GridModel<ProductModel.ProductPictureModel>
+                {
+                    Data = productPicturesModel,
+                    Total = productPicturesModel.Count
+                };
+
+                return new JsonResult
+                {
+                    Data = model
+                };
+            }
+
+        [GridAction(EnableCustomBinding = true)]
+        public ActionResult ProductSizeGuideImageDelete(GridCommand command, ProductModel.ProductVariantAttributeValueListModel model)
+        {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageProducts))
+                return AccessDeniedView();
+
+            var pva = _productAttributeService.GetProductVariantAttributeById(model.ProductVariantAttributeId);
+            if (pva == null)
+                throw new ArgumentException("No product variant attribute found with the specified id");
+
+            var product = _productService.GetProductById(pva.ProductId);
+            if (product == null)
+                throw new ArgumentException("No product found with the specified id");
+
+            //a vendor should have access only to his products
+            if (_workContext.CurrentVendor != null && product.VendorId != _workContext.CurrentVendor.Id)
+                return Content("This is not your product");
+
+            pva.SizeGuideUrl = null;
+          
+           _productAttributeService.UpdateProductVariantAttribute(pva);
+
+            return ProductVariantAttributeList(command, pva.ProductId);
+        }
+
+        [ChildActionOnly]
+        public ActionResult InsertSizeGuidePicture(int productId, string storeLocation = null)
+        {
+            storeLocation = !String.IsNullOrEmpty(storeLocation)
+                                    ? storeLocation
+                                    : _webHelper.GetStoreLocation();
+            var model = new ProductModel();
+            model.Id = productId;
+            model.ReturnUrl = storeLocation + "Admin/Product/Edit" + productId;
+            model.ProductPictureModels = _productService.GetProductPicturesByProductId(productId)
+                .Select(x =>
+                {
+                    return new ProductModel.ProductPictureModel()
+                    {
+                        Id = x.Id,
+                        ProductId = x.ProductId,
+                        PictureId = x.PictureId,
+                        PictureUrl = _pictureService.GetPictureUrl(x.PictureId),
+                        DisplayOrder = x.DisplayOrder
+                    };
+                })
+                .ToList();
+            return PartialView(model);
+        }
+
+        public ActionResult ProductSizeGuidePictureAdd(int pictureId, int productId,GridCommand Command)
+        {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageProducts))
+                return AccessDeniedView();
+
+            if (pictureId == 0)
+                throw new ArgumentException();
+
+            var PictureUrl = _pictureService.GetPictureUrl(pictureId);
+            string fileName = Path.GetFileName(PictureUrl);
+
+            var product = _productService.GetProductById(productId);
+            if (product == null)
+                throw new ArgumentException("No product found with the specified id");
+
+            //a vendor should have access only to his products
+            if (_workContext.CurrentVendor != null && product.VendorId != _workContext.CurrentVendor.Id)
+                return RedirectToAction("List");
+
+            var pvap = _productAttributeService.GetProductVariantAttributesOfSizeByProductId(productId);
+            
+            if (pvap == null)
+                throw new ArgumentException("No product variant attribute found with the specified id");
+
+            var pva_id = _productAttributeService.GetProductVariantAttributeById(pvap.Id);
+
+            var pva = new ProductModel.ProductVariantAttributeModel()
+            {
+                Id=pvap.Id,
+                ProductId = pva_id.ProductId,
+                ProductAttribute = pva_id.ProductAttributeId.ToString(),//use ProductAttribute property (not ProductAttributeId) because appropriate property is stored in it
+                TextPrompt = pva_id.TextPrompt,
+                IsRequired = pva_id.IsRequired,
+                AttributeControlType = pva_id.AttributeControlTypeId.ToString(), //use AttributeControlType property (not AttributeControlTypeId) because appropriate property is stored in it
+                DisplayOrder1 = pva_id.DisplayOrder,
+                SizeGuideUrl = fileName,
+            };
+
+            //_productAttributeService.UpdateProductVariantAttribute(pva);
+
+            ProductVariantAttrbiuteUpdate(Command,pva);
+
+            //_pictureService.SetSeoFilename(pictureId, _pictureService.GetPictureSeName(product.Name));
+
+            return Json(new { Result = true }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost, GridAction(EnableCustomBinding = true)]
@@ -3083,12 +3278,20 @@ namespace Nop.Admin.Controllers
                         PictureId = x.PictureId,
                         PictureUrl = _pictureService.GetPictureUrl(x.PictureId),
                         DisplayOrder = x.DisplayOrder
+                        
                     };
                 })
                 .ToList();
 
             return View(model);
         }
+
+        ////added for sizeguide
+        //public ActionResult ProductAttributeValueCreatePopup(int productAttributeAttributeId)
+        //{
+
+        //}
+        
 
         [HttpPost]
         public ActionResult ProductAttributeValueCreatePopup(string btnId, string formId, ProductModel.ProductVariantAttributeValueModel model)
@@ -3346,9 +3549,6 @@ namespace Nop.Admin.Controllers
         }
 
 
-
-
-
         public ActionResult AssociateProductToAttributeValuePopup()
         {
             if (!_permissionService.Authorize(StandardPermissionProvider.ManageProducts))
@@ -3361,12 +3561,12 @@ namespace Nop.Admin.Controllers
             //categories
             model.AvailableCategories.Add(new SelectListItem() { Text = _localizationService.GetResource("Admin.Common.All"), Value = "0" });
             foreach (var c in _categoryService.GetAllCategories(showHidden: true))
-                model.AvailableCategories.Add(new SelectListItem() { Text = c.GetFormattedBreadCrumb(_categoryService), Value = c.Id.ToString() });
+             model.AvailableCategories.Add(new SelectListItem() { Text = c.GetFormattedBreadCrumb(_categoryService), Value = c.Id.ToString() });
 
             //manufacturers
             model.AvailableManufacturers.Add(new SelectListItem() { Text = _localizationService.GetResource("Admin.Common.All"), Value = "0" });
             foreach (var m in _manufacturerService.GetAllManufacturers(showHidden: true))
-                model.AvailableManufacturers.Add(new SelectListItem() { Text = m.Name, Value = m.Id.ToString() });
+            model.AvailableManufacturers.Add(new SelectListItem() { Text = m.Name, Value = m.Id.ToString() });
 
             //stores
             model.AvailableStores.Add(new SelectListItem() { Text = _localizationService.GetResource("Admin.Common.All"), Value = "0" });

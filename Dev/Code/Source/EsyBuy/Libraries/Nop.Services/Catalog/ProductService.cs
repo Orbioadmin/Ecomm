@@ -49,6 +49,7 @@ namespace Nop.Services.Catalog
         private readonly IRepository<ProductPicture> _productPictureRepository;
         private readonly IRepository<ProductSpecificationAttribute> _productSpecificationAttributeRepository;
         private readonly IRepository<ProductReview> _productReviewRepository;
+        private readonly IRepository<ProductVariantAttribute> _productVariantAttributeRepository;
         private readonly IProductAttributeService _productAttributeService;
         private readonly IProductAttributeParser _productAttributeParser;
         private readonly ILanguageService _languageService;
@@ -102,6 +103,7 @@ namespace Nop.Services.Catalog
             IRepository<StoreMapping> storeMappingRepository,
             IRepository<ProductSpecificationAttribute> productSpecificationAttributeRepository,
             IRepository<ProductReview>  productReviewRepository,
+            IRepository<ProductVariantAttribute> productVariantAttributeRepository,
             IProductAttributeService productAttributeService,
             IProductAttributeParser productAttributeParser,
             ILanguageService languageService,
@@ -122,6 +124,7 @@ namespace Nop.Services.Catalog
             this._storeMappingRepository = storeMappingRepository;
             this._productSpecificationAttributeRepository = productSpecificationAttributeRepository;
             this._productReviewRepository = productReviewRepository;
+            this._productVariantAttributeRepository = productVariantAttributeRepository;
             this._productAttributeService = productAttributeService;
             this._productAttributeParser = productAttributeParser;
             this._languageService = languageService;
@@ -1441,6 +1444,18 @@ namespace Nop.Services.Catalog
             var productPictures = query.ToList();
             return productPictures;
         }
+
+        public virtual IList<ProductVariantAttribute> GetProductSizeGuideUrl(int productId)
+        {
+            var query = from pp in _productVariantAttributeRepository.Table
+                        where pp.ProductId == productId
+                        select pp;
+                       
+            var productPictures = query.ToList();
+            return productPictures;
+        }
+
+
 
         /// <summary>
         /// Gets a product picture

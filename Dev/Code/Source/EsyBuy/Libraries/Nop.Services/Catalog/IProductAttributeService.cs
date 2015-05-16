@@ -62,6 +62,13 @@ namespace Nop.Services.Catalog
         IList<ProductVariantAttribute> GetProductVariantAttributesByProductId(int productId);
 
         /// <summary>
+        /// Gets product variant attribute mappings by product identifier by size
+        /// </summary>
+        /// <param name="productId">The product identifier</param>
+        /// <returns>Product variant attribute mapping collection</returns>
+        ProductVariantAttribute GetProductVariantAttributesOfSizeByProductId(int productId);
+
+        /// <summary>
         /// Gets a product variant attribute mapping
         /// </summary>
         /// <param name="productVariantAttributeId">Product variant attribute mapping identifier</param>

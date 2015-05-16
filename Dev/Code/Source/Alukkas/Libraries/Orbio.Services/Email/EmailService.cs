@@ -36,7 +36,8 @@ namespace Orbio.Services.Email
                 SmtpClient smtp = new SmtpClient();
                 smtp.Host = "smtp.gmail.com";
                 smtp.Port = 25;
-                smtp.UseDefaultCredentials = false;
+                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                smtp.UseDefaultCredentials = true;
                 smtp.Credentials = new System.Net.NetworkCredential(email.FromAddress, email.Password);
                 smtp.EnableSsl = true;
                 smtp.Send(mail);
