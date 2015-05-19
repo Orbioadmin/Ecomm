@@ -94,6 +94,7 @@ namespace Orbio.Web.UI.Models.Catalog
                                                      Id = pv.Id,
                                                      AttributeControlType = pv.AttributeControlType,
                                                      TextPrompt = pv.TextPrompt,
+                                                     SizeGuideUrl=pv.SizeGuideUrl,
                                                      IsRequired = pv.IsRequired,
                                                      ProductAttributeId = pv.ProductAttributeId,
                                                      Values = new List<ProductVariantAttributeValueModel>((from pvv in pv.ProductVariantAttributeValues

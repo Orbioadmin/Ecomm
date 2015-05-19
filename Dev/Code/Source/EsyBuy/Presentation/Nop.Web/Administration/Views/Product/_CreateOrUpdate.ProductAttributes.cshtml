@@ -59,10 +59,19 @@ else
                     columns.Bound(x => x.AttributeControlType)
                         .Width(150)
                         .Centered();
-                    columns.Bound(x => x.SizeGuideUrl)
-                    .Width(200)
-                   .ClientTemplate("<a href=\"<#= SizeGuideUrl #>\"><#= ViewEditSizeGuide #></a>")
-                   .ReadOnly();
+                    if (this.Model.AddSizeGuideModel.ProductAttribute == "15")
+                    {
+                        columns.Bound(x => x.SizeGuideUrl)
+                        .Width(200)
+                       .ClientTemplate("<a href=\"<#= SizeGuideUrl #>\"><#= ViewEditSizeGuide #></a>")
+                       .ReadOnly();
+                    }
+                    else
+                    {
+                         columns.Bound(x => x.SizeGuideUrl)
+                         .Width(200)
+                         .ReadOnly();
+                    }
                    
                     columns.Bound(x => x.DisplayOrder1)
                         .Width(150)

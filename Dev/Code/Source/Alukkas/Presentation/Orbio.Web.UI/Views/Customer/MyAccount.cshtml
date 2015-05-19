@@ -164,38 +164,7 @@
                         </div>
                         <!-- detail -->
                         <!-- My account -->
-                        <div class="tab-pane" id="myaccount">
-                            <div class="table-responsive">
-                                <table cellspacing="0" cellpadding="0" width="100%" class="Order_table table">
-                                    <tbody>
-                                        <tr>
-                                            <th>S.No.</th>
-                                            <th>Order No.</th>
-                                            <th>Date</th>
-                                            <th>Status</th>
-                                        </tr>
-                                        <tr>
-                                            <td data-title="S.No">1</td>
-                                            <td data-title="Order No">ABC 123456789</td>
-                                            <td data-title="Date">18 - 11 -2014</td>
-                                            <td data-title="Status"><p class="deliver">Delivered</p></td>
-                                        </tr>
-                                        <tr>
-                                            <td data-title="S.No">2</td>
-                                            <td data-title="Order">ABC 123456789</td>
-                                            <td data-title="Date">18 - 11 -2014</td>
-                                            <td data-title="Status"><p>Inprogess</p></td>
-                                        </tr>
-                                        <tr>
-                                            <td data-title="S.No">3</td>
-                                            <td data-title="Order">ABC 123456789</td>
-                                            <td data-title="Date">18 - 11 -2014</td>
-                                            <td data-title="Status"><p class="cancel">Cancelled</p></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                       @Html.Action("Order", "Customer")
                         <!-- My account -->
                         <!-- My Wishlist -->
                        @Html.Action("WishList", "Customer")
@@ -204,10 +173,6 @@
                 </div>
 
             </div>
-
-
-
-
         </div>
     </div>
 </section>

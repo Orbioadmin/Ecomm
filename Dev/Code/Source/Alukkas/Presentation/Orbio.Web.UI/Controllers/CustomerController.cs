@@ -28,14 +28,16 @@ namespace Orbio.Web.UI.Controllers
         private readonly IMessageService messageService;
         private readonly IProductService productService;
         private readonly IShoppingCartService shoppingCartService;
+        private readonly IOrderService orderService;
 
         public CustomerController(ICustomerService customerService, IMessageService messageService, IProductService productService
-            , IShoppingCartService shoppingCartService)
+            , IShoppingCartService shoppingCartService, IOrderService orderService)
         {
             this.customerService = customerService;
             this.messageService = messageService;
             this.productService = productService;
             this.shoppingCartService = shoppingCartService;
+            this.orderService = orderService;
         }
 
         [LoginRequiredAttribute]
@@ -357,6 +359,40 @@ namespace Orbio.Web.UI.Controllers
             var model = new ShoppingCartItemsModel(shoppingCartService.GetCartItems("select", 0, cartType, 0, customerId, 0, 0));
             return model;
         }
+
+        public ActionResult Order()
+        {
+            var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
+            var curCustomer = workContext.CurrentCustomer;
+            var model = PrepareOrderDetails(curCustomer.Id);
+            return View("Order", model);
+        }
+        private OrderDetailsModel PrepareOrderDetails(int customerId)
+        {
+            var model = new OrderDetailsModel(orderService.GetOrderDetails(customerId));
+            foreach(var item in model.OrderedProductDetail)
+            {
+                   if(item.OrderStatus=="10")
+                   {
+                       item.OrderStatus = "Pending";
+                   }
+                   else if(item.OrderStatus=="20")
+                   {
+                       item.OrderStatus = "Processing";
+                   }
+                   else if(item.OrderStatus=="30")
+                   {
+                       item.OrderStatus = "Complete";
+                   }
+                   else if (item.OrderStatus == "40")
+                   {
+                       item.OrderStatus = "Cancelled";
+                   }
+                
+            }
+            return model;
+        }
+
         [HttpGet]
         public ActionResult UpdateWishList(int itemId, string value)
         {

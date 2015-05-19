@@ -232,6 +232,8 @@
     <Compile Include="Models\Customer\PasswordRecoveryModel.cs" />
     <Compile Include="Models\Home\ContactModel.cs" />
     <Compile Include="Models\Home\PriceBarModel.cs" />
+    <Compile Include="Models\Orders\OrderDetailsModel.cs" />
+    <Compile Include="Models\Orders\OrderModel.cs" />
     <Compile Include="Models\Orders\ShoppingCartItemModel.cs" />
     <Compile Include="Models\Orders\ShoppingCartItemsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -604,8 +606,6 @@
     <Content Include="Content\fonts\rupeefont.ttf" />
     <Content Include="Content\fonts\WebRupee.V2.0.eot" />
     <Content Include="Content\fonts\WebRupee.V2.0.ttf" />
-    <Content Include="Images\slider\Thumbs.db" />
-    <Content Include="Images\Thumbnail\Thumbs.db" />
     <None Include="Properties\PublishProfiles\Alukkas.pubxml" />
     <Content Include="Views\Catalog\Search.cshtml" />
     <Content Include="Views\Catalog\_productAttribute.cshtml" />
@@ -618,6 +618,7 @@
     <Content Include="Views\Catalog\Review.cshtml" />
     <Content Include="Views\Catalog\ProductRating.cshtml" />
     <Content Include="Views\Catalog\ProductStar.cshtml" />
+    <None Include="Properties\PublishProfiles\alukkastest.pubxml" />
     <None Include="Properties\PublishProfiles\Alukkas_Ecom.pubxml" />
     <Content Include="Views\ShoppingCart\OrderSummary.cshtml" />
     <Content Include="Views\Home\AboutUs.cshtml" />
@@ -644,6 +645,8 @@
     <Content Include="Views\Home\Certification.cshtml" />
     <Content Include="Views\Home\News.cshtml" />
     <Content Include="Views\Home\PrivacyPolicy.cshtml" />
+    <Content Include="Views\Customer\Order.cshtml" />
+    <Content Include="Views\Customer\OrderDetails.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

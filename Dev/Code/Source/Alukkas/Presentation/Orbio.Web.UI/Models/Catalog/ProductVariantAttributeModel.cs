@@ -24,6 +24,8 @@ namespace Orbio.Web.UI.Models.Catalog
 
         public string TextPrompt { get; set; }
 
+        public string SizeGuideUrl { get; set; }
+
         public bool IsRequired { get; set; }
 
         /// <summary>

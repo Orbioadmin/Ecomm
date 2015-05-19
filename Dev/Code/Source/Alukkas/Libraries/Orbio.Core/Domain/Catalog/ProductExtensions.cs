@@ -109,13 +109,20 @@ namespace Orbio.Core.Domain.Catalog
         public static string CalculatePrice(this IPriceComponent product)
         {
             IPriceCalculator priceCalculator = null;
-            if (product.ProductPriceDetail.PriceComponents.Count == 0 && product.ProductPriceDetail.ProductComponents.Count == 0)
+            if (product.ProductPriceDetail != null)
             {
-                priceCalculator = new SimplePriceCalculator(product);
+                if (product.ProductPriceDetail.PriceComponents.Count == 0 && product.ProductPriceDetail.ProductComponents.Count == 0)
+                {
+                    priceCalculator = new SimplePriceCalculator(product);
+                }
+                else
+                {
+                    priceCalculator = new ComponentPriceCalculator(product);
+                }
             }
             else
             {
-                priceCalculator = new ComponentPriceCalculator(product);
+                priceCalculator = new SimplePriceCalculator(product);
             }
             return priceCalculator.FormattedPrice;
         }
