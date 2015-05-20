@@ -63,6 +63,7 @@
                     var productpicturesGrid = $("#SizeGuideImage_grid");
                     productpicturesGrid.data('tGrid').ajaxRequest();
                     $('#addProductPicture').attr('disabled', false);
+                    pictureId=0;
                 },
                 error:function (xhr, ajaxOptions, thrownError){
                     alert('Failed to add product picture.');

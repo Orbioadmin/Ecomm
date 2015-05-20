@@ -340,15 +340,15 @@ namespace Orbio.Web.UI.Controllers
                 //    string selectedAttributes = string.Empty;
                 //    int count = 0;
                 //    int selectedAttributeId = 1;
-                //    foreach (var attribute in selectedProduct.ProductVariantAttributes)
-                //    {
-                //        switch (attribute.AttributeControlType)
-                //        {
-                //            case Orbio.Core.Domain.Catalog.AttributeControlType.TableBlock:
-                //                {
+                    //foreach (var attribute in selectedProduct.ProductVariantAttributes)
+                    //{
+                    //    switch (attribute.AttributeControlType)
+                    //    {
+                    //        case Orbio.Core.Domain.Catalog.AttributeControlType.TableBlock:
+                    //            {
                 //                    if (TempData.ContainsKey("pvaid"))
                 //                    {
-                //                        selectedAttributeId = int.Parse(TempData["pvaid"].ToString());
+                ////                        selectedAttributeId = int.Parse(TempData["pvaid"].ToString());
                 //                        selectedAttributes = AddCartProductAttribute(selectedAttributes,
                 //                                   attribute, selectedAttributeId.ToString());
                 //                        TempData.Remove("pvaid");

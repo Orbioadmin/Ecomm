@@ -1,77 +1,180 @@
 ﻿@model TopMenuModel
 @using Orbio.Web.UI.Models.Catalog;
-@helper RenderCategoryLine(CategorySimpleModel category, int level)
-{
-            
-        <li class="dropdown"><a href="@Url.RouteUrl("Category", new { SeName = category.SeName })?p=ct" class="dropdown-toggle" data-toggle="dropdown">@category.Name<i class="fa fa-angle-down"></i></a>
-         @if (category.SubCategories.Count > 0)
-         { 
-              <ul class="dropdown-menu">
-                     <li>
-        <div class="row">
-            <div class="container">
-                  @foreach (var subCategory in category.SubCategories)
-                  {
-                      <div class="col-sm-3">
-                      @RenderSubCategoryLine(subCategory)
-                       </div>
 
-                  }
-                </div>
-        </div>
-    </li>
-              </ul>
-         }
-         </li>
-    
+@{
+    var genericAttributeService = Nop.Core.Infrastructure.EngineContext.Current.Resolve<Orbio.Services.Common.IGenericAttributeService>();
+    var workContext = Nop.Core.Infrastructure.EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
 }
-@helper RenderSubCategoryLine(CategorySimpleModel category)
-{ 
-    
-                    <h3>@category.Name</h3>
+<div class="top-head clearfix">
+    <div class="container">
+        <ul class="top-menu">
+            <li><a href="@Url.RouteUrl("Category", new { SeName = "AboutUs" })?p=ft">About us</a></li>
+            <li><a href="">News</a></li>
+            <li><a href="">Blog</a></li>
+            <li><a href="@Url.RouteUrl("Category", new { SeName = "ContactUs" })?p=ft">Contact</a></li>
+        </ul>
+    </div>
+</div>
+<div class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")"><img src="images/Basic_image/logo.png"></a>
+        </div>
+        @Html.Action("SearchBox", "Catalog")
+
+        <div class=" collapse head_main in">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="cart_item">
+                    @Html.Action("CartItem", "ShoppingCart")
+                </li>
+                <li>
+
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                            <img src="~/images/Basic_image/user.png">
+                             @if (workContext.CurrentCustomer.IsRegistered)
+                               {
+                                <span class="span-title">Hi @ViewBag.UserName</span>
+                               }
+                             else
+                               { 
+                                 <span class="span-title">Hi</span>
+                               }
+                            <span class="caret"></span>
+                         </button>
+                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            @if (workContext.CurrentCustomer.IsRegistered)
+                             {
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="@Url.Action("MyAccount", "Customer")">My Account</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="@Url.Action("LogOut", "Account")">Logout</a></li>
+                             }
+                            else
+                             {
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="@Url.Action("Login", "Account")">Login</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="@Url.Action("Register", "Account")">Register</a></li>
+                             }
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+
+<div class="second_menu">
+    <div class="container">
+        <div class="navbar navbar-default" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse ">
+                <ul class="nav navbar-nav ">
+                    @helper RenderCategoryLine(CategorySimpleModel category, int level)
+                    {
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle arrow_box" data-toggle="dropdown" onclick="location.href = '@Url.RouteUrl("Category", new { SeName = category.SeName })?p=ct'">@category.Name</a>
+                        @if (category.SubCategories.Count > 0)
+                        {
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <div class="row">
+                                        <div class="container">
+                                            @foreach (var subCategory in category.SubCategories)
+                                            {
+                                                <div class="col-sm-2">
+                                                    @RenderSubCategoryLine(subCategory)
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        }
+                    </li>
+                    }
+
+                  
+                    @helper RenderSubCategoryLine(CategorySimpleModel category)
+                    {
+                    <h3>
+                        <a href="@Url.RouteUrl("Category", new { SeName = category.SeName })?p=ct" class="dropdown-toggle">@category.Name</a>
+                    </h3>
                     <ul>
                         @if (category.SubCategories.Count > 0)
                         {
                             int count = 0;
                             foreach (var subCategory in category.SubCategories)
                             {
-                             if( count<(int) ViewBag.NumberOfCategory)
-                             {
-                                <li><a href="@Url.RouteUrl("Category", new { SeName = subCategory.SeName })?p=ct">@subCategory.Name</a></li>  
-                            
+                                if (count < (int)ViewBag.NumberOfCategory)
+                                {
+                                    <li><a href="@Url.RouteUrl("Category", new { SeName = subCategory.SeName })?p=ct">@subCategory.Name</a></li>
                                 }
-                            else{
-                                 <li><a href="@Url.RouteUrl("Category", new { SeName = category.SeName })?p=ct"><i>ViewAll</i></a></li>  
-                                break;
-                                 }
+                                else
+                                {
+                                    <li><a href="@Url.RouteUrl("Category", new { SeName = category.SeName })?p=ct"><i>ViewAll</i></a></li>
+                                    break;
+                                }
                                 count++;
                             }
-
-
                         }
                     </ul>
-             
-            
-  @*  if (category.SubCategories.Count > 0)
-    {
-           
-         <a href="@Url.RouteUrl("Category", new { SeName = category.SeName })"  class="viewAllMenu">View All</a> }*@
-}                                                                                                                                                                                                                                 
-            <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="@Url.Action("Index", "Home")" class="home"></a></li>
-                         @if (Model.Categories.Count > 0)
-                         {
-                             foreach (var category in Model.Categories)
-                             {
+                    }
+                   
+                    @if (Model != null)
+                    {
+                        if (Model.Categories.Count > 0)
+                        {
+                            foreach (var category in Model.Categories)
+                            {
                                 @RenderCategoryLine(category, 0)
-                             }
-                         }                 
-                    </ul>
-                </div>
+                            }
+                        }
+                    }
+                </ul>
+
+            </div><!--/.nav-collapse -->
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/jquery.js"></script>
+<script>
+    $(document).ready(function () {
+        @*$("#drpcategorysearch").change(function () {
+        var Search_Str = $(this).val();;
+        var wid = $(this).width();
+        $("#nav-search-in-content").text(Search_Str);
+        });*@
+        $('#search_button').click(function (e) {
+            e.preventDefault();
+            var url = "";
+            url = 'Search?p=sr&q=' + $('#twotabsearchtextbox').val();
+            window.location.href = window.location.origin + "/" + url;
+
+
+        });
+        $('#twotabsearchtextbox').keydown(function (e) {
+            if (e.keyCode == 13) {
+                e.preventDefault();
+                var url = "";
+                url = 'Search?p=sr&q=' + $('#twotabsearchtextbox').val();
+                window.location.href = window.location.origin + "/" + url;
+            }
+
+        });
+    });
+
+</script>
 
 <script>
-$('ul.unstyled').each(function () {
-$(this).children('li').slice(7).hide();
-});
+    $('ul.unstyled').each(function () {
+        $(this).children('li').slice(7).hide();
+    });
 </script>

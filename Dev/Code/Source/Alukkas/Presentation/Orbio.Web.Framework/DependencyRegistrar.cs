@@ -20,7 +20,8 @@ namespace Orbio.Web.Framework
 
             //added by roshni
             builder.RegisterType<OBS.Checkout.CheckoutService>().As<OBS.Checkout.ICheckoutService>().InstancePerHttpRequest();
-            
+
+            builder.RegisterType<OBS.Orders.OrderService>().As<OBS.Orders.IOrderService>().InstancePerHttpRequest();
             //added by roshni
             builder.RegisterType<OBS.Email.EmailService>().As<OBS.Email.IEmailService>().InstancePerHttpRequest();
             //added by sankar

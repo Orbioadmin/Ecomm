@@ -9,6 +9,10 @@
         var pvaTextPrompt = string.Format("ProductVariantAttributes[{0}].TextPrompt", count);
         var pvaAttributeControlType = string.Format("ProductVariantAttributes[{0}].AttributeControlType", count);
         var valueCount = 0;
+        
+        var baseImageUrl = System.Configuration.ConfigurationManager.AppSettings["ImageServerBaseUrl"];
+        var imageUrl = baseImageUrl + "ecom/" + pva.SizeGuideUrl;
+        
         switch (pva.AttributeControlType)
         {
             case Orbio.Core.Domain.Catalog.AttributeControlType.TableBlock:
@@ -54,11 +58,12 @@
                          }
                         <li class="pull-right no_brd no_bg">
                             <a href="" class="size_guide">SIZE GUIDE</a>
-                            <div class="Popup_img"><img src="images/Basic_image/Alukkas_-_Bangle_Size.png"></div>
+                            <div class="Popup_img"><img src="@imageUrl"></div>
                         </li>
                     </ul>
                 </div>
                 break;
+                
             case Orbio.Core.Domain.Catalog.AttributeControlType.ColorSquares:
             <div id="productattr_color" >
                 
@@ -100,10 +105,12 @@
                             </script>
                 }
                          }
-                       @* <li class="pull-right no_brd no_bg">
+                       
+                        <li class="pull-right no_brd no_bg">
                             <a href="" class="size_guide">SIZE GUIDE</a>
-                            <div class="Popup_img"><img src="images/Basic_image/Alukkas_-_Bangle_Size.png"></div>
-                        </li>*@
+                            
+                            <div class="Popup_img"><img src="@imageUrl"></div>
+                        </li>
                     </ul>
                 </div>
                 break;

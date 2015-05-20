@@ -29,6 +29,13 @@ namespace Orbio.Core.Domain.Catalog
         public string TextPrompt { get; set; }
 
         /// <summary>
+        /// Gets or sets the SizeGuideUrl
+        /// </summary>
+        [DataMember]
+        public string SizeGuideUrl { get; set; }
+
+
+        /// <summary>
         /// Gets or sets the IsRequired
         /// </summary>
         [DataMember]

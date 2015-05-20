@@ -1,0 +1,13 @@
+﻿@model Orbio.Web.UI.Models.Orders.OrderDetailsModel
+
+@{
+    ViewBag.Title = "Order";
+    Layout = null;
+ }
+
+<div class="tab-pane" id="myaccount">
+   @{
+       Html.RenderPartial("OrderDetails",this.Model.OrderedProductDetail);
+   }
+</div>
+
