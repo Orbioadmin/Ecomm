@@ -2178,3 +2178,37 @@ background: #F8C301;
   border-width: 6px;
   margin-left: -6px;
 }
+
+.second_menu .dropdown-menu{top:auto;}
+.second_menu .dropdown-menu li ul a:hover{color: #F8C301;}
+.second_menu .nav li.dropdown:hover .dropdown-menu {
+    display: block;
+}
+.second_menu .nav li:hover .arrow_box:hover {
+  position: relative;
+  background: #F8C301;
+  border: 0px solid #F8C301;
+}
+.second_menu .nav li:hover .arrow_box:hover:after, .second_menu .nav li:hover .arrow_box:hover:before {
+  top: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.second_menu .nav li:hover .arrow_box:hover:after {
+  border-color: rgba(136, 183, 213, 0);
+  border-top-color: #F8C301;
+  border-width: 5px;
+  margin-left: -5px;
+}
+.second_menu .nav li:hover .arrow_box:hover:before {
+  border-color: rgba(194, 225, 245, 0);
+  border-top-color: #F8C301;
+  border-width: 6px;
+  margin-left: -6px;
+}
