@@ -47,7 +47,7 @@ namespace Orbio.Web.UI.Models.Catalog
         public string ImageRelativeUrl { get; set; }
         public string CurrencyCode { get; set; }
         public decimal GoldWeight { get; set; }
-        public int ProductUnit { get; set; }
+        public decimal ProductUnit { get; set; }
         //price
         public ProductPriceModel ProductPrice { get; set; }
         ////picture

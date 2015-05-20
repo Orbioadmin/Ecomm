@@ -76,7 +76,7 @@ namespace Orbio.Core.Domain.Catalog
         /// Gets or sets ProductUnit
         /// </summary>
         [DataMember]
-        public int ProductUnit { get; set; }
+        public decimal ProductUnit { get; set; }
 
         /// <summary>
         /// Gets or sets PriceUnit

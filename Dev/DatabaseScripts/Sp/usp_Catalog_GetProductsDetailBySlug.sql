@@ -66,7 +66,7 @@ ORDER BY PPM.DisplayOrder FOR XML PATH ('ProductPicture'),ROOT('ProductPictures'
 
 dbo.ufn_GetAllspecificationattributes(@productid), 
 --productattributes
-(SELECT  PPM.Id , PPM.ProductAttributeId,,PPM.SizeGuideUrl As SizeGuideUrl, CASE WHEN ISNULL(PPM.TextPrompt, '')<>'' THEN PPM.TextPrompt ELSE PA.Name END 
+(SELECT  PPM.Id , PPM.ProductAttributeId,PPM.SizeGuideUrl As SizeGuideUrl, CASE WHEN ISNULL(PPM.TextPrompt, '')<>'' THEN PPM.TextPrompt ELSE PA.Name END 
 AS TextPrompt, IsRequired, AttributeControlTypeId, (SELECT  PVA.Id, Name, ColorSquaresRgb, PriceAdjustment,
 IsPreSelected, DisplayOrder, PIC.RelativeUrl PictureUrl,[dbo].[ufn_GetProductPriceDetailsByVarientValue](Product.Id) FROM ProductVariantAttributeValue
 PVA  LEFT OUTER JOIN Picture PIC ON PVA.PictureId = PIC.Id WHERE PVA.ProductVariantAttributeId = PPM.Id order by DisplayOrder 

@@ -1,5 +1,4 @@
 ﻿using Orbio.Core.Domain.Orders;
-using Orbio.Core.Domain.Orders;
 using Orbio.Web.UI.Models.Catalog;
 using System;
 using System.Collections.Generic;
@@ -8,7 +7,7 @@ using System.Web;
 
 namespace Orbio.Web.UI.Models.Orders
 {
-    public class OrderModel : ProductDetailModel
+    public class OrderModel
     {
         public OrderModel()
         {
@@ -16,7 +15,6 @@ namespace Orbio.Web.UI.Models.Orders
         }
 
         public OrderModel(Order orderDetail)
-            : base(orderDetail)
         {
             this.items = new List<OrderModel>();
             this.CustomerId = orderDetail.CustomerId;
