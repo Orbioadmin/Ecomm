@@ -2854,7 +2854,14 @@ namespace Nop.Admin.Controllers
                         pvaModel.ViewEditUrl = Url.Action("EditAttributeValues", "Product", new { productVariantAttributeId = x.Id });
                         pvaModel.SizeGuideUrl = Url.Action("EditSizeGuide", "Product", new { productVariantAttributeId = x.Id });
                         pvaModel.ViewEditText = string.Format(_localizationService.GetResource("Admin.Catalog.Products.ProductVariantAttributes.Attributes.Values.ViewLink"), x.ProductVariantAttributeValues != null ? x.ProductVariantAttributeValues.Count : 0);
-                        pvaModel.ViewEditSizeGuide = string.Format(("View/Edit Image"), x.ProductAttribute != null ? x.ProductVariantAttributeValues.Count : 0);
+                        if (pvaModel.ProductAttribute.ToUpper() == "SIZE")
+                        {
+                            pvaModel.ViewEditSizeGuide = string.Format(("View/Edit Image"), x.ProductAttribute != null ? x.ProductVariantAttributeValues.Count : 0);
+                        }
+                        else
+                        {
+                            pvaModel.ViewEditSizeGuide = null;
+                        }
                     }
                     return pvaModel;
                 })
@@ -3064,7 +3071,7 @@ namespace Nop.Admin.Controllers
                         return new ProductModel.ProductPictureModel()
                         {
                             ProductId = pva.ProductId,
-                            PictureUrl = (pva.SizeGuideUrl!=null)?storeLocation + "content/images/thumbs/" + pva.SizeGuideUrl:null,
+                            PictureUrl = (pva.SizeGuideUrl != null) ? System.Configuration.ConfigurationManager.AppSettings["ImageServerBaseUrl"] + "ecom/" + pva.SizeGuideUrl : null,
                         };
                     })
                     .ToList();
