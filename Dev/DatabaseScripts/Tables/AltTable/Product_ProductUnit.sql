@@ -6,7 +6,7 @@ BEGIN
 	IF  NOT EXISTS (SELECT 1 FROM sys.columns WHERE object_id = OBJECT_ID(N'[dbo].[Product]') AND name='ProductUnit')
 	Begin
 		ALTER TABLE [dbo].[Product]
-		ADD [ProductUnit] int NULL
+		ADD [ProductUnit] decimal(18,4) NULL
 		PRINT 'Added column ProductUnit for the table Product'	
 	End
 	Else

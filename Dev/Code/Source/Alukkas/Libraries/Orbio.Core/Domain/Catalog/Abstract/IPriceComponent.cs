@@ -1,4 +1,4 @@
-﻿
+﻿using System.Collections.Generic;
 namespace Orbio.Core.Domain.Catalog.Abstract
 {
     /// <summary>
@@ -24,7 +24,7 @@ namespace Orbio.Core.Domain.Catalog.Abstract
         /// <summary>
         /// Gets or sets ProductUnit
         /// </summary>
-        int ProductUnit { get; set; }
+        decimal ProductUnit { get; set; }
 
         /// <summary>
         /// Gets or sets PriceUnit

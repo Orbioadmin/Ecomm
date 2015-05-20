@@ -22,7 +22,7 @@ REFERENCES [dbo].[Product] ([Id])
 ALTER TABLE [dbo].[Product_ProductVarientValue_ProductComponent_Mapping] CHECK CONSTRAINT [FK_Product_ProductVarientValue_ProductComponent_Mapping_Product]
 
 ALTER TABLE [dbo].[Product_ProductVarientValue_ProductComponent_Mapping]  WITH CHECK ADD  CONSTRAINT [FK_Product_ProductVarientValue_ProductComponent_Mapping_ProductComponent] FOREIGN KEY([ComponentId])
-REFERENCES [dbo].[ProductComponent] ([ComponentId])
+REFERENCES [dbo].[ProductComponent] ([Id])
 
 ALTER TABLE [dbo].[Product_ProductVarientValue_ProductComponent_Mapping] CHECK CONSTRAINT [FK_Product_ProductVarientValue_ProductComponent_Mapping_ProductComponent]
 

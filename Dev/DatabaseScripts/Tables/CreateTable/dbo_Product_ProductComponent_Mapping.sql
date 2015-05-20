@@ -4,9 +4,11 @@ PRINT 'Creating a new table Product_ProductComponent_Mapping'
 IF NOT EXISTS(SELECT 1 FROM SYS.OBJECTS WHERE name='Product_ProductComponent_Mapping' and type='U')
 BEGIN
 		CREATE TABLE [dbo].[Product_ProductComponent_Mapping](
-			[Id] [int] IDENTITY(1,1) NOT NULL,
-			[ProductId] [int] NOT NULL,
-			[ComponentId] [int] NOT NULL,
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[ProductId] [int] NOT NULL,
+	[ComponentId] [int] NOT NULL,
+	[Weight] [decimal](18, 4) NOT NULL,
+	[UnitPrice] [decimal](18, 4) NOT NULL,
 		 CONSTRAINT [PK_Product_ProductComponent_Mapping] PRIMARY KEY CLUSTERED 
 		(
 			[Id] ASC

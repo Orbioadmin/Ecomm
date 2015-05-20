@@ -120,6 +120,55 @@ namespace Orbio.Core.Domain.Catalog
             return priceCalculator.FormattedPrice;
         }
 
+        public static Dictionary<string, string> GetComponentDetails(this IPriceComponent product)
+        {
+            Dictionary<string, string> componentDetails = new Dictionary<string, string>();
+            if (product.ProductPriceDetail.PriceComponents.Count == 0 && product.ProductPriceDetail.ProductComponents.Count == 0)
+            {
+                return componentDetails;
+            }
+            else
+            {
+                decimal goldRate = 0;
+                //Product component price total
+                decimal componentPriceTotal = 0;
+                foreach (var componentPrice in product.ProductPriceDetail.ProductComponents)
+                {
+                    componentPriceTotal += componentPriceTotal + componentPrice.UnitPrice;
+                }
+                //Product gold price
+                try
+                {
+                    goldRate = product.GoldWeight * ((product.ProductUnit * product.MarketUnitPrice / (product.PriceUnit)));
+                }
+                catch
+                { }
+
+                //Product price component total
+                decimal priceComponentTotal = 0;
+                foreach (var priceComponent in product.ProductPriceDetail.PriceComponents)
+                {
+                    if (priceComponent.Price != null)
+                    {
+                        priceComponentTotal += Convert.ToDecimal(priceComponent.Price);
+                    }
+                    else if (priceComponent.Percentage != null)
+                    {
+                        priceComponentTotal += Convert.ToDecimal((goldRate * priceComponent.Percentage) / 100);
+                    }
+                    else if (priceComponent.ItemPrice != null)
+                    {
+                        priceComponentTotal += Convert.ToDecimal(priceComponent.ItemPrice);
+                    }
+                }
+                componentDetails.Add("GOLD", goldRate.ToString("#,##0.00"));
+                componentDetails.Add("Other St.", componentPriceTotal.ToString("#,##0.00"));
+                componentDetails.Add("Other", priceComponentTotal.ToString("#,##0.00"));
+                return componentDetails;
+            }
+
+        }
+
     }
 
 
@@ -146,11 +195,20 @@ namespace Orbio.Core.Domain.Catalog
 
         public ComponentPriceCalculator(IPriceComponent product)
         {
+            decimal goldRate = 0;
             //Product component price total
-            var componentPriceTotal = (from componentPrice in product.ProductPriceDetail.ProductComponents
-                                       select componentPrice.UnitPrice).ToList().Sum();
+            decimal componentPriceTotal = 0;
+            foreach (var componentPrice in product.ProductPriceDetail.ProductComponents)
+            {
+                componentPriceTotal += componentPriceTotal + componentPrice.UnitPrice;
+            }
             //Product gold price
-            decimal goldRate = product.GoldWeight * ((product.ProductUnit * product.MarketUnitPrice / (product.PriceUnit)));
+            try
+            {
+                goldRate = product.GoldWeight * ((product.ProductUnit * product.MarketUnitPrice / (product.PriceUnit)));
+            }
+            catch
+            { }
 
             //Product price component total
             decimal priceComponentTotal = 0;
@@ -179,6 +237,7 @@ namespace Orbio.Core.Domain.Catalog
             get { return product.Price.ToString("#,##0.00"); }
         }
     }
+
 
 
 }

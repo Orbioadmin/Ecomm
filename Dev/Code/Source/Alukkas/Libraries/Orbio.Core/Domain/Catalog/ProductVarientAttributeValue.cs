@@ -139,7 +139,7 @@ namespace Orbio.Core.Domain.Catalog
              }
          }
 
-         public int ProductUnit
+         public decimal ProductUnit
          {
              get;
              set;
