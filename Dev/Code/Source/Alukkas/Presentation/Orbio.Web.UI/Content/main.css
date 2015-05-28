@@ -2212,3 +2212,16 @@ background: #F8C301;
   border-width: 6px;
   margin-left: -6px;
 }
+
+.Price_breakup{display: none; }
+.price-main{position: relative;}
+.price-button{position: absolute; right: 0; top: -32px; font-size: 12px; /*text-decoration: underline;*/
+padding: 5px 8px; border-radius: 2px; cursor: pointer;}
+.price-button:hover{text-decoration: none; color: #f8c301;}
+.listing_page .col-sm-2 {
+padding-right: 0;
+}
+.price-range{
+width: 152px;
+}
+
