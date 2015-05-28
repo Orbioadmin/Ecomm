@@ -17,7 +17,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE FUNCTION [dbo].[ufn_GetProductPriceDetailsByVarientValueByVarientValue](@productid INT)
+CREATE FUNCTION [dbo].[ufn_GetProductPriceDetailsByVarientValue](@productid INT,@variantValueId INT)
 RETURNS XML
 AS --WITH RETURNS NULL ON NULL INPUT 
 BEGIN 
@@ -25,18 +25,16 @@ BEGIN
 	 
 		--WITH XMLNAMESPACES ('http://schemas.datacontract.org/2004/07/Orbio.Core.Domain.Catalog' AS ns)
 		SELECT @xmlResult = (select (select PC.[ComponentName] as 'Name',PPPC.[Weight] as 'Weight',PPPC.[UnitPrice] as 'UnitPrice' from [dbo].[ProductComponent] PC
-			inner join [dbo].[Product_ProductComponent_Mapping] PCM on PCM.ComponentId = PC.ComponentId
-			inner join [dbo].[Product_ProductVarientValue_ProductComponent_Mapping] PPPC  on PPPC.[ComponentId] = PC.ComponentId
-			Left Outer Join ProductVariantAttributeValue PVA on PVA.Id = PPPC.[ProductVarientAttributeValueId]
-			where PCM.ProductId = @productid and PC.IsActive = 1 and PC.Deleted=0
+			inner join [dbo].[Product_ProductVarientValue_ProductComponent_Mapping] PPPC  on PPPC.[ComponentId] = PC.Id
+			LEFT OUTER Join ProductVariantAttributeValue PVA on PVA.Id = PPPC.[ProductVarientAttributeValueId]
+			where PPPC.ProductId = @productid and PC.IsActive = 1 and PC.Deleted=0 and PPPC.ProductVarientAttributeValueId = @variantValueId
 			FOR XML PATH('ProductComponent'), ROOT('ProductComponents'), TYPE )
 			,
 			(select PC.[Name] as 'Name',PPPC.Price as 'Price',PPPC.Percentage as 'Percentage', PPPC.Itemrate as 'ItemPrice' 
 			from [dbo].[PriceComponent] PC
-			inner join [dbo].[Product_PriceComponent_Mapping] PPCM on PPCM.PricecomponentId = PC.PriceComponentId
-			inner join [dbo].[Product_ProductVarientValue_PriceComponent_Mapping] PPPC  on PPPC.[PriceComponentId] = PC.PriceComponentId
-			Left Outer Join ProductVariantAttributeValue PVA on PVA.Id = PPPC.[ProductVarientAttributeValueId]
-			where PPCM.ProductId = @productid and PC.IsActive = 1 and PC.Deleted=0
+			inner join [dbo].[Product_ProductVarientValue_PriceComponent_Mapping] PPPC  on PPPC.[PriceComponentId] = PC.Id
+			LEFT OUTER Join ProductVariantAttributeValue PVA on PVA.Id = PPPC.[ProductVarientAttributeValueId]
+			where PPPC.ProductId = @productid and PC.IsActive = 1 and PC.Deleted=0 and PPPC.ProductVarientAttributeValueId = @variantValueId
 			FOR XML PATH('PriceComponent'), ROOT('PriceComponents'), TYPE )
 		FOR XML PATH('ProductPriceDetail'))
 
