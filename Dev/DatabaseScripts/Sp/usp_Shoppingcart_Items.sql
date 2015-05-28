@@ -208,7 +208,6 @@ DECLARE @XmlResult xml;
 
 	
 
---WITH XMLNAMESPACES ('http://schemas.datacontract.org/2004/07/Orbio.Core.Domain.Catalog' AS ns)
 SELECT @XmlResult = (Select(SELECT (select count(#temp.ProductId) from #temp) as 'ItemCount',product.Id Id,
 product.Name Name,ur.Slug as SeName,product.Price Price,[dbo].[ufn_GetProductPriceDetails](product.Id),
 product.[Weight] as 'GoldWeight',
@@ -227,8 +226,9 @@ ORDER BY PPM.DisplayOrder FOR XML PATH ('ProductPicture'),ROOT('ProductPictures'
    sc.Id as 'CartId',
    sc.Quantity as 'Quantity',
    (Select TextPrompt,
-   (Select Name,PriceAdjustment from ufn_GetCartProductAttribute(sc.AttributesXml,product.Id)  FOR XML PATH('ProductVariantAttributeValue'), ROOT('ProductVariantAttributeValues'), type)
-   from ufn_GetCartProductAttribute(sc.AttributesXml,product.Id)
+   (Select Name,PriceAdjustment,WeightAdjustment,[dbo].[ufn_GetProductPriceDetailsByVarientValue](product.Id,VariantValueId) ,(select value from [dbo].[Setting] where Name = 'Product.PriceUnit') as PriceUnit,
+(select value from [dbo].[Setting] where Name = 'Product.MarketUnitPrice') as MarketUnitPrice,(select top 1 ProductUnit from [dbo].[Product] where Id= 74 and ProductUnit is not null)  as 'ProductUnit' from ufn_GetCartProductAttribute(sc.AttributesXml,product.Id,TextPrompt)  FOR XML PATH('ProductVariantAttributeValue'), ROOT('ProductVariantAttributeValues'), type)
+   from ufn_GetCartProductAttributes(sc.AttributesXml,product.Id) 
    FOR XML PATH('ProductAttributeVariant'), ROOT('ProductAttributeVariants'),type),(
    Select case when sign(count(PriceAdjustment)) <> 0 then (select PriceAdjustment from ufn_GetCartProductPrice(sc.AttributesXml,product.Id)) else 0 end from ufn_GetCartProductPrice(sc.AttributesXml,product.Id)
    ) as 'TotalPrice'

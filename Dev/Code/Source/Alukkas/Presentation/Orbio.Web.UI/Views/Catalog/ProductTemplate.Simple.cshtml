@@ -199,19 +199,44 @@
                 {
                     if (Model.ComponentDetails.Count > 0)
                     {
-                        <table cellpadding="0" cellspacing="0" class="Price_breakup" width="100%" align="center">
-                            <tr>
-                                <th colspan="4">Price Breakup</th>
-                            </tr>
-                            <tr>
-                                @foreach (var priceBreakUp in Model.ComponentDetails)
+                        <div class="price-main">
+                            <div class="price-button">View Price break up</div>
+                            <table cellpadding="0" cellspacing="0" class="Price_breakup" width="100%" align="center">
+                                <tr>
+                                    <th colspan="4">Price Breakup</th>
+                                </tr>
+                                <tr>
+                                    @foreach (var priceBreakUp in Model.ComponentDetails)
                                 {
-                                    <td>
-                                        @priceBreakUp.Key
-                                        <p>@this.Model.CurrencyCode.@priceBreakUp.Value</p>
-                                    </td>
+                                        <td>
+                                            @priceBreakUp.Key
+                                            <p>@this.Model.CurrencyCode.@priceBreakUp.Value</p>
+                                        </td>
 
-                                    @*<td>
+                                        @*<td>
+                                                Other St.
+                                                <p>@this.Model.CurrencyCode.@this.Model.Stones</p>
+                                            </td>
+
+                                            <td>
+                                                Making
+                                                <p>@this.Model.CurrencyCode.@this.Model.Making</p>
+                                            </td>*@
+
+
+                                }
+                                    <td>
+                                        Tax
+                                        <p>Rs.0.00</p>
+                                    </td>
+                                </tr>
+                                @*<tr>
+                                        <td>
+                                            GOLD
+                                            <p>@this.Model.CurrencyCode.@this.Model.Gold</p>
+                                        </td>
+
+                                        <td>
                                             Other St.
                                             <p>@this.Model.CurrencyCode.@this.Model.Stones</p>
                                         </td>
@@ -219,49 +244,27 @@
                                         <td>
                                             Making
                                             <p>@this.Model.CurrencyCode.@this.Model.Making</p>
-                                        </td>*@
+                                        </td>
 
+                                        <td>
+                                            Tax
+                                            <p>Rs.0.00</p>
+                                        </td>
+                                    </tr>*@
+                            </table>
+                            </div>
+                            }
+                            }
+                            <div class="certification">
+                                <ul class="clearfix">
+                                    <li><img src="images/bis.png"></li>
+                                    <li><img src="images/certified.png"></li>
+                                    <li><img src="images/return.png"></li>
 
-                                }
-                                <td>
-                                    Tax
-                                    <p>Rs.0.00</p>
-                                </td>
-                            </tr>
-                            @*<tr>
-                                    <td>
-                                        GOLD
-                                        <p>@this.Model.CurrencyCode.@this.Model.Gold</p>
-                                    </td>
-
-                                    <td>
-                                        Other St.
-                                        <p>@this.Model.CurrencyCode.@this.Model.Stones</p>
-                                    </td>
-
-                                    <td>
-                                        Making
-                                        <p>@this.Model.CurrencyCode.@this.Model.Making</p>
-                                    </td>
-
-                                    <td>
-                                        Tax
-                                        <p>Rs.0.00</p>
-                                    </td>
-                                </tr>*@
-                        </table>
-                    }
-                }
-                <div class="certification">
-                    <ul class="clearfix">
-                        <li><img src="images/bis.png"></li>
-                        <li><img src="images/certified.png"></li>
-                        <li><img src="images/return.png"></li>
-
-                    </ul><div class="clear"></div>
-                </div>
-            }
-        </div>
+                                </ul><div class="clear"></div>
+                            </div>
+                            }
+                        </div>
 
     </div>
 </div>
@@ -393,3 +396,9 @@
 
         });
     </script>
+
+<script type="text/javascript">
+    $('.price-button').click(function () {
+        $('.Price_breakup').toggle();
+    });
+</script>
