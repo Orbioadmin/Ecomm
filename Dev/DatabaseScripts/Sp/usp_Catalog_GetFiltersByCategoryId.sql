@@ -44,8 +44,7 @@ inner join SpecificationAttributeOption SAO on psm.SpecificationAttributeOptionI
 inner join SpecificationAttribute SA on SAO.SpecificationAttributeId = sa.Id
 inner join Product_Category_Mapping pcm on p.Id = pcm.ProductId
 inner join  ufn_GetProductsBySearch(@categoryId,@keyWord) PC on p.Id = pc.Id
-where --PSM.AllowFiltering = 1 temp commented for dev   
---AND 
+where PSM.AllowFiltering = 1 AND 
 pcm.CategoryId = @categoryId
  ORDER BY SA.DisplayOrder, SA.Name, SAO.DisplayOrder, SAO.Name
   

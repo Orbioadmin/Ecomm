@@ -64,7 +64,7 @@ BEGIN
 	 select ProductId from #products INNER JOIN
 	  Product_SpecificationAttribute_Mapping PSM 
 	 ON 
-	 #products.Id = PSM.ProductId --and psm.AllowFiltering=1
+	 #products.Id = PSM.ProductId and psm.AllowFiltering=1
 	 WHERE PSM.SpecificationAttributeOptionId IN (
 	 SELECT data FROM #filterIds WHERE SpecificationAttributeId = @filterId)
 	 )
@@ -86,7 +86,7 @@ if(@specificationFilterIds is null)
 begin
 --WITH XMLNAMESPACES ('http://schemas.datacontract.org/2004/07/Orbio.Core.Domain.Catalog' AS ns)
 SELECT @XmlResult = ( select Category.Id as 'CategoryId', Category.Name  as 'Name',  MetaKeywords as 'MetaKeywords',
-MetaTitle as 'MetaTitle', MetaDescription as 'MetaDescription', @slug as 'SeName',
+MetaTitle as 'MetaTitle', MetaDescription as 'MetaDescription', @slug as 'SeName', 
 CASE WHEN CT.ViewPath IS NULL THEN 'CategoryTemplate.ProductsInGridOrLines' ELSE CT.ViewPath END
 AS TemplateViewPath, Category.PageSize,
 (SELECT Name, Slug AS SeName from Category INNER JOIN #temp ON Category.Id = #temp.data
@@ -95,9 +95,11 @@ AS TemplateViewPath, Category.PageSize,
 FOR XML PATH('Category'), ROOT('BreadCrumbs'),type)
 ,
  
-(select   *,ROW_NUMBER() OVER(ORDER BY PC.CategoryId),[dbo].[ufn_GetProductPriceDetails](PC.Id),PC.[Weight] as 'GoldWeight',PC.ProductUnit as 'ProductUnit',
+(select   *,ROW_NUMBER() OVER(ORDER BY PC.CategoryId),[dbo].[ufn_GetProductPriceDetails](PC.Id),
+(select PCM.Weight from [dbo].[Product_ProductComponent_Mapping] PCM where ComponentId=PC.Id) as 'GoldWeight',
+(select PCM.UnitPrice from [dbo].[Product_ProductComponent_Mapping] PCM where ComponentId=PC.Id) as 'ProductUnit',
 (select value from [dbo].[Setting] where Name = 'Product.PriceUnit') as PriceUnit,
-(select value from [dbo].[Setting] where Name = 'Product.MarketUnitPrice') as MarketUnitPrice 
+(select value from [dbo].[Setting] where Name = 'Product.MarketUnitPrice') as MarketUnitPrice
 FROM  #products PC  WHERE PC.CategoryId = Category.Id and PC.RowNum BETWEEN ((@pageNumber - 1) * @pageSize + 1) AND (@pageNumber * @pageSize)
 FOR XML PATH('Product'), ROOT('Products') , type)  from Category 
 LEFT JOIN CategoryTemplate CT ON Category.CategoryTemplateId = CT.Id  
@@ -120,7 +122,9 @@ AS TemplateViewPath, Category.PageSize,
 FOR XML PATH('Category'), ROOT('BreadCrumbs'),type)
 ,
  
-(select   *,ROW_NUMBER() OVER(ORDER BY PC.CategoryId),[dbo].[ufn_GetProductPriceDetails](PC.Id),PC.[Weight] as 'GoldWeight',PC.ProductUnit as 'ProductUnit',
+(select   *,ROW_NUMBER() OVER(ORDER BY PC.CategoryId),[dbo].[ufn_GetProductPriceDetails](PC.Id),
+(select PCM.Weight from [dbo].[Product_ProductComponent_Mapping] PCM where ComponentId=PC.Id) as 'GoldWeight',
+(select PCM.UnitPrice from [dbo].[Product_ProductComponent_Mapping] PCM where ComponentId=PC.Id) as 'ProductUnit',
 (select value from [dbo].[Setting] where Name = 'Product.PriceUnit') as PriceUnit,
 (select value from [dbo].[Setting] where Name = 'Product.MarketUnitPrice') as MarketUnitPrice  
 FROM  #temptableproducts  PC   WHERE PC.CategoryId = Category.Id and PC.RowNumber BETWEEN ((@pageNumber - 1) * @pageSize + 1) AND (@pageNumber * @pageSize)
