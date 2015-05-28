@@ -6,18 +6,18 @@
  ===================================================================================================================================================  
 */
 
-IF  EXISTS (SELECT 1 FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[ufn_GetCartProductAttribute]') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
-	DROP FUNCTION [dbo].[ufn_GetCartProductAttribute]
-	PRINT 'Dropped UDF [dbo].[ufn_GetCartProductAttribute]'
+IF  EXISTS (SELECT 1 FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[ufn_GetCartProductAttributes]') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
+	DROP FUNCTION [dbo].[ufn_GetCartProductAttributes]
+	PRINT 'Dropped UDF [dbo].[ufn_GetCartProductAttributes]'
 GO
-PRINT 'Creating UDF [dbo].[ufn_GetCartProductAttribute]'
+PRINT 'Creating UDF [dbo].[ufn_GetCartProductAttributes]'
 GO
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE FUNCTION [dbo].[ufn_GetCartProductAttribute] (@attribute xml,@productid int,@textprompt varchar(50))  
+CREATE FUNCTION [dbo].[ufn_GetCartProductAttributes] (@attribute xml,@productid int)  
 RETURNS @TABLE TABLE (VariantValueId int,TextPrompt varchar(500), Name Varchar(100),PriceAdjustment decimal(18,4),WeightAdjustment decimal(18,4))  
 AS  
 BEGIN  
@@ -34,11 +34,11 @@ AS TextPrompt
 INNER JOIN ProductAttribute PA ON PPM.ProductAttributeId = PA.Id
 WHERE PPM.ProductId =@productid)PPM on t.Attributeid = PPM.Id )
 inner join
-(Select  PV.Id VariantValueId,Pv.Name,PV.PriceAdjustment,pv.WeightAdjustment from [dbo].[ProductVariantAttributeValue] PV )Pv on PV.VariantValueId = t.Value and TextPrompt = @textprompt
+(Select  PV.Id VariantValueId,Pv.Name,PV.PriceAdjustment,pv.WeightAdjustment from [dbo].[ProductVariantAttributeValue] PV )Pv on PV.VariantValueId = t.Value
  RETURN  
    
 END
 
 GO
-PRINT 'Created UDF [dbo].[ufn_GetCartProductAttribute]`'
+PRINT 'Created UDF [dbo].[ufn_GetCartProductAttributes]`'
 GO  

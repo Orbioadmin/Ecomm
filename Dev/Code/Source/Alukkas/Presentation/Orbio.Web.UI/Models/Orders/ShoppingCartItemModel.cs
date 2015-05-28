@@ -26,8 +26,19 @@ namespace Orbio.Web.UI.Models.Orders
             //this.ImageRelativeUrl = productDetail.ImageRelativeUrl;
             //this.CurrencyCode = productDetail.CurrencyCode;
             //this.ProductPrice.Price = productDetail.Price.ToString("0.00");
-            this.ProductPrice.Price = (productDetail.Price + productDetail.TotalPrice).ToString("#,##0.00");
-            this.TotalPrice = ((productDetail.Price+productDetail.TotalPrice)*productDetail.Quantity).ToString("#,##0.00");
+            var pvValues = (from pva in productDetail.ProductAttributeVariants
+                            from pvav in pva.ProductVariantAttributeValues
+                            select pvav).ToList();
+            decimal priceAdjustment = 0;
+            if (pvValues.Count > 0)
+            {
+                foreach (var pvav in pvValues)
+                {
+                    priceAdjustment += Convert.ToDecimal(pvav.PriceAdjustment);
+                }
+            }
+            this.ProductPrice.Price = (priceAdjustment + productDetail.Price).ToString("#,##0.00");
+            this.TotalPrice = (Convert.ToDecimal(ProductPrice.Price) * productDetail.Quantity).ToString("#,##0.00");
             this.CartId = productDetail.CartId;
             //if (productDetail.ProductPictures != null && productDetail.ProductPictures.Count > 0)
             //{
