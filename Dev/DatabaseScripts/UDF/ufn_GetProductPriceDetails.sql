@@ -24,14 +24,14 @@ BEGIN
 	   DECLARE @xmlResult xml;
 	 
 		--WITH XMLNAMESPACES ('http://schemas.datacontract.org/2004/07/Orbio.Core.Domain.Catalog' AS ns)
-		SELECT @xmlResult = (select (select PC.[ComponentName] as 'Name',PC.[Weight] as 'Weight',PC.[UnitPrice] as 'UnitPrice' from [dbo].[ProductComponent] PC
-			inner join [dbo].[Product_ProductComponent_Mapping] PCM on PCM.ComponentId = PC.ComponentId
+		SELECT @xmlResult = (select (select PC.[ComponentName] as 'Name',PCM.[Weight] as 'Weight',PCM.[UnitPrice] as 'UnitPrice' from [dbo].[ProductComponent] PC
+			inner join [dbo].[Product_ProductComponent_Mapping] PCM on PCM.ComponentId = PC.Id
 			where PCM.ProductId = @productid and PC.IsActive = 1 and PC.Deleted=0
 			FOR XML PATH('ProductComponent'), ROOT('ProductComponents'), TYPE )
 			,
 			(select PC.[Name] as 'Name',PPCM.Price as 'Price',PPCM.Percentage as 'Percentage', PPCM.Itemrate as 'ItemPrice' 
 			from [dbo].[PriceComponent] PC
-			inner join [dbo].[Product_PriceComponent_Mapping] PPCM on PPCM.PricecomponentId = PC.PriceComponentId
+			inner join [dbo].[Product_PriceComponent_Mapping] PPCM on PPCM.PricecomponentId = PC.Id
 			where PPCM.ProductId = @productid and PC.IsActive = 1 and PC.Deleted=0
 			FOR XML PATH('PriceComponent'), ROOT('PriceComponents'), TYPE )
 		FOR XML PATH('ProductPriceDetail'))

@@ -15,12 +15,12 @@ BEGIN
 			[Id] ASC
 		)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 		) ON [PRIMARY]
-		ALTER TABLE [dbo].[Product_PriceComponent_Mapping]  WITH CHECK ADD  CONSTRAINT [FK_Product_PriceComponent_Mapping_PriceComponents] FOREIGN KEY([PricecomponentId])
-		REFERENCES [dbo].[PriceComponents] ([PriceComponentId])
-		ALTER TABLE [dbo].[Product_PriceComponent_Mapping] CHECK CONSTRAINT [FK_Product_PriceComponent_Mapping_PriceComponents]
-		ALTER TABLE [dbo].[Product_PriceComponent_Mapping]  WITH CHECK ADD  CONSTRAINT [FK_Product_PriceComponent_Mapping_Product] FOREIGN KEY([ProductId])
-		REFERENCES [dbo].[Product] ([Id])
-		ALTER TABLE [dbo].[Product_PriceComponent_Mapping] CHECK CONSTRAINT [FK_Product_PriceComponent_Mapping_Product]
+ALTER TABLE [dbo].[Product_PriceComponent_Mapping]  WITH CHECK ADD  CONSTRAINT [FK_Product_PriceComponent_Mapping_PriceComponents] FOREIGN KEY([PricecomponentId])
+REFERENCES [dbo].[PriceComponent] ([Id])
+ALTER TABLE [dbo].[Product_PriceComponent_Mapping] CHECK CONSTRAINT [FK_Product_PriceComponent_Mapping_PriceComponents]
+ALTER TABLE [dbo].[Product_PriceComponent_Mapping]  WITH CHECK ADD  CONSTRAINT [FK_Product_PriceComponent_Mapping_Product] FOREIGN KEY([ProductId])
+REFERENCES [dbo].[Product] ([Id])
+ALTER TABLE [dbo].[Product_PriceComponent_Mapping] CHECK CONSTRAINT [FK_Product_PriceComponent_Mapping_Product]
 		PRINT 'Created a new table Product_PriceComponent_Mapping'	
 END
 ELSE
