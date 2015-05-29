@@ -31,6 +31,12 @@ namespace Orbio.Core.Domain.Catalog
         public string SpecificationAttributeOptionName { get; set; }
 
         /// <summary>
+        /// gets or sets sub title
+        /// </summary>
+        [DataMember]
+        public string SubTitle { get; set; }
+
+        /// <summary>
         /// Gets or sets minimum product price
         /// </summary>
         [DataMember]
@@ -41,5 +47,7 @@ namespace Orbio.Core.Domain.Catalog
         /// </summary>
         [DataMember]
         public decimal MaxPrice { get; set; }
+
+
     }
 }

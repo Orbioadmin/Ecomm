@@ -41,7 +41,10 @@ namespace Orbio.Web.UI.Models.Catalog
             if (productDetail.SpecificationFilters != null && productDetail.SpecificationFilters.Count > 0)
             {
                 var specFilterByspecAttribute = from sa in productDetail.SpecificationFilters
-                                                group sa by sa.SpecificationAttributeName;
+                                           group sa by sa.SubTitle;
+
+                //var specFilterByspecAttribute = from sa in productDetail.SpecificationFilters
+                //                                group sa by sa.SpecificationAttributeName;
                 //var currentUrl = ControllerContext.RequestContext.HttpContext.Request.Url.AbsoluteUri;
 
                 //var specs = selectedSpecs.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries); 
@@ -56,6 +59,7 @@ namespace Orbio.Web.UI.Models.Catalog
                                                                              {
                                                                                  Id = sao.SpecificationAttributeOptionId,
                                                                                  Name = sao.SpecificationAttributeOptionName,
+                                                                                 SpecificationAttributeName = sao.SpecificationAttributeName,
                                                                                  //FilterUrl = currentUrl,
                                                                                  //Selected = selectedSpecs != null && selectedSpecs.Length > 0 && selectedSpecs.Any(i => i == sao.SpecificationAttributeOptionId)
                                                                              }))

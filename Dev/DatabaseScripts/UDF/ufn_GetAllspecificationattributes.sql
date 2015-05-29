@@ -24,7 +24,7 @@ BEGIN
 	   DECLARE @xmlResult xml;
 	 
 		--WITH XMLNAMESPACES ('http://schemas.datacontract.org/2004/07/Orbio.Core.Domain.Catalog' AS ns)
-		SELECT @xmlResult = ( select SAO.SpecificationAttributeId 'SpecificationAttributeId',SA.Name 'SpecificationAttributeName',SAO.Id 'SpecificationAttributeOptionId' ,CASE WHEN ISNULL(PSA.CustomValue,'')<>'' THEN PSA.CustomValue ELSE SAO.Name END 'SpecificationAttributeOptionName' from dbo.Product product 
+		SELECT @xmlResult = ( select SAO.SpecificationAttributeId 'SpecificationAttributeId',SA.Name 'SpecificationAttributeName',SAO.Id 'SpecificationAttributeOptionId' ,CASE WHEN ISNULL(PSA.CustomValue,'')<>'' THEN PSA.CustomValue ELSE SAO.Name END 'SpecificationAttributeOptionName',PSA.SubTitle as 'SubTitle' from dbo.Product product 
 inner join dbo.Product_SpecificationAttribute_Mapping PSA on product.Id = PSA.ProductId
 inner join dbo.SpecificationAttributeOption SAO on SAO.Id= PSA.SpecificationAttributeOptionId
 inner join dbo.SpecificationAttribute SA on SA.Id=SAO.SpecificationAttributeId

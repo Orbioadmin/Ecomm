@@ -27,5 +27,10 @@ namespace Orbio.Web.UI.Models.Catalog
         /// url to post for this filter
         /// </summary>
         public string FilterUrl { get; set; }
+
+        /// <summary>
+        /// url to post for sub title
+        /// </summary>
+        public string SpecificationAttributeName { get; set; }
     }
 }

@@ -49,5 +49,10 @@ namespace Orbio.Web.UI.Models.Catalog
         /// Gets or sets maximum product price
         /// </summary>
         public decimal MaxPrice { get; set; }
+
+        /// <summary>
+        /// Gets or sets sub title
+        /// </summary>
+        public string SubTitle { get; set; }
     }
 }

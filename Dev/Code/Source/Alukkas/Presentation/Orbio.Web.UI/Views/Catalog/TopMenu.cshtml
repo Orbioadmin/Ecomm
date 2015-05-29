@@ -154,18 +154,18 @@
         });*@
         $('#search_button').click(function (e) {
             e.preventDefault();
-            var url = "";
-            url = 'alukkasonline/Search?p=sr&q=' + $('#twotabsearchtextbox').val();
-            window.location.href = window.location.origin + "/" + url;
+            var url = "@Url.RouteUrl("Category", new { SeName = "Search" })?p=sr&q="+$('#twotabsearchtextbox').val();
+           // url = 'Search?p=sr&q=' + $('#twotabsearchtextbox').val();
+            window.location.href = url;
 
 
         });
         $('#twotabsearchtextbox').keydown(function (e) {
             if (e.keyCode == 13) {
                 e.preventDefault();
-                var url = "";
-                url = 'Search?p=sr&q=' + $('#twotabsearchtextbox').val();
-                window.location.href = window.location.origin + "/" + url;
+                var url = "@Url.RouteUrl("Category", new { SeName = "Search" })?p=sr&q="+$('#twotabsearchtextbox').val();
+                //url = 'Search?p=sr&q=' + $('#twotabsearchtextbox').val();
+                window.location.href = url;
             }
 
         });
@@ -177,4 +177,4 @@
     $('ul.unstyled').each(function () {
         $(this).children('li').slice(7).hide();
     });
-</script>
+</script>7

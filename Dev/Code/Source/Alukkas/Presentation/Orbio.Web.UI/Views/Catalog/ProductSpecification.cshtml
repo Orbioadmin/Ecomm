@@ -2,33 +2,31 @@
 
 @if(this.Model !=null && this.Model.Count>0){
       <table width="100%" cellpadding="0" cellspacing="0" class="descrip">
-        
                                     <tr>
                                         <td>
                                             <table width="100%" cellpadding="0" cellspacing="0">
-                                                
-                                            
                                                 <tr>
                                                     <td>
-                                                        @*<h1>@sa.Name</h1>*@
+                                                        @foreach (var item in this.Model)
+                                                        { 
+                                                        <h1>@item.Name</h1>
                                                         <table width="100%" cellpadding="0" cellspacing="0" class="specfic_phone">
-                                                             @foreach(var sa in this.Model)
+                                                             @foreach (var sao in item.SpecificationAttributeOptions)
                                                              {
-                                                               
+                                                                
                                                                     <tr>
-                                                                        <td width="30%" class="table_brd">@sa.Name</td>
-                                                                        <td width="70%">@sa.SpecificationAttributeOptions.Select(sao=>sao.Name).Aggregate((n1,n2)=>n1+","+n2)</td>
+                                                                        <td width="30%" class="table_brd">@sao.SpecificationAttributeName</td>
+                                                                        @*<td width="70%">@sa.SpecificationAttributeOptions.Select(sao=>sao.Name).Aggregate((n1,n2)=>n1+","+n2)</td>*@
+                                                                        <td width="70%">@sao.Name</td>
                                                                     </tr>
-                                                         
-                                                              
                                                              }
+                                                            
                                                         </table>
+                                                        }
                                                 </tr>
                                              
                                             </table>
                                         </td>
                                     </tr>
-          
-                                  
                                 </table>
 }
