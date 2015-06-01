@@ -1,6 +1,6 @@
 
 -- Add Columns Product_SpecificationAttribute_Mapping
-PRINT 'Adding columns Product_SpecificationAttribute_Mapping for the table Product...'
+PRINT 'Adding columns SubTitle for the table Product_SpecificationAttribute_Mapping...'
 IF EXISTS(SELECT 1 FROM SYS.OBJECTS WHERE name='Product_SpecificationAttribute_Mapping' and type='U')
 BEGIN
 	IF  NOT EXISTS (SELECT 1 FROM sys.columns WHERE object_id = OBJECT_ID(N'[dbo].[Product_SpecificationAttribute_Mapping]') AND name='SubTitle')
