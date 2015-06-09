@@ -236,7 +236,7 @@
     <Compile Include="Models\Home\ContactModel.cs" />
     <Compile Include="Models\Home\PriceBarModel.cs" />
     <Compile Include="Models\Orders\OrderDetailsModel.cs" />
-    <Compile Include="Models\Orders\OrderModel.cs" />
+    <Compile Include="Models\Orders\OrderSummaryModel.cs" />
     <Compile Include="Models\Orders\ShoppingCartItemModel.cs" />
     <Compile Include="Models\Orders\ShoppingCartItemsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
