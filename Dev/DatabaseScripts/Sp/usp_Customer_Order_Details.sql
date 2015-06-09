@@ -38,11 +38,11 @@ BEGIN
 	
 DECLARE @XmlResult xml
     -- Insert statements for procedure here
-	SELECT @XmlResult = (select(select Orders.Id AS OrderNumber,Orders.OrderTotal as TotalPrice,Orders.CreatedOnUtc as OrderDate,
+	SELECT @XmlResult =  (select Orders.Id AS OrderNumber,Orders.OrderTotal as TotalPrice,Orders.CreatedOnUtc as OrderDate,
 	Orders.OrderStatusId As OrderStatus,COUNT(OI.Id) as Quantity
 	 from [dbo].[Order] Orders Inner join [dbo].[OrderItem] OI on OI.OrderId=Orders.Id 
 	 where Orders.CustomerId=@curCustomerId group by Orders.Id,Orders.OrderTotal,Orders.CreatedOnUtc,Orders.OrderStatusId
-	 FOR XML PATH('Order'),Root('OrderedProductItems'), type) FOR XML PATH('OrderDetails'),type)
+	 FOR XML PATH('OrderSummary'),Root('ArrayOfOrderSummary')) --, type) FOR XML PATH('OrderDetails'),type)
 	 SELECT @XmlResult as XmlResult
 END
 GO
