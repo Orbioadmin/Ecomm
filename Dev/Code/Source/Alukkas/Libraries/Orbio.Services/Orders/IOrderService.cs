@@ -1,14 +1,12 @@
-﻿using Orbio.Core.Domain.Orders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using Orbio.Core.Domain.Orders;
+using Orbio.Services.Payments;
 
 namespace Orbio.Services.Orders
 {
     public partial interface IOrderService
     {
-        OrderDetails GetOrderDetails(int curCustomerId);
+        List<OrderSummary> GetOrderDetails(int curCustomerId);
+        string PlaceOrder(ProcessPaymentRequest processPaymentRequest);
     }
 }

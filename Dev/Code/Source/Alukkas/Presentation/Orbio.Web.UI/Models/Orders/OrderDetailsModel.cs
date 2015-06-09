@@ -10,21 +10,21 @@ namespace Orbio.Web.UI.Models.Orders
     {
           public OrderDetailsModel()
         {
-            this.OrderedProductDetail = new List<OrderModel>();
+            this.OrderedProductDetail = new List<OrderSummaryModel>();
         }
-          public OrderDetailsModel(OrderDetails orderDetails)
+          public OrderDetailsModel(List<OrderSummary> orderDetails)
              : this()
          {
              if (orderDetails != null)
              {
-                 if (orderDetails.OrderedProductItems != null && orderDetails.OrderedProductItems.Count > 0)
+                 if (orderDetails != null && orderDetails.Count > 0)
                  {
-                     this.OrderedProductDetail = (from p in orderDetails.OrderedProductItems
-                                                  select new OrderModel(p)).ToList();
+                     this.OrderedProductDetail = (from p in orderDetails
+                                                  select new OrderSummaryModel(p)).ToList();
                  }
              }
          }
 
-         public List<OrderModel> OrderedProductDetail { get; private set; }
+         public List<OrderSummaryModel> OrderedProductDetail { get; private set; }
     }
 }

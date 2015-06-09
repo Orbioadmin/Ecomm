@@ -7,16 +7,16 @@ using System.Web;
 
 namespace Orbio.Web.UI.Models.Orders
 {
-    public class OrderModel
+    public class OrderSummaryModel
     {
-        public OrderModel()
+        public OrderSummaryModel()
         {
-            this.items = new List<OrderModel>();
+            this.items = new List<OrderSummaryModel>();
         }
 
-        public OrderModel(Order orderDetail)
+        public OrderSummaryModel(OrderSummary orderDetail)
         {
-            this.items = new List<OrderModel>();
+            this.items = new List<OrderSummaryModel>();
             this.CustomerId = orderDetail.CustomerId;
             this.OrderNumber = orderDetail.OrderNumber;
             this.Quantity = orderDetail.Quantity;
@@ -37,6 +37,6 @@ namespace Orbio.Web.UI.Models.Orders
 
         public int CustomerId { get; set; }
 
-        public List<OrderModel> items { get; set; }
+        public List<OrderSummaryModel> items { get; set; }
     }
 }

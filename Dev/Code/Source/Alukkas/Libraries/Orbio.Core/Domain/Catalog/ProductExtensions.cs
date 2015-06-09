@@ -130,7 +130,7 @@ namespace Orbio.Core.Domain.Catalog
         public static Dictionary<string, string> GetComponentDetails(this IPriceComponent product)
         {
             Dictionary<string, string> componentDetails = new Dictionary<string, string>();
-            if (product.ProductPriceDetail.PriceComponents.Count == 0 && product.ProductPriceDetail.ProductComponents.Count == 0)
+            if (product.ProductPriceDetail==null ||  product.ProductPriceDetail.PriceComponents.Count == 0 && product.ProductPriceDetail.ProductComponents.Count == 0)
             {
                 return componentDetails;
             }

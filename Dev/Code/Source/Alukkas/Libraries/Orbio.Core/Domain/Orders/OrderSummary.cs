@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Orbio.Core.Domain.Orders
 {
     [DataContract]
-    public class Order
+    public class OrderSummary
     {
         public int OrderNumber { get; set; }
 

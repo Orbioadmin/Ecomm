@@ -69,6 +69,8 @@
     <Compile Include="Orders\IShoppingCartService.cs" />
     <Compile Include="Orders\OrderService.cs" />
     <Compile Include="Orders\ShoppingCartService.cs" />
+    <Compile Include="Payments\PaymentStatus.cs" />
+    <Compile Include="Payments\ProcessPaymentRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\EncryptionService.cs" />
     <Compile Include="Security\IEncryptionService.cs" />
