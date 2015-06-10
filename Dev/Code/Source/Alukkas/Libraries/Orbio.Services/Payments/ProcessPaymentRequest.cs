@@ -113,5 +113,10 @@ namespace Orbio.Services.Payments
         /// You can store any custom value in this property
         /// </summary>
         public Dictionary<string, object> CustomValues { get; set; }
+
+        /// <summary>
+        /// true if payment is successful else false
+        /// </summary>
+        public bool Success { get; set; }
     }
 }

@@ -12,12 +12,12 @@ namespace Orbio.Web.UI.Models.Orders
         {
             this.CartDetail = new List<ShoppingCartItemModel>();
         }
-         public ShoppingCartItemsModel(ShoppingCartItems productDetail)
+         public ShoppingCartItemsModel(List<ShoppingCartItem> cartItems)
              : this()
          {
-             if (productDetail.ShoppingCartProductItems != null && productDetail.ShoppingCartProductItems.Count > 0)
+             if (cartItems != null && cartItems.Count > 0)
              {
-                 this.CartDetail = (from p in productDetail.ShoppingCartProductItems
+                 this.CartDetail = (from p in cartItems
                                     select new ShoppingCartItemModel(p)).ToList();
              }
          }

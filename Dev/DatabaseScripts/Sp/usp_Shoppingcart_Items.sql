@@ -208,7 +208,7 @@ DECLARE @XmlResult xml;
 
 	
 
-SELECT @XmlResult = (Select(SELECT (select count(#temp.ProductId) from #temp) as 'ItemCount',product.Id Id,
+SELECT @XmlResult =  (SELECT (select count(#temp.ProductId) from #temp) as 'ItemCount',product.Id Id,
 product.Name Name,ur.Slug as SeName,product.Price Price,[dbo].[ufn_GetProductPriceDetails](product.Id),
 product.[Weight] as 'GoldWeight',
 product.ProductUnit as 'ProductUnit',
@@ -237,7 +237,7 @@ inner join ShoppingCartItem sc on sc.ProductId = product.Id
 Left join [dbo].[DeliveryDate] Delivery_date on product.DeliveryDateId= Delivery_date.Id
 Left  join UrlRecord ur on product.Id = ur.EntityId AND EntityName='Product' AND ur.IsActive=1    
 where sc.CustomerId=@customerId and sc.ShoppingCartTypeId=@shoppingCartTypeId and product.Deleted <> 1 order by product.Id 
-FOR XML PATH('ShoppingCartItem'),Root('ShoppingCartProductItems'), type )For XML PATH('ShoppingCartItems'),type)
+FOR XML PATH('ShoppingCartItem'),Root('ArrayOfShoppingCartItem'))--, type )--For XML PATH('ShoppingCartItems'),type)
 SELECT @XmlResult as XmlResult
 end
 

@@ -71,9 +71,17 @@
     <Compile Include="Domain\Customers\PasswordFormat.cs" />
     <Compile Include="Domain\Customers\SystemCustomerAttributeNames.cs" />
     <Compile Include="Domain\Customers\SystemCustomerNames.cs" />
+    <Compile Include="Domain\Discounts\Discount.cs" />
+    <Compile Include="Domain\Discounts\DiscountLimitationType.cs" />
+    <Compile Include="Domain\Discounts\DiscountRequirement.cs" />
+    <Compile Include="Domain\Discounts\DiscountType.cs" />
+    <Compile Include="Domain\Discounts\DiscountUsageHistory.cs" />
     <Compile Include="Domain\Email\EmailDetail.cs" />
     <Compile Include="Domain\Messages\MessageTemplate.cs" />
     <Compile Include="Domain\Messages\Token.cs" />
+    <Compile Include="Domain\Orders\Order.cs" />
+    <Compile Include="Domain\Orders\OrderItem.cs" />
+    <Compile Include="Domain\Orders\OrderNote.cs" />
     <Compile Include="Domain\Orders\OrderSummary.cs" />
     <Compile Include="Domain\Orders\OrderStatus.cs" />
     <Compile Include="Domain\Orders\ShoppingCartItem.cs" />

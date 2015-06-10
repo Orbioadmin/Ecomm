@@ -48,7 +48,51 @@ namespace Orbio.Services.Orders
 
          public string PlaceOrder(ProcessPaymentRequest processPaymentRequest)
          {
-             throw new NotImplementedException();
+             if (processPaymentRequest.OrderGuid == Guid.Empty)
+                 processPaymentRequest.OrderGuid = Guid.NewGuid();
+
+             //load and validate customer shopping cart
+                IList<ShoppingCartItem> cart = null;
+                
+                    //load shopping cart
+                    //cart = customer.ShoppingCartItems
+                    //    .Where(sci => sci.ShoppingCartType == ShoppingCartType.ShoppingCart)
+                    //    .Where(sci => sci.StoreId == processPaymentRequest.StoreId)
+                    //    .ToList();
+                cart = shoppingCartService.GetCartItems("select", 0, ShoppingCartType.ShoppingCart, 0, processPaymentRequest.CustomerId, 0, 0);
+                ////min totals validation
+                //if (!processPaymentRequest.IsRecurringPayment)
+                //{
+                //    bool minOrderSubtotalAmountOk = ValidateMinOrderSubtotalAmount(cart);
+                //    if (!minOrderSubtotalAmountOk)
+                //    {
+                //        decimal minOrderSubtotalAmount = _currencyService.ConvertFromPrimaryStoreCurrency(_orderSettings.MinOrderSubtotalAmount, _workContext.WorkingCurrency);
+                //        throw new NopException(string.Format(_localizationService.GetResource("Checkout.MinOrderSubtotalAmount"), _priceFormatter.FormatPrice(minOrderSubtotalAmount, true, false)));
+                //    }
+                //    bool minOrderTotalAmountOk = ValidateMinOrderTotalAmount(cart);
+                //    if (!minOrderTotalAmountOk)
+                //    {
+                //        decimal minOrderTotalAmount = _currencyService.ConvertFromPrimaryStoreCurrency(_orderSettings.MinOrderTotalAmount, _workContext.WorkingCurrency);
+                //        throw new NopException(string.Format(_localizationService.GetResource("Checkout.MinOrderTotalAmount"), _priceFormatter.FormatPrice(minOrderTotalAmount, true, false)));
+                //    }
+                //}
+
+                string shippingMethodName = "", shippingRateComputationMethodSystemName = "";
+
+                //var shippingOption = customer.GetAttribute<ShippingOption>(SystemCustomerAttributeNames.SelectedShippingOption, processPaymentRequest.StoreId);
+                //if (shippingOption != null)
+                //{
+                //    shippingMethodName = shippingOption.Name;
+                //    shippingRateComputationMethodSystemName = shippingOption.ShippingRateComputationMethodSystemName;
+                //}
+
+                //shipping calculations goes here
+                // next tax calculations
+                if (processPaymentRequest.Success)
+                {
+                }
+
+             return string.Empty;
          }
     }
 }
