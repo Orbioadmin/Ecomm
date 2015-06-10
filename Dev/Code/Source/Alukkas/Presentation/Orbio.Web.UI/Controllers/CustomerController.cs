@@ -364,35 +364,10 @@ namespace Orbio.Web.UI.Controllers
         {
             var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
             var curCustomer = workContext.CurrentCustomer;
-            var model = PrepareOrderDetails(curCustomer.Id);
+            var model =new OrderDetailsModel(orderService.GetOrderDetails(curCustomer.Id));
             return View("Order", model);
         }
-        private OrderDetailsModel PrepareOrderDetails(int customerId)
-        {
-            var model = new OrderDetailsModel(orderService.GetOrderDetails(customerId));
-            foreach(var item in model.OrderedProductDetail)
-            {
-                   if(item.OrderStatus=="10")
-                   {
-                       item.OrderStatus = "Pending";
-                   }
-                   else if(item.OrderStatus=="20")
-                   {
-                       item.OrderStatus = "Processing";
-                   }
-                   else if(item.OrderStatus=="30")
-                   {
-                       item.OrderStatus = "Complete";
-                   }
-                   else if (item.OrderStatus == "40")
-                   {
-                       item.OrderStatus = "Cancelled";
-                   }
-                
-            }
-            return model;
-        }
-
+        
         [HttpGet]
         public ActionResult UpdateWishList(int itemId, string value)
         {

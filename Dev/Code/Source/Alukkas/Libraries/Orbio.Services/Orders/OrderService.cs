@@ -38,8 +38,11 @@ namespace Orbio.Services.Orders
                            ).FirstOrDefault();
              if (result != null)
              {
-
                  var orderDetails = Serializer.GenericDeSerializer<List<OrderSummary>>(result.XmlResult);
+                 foreach(var item in orderDetails)
+                 {
+                     item.OrderStatus = Enum.Parse(typeof(OrderStatus), item.OrderStatus).ToString();
+                 }
                  return orderDetails;
              }
              return new List<OrderSummary>();
