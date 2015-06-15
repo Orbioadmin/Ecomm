@@ -156,14 +156,14 @@ namespace Orbio.Web.UI.Controllers
 
         private void PrepareShoppingCartItemModel(int customerId, ShoppingCartType cartType)
         {
-            var model = new ShoppingCartItemsModel(shoppingCartService.GetCartItems("select", 0, cartType,0, customerId, 0, 0));
+            var model = new Cart(shoppingCartService.GetCartItems("select", 0, cartType,0, customerId, 0, 0));
             double subtotal = 0.00;
-            foreach (var totalprice in model.CartDetail)
+            foreach (var totalprice in model.ShoppingCartItems)
             {
                 subtotal = subtotal + Convert.ToDouble(totalprice.TotalPrice);
             }
             ViewBag.subtotal = subtotal.ToString("0.00");
-            var currency = (from r in model.CartDetail.AsEnumerable()
+            var currency = (from r in model.ShoppingCartItems.AsEnumerable()
                             select r.CurrencyCode).Take(1).ToList();
             ViewBag.Currencycode = (currency.Count > 0) ? currency[0] : "Rs";
         }

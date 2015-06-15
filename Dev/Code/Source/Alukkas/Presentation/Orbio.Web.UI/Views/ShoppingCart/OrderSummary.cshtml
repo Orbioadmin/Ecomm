@@ -7,13 +7,13 @@
     {
     foreach (var scpd in this.Model)
     {
-        var scpdr = string.Format("items[{0}].IsRemove", count);
-        var scpdqu = string.Format("items[{0}].SelectedQuantity", count);
-        var scpdId = string.Format("items[{0}].Id", count);
-        var scpdTotalprice = string.Format("items[{0}].Totalprice", count);
-        var scpdRemove = string.Format("items[{0}].IsRemove", count);
-        var scpdQuantity = string.Format("items[{0}].SelectedQuantity", count);
-        var scpdcartid = string.Format("items[{0}].CartId", count);
+        var scpdr = string.Format("ShoppingCartItems[{0}].IsRemove", count);
+        var scpdqu = string.Format("ShoppingCartItems[{0}].SelectedQuantity", count);
+        var scpdId = string.Format("ShoppingCartItems[{0}].Id", count);
+        var scpdTotalprice = string.Format("ShoppingCartItems[{0}].Totalprice", count);
+        var scpdRemove = string.Format("ShoppingCartItems[{0}].IsRemove", count);
+        var scpdQuantity = string.Format("ShoppingCartItems[{0}].SelectedQuantity", count);
+        var scpdcartid = string.Format("ShoppingCartItems[{0}].CartId", count);
         <tr>
             <td data-title="Item"><a href="@Url.RouteUrl("Category", new { SeName = scpd.SeName })?p=pt"><img src="@scpd.DefaultPicture.ImageUrl"></a></td>
             <td data-title="Title">

@@ -1,4 +1,4 @@
-﻿@model Orbio.Web.UI.Models.Orders.ShoppingCartItemsModel
+﻿@model Orbio.Web.UI.Models.Orders.Cart
 <section class="main_shop_cart">
     <div class="container">
         <ol class="breadcrumb">
@@ -22,7 +22,7 @@
                             <th>Total Price</th>
                         </tr>
                         @{
-                Html.RenderPartial("OrderSummary", this.Model.CartDetail);
+                Html.RenderPartial("OrderSummary", this.Model.ShoppingCartItems);
                         }
                     </table>
                 </div>

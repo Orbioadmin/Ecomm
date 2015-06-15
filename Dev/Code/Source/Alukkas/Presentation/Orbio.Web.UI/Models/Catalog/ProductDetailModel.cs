@@ -6,11 +6,14 @@ using System.Linq;
 using System.Web;
 using System.Configuration;
 using System.IO;
+using Orbio.Core.Domain.Discounts;
 
 namespace Orbio.Web.UI.Models.Catalog
 {
     public class ProductDetailModel : ProductOverViewModel
     {
+        private List<Discount> Discounts = new List<Discount>();
+
         public ProductDetailModel()
         {
             this.ProductVariantAttributes = new List<ProductVariantAttributeModel>();
@@ -18,7 +21,7 @@ namespace Orbio.Web.UI.Models.Catalog
         }
         public ProductDetailModel(ProductDetail productDetail) : base(productDetail)  
         {
-            
+            this.Discounts = productDetail.Discounts;
             this.Id = productDetail.Id;
             this.Name = productDetail.Name;
             this.ShortDescription = productDetail.ShortDescription;

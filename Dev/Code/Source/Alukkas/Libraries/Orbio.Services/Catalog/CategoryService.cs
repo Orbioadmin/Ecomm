@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Linq;
 using Nop.Core.Domain;
 using Nop.Data;
 using Orbio.Core.Domain.Catalog;
-using System.Linq;
-using Orbio.Services.Utility;
-using System.Data.SqlClient;
+using Orbio.Core.Utility;
 
 namespace Orbio.Services.Catalog
 {

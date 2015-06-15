@@ -4,7 +4,7 @@ using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace Orbio.Services.Utility
+namespace Orbio.Core.Utility
 {
     /// <summary>
     /// contains methods for xml serialization/deserialization

@@ -1,4 +1,4 @@
-﻿@model Orbio.Web.UI.Models.Orders.ShoppingCartItemsModel
+﻿@model Orbio.Web.UI.Models.Orders.Cart
 @{
     ViewBag.Title = "WishList";
     Layout = null;
@@ -46,7 +46,7 @@
                     <td><input type="checkbox"></td>
                 </tr>*@
                 @{
-                    Html.RenderPartial("WishListSummary", this.Model.CartDetail);
+                    Html.RenderPartial("WishListSummary", this.Model.ShoppingCartItems);
                 }
             @*</tbody>
         </table>

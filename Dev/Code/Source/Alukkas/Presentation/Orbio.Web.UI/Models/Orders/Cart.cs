@@ -6,22 +6,22 @@ using System.Web;
 
 namespace Orbio.Web.UI.Models.Orders
 {
-    public class ShoppingCartItemsModel
+    public class Cart
     {
-         public ShoppingCartItemsModel()
+         public Cart()
         {
-            this.CartDetail = new List<ShoppingCartItemModel>();
+            this.ShoppingCartItems = new List<ShoppingCartItemModel>();
         }
-         public ShoppingCartItemsModel(List<ShoppingCartItem> cartItems)
+         public Cart(List<ShoppingCartItem> cartItems)
              : this()
          {
              if (cartItems != null && cartItems.Count > 0)
              {
-                 this.CartDetail = (from p in cartItems
+                 this.ShoppingCartItems = (from p in cartItems
                                     select new ShoppingCartItemModel(p)).ToList();
              }
          }
 
-         public List<ShoppingCartItemModel> CartDetail { get; private set; }
+         public List<ShoppingCartItemModel> ShoppingCartItems { get; private set; }
     }
 }

@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Xml.Linq;
 using Orbio.Core.Domain.Catalog.Abstract;
+using Orbio.Core.Utility;
 
 namespace Orbio.Core.Domain.Catalog
 {
@@ -127,6 +126,7 @@ namespace Orbio.Core.Domain.Catalog
             return priceCalculator.FormattedPrice;
         }
 
+
         public static Dictionary<string, string> GetComponentDetails(this IPriceComponent product)
         {
             Dictionary<string, string> componentDetails = new Dictionary<string, string>();
@@ -176,6 +176,22 @@ namespace Orbio.Core.Domain.Catalog
 
         }
 
+
+        public static string GetProductPriceDetailXml(this IPriceComponent product)
+        {
+            var prodPriceComp = new ProductPriceComponent
+            {
+                GoldWeight = product.GoldWeight,
+                MarketUnitPrice = product.MarketUnitPrice,
+                PriceUnit = product.PriceUnit,
+                ProductUnit = product.ProductUnit,
+                ProductPriceDetail = product.ProductPriceDetail
+            };
+
+            var xml = Serializer.GenericSerializer<ProductPriceComponent>(prodPriceComp);
+
+            return xml;
+        }
     }
 
 
@@ -245,6 +261,20 @@ namespace Orbio.Core.Domain.Catalog
         }
     }
 
+    /// <summary>
+    /// class to serialize ipricecomponent 
+    /// </summary>
+    public class ProductPriceComponent
+    {
+        public decimal GoldWeight { get; set; }
 
+        public decimal MarketUnitPrice { get; set; }
+
+        public int PriceUnit { get; set; }
+
+        public decimal ProductUnit { get; set; }
+
+        public ProductPriceDetail ProductPriceDetail { get; set; }
+    }
 
 }

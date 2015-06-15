@@ -9,9 +9,9 @@ namespace Orbio.Core.Domain.Discounts
     /// </summary>
     public partial class Discount  
     {
-        private ICollection<DiscountRequirement> _discountRequirements;
-        private ICollection<Category> _appliedToCategories;
-        private ICollection<Product> _appliedToProducts;
+        //private ICollection<DiscountRequirement> _discountRequirements;
+        //private ICollection<Category> _appliedToCategories;
+        //private ICollection<Product> _appliedToProducts;
 
         /// <summary>
         /// Gets or sets the name
@@ -98,31 +98,31 @@ namespace Orbio.Core.Domain.Discounts
             }
         }
 
-        /// <summary>
-        /// Gets or sets the discount requirement
-        /// </summary>
-        public virtual ICollection<DiscountRequirement> DiscountRequirements
-        {
-            get { return _discountRequirements ?? (_discountRequirements = new List<DiscountRequirement>()); }
-            protected set { _discountRequirements = value; }
-        }
+        ///// <summary>
+        ///// Gets or sets the discount requirement
+        ///// </summary>
+        //public virtual ICollection<DiscountRequirement> DiscountRequirements
+        //{
+        //    get { return _discountRequirements ?? (_discountRequirements = new List<DiscountRequirement>()); }
+        //    protected set { _discountRequirements = value; }
+        //}
 
-        /// <summary>
-        /// Gets or sets the categories
-        /// </summary>
-        public virtual ICollection<Category> AppliedToCategories
-        {
-            get { return _appliedToCategories ?? (_appliedToCategories = new List<Category>()); }
-            protected set { _appliedToCategories = value; }
-        }
+        ///// <summary>
+        ///// Gets or sets the categories
+        ///// </summary>
+        //public virtual ICollection<Category> AppliedToCategories
+        //{
+        //    get { return _appliedToCategories ?? (_appliedToCategories = new List<Category>()); }
+        //    protected set { _appliedToCategories = value; }
+        //}
 
-        /// <summary>
-        /// Gets or sets the products 
-        /// </summary>
-        public virtual ICollection<Product> AppliedToProducts
-        {
-            get { return _appliedToProducts ?? (_appliedToProducts = new List<Product>()); }
-            protected set { _appliedToProducts = value; }
-        }
+        ///// <summary>
+        ///// Gets or sets the products 
+        ///// </summary>
+        //public virtual ICollection<Product> AppliedToProducts
+        //{
+        //    get { return _appliedToProducts ?? (_appliedToProducts = new List<Product>()); }
+        //    protected set { _appliedToProducts = value; }
+        //}
     }
 }

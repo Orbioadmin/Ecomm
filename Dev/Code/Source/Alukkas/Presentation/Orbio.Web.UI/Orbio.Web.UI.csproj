@@ -238,7 +238,7 @@
     <Compile Include="Models\Orders\OrderDetailsModel.cs" />
     <Compile Include="Models\Orders\OrderSummaryModel.cs" />
     <Compile Include="Models\Orders\ShoppingCartItemModel.cs" />
-    <Compile Include="Models\Orders\ShoppingCartItemsModel.cs" />
+    <Compile Include="Models\Orders\Cart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

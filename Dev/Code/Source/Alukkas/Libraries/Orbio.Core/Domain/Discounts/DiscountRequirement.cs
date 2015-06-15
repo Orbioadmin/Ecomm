@@ -16,10 +16,10 @@ namespace Orbio.Core.Domain.Discounts
         /// </summary>
         public string DiscountRequirementRuleSystemName { get; set; }
 
-        /// <summary>
-        /// Gets or sets the discount
-        /// </summary>
-        public virtual Discount Discount { get; set; }
+        ///// <summary>
+        ///// Gets or sets the discount
+        ///// </summary>
+        //public virtual Discount Discount { get; set; }
 
     }
 }

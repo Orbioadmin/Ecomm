@@ -1,19 +1,15 @@
-﻿using Nop.Core.Infrastructure;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
+using Nop.Core.Infrastructure;
 using Orbio.Core;
 using Orbio.Core.Domain.Customers;
 using Orbio.Core.Domain.Orders;
-using Orbio.Services.Orders;
-using Orbio.Services.Utility;
-using Orbio.Web.UI.Models.Orders;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using System.Xml;
 using Orbio.Services.Common;
+using Orbio.Services.Orders;
 using Orbio.Web.UI.Filters;
+using Orbio.Web.UI.Models.Orders;
 
 namespace Orbio.Web.UI.Controllers
 {
@@ -38,10 +34,10 @@ namespace Orbio.Web.UI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Cart(ShoppingCartItemModel detailModel)
+        public ActionResult Cart(Cart detailModel)
         {
             List<ShoppingCartItem> cartUpdateItems = new List<ShoppingCartItem>();
-            cartUpdateItems = (from r in detailModel.items.AsEnumerable()
+            cartUpdateItems = (from r in detailModel.ShoppingCartItems.AsEnumerable()
                                select new ShoppingCartItem { CartId=r.CartId,Quantity=Convert.ToInt32(r.SelectedQuantity),IsRemove=r.IsRemove}).ToList();
             shoppingCartService.ModifyCartItem(cartUpdateItems);
             
@@ -60,21 +56,21 @@ namespace Orbio.Web.UI.Controllers
             return RedirectToLocal(returnUrl);
         }
 
-        private ShoppingCartItemsModel PrepareShoppingCartItemModel()
+        private Cart PrepareShoppingCartItemModel()
         {
             var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
             var curCustomer = workContext.CurrentCustomer;
             ShoppingCartType cartType = ShoppingCartType.ShoppingCart;
-            var model = new ShoppingCartItemsModel(shoppingCartService.GetCartItems("select", 0, cartType, 0, curCustomer.Id, 0, 0));
+            var model = new Cart(shoppingCartService.GetCartItems("select", 0, cartType, 0, curCustomer.Id, 0, 0));
 
             double subtotal = 0.00;
            
-            foreach (var totalprice in model.CartDetail)
+            foreach (var totalprice in model.ShoppingCartItems)
             {
                 subtotal = subtotal + Convert.ToDouble(totalprice.TotalPrice);
             }
             ViewBag.subtotal = subtotal.ToString("#,##0.00");
-            var currency = (from r in model.CartDetail.AsEnumerable()
+            var currency = (from r in model.ShoppingCartItems.AsEnumerable()
                             select r.CurrencyCode).Take(1).ToList();
             ViewBag.Currencycode = (currency.Count > 0) ? currency[0] : "Rs";
             

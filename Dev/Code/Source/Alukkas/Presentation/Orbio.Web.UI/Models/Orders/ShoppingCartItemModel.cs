@@ -1,11 +1,10 @@
-﻿using Orbio.Core.Domain.Orders;
-using Orbio.Web.UI.Models.Catalog;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.IO;
 using System.Linq;
-using System.Web;
+using Orbio.Core.Domain.Catalog;
+using Orbio.Core.Domain.Catalog.Abstract;
+using Orbio.Core.Domain.Orders;
+using Orbio.Web.UI.Models.Catalog;
 
 namespace Orbio.Web.UI.Models.Orders
 {
@@ -13,13 +12,13 @@ namespace Orbio.Web.UI.Models.Orders
     {
         public ShoppingCartItemModel()
         {
-            this.items = new List<ShoppingCartItemModel>();
+            //this.items = new List<ShoppingCartItemModel>();
         }
         public ShoppingCartItemModel(ShoppingCartItem productDetail)
             : base(productDetail)
         {
-            this.items = new List<ShoppingCartItemModel>();
-            this.ItemCount = productDetail.ItemCount;
+            //this.items = new List<ShoppingCartItemModel>();
+            this.ItemCount = productDetail.ItemCount;            
             //this.Id = productDetail.Id;
             //this.Name = productDetail.Name;
             //this.SeName = productDetail.SeName;
@@ -37,6 +36,7 @@ namespace Orbio.Web.UI.Models.Orders
                     priceAdjustment += Convert.ToDecimal(pvav.PriceAdjustment);
                 }
             }
+            
             this.ProductPrice.Price = (priceAdjustment + productDetail.Price).ToString("#,##0.00");
             this.TotalPrice = (Convert.ToDecimal(ProductPrice.Price) * productDetail.Quantity).ToString("#,##0.00");
             this.CartId = productDetail.CartId;
@@ -95,7 +95,7 @@ namespace Orbio.Web.UI.Models.Orders
 
         public bool IsRemove { get; set; }
 
-        public List<ShoppingCartItemModel> items { get; set; }
+        //public List<ShoppingCartItemModel> items { get; set; }
 
         //private static string GetThumbImageFileName(string imageUrl)
         //{

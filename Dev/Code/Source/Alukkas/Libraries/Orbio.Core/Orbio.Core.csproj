@@ -85,17 +85,18 @@
     <Compile Include="Domain\Orders\OrderSummary.cs" />
     <Compile Include="Domain\Orders\OrderStatus.cs" />
     <Compile Include="Domain\Orders\ShoppingCartItem.cs" />
-    <Compile Include="Domain\Orders\ShoppingCartItems.cs" />
     <Compile Include="Domain\Orders\ShoppingCartType.cs" />
     <Compile Include="Domain\Payments\PaymentStatus.cs" />
     <Compile Include="Domain\Seo\UrlRecord.cs" />
     <Compile Include="Domain\Shipping\ShippingStatus.cs" />
     <Compile Include="Domain\Stores\Store.cs" />
     <Compile Include="Domain\Stores\StoreExtensions.cs" />
+    <Compile Include="Domain\Tax\TaxDisplayType.cs" />
     <Compile Include="IStoreContext.cs" />
     <Compile Include="IWebHelper.cs" />
     <Compile Include="IWorkContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\Serializer.cs" />
     <Compile Include="WebHelper.cs" />
   </ItemGroup>
   <ItemGroup />

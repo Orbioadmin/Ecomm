@@ -4,9 +4,11 @@ using System.Data.SqlClient;
 using System.Linq;
 using Nop.Core.Domain;
 using Nop.Data;
+using Orbio.Core;
 using Orbio.Core.Domain.Orders;
+using Orbio.Core.Domain.Shipping;
+using Orbio.Core.Utility;
 using Orbio.Services.Payments;
-using Orbio.Services.Utility;
 
 namespace Orbio.Services.Orders
 {
@@ -14,14 +16,16 @@ namespace Orbio.Services.Orders
     {
          private readonly IDbContext context;
          private readonly IShoppingCartService shoppingCartService;
+         private readonly IWebHelper webHelper;
         /// <summary>
         /// instantiates Store service type
         /// </summary>
         /// <param name="context">db context</param>
-         public OrderService(IDbContext context, IShoppingCartService shoppingCartService)
+         public OrderService(IDbContext context, IShoppingCartService shoppingCartService, IWebHelper webHelper)
         {
             this.context = context;
             this.shoppingCartService = shoppingCartService;
+            this.webHelper = webHelper;
         }
 
          /// <summary>
@@ -49,10 +53,10 @@ namespace Orbio.Services.Orders
          }
 
 
-         public string PlaceOrder(ProcessPaymentRequest processPaymentRequest)
+         public string PlaceOrder(ProcessOrderRequest processOrderRequest)
          {
-             if (processPaymentRequest.OrderGuid == Guid.Empty)
-                 processPaymentRequest.OrderGuid = Guid.NewGuid();
+             if (processOrderRequest.OrderGuid == Guid.Empty)
+                 processOrderRequest.OrderGuid = Guid.NewGuid();
 
              //load and validate customer shopping cart
                 IList<ShoppingCartItem> cart = null;
@@ -62,7 +66,7 @@ namespace Orbio.Services.Orders
                     //    .Where(sci => sci.ShoppingCartType == ShoppingCartType.ShoppingCart)
                     //    .Where(sci => sci.StoreId == processPaymentRequest.StoreId)
                     //    .ToList();
-                cart = shoppingCartService.GetCartItems("select", 0, ShoppingCartType.ShoppingCart, 0, processPaymentRequest.CustomerId, 0, 0);
+               // cart = processOrderRequest.ShoppingCartItems;
                 ////min totals validation
                 //if (!processPaymentRequest.IsRecurringPayment)
                 //{
@@ -91,8 +95,62 @@ namespace Orbio.Services.Orders
 
                 //shipping calculations goes here
                 // next tax calculations
-                if (processPaymentRequest.Success)
+                if (processOrderRequest.Success)
                 {
+                    var shippingStatus = ShippingStatus.NotYetShipped;
+                  
+                    var order = new Order()
+                    {
+                        StoreId = processOrderRequest.StoreId,
+                        OrderGuid = processOrderRequest.OrderGuid,
+                        CustomerId = processOrderRequest.CustomerId,
+                        CustomerLanguageId = 1, //hardcoding it for now madhu  m b
+                       // CustomerTaxDisplayType = TaxDisplayType.IncludingTax,
+                        CustomerIp = webHelper.GetCurrentIpAddress(),
+                       //////////// OrderSubtotalInclTax = orderSubTotalInclTax,
+                       //////////// OrderSubtotalExclTax = orderSubTotalExclTax,
+                       //////////// OrderSubTotalDiscountInclTax = orderSubTotalDiscountInclTax,
+                       //////////// OrderSubTotalDiscountExclTax = orderSubTotalDiscountExclTax,
+                       //////////// OrderShippingInclTax = orderShippingTotalInclTax.Value,
+                       //////////// OrderShippingExclTax = orderShippingTotalExclTax.Value,
+                       //////////// PaymentMethodAdditionalFeeInclTax = paymentAdditionalFeeInclTax,
+                       //////////// PaymentMethodAdditionalFeeExclTax = paymentAdditionalFeeExclTax,
+                       //////////// TaxRates = string.Empty, //not calculating now madhu mb
+                       ////////////// OrderTax = orderTaxTotal, //not caluclating now
+                       //////////// OrderTotal = orderTotal.Value,
+                        RefundedAmount = decimal.Zero,
+                       // OrderDiscount = orderDiscountAmount, //need to implement discounts
+                       // CheckoutAttributeDescription = checkoutAttributeDescription,
+                       // CheckoutAttributesXml = checkoutAttributesXml,
+                       // CustomerCurrencyCode = customerCurrencyCode,
+                       // CurrencyRate = customerCurrencyRate,
+                       // AffiliateId = affiliateId,
+                        OrderStatus = OrderStatus.Pending,
+                        //AllowStoringCreditCardNumber = processPaymentResult.AllowStoringCreditCardNumber,
+                        //CardType = processPaymentResult.AllowStoringCreditCardNumber ? _encryptionService.EncryptText(processOrderRequest.CreditCardType) : string.Empty,
+                        //CardName = processPaymentResult.AllowStoringCreditCardNumber ? _encryptionService.EncryptText(processOrderRequest.CreditCardName) : string.Empty,
+                        //CardNumber = processPaymentResult.AllowStoringCreditCardNumber ? _encryptionService.EncryptText(processOrderRequest.CreditCardNumber) : string.Empty,
+                        //MaskedCreditCardNumber = _encryptionService.EncryptText(_paymentService.GetMaskedCreditCardNumber(processOrderRequest.CreditCardNumber)),
+                        //CardCvv2 = processPaymentResult.AllowStoringCreditCardNumber ? _encryptionService.EncryptText(processOrderRequest.CreditCardCvv2) : string.Empty,
+                        //CardExpirationMonth = processPaymentResult.AllowStoringCreditCardNumber ? _encryptionService.EncryptText(processOrderRequest.CreditCardExpireMonth.ToString()) : string.Empty,
+                        //CardExpirationYear = processPaymentResult.AllowStoringCreditCardNumber ? _encryptionService.EncryptText(processOrderRequest.CreditCardExpireYear.ToString()) : string.Empty,
+                        PaymentMethodSystemName = processOrderRequest.PaymentMethodSystemName,
+                        //AuthorizationTransactionId = processPaymentResult.AuthorizationTransactionId,
+                        //AuthorizationTransactionCode = processPaymentResult.AuthorizationTransactionCode,
+                        //AuthorizationTransactionResult = processPaymentResult.AuthorizationTransactionResult,
+                        //CaptureTransactionId = processPaymentResult.CaptureTransactionId,
+                        //CaptureTransactionResult = processPaymentResult.CaptureTransactionResult,
+                        //SubscriptionTransactionId = processPaymentResult.SubscriptionTransactionId,
+                        PurchaseOrderNumber = processOrderRequest.PurchaseOrderNumber,
+                        //PaymentStatus = processPaymentResult.NewPaymentStatus,
+                        PaidDateUtc = null,                     
+                        ShippingStatus = shippingStatus,
+                        ShippingMethod = shippingMethodName,
+                        ShippingRateComputationMethodSystemName = shippingRateComputationMethodSystemName,
+                       // CustomValuesXml = processOrderRequest.SerializeCustomValues(),
+                       // VatNumber = vatNumber,
+                        CreatedOnUtc = DateTime.UtcNow
+                    };
                 }
 
              return string.Empty;

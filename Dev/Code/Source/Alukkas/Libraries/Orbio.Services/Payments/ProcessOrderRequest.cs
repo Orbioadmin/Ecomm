@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Orbio.Core.Domain.Orders;
 
 namespace Orbio.Services.Payments
 {
@@ -7,9 +8,9 @@ namespace Orbio.Services.Payments
     /// Represents a payment info holder
     /// </summary>
     [Serializable]
-    public partial class ProcessPaymentRequest
+    public partial class ProcessOrderRequest
     {
-        public ProcessPaymentRequest()
+        public ProcessOrderRequest()
         {
             this.CustomValues = new Dictionary<string, object>();
         }
@@ -118,5 +119,10 @@ namespace Orbio.Services.Payments
         /// true if payment is successful else false
         /// </summary>
         public bool Success { get; set; }
+
+        /// <summary>
+        /// store the cart items in this property
+        /// </summary>
+        //public List<ShoppingCartItemModel> ShoppingCartItems { get; set; }
     }
 }

@@ -28,14 +28,14 @@ namespace Orbio.Core.Domain.Discounts
         public DateTime CreatedOnUtc { get; set; }
 
 
-        /// <summary>
-        /// Gets or sets the discount
-        /// </summary>
-        public virtual Discount Discount { get; set; }
+        ///// <summary>
+        ///// Gets or sets the discount
+        ///// </summary>
+        //public virtual Discount Discount { get; set; }
 
-        /// <summary>
-        /// Gets or sets the order
-        /// </summary>
-        public virtual Order Order { get; set; }
+        ///// <summary>
+        ///// Gets or sets the order
+        ///// </summary>
+        //public virtual Order Order { get; set; }
     }
 }

@@ -1,15 +1,12 @@
-﻿using Nop.Core.Domain;
-using Nop.Data;
-using Orbio.Core.Domain.Orders;
-using Orbio.Services.Utility;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
+using Nop.Core.Domain;
+using Nop.Data;
+using Orbio.Core.Domain.Orders;
+using Orbio.Core.Utility;
 
 namespace Orbio.Services.Orders
 {

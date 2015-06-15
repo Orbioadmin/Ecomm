@@ -1,6 +1,6 @@
-﻿@model Orbio.Web.UI.Models.Orders.ShoppingCartItemsModel
+﻿@model Orbio.Web.UI.Models.Orders.Cart
            @{
-               var count = Model.CartDetail;
+               var count = Model.ShoppingCartItems;
                
            }
 <a href="@Url.RouteUrl("ShoppingCart")"><span class="item_no">@((count.Count > 0)?count[0].ItemCount :0)</span><span class="item_span">ITEMS </span><i class="mnu_item_icon"></i></a>
