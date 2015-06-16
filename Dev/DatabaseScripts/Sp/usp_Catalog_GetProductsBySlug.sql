@@ -96,8 +96,8 @@ FOR XML PATH('Category'), ROOT('BreadCrumbs'),type)
 ,
  
 (select   *,ROW_NUMBER() OVER(ORDER BY PC.CategoryId),[dbo].[ufn_GetProductPriceDetails](PC.Id),
-(select PCM.Weight from [dbo].[Product_ProductComponent_Mapping] PCM where ComponentId=PC.Id) as 'GoldWeight',
-(select PCM.UnitPrice from [dbo].[Product_ProductComponent_Mapping] PCM where ComponentId=PC.Id) as 'ProductUnit',
+(select Weight from [dbo].[ufn_GetProductPriceDetail](PC.Id)) as 'GoldWeight', 
+(select ProductUnit as 'ProductUnit' from [dbo].[ufn_GetProductPriceDetail](PC.Id))  as 'ProductUnit',
 (select value from [dbo].[Setting] where Name = 'Product.PriceUnit') as PriceUnit,
 (select value from [dbo].[Setting] where Name = 'Product.MarketUnitPrice') as MarketUnitPrice
 FROM  #products PC  WHERE PC.CategoryId = Category.Id and PC.RowNum BETWEEN ((@pageNumber - 1) * @pageSize + 1) AND (@pageNumber * @pageSize)
@@ -123,8 +123,8 @@ FOR XML PATH('Category'), ROOT('BreadCrumbs'),type)
 ,
  
 (select   *,ROW_NUMBER() OVER(ORDER BY PC.CategoryId),[dbo].[ufn_GetProductPriceDetails](PC.Id),
-(select PCM.Weight from [dbo].[Product_ProductComponent_Mapping] PCM where ComponentId=PC.Id) as 'GoldWeight',
-(select PCM.UnitPrice from [dbo].[Product_ProductComponent_Mapping] PCM where ComponentId=PC.Id) as 'ProductUnit',
+(select Weight from [dbo].[ufn_GetProductPriceDetail](PC.Id)) as 'GoldWeight', 
+(select ProductUnit as 'ProductUnit' from [dbo].[ufn_GetProductPriceDetail](PC.Id))  as 'ProductUnit',
 (select value from [dbo].[Setting] where Name = 'Product.PriceUnit') as PriceUnit,
 (select value from [dbo].[Setting] where Name = 'Product.MarketUnitPrice') as MarketUnitPrice  
 FROM  #temptableproducts  PC   WHERE PC.CategoryId = Category.Id and PC.RowNumber BETWEEN ((@pageNumber - 1) * @pageSize + 1) AND (@pageNumber * @pageSize)

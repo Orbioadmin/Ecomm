@@ -227,7 +227,7 @@ ORDER BY PPM.DisplayOrder FOR XML PATH ('ProductPicture'),ROOT('ProductPictures'
    sc.Quantity as 'Quantity',
    (Select TextPrompt,
    (Select Name,PriceAdjustment,WeightAdjustment,[dbo].[ufn_GetProductPriceDetailsByVarientValue](product.Id,VariantValueId) ,(select value from [dbo].[Setting] where Name = 'Product.PriceUnit') as PriceUnit,
-(select value from [dbo].[Setting] where Name = 'Product.MarketUnitPrice') as MarketUnitPrice,(select top 1 ProductUnit from [dbo].[Product] where Id= 74 and ProductUnit is not null)  as 'ProductUnit' from ufn_GetCartProductAttribute(sc.AttributesXml,product.Id,TextPrompt)  FOR XML PATH('ProductVariantAttributeValue'), ROOT('ProductVariantAttributeValues'), type)
+(select value from [dbo].[Setting] where Name = 'Product.MarketUnitPrice') as MarketUnitPrice,(select Weight from [dbo].[ufn_GetProductPriceDetail](product.Id)) as 'GoldWeight', (select ProductUnit as 'ProductUnit' from [dbo].[ufn_GetProductPriceDetail](product.Id))  as 'ProductUnit' from ufn_GetCartProductAttribute(sc.AttributesXml,product.Id,TextPrompt)  FOR XML PATH('ProductVariantAttributeValue'), ROOT('ProductVariantAttributeValues'), type)
    from ufn_GetCartProductAttributes(sc.AttributesXml,product.Id) 
    FOR XML PATH('ProductAttributeVariant'), ROOT('ProductAttributeVariants'),type),(
    Select case when sign(count(PriceAdjustment)) <> 0 then (select PriceAdjustment from ufn_GetCartProductPrice(sc.AttributesXml,product.Id)) else 0 end from ufn_GetCartProductPrice(sc.AttributesXml,product.Id)
@@ -242,8 +242,6 @@ SELECT @XmlResult as XmlResult
 end
 
 END
-
-
 
 
 GO

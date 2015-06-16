@@ -68,7 +68,10 @@ dbo.ufn_GetAllspecificationattributes(@productid),
 --productattributes
 (SELECT  PPM.Id , PPM.ProductAttributeId,PPM.SizeGuideUrl As SizeGuideUrl, CASE WHEN ISNULL(PPM.TextPrompt, '')<>'' THEN PPM.TextPrompt ELSE PA.Name END 
 AS TextPrompt, IsRequired, AttributeControlTypeId, (SELECT  PVA.Id, Name, ColorSquaresRgb, PriceAdjustment,
-IsPreSelected, DisplayOrder, PIC.RelativeUrl PictureUrl,[dbo].[ufn_GetProductPriceDetailsByVarientValue](Product.Id,PVA.Id) FROM ProductVariantAttributeValue
+IsPreSelected, DisplayOrder, PIC.RelativeUrl PictureUrl,[dbo].[ufn_GetProductPriceDetailsByVarientValue](Product.Id,PVA.Id), 
+(select value from [dbo].[Setting] where Name = 'Product.PriceUnit') as PriceUnit,
+(select value from [dbo].[Setting] where Name = 'Product.MarketUnitPrice') as MarketUnitPrice,(select Weight from [dbo].[ufn_GetProductPriceDetail](product.Id)) as 'GoldWeight', (select ProductUnit from [dbo].[ufn_GetProductPriceDetail](product.Id))  as 'ProductUnit'
+FROM ProductVariantAttributeValue
 PVA  LEFT OUTER JOIN Picture PIC ON PVA.PictureId = PIC.Id WHERE PVA.ProductVariantAttributeId = PPM.Id order by DisplayOrder 
 FOR XML PATH('ProductVariantAttributeValue'), ROOT('ProductVariantAttributeValues'), type)
 --, (SELECT * FROM ProductVariantAttributeCombination PVAC
@@ -105,7 +108,6 @@ FOR XML PATH('ProductDetail')
  SELECT @XmlResult as XmlResult
    
 END
-
 
 GO
 PRINT 'Created the procedure usp_Catalog_GetProductsDetailBySlug'
