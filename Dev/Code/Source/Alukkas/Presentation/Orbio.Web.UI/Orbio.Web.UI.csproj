@@ -52,6 +52,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Autofac.Mvc5.3.0.0\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="dotless.Core, Version=1.5.0.0, Culture=neutral, PublicKeyToken=96b446c9e63eae34, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\dotless.1.5.0\lib\dotless.Core.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
@@ -194,6 +198,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\BundleConfig.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CatalogController.cs" />
     <Compile Include="Controllers\CheckOutController.cs" />
@@ -241,6 +248,46 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Settings.txt" />
+    <Content Include="Areas\Admin\Content\bootstrap.min.css" />
+    <Content Include="Areas\Admin\Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Areas\Admin\Content\fonts\Roboto-Medium.svg" />
+    <Content Include="Areas\Admin\Content\fonts\Roboto-Regular.svg" />
+    <Content Include="Areas\Admin\Content\kendo.common.min.css" />
+    <Content Include="Areas\Admin\Content\kendo.dataviz.default.min.css" />
+    <Content Include="Areas\Admin\Content\kendo.dataviz.min.css" />
+    <Content Include="Areas\Admin\Content\kendo.default.min.css" />
+    <Content Include="Areas\Admin\Content\responsive.css" />
+    <Content Include="Areas\Admin\Content\style.css" />
+    <Content Include="Areas\Admin\images\1.jpg" />
+    <Content Include="Areas\Admin\images\2.jpg" />
+    <Content Include="Areas\Admin\images\3.jpg" />
+    <Content Include="Areas\Admin\images\4.jpg" />
+    <Content Include="Areas\Admin\images\back.png" />
+    <Content Include="Areas\Admin\images\blue_arrow.png" />
+    <Content Include="Areas\Admin\images\chk-box_2.png" />
+    <Content Include="Areas\Admin\images\form.jpg" />
+    <Content Include="Areas\Admin\images\form.png" />
+    <Content Include="Areas\Admin\images\form1.jpg" />
+    <Content Include="Areas\Admin\images\ico-content.png" />
+    <Content Include="Areas\Admin\images\image sprites.png" />
+    <Content Include="Areas\Admin\images\menu_line.png" />
+    <Content Include="Areas\Admin\images\single-arrow.png" />
+    <Content Include="Areas\Admin\images\sprite.png" />
+    <Content Include="Areas\Admin\images\thumbs\0000140_jewellery_tb.jpeg" />
+    <Content Include="Areas\Admin\images\thumbs\0000198_bracelet.jpeg" />
+    <Content Include="Areas\Admin\images\thumbs\sprite.png" />
+    <Content Include="Areas\Admin\images\white_arrow.png" />
+    <Content Include="Areas\Admin\Scripts\bootstrap.min.js" />
+    <Content Include="Areas\Admin\Scripts\highcharts.js" />
+    <Content Include="Areas\Admin\Scripts\ie-emulation-modes-warning.js" />
+    <Content Include="Areas\Admin\Scripts\ie10-viewport-bug-workaround.js" />
+    <Content Include="Areas\Admin\Scripts\jquery.js" />
+    <Content Include="Areas\Admin\Scripts\kendo.all.min.js" />
+    <Content Include="Areas\Admin\Scripts\knockout-2.2.0.debug.js" />
+    <Content Include="Areas\Admin\Scripts\knockout-2.2.0.js" />
+    <Content Include="Areas\Admin\Scripts\less.js" />
+    <Content Include="Areas\Admin\Scripts\modernizr-2.6.2.js" />
+    <None Include="Areas\Admin\Scripts\_references.js" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\datepicker.css" />
     <Content Include="Content\font-awesome.min.css" />
@@ -523,7 +570,9 @@
     <Content Include="Views\Catalog\PriceFilter.cshtml" />
     <Content Include="Views\Catalog\Product.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Models\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
@@ -607,6 +656,96 @@
     <Content Include="Content\fonts\rupeefont.ttf" />
     <Content Include="Content\fonts\WebRupee.V2.0.eot" />
     <Content Include="Content\fonts\WebRupee.V2.0.ttf" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Areas\Admin\Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Areas\Admin\Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Areas\Admin\Content\fonts\Roboto-Medium.eot" />
+    <Content Include="Areas\Admin\Content\fonts\Roboto-Medium.ttf" />
+    <Content Include="Areas\Admin\Content\fonts\Roboto-Medium.woff" />
+    <Content Include="Areas\Admin\Content\fonts\Roboto-Medium.woff2" />
+    <Content Include="Areas\Admin\Content\fonts\Roboto-Regular.eot" />
+    <Content Include="Areas\Admin\Content\fonts\Roboto-Regular.ttf" />
+    <Content Include="Areas\Admin\Content\fonts\Roboto-Regular.woff" />
+    <Content Include="Areas\Admin\Content\fonts\Roboto-Regular.woff2" />
+    <Content Include="Areas\Admin\Content\less\.csscomb.json" />
+    <Content Include="Areas\Admin\Content\less\.csslintrc" />
+    <Content Include="Areas\Admin\Content\less\alerts.less" />
+    <Content Include="Areas\Admin\Content\less\badges.less" />
+    <Content Include="Areas\Admin\Content\less\bootstrap.less" />
+    <Content Include="Areas\Admin\Content\less\breadcrumbs.less" />
+    <Content Include="Areas\Admin\Content\less\button-groups.less" />
+    <Content Include="Areas\Admin\Content\less\buttons.less" />
+    <Content Include="Areas\Admin\Content\less\carousel.less" />
+    <Content Include="Areas\Admin\Content\less\close.less" />
+    <Content Include="Areas\Admin\Content\less\code.less" />
+    <Content Include="Areas\Admin\Content\less\component-animations.less" />
+    <Content Include="Areas\Admin\Content\less\dropdowns.less" />
+    <Content Include="Areas\Admin\Content\less\forms.less" />
+    <Content Include="Areas\Admin\Content\less\glyphicons.less" />
+    <Content Include="Areas\Admin\Content\less\grid.less" />
+    <Content Include="Areas\Admin\Content\less\input-groups.less" />
+    <Content Include="Areas\Admin\Content\less\jumbotron.less" />
+    <Content Include="Areas\Admin\Content\less\labels.less" />
+    <Content Include="Areas\Admin\Content\less\list-group.less" />
+    <Content Include="Areas\Admin\Content\less\media.less" />
+    <Content Include="Areas\Admin\Content\less\mixins.less" />
+    <Content Include="Areas\Admin\Content\less\mixins\alerts.less" />
+    <Content Include="Areas\Admin\Content\less\mixins\background-variant.less" />
+    <Content Include="Areas\Admin\Content\less\mixins\border-radius.less" />
+    <Content Include="Areas\Admin\Content\less\mixins\buttons.less" />
+    <Content Include="Areas\Admin\Content\less\mixins\center-block.less" />
+    <Content Include="Areas\Admin\Content\less\mixins\clearfix.less" />
+    <Content Include="Areas\Admin\Content\less\mixins\forms.less" />
+    <Content Include="Areas\Admin\Content\less\mixins\gradients.less" />
+    <Content Include="Areas\Admin\Content\less\mixins\grid-framework.less" />
+    <Content Include="Areas\Admin\Content\less\mixins\grid.less" />
+    <Content Include="Areas\Admin\Content\less\mixins\hide-text.less" />
+    <Content Include="Areas\Admin\Content\less\mixins\image.less" />
+    <Content Include="Areas\Admin\Content\less\mixins\labels.less" />
+    <Content Include="Areas\Admin\Content\less\mixins\list-group.less" />
+    <Content Include="Areas\Admin\Content\less\mixins\nav-divider.less" />
+    <Content Include="Areas\Admin\Content\less\mixins\nav-vertical-align.less" />
+    <Content Include="Areas\Admin\Content\less\mixins\opacity.less" />
+    <Content Include="Areas\Admin\Content\less\mixins\pagination.less" />
+    <Content Include="Areas\Admin\Content\less\mixins\panels.less" />
+    <Content Include="Areas\Admin\Content\less\mixins\progress-bar.less" />
+    <Content Include="Areas\Admin\Content\less\mixins\reset-filter.less" />
+    <Content Include="Areas\Admin\Content\less\mixins\resize.less" />
+    <Content Include="Areas\Admin\Content\less\mixins\responsive-visibility.less" />
+    <Content Include="Areas\Admin\Content\less\mixins\size.less" />
+    <Content Include="Areas\Admin\Content\less\mixins\tab-focus.less" />
+    <Content Include="Areas\Admin\Content\less\mixins\table-row.less" />
+    <Content Include="Areas\Admin\Content\less\mixins\text-emphasis.less" />
+    <Content Include="Areas\Admin\Content\less\mixins\text-overflow.less" />
+    <Content Include="Areas\Admin\Content\less\mixins\vendor-prefixes.less" />
+    <Content Include="Areas\Admin\Content\less\modals.less" />
+    <Content Include="Areas\Admin\Content\less\navbar.less" />
+    <Content Include="Areas\Admin\Content\less\navs.less" />
+    <Content Include="Areas\Admin\Content\less\normalize.less" />
+    <Content Include="Areas\Admin\Content\less\pager.less" />
+    <Content Include="Areas\Admin\Content\less\pagination.less" />
+    <Content Include="Areas\Admin\Content\less\panels.less" />
+    <Content Include="Areas\Admin\Content\less\popovers.less" />
+    <Content Include="Areas\Admin\Content\less\print.less" />
+    <Content Include="Areas\Admin\Content\less\progress-bars.less" />
+    <Content Include="Areas\Admin\Content\less\responsive-embed.less" />
+    <Content Include="Areas\Admin\Content\less\responsive-utilities.less" />
+    <Content Include="Areas\Admin\Content\less\scaffolding.less" />
+    <Content Include="Areas\Admin\Content\less\tables.less" />
+    <Content Include="Areas\Admin\Content\less\theme.less" />
+    <Content Include="Areas\Admin\Content\less\thumbnails.less" />
+    <Content Include="Areas\Admin\Content\less\tooltip.less" />
+    <Content Include="Areas\Admin\Content\less\type.less" />
+    <Content Include="Areas\Admin\Content\less\utilities.less" />
+    <Content Include="Areas\Admin\Content\less\variables.less" />
+    <Content Include="Areas\Admin\Content\less\wells.less" />
+    <Content Include="Areas\Admin\Content\main.less" />
+    <Content Include="Areas\Admin\Views\Home\TopMenu.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Error.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <None Include="Properties\PublishProfiles\Alukkas.pubxml" />
     <Content Include="Views\Catalog\Search.cshtml" />
     <Content Include="Views\Catalog\_productAttribute.cshtml" />
