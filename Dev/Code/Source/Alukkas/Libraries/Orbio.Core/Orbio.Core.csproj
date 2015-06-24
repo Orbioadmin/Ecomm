@@ -41,7 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\Catalog\Abstract\ICart.cs" />
     <Compile Include="Domain\Catalog\Abstract\IPriceComponent.cs" />
+    <Compile Include="Domain\Catalog\Abstract\IShoppingCartItem.cs" />
     <Compile Include="Domain\Catalog\AssociatedProduct.cs" />
     <Compile Include="Domain\Catalog\AttributeControlType.cs" />
     <Compile Include="Domain\Catalog\AttributeValueType.cs" />
@@ -76,9 +78,11 @@
     <Compile Include="Domain\Discounts\DiscountRequirement.cs" />
     <Compile Include="Domain\Discounts\DiscountType.cs" />
     <Compile Include="Domain\Discounts\DiscountUsageHistory.cs" />
+    <Compile Include="Domain\Discounts\IDiscount.cs" />
     <Compile Include="Domain\Email\EmailDetail.cs" />
     <Compile Include="Domain\Messages\MessageTemplate.cs" />
     <Compile Include="Domain\Messages\Token.cs" />
+    <Compile Include="Domain\Orders\Cart.cs" />
     <Compile Include="Domain\Orders\Order.cs" />
     <Compile Include="Domain\Orders\OrderItem.cs" />
     <Compile Include="Domain\Orders\OrderNote.cs" />

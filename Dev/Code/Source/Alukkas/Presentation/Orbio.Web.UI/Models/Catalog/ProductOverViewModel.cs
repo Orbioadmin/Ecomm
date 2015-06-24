@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Orbio.Core.Domain.Catalog;
+using Orbio.Services.Orders;
 
 namespace Orbio.Web.UI.Models.Catalog
 {
     public class ProductOverViewModel : BaseCatalogModel
     {
+       
+
         public ProductOverViewModel()
         {
             ProductPrice = new ProductPriceModel();
+           
            // DefaultPictureModel = new PictureModel();
             //SpecificationAttributeModels = new List<ProductSpecificationModel>();
             //ReviewOverviewModel = new ProductReviewOverviewModel();
@@ -37,6 +41,7 @@ namespace Orbio.Web.UI.Models.Catalog
             this.ProductPrice.Price = product.CalculatePrice();// product.Price.ToString("#,##0.00");
             this.ProductPrice.OldPrice = product.OldPrice.ToString("#,##0.00");
             this.ComponentDetails = product.GetComponentDetails();
+
         }
 
       

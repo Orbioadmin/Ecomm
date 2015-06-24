@@ -98,7 +98,7 @@ namespace Orbio.Services.Orders
                 if (processOrderRequest.Success)
                 {
                     var shippingStatus = ShippingStatus.NotYetShipped;
-                  
+                    
                     var order = new Order()
                     {
                         StoreId = processOrderRequest.StoreId,

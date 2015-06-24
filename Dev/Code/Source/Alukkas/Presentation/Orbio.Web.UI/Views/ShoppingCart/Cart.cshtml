@@ -1,4 +1,4 @@
-﻿@model Orbio.Web.UI.Models.Orders.Cart
+﻿@model Orbio.Web.UI.Models.Orders.CartModel
 <section class="main_shop_cart">
     <div class="container">
         <ol class="breadcrumb">
@@ -67,7 +67,7 @@
                                 <dt>Shipping Charges</dt>
                                 <dd>0</dd>
                                 <dt>Promotional Discounts</dt>
-                                <dd>0</dd>
+                                <dd>@ViewBag.Currencycode.@ViewBag.DiscountAmount</dd>
                                 <dt>Estimated Tax</dt>
                                 <dd>0</dd>
                                 <dt class="cart_total">Total</dt>

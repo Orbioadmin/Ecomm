@@ -7,7 +7,7 @@ namespace Orbio.Core.Domain.Discounts
     /// <summary>
     /// Represents a discount
     /// </summary>
-    public partial class Discount  
+    public partial class Discount : IDiscount  
     {
         //private ICollection<DiscountRequirement> _discountRequirements;
         //private ICollection<Category> _appliedToCategories;

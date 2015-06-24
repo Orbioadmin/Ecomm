@@ -1,44 +1,43 @@
-﻿using System;
+﻿using Nop.Core.Infrastructure;
+using Orbio.Core.Domain.Catalog.Abstract;
+using Orbio.Core.Domain.Discounts;
+using Orbio.Core.Domain.Orders;
+using Orbio.Services.Orders;
+using Orbio.Web.UI.Models.Catalog;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Orbio.Core.Domain.Catalog;
-using Orbio.Core.Domain.Catalog.Abstract;
-using Orbio.Core.Domain.Orders;
-using Orbio.Web.UI.Models.Catalog;
 
 namespace Orbio.Web.UI.Models.Orders
 {
-    public class ShoppingCartItemModel : ProductDetailModel
+    public class ShoppingCartItemModel : ProductDetailModel, IShoppingCartItem
     {
+       
         public ShoppingCartItemModel()
         {
             //this.items = new List<ShoppingCartItemModel>();
+           
         }
         public ShoppingCartItemModel(ShoppingCartItem productDetail)
             : base(productDetail)
         {
+            
             //this.items = new List<ShoppingCartItemModel>();
-            this.ItemCount = productDetail.ItemCount;            
+            this.ItemCount = productDetail.ItemCount;
+            this.SelectedQuantity = productDetail.Quantity.ToString();
+
             //this.Id = productDetail.Id;
             //this.Name = productDetail.Name;
             //this.SeName = productDetail.SeName;
             //this.ImageRelativeUrl = productDetail.ImageRelativeUrl;
             //this.CurrencyCode = productDetail.CurrencyCode;
             //this.ProductPrice.Price = productDetail.Price.ToString("0.00");
-            var pvValues = (from pva in productDetail.ProductAttributeVariants
-                            from pvav in pva.ProductVariantAttributeValues
-                            select pvav).ToList();
-            decimal priceAdjustment = 0;
-            if (pvValues.Count > 0)
-            {
-                foreach (var pvav in pvValues)
-                {
-                    priceAdjustment += Convert.ToDecimal(pvav.PriceAdjustment);
-                }
-            }
-            
-            this.ProductPrice.Price = (priceAdjustment + productDetail.Price).ToString("#,##0.00");
-            this.TotalPrice = (Convert.ToDecimal(ProductPrice.Price) * productDetail.Quantity).ToString("#,##0.00");
+           
+            //this.TotalPrice = (Convert.ToDecimal(ProductPrice.Price) * productDetail.Quantity).ToString("#,##0.00");
+            var priceCalculationService = EngineContext.Current.Resolve<IPriceCalculationService>();
+            this.ProductPrice.Price = priceCalculationService.GetFinalPrice(this, false, false).ToString("#,##0.00");
+            this.ProductPrice.OldPrice = priceCalculationService.GetUnitPrice(this).ToString("#,##0.00");
+            this.TotalPrice = priceCalculationService.GetFinalPrice(this, false, true).ToString("#,##0.00");
             this.CartId = productDetail.CartId;
             //if (productDetail.ProductPictures != null && productDetail.ProductPictures.Count > 0)
             //{
@@ -84,31 +83,47 @@ namespace Orbio.Web.UI.Models.Orders
 
             //this.OrderMinimumQuantity = productDetail.OrderMinimumQuantity;
 
-            this.SelectedQuantity = productDetail.Quantity.ToString();
-
+           
             this.IsRemove = false;
         }
         public int ItemCount { get; set; }
-        public string TotalPrice { get; set; }
+        //public string TotalPrice { get; set; }
 
         public int CartId { get; set; }
 
         public bool IsRemove { get; set; }
 
-        //public List<ShoppingCartItemModel> items { get; set; }
+        public string TotalPrice{get;set;}
 
-        //private static string GetThumbImageFileName(string imageUrl)
-        //{
-        //    var fileName = imageUrl;
-        //    if (imageUrl.IndexOf('?') > 0)
-        //    {
-        //        fileName = imageUrl.Substring(0, imageUrl.IndexOf('?'));
-        //    }
+        decimal IShoppingCartItem.Price
+        {
+            get
+            {
+                return Convert.ToDecimal(this.ProductPrice.Price);
+            }
+        }
 
-        //    fileName = fileName.Substring(fileName.LastIndexOf('/') + 1, fileName.Length - fileName.LastIndexOf('/') - 1);
-        //    fileName = Path.GetFileNameWithoutExtension(fileName);
 
-        //    return fileName.Length>0? imageUrl.Replace(fileName, fileName + "_tb"):fileName;
-        //}
+        IEnumerable<IDiscount> IShoppingCartItem.Discounts
+        {
+            get { return this.Discounts; }
+        }
+
+
+        int IShoppingCartItem.Quantity
+        {
+            get { return Convert.ToInt32(this.SelectedQuantity); }
+        }
+
+
+        public IEnumerable<decimal> ProductVariantPriceAdjustments
+        {
+            get
+            {
+                return (from pva in this.ProductVariantAttributes
+                        from pvav in pva.Values
+                        select Convert.ToDecimal(pvav.PriceAdjustment)).ToList();
+            }
+        }
     }
 }

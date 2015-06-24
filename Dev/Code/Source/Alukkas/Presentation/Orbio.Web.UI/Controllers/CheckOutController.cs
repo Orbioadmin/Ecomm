@@ -21,12 +21,15 @@ namespace Orbio.Web.UI.Controllers
         private readonly IShoppingCartService shoppingCartService;
 
         private readonly ICheckoutService checkoutService;
+
+        private readonly IPriceCalculationService priceCalculationService;
         //
         // GET: /CheckOut/
-        public CheckOutController(ICheckoutService checkoutService, IShoppingCartService shoppingCartService)
+        public CheckOutController(ICheckoutService checkoutService, IShoppingCartService shoppingCartService, IPriceCalculationService priceCalculationService)
         {
             this.checkoutService = checkoutService;
             this.shoppingCartService = shoppingCartService;
+            this.priceCalculationService = priceCalculationService;
         }
 
         [LoginRequired]
@@ -156,12 +159,12 @@ namespace Orbio.Web.UI.Controllers
 
         private void PrepareShoppingCartItemModel(int customerId, ShoppingCartType cartType)
         {
-            var model = new Cart(shoppingCartService.GetCartItems("select", 0, cartType,0, customerId, 0, 0));
-            double subtotal = 0.00;
-            foreach (var totalprice in model.ShoppingCartItems)
-            {
-                subtotal = subtotal + Convert.ToDouble(totalprice.TotalPrice);
-            }
+            var model = new CartModel(shoppingCartService.GetCartItems("select", 0, cartType,0, customerId, 0, 0));
+            decimal subtotal = priceCalculationService.GetCartSubTotal(model, true);
+            //foreach (var totalprice in model.ShoppingCartItems)
+            //{
+            //    subtotal = subtotal + Convert.ToDouble(totalprice.TotalPrice);
+            //}
             ViewBag.subtotal = subtotal.ToString("0.00");
             var currency = (from r in model.ShoppingCartItems.AsEnumerable()
                             select r.CurrencyCode).Take(1).ToList();

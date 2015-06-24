@@ -18,11 +18,13 @@ namespace Orbio.Web.UI.Controllers
 
         private readonly IShoppingCartService shoppingCartService;
         private readonly IStoreContext storeContext;
+        private readonly IPriceCalculationService priceCalculationService;
 
-        public ShoppingCartController(IShoppingCartService shoppingCartService, IStoreContext storeContext)
+        public ShoppingCartController(IShoppingCartService shoppingCartService, IStoreContext storeContext, IPriceCalculationService priceCalculationService)
         {
             this.shoppingCartService = shoppingCartService;
             this.storeContext = storeContext;
+            this.priceCalculationService = priceCalculationService;
         }
 
         [ContinueShoppingAttribute]
@@ -34,7 +36,7 @@ namespace Orbio.Web.UI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Cart(Cart detailModel)
+        public ActionResult Cart(CartModel detailModel)
         {
             List<ShoppingCartItem> cartUpdateItems = new List<ShoppingCartItem>();
             cartUpdateItems = (from r in detailModel.ShoppingCartItems.AsEnumerable()
@@ -56,20 +58,21 @@ namespace Orbio.Web.UI.Controllers
             return RedirectToLocal(returnUrl);
         }
 
-        private Cart PrepareShoppingCartItemModel()
+        private CartModel PrepareShoppingCartItemModel()
         {
             var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
             var curCustomer = workContext.CurrentCustomer;
             ShoppingCartType cartType = ShoppingCartType.ShoppingCart;
-            var model = new Cart(shoppingCartService.GetCartItems("select", 0, cartType, 0, curCustomer.Id, 0, 0));
+            var model = new CartModel(shoppingCartService.GetCartItems("select", 0, cartType, 0, curCustomer.Id, 0, 0));
 
-            double subtotal = 0.00;
+            decimal subtotal = priceCalculationService.GetCartSubTotal(model,true);
            
-            foreach (var totalprice in model.ShoppingCartItems)
-            {
-                subtotal = subtotal + Convert.ToDouble(totalprice.TotalPrice);
-            }
+            //foreach (var totalprice in model.ShoppingCartItems)
+            //{
+            //    subtotal = subtotal + Convert.ToDouble(totalprice.TotalPrice);
+            //}
             ViewBag.subtotal = subtotal.ToString("#,##0.00");
+            ViewBag.DiscountAmount = priceCalculationService.GetAllDiscountAmount(model).ToString("#,##0.00");
             var currency = (from r in model.ShoppingCartItems.AsEnumerable()
                             select r.CurrencyCode).Take(1).ToList();
             ViewBag.Currencycode = (currency.Count > 0) ? currency[0] : "Rs";

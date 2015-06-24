@@ -53,10 +53,13 @@
                             }*@
 
                 @*@Html.DropDownList(scpdqu, (IEnumerable<SelectListItem>)qtySelectList)*@
+                @{
+                    var totalPrice = (Convert.ToDecimal(scpd.ProductPrice.Price) * Convert.ToInt32(scpd.SelectedQuantity)).ToString("#,##0.00");
+                }
                 @Html.TextBox(scpdqu, scpd.SelectedQuantity, new { type = "Number", @class = "form-control", min = "1", Style = "width:40px;height: 23px;padding: 0 4px;border-radius: 2px;" })
                 @Html.Hidden(scpdRemove, scpd.IsRemove)  @Html.Hidden(scpdQuantity, scpd.SelectedQuantity) @Html.Hidden(scpdcartid, scpd.CartId)
-            <td data-title="Item Price">@scpd.CurrencyCode.@scpd.ProductPrice.Price @Html.Hidden(scpdId, scpd.Id)  @Html.Hidden(scpdTotalprice, scpd.TotalPrice)</td>
-            <td data-title="Total Price">@scpd.CurrencyCode.@scpd.TotalPrice @Html.Hidden(scpd.TotalPrice)</td>
+            <td data-title="Item Price">@scpd.CurrencyCode.@scpd.ProductPrice.Price @Html.Hidden(scpdId, scpd.Id)  @*@Html.Hidden(scpdTotalprice, scpd.TotalPrice)*@</td>
+            <td data-title="Total Price">@scpd.CurrencyCode.@totalPrice </td>
         </tr>
                 count++;
                 }

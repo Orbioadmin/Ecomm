@@ -77,7 +77,7 @@ namespace Orbio.Services.Orders
         /// Get shopping cart items
         /// </summary>
         /// <param name="action">Action</param>
-        public List<ShoppingCartItem> GetCartItems(string action, int id, ShoppingCartType shoppingCartType, int curCustomerId, int customerId, int productId, int quantity)
+        public Cart GetCartItems(string action, int id, ShoppingCartType shoppingCartType, int curCustomerId, int customerId, int productId, int quantity)
         {
             var sqlParamList = new List<SqlParameter>();
             sqlParamList.Add(new SqlParameter() { ParameterName = "@action", Value = action, DbType = System.Data.DbType.String });
@@ -94,10 +94,10 @@ namespace Orbio.Services.Orders
                           ).FirstOrDefault();
             if (result != null)
             {
-                var shoppingCartItem = Serializer.GenericDeSerializer<List<ShoppingCartItem>>(result.XmlResult);
+                var shoppingCartItem = Serializer.GenericDeSerializer<Cart>(result.XmlResult);
                 return shoppingCartItem;
             }
-            return new List<ShoppingCartItem>();
+            return new Cart();
         }
 
 

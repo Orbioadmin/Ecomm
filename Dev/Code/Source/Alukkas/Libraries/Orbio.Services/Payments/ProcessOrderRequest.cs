@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Orbio.Core.Domain.Orders;
+using Orbio.Core.Domain.Catalog.Abstract;
 
 namespace Orbio.Services.Payments
 {
@@ -124,5 +125,6 @@ namespace Orbio.Services.Payments
         /// store the cart items in this property
         /// </summary>
         //public List<ShoppingCartItemModel> ShoppingCartItems { get; set; }
+        public ICart Cart { get; set; }
     }
 }

@@ -12,7 +12,7 @@ namespace Orbio.Web.UI.Models.Catalog
 {
     public class ProductDetailModel : ProductOverViewModel
     {
-        private List<Discount> Discounts = new List<Discount>();
+        
 
         public ProductDetailModel()
         {
@@ -21,7 +21,7 @@ namespace Orbio.Web.UI.Models.Catalog
         }
         public ProductDetailModel(ProductDetail productDetail) : base(productDetail)  
         {
-            this.Discounts = productDetail.Discounts;
+            this.Discounts = productDetail.Discounts==null?new List<Discount>():productDetail.Discounts;
             this.Id = productDetail.Id;
             this.Name = productDetail.Name;
             this.ShortDescription = productDetail.ShortDescription;
@@ -143,6 +143,20 @@ namespace Orbio.Web.UI.Models.Catalog
                                  } ); 
             }
 
+            //var pvValues = (from pva in this.ProductVariantAttributes
+            //                from pvav in pva.Values
+            //                select pvav).ToList();
+            //decimal priceAdjustment = 0;
+            //if (pvValues.Count > 0)
+            //{
+            //    foreach (var pvav in pvValues)
+            //    {
+            //        priceAdjustment += Convert.ToDecimal(pvav.PriceAdjustment);
+            //    }
+            //}
+
+            //this.ProductPrice.Price = (priceAdjustment + productDetail.Price).ToString("#,##0.00");
+
         }
         public List<ProductVariantAttributeModel> ProductVariantAttributes { get; private set; }
 
@@ -190,5 +204,7 @@ namespace Orbio.Web.UI.Models.Catalog
 
             return fileName.Length > 0 ? imageUrl.Replace(fileName, fileName + "_tb") : fileName;
         }
+
+        public List<Discount> Discounts { get; set; }
     }
 }

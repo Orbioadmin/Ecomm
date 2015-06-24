@@ -7,13 +7,13 @@
         <div class="table-responsive">
             <table cellspacing="0" cellpadding="0" class="bar_summary table">
                 <tbody>
-                    @foreach (var items in this.Model)
+                    @foreach (var item in this.Model)
                     {
                         <tr>
-                            <td><img src="@items.DefaultPicture.ImageUrl"></td>
-                            <td>@items.Name</td>
-                            <td>@items.SelectedQuantity</td>
-                            <td align="center">@items.TotalPrice</td>
+                            <td><img src="@item.DefaultPicture.ImageUrl"></td>
+                            <td>@item.Name</td>
+                            <td>@item.SelectedQuantity</td>
+                            <td align="center">@item.TotalPrice</td>
                         </tr>
                     }
 
