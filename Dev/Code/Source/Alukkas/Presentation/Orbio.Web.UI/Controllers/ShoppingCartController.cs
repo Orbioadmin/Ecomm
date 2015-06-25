@@ -65,14 +65,15 @@ namespace Orbio.Web.UI.Controllers
             ShoppingCartType cartType = ShoppingCartType.ShoppingCart;
             var model = new CartModel(shoppingCartService.GetCartItems("select", 0, cartType, 0, curCustomer.Id, 0, 0));
 
-            decimal subtotal = priceCalculationService.GetCartSubTotal(model,true);
+           // decimal subtotal = priceCalculationService.GetCartSubTotal(model,false);
            
             //foreach (var totalprice in model.ShoppingCartItems)
             //{
             //    subtotal = subtotal + Convert.ToDouble(totalprice.TotalPrice);
             //}
-            ViewBag.subtotal = subtotal.ToString("#,##0.00");
-            ViewBag.DiscountAmount = priceCalculationService.GetAllDiscountAmount(model).ToString("#,##0.00");
+           // ViewBag.subtotal = subtotal.ToString("#,##0.00");
+            //ViewBag.DiscountAmount = priceCalculationService.GetAllDiscountAmount(model).ToString("#,##0.00");
+           // ViewBag.CartTotal = priceCalculationService.GetCartSubTotal(model, true).ToString("#,##0.00");
             var currency = (from r in model.ShoppingCartItems.AsEnumerable()
                             select r.CurrencyCode).Take(1).ToList();
             ViewBag.Currencycode = (currency.Count > 0) ? currency[0] : "Rs";

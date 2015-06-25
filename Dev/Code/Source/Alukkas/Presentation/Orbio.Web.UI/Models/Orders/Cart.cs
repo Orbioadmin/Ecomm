@@ -3,18 +3,23 @@ using System.Linq;
 using Orbio.Core.Domain.Catalog.Abstract;
 using Orbio.Core.Domain.Orders;
 using Orbio.Core.Domain.Discounts;
+using Orbio.Services.Orders;
+using Nop.Core.Infrastructure;
 
 namespace Orbio.Web.UI.Models.Orders
 {
     public class CartModel : ICart
     {
-         public CartModel()
+        private readonly IPriceCalculationService priceCalculationService;
+
+         public CartModel(IPriceCalculationService priceCalculationService)
         {
+            this.priceCalculationService = priceCalculationService;
             this.ShoppingCartItems = new List<ShoppingCartItemModel>();
             this.Discounts = new List<Discount>();
         }
          public CartModel(Cart cart)
-             : this()
+             : this(EngineContext.Current.Resolve<IPriceCalculationService>())
          {
              if (cart.ShoppingCartItems != null && cart.ShoppingCartItems.Count > 0)
              {
@@ -31,6 +36,30 @@ namespace Orbio.Web.UI.Models.Orders
          public List<ShoppingCartItemModel> ShoppingCartItems { get; private set; }
 
          public List<Discount> Discounts { get; set; }
+
+         public string SubTotal
+         {
+             get
+             {
+                 return priceCalculationService.GetCartSubTotal(this, false).ToString("#,##0.00");
+             }
+         }
+
+         public string DiscountAmount
+         {
+             get
+             {
+                 return priceCalculationService.GetAllDiscountAmount(this).ToString("#,##0.00");
+             }
+         }
+
+         public string Total
+         {
+             get
+             {
+                 return priceCalculationService.GetCartSubTotal(this, true).ToString("#,##0.00");
+             }
+         }
 
          IEnumerable<IShoppingCartItem> ICart.ShoppingCartItems
          {

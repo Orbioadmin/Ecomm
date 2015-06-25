@@ -231,7 +231,7 @@ ORDER BY PPM.DisplayOrder FOR XML PATH ('ProductPicture'),ROOT('ProductPictures'
    from ufn_GetCartProductAttributes(sc.AttributesXml,product.Id) 
    FOR XML PATH('ProductAttributeVariant'), ROOT('ProductAttributeVariants'),type),(
    Select case when sign(count(PriceAdjustment)) <> 0 then (select PriceAdjustment from ufn_GetCartProductPrice(sc.AttributesXml,product.Id)) else 0 end from ufn_GetCartProductPrice(sc.AttributesXml,product.Id)
-   ) as 'TotalPrice'
+   ) as 'TotalPrice', dbo.ufn_GetProductDiscounts(product.Id)
 from [dbo].[Product] product 
 inner join ShoppingCartItem sc on sc.ProductId = product.Id 
 Left join [dbo].[DeliveryDate] Delivery_date on product.DeliveryDateId= Delivery_date.Id

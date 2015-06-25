@@ -3,3 +3,22 @@
 @{
     Html.RenderPartial("Summary", this.Model.ShoppingCartItems);
 }
+ <!-- Order Summary -->
+
+                    <div class="well">
+                        <div class="cart_total">
+                            <h1 class="order_sum">ORDER SUMMARY</h1>
+                            <dl class="dl-horizontal">
+                                <dt>Cart Sub Total</dt>
+                                <dd>@ViewBag.Currencycode.@Model.SubTotal</dd>
+                                <dt>Shipping Charges</dt>
+                                <dd>0</dd>
+                                <dt>Promotional Discounts</dt>
+                                <dd>@ViewBag.Currencycode.@Model.DiscountAmount</dd>
+                                <dt>Estimated Tax</dt>
+                                <dd>0</dd>
+                                <dt class="cart_total">Total</dt>
+                                <dd class="cart_total">@ViewBag.Currencycode.@Model.Total</dd>
+                            </dl>
+                        </div>
+                    </div>
