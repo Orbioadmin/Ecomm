@@ -38,7 +38,10 @@ BEGIN
  SELECT @productId = EntityId FROM UrlRecord where Slug = @slug and EntityName = 'Product'
 and IsActive = 1 and LanguageId = 0
 
-SELECT @categoryId= CategoryId FROM Product_Category_Mapping where ProductId = @productId
+SELECT @categoryId= CategoryId FROM Product_Category_Mapping PCM
+INNER JOIN Category C ON PCM.CategoryId = C.Id  where ProductId = @productId
+AND C.Deleted = 0 AND C.Published = 1
+
 
 
  select @productId, @categoryId

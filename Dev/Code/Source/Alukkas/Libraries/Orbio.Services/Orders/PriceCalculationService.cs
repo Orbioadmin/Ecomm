@@ -45,22 +45,28 @@ namespace Orbio.Services.Orders
         private decimal GetDiscountAmount(IEnumerable<IDiscount> discounts, decimal finalPrice)
         {
             var discountAmount = 0M;
+            var maxDiscountAmount = 0M;
             if (discounts.Any())
             {
                 foreach (var d in discounts)
                 {
                     if (d.UsePercentage)
                     {
-                        discountAmount += (finalPrice * d.DiscountPercentage) / 100;
+                        discountAmount = (finalPrice * d.DiscountPercentage) / 100;
                     }
                     else
                     {
-                        discountAmount += d.DiscountAmount;
+                        discountAmount = d.DiscountAmount;
+                    }
+
+                    if (discountAmount > maxDiscountAmount)
+                    {
+                        maxDiscountAmount = discountAmount;
                     }
                 }
             }
 
-            return discountAmount;
+            return maxDiscountAmount;
         }
 
 
@@ -70,7 +76,7 @@ namespace Orbio.Services.Orders
             discountAmount += GetDiscountAmount(cart.Discounts, GetCartSubTotal(cart, false));
             foreach (var sci in cart.ShoppingCartItems)
             {
-                discountAmount += GetDiscountAmount(sci.Discounts, GetFinalPrice(sci, false, true));
+                discountAmount += GetDiscountAmount(sci.Discounts, GetFinalPrice(sci, false,false)) * sci.Quantity;
             }
             return discountAmount;
         }

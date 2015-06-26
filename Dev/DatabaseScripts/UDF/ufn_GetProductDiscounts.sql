@@ -24,9 +24,30 @@ RETURNS Xml
 AS
 BEGIN
 	DECLARE @utcNow datetime
-	DECLARE @xmlResult xml;
-SELECT @utcNow = GETUTCDATE()
-SELECT @xmlResult = ( SELECT  
+	
+
+
+ DECLARE @parentCategoryIds varchar(500)
+ DECLARE @categoryId INT 
+ SELECT @utcNow = GETUTCDATE()
+ DECLARE @xmlResult xml
+ 
+ DECLARE @CatIds TABLE 
+ (
+	Id INT
+ );
+ 
+ SELECT @categoryId= CategoryId FROM Product_Category_Mapping PCM
+	INNER JOIN Category C ON PCM.CategoryId = C.Id  where ProductId = @productId
+	AND C.Deleted = 0 AND C.Published = 1
+
+ SELECT @parentCategoryIds = dbo.ufn_GetAllParentCateoryIds(@categoryId,null)
+ SET @parentCategoryIds = @parentCategoryIds + CAST(@categoryId as Nvarchar(100))
+ 
+  INSERT INTO @CatIds
+  SELECT *  FROM  dbo.nop_splitstring_to_table(@parentCategoryIds , ',')
+  
+SELECT @xmlResult = ( SELECT a.* FROM ( SELECT  
       [Name]
       ,[DiscountTypeId]
       ,[UsePercentage]
@@ -42,10 +63,36 @@ SELECT @xmlResult = ( SELECT
   INNER JOIN Discount_AppliedToProducts DAP ON D.Id = DAP.Discount_Id
   WHERE ((@utcNow BETWEEN StartDateUtc AND EndDateUtc) OR (StartDateUtc is null and EndDateUtc is null) )
   AND RequiresCouponCode = 0 AND dbo.ufn_CheckDiscountLimitation(Id, 1,null)=1
-  AND DiscountTypeId in (2,5) AND DAP.Product_Id = @productId
-  FOR XML PATH('Discount'),ROOT('Discounts'), elements)
+  AND DiscountTypeId =2 AND DAP.Product_Id = @productId
+ 
   
+  UNION ALL
+  
+  SELECT  
+      [Name]
+      ,[DiscountTypeId]
+      ,[UsePercentage]
+      ,[DiscountPercentage]
+      ,[DiscountAmount]
+      ,[StartDateUtc]
+      ,[EndDateUtc]
+      ,[RequiresCouponCode]
+      ,[CouponCode]
+      ,[DiscountLimitationId]
+      ,[LimitationTimes] 
+  FROM [esybuy].[dbo].[Discount] D
+  INNER JOIN Discount_AppliedToCategories DAP ON D.Id = DAP.Discount_Id
+  INNER JOIN @CatIds C ON DAP.Category_Id = C.Id
+  WHERE ((@utcNow BETWEEN StartDateUtc AND EndDateUtc) OR (StartDateUtc is null and EndDateUtc is null) )
+  AND RequiresCouponCode = 0 AND dbo.ufn_CheckDiscountLimitation(D.Id, 1,null)=1
+  AND DiscountTypeId =5) a 
+  
+   FOR XML PATH('Discount'),ROOT('Discounts'), elements)
   --2 =AssignedToSkus 5=AssignedToCategories
   	 
 	 Return @xmlresult
 END
+
+GO
+PRINT 'Created the UDF ufn_GetProductDiscounts'
+GO  
