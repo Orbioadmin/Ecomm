@@ -202,6 +202,7 @@
     <Compile Include="Areas\Admin\BundleConfig.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CartBaseController.cs" />
     <Compile Include="Controllers\CatalogController.cs" />
     <Compile Include="Controllers\CheckOutController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
@@ -243,7 +244,7 @@
     <Compile Include="Models\Orders\OrderDetailsModel.cs" />
     <Compile Include="Models\Orders\OrderSummaryModel.cs" />
     <Compile Include="Models\Orders\ShoppingCartItemModel.cs" />
-    <Compile Include="Models\Orders\Cart.cs" />
+    <Compile Include="Models\Orders\CartModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

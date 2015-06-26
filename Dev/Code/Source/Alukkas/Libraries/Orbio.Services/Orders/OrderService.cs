@@ -17,15 +17,17 @@ namespace Orbio.Services.Orders
          private readonly IDbContext context;
          private readonly IShoppingCartService shoppingCartService;
          private readonly IWebHelper webHelper;
+         private readonly IPriceCalculationService priceCalculationService;
         /// <summary>
         /// instantiates Store service type
         /// </summary>
         /// <param name="context">db context</param>
-         public OrderService(IDbContext context, IShoppingCartService shoppingCartService, IWebHelper webHelper)
+         public OrderService(IDbContext context, IShoppingCartService shoppingCartService, IWebHelper webHelper, IPriceCalculationService priceCalculationService)
         {
             this.context = context;
             this.shoppingCartService = shoppingCartService;
             this.webHelper = webHelper;
+            this.priceCalculationService = priceCalculationService;
         }
 
          /// <summary>
@@ -59,7 +61,7 @@ namespace Orbio.Services.Orders
                  processOrderRequest.OrderGuid = Guid.NewGuid();
 
              //load and validate customer shopping cart
-                IList<ShoppingCartItem> cart = null;
+             var cart = processOrderRequest.Cart;
                 
                     //load shopping cart
                     //cart = customer.ShoppingCartItems

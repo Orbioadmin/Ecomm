@@ -73,11 +73,13 @@ namespace Orbio.Services.Orders
         public decimal GetAllDiscountAmount(ICart cart)
         {
             var discountAmount = 0M;
-            discountAmount += GetDiscountAmount(cart.Discounts, GetCartSubTotal(cart, false));
+            var subTotal = this.GetCartSubTotal(cart, false);
             foreach (var sci in cart.ShoppingCartItems)
             {
                 discountAmount += GetDiscountAmount(sci.Discounts, GetFinalPrice(sci, false,false)) * sci.Quantity;
             }
+
+            discountAmount += GetDiscountAmount(cart.Discounts, subTotal-discountAmount);
             return discountAmount;
         }
     }

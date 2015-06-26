@@ -13,16 +13,16 @@ using Orbio.Web.UI.Models.Orders;
 
 namespace Orbio.Web.UI.Controllers
 {
-    public class ShoppingCartController : Controller
+    public class ShoppingCartController : CartBaseController
     {
 
         private readonly IShoppingCartService shoppingCartService;
         private readonly IStoreContext storeContext;
         private readonly IPriceCalculationService priceCalculationService;
 
-        public ShoppingCartController(IShoppingCartService shoppingCartService, IStoreContext storeContext, IPriceCalculationService priceCalculationService)
+        public ShoppingCartController(IShoppingCartService shoppingCartService, IStoreContext storeContext, IPriceCalculationService priceCalculationService):base(shoppingCartService)
         {
-            this.shoppingCartService = shoppingCartService;
+            //this.shoppingCartService = shoppingCartService;
             this.storeContext = storeContext;
             this.priceCalculationService = priceCalculationService;
         }
@@ -58,28 +58,28 @@ namespace Orbio.Web.UI.Controllers
             return RedirectToLocal(returnUrl);
         }
 
-        private CartModel PrepareShoppingCartItemModel()
-        {
-            var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
-            var curCustomer = workContext.CurrentCustomer;
-            ShoppingCartType cartType = ShoppingCartType.ShoppingCart;
-            var model = new CartModel(shoppingCartService.GetCartItems("select", 0, cartType, 0, curCustomer.Id, 0, 0));
+        //private CartModel PrepareShoppingCartItemModel()
+        //{
+        //    var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
+        //    var curCustomer = workContext.CurrentCustomer;
+        //    ShoppingCartType cartType = ShoppingCartType.ShoppingCart;
+        //    var model = new CartModel(shoppingCartService.GetCartItems("select", 0, cartType, 0, curCustomer.Id, 0, 0));
 
-           // decimal subtotal = priceCalculationService.GetCartSubTotal(model,false);
+        //   // decimal subtotal = priceCalculationService.GetCartSubTotal(model,false);
            
-            //foreach (var totalprice in model.ShoppingCartItems)
-            //{
-            //    subtotal = subtotal + Convert.ToDouble(totalprice.TotalPrice);
-            //}
-           // ViewBag.subtotal = subtotal.ToString("#,##0.00");
-            //ViewBag.DiscountAmount = priceCalculationService.GetAllDiscountAmount(model).ToString("#,##0.00");
-           // ViewBag.CartTotal = priceCalculationService.GetCartSubTotal(model, true).ToString("#,##0.00");
-            var currency = (from r in model.ShoppingCartItems.AsEnumerable()
-                            select r.CurrencyCode).Take(1).ToList();
-            ViewBag.Currencycode = (currency.Count > 0) ? currency[0] : "Rs";
+        //    //foreach (var totalprice in model.ShoppingCartItems)
+        //    //{
+        //    //    subtotal = subtotal + Convert.ToDouble(totalprice.TotalPrice);
+        //    //}
+        //   // ViewBag.subtotal = subtotal.ToString("#,##0.00");
+        //    //ViewBag.DiscountAmount = priceCalculationService.GetAllDiscountAmount(model).ToString("#,##0.00");
+        //   // ViewBag.CartTotal = priceCalculationService.GetCartSubTotal(model, true).ToString("#,##0.00");
+        //    var currency = (from r in model.ShoppingCartItems.AsEnumerable()
+        //                    select r.CurrencyCode).Take(1).ToList();
+        //    ViewBag.Currencycode = (currency.Count > 0) ? currency[0] : "Rs";
             
-            return model;
-        }
+        //    return model;
+        //}
 
         private ActionResult RedirectToLocal(string returnUrl)
         {

@@ -90,6 +90,8 @@
     <Compile Include="Domain\Orders\OrderStatus.cs" />
     <Compile Include="Domain\Orders\ShoppingCartItem.cs" />
     <Compile Include="Domain\Orders\ShoppingCartType.cs" />
+    <Compile Include="Domain\Orders\TransientCart.cs" />
+    <Compile Include="Domain\Orders\TransientCartItem.cs" />
     <Compile Include="Domain\Payments\PaymentStatus.cs" />
     <Compile Include="Domain\Seo\UrlRecord.cs" />
     <Compile Include="Domain\Shipping\ShippingStatus.cs" />

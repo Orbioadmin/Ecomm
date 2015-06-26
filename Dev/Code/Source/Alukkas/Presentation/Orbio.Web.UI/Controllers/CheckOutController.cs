@@ -16,29 +16,29 @@ using Orbio.Core.Domain.Orders;
 
 namespace Orbio.Web.UI.Controllers
 {
-    public class CheckOutController : Controller
+    public class CheckOutController : CartBaseController
     {
-        private readonly IShoppingCartService shoppingCartService;
-
+        //private readonly IShoppingCartService shoppingCartService;
+        
         private readonly ICheckoutService checkoutService;
 
         private readonly IPriceCalculationService priceCalculationService;
         //
         // GET: /CheckOut/
-        public CheckOutController(ICheckoutService checkoutService, IShoppingCartService shoppingCartService, IPriceCalculationService priceCalculationService)
+        public CheckOutController(ICheckoutService checkoutService, IShoppingCartService shoppingCartService, IPriceCalculationService priceCalculationService):base(shoppingCartService)
         {
             this.checkoutService = checkoutService;
-            this.shoppingCartService = shoppingCartService;
+           // this.shoppingCartService = shoppingCartService;
             this.priceCalculationService = priceCalculationService;
         }
 
         [LoginRequired]
         public ActionResult Index()
         {
-            var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
-            var curcustomer = workContext.CurrentCustomer;
-            ShoppingCartType carttype = ShoppingCartType.ShoppingCart;
-            PrepareShoppingCartItemModel(curcustomer.Id, carttype);
+            //var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
+            //var curcustomer = workContext.CurrentCustomer;
+            //ShoppingCartType carttype = ShoppingCartType.ShoppingCart;
+            PrepareShoppingCartItemModel();
             var address = new AddressModel();
             return View(address);
 
@@ -49,8 +49,8 @@ namespace Orbio.Web.UI.Controllers
         {
             var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
             var customer = workContext.CurrentCustomer;
-            ShoppingCartType carttype = ShoppingCartType.ShoppingCart;
-            PrepareShoppingCartItemModel(customer.Id, carttype);
+            //ShoppingCartType carttype = ShoppingCartType.ShoppingCart;
+            PrepareShoppingCartItemModel(customer.Id);
             if (customer.Email == null)
             {
                 return RedirectToAction("MyAccount", "Login");
@@ -157,18 +157,13 @@ namespace Orbio.Web.UI.Controllers
             return Json("Success");
         }
 
-        private void PrepareShoppingCartItemModel(int customerId, ShoppingCartType cartType)
-        {
-            var model = new CartModel(shoppingCartService.GetCartItems("select", 0, cartType,0, customerId, 0, 0));
-            //decimal subtotal = priceCalculationService.GetCartSubTotal(model, true);
-            ////foreach (var totalprice in model.ShoppingCartItems)
-            ////{
-            ////    subtotal = subtotal + Convert.ToDouble(totalprice.TotalPrice);
-            ////}
-            //ViewBag.subtotal = subtotal.ToString("0.00");
-            var currency = (from r in model.ShoppingCartItems.AsEnumerable()
-                            select r.CurrencyCode).Take(1).ToList();
-            ViewBag.Currencycode = (currency.Count > 0) ? currency[0] : "Rs";
-        }
+        //private void PrepareShoppingCartItemModel(int customerId, ShoppingCartType cartType)
+        //{
+        //    var model = new CartModel(shoppingCartService.GetCartItems("select", 0, cartType,0, customerId, 0, 0));
+           
+        //    var currency = (from r in model.ShoppingCartItems.AsEnumerable()
+        //                    select r.CurrencyCode).Take(1).ToList();
+        //    ViewBag.Currencycode = (currency.Count > 0) ? currency[0] : "Rs";
+        //}
     }
 }

@@ -30,6 +30,8 @@ namespace Orbio.Web.Framework
             builder.RegisterType<OBS.Common.GenericAttributeService>().As<OBS.Common.IGenericAttributeService>().InstancePerHttpRequest();
             //added by madhu
             builder.RegisterType<OBS.Orders.PriceCalculationService>().As<OBS.Orders.IPriceCalculationService>().InstancePerHttpRequest();
+              //added by madhu
+            builder.RegisterType<OBS.Checkout.TransientCartService>().As<OBS.Checkout.ITransientCartService>().InstancePerHttpRequest();
         }
 
         public int Order
