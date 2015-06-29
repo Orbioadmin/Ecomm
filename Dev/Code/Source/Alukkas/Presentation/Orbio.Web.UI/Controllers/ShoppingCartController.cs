@@ -19,14 +19,13 @@ namespace Orbio.Web.UI.Controllers
    
        
         private readonly IPriceCalculationService priceCalculationService;
-        private readonly IGenericAttributeService genericAttributeService;
+       
 
         public ShoppingCartController(IShoppingCartService shoppingCartService, IStoreContext storeContext,
             IPriceCalculationService priceCalculationService, IGenericAttributeService genericAttributeService, IWorkContext workContext)
-            : base(shoppingCartService, workContext, storeContext)
+            : base(shoppingCartService, workContext, storeContext, genericAttributeService)
         {
-            this.genericAttributeService = genericAttributeService;
-             
+                        
             this.priceCalculationService = priceCalculationService;
         }
 

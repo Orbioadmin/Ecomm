@@ -82,5 +82,22 @@ namespace Orbio.Services.Common
                 );
         }
 
+
+
+        public void DeleteGenericAttribute(int entityId, string keyGroup, string key, string value, int storeId)
+        {
+            var sqlParamList = new List<SqlParameter>();
+          
+            sqlParamList.Add(new SqlParameter { ParameterName = "@action", Value = "del", DbType = System.Data.DbType.String });
+            sqlParamList.Add(new SqlParameter { ParameterName = "@entityId", Value = entityId, DbType = System.Data.DbType.Int32 });
+            sqlParamList.Add(new SqlParameter { ParameterName = "@keyGroup", Value = keyGroup, DbType = System.Data.DbType.String });
+            sqlParamList.Add(new SqlParameter { ParameterName = "@key", Value = key, DbType = System.Data.DbType.String });
+            sqlParamList.Add(new SqlParameter { ParameterName = "@value", Value = value, DbType = System.Data.DbType.String });
+            sqlParamList.Add(new SqlParameter { ParameterName = "@storeId", Value = storeId, DbType = System.Data.DbType.Int32 });
+
+            var result = context.ExecuteFunction<GenericAttribute>("usp_Customer_Generic_Attributes",
+                sqlParamList.ToArray()
+                );
+        }
     }
 }

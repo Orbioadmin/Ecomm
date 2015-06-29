@@ -77,8 +77,9 @@ BEGIN
 		END
 		ELSE
 		BEGIN
-			INSERT INTO @couponDiscount(CouponCode, IsValid)
-			VALUES(@couponCode, 0)
+			INSERT INTO @couponDiscount([RequiresCouponCode],CouponCode, IsValid)
+			VALUES(1,@couponCode, 0)
+			 
 		END				
 	END
 	 

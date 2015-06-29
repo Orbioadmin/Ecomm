@@ -23,7 +23,7 @@ namespace Orbio.Services.Common
         {
             var genericAttributeService = EngineContext.Current.Resolve<IGenericAttributeService>();
 
-            var props = genericAttributeService.GetGenericAttributes(customer.Id, "", key, "", storeId);
+            var props = genericAttributeService.GetGenericAttributes(customer.Id, "Customer", key, "", storeId);
             //little hack here (only for unit testing). we should write ecpect-return rules in unit tests for such cases
 
             if (props == null || string.IsNullOrEmpty(props.Value))

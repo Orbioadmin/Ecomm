@@ -1,6 +1,7 @@
 ﻿using Nop.Core.Infrastructure;
 using Orbio.Core;
 using Orbio.Services.Checkout;
+using Orbio.Services.Common;
 using Orbio.Services.Orders;
 using Orbio.Web.UI.Filters;
 using Orbio.Web.UI.Models.CheckOut;
@@ -19,7 +20,7 @@ namespace Orbio.Web.UI.Controllers
         // GET: /CheckOut/
         public CheckOutController(ICheckoutService checkoutService, IShoppingCartService shoppingCartService, IPriceCalculationService priceCalculationService,
             IWorkContext workContext, IStoreContext storeContext)
-            :base(shoppingCartService,  workContext, storeContext)
+            : base(shoppingCartService, workContext, storeContext, EngineContext.Current.Resolve<IGenericAttributeService>())
         {
             this.checkoutService = checkoutService;
            // this.shoppingCartService = shoppingCartService;

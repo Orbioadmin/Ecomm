@@ -40,7 +40,8 @@ BEGIN
 -- Get all generic attributes using by customer id and key
 if(@action = 'select')
 	begin
-		select [Value] from [dbo].[GenericAttribute] where [EntityId] = @entityId and [Key] = @key
+		select [Value] from [dbo].[GenericAttribute] where [EntityId] = @entityId and [Key] = @key AND
+		KeyGroup = @keyGroup
 	end
 
 -- Insert customer generic attributes to [GenericAttribute] table
@@ -57,6 +58,12 @@ if(@action = 'save')
 		end
 
 	end
+
+IF(@action = 'del')
+BEGIN
+	DELETE FROM GenericAttribute WHERE EntityId = @entityId AND [Key] = @key AND KeyGroup = @keyGroup
+	AND StoreId = @storeId
+END	
 
 END
 

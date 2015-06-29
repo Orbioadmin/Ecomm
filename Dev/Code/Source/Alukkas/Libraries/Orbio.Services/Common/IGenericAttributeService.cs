@@ -33,5 +33,7 @@ namespace Orbio.Services.Common
         ///<param name="value">the keyValue value</param>
         ///<param name="storeId">the storeId value</param>
         void SaveGenericAttributes(int entityId, string keyGroup, string key, string value, int storeId);
+
+        void DeleteGenericAttribute(int entityId, string keyGroup, string key, string value, int storeId);
     }
 }
