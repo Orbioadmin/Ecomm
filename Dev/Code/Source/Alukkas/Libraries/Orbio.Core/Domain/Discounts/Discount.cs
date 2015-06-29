@@ -69,6 +69,11 @@ namespace Orbio.Core.Domain.Discounts
         public int LimitationTimes { get; set; }
 
         /// <summary>
+        /// sets or gets isvalid specifically used for coupon code
+        /// </summary>
+        public bool IsValid { get; set; }
+
+        /// <summary>
         /// Gets or sets the discount type
         /// </summary>
         public DiscountType DiscountType

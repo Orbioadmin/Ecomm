@@ -7,5 +7,6 @@ namespace Orbio.Core.Domain.Discounts
         decimal DiscountPercentage { get; set; }
         int DiscountTypeId { get; set; }
         bool UsePercentage { get; set; }
+        bool RequiresCouponCode { get; set; }
     }
 }

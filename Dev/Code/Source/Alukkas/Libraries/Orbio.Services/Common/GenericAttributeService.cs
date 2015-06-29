@@ -3,6 +3,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using Nop.Data;
 using Orbio.Core.Domain.Common;
+using Nop.Core.Infrastructure;
 
 namespace Orbio.Services.Common
 {
@@ -12,6 +13,11 @@ namespace Orbio.Services.Common
     public class GenericAttributeService : IGenericAttributeService
     {
         private readonly IDbContext context;
+
+        public GenericAttributeService()
+        {
+            this.context = EngineContext.Current.Resolve<IDbContext>();
+        }
 
         /// <summary>
         /// instantiates GenericAttribute service type

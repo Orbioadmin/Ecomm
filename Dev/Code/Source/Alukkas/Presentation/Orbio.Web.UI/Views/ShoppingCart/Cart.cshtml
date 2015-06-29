@@ -29,8 +29,17 @@
 
                 <div class="shop_promation">
                     <ul>
+                        @if (this.Model.AppliedCoupon != null && this.Model.AppliedCoupon.IsValid)
+                            {
+                                <li>@this.Model.AppliedCoupon.Name</li>
+                            }
+                            else
+                            {
                         <li class="promat">ENTER A PROMOTIONAL CODE</li>
-                        <li><input type="text" class=""></li>
+                        <li>
+                                 @Html.TextBoxFor(db=>db.AppliedCouponCode)
+                             @*<input id="Discounts[0].CouponCode" type="text" class="">*@</li>
+                            }
                         <li><input type="submit" class="green_butt" value="update cart"></li>
                     </ul>
                 </div>

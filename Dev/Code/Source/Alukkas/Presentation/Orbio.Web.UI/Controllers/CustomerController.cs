@@ -18,6 +18,7 @@ using Orbio.Core.Domain.Orders;
 using Orbio.Web.UI.Models.Orders;
 using Orbio.Services.Orders;
 using System.Threading.Tasks;
+using Orbio.Core;
 
 namespace Orbio.Web.UI.Controllers
 {
@@ -29,15 +30,17 @@ namespace Orbio.Web.UI.Controllers
         private readonly IProductService productService;
         private readonly IShoppingCartService shoppingCartService;
         private readonly IOrderService orderService;
+        private readonly IStoreContext storeContext;
 
         public CustomerController(ICustomerService customerService, IMessageService messageService, IProductService productService
-            , IShoppingCartService shoppingCartService, IOrderService orderService)
+            , IShoppingCartService shoppingCartService, IOrderService orderService, IStoreContext storeContext)
         {
             this.customerService = customerService;
             this.messageService = messageService;
             this.productService = productService;
             this.shoppingCartService = shoppingCartService;
             this.orderService = orderService;
+            this.storeContext = storeContext;
         }
 
         [LoginRequiredAttribute]
@@ -356,7 +359,7 @@ namespace Orbio.Web.UI.Controllers
         }
         private CartModel PrepareShoppingCartItemModel(int customerId, ShoppingCartType cartType)
         {
-            var model = new CartModel(shoppingCartService.GetCartItems("select", 0, cartType, 0, customerId, 0, 0));
+            var model = new CartModel(shoppingCartService.GetCartItems("select", 0, cartType, 0, customerId, 0, 0, storeContext.CurrentStore.Id));
             return model;
         }
 

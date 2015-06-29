@@ -77,7 +77,7 @@ namespace Orbio.Services.Orders
         /// Get shopping cart items
         /// </summary>
         /// <param name="action">Action</param>
-        public Cart GetCartItems(string action, int id, ShoppingCartType shoppingCartType, int curCustomerId, int customerId, int productId, int quantity)
+        public Cart GetCartItems(string action, int id, ShoppingCartType shoppingCartType, int curCustomerId, int customerId, int productId, int quantity, int storeId)
         {
             var sqlParamList = new List<SqlParameter>();
             sqlParamList.Add(new SqlParameter() { ParameterName = "@action", Value = action, DbType = System.Data.DbType.String });
@@ -88,14 +88,14 @@ namespace Orbio.Services.Orders
             sqlParamList.Add(new SqlParameter { ParameterName = "@productId", Value = productId, DbType = System.Data.DbType.Int32 });
             sqlParamList.Add(new SqlParameter { ParameterName = "@attributexml", Value = "", DbType = System.Data.DbType.String });
             sqlParamList.Add(new SqlParameter { ParameterName = "@quantity", Value = quantity, DbType = System.Data.DbType.Int32 });
-
+            sqlParamList.Add(new SqlParameter { ParameterName = "@storeId", Value = storeId, DbType = System.Data.DbType.Int32 });
             var result = context.ExecuteFunction<XmlResultSet>("usp_Shoppingcart_Items",
                           sqlParamList.ToArray()
                           ).FirstOrDefault();
             if (result != null)
             {
-                var shoppingCartItem = Serializer.GenericDeSerializer<Cart>(result.XmlResult);
-                return shoppingCartItem;
+                var cart = Serializer.GenericDeSerializer<Cart>(result.XmlResult);
+                return cart;
             }
             return new Cart();
         }

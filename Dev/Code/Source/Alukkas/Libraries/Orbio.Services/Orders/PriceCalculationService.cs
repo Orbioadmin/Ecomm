@@ -17,9 +17,33 @@ namespace Orbio.Services.Orders
             {
                 subTotal += GetFinalPrice(sci, includeDiscounts);
             }
+           
+            if (includeDiscounts)
+            {
+                var orderDiscounts = (from d in cart.Discounts
+                                      where d.RequiresCouponCode == false
+                                      select d).ToList();
 
+                subTotal =  subTotal - GetDiscountAmount(orderDiscounts, subTotal);
+                var coupon = (from d in cart.Discounts
+                              where d.RequiresCouponCode == true
+                              select d).FirstOrDefault();
 
-            return includeDiscounts? subTotal - GetDiscountAmount(cart.Discounts, subTotal):subTotal;
+                if (coupon != null)
+                {
+                    subTotal = subTotal - GetDiscountAmount(coupon, subTotal);
+                }
+            }
+            return  subTotal;
+        }
+
+       
+        public decimal GetOrderTotal(ICart cart, bool includeDiscounts)
+        {
+            var subTotal = GetCartSubTotal(cart, includeDiscounts);
+            var total = subTotal;
+            //need to add shipping and taxes
+            return total;
         }
 
 
@@ -69,6 +93,27 @@ namespace Orbio.Services.Orders
             return maxDiscountAmount;
         }
 
+        private decimal GetDiscountAmount(IDiscount discount, decimal finalPrice)
+        {
+            var discountAmount = 0M;
+           
+            if (discount!=null)
+            {
+                if (discount.UsePercentage)
+                    {
+                        discountAmount = (finalPrice * discount.DiscountPercentage) / 100;
+                    }
+                    else
+                    {
+                        discountAmount = discount.DiscountAmount;
+                    }
+             }
+
+            return discountAmount;
+        }
+
+       
+
 
         public decimal GetAllDiscountAmount(ICart cart)
         {
@@ -78,9 +123,24 @@ namespace Orbio.Services.Orders
             {
                 discountAmount += GetDiscountAmount(sci.Discounts, GetFinalPrice(sci, false,false)) * sci.Quantity;
             }
+            var orderDiscounts = (from d in cart.Discounts
+                                  where d.RequiresCouponCode == false
+                                  select d).ToList();
 
-            discountAmount += GetDiscountAmount(cart.Discounts, subTotal-discountAmount);
+            discountAmount += GetDiscountAmount(orderDiscounts, subTotal - discountAmount);
+            var coupon = (from d in cart.Discounts
+                          where d.RequiresCouponCode == true
+                          select d).FirstOrDefault();
+
+            if (coupon != null)
+            {
+                discountAmount += GetDiscountAmount(coupon, subTotal - discountAmount);
+            }
+            
             return discountAmount;
         }
+
+
+       
     }
 }

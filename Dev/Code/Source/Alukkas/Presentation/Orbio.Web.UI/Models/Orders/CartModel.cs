@@ -12,6 +12,13 @@ namespace Orbio.Web.UI.Models.Orders
     {
         private readonly IPriceCalculationService priceCalculationService;
 
+        public CartModel()
+        {
+            this.priceCalculationService = EngineContext.Current.Resolve<IPriceCalculationService>();
+            this.ShoppingCartItems = new List<ShoppingCartItemModel>();
+            this.Discounts = new List<Discount>();
+        }
+
          public CartModel(IPriceCalculationService priceCalculationService)
         {
             this.priceCalculationService = priceCalculationService;
@@ -37,6 +44,21 @@ namespace Orbio.Web.UI.Models.Orders
 
          public List<Discount> Discounts { get; set; }
 
+         public Discount AppliedCoupon
+         {
+             get
+             {
+                 return (from d in this.Discounts
+                         where d.RequiresCouponCode == true
+                         select d).FirstOrDefault();
+             }
+         }
+
+        /// <summary>
+        /// to get the applied coupon code in the cart
+        /// </summary>
+         public string AppliedCouponCode { get; set; }
+
          public string SubTotal
          {
              get
@@ -57,7 +79,7 @@ namespace Orbio.Web.UI.Models.Orders
          {
              get
              {
-                 return priceCalculationService.GetCartSubTotal(this, true).ToString("#,##0.00");
+                 return priceCalculationService.GetOrderTotal(this, true).ToString("#,##0.00");
              }
          }
 

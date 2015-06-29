@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Orbio.Web.UI.Filters;
-using Nop.Core.Infrastructure;
-using Orbio.Services.Customers;
+﻿using Nop.Core.Infrastructure;
+using Orbio.Core;
 using Orbio.Services.Checkout;
-using Orbio.Web.UI.Models.CheckOut;
-using Orbio.Core.Domain.Customers;
-using System.Globalization;
-using Orbio.Web.UI.Models.Orders;
 using Orbio.Services.Orders;
-using Orbio.Core.Domain.Orders;
+using Orbio.Web.UI.Filters;
+using Orbio.Web.UI.Models.CheckOut;
+using System.Web.Mvc;
 
 namespace Orbio.Web.UI.Controllers
 {
@@ -25,7 +17,9 @@ namespace Orbio.Web.UI.Controllers
         private readonly IPriceCalculationService priceCalculationService;
         //
         // GET: /CheckOut/
-        public CheckOutController(ICheckoutService checkoutService, IShoppingCartService shoppingCartService, IPriceCalculationService priceCalculationService):base(shoppingCartService)
+        public CheckOutController(ICheckoutService checkoutService, IShoppingCartService shoppingCartService, IPriceCalculationService priceCalculationService,
+            IWorkContext workContext, IStoreContext storeContext)
+            :base(shoppingCartService,  workContext, storeContext)
         {
             this.checkoutService = checkoutService;
            // this.shoppingCartService = shoppingCartService;

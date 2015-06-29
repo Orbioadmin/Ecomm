@@ -16,21 +16,73 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE FUNCTION ufn_GetOrderDiscounts ()
+CREATE FUNCTION ufn_GetOrderDiscounts (
+@customerId int,
+@storeId int
+)
  
 RETURNS Xml
 AS
 BEGIN
-	DECLARE @utcNow datetime
-	
+  
+  DECLARE @utcNow datetime
+  SELECT @utcNow = GETUTCDATE()
+  DECLARE @xmlResult xml
+  DECLARE @couponCode nvarchar(100)
+  
+ --get coupon discounts also \
+ DECLARE @couponDiscount TABLE(
+ [Name] [nvarchar](200) ,
+	[DiscountTypeId] [int] ,
+	[UsePercentage] [bit] ,
+	[DiscountPercentage] [decimal](18, 4) ,
+	[DiscountAmount] [decimal](18, 4),
+	[StartDateUtc] [datetime] ,
+	[EndDateUtc] [datetime] ,
+	[RequiresCouponCode] [bit] ,
+	[CouponCode] [nvarchar](100) ,
+	[DiscountLimitationId] [int],
+	[LimitationTimes] [int],
+	IsValid BIT
+ )
+ 
+	 SELECT @couponCode = Value FROM GenericAttribute WHERE EntityId = @customerId AND KeyGroup = 'Customer'
+		AND [Key]='DiscountCouponCode'
 
  
- SELECT @utcNow = GETUTCDATE()
- DECLARE @xmlResult xml
- 
-  
-  
-SELECT @xmlResult = ( SELECT  
+	IF(@couponCode IS NOT NULL)
+	BEGIN	
+		 
+		DECLARE @discountId INT
+	   
+		SELECT @discountId = Id FROM Discount  WHERE CouponCode = @couponCode AND 
+			RequiresCouponCode =1 AND ((@utcNow BETWEEN StartDateUtc AND EndDateUtc) OR (StartDateUtc is				null and		EndDateUtc is null) )
+		
+		IF (@discountId IS NOT NULL AND EXISTS( SELECT DBO.ufn_CheckDiscountLimitation(@discountId,							@customerId,NULL)))
+		BEGIN		
+			INSERT INTO @couponDiscount
+			 SELECT   [Name]
+			  ,[DiscountTypeId]
+			  ,[UsePercentage]
+			  ,[DiscountPercentage]
+			  ,[DiscountAmount]
+			  ,[StartDateUtc]
+			  ,[EndDateUtc]
+			  ,[RequiresCouponCode]
+			  ,[CouponCode]
+			  ,[DiscountLimitationId]
+			  ,[LimitationTimes] 
+			  , 1  
+			   FROM Discount WHERE Id = @discountId
+		END
+		ELSE
+		BEGIN
+			INSERT INTO @couponDiscount(CouponCode, IsValid)
+			VALUES(@couponCode, 0)
+		END				
+	END
+	 
+	SELECT @xmlResult = (SELECT a.* FROM ( SELECT  
       [Name]
       ,[DiscountTypeId]
       ,[UsePercentage]
@@ -41,16 +93,17 @@ SELECT @xmlResult = ( SELECT
       ,[RequiresCouponCode]
       ,[CouponCode]
       ,[DiscountLimitationId]
-      ,[LimitationTimes] 
+      ,[LimitationTimes]
+      ,1 AS IsValid
   FROM [esybuy].[dbo].[Discount] D
   WHERE ((@utcNow BETWEEN StartDateUtc AND EndDateUtc) OR (StartDateUtc is null and EndDateUtc is null) )
   AND RequiresCouponCode = 0 AND dbo.ufn_CheckDiscountLimitation(Id, 1,null)=1
   AND DiscountTypeId in (1,20) 
- 
-  
-  
+  UNION ALL
+  SELECT * FROM @couponDiscount
+  ) a
    FOR XML PATH('Discount'),ROOT('Discounts'), elements)
-  --2 =AssignedToSkus 5=AssignedToCategories
+  --1 =oRDERsUBTOTAL 20=ORDERTOTAL
   	 
 	 Return @xmlresult
 END

@@ -36,7 +36,7 @@ namespace Orbio.Services.Orders
         /// Get shopping cart items
         /// </summary>
         /// <param name="action">Action</param>
-        Cart GetCartItems(string action, int id, ShoppingCartType shoppingCartType, int curCustomerId, int customerId, int productId, int Quantity);
+        Cart GetCartItems(string action, int id, ShoppingCartType shoppingCartType, int curCustomerId, int customerId, int productId, int Quantity, int storeId);
 
         /// <summary>
         /// Update and delete shopping cart item

@@ -35,7 +35,8 @@ CREATE PROCEDURE [dbo].[usp_Shoppingcart_Items]
 	@customerId int,
 	@productId int,
 	@attributexml varchar(max),
-	@quantity int
+	@quantity int,
+	@storeId int = null
 AS
 BEGIN
 
@@ -208,7 +209,7 @@ DECLARE @XmlResult xml;
 
 	
 
-SELECT @XmlResult = (SELECT dbo.ufn_GetOrderDiscounts(),  (SELECT (select count(#temp.ProductId) from #temp) as 'ItemCount',product.Id Id,
+SELECT @XmlResult = (SELECT dbo.ufn_GetOrderDiscounts(@customerId, @storeId),  (SELECT (select count(#temp.ProductId) from #temp) as 'ItemCount',product.Id Id,
 product.Name Name,ur.Slug as SeName,product.Price Price,[dbo].[ufn_GetProductPriceDetails](product.Id),
 product.[Weight] as 'GoldWeight',
 product.ProductUnit as 'ProductUnit',

@@ -16,14 +16,17 @@ namespace Orbio.Web.UI.Controllers
     public class ShoppingCartController : CartBaseController
     {
 
-        private readonly IShoppingCartService shoppingCartService;
-        private readonly IStoreContext storeContext;
+   
+       
         private readonly IPriceCalculationService priceCalculationService;
+        private readonly IGenericAttributeService genericAttributeService;
 
-        public ShoppingCartController(IShoppingCartService shoppingCartService, IStoreContext storeContext, IPriceCalculationService priceCalculationService):base(shoppingCartService)
+        public ShoppingCartController(IShoppingCartService shoppingCartService, IStoreContext storeContext,
+            IPriceCalculationService priceCalculationService, IGenericAttributeService genericAttributeService, IWorkContext workContext)
+            : base(shoppingCartService, workContext, storeContext)
         {
-            //this.shoppingCartService = shoppingCartService;
-            this.storeContext = storeContext;
+            this.genericAttributeService = genericAttributeService;
+             
             this.priceCalculationService = priceCalculationService;
         }
 
@@ -39,6 +42,11 @@ namespace Orbio.Web.UI.Controllers
         public ActionResult Cart(CartModel detailModel)
         {
             List<ShoppingCartItem> cartUpdateItems = new List<ShoppingCartItem>();
+            if (!String.IsNullOrWhiteSpace(detailModel.AppliedCouponCode))
+            {
+                genericAttributeService.SaveGenericAttributes(workContext.CurrentCustomer.Id, "Customer", SystemCustomerAttributeNames.DiscountCouponCode,
+                        detailModel.AppliedCouponCode, storeContext.CurrentStore.Id);
+            }
             cartUpdateItems = (from r in detailModel.ShoppingCartItems.AsEnumerable()
                                select new ShoppingCartItem { CartId=r.CartId,Quantity=Convert.ToInt32(r.SelectedQuantity),IsRemove=r.IsRemove}).ToList();
             shoppingCartService.ModifyCartItem(cartUpdateItems);
