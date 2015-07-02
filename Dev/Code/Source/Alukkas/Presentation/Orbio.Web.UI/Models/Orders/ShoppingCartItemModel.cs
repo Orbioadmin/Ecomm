@@ -23,7 +23,7 @@ namespace Orbio.Web.UI.Models.Orders
         {
             
             //this.items = new List<ShoppingCartItemModel>();
-            this.ItemCount = productDetail.ItemCount;
+            //this.ItemCount = productDetail.ItemCount;
             this.SelectedQuantity = productDetail.Quantity.ToString();
 
             //this.Id = productDetail.Id;
@@ -86,7 +86,7 @@ namespace Orbio.Web.UI.Models.Orders
            
             this.IsRemove = false;
         }
-        public int ItemCount { get; set; }
+        //public int ItemCount { get; set; }
         //public string TotalPrice { get; set; }
 
         public int CartId { get; set; }

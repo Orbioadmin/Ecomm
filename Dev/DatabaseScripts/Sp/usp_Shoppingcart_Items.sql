@@ -198,7 +198,7 @@ end
 if(@action = 'select')
 begin
 
-select ProductId into #temp from ShoppingCartItem where shoppingCartTypeId=@shoppingCartTypeId and CustomerId = @customerId 
+--select ProductId into #temp from ShoppingCartItem where shoppingCartTypeId=@shoppingCartTypeId and CustomerId = @customerId 
 
 DECLARE @currencyCode nvarchar(5) 
  
@@ -209,7 +209,10 @@ DECLARE @XmlResult xml;
 
 	
 
-SELECT @XmlResult = (SELECT dbo.ufn_GetOrderDiscounts(@customerId, @storeId),  (SELECT (select count(#temp.ProductId) from #temp) as 'ItemCount',product.Id Id,
+SELECT @XmlResult = (SELECT dbo.ufn_GetOrderDiscounts(@customerId, @storeId)
+,  
+(SELECT --(select count(#temp.ProductId) from #temp) as 'ItemCount',
+product.Id Id,
 product.Name Name,ur.Slug as SeName,product.Price Price,[dbo].[ufn_GetProductPriceDetails](product.Id),
 product.[Weight] as 'GoldWeight',
 product.ProductUnit as 'ProductUnit', product.TaxCategoryId,
