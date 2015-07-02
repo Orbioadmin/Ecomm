@@ -72,8 +72,10 @@
                         </div>
                     </div>
                     <div class="col-sm-4">
-
-                        <div class="cart_total">
+                        @{
+                            Html.RenderPartial("_orderTotalSummary", Model, new ViewDataDictionary() { { "Type", "Cart" },{"Currencycode", ViewBag.Currencycode } });
+                        }
+                       @* <div class="cart_total">
                             <dl class="dl-horizontal">
                                 <dt>Cart Sub Total</dt>
                                 <dd>@ViewBag.Currencycode.@Model.SubTotal</dd>
@@ -82,11 +84,11 @@
                                 <dt>Promotional Discounts</dt>
                                 <dd>@ViewBag.Currencycode.@Model.DiscountAmount</dd>
                                 <dt>Estimated Tax</dt>
-                                <dd>0</dd>
+                                <dd>@ViewBag.Currencycode.@Model.TaxAmount</dd>
                                 <dt class="cart_total">Total</dt>
                                 <dd class="cart_total">@ViewBag.Currencycode.@Model.Total</dd>
                             </dl>
-                        </div>
+                        </div>*@
 
                     </div>
 

@@ -5,11 +5,21 @@ using System.Text;
 using System.Threading.Tasks;
 using Orbio.Core.Domain.Catalog.Abstract;
 using Orbio.Core.Domain.Discounts;
+using Orbio.Services.Taxes;
+using Orbio.Core;
 
 namespace Orbio.Services.Orders
 {
     public class PriceCalculationService : IPriceCalculationService
     {
+        public readonly ITaxCalculationService taxCalculationService;
+        protected readonly IWorkContext workContext;
+        public PriceCalculationService(ITaxCalculationService taxCalculationService, IWorkContext workContext)
+        {
+            this.taxCalculationService = taxCalculationService;
+            this.workContext = workContext;
+        }
+
         public decimal GetCartSubTotal(ICart cart, bool includeDiscounts)
         {
             var subTotal = 0.00M;
@@ -41,9 +51,10 @@ namespace Orbio.Services.Orders
         public decimal GetOrderTotal(ICart cart, bool includeDiscounts)
         {
             var subTotal = GetCartSubTotal(cart, includeDiscounts);
-            var total = subTotal;
+            var taxRates = new Dictionary<int, decimal>();
+            var taxAmount = taxCalculationService.CalculateTax(cart, workContext.CurrentCustomer, out taxRates);
             //need to add shipping and taxes
-            return total;
+            return subTotal + taxAmount;
         }
 
 

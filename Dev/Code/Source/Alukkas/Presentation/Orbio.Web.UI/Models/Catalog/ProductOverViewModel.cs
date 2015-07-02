@@ -41,6 +41,7 @@ namespace Orbio.Web.UI.Models.Catalog
             this.ProductPrice.Price = product.CalculatePrice();// product.Price.ToString("#,##0.00");
             this.ProductPrice.OldPrice = product.OldPrice.ToString("#,##0.00");
             this.ComponentDetails = product.GetComponentDetails();
+            this.TaxCategoryId = product.TaxCategoryId;
 
         }
 
@@ -57,6 +58,8 @@ namespace Orbio.Web.UI.Models.Catalog
         public Dictionary<string, string> ComponentDetails { get; set; }
         //price
         public ProductPriceModel ProductPrice { get; set; }
+
+        public int TaxCategoryId { get; set; }
         ////picture
         //public PictureModel DefaultPictureModel { get; set; }
         ////specification attributes

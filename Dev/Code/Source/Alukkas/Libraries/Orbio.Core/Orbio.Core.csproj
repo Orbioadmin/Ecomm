@@ -65,6 +65,7 @@
     <Compile Include="Domain\Catalog\SpecificationFilterModel.cs" />
     <Compile Include="Domain\Checkout\Address.cs" />
     <Compile Include="Domain\Common\GenericAttribute.cs" />
+    <Compile Include="Domain\Common\Setting.cs" />
     <Compile Include="Domain\Customers\ChangePasswordResult.cs" />
     <Compile Include="Domain\Customers\Customer.cs" />
     <Compile Include="Domain\Customers\CustomerLoginResults.cs" />

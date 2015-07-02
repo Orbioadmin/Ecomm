@@ -125,13 +125,27 @@ namespace Orbio.Web.UI.Models.Orders
         }
 
 
-        public IEnumerable<decimal> ProductVariantPriceAdjustments
+        IEnumerable<decimal> IShoppingCartItem.ProductVariantPriceAdjustments
         {
             get
             {
                 return (from pva in this.ProductVariantAttributes
                         from pvav in pva.Values
                         select Convert.ToDecimal(pvav.PriceAdjustment)).ToList();
+            }
+        }
+
+        int IShoppingCartItem.TaxCategoryId
+        {
+            get { return this.TaxCategoryId; }
+        }
+
+        decimal IShoppingCartItem.FinalPrice
+        {
+            get
+            {
+                var priceCalculationService = EngineContext.Current.Resolve<IPriceCalculationService>();
+                return priceCalculationService.GetFinalPrice(this, true, true);
             }
         }
     }

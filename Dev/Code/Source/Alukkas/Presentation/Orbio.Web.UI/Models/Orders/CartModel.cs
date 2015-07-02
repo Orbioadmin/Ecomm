@@ -5,28 +5,33 @@ using Orbio.Core.Domain.Orders;
 using Orbio.Core.Domain.Discounts;
 using Orbio.Services.Orders;
 using Nop.Core.Infrastructure;
+using Orbio.Services.Taxes;
+using Orbio.Core;
 
 namespace Orbio.Web.UI.Models.Orders
 {
     public class CartModel : ICart
     {
         private readonly IPriceCalculationService priceCalculationService;
+        private readonly ITaxCalculationService taxCalculationService;
 
         public CartModel()
         {
             this.priceCalculationService = EngineContext.Current.Resolve<IPriceCalculationService>();
+            this.taxCalculationService = EngineContext.Current.Resolve<ITaxCalculationService>();
             this.ShoppingCartItems = new List<ShoppingCartItemModel>();
             this.Discounts = new List<Discount>();
         }
 
-         public CartModel(IPriceCalculationService priceCalculationService)
+        public CartModel(IPriceCalculationService priceCalculationService, ITaxCalculationService taxCalculationService)
         {
             this.priceCalculationService = priceCalculationService;
+            this.taxCalculationService = taxCalculationService;
             this.ShoppingCartItems = new List<ShoppingCartItemModel>();
             this.Discounts = new List<Discount>();
         }
          public CartModel(Cart cart)
-             : this(EngineContext.Current.Resolve<IPriceCalculationService>())
+            : this(EngineContext.Current.Resolve<IPriceCalculationService>(), EngineContext.Current.Resolve<ITaxCalculationService>())
          {
              if (cart.ShoppingCartItems != null && cart.ShoppingCartItems.Count > 0)
              {
@@ -58,6 +63,16 @@ namespace Orbio.Web.UI.Models.Orders
         /// to get the applied coupon code in the cart
         /// </summary>
          public string AppliedCouponCode { get; set; }
+
+         public string TaxAmount
+         {
+             get
+             {
+                 var workContext = EngineContext.Current.Resolve<IWorkContext>();
+
+                 return taxCalculationService.CalculateTax(this, workContext.CurrentCustomer).ToString("#,##0.00");
+             }
+         }
 
          public string SubTotal
          {

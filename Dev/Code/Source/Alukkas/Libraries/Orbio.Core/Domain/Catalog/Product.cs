@@ -97,5 +97,11 @@ namespace Orbio.Core.Domain.Catalog
         [DataMember]
         public ProductPriceDetail ProductPriceDetail { get; set; }
 
+        /// <summary>
+        /// gets or sets the tax categoryId
+        /// </summary>
+        [DataMember]
+        public int TaxCategoryId { get; set; }
+
     }
 }
