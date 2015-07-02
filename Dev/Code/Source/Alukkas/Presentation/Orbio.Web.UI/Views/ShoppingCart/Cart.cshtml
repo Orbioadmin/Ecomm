@@ -31,7 +31,7 @@
                     <ul>
                         @if (this.Model.AppliedCoupon != null && this.Model.AppliedCoupon.IsValid)
                             {
-                                <li>@this.Model.AppliedCoupon.Name</li>
+                                <li><input type="submit" value="@this.Model.AppliedCoupon.Name" name="removeCoupon" /></li>
                             }
                             else
                             {

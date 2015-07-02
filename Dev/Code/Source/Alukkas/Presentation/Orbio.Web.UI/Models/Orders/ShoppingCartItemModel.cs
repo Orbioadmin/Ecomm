@@ -12,7 +12,7 @@ namespace Orbio.Web.UI.Models.Orders
 {
     public class ShoppingCartItemModel : ProductDetailModel, IShoppingCartItem
     {
-       
+        
         public ShoppingCartItemModel()
         {
             //this.items = new List<ShoppingCartItemModel>();
@@ -35,7 +35,7 @@ namespace Orbio.Web.UI.Models.Orders
            
             //this.TotalPrice = (Convert.ToDecimal(ProductPrice.Price) * productDetail.Quantity).ToString("#,##0.00");
             var priceCalculationService = EngineContext.Current.Resolve<IPriceCalculationService>();
-            this.ProductPrice.Price = priceCalculationService.GetFinalPrice(this, false, false).ToString("#,##0.00");
+            //this.ProductPrice.Price = priceCalculationService.GetFinalPrice(this, false, false).ToString("#,##0.00");
             this.ProductPrice.OldPrice = priceCalculationService.GetUnitPrice(this).ToString("#,##0.00");
             this.TotalPrice = priceCalculationService.GetFinalPrice(this, false, true).ToString("#,##0.00");
             this.CartId = productDetail.CartId;
@@ -94,6 +94,15 @@ namespace Orbio.Web.UI.Models.Orders
         public bool IsRemove { get; set; }
 
         public string TotalPrice{get;set;}
+
+        public string UnitPrice
+        {
+            get
+            {
+                var priceCalculationService = EngineContext.Current.Resolve<IPriceCalculationService>();
+                return priceCalculationService.GetFinalPrice(this, false, false).ToString("#,##0.00");
+            }
+        }
 
         decimal IShoppingCartItem.Price
         {

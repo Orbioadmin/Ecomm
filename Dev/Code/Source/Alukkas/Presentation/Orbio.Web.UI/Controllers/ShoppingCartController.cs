@@ -38,17 +38,25 @@ namespace Orbio.Web.UI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Cart(CartModel detailModel)
+        public ActionResult Cart(CartModel detailModel, FormCollection formCollection)
         {
-            List<ShoppingCartItem> cartUpdateItems = new List<ShoppingCartItem>();
-            if (!String.IsNullOrWhiteSpace(detailModel.AppliedCouponCode))
+            if (formCollection.AllKeys.Contains("removeCoupon"))
             {
-                genericAttributeService.SaveGenericAttributes(workContext.CurrentCustomer.Id, "Customer", SystemCustomerAttributeNames.DiscountCouponCode,
-                        detailModel.AppliedCouponCode, storeContext.CurrentStore.Id);
+                genericAttributeService.DeleteGenericAttribute(workContext.CurrentCustomer.Id, "Customer", SystemCustomerAttributeNames.DiscountCouponCode, string.Empty,
+                    storeContext.CurrentStore.Id);
             }
-            cartUpdateItems = (from r in detailModel.ShoppingCartItems.AsEnumerable()
-                               select new ShoppingCartItem { CartId=r.CartId,Quantity=Convert.ToInt32(r.SelectedQuantity),IsRemove=r.IsRemove}).ToList();
-            shoppingCartService.ModifyCartItem(cartUpdateItems);
+            else
+            {
+                List<ShoppingCartItem> cartUpdateItems = new List<ShoppingCartItem>();
+                if (!String.IsNullOrWhiteSpace(detailModel.AppliedCouponCode))
+                {
+                    genericAttributeService.SaveGenericAttributes(workContext.CurrentCustomer.Id, "Customer", SystemCustomerAttributeNames.DiscountCouponCode,
+                            detailModel.AppliedCouponCode, storeContext.CurrentStore.Id);
+                }
+                cartUpdateItems = (from r in detailModel.ShoppingCartItems.AsEnumerable()
+                                   select new ShoppingCartItem { CartId = r.CartId, Quantity = Convert.ToInt32(r.SelectedQuantity), IsRemove = r.IsRemove }).ToList();
+                shoppingCartService.ModifyCartItem(cartUpdateItems);
+            }
             
             return RedirectToRoute("ShoppingCart");
         }
