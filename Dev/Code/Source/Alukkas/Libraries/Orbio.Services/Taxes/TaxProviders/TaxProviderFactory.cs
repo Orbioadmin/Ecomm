@@ -1,21 +1,27 @@
-﻿using Nop.Core.Infrastructure;
+﻿using Nop.Core.Caching;
+using Nop.Core.Infrastructure;
 using Nop.Data;
 using Orbio.Core.Domain.Customers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Orbio.Services.Taxes.TaxProviders
 {
     public class TaxProviderFactory
     {
+        private static volatile ITaxProvider taxProvider;
+        private static object syncRoot = new object();
+
 
         public static ITaxProvider CreateTaxProvider(Customer customer)
         {
-            //make decision to create tax provider in future here
-            return new FixedTaxProvider(EngineContext.Current.Resolve<IDbContext>());
+            if (taxProvider == null)
+            {
+                lock (syncRoot)
+                {
+                    if (taxProvider == null)
+                        taxProvider = new FixedTaxProvider(EngineContext.Current.Resolve<IDbContext>(), EngineContext.Current.Resolve<ICacheManager>());
+                }
+            }
+             return taxProvider;
         }
     }
 }

@@ -8,5 +8,6 @@ namespace Orbio.Services.Taxes
     {        
         decimal CalculateTax(ICart cart, Customer customer, out Dictionary<int, decimal> taxRate);
         decimal CalculateTax(ICart cart, Customer customer);
+        decimal CalculateTax(decimal price, int taxCategoryId, Customer customer);
     }
 }

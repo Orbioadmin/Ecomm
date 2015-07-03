@@ -38,5 +38,24 @@ namespace Orbio.Services.Taxes
             var taxRate = new Dictionary<int, decimal>();
            return CalculateTax(cart, customer, out taxRate);
         }
+
+
+        public decimal CalculateTax(decimal price, int taxCategoryId, Customer customer)
+        {
+            var taxAmount = decimal.Zero;
+            var taxRate = TaxProviderFactory.CreateTaxProvider(customer).GetTaxRate(new CalculateTaxRequest
+            {
+                Customer = customer,
+                TaxCategoryIds =
+                    new List<int>{{taxCategoryId}}
+            });
+
+            if (taxRate.ContainsKey(taxCategoryId))
+            {
+                taxAmount = price * (taxRate[taxCategoryId] / 100);
+            }
+
+            return taxAmount;
+        }
     }
 }

@@ -96,7 +96,8 @@ ProductUnit as 'ProductUnit',
    StockQuantity,
    OrderMinimumQuantity,
    OrderMaximumQuantity,
-   AllowedQuantities
+   AllowedQuantities,
+   TaxCategoryId
 
 from [dbo].[Product] product 
 INNER JOIN ProductTemplate PT ON product.ProductTemplateId = PT.Id
