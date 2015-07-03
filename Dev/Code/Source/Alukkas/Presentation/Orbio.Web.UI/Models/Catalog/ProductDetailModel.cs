@@ -30,10 +30,7 @@ namespace Orbio.Web.UI.Models.Catalog
             this.ViewPath = productDetail.ViewPath;
             this.ImageRelativeUrl = productDetail.ImageRelativeUrl;
             this.CurrencyCode = productDetail.CurrencyCode;
-            this.ProductPrice.Price = productDetail.Price.ToString("#,##0.00");
-            this.Gold = productDetail.Gold.ToString("#,##0.00");
-            this.Stones = productDetail.Stones.ToString("#,##0.00");
-            this.Making = productDetail.Making.ToString("#,##0.00");
+            this.ProductPrice.Price = productDetail.Price;
 
              if (productDetail.BreadCrumbs != null && productDetail.BreadCrumbs.Count > 0)
             {               
@@ -111,7 +108,7 @@ namespace Orbio.Web.UI.Models.Catalog
                                                                                                                ColorSquaresRgb = pvv.ColorSquaresRgb,
                                                                                                                Name = pvv.Name,
                                                                                                                PictureUrl = pvv.PictureUrl,
-                                                                                                               PriceAdjustment = pvv.CalculatePrice(),
+                                                                                                               PriceAdjustment = pvv.CalculatePrice().ToString(),
                                                                                                                IsPreSelected=pvv.IsPreSelected,
                                                                                                                DisplayOrder=pvv.DisplayOrder
                                                                                                                //PriceAdjustmentValue =  need TODO: format + or -
@@ -182,12 +179,6 @@ namespace Orbio.Web.UI.Models.Catalog
         public int OrderMaximumQuantity { get; set; }
 
         public List<int> AllowedQuantities { get; set; }
-
-        public string Gold { get; set; }
-
-        public string Stones { get; set; }
-
-        public string Making { get; set; }
 
         public string SelectedQuantity { get; set; }
 

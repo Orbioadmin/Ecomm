@@ -30,8 +30,9 @@
                 <div class="shop_promation">
                     <ul>
                         @if (this.Model.AppliedCoupon != null && this.Model.AppliedCoupon.IsValid)
-                            {
-                                <li><input type="submit" value="@this.Model.AppliedCoupon.Name" name="removeCoupon" /></li>
+                        {
+                                <li>@this.Model.AppliedCoupon.Name</li>
+                                <li><input type="submit" class="coupon_button" value="REMOVE CODE" name="removeCoupon" /></li>
                             }
                             else
                             {

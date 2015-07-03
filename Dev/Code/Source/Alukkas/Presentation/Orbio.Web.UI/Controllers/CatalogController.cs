@@ -544,7 +544,7 @@ namespace Orbio.Web.UI.Controllers
             {
                 foreach (var pvav in pvValues)
                 {
-                    model.ProductPrice.Price = (Convert.ToDouble(pvav.PriceAdjustment) + Convert.ToDouble(model.ProductPrice.Price)).ToString("#,##0.00");
+                    model.ProductPrice.Price = (Convert.ToDecimal(pvav.PriceAdjustment) + Convert.ToDecimal(model.ProductPrice.Price));
                 }
                 //string pvavliid = string.Format("liProductVariantAttributes_{0}__Values_{1}__Id", attr_count, value_count);
                 //ViewData["productvariantid"] = pvavliid;
@@ -644,8 +644,8 @@ namespace Orbio.Web.UI.Controllers
                         }
 
                         var filteredProducts = (from p in model.Products
-                                                where Convert.ToDecimal(p.ProductPrice.Price) >= minPrice &&
-                                             Convert.ToDecimal(p.ProductPrice.Price) <= maxPrice
+                                                where p.ProductPrice.Price >= minPrice &&
+                                             p.ProductPrice.Price <= maxPrice
                                                 select p).ToList();
                         model.Products = filteredProducts;
                     }
@@ -718,8 +718,8 @@ namespace Orbio.Web.UI.Controllers
                         }
 
                         var filteredProducts = (from p in model.Products
-                                                where Convert.ToDecimal(p.ProductPrice.Price) >= minPrice &&
-                                             Convert.ToDecimal(p.ProductPrice.Price) <= maxPrice
+                                                where p.ProductPrice.Price >= minPrice &&
+                                             p.ProductPrice.Price <= maxPrice
                                                 select p).ToList();
                         model.Products = filteredProducts;
                     }

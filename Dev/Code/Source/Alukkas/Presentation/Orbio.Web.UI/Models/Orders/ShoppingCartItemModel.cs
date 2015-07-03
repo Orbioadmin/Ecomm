@@ -108,7 +108,7 @@ namespace Orbio.Web.UI.Models.Orders
         {
             get
             {
-                return Convert.ToDecimal(this.ProductPrice.Price);
+                return this.ProductPrice.Price;
             }
         }
 

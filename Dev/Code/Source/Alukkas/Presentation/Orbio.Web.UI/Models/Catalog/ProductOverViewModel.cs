@@ -69,7 +69,7 @@ namespace Orbio.Web.UI.Models.Catalog
         public partial class ProductPriceModel
         {
             public string OldPrice { get; set; }
-            public string Price {get;set;}
+            public decimal Price {get;set;}
             public decimal Discount { get; set; }
             public bool DisableBuyButton { get; set; }
             public bool DisableWishlistButton { get; set; }

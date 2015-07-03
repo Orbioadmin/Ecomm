@@ -1313,14 +1313,14 @@ clear: both; overflow: hidden;}
 .order_main .nav-pills>li.active>a:focus{ border-radius: 0; background: #f8c301; color: #fff;}
 .order_main .tab-content{background:#ffffff; border: 1px #cccccc dashed; padding: 15px;}
 .my_detail dl.dl-horizontal dd {margin-left: 115px; font-size: 14px; margin-bottom: 3px;}
-.visa_met{background:url('../images/Basic_image/imagesprites.png') -10px -162px no-repeat; width: 34px; height: 22px; display: inline-block; }
-.discover_met{background:url('../images/Basic_image/imagesprites.png') -61px -162px no-repeat; width: 34px; height: 22px; display: inline-block; }
-.american_met{background:url('../images/Basic_image/imagesprites.png') -112px -162px no-repeat; width: 34px; height: 22px; display: inline-block; }
-.master_met{background:url('../images/Basic_image/imagesprites.png') -166px -162px no-repeat; width: 34px; height: 22px; display: inline-block; }
-.visa_met:hover{background:url('../images/Basic_image/imagesprites.png') -10px -196px no-repeat; width: 34px; height: 22px; display: inline-block; }
+.visa_met{background:url('../images/Basic_image/imagesprites.png') -10px -196px no-repeat; width: 34px; height: 22px; display: inline-block; }
+.discover_met{background:url('../images/Basic_image/imagesprites.png') -61px -196px no-repeat; width: 34px; height: 22px; display: inline-block; }
+.american_met{background:url('../images/Basic_image/imagesprites.png') -112px -196px no-repeat; width: 34px; height: 22px; display: inline-block; }
+.master_met{background:url('../images/Basic_image/imagesprites.png') -166px -196px no-repeat; width: 34px; height: 22px; display: inline-block; }
+/*.visa_met:hover{background:url('../images/Basic_image/imagesprites.png') -10px -196px no-repeat; width: 34px; height: 22px; display: inline-block; }
 .discover_met:hover{background:url('../images/Basic_image/imagesprites.png') -61px -196px no-repeat; width: 34px; height: 22px; display: inline-block; }
 .american_met:hover{background:url('../images/Basic_image/imagesprites.png') -112px -196px no-repeat; width: 34px; height: 22px; display: inline-block; }
-.master_met:hover{background:url('../images/Basic_image/imagesprites.png') -166px -196px no-repeat; width: 34px; height: 22px; display: inline-block; }
+.master_met:hover{background:url('../images/Basic_image/imagesprites.png') -166px -196px no-repeat; width: 34px; height: 22px; display: inline-block; }*/
 .my_detail dl.dl-horizontal dt {text-align: left; width: 110px; font-size: 14px; margin-bottom: 3px; float: left; font-weight: normal;}
 .prof_sett .btn-yellow {float: right; margin-bottom: 10px; width: 146px; margin-right: 10px;}
 .btn-yellow {background: #f8c301; border-radius: 0; color: #fff; font-size: 14px; padding: 4px 20px; border-bottom: 3px #da9101 solid;}
@@ -2225,3 +2225,11 @@ padding-right: 0;
 width: 152px;
 }
 
+.coupon_button
+{
+   background-color:#c62a2a;
+   border:0px;
+    border-bottom: 3px #940c0c solid;
+  color:#fff;
+  padding: 1px 15px;
+}
