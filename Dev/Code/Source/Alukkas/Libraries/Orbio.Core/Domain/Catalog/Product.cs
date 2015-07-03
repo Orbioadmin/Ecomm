@@ -1,6 +1,7 @@
-﻿using System.Runtime.Serialization;
-using Orbio.Core.Domain.Catalog.Abstract;
+﻿using Orbio.Core.Domain.Catalog.Abstract;
+using Orbio.Core.Domain.Discounts;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace Orbio.Core.Domain.Catalog
 {
@@ -96,6 +97,17 @@ namespace Orbio.Core.Domain.Catalog
         /// </summary>
         [DataMember]
         public ProductPriceDetail ProductPriceDetail { get; set; }
+
+        /// <summary>
+        /// gets or sets the tax categoryId
+        /// </summary>
+        [DataMember]
+        public int TaxCategoryId { get; set; }
+
+        /// <summary>
+        /// gets or sets discounts applicable to this product
+        /// </summary>
+        public List<Discount> Discounts { get; set; }
 
     }
 }

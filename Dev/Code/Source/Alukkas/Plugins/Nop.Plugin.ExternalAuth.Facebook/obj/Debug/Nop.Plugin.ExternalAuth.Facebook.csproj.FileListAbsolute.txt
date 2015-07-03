@@ -130,3 +130,14 @@ C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.
 C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.ExternalAuth.Facebook\obj\Debug\Nop.Plugin.ExternalAuth.Facebook.csprojResolveAssemblyReference.cache
 C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.ExternalAuth.Facebook\obj\Debug\Nop.Plugin.ExternalAuth.Facebook.dll
 C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.ExternalAuth.Facebook\obj\Debug\Nop.Plugin.ExternalAuth.Facebook.pdb
+E:\Projects\Alukkas\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.Web\Plugins\ExternalAuth.Facebook\Description.txt
+E:\Projects\Alukkas\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.Web\Plugins\ExternalAuth.Facebook\Content\facebookstyles.css
+E:\Projects\Alukkas\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.Web\Plugins\ExternalAuth.Facebook\Content\Images\facebook-signing.png
+E:\Projects\Alukkas\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.Web\Plugins\ExternalAuth.Facebook\logo.jpg
+E:\Projects\Alukkas\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.Web\Plugins\ExternalAuth.Facebook\Nop.Plugin.ExternalAuth.Facebook.dll.config
+E:\Projects\Alukkas\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.Web\Plugins\ExternalAuth.Facebook\Nop.Plugin.ExternalAuth.Facebook.dll
+E:\Projects\Alukkas\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.Web\Plugins\ExternalAuth.Facebook\Nop.Plugin.ExternalAuth.Facebook.pdb
+E:\Projects\Alukkas\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.ExternalAuth.Facebook\obj\Debug\Nop.Plugin.ExternalAuth.Facebook.csproj.App.config
+E:\Projects\Alukkas\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.ExternalAuth.Facebook\obj\Debug\Nop.Plugin.ExternalAuth.Facebook.csprojResolveAssemblyReference.cache
+E:\Projects\Alukkas\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.ExternalAuth.Facebook\obj\Debug\Nop.Plugin.ExternalAuth.Facebook.dll
+E:\Projects\Alukkas\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.ExternalAuth.Facebook\obj\Debug\Nop.Plugin.ExternalAuth.Facebook.pdb

@@ -78,3 +78,9 @@ C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Presentation
 C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.Web\Plugins\Payments.PurchaseOrder\Nop.Plugin.Payments.PurchaseOrder.pdb
 C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.Payments.PurchaseOrder\obj\Debug\Nop.Plugin.Payments.PurchaseOrder.dll
 C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.Payments.PurchaseOrder\obj\Debug\Nop.Plugin.Payments.PurchaseOrder.pdb
+E:\Projects\Alukkas\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.Web\Plugins\Payments.PurchaseOrder\Description.txt
+E:\Projects\Alukkas\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.Web\Plugins\Payments.PurchaseOrder\logo.jpg
+E:\Projects\Alukkas\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.Web\Plugins\Payments.PurchaseOrder\Nop.Plugin.Payments.PurchaseOrder.dll
+E:\Projects\Alukkas\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.Web\Plugins\Payments.PurchaseOrder\Nop.Plugin.Payments.PurchaseOrder.pdb
+E:\Projects\Alukkas\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.Payments.PurchaseOrder\obj\Debug\Nop.Plugin.Payments.PurchaseOrder.dll
+E:\Projects\Alukkas\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.Payments.PurchaseOrder\obj\Debug\Nop.Plugin.Payments.PurchaseOrder.pdb

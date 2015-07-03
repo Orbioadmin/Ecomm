@@ -82,6 +82,12 @@
     <Compile Include="Seo\UrlRecordService.cs" />
     <Compile Include="Stores\IStoreService.cs" />
     <Compile Include="Stores\StoreService.cs" />
+    <Compile Include="Taxes\ITaxCalculationService.cs" />
+    <Compile Include="Taxes\TaxCalculationService.cs" />
+    <Compile Include="Taxes\TaxProviders\FixedTaxProvider.cs" />
+    <Compile Include="Taxes\TaxProviders\ITaxProvider.cs" />
+    <Compile Include="Taxes\TaxProviders\CalculateTaxRequest.cs" />
+    <Compile Include="Taxes\TaxProviders\TaxProviderFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Nop.Core\Nop.Core.csproj">

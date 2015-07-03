@@ -78,3 +78,10 @@ C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Presentation
 C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.Web\Plugins\Widgets.GoogleAnalytics\Nop.Plugin.Widgets.GoogleAnalytics.pdb
 C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.Widgets.GoogleAnalytics\obj\Debug\Nop.Plugin.Widgets.GoogleAnalytics.dll
 C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.Widgets.GoogleAnalytics\obj\Debug\Nop.Plugin.Widgets.GoogleAnalytics.pdb
+E:\Projects\Alukkas\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.Web\Plugins\Widgets.GoogleAnalytics\Description.txt
+E:\Projects\Alukkas\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.Web\Plugins\Widgets.GoogleAnalytics\logo.jpg
+E:\Projects\Alukkas\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.Web\Plugins\Widgets.GoogleAnalytics\Nop.Plugin.Widgets.GoogleAnalytics.dll
+E:\Projects\Alukkas\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.Web\Plugins\Widgets.GoogleAnalytics\Nop.Plugin.Widgets.GoogleAnalytics.pdb
+E:\Projects\Alukkas\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.Widgets.GoogleAnalytics\obj\Debug\Nop.Plugin.Widgets.GoogleAnalytics.csprojResolveAssemblyReference.cache
+E:\Projects\Alukkas\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.Widgets.GoogleAnalytics\obj\Debug\Nop.Plugin.Widgets.GoogleAnalytics.dll
+E:\Projects\Alukkas\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.Widgets.GoogleAnalytics\obj\Debug\Nop.Plugin.Widgets.GoogleAnalytics.pdb

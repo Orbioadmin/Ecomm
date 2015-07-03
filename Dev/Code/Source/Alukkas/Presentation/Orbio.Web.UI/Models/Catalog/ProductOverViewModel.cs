@@ -1,9 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using Nop.Core.Infrastructure;
+using Orbio.Core;
 using Orbio.Core.Domain.Catalog;
+using Orbio.Core.Domain.Discounts;
 using Orbio.Services.Orders;
+using Orbio.Services.Taxes;
+using System;
+using System.Collections.Generic;
 
 namespace Orbio.Web.UI.Models.Catalog
 {
@@ -41,6 +43,17 @@ namespace Orbio.Web.UI.Models.Catalog
             this.ProductPrice.Price = product.CalculatePrice();// product.Price.ToString("#,##0.00");
             this.ProductPrice.OldPrice = product.OldPrice.ToString("#,##0.00");
             this.ComponentDetails = product.GetComponentDetails();
+            this.Discounts = product.Discounts == null ? new List<Discount>() : product.Discounts;
+        
+            this.TaxCategoryId = product.TaxCategoryId;
+            var taxCalculator = EngineContext.Current.Resolve<ITaxCalculationService>();
+            this.ProductPrice.TaxAmount = taxCalculator.CalculateTax(Convert.ToDecimal(this.ProductPrice.Price), this.TaxCategoryId, EngineContext.Current.Resolve<IWorkContext>().CurrentCustomer);
+            if (this.ComponentDetails == null)
+            {
+                this.ComponentDetails = new Dictionary<string, string>();
+            }
+
+            this.ComponentDetails.Add("Taxes", this.ProductPrice.TaxAmount.ToString("#,##0.00"));
 
         }
 
@@ -57,6 +70,24 @@ namespace Orbio.Web.UI.Models.Catalog
         public Dictionary<string, string> ComponentDetails { get; set; }
         //price
         public ProductPriceModel ProductPrice { get; set; }
+
+        public int TaxCategoryId { get; set; }
+
+        public List<Discount> Discounts { get; set; }
+
+        public decimal DiscountAmount
+        {
+            get
+            {
+                if (this.Discounts != null && this.Discounts.Count > 0)
+                {
+                    var priceCalculationService = EngineContext.Current.Resolve<IPriceCalculationService>();
+                    return priceCalculationService.GetDiscountAmount(this.Discounts, Convert.ToDecimal(this.ProductPrice.Price));
+                }
+
+                return decimal.Zero;
+            }
+        }
         ////picture
         //public PictureModel DefaultPictureModel { get; set; }
         ////specification attributes
@@ -73,6 +104,7 @@ namespace Orbio.Web.UI.Models.Catalog
             public decimal Discount { get; set; }
             public bool DisableBuyButton { get; set; }
             public bool DisableWishlistButton { get; set; }
+            public decimal TaxAmount { get; set; }
 
             public bool AvailableForPreOrder { get; set; }
             public DateTime? PreOrderAvailabilityStartDateTimeUtc { get; set; }

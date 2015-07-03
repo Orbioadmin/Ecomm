@@ -5,11 +5,22 @@ using System.Text;
 using System.Threading.Tasks;
 using Orbio.Core.Domain.Catalog.Abstract;
 using Orbio.Core.Domain.Discounts;
+using Orbio.Services.Taxes;
+using Orbio.Core;
 
 namespace Orbio.Services.Orders
 {
     public class PriceCalculationService : IPriceCalculationService
     {
+        public readonly ITaxCalculationService taxCalculationService;
+        protected readonly IWorkContext workContext;
+
+        public PriceCalculationService(ITaxCalculationService taxCalculationService, IWorkContext workContext)
+        {
+            this.taxCalculationService = taxCalculationService;
+            this.workContext = workContext;
+        }
+
         public decimal GetCartSubTotal(ICart cart, bool includeDiscounts)
         {
             var subTotal = 0.00M;
@@ -36,16 +47,15 @@ namespace Orbio.Services.Orders
             }
             return  subTotal;
         }
-
-       
+      
         public decimal GetOrderTotal(ICart cart, bool includeDiscounts)
         {
             var subTotal = GetCartSubTotal(cart, includeDiscounts);
-            var total = subTotal;
+            var taxRates = new Dictionary<int, decimal>();
+            var taxAmount = taxCalculationService.CalculateTax(cart, workContext.CurrentCustomer, out taxRates);
             //need to add shipping and taxes
-            return total;
+            return subTotal + taxAmount;
         }
-
 
         public decimal GetFinalPrice(IShoppingCartItem cartItem, bool includeDiscounts, bool includeQty = true)
         {
@@ -53,7 +63,6 @@ namespace Orbio.Services.Orders
             unitPrice = includeDiscounts? unitPrice - GetDiscountAmount(cartItem.Discounts, unitPrice):unitPrice;
             return includeQty? unitPrice * cartItem.Quantity: unitPrice;
         }
-
 
         public decimal GetUnitPrice(IShoppingCartItem cartItem)
         {
@@ -66,7 +75,32 @@ namespace Orbio.Services.Orders
             return cartItem.Price + pa ;
         }
 
-        private decimal GetDiscountAmount(IEnumerable<IDiscount> discounts, decimal finalPrice)
+        public decimal GetAllDiscountAmount(ICart cart)
+        {
+            var discountAmount = 0M;
+            var subTotal = this.GetCartSubTotal(cart, false);
+            foreach (var sci in cart.ShoppingCartItems)
+            {
+                discountAmount += GetDiscountAmount(sci.Discounts, GetFinalPrice(sci, false, false)) * sci.Quantity;
+            }
+            var orderDiscounts = (from d in cart.Discounts
+                                  where d.RequiresCouponCode == false
+                                  select d).ToList();
+
+            discountAmount += GetDiscountAmount(orderDiscounts, subTotal - discountAmount);
+            var coupon = (from d in cart.Discounts
+                          where d.RequiresCouponCode == true
+                          select d).FirstOrDefault();
+
+            if (coupon != null)
+            {
+                discountAmount += GetDiscountAmount(coupon, subTotal - discountAmount);
+            }
+
+            return discountAmount;
+        }
+
+        public decimal GetDiscountAmount(IEnumerable<IDiscount> discounts, decimal finalPrice)
         {
             var discountAmount = 0M;
             var maxDiscountAmount = 0M;
@@ -111,36 +145,6 @@ namespace Orbio.Services.Orders
 
             return discountAmount;
         }
-
-       
-
-
-        public decimal GetAllDiscountAmount(ICart cart)
-        {
-            var discountAmount = 0M;
-            var subTotal = this.GetCartSubTotal(cart, false);
-            foreach (var sci in cart.ShoppingCartItems)
-            {
-                discountAmount += GetDiscountAmount(sci.Discounts, GetFinalPrice(sci, false,false)) * sci.Quantity;
-            }
-            var orderDiscounts = (from d in cart.Discounts
-                                  where d.RequiresCouponCode == false
-                                  select d).ToList();
-
-            discountAmount += GetDiscountAmount(orderDiscounts, subTotal - discountAmount);
-            var coupon = (from d in cart.Discounts
-                          where d.RequiresCouponCode == true
-                          select d).FirstOrDefault();
-
-            if (coupon != null)
-            {
-                discountAmount += GetDiscountAmount(coupon, subTotal - discountAmount);
-            }
-            
-            return discountAmount;
-        }
-
-
        
     }
 }

@@ -81,3 +81,10 @@ C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Presentation
 C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.Shipping.AustraliaPost\obj\Debug\Nop.Plugin.Shipping.AustraliaPost.csprojResolveAssemblyReference.cache
 C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.Shipping.AustraliaPost\obj\Debug\Nop.Plugin.Shipping.AustraliaPost.dll
 C:\sankar\Alukasonline_Ecomm\Projects\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.Shipping.AustraliaPost\obj\Debug\Nop.Plugin.Shipping.AustraliaPost.pdb
+E:\Projects\Alukkas\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.Web\Plugins\Shipping.AustraliaPost\Description.txt
+E:\Projects\Alukkas\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.Web\Plugins\Shipping.AustraliaPost\logo.jpg
+E:\Projects\Alukkas\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.Web\Plugins\Shipping.AustraliaPost\Nop.Plugin.Shipping.AustraliaPost.dll
+E:\Projects\Alukkas\Ecomm\Dev\Code\Source\Alukkas\Presentation\Nop.Web\Plugins\Shipping.AustraliaPost\Nop.Plugin.Shipping.AustraliaPost.pdb
+E:\Projects\Alukkas\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.Shipping.AustraliaPost\obj\Debug\Nop.Plugin.Shipping.AustraliaPost.csprojResolveAssemblyReference.cache
+E:\Projects\Alukkas\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.Shipping.AustraliaPost\obj\Debug\Nop.Plugin.Shipping.AustraliaPost.dll
+E:\Projects\Alukkas\Ecomm\Dev\Code\Source\Alukkas\Plugins\Nop.Plugin.Shipping.AustraliaPost\obj\Debug\Nop.Plugin.Shipping.AustraliaPost.pdb

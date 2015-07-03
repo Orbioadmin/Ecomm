@@ -411,7 +411,7 @@ namespace Nop.Data
                     re.OrderMaximumQuantity = Convert.ToInt32(reader["OrderMaximumQuantity"].ToString());
                     re.AllowedQuantities = reader["AllowedQuantities"].ToString();
                     re.Quantity = Convert.ToInt32(reader["Quantity"].ToString());
-                    re.ItemCount = Convert.ToInt32(reader["Itemcount"].ToString());
+                    //re.ItemCount = Convert.ToInt32(reader["Itemcount"].ToString());
                     re.TotalPrice = Convert.ToDecimal(reader["Totalprice"].ToString());
                     result.Add(re);
                 }

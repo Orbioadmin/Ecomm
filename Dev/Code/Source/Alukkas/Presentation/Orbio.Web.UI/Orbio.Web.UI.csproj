@@ -241,6 +241,7 @@
     <Compile Include="Models\Customer\PasswordRecoveryModel.cs" />
     <Compile Include="Models\Home\ContactModel.cs" />
     <Compile Include="Models\Home\PriceBarModel.cs" />
+    <Compile Include="Models\Orders\CartHeaderModel.cs" />
     <Compile Include="Models\Orders\OrderDetailsModel.cs" />
     <Compile Include="Models\Orders\OrderSummaryModel.cs" />
     <Compile Include="Models\Orders\ShoppingCartItemModel.cs" />
@@ -570,6 +571,7 @@
     <Content Include="Views\Catalog\SpecificationFilter.cshtml" />
     <Content Include="Views\Catalog\PriceFilter.cshtml" />
     <Content Include="Views\Catalog\Product.cshtml" />
+    <Content Include="Views\ShoppingCart\_orderTotalSummary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />

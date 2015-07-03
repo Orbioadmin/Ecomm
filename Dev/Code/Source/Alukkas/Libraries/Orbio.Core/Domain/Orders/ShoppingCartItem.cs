@@ -49,10 +49,10 @@ namespace Orbio.Core.Domain.Orders
         /// </summary>
         public int Quantity { get; set; }
 
-        /// <summary>
-        /// Gets or sets the Item count
-        /// </summary>
-        public int ItemCount { get; set; }
+        ///// <summary>
+        ///// Gets or sets the Item count
+        ///// </summary>
+        //public int ItemCount { get; set; }
 
         /// <summary>
         /// Gets or sets the Total Price

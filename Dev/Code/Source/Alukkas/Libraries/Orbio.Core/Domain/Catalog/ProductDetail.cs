@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
-using Orbio.Core.Domain.Discounts;
 
 namespace Orbio.Core.Domain.Catalog
 {
@@ -100,10 +99,7 @@ namespace Orbio.Core.Domain.Catalog
         [DataMember]
         public string AllowedQuantities { get; set; }
 
-        /// <summary>
-        /// gets or sets discounts applicable to this product
-        /// </summary>
-        public List<Discount> Discounts { get; set; }
+       
 
     }
 }

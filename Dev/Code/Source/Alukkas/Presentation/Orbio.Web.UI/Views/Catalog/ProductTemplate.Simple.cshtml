@@ -109,9 +109,9 @@
 
                             @{
                 Html.RenderAction("ProductStar", new { Id = this.Model.Id });
-                            }
-
-                            <p class="price_rate">@this.Model.CurrencyCode.@this.Model.ProductPrice.Price.ToString("#,##0.00")</p>
+                var finalPrice = Convert.ToDecimal(this.Model.ProductPrice.Price) - this.Model.DiscountAmount;
+                            }     
+                            <p class="price_rate">@this.Model.CurrencyCode.@finalPrice.ToString("#,##0.00")</p>
                             @*@if (!string.IsNullOrEmpty(this.Model.ProductPrice.OldPrice))
                                 {
                                     <s>@this.Model.CurrencyCode.@this.Model.ProductPrice.OldPrice</s>
@@ -225,10 +225,10 @@
 
 
                                 }
-                                    <td>
+                                    @*<td>
                                         Tax
-                                        <p>Rs.0.00</p>
-                                    </td>
+                                        <p>@this.Model.CurrencyCode.@this.Model.ProductPrice.TaxAmount</p>
+                                    </td>*@
                                 </tr>
                                 @*<tr>
                                         <td>

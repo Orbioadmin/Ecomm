@@ -23,7 +23,7 @@ namespace Orbio.Web.UI.Models.Orders
         {
             
             //this.items = new List<ShoppingCartItemModel>();
-            this.ItemCount = productDetail.ItemCount;
+            //this.ItemCount = productDetail.ItemCount;
             this.SelectedQuantity = productDetail.Quantity.ToString();
 
             //this.Id = productDetail.Id;
@@ -86,7 +86,7 @@ namespace Orbio.Web.UI.Models.Orders
            
             this.IsRemove = false;
         }
-        public int ItemCount { get; set; }
+        //public int ItemCount { get; set; }
         //public string TotalPrice { get; set; }
 
         public int CartId { get; set; }
@@ -125,13 +125,27 @@ namespace Orbio.Web.UI.Models.Orders
         }
 
 
-        public IEnumerable<decimal> ProductVariantPriceAdjustments
+        IEnumerable<decimal> IShoppingCartItem.ProductVariantPriceAdjustments
         {
             get
             {
                 return (from pva in this.ProductVariantAttributes
                         from pvav in pva.Values
                         select Convert.ToDecimal(pvav.PriceAdjustment)).ToList();
+            }
+        }
+
+        int IShoppingCartItem.TaxCategoryId
+        {
+            get { return this.TaxCategoryId; }
+        }
+
+        decimal IShoppingCartItem.FinalPrice
+        {
+            get
+            {
+                var priceCalculationService = EngineContext.Current.Resolve<IPriceCalculationService>();
+                return priceCalculationService.GetFinalPrice(this, true, true);
             }
         }
     }

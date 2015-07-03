@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Orbio.Core.Domain.Catalog.Abstract;
+using Orbio.Core.Domain.Discounts;
 
 namespace Orbio.Services.Orders
 {
@@ -14,5 +15,6 @@ namespace Orbio.Services.Orders
         decimal GetFinalPrice(IShoppingCartItem cartItem, bool includeDiscounts, bool includeQty);
         decimal GetUnitPrice(IShoppingCartItem cartItem);
         decimal GetAllDiscountAmount(ICart cart);
+        decimal GetDiscountAmount(IEnumerable<IDiscount> discounts, decimal finalPrice);
     }
 }

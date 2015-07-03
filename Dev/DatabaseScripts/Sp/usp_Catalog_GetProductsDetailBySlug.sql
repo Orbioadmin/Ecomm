@@ -96,7 +96,9 @@ ProductUnit as 'ProductUnit',
    StockQuantity,
    OrderMinimumQuantity,
    OrderMaximumQuantity,
-   AllowedQuantities
+   AllowedQuantities,
+   TaxCategoryId,
+   dbo.ufn_GetProductDiscounts(product.Id)
 
 from [dbo].[Product] product 
 INNER JOIN ProductTemplate PT ON product.ProductTemplateId = PT.Id

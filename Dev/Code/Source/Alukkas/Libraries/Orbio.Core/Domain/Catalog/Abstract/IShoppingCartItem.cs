@@ -9,5 +9,7 @@ namespace Orbio.Core.Domain.Catalog.Abstract
         int Quantity { get; }
         IEnumerable<IDiscount> Discounts { get; }
         IEnumerable<decimal> ProductVariantPriceAdjustments { get; }
+        int TaxCategoryId { get; }
+        decimal FinalPrice { get; }
     }
 }
