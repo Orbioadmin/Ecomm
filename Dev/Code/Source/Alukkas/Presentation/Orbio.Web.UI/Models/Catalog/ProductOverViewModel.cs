@@ -1,6 +1,8 @@
 ﻿using Nop.Core.Infrastructure;
 using Orbio.Core;
 using Orbio.Core.Domain.Catalog;
+using Orbio.Core.Domain.Discounts;
+using Orbio.Services.Orders;
 using Orbio.Services.Taxes;
 using System;
 using System.Collections.Generic;
@@ -41,7 +43,7 @@ namespace Orbio.Web.UI.Models.Catalog
             this.ProductPrice.Price = product.CalculatePrice();// product.Price.ToString("#,##0.00");
             this.ProductPrice.OldPrice = product.OldPrice.ToString("#,##0.00");
             this.ComponentDetails = product.GetComponentDetails();
-           
+            this.Discounts = product.Discounts == null ? new List<Discount>() : product.Discounts;
         
             this.TaxCategoryId = product.TaxCategoryId;
             var taxCalculator = EngineContext.Current.Resolve<ITaxCalculationService>();
@@ -70,6 +72,22 @@ namespace Orbio.Web.UI.Models.Catalog
         public ProductPriceModel ProductPrice { get; set; }
 
         public int TaxCategoryId { get; set; }
+
+        public List<Discount> Discounts { get; set; }
+
+        public decimal DiscountAmount
+        {
+            get
+            {
+                if (this.Discounts != null && this.Discounts.Count > 0)
+                {
+                    var priceCalculationService = EngineContext.Current.Resolve<IPriceCalculationService>();
+                    return priceCalculationService.GetDiscountAmount(this.Discounts, Convert.ToDecimal(this.ProductPrice.Price));
+                }
+
+                return decimal.Zero;
+            }
+        }
         ////picture
         //public PictureModel DefaultPictureModel { get; set; }
         ////specification attributes
@@ -82,8 +100,7 @@ namespace Orbio.Web.UI.Models.Catalog
         public partial class ProductPriceModel
         {
             public string OldPrice { get; set; }
-            public string Price {get;set;}
-            public decimal Discount { get; set; }
+            public string Price {get;set;}           
             public bool DisableBuyButton { get; set; }
             public bool DisableWishlistButton { get; set; }
             public decimal TaxAmount { get; set; }

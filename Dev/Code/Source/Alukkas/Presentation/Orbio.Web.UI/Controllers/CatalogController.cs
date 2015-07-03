@@ -17,6 +17,7 @@ using System.Diagnostics;
 using Orbio.Web.UI.Filters;
 using Orbio.Core.Domain.Catalog;
 using System.Data;
+using Orbio.Services.Taxes;
 
 namespace Orbio.Web.UI.Controllers
 {
@@ -545,10 +546,26 @@ namespace Orbio.Web.UI.Controllers
                 foreach (var pvav in pvValues)
                 {
                     model.ProductPrice.Price = (Convert.ToDouble(pvav.PriceAdjustment) + Convert.ToDouble(model.ProductPrice.Price)).ToString("#,##0.00");
+
                 }
                 //string pvavliid = string.Format("liProductVariantAttributes_{0}__Values_{1}__Id", attr_count, value_count);
                 //ViewData["productvariantid"] = pvavliid;
             }
+            var taxCalculator = EngineContext.Current.Resolve<ITaxCalculationService>();
+            model.ProductPrice.TaxAmount = taxCalculator.CalculateTax(Convert.ToDecimal(model.ProductPrice.Price) - model.DiscountAmount, model.TaxCategoryId, EngineContext.Current.Resolve<IWorkContext>().CurrentCustomer);
+            if (model.ComponentDetails == null)
+            {
+                model.ComponentDetails = new Dictionary<string, string>();
+            }
+            if (model.ComponentDetails.ContainsKey("Taxes"))
+            {
+                model.ComponentDetails["Taxes"] = model.ProductPrice.TaxAmount.ToString("#,##0.00");
+            }
+            else
+            {
+                model.ComponentDetails.Add("Taxes", model.ProductPrice.TaxAmount.ToString("#,##0.00"));
+            }
+
         }
 
         private static string ValidateProduct(ProductDetailModel model, ProductDetailModel selectedProduct, int selectedquantity)

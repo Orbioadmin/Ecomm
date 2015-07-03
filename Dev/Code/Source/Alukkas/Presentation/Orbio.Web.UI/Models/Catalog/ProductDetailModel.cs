@@ -7,6 +7,8 @@ using System.Web;
 using System.Configuration;
 using System.IO;
 using Orbio.Core.Domain.Discounts;
+using Nop.Core.Infrastructure;
+using Orbio.Services.Orders;
 
 namespace Orbio.Web.UI.Models.Catalog
 {
@@ -21,7 +23,7 @@ namespace Orbio.Web.UI.Models.Catalog
         }
         public ProductDetailModel(ProductDetail productDetail) : base(productDetail)  
         {
-            this.Discounts = productDetail.Discounts==null?new List<Discount>():productDetail.Discounts;
+           
             this.Id = productDetail.Id;
             this.Name = productDetail.Name;
             this.ShortDescription = productDetail.ShortDescription;
@@ -30,7 +32,7 @@ namespace Orbio.Web.UI.Models.Catalog
             this.ViewPath = productDetail.ViewPath;
             this.ImageRelativeUrl = productDetail.ImageRelativeUrl;
             this.CurrencyCode = productDetail.CurrencyCode;
-            this.ProductPrice.Price = productDetail.Price.ToString("#,##0.00");
+            //this.ProductPrice.Price = productDetail.Price.ToString("#,##0.00");
             this.Gold = productDetail.Gold.ToString("#,##0.00");
             this.Stones = productDetail.Stones.ToString("#,##0.00");
             this.Making = productDetail.Making.ToString("#,##0.00");
@@ -143,6 +145,8 @@ namespace Orbio.Web.UI.Models.Catalog
                                  } ); 
             }
 
+            
+
             //var pvValues = (from pva in this.ProductVariantAttributes
             //                from pvav in pva.Values
             //                select pvav).ToList();
@@ -205,8 +209,7 @@ namespace Orbio.Web.UI.Models.Catalog
             return fileName.Length > 0 ? imageUrl.Replace(fileName, fileName + "_tb") : fileName;
         }
 
-        public List<Discount> Discounts { get; set; }
-
+       
 
     }
 }
