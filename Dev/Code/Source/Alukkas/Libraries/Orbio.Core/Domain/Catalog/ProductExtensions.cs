@@ -105,7 +105,7 @@ namespace Orbio.Core.Domain.Catalog
             return stockMessage;
         }
 
-        public static string CalculatePrice(this IPriceComponent product)
+        public static decimal CalculatePrice(this IPriceComponent product)
         {
             IPriceCalculator priceCalculator = null;
             if (product.ProductPriceDetail != null)
@@ -195,7 +195,7 @@ namespace Orbio.Core.Domain.Catalog
     }
 
 
-    public interface IPriceCalculator { string FormattedPrice { get; } }
+    public interface IPriceCalculator { decimal FormattedPrice { get; } }
 
     public class SimplePriceCalculator : IPriceCalculator
     {
@@ -206,9 +206,9 @@ namespace Orbio.Core.Domain.Catalog
             this.product = product;
         }
 
-        public string FormattedPrice
+        public decimal FormattedPrice
         {
-            get { return product.Price.ToString("#,##0.00"); }
+            get { return product.Price; }
         }
     }
 
@@ -255,9 +255,9 @@ namespace Orbio.Core.Domain.Catalog
             this.product = product;
         }
 
-        public string FormattedPrice
+        public decimal FormattedPrice
         {
-            get { return product.Price.ToString("#,##0.00"); }
+            get { return product.Price; }
         }
     }
 
