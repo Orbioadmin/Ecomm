@@ -30,9 +30,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,6 +51,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Customer.cs">
+      <DependentUpon>OrbioAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CustomerRole.cs">
+      <DependentUpon>OrbioAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\OrbioAdmin.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OrbioAdmin.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\OrbioAdmin.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OrbioAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\OrbioAdmin.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OrbioAdmin.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Order.cs">
+      <DependentUpon>OrbioAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\OrderItem.cs">
+      <DependentUpon>OrbioAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Domain\Admin\Customers\BestCustomerReportLine.cs" />
+    <Compile Include="Domain\Admin\Orders\OrderAverageReportLine.cs" />
+    <Compile Include="Domain\Admin\Orders\OrderAverageReportLineSummary.cs" />
     <Compile Include="Domain\Catalog\Abstract\ICart.cs" />
     <Compile Include="Domain\Catalog\Abstract\IPriceComponent.cs" />
     <Compile Include="Domain\Catalog\Abstract\IShoppingCartItem.cs" />
@@ -93,7 +133,9 @@
     <Compile Include="Domain\Orders\ShoppingCartType.cs" />
     <Compile Include="Domain\Orders\TransientCart.cs" />
     <Compile Include="Domain\Orders\TransientCartItem.cs" />
-    <Compile Include="Domain\Payments\PaymentStatus.cs" />
+    <Compile Include="Domain\Payments\PaymentStatus.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Domain\Seo\UrlRecord.cs" />
     <Compile Include="Domain\Shipping\ShippingStatus.cs" />
     <Compile Include="Domain\Stores\Store.cs" />
@@ -107,6 +149,30 @@
     <Compile Include="WebHelper.cs" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="Data\OrbioAdmin.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>OrbioAdmin.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Data\OrbioAdmin.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>OrbioAdmin.edmx</DependentUpon>
+      <LastGenOutput>OrbioAdmin.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Data\OrbioAdmin.edmx.diagram">
+      <DependentUpon>OrbioAdmin.edmx</DependentUpon>
+    </None>
+    <None Include="Data\OrbioAdmin.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>OrbioAdmin.edmx</DependentUpon>
+      <LastGenOutput>OrbioAdmin.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

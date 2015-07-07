@@ -6,6 +6,9 @@ using Nop.Core.Infrastructure;
 using Nop.Core.Infrastructure.DependencyManagement;
 using Orbio.Core;
 using Orbio.Services.Security;
+using System;
+using System.Collections.Generic;
+using System.Reflection;
 using OBS = Orbio.Services;
 namespace Orbio.Web.Framework
 {
@@ -34,6 +37,13 @@ namespace Orbio.Web.Framework
             builder.RegisterType<OBS.Checkout.TransientCartService>().As<OBS.Checkout.ITransientCartService>().InstancePerHttpRequest();
             //added by madhu
             builder.RegisterType<OBS.Taxes.TaxCalculationService>().As<OBS.Taxes.ITaxCalculationService>().InstancePerHttpRequest();
+            //added by sankar
+            builder.RegisterType<OBS.Helpers.DateTimeHelper>().As<OBS.Helpers.IDateTimeHelper>().InstancePerHttpRequest();
+            //added by sankar
+            builder.RegisterType<OBS.Admin.Orders.OrderReportService>().As<OBS.Admin.Orders.IOrderReportService>().InstancePerHttpRequest();
+            //added by sankar
+            builder.RegisterType<OBS.Admin.Customers.CustomerReportService>().As<OBS.Admin.Customers.ICustomerReportService>().InstancePerHttpRequest();
+
         }
 
         public int Order
@@ -66,14 +76,15 @@ namespace Orbio.Web.Framework
     //        return RegistrationBuilder
     //            .ForDelegate((c, p) =>
     //            {
-    //                var currentStoreId = c.Resolve<IStoreContext>().CurrentStore.Id;
+    //                //var currentStoreId = c.Resolve<IStoreContext>().CurrentStore.Id;
     //                //uncomment the code below if you want load settings per store only when you have two stores installed.
     //                //var currentStoreId = c.Resolve<IStoreService>().GetAllStores().Count > 1
     //                //    c.Resolve<IStoreContext>().CurrentStore.Id : 0;
 
     //                //although it's better to connect to your database and execute the following SQL:
     //                //DELETE FROM [Setting] WHERE [StoreId] > 0
-    //                return c.Resolve<ISettingService>().LoadSetting<TSettings>(currentStoreId);
+    //                //return c.Resolve<ISettingService>().LoadSetting<TSettings>(currentStoreId);
+    //                return c.Resolve<IStoreContext>().CurrentStore.Id;
     //            })
     //            .InstancePerHttpRequest()
     //            .CreateRegistration();
@@ -81,5 +92,6 @@ namespace Orbio.Web.Framework
 
     //    public bool IsAdapterForIndividualComponents { get { return false; } }
     //}
+
 
 }

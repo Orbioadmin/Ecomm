@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8076e97ea71a457fab33e39b18c4ff34" Name="Diagram1" ZoomLevel="33">
+        <EntityTypeShape EntityType="OrbioAdminModel.Customer" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrbioAdminModel.Order" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <AssociationConnector Association="OrbioAdminModel.Order_Customer" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="OrbioAdminModel.CustomerRole" Width="1.5" PointX="3" PointY="14.25" />
+        <EntityTypeShape EntityType="OrbioAdminModel.OrderItem" Width="1.5" PointX="5.25" PointY="4.875" />
+        <AssociationConnector Association="OrbioAdminModel.OrderItem_Order" />
+        <AssociationConnector Association="OrbioAdminModel.Customer_CustomerRole_Mapping" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

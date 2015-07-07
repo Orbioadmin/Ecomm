@@ -1,5 +1,5 @@
 ﻿
-namespace Orbio.Services.Payments
+namespace Orbio.Core.Payments
 {
     /// <summary>
     /// Represents a payment status enumeration

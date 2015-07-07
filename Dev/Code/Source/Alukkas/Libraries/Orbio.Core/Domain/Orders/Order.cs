@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Orbio.Core.Domain.Discounts;
 using Orbio.Core.Domain.Shipping;
-using Orbio.Services.Payments;
+using Orbio.Core.Payments;
 
 namespace Orbio.Core.Domain.Orders
 {
