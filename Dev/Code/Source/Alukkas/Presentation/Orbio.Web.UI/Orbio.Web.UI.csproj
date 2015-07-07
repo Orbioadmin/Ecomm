@@ -200,7 +200,12 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\BundleConfig.cs" />
+    <Compile Include="Areas\Admin\Controllers\CustomerController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
+    <Compile Include="Areas\Admin\Models\Customers\RegisteredCustomerReportLineModel.cs" />
+    <Compile Include="Areas\Admin\Models\Orders\OrderAverageReportLineSummaryModel.cs" />
+    <Compile Include="Areas\Admin\Models\Orders\OrderIncompleteReportLineModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CartBaseController.cs" />
     <Compile Include="Controllers\CatalogController.cs" />
@@ -573,9 +578,7 @@
     <Content Include="Views\Catalog\Product.cshtml" />
     <Content Include="Views\ShoppingCart\_orderTotalSummary.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Areas\Admin\Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
@@ -659,7 +662,6 @@
     <Content Include="Content\fonts\rupeefont.ttf" />
     <Content Include="Content\fonts\WebRupee.V2.0.eot" />
     <Content Include="Content\fonts\WebRupee.V2.0.ttf" />
-    <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Content\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Areas\Admin\Content\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Areas\Admin\Content\fonts\glyphicons-halflings-regular.woff" />
@@ -749,6 +751,10 @@
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\OrderAverageReport.cshtml" />
+    <Content Include="Areas\Admin\Views\Web.config" />
+    <Content Include="Areas\Admin\Views\Order\OrderIncompleteReport.cshtml" />
+    <Content Include="Areas\Admin\Views\Customer\ReportRegisteredCustomers.cshtml" />
     <None Include="Properties\PublishProfiles\Alukkas.pubxml" />
     <Content Include="Views\Catalog\Search.cshtml" />
     <Content Include="Views\Catalog\_productAttribute.cshtml" />
