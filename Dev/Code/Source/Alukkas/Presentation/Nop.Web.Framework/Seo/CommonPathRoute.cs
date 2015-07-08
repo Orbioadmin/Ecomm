@@ -85,7 +85,7 @@ namespace Nop.Web.Framework.Seo
             {
 
                 //var urlRecordService = EngineContext.Current.Resolve<IUrlRecordService>();
-                var slug = data.Values["generic_se_name"] as string;
+                var slug = data.Values["SeName"] as string;
                 //var urlRecord = urlRecordService.GetBySlug(slug);
                 //if (urlRecord == null)
                 //{

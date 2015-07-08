@@ -10,10 +10,10 @@ namespace Orbio.Web.UI.Infrastructure
         public void RegisterRoutes(RouteCollection routes)
         {
             //generic URLs
-            routes.MapCommonPathRoute("GenericUrl",
-                                       "{generic_se_name}",
-                                       new { controller = "Common", action = "GenericUrl" },
-                                       new[] { "Nop.Web.Controllers" });
+            //routes.MapCommonPathRoute("GenericUrl",
+            //                           "{generic_se_name}",
+            //                           new { controller = "Common", action = "GenericUrl" },
+            //                           new[] { "Orbio.Web.UI.Controllers" });
 
             ////define this routes to use in UI views (in case if you want to customize some of them later)
             //routes.MapLocalizedRoute("Product",
