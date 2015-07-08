@@ -225,7 +225,7 @@ namespace Nop.Web.Framework.Seo
             }
             else if(data!=null)
             {
-                path = data.Values["generic_se_name"] as string;
+                path = data.Values["SeName"] as string;
 
                 switch (path)
                 {
