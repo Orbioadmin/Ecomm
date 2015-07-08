@@ -37,15 +37,15 @@ BEGIN
 	Id INT
  );
  
- SELECT @categoryId= CategoryId FROM Product_Category_Mapping PCM
-	INNER JOIN Category C ON PCM.CategoryId = C.Id  where ProductId = @productId
-	AND C.Deleted = 0 AND C.Published = 1
+ --SELECT @categoryId= CategoryId FROM Product_Category_Mapping PCM
+	--INNER JOIN Category C ON PCM.CategoryId = C.Id  where ProductId = @productId
+	--AND C.Deleted = 0 AND C.Published = 1
 
- SELECT @parentCategoryIds = dbo.ufn_GetAllParentCateoryIds(@categoryId,null)
- SET @parentCategoryIds = @parentCategoryIds + CAST(@categoryId as Nvarchar(100))
+ --SELECT @parentCategoryIds = dbo.ufn_GetAllParentCateoryIds(@categoryId,null)
+ --SET @parentCategoryIds = @parentCategoryIds + CAST(@categoryId as Nvarchar(100))
  
   INSERT INTO @CatIds
-  SELECT *  FROM  dbo.nop_splitstring_to_table(@parentCategoryIds , ',')
+  SELECT * from dbo.ufn_GetPreferredCategoryIds(@productId)
   
 SELECT @xmlResult = ( SELECT a.* FROM ( SELECT  
       [Name]

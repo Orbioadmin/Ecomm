@@ -37,15 +37,16 @@ DECLARE @productid INT , @categoryId INT, @parentCategoryIds NVARCHAR(1000)
  SELECT @productid = EntityId FROM UrlRecord where Slug = @slug and EntityName = @entityName
 and IsActive = 1 and LanguageId = 0
 
-SELECT @categoryId= CategoryId FROM Product_Category_Mapping where ProductId = @productId
+--SELECT @categoryId= CategoryId FROM Product_Category_Mapping where ProductId = @productId
 
 
  
- SELECT @parentCategoryIds = dbo.ufn_GetAllParentCateoryIds(@categoryId,null)
- SET @parentCategoryIds = @parentCategoryIds + CAST(@categoryId as Nvarchar(100))
+-- SELECT @parentCategoryIds = dbo.ufn_GetAllParentCateoryIds(@categoryId,null)
+-- SET @parentCategoryIds = @parentCategoryIds + CAST(@categoryId as Nvarchar(100))
  
- SELECT * , IDENTITY(int, 1,1) AS OrderBy
-INTO #temp  FROM  [dbo].[nop_splitstring_to_table](@parentCategoryIds, ',')
+-- SELECT * , IDENTITY(int, 1,1) AS OrderBy
+--INTO #temp  FROM  [dbo].[nop_splitstring_to_table](@parentCategoryIds, ',')
+SELECT * INTO #temp FROM dbo.ufn_GetPreferredCategoryIds(@productid)
 
 DECLARE @currencyCode nvarchar(5) 
  
@@ -57,9 +58,9 @@ DECLARE @currencyCode nvarchar(5)
 	
 
 --WITH XMLNAMESPACES ('http://schemas.datacontract.org/2004/07/Orbio.Core.Domain.Catalog' AS ns)
-SELECT @XmlResult = (SELECT  (SELECT Name, Slug AS SeName from Category INNER JOIN #temp ON Category.Id = #temp.data
+SELECT @XmlResult = (SELECT  (SELECT Name, Slug AS SeName from Category INNER JOIN #temp ON Category.Id = #temp.CategoryId
  LEFT JOIN UrlRecord UR ON Category.Id = UR.EntityId AND UR.IsActive=1
- AND UR.LanguageId = 0 AND EntityName = 'Category' ORDER BY #temp.OrderBy
+ AND UR.LanguageId = 0 AND EntityName = 'Category' 
 FOR XML PATH('Category'), ROOT('BreadCrumbs'), TYPE), product.Id Id,product.Name Name,product.ShortDescription ShortDescription,product.FullDescription 'FullDescription',product.Price Price,Product.GoldCost Gold,Product.StoneCost Stones,Product.MakingCost Making,(SELECT Pic.Id PictureId, PPM.DisplayOrder, Pic.RelativeUrl,Pic.MimeType , Pic.SeoFilename, Pic.IsNew FROM [dbo].[Product]  P INNER JOIN [dbo].[Product_Picture_Mapping] PPM ON PPM.ProductId = P.Id
 INNER JOIN [dbo].[Picture] Pic ON Pic.Id = PPM.PictureId WHERE P.Id = product.Id
 ORDER BY PPM.DisplayOrder FOR XML PATH ('ProductPicture'),ROOT('ProductPictures'), Type),
