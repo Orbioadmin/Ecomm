@@ -123,7 +123,7 @@ namespace Orbio.Core.Domain.Catalog
             {
                 priceCalculator = new SimplePriceCalculator(product);
             }
-            return priceCalculator.FormattedPrice;
+            return priceCalculator.Price;
         }
 
 
@@ -195,7 +195,7 @@ namespace Orbio.Core.Domain.Catalog
     }
 
 
-    public interface IPriceCalculator { decimal FormattedPrice { get; } }
+    public interface IPriceCalculator { decimal Price { get; } }
 
     public class SimplePriceCalculator : IPriceCalculator
     {
@@ -206,7 +206,7 @@ namespace Orbio.Core.Domain.Catalog
             this.product = product;
         }
 
-        public decimal FormattedPrice
+        public decimal Price
         {
             get { return product.Price; }
         }
@@ -255,7 +255,7 @@ namespace Orbio.Core.Domain.Catalog
             this.product = product;
         }
 
-        public decimal FormattedPrice
+        public decimal Price
         {
             get { return product.Price; }
         }

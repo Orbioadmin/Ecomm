@@ -32,11 +32,11 @@
   <ItemGroup>
     <Reference Include="Autofac, Version=3.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\Autofac.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\Alukkas\Ecomm\Dev\Code\Source\Alukkas\Libraries\Orbio.Services\bin\Debug\Autofac.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\EntityFramework.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\Alukkas\Ecomm\Dev\Code\Source\Alukkas\Libraries\Orbio.Services\bin\Debug\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />

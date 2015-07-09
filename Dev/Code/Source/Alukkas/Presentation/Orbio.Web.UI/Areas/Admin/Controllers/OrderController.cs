@@ -49,10 +49,15 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                 return new OrderAverageReportLineSummaryModel()
                 {
                     OrderStatus = x.OrderStatus.ToString(),
+                    CountTodayOrders = x.CountTodayOrders,
                     SumTodayOrders = x.SumTodayOrders.ToString("#,##0.00"), 
-                    SumThisWeekOrders = x.SumThisWeekOrders.ToString("#,##0.00"), 
-                    SumThisMonthOrders = x.SumThisMonthOrders.ToString("#,##0.00"), 
-                    SumThisYearOrders = x.SumThisYearOrders.ToString("#,##0.00"), 
+                    CountThisWeekOrders = x.CountThisWeekOrders,
+                    SumThisWeekOrders = x.SumThisWeekOrders.ToString("#,##0.00"),
+                    CountThisMonthOrders = x.CountThisMonthOrders,
+                    SumThisMonthOrders = x.SumThisMonthOrders.ToString("#,##0.00"),
+                    CountThisYearOrders = x.CountThisYearOrders,
+                    SumThisYearOrders = x.SumThisYearOrders.ToString("#,##0.00"),
+                    CountAllTimeOrders = x.CountAllTimeOrders,
                     SumAllTimeOrders = x.SumAllTimeOrders.ToString("#,##0.00"),
                 };
             }).ToList();

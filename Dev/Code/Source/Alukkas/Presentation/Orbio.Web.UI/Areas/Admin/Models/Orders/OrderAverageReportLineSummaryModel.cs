@@ -8,22 +8,26 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Orders
 {
     public partial class OrderAverageReportLineSummaryModel
     {
-        [Display(Name = "Admin.SalesReport.Average.OrderStatus")]
         public string OrderStatus { get; set; }
 
-        [Display(Name = "Admin.SalesReport.Average.SumTodayOrders")]
+        public int CountTodayOrders { get; set; }
+
         public string SumTodayOrders { get; set; }
 
-        [Display(Name = "Admin.SalesReport.Average.SumThisWeekOrders")]
+        public int CountThisWeekOrders { get; set; }
+
         public string SumThisWeekOrders { get; set; }
 
-        [Display(Name = "Admin.SalesReport.Average.SumThisMonthOrders")]
+        public int CountThisMonthOrders { get; set; }
+
         public string SumThisMonthOrders { get; set; }
 
-        [Display(Name = "Admin.SalesReport.Average.SumThisYearOrders")]
+        public int CountThisYearOrders { get; set; }
+
         public string SumThisYearOrders { get; set; }
 
-        [Display(Name = "Admin.SalesReport.Average.SumAllTimeOrders")]
+        public int CountAllTimeOrders { get; set; }
+
         public string SumAllTimeOrders { get; set; }
     }
 }
