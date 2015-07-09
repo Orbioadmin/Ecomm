@@ -10,7 +10,7 @@ using System.Linq;
 
 namespace Orbio.Web.UI.Models.Orders
 {
-    public class ShoppingCartItemModel : ProductDetailModel, IShoppingCartItem
+    public class ShoppingCartItemModel : ProductDetailModel
     {
         
         public ShoppingCartItemModel()
@@ -36,9 +36,10 @@ namespace Orbio.Web.UI.Models.Orders
             //this.TotalPrice = (Convert.ToDecimal(ProductPrice.Price) * productDetail.Quantity).ToString("#,##0.00");
             var priceCalculationService = EngineContext.Current.Resolve<IPriceCalculationService>();
             //this.ProductPrice.Price = priceCalculationService.GetFinalPrice(this, false, false).ToString("#,##0.00");
-            this.ProductPrice.OldPrice = priceCalculationService.GetUnitPrice(this).ToString("#,##0.00");
+            //this.ProductPrice.OldPrice = priceCalculationService.GetUnitPrice(this);
             this.TotalPrice = priceCalculationService.GetFinalPrice(this, false, true).ToString("#,##0.00");
             this.CartId = productDetail.CartId;
+            
             //if (productDetail.ProductPictures != null && productDetail.ProductPictures.Count > 0)
             //{
             //    var baseUrl = ConfigurationManager.AppSettings["ImageServerBaseUrl"];
@@ -83,7 +84,7 @@ namespace Orbio.Web.UI.Models.Orders
 
             //this.OrderMinimumQuantity = productDetail.OrderMinimumQuantity;
 
-           
+            this.AttributeXml = productDetail.AttributesXml;
             this.IsRemove = false;
         }
         //public int ItemCount { get; set; }
@@ -104,49 +105,49 @@ namespace Orbio.Web.UI.Models.Orders
             }
         }
 
-        decimal IShoppingCartItem.Price
-        {
-            get
-            {
-                return this.ProductPrice.Price;
-            }
-        }
+        //decimal IShoppingCartItem.Price
+        //{
+        //    get
+        //    {
+        //        return this.ProductPrice.Price;
+        //    }
+        //}
 
 
-        IEnumerable<IDiscount> IShoppingCartItem.Discounts
-        {
-            get { return this.Discounts; }
-        }
+        //IEnumerable<IDiscount> IShoppingCartItem.Discounts
+        //{
+        //    get { return this.Discounts; }
+        //}
 
 
-        int IShoppingCartItem.Quantity
-        {
-            get { return Convert.ToInt32(this.SelectedQuantity); }
-        }
+        //int IShoppingCartItem.Quantity
+        //{
+        //    get { return Convert.ToInt32(this.SelectedQuantity); }
+        //}
 
 
-        IEnumerable<decimal> IShoppingCartItem.ProductVariantPriceAdjustments
-        {
-            get
-            {
-                return (from pva in this.ProductVariantAttributes
-                        from pvav in pva.Values
-                        select Convert.ToDecimal(pvav.PriceAdjustment)).ToList();
-            }
-        }
+        //IEnumerable<decimal> IShoppingCartItem.ProductVariantPriceAdjustments
+        //{
+        //    get
+        //    {
+        //        return (from pva in this.ProductVariantAttributes
+        //                from pvav in pva.Values
+        //                select Convert.ToDecimal(pvav.PriceAdjustment)).ToList();
+        //    }
+        //}
 
-        int IShoppingCartItem.TaxCategoryId
-        {
-            get { return this.TaxCategoryId; }
-        }
+        //int IShoppingCartItem.TaxCategoryId
+        //{
+        //    get { return this.TaxCategoryId; }
+        //}
 
-        decimal IShoppingCartItem.FinalPrice
-        {
-            get
-            {
-                var priceCalculationService = EngineContext.Current.Resolve<IPriceCalculationService>();
-                return priceCalculationService.GetFinalPrice(this, true, true);
-            }
-        }
+        //decimal IShoppingCartItem.FinalPrice
+        //{
+        //    get
+        //    {
+        //        var priceCalculationService = EngineContext.Current.Resolve<IPriceCalculationService>();
+        //        return priceCalculationService.GetFinalPrice(this, true, true);
+        //    }
+        //}
     }
 }

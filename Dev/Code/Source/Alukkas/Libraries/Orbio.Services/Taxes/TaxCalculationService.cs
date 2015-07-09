@@ -57,5 +57,36 @@ namespace Orbio.Services.Taxes
 
             return taxAmount;
         }
+
+
+        public decimal CalculateTax(ICart cart, Customer customer, out Dictionary<decimal, decimal> taxRates)
+        {
+            taxRates = new Dictionary<decimal, decimal>();
+            var taxAmount = decimal.Zero;
+            var taxRateCategories = TaxProviderFactory.CreateTaxProvider(customer).GetTaxRate(new CalculateTaxRequest
+            {
+                Customer = customer,
+                TaxCategoryIds =
+                    new List<int>((from sci in cart.ShoppingCartItems
+                                   select sci.TaxCategoryId).ToList().Distinct())
+            });
+            foreach (var item in cart.ShoppingCartItems)
+            {
+
+                if (taxRateCategories.ContainsKey(item.TaxCategoryId))
+                {
+                    taxAmount += item.FinalPrice * (taxRateCategories[item.TaxCategoryId] / 100);
+                    if (taxRates.ContainsKey(taxRateCategories[item.TaxCategoryId]))
+                    {
+                        taxRates[taxRateCategories[item.TaxCategoryId]] = taxRates[taxRateCategories[item.TaxCategoryId]] + item.FinalPrice * (taxRateCategories[item.TaxCategoryId] / 100);
+                    }
+                    else
+                    {
+                        taxRates.Add(taxRateCategories[item.TaxCategoryId], item.FinalPrice * (taxRateCategories[item.TaxCategoryId] / 100));
+                    }
+                }
+            }
+            return taxAmount;
+        }
     }
 }

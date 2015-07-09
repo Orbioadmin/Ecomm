@@ -8,8 +8,11 @@ namespace Orbio.Core.Domain.Catalog.Abstract
         decimal Price { get; }
         int Quantity { get; }
         IEnumerable<IDiscount> Discounts { get; }
-        IEnumerable<decimal> ProductVariantPriceAdjustments { get; }
+        IEnumerable<IProductAttribute> ProductVariantPriceAdjustments { get; }
         int TaxCategoryId { get; }
         decimal FinalPrice { get; }
+        int ProductId { get; }
+        string AttributeXml { get; }        
+        string PriceDetailXml { get; }
     }
 }

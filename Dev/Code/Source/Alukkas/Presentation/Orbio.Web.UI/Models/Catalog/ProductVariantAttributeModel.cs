@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Orbio.Core.Domain.Catalog;
+using Orbio.Core.Domain.Catalog.Abstract;
 
 namespace Orbio.Web.UI.Models.Catalog
 {
-    public partial class ProductVariantAttributeModel 
+    public partial class ProductVariantAttributeModel : IProductAttribute
     {
         public ProductVariantAttributeModel()
         {
@@ -53,5 +54,17 @@ namespace Orbio.Web.UI.Models.Catalog
 
         public IList<ProductVariantAttributeValueModel> Values { get; set; }
 
+
+
+
+        string IProductAttribute.AttributeName
+        {
+            get { return this.TextPrompt; }
+        }
+
+        List<IProductAttributeValue> IProductAttribute.ProductAttributeValues
+        {
+            get { return this.Values.ToList<IProductAttributeValue>(); }
+        }
     }
 }

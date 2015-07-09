@@ -57,7 +57,7 @@ namespace Orbio.Core.Domain.Orders
         /// <summary>
         /// Gets or sets the Total Price
         /// </summary>
-        public decimal TotalPrice { get; set; }
+       // public decimal TotalPrice { get; set; }
 
         /// <summary>
         /// Gets or sets the Total Price

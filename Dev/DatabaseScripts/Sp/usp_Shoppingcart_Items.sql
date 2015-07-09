@@ -233,9 +233,7 @@ ORDER BY PPM.DisplayOrder FOR XML PATH ('ProductPicture'),ROOT('ProductPictures'
    (Select Name,PriceAdjustment,WeightAdjustment,[dbo].[ufn_GetProductPriceDetailsByVarientValue](product.Id,VariantValueId) ,(select value from [dbo].[Setting] where Name = 'Product.PriceUnit') as PriceUnit,
 (select value from [dbo].[Setting] where Name = 'Product.MarketUnitPrice') as MarketUnitPrice,(select Weight from [dbo].[ufn_GetProductPriceDetail](product.Id)) as 'GoldWeight', (select ProductUnit as 'ProductUnit' from [dbo].[ufn_GetProductPriceDetail](product.Id))  as 'ProductUnit' from ufn_GetCartProductAttribute(sc.AttributesXml,product.Id,TextPrompt)  FOR XML PATH('ProductVariantAttributeValue'), ROOT('ProductVariantAttributeValues'), type)
    from ufn_GetCartProductAttributes(sc.AttributesXml,product.Id) 
-   FOR XML PATH('ProductAttributeVariant'), ROOT('ProductAttributeVariants'),type),(
-   Select case when sign(count(PriceAdjustment)) <> 0 then (select PriceAdjustment from ufn_GetCartProductPrice(sc.AttributesXml,product.Id)) else 0 end from ufn_GetCartProductPrice(sc.AttributesXml,product.Id)
-   ) as 'TotalPrice', dbo.ufn_GetProductDiscounts(product.Id)
+   FOR XML PATH('ProductAttributeVariant'), ROOT('ProductAttributeVariants'),type),AttributesXml , dbo.ufn_GetProductDiscounts(product.Id)
 from [dbo].[Product] product 
 inner join ShoppingCartItem sc on sc.ProductId = product.Id 
 Left join [dbo].[DeliveryDate] Delivery_date on product.DeliveryDateId= Delivery_date.Id

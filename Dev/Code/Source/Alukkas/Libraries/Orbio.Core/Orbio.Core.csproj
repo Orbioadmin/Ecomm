@@ -83,6 +83,8 @@
     <Compile Include="Domain\Admin\Orders\OrderAverageReportLineSummary.cs" />
     <Compile Include="Domain\Catalog\Abstract\ICart.cs" />
     <Compile Include="Domain\Catalog\Abstract\IPriceComponent.cs" />
+    <Compile Include="Domain\Catalog\Abstract\IProductAttribute.cs" />
+    <Compile Include="Domain\Catalog\Abstract\IProductAttributeValue.cs" />
     <Compile Include="Domain\Catalog\Abstract\IShoppingCartItem.cs" />
     <Compile Include="Domain\Catalog\AssociatedProduct.cs" />
     <Compile Include="Domain\Catalog\AttributeControlType.cs" />
@@ -92,6 +94,7 @@
     <Compile Include="Domain\Catalog\ManageInventoryMethod.cs" />
     <Compile Include="Domain\Catalog\PriceComponent.cs" />
     <Compile Include="Domain\Catalog\Product.cs" />
+    <Compile Include="Domain\Catalog\ProductAttributeExtension.cs" />
     <Compile Include="Domain\Catalog\ProductAttributeVariant.cs" />
     <Compile Include="Domain\Catalog\ProductComponent.cs" />
     <Compile Include="Domain\Catalog\ProductDetail.cs" />
@@ -132,6 +135,8 @@
     <Compile Include="Domain\Orders\ShoppingCartItem.cs" />
     <Compile Include="Domain\Orders\ShoppingCartType.cs" />
     <Compile Include="Domain\Orders\TransientCart.cs" />
+    <Compile Include="Domain\Orders\TransientCartAttribute.cs" />
+    <Compile Include="Domain\Orders\TransientCartAttributeValue.cs" />
     <Compile Include="Domain\Orders\TransientCartItem.cs" />
     <Compile Include="Domain\Payments\PaymentStatus.cs">
       <SubType>Code</SubType>

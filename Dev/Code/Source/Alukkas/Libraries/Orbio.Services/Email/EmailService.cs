@@ -44,7 +44,7 @@ namespace Orbio.Services.Email
             }
             catch (Exception ex)
             {
-
+                //TODO : need to log the error
             }
             return 0;
         }

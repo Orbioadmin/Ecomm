@@ -101,14 +101,19 @@ namespace Orbio.Core.Domain.Orders
         public decimal? ItemWeight { get; set; }
 
         /// <summary>
-        /// Gets the order
+        /// gets or sets the price component detail xml
         /// </summary>
-        public virtual Order Order { get; set; }
+        public string PriceDetailXml { get; set; }
 
-        /// <summary>
-        /// Gets the product
-        /// </summary>
-        public virtual Product Product { get; set; }
+        ///// <summary>
+        ///// Gets the order
+        ///// </summary>
+        //public virtual Order Order { get; set; }
+
+        ///// <summary>
+        ///// Gets the product
+        ///// </summary>
+        //public virtual Product Product { get; set; }
 
         ///// <summary>
         ///// Gets or sets the associated gift card

@@ -192,6 +192,8 @@ namespace Orbio.Core.Domain.Catalog
 
             return xml;
         }
+
+        
     }
 
 

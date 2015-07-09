@@ -22,8 +22,21 @@ namespace Orbio.Core.Domain.Orders
             this.Discounts.AddRange((from d in cartItem.Discounts
                                      select new Discount { DiscountAmount = d.DiscountAmount, DiscountPercentage=d.DiscountPercentage, 
                                      DiscountTypeId = d.DiscountTypeId, UsePercentage = d.UsePercentage}));
-            this.ProductVariantPriceAdjustments = new List<decimal>();
-            this.ProductVariantPriceAdjustments.AddRange(cartItem.ProductVariantPriceAdjustments);
+            this.Attributes = new List<TransientCartAttribute>();
+            this.Attributes.AddRange((from pva in cartItem.ProductVariantPriceAdjustments
+                                      select new TransientCartAttribute
+                                      {
+                                          AttributeName = pva.AttributeName,
+                                          AttributeValues =
+                                              new List<TransientCartAttributeValue>((from pvav in pva.ProductAttributeValues
+                                                                                     select new TransientCartAttributeValue {  AttributeValue=pvav.AttributeValue,
+                                                                                     PriceAdjustment=pvav.PriceAdjustment}))
+                                      }).ToList());
+            this.TaxCategoryId = cartItem.TaxCategoryId;
+            this.FinalPrice = cartItem.FinalPrice;
+            this.ProductId = cartItem.ProductId;
+            this.AttributeXml = cartItem.AttributeXml;
+            this.PriceDetailXml = cartItem.PriceDetailXml;
         }
 
         public decimal Price
@@ -40,10 +53,16 @@ namespace Orbio.Core.Domain.Orders
 
         public List<Discount> Discounts { get; set; }
 
-        public List<decimal> ProductVariantPriceAdjustments
-        {
-            get;
-            set;
-        }
+        public List<TransientCartAttribute> Attributes { get; set; }
+
+        public int TaxCategoryId { get; set; }
+
+        public decimal FinalPrice { get; set; }
+
+        public int ProductId { get; set; }
+
+        public string AttributeXml { get; set; }
+
+        public string PriceDetailXml { get; set; }
     }
 }

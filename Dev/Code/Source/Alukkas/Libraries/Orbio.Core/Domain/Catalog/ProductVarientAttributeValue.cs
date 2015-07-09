@@ -156,5 +156,7 @@ namespace Orbio.Core.Domain.Catalog
              get;
              set;
          }
+
+        
     }
 }

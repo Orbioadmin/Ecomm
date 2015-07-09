@@ -41,7 +41,7 @@ namespace Orbio.Web.UI.Models.Catalog
             this.GoldWeight = product.GoldWeight;
             this.ProductUnit = product.ProductUnit;
             this.ProductPrice.Price = product.CalculatePrice();// product.Price.ToString("#,##0.00");
-            this.ProductPrice.OldPrice = product.OldPrice.ToString("#,##0.00");
+            this.ProductPrice.OldPrice = product.OldPrice;
             this.ComponentDetails = product.GetComponentDetails();
             this.Discounts = product.Discounts == null ? new List<Discount>() : product.Discounts;
         
@@ -99,7 +99,7 @@ namespace Orbio.Web.UI.Models.Catalog
 
         public partial class ProductPriceModel
         {
-            public string OldPrice { get; set; }
+            public decimal OldPrice { get; set; }
             public decimal Price {get;set;}
             public decimal Discount { get; set; }
             public bool DisableBuyButton { get; set; }

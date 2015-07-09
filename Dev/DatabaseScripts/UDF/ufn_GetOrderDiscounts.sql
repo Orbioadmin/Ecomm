@@ -31,7 +31,7 @@ BEGIN
   DECLARE @couponCode nvarchar(100)
   
  --get coupon discounts also \
- DECLARE @couponDiscount TABLE(
+ DECLARE @couponDiscount TABLE(Id INT,
  [Name] [nvarchar](200) ,
 	[DiscountTypeId] [int] ,
 	[UsePercentage] [bit] ,
@@ -61,7 +61,7 @@ BEGIN
 		IF (@discountId IS NOT NULL AND EXISTS( SELECT DBO.ufn_CheckDiscountLimitation(@discountId,							@customerId,NULL)))
 		BEGIN		
 			INSERT INTO @couponDiscount
-			 SELECT   [Name]
+			 SELECT  Id, [Name]
 			  ,[DiscountTypeId]
 			  ,[UsePercentage]
 			  ,[DiscountPercentage]
@@ -83,7 +83,7 @@ BEGIN
 		END				
 	END
 	 
-	SELECT @xmlResult = (SELECT a.* FROM ( SELECT  
+	SELECT @xmlResult = (SELECT a.* FROM ( SELECT  D.Id,
       [Name]
       ,[DiscountTypeId]
       ,[UsePercentage]

@@ -68,7 +68,10 @@ namespace Orbio.Services.Orders
         {
             //Add pva values
             var pa = 0M;
-            foreach (var pva in cartItem.ProductVariantPriceAdjustments)
+            var pvas = from pva in cartItem.ProductVariantPriceAdjustments
+                       from pvav in pva.ProductAttributeValues
+                       select pvav.PriceAdjustment;
+            foreach (var pva in pvas)
             {
                 pa += pva;
             }
@@ -100,6 +103,43 @@ namespace Orbio.Services.Orders
             return discountAmount;
         }
 
+
+        public decimal GetAllDiscountAmount(ICart cart, out List<int> appliedDiscountIds)
+        {
+            appliedDiscountIds = new List<int>();
+            var discountAmount = 0M;
+            var subTotal = this.GetCartSubTotal(cart, false);
+            foreach (var sci in cart.ShoppingCartItems)
+            {
+                int appliedDiscountId = 0;
+                discountAmount += GetDiscountAmount(sci.Discounts, GetFinalPrice(sci, false, false), out appliedDiscountId) * sci.Quantity;
+                if (appliedDiscountId != 0)
+                {
+                    appliedDiscountIds.Add(appliedDiscountId);
+                }
+            }
+            var orderDiscounts = (from d in cart.Discounts
+                                  where d.RequiresCouponCode == false
+                                  select d).ToList();
+            int appliedOrderDiscountId = 0;
+            discountAmount += GetDiscountAmount(orderDiscounts, subTotal - discountAmount, out appliedOrderDiscountId);
+            if (appliedOrderDiscountId != 0)
+            {
+                appliedDiscountIds.Add(appliedOrderDiscountId);
+            }
+            var coupon = (from d in cart.Discounts
+                          where d.RequiresCouponCode == true
+                          select d).FirstOrDefault();
+
+            if (coupon != null)
+            {                
+                discountAmount += GetDiscountAmount(coupon, subTotal - discountAmount);
+                appliedDiscountIds.Add(coupon.Id);
+            }
+
+            return discountAmount;
+        }
+
         public decimal GetDiscountAmount(IEnumerable<IDiscount> discounts, decimal finalPrice)
         {
             var discountAmount = 0M;
@@ -126,6 +166,34 @@ namespace Orbio.Services.Orders
 
             return maxDiscountAmount;
         }
+        public decimal GetDiscountAmount(IEnumerable<IDiscount> discounts, decimal finalPrice, out int appliedDiscountId)
+        {
+            appliedDiscountId = int.MinValue;
+            var discountAmount = 0M;
+            var maxDiscountAmount = 0M;
+            if (discounts.Any())
+            {
+                foreach (var d in discounts)
+                {
+                    if (d.UsePercentage)
+                    {
+                        discountAmount = (finalPrice * d.DiscountPercentage) / 100;
+                    }
+                    else
+                    {
+                        discountAmount = d.DiscountAmount;
+                    }
+
+                    if (discountAmount > maxDiscountAmount)
+                    {
+                        maxDiscountAmount = discountAmount;
+                        appliedDiscountId = d.Id;
+                    }
+                }
+            }
+
+            return maxDiscountAmount;
+        }
 
         private decimal GetDiscountAmount(IDiscount discount, decimal finalPrice)
         {
@@ -145,6 +213,11 @@ namespace Orbio.Services.Orders
 
             return discountAmount;
         }
+
+
+
+
+
        
     }
 }

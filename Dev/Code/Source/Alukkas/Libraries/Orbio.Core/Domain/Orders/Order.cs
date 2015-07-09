@@ -17,50 +17,54 @@ namespace Orbio.Core.Domain.Orders
     public partial class Order  
     {
 
-        private ICollection<DiscountUsageHistory> _discountUsageHistory;
-      //  private ICollection<GiftCardUsageHistory> _giftCardUsageHistory;
-        private ICollection<OrderNote> _orderNotes;
-        private ICollection<OrderItem> _orderItems;
-      
+      //  private ICollection<DiscountUsageHistory> _discountUsageHistory;
+      ////  private ICollection<GiftCardUsageHistory> _giftCardUsageHistory;
+      //  private ICollection<OrderNote> _orderNotes;
+      //  private ICollection<OrderItem> _orderItems;
 
-        #region Utilities
-
-        protected virtual SortedDictionary<decimal, decimal> ParseTaxRates(string taxRatesStr)
+        public Order()
         {
-            var taxRatesDictionary = new SortedDictionary<decimal, decimal>();
-            if (String.IsNullOrEmpty(taxRatesStr))
-                return taxRatesDictionary;
-
-            string[] lines = taxRatesStr.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
-            foreach (string line in lines)
-            {
-                if (String.IsNullOrEmpty(line.Trim()))
-                    continue;
-
-                string[] taxes = line.Split(new char[] { ':' });
-                if (taxes.Length == 2)
-                {
-                    try
-                    {
-                        decimal taxRate = decimal.Parse(taxes[0].Trim(), CultureInfo.InvariantCulture);
-                        decimal taxValue = decimal.Parse(taxes[1].Trim(), CultureInfo.InvariantCulture);
-                        taxRatesDictionary.Add(taxRate, taxValue);
-                    }
-                    catch (Exception exc)
-                    {
-                        Debug.WriteLine(exc.ToString());
-                    }
-                }
-            }
-
-            //add at least one tax rate (0%)
-            if (taxRatesDictionary.Count == 0)
-                taxRatesDictionary.Add(decimal.Zero, decimal.Zero);
-
-            return taxRatesDictionary;
+            this.DiscountUsagehistory = new List<DiscountUsageHistory>();
+            this.OrderNotes = new List<OrderNote>();
         }
+        //#region Utilities
 
-        #endregion
+        //protected virtual SortedDictionary<decimal, decimal> ParseTaxRates(string taxRatesStr)
+        //{
+        //    var taxRatesDictionary = new SortedDictionary<decimal, decimal>();
+        //    if (String.IsNullOrEmpty(taxRatesStr))
+        //        return taxRatesDictionary;
+
+        //    string[] lines = taxRatesStr.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
+        //    foreach (string line in lines)
+        //    {
+        //        if (String.IsNullOrEmpty(line.Trim()))
+        //            continue;
+
+        //        string[] taxes = line.Split(new char[] { ':' });
+        //        if (taxes.Length == 2)
+        //        {
+        //            try
+        //            {
+        //                decimal taxRate = decimal.Parse(taxes[0].Trim(), CultureInfo.InvariantCulture);
+        //                decimal taxValue = decimal.Parse(taxes[1].Trim(), CultureInfo.InvariantCulture);
+        //                taxRatesDictionary.Add(taxRate, taxValue);
+        //            }
+        //            catch (Exception exc)
+        //            {
+        //                Debug.WriteLine(exc.ToString());
+        //            }
+        //        }
+        //    }
+
+        //    //add at least one tax rate (0%)
+        //    if (taxRatesDictionary.Count == 0)
+        //        taxRatesDictionary.Add(decimal.Zero, decimal.Zero);
+
+        //    return taxRatesDictionary;
+        //}
+
+        //#endregion
 
         #region Properties
 
@@ -329,6 +333,12 @@ namespace Orbio.Core.Domain.Orders
         /// </summary>
         public DateTime CreatedOnUtc { get; set; }
 
+        public List<OrderItem> OrderItems { get; set; }
+
+        public List<DiscountUsageHistory> DiscountUsagehistory { get; set; }
+
+        public List<OrderNote> OrderNotes { get; set; }
+
         #endregion
 
         #region Navigation properties
@@ -353,14 +363,14 @@ namespace Orbio.Core.Domain.Orders
         ///// </summary>
         //public virtual RewardPointsHistory RedeemedRewardPointsEntry { get; set; }
 
-        /// <summary>
-        /// Gets or sets discount usage history
-        /// </summary>
-        public virtual ICollection<DiscountUsageHistory> DiscountUsageHistory
-        {
-            get { return _discountUsageHistory ?? (_discountUsageHistory = new List<DiscountUsageHistory>()); }
-            protected set { _discountUsageHistory = value; }
-        }
+        ///// <summary>
+        ///// Gets or sets discount usage history
+        ///// </summary>
+        //public virtual ICollection<DiscountUsageHistory> DiscountUsageHistory
+        //{
+        //    get { return _discountUsageHistory ?? (_discountUsageHistory = new List<DiscountUsageHistory>()); }
+        //    protected set { _discountUsageHistory = value; }
+        //}
 
         ///// <summary>
         ///// Gets or sets gift card usage history (gift card that were used with this order)
@@ -371,23 +381,23 @@ namespace Orbio.Core.Domain.Orders
         //    protected set { _giftCardUsageHistory = value; }
         //}
 
-        /// <summary>
-        /// Gets or sets order notes
-        /// </summary>
-        public virtual ICollection<OrderNote> OrderNotes
-        {
-            get { return _orderNotes ?? (_orderNotes = new List<OrderNote>()); }
-            protected set { _orderNotes = value; }
-        }
+        ///// <summary>
+        ///// Gets or sets order notes
+        ///// </summary>
+        //public virtual ICollection<OrderNote> OrderNotes
+        //{
+        //    get { return _orderNotes ?? (_orderNotes = new List<OrderNote>()); }
+        //    protected set { _orderNotes = value; }
+        //}
 
-        /// <summary>
-        /// Gets or sets order items
-        /// </summary>
-        public virtual ICollection<OrderItem> OrderItems
-        {
-            get { return _orderItems ?? (_orderItems = new List<OrderItem>()); }
-            protected set { _orderItems = value; }
-        }
+        ///// <summary>
+        ///// Gets or sets order items
+        ///// </summary>
+        //public virtual ICollection<OrderItem> OrderItems
+        //{
+        //    get { return _orderItems ?? (_orderItems = new List<OrderItem>()); }
+        //    protected set { _orderItems = value; }
+        //}
 
         ///// <summary>
         ///// Gets or sets shipments
@@ -462,16 +472,16 @@ namespace Orbio.Core.Domain.Orders
         //    }
         //}
 
-        /// <summary>
-        /// Gets the applied tax rates
-        /// </summary>
-        public SortedDictionary<decimal, decimal> TaxRatesDictionary
-        {
-            get
-            {
-                return ParseTaxRates(this.TaxRates);
-            }
-        }
+        ///// <summary>
+        ///// Gets the applied tax rates
+        ///// </summary>
+        //public SortedDictionary<decimal, decimal> TaxRatesDictionary
+        //{
+        //    get
+        //    {
+        //        return ParseTaxRates(this.TaxRates);
+        //    }
+        //}
 
         #endregion
     }

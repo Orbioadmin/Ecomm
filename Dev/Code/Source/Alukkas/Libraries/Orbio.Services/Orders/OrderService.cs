@@ -1,15 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using Nop.Core.Domain;
+﻿using Nop.Core.Domain;
 using Nop.Data;
 using Orbio.Core;
+using Orbio.Core.Domain.Catalog;
+using Orbio.Core.Domain.Discounts;
 using Orbio.Core.Domain.Orders;
 using Orbio.Core.Domain.Shipping;
 using Orbio.Core.Utility;
 using Orbio.Services.Payments;
-
+using Orbio.Services.Taxes;
+using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Globalization;
+using System.Linq;
 namespace Orbio.Services.Orders
 {
     public class OrderService : IOrderService
@@ -18,16 +21,21 @@ namespace Orbio.Services.Orders
          private readonly IShoppingCartService shoppingCartService;
          private readonly IWebHelper webHelper;
          private readonly IPriceCalculationService priceCalculationService;
+         private readonly ITaxCalculationService taxCalculationService;
+         private readonly IWorkContext workContext;
         /// <summary>
         /// instantiates Store service type
         /// </summary>
         /// <param name="context">db context</param>
-         public OrderService(IDbContext context, IShoppingCartService shoppingCartService, IWebHelper webHelper, IPriceCalculationService priceCalculationService)
+         public OrderService(IDbContext context, IShoppingCartService shoppingCartService,
+             IWebHelper webHelper, IPriceCalculationService priceCalculationService, ITaxCalculationService taxCalculationService, IWorkContext workContext)
         {
             this.context = context;
             this.shoppingCartService = shoppingCartService;
             this.webHelper = webHelper;
             this.priceCalculationService = priceCalculationService;
+            this.taxCalculationService = taxCalculationService;
+            this.workContext = workContext;
         }
 
          /// <summary>
@@ -61,8 +69,7 @@ namespace Orbio.Services.Orders
                  processOrderRequest.OrderGuid = Guid.NewGuid();
 
              //load and validate customer shopping cart
-             var cart = processOrderRequest.Cart;
-                
+            
                     //load shopping cart
                     //cart = customer.ShoppingCartItems
                     //    .Where(sci => sci.ShoppingCartType == ShoppingCartType.ShoppingCart)
@@ -99,6 +106,14 @@ namespace Orbio.Services.Orders
                 // next tax calculations
                 if (processOrderRequest.Success)
                 {
+                    var customer =  workContext.CurrentCustomer;
+                    var cart = processOrderRequest.Cart;
+                    var appliedDiscounts = new List<int>();
+                    var orderDiscountAmount = priceCalculationService.GetAllDiscountAmount(cart, out appliedDiscounts);
+                    var taxRates = new Dictionary<decimal, decimal>();
+                    var orderTaxTotal = taxCalculationService.CalculateTax(cart,customer, out taxRates);
+                    var orderSubTotal = priceCalculationService.GetCartSubTotal(cart, true);
+             
                     var shippingStatus = ShippingStatus.NotYetShipped;
                     
                     var order = new Order()
@@ -106,22 +121,25 @@ namespace Orbio.Services.Orders
                         StoreId = processOrderRequest.StoreId,
                         OrderGuid = processOrderRequest.OrderGuid,
                         CustomerId = processOrderRequest.CustomerId,
-                        CustomerLanguageId = 1, //hardcoding it for now madhu  m b
+                        CustomerLanguageId = 1, //hardcoding it for now madhu  mb
                        // CustomerTaxDisplayType = TaxDisplayType.IncludingTax,
                         CustomerIp = webHelper.GetCurrentIpAddress(),
-                       //////////// OrderSubtotalInclTax = orderSubTotalInclTax,
-                       //////////// OrderSubtotalExclTax = orderSubTotalExclTax,
-                       //////////// OrderSubTotalDiscountInclTax = orderSubTotalDiscountInclTax,
-                       //////////// OrderSubTotalDiscountExclTax = orderSubTotalDiscountExclTax,
-                       //////////// OrderShippingInclTax = orderShippingTotalInclTax.Value,
-                       //////////// OrderShippingExclTax = orderShippingTotalExclTax.Value,
+                        OrderSubtotalInclTax = orderSubTotal + orderTaxTotal,
+                        OrderSubtotalExclTax = orderSubTotal,
+                        OrderSubTotalDiscountInclTax = orderDiscountAmount, //currently no distinction between ordersubtotal or ordertotal discounts madhu mb
+                        OrderSubTotalDiscountExclTax = orderDiscountAmount,
+                        OrderShippingInclTax = decimal.Zero, //no shipping yet
+                        OrderShippingExclTax = decimal.Zero,
                        //////////// PaymentMethodAdditionalFeeInclTax = paymentAdditionalFeeInclTax,
                        //////////// PaymentMethodAdditionalFeeExclTax = paymentAdditionalFeeExclTax,
-                       //////////// TaxRates = string.Empty, //not calculating now madhu mb
-                       ////////////// OrderTax = orderTaxTotal, //not caluclating now
+                        TaxRates =  (from kv in taxRates 
+                                     select  string.Format("{0}:{1};   ", 
+                                         kv.Key.ToString(CultureInfo.InvariantCulture), kv.Value.ToString(CultureInfo.InvariantCulture))).ToList()
+                                         .Aggregate((t1,t2)=>t1+"," + t2),
+                        OrderTax = orderTaxTotal, //not caluclating now
                        //////////// OrderTotal = orderTotal.Value,
                         RefundedAmount = decimal.Zero,
-                       // OrderDiscount = orderDiscountAmount, //need to implement discounts
+                        OrderDiscount = orderDiscountAmount, //need to implement discounts
                        // CheckoutAttributeDescription = checkoutAttributeDescription,
                        // CheckoutAttributesXml = checkoutAttributesXml,
                        // CustomerCurrencyCode = customerCurrencyCode,
@@ -153,6 +171,72 @@ namespace Orbio.Services.Orders
                        // VatNumber = vatNumber,
                         CreatedOnUtc = DateTime.UtcNow
                     };
+
+                    foreach (var sci in cart.ShoppingCartItems)
+                    {
+                        //prices
+                        //decimal taxRate = decimal.Zero;
+                        decimal scUnitPrice = priceCalculationService.GetFinalPrice(sci, true, false);
+                        decimal scSubTotal = priceCalculationService.GetFinalPrice(sci, true, true);
+                        decimal sciUnitTaxAmount = taxCalculationService.CalculateTax(scUnitPrice, sci.TaxCategoryId, customer);
+                        var sciSubTotalTaxAmount =  taxCalculationService.CalculateTax(scSubTotal, sci.TaxCategoryId, customer);
+                        decimal scUnitPriceInclTax = scUnitPrice + sciUnitTaxAmount;
+                        decimal scUnitPriceExclTax = scUnitPrice;
+                        decimal scSubTotalInclTax = scSubTotal + sciSubTotalTaxAmount;
+                        decimal scSubTotalExclTax = scSubTotal;
+
+                        //discounts
+                        //Discount scDiscount = null;
+                        decimal discountAmount = priceCalculationService.GetDiscountAmount(sci.Discounts, scSubTotal);
+                        decimal discountAmountInclTax = discountAmount; // _taxService.GetProductPrice(sc.Product, discountAmount, true, customer, out taxRate);
+                        decimal discountAmountExclTax = discountAmount; //.GetProductPrice(sc.Product, discountAmount, false, customer, out taxRate);
+                        //if (scDiscount != null && !appliedDiscounts.ContainsDiscount(scDiscount))
+                        //    appliedDiscounts.Add(scDiscount);
+
+                        ////attributes
+                        //string attributeDescription = _productAttributeFormatter.FormatAttributes(sc.Product, sc.AttributesXml, customer);
+
+                       // var itemWeight = _shippingService.GetShoppingCartItemWeight(sc);
+                        var attributeDescription = sci.ProductVariantPriceAdjustments.FormatAttribute();
+                        //save order item
+                        var orderItem = new OrderItem()
+                        {
+                            OrderItemGuid = Guid.NewGuid(),                           
+                            ProductId = sci.ProductId,
+                            UnitPriceInclTax = scUnitPriceInclTax,
+                            UnitPriceExclTax = scUnitPriceExclTax,
+                            PriceInclTax = scSubTotalInclTax,
+                            PriceExclTax = scSubTotalExclTax,
+                            OriginalProductCost = priceCalculationService.GetUnitPrice(sci),
+                            AttributeDescription = attributeDescription,
+                            AttributesXml = sci.AttributeXml,
+                            PriceDetailXml = sci.PriceDetailXml,
+                            Quantity = sci.Quantity,
+                            DiscountAmountInclTax = discountAmountInclTax,
+                            DiscountAmountExclTax = discountAmountExclTax,
+                            DownloadCount = 0,
+                            IsDownloadActivated = false,
+                            LicenseDownloadId = 0,
+                           // ItemWeight = itemWeight,
+                        };
+                        order.OrderItems.Add(orderItem);
+                    }
+
+                    if (appliedDiscounts.Count > 0)
+                    {
+
+                        order.DiscountUsagehistory.AddRange((from duh in appliedDiscounts
+                                                             select new DiscountUsageHistory { DiscountId = duh, CreatedOnUtc=DateTime.UtcNow }).ToList());
+                    }
+
+                    order.OrderNotes.Add(new OrderNote()
+                    {
+                        Note = "Order placed",
+                        DisplayToCustomer = false,
+                        CreatedOnUtc = DateTime.UtcNow
+                    });
+
+                    //Send email to customer and add order note
                 }
 
              return string.Empty;

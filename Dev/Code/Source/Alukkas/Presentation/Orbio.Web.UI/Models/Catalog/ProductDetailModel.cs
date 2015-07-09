@@ -1,18 +1,17 @@
-﻿using Nop.Core.Domain.Catalog;
+﻿using Nop.Core.Infrastructure;
 using Orbio.Core.Domain.Catalog;
+using Orbio.Core.Domain.Catalog.Abstract;
+using Orbio.Core.Domain.Discounts;
+using Orbio.Services.Orders;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Configuration;
 using System.IO;
-using Orbio.Core.Domain.Discounts;
-using Nop.Core.Infrastructure;
-using Orbio.Services.Orders;
+using System.Linq;
 
 namespace Orbio.Web.UI.Models.Catalog
 {
-    public class ProductDetailModel : ProductOverViewModel
+    public class ProductDetailModel : ProductOverViewModel, IShoppingCartItem
     {
         
 
@@ -32,7 +31,8 @@ namespace Orbio.Web.UI.Models.Catalog
             this.ViewPath = productDetail.ViewPath;
             this.ImageRelativeUrl = productDetail.ImageRelativeUrl;
             this.CurrencyCode = productDetail.CurrencyCode;
-            this.ProductPrice.Price = productDetail.Price;
+          
+            //this.ProductPrice.Price = productDetail.Price;
              if (productDetail.BreadCrumbs != null && productDetail.BreadCrumbs.Count > 0)
             {               
                 this.BreadCrumbs = (from c in productDetail.BreadCrumbs
@@ -109,7 +109,7 @@ namespace Orbio.Web.UI.Models.Catalog
                                                                                                                ColorSquaresRgb = pvv.ColorSquaresRgb,
                                                                                                                Name = pvv.Name,
                                                                                                                PictureUrl = pvv.PictureUrl,
-                                                                                                               PriceAdjustment = pvv.CalculatePrice().ToString(),
+                                                                                                               PriceAdjustment = pvv.CalculatePrice(),
                                                                                                                IsPreSelected=pvv.IsPreSelected,
                                                                                                                DisplayOrder=pvv.DisplayOrder
                                                                                                                //PriceAdjustmentValue =  need TODO: format + or -
@@ -141,8 +141,10 @@ namespace Orbio.Web.UI.Models.Catalog
                                  } ); 
             }
 
+            var priceCalculationService = EngineContext.Current.Resolve<IPriceCalculationService>();
+            this.ProductPrice.OldPrice = priceCalculationService.GetUnitPrice(this);
             
-
+            this.PriceDetailXml = productDetail.GetProductPriceDetailXml();
             //var pvValues = (from pva in this.ProductVariantAttributes
             //                from pvav in pva.Values
             //                select pvav).ToList();
@@ -185,6 +187,54 @@ namespace Orbio.Web.UI.Models.Catalog
 
         public string SelectedQuantity { get; set; }
 
+        public string AttributeXml { get; set; }
+
+        public string PriceDetailXml { get; set; }
+
+
+        decimal IShoppingCartItem.Price
+        {
+            get
+            {
+                return this.ProductPrice.Price;
+            }
+        }
+
+
+        IEnumerable<IDiscount> IShoppingCartItem.Discounts
+        {
+            get { return this.Discounts; }
+        }
+
+
+        int IShoppingCartItem.Quantity
+        {
+            get { return Convert.ToInt32(this.SelectedQuantity); }
+        }
+
+
+        IEnumerable<IProductAttribute> IShoppingCartItem.ProductVariantPriceAdjustments
+        {
+            get
+            {
+                return this.ProductVariantAttributes;
+            }
+        }
+
+        int IShoppingCartItem.TaxCategoryId
+        {
+            get { return this.TaxCategoryId; }
+        }
+
+        decimal IShoppingCartItem.FinalPrice
+        {
+            get
+            {
+                var priceCalculationService = EngineContext.Current.Resolve<IPriceCalculationService>();
+                return priceCalculationService.GetFinalPrice(this, true, true);
+            }
+        }
+
         private static string GetThumbImageFileName(string imageUrl)
         {
             var fileName = imageUrl;
@@ -199,7 +249,27 @@ namespace Orbio.Web.UI.Models.Catalog
             return fileName.Length > 0 ? imageUrl.Replace(fileName, fileName + "_tb") : fileName;
         }
 
-       
 
+
+
+
+        int IShoppingCartItem.ProductId
+        {
+            get { return this.Id; }
+        }
+
+
+        
+
+        string IShoppingCartItem.PriceDetailXml
+        {
+            get { return this.PriceDetailXml; }
+        }
+
+
+        string IShoppingCartItem.AttributeXml
+        {
+            get { return this.AttributeXml; }
+        }
     }
 }

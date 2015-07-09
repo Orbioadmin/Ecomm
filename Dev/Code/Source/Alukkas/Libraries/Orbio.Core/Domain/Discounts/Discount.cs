@@ -12,7 +12,7 @@ namespace Orbio.Core.Domain.Discounts
         //private ICollection<DiscountRequirement> _discountRequirements;
         //private ICollection<Category> _appliedToCategories;
         //private ICollection<Product> _appliedToProducts;
-
+        
         /// <summary>
         /// Gets or sets the name
         /// </summary>
@@ -129,5 +129,11 @@ namespace Orbio.Core.Domain.Discounts
         //    get { return _appliedToProducts ?? (_appliedToProducts = new List<Product>()); }
         //    protected set { _appliedToProducts = value; }
         //}
+
+        public int Id
+        {
+            get;
+            set;
+        }
     }
 }

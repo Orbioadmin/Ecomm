@@ -47,7 +47,7 @@ BEGIN
   INSERT INTO @CatIds
   SELECT * from dbo.ufn_GetPreferredCategoryIds(@productId)
   
-SELECT @xmlResult = ( SELECT a.* FROM ( SELECT  
+SELECT @xmlResult = ( SELECT a.* FROM ( SELECT Id, 
       [Name]
       ,[DiscountTypeId]
       ,[UsePercentage]
@@ -68,7 +68,7 @@ SELECT @xmlResult = ( SELECT a.* FROM ( SELECT
   
   UNION ALL
   
-  SELECT  
+  SELECT  D.Id,
       [Name]
       ,[DiscountTypeId]
       ,[UsePercentage]

@@ -229,6 +229,7 @@
     <Compile Include="Models\Catalog\PictureModel.cs" />
     <Compile Include="Models\Catalog\ProductDetailModel.cs" />
     <Compile Include="Models\Catalog\ProductExtension.cs" />
+    <Compile Include="Models\Catalog\ProductModelExtension.cs" />
     <Compile Include="Models\Catalog\ProductOverViewModel.cs" />
     <Compile Include="Models\Catalog\ProductVariantAttributeModel.cs" />
     <Compile Include="Models\Catalog\ProductVariantAttributeValueModel.cs" />
