@@ -35,10 +35,12 @@ namespace Orbio.Services.Checkout
 
         public int UpdateTransientCart(int id, int customerId, TransientCart cart)
         {
-            return context.ExecuteSqlCommand("dbo.usp_UpdateTransientCart @transientCartId, @customerId, @transientCartXml  ", false, null, new SqlParameter[] { new SqlParameter() { ParameterName = "@transientCartId", Value = id, DbType = System.Data.DbType.Int32 },
-                 new SqlParameter { ParameterName = "@customerId", Value = customerId, DbType = System.Data.DbType.Int32 },
-                 new SqlParameter { ParameterName = "@transientCartXml", Value = Serializer.GenericSerializer<TransientCart>(cart), DbType = System.Data.DbType.Xml }
-                 });
+            var sqlParams = new SqlParameter[] { new SqlParameter { ParameterName = "@customerId", Value = customerId, DbType = System.Data.DbType.Int32 },
+                 new SqlParameter { ParameterName = "@transientCartXml", Value = Serializer.GenericSerializer<TransientCart>(cart), DbType = System.Data.DbType.Xml },
+                  new SqlParameter() { ParameterName = "@transientCartId", Value = id, DbType = System.Data.DbType.Int32, Direction = System.Data.ParameterDirection.InputOutput }
+             };
+             context.ExecuteSqlCommand("dbo.usp_UpdateTransientCart @customerId, @transientCartXml, @transientCartId OUTPUT  ", false, null, sqlParams);
+             return Convert.ToInt32(sqlParams[2].Value);
         }
     }
 }

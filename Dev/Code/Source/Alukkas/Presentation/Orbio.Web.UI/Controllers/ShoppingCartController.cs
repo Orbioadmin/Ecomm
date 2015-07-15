@@ -110,9 +110,14 @@ namespace Orbio.Web.UI.Controllers
         }
 
         [ChildActionOnly]
-        public ActionResult CartSummary()
+        public ActionResult CartSummary(bool? showCartSummary)
         {
             var model = PrepareShoppingCartItemModel();
+            ViewBag.ShowCartSummary = true;
+            if (showCartSummary.HasValue)
+            {
+                ViewBag.ShowCartSummary = showCartSummary.Value;
+            }
             return PartialView(model);
         }
 

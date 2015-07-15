@@ -112,10 +112,10 @@
                 var finalPrice = Convert.ToDecimal(this.Model.ProductPrice.Price) - this.Model.DiscountAmount;
                             }     
                             <p class="price_rate">@this.Model.CurrencyCode.@finalPrice.ToString("#,##0.00")</p>
-                            @*@if (!string.IsNullOrEmpty(this.Model.ProductPrice.OldPrice))
+                            @if (this.Model.ProductPrice.OldPrice != finalPrice)
                                 {
-                                    <s>@this.Model.CurrencyCode.@this.Model.ProductPrice.OldPrice</s>
-                                }*@
+                                    <s>@this.Model.CurrencyCode.@this.Model.ProductPrice.OldPrice.ToString("#,##0.00")</s>
+                                }
 
                         </div>
                     </div>
@@ -326,24 +326,7 @@
 
 </section>
 
-<script type="text/javascript">
-    $(document).ready(function () {
-        var errMsg = $('#tosterMsg');
-        if (errMsg.length > 0 && errMsg.val().length > 0) {
-            var splits = errMsg.val().split(';');
-            for (var i = 0; i < splits.length; i++) {
-                if (splits[i].length > 0) {
-                    ShowError(splits[i]);
-                }
-            }
-        }
 
-        var sucMsg = $('#tosterMsgsuccess');
-        if (sucMsg.length > 0 && sucMsg.val().length > 0) {
-            ShowSuccessMsg(sucMsg.val());
-        }
-    });
-</script>
 
 @*<script src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
     <<<<<<< HEAD

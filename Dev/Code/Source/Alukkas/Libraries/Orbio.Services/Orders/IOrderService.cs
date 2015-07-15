@@ -7,6 +7,6 @@ namespace Orbio.Services.Orders
     public partial interface IOrderService
     {
         List<OrderSummary> GetOrderDetails(int curCustomerId);
-        string PlaceOrder(ProcessOrderRequest processPaymentRequest);
+        string PlaceOrder(ProcessOrderRequest processOrderRequest);
     }
 }

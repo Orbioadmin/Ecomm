@@ -24,8 +24,9 @@ namespace Orbio.Core.Domain.Orders
 
         public Order()
         {
-            this.DiscountUsagehistory = new List<DiscountUsageHistory>();
+            this.DiscountUsageHistory = new List<DiscountUsageHistory>();
             this.OrderNotes = new List<OrderNote>();
+            this.OrderItems = new List<OrderItem>();
         }
         //#region Utilities
 
@@ -335,7 +336,7 @@ namespace Orbio.Core.Domain.Orders
 
         public List<OrderItem> OrderItems { get; set; }
 
-        public List<DiscountUsageHistory> DiscountUsagehistory { get; set; }
+        public List<DiscountUsageHistory> DiscountUsageHistory { get; set; }
 
         public List<OrderNote> OrderNotes { get; set; }
 

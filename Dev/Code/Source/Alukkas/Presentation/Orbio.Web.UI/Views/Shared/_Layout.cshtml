@@ -231,7 +231,24 @@
             @Scripts.Render("~/bundles/jqueryui")
             @RenderSection("scripts", required: false)
 
+            <script type="text/javascript">
+    $(document).ready(function () {
+        var errMsg = $('#tosterMsg');
+        if (errMsg.length > 0 && errMsg.val().length > 0) {
+            var splits = errMsg.val().split(';');
+            for (var i = 0; i < splits.length; i++) {
+                if (splits[i].length > 0) {
+                    ShowError(splits[i]);
+                }
+            }
+        }
 
+        var sucMsg = $('#tosterMsgsuccess');
+        if (sucMsg.length > 0 && sucMsg.val().length > 0) {
+            ShowSuccessMsg(sucMsg.val());
+        }
+    });
+</script>
             @section scripts {
 
             }

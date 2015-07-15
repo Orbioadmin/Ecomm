@@ -64,5 +64,7 @@ namespace Orbio.Core.Domain.Orders
         public string AttributeXml { get; set; }
 
         public string PriceDetailXml { get; set; }
+
+ 
     }
 }

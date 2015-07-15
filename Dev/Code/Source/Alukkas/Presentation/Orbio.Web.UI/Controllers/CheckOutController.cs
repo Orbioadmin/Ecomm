@@ -1,12 +1,19 @@
 ﻿using Nop.Core.Infrastructure;
 using Orbio.Core;
+using Orbio.Core.Domain.Orders;
 using Orbio.Services.Checkout;
 using Orbio.Services.Common;
 using Orbio.Services.Orders;
+using Orbio.Services.Payments;
 using Orbio.Web.UI.Filters;
 using Orbio.Web.UI.Models.CheckOut;
+using System.Collections.Generic;
 using System.Web.Mvc;
-
+using System.Linq;
+using System.Web.Routing;
+using Orbio.Web.UI.Models.Orders;
+using Orbio.Core.Domain.Catalog.Abstract;
+using Orbio.Core.Payments;
 namespace Orbio.Web.UI.Controllers
 {
     public class CheckOutController : CartBaseController
@@ -14,17 +21,20 @@ namespace Orbio.Web.UI.Controllers
         //private readonly IShoppingCartService shoppingCartService;
         
         private readonly ICheckoutService checkoutService;
-
+        private readonly IOrderService orderService;
         private readonly IPriceCalculationService priceCalculationService;
-        //
+        private readonly ITransientCartService transientCartService;
+         //
         // GET: /CheckOut/
         public CheckOutController(ICheckoutService checkoutService, IShoppingCartService shoppingCartService, IPriceCalculationService priceCalculationService,
-            IWorkContext workContext, IStoreContext storeContext)
+            IWorkContext workContext, IStoreContext storeContext, ITransientCartService transientCartService, IOrderService orderService)
             : base(shoppingCartService, workContext, storeContext, EngineContext.Current.Resolve<IGenericAttributeService>())
         {
             this.checkoutService = checkoutService;
            // this.shoppingCartService = shoppingCartService;
             this.priceCalculationService = priceCalculationService;
+            this.transientCartService = transientCartService;
+            this.orderService = orderService;
         }
 
         [LoginRequired]
@@ -35,6 +45,15 @@ namespace Orbio.Web.UI.Controllers
             //ShoppingCartType carttype = ShoppingCartType.ShoppingCart;
             PrepareShoppingCartItemModel();
             var address = new AddressModel();
+            if (TempData.ContainsKey("ThankYou"))
+            {
+                ViewBag.ThankYou = TempData["ThankYou"];
+                TempData.Remove("ThankYou");
+            }
+            else
+            {
+                ViewBag.ThankYou = false;
+            }
             return View(address);
 
         }
@@ -42,6 +61,15 @@ namespace Orbio.Web.UI.Controllers
          [LoginRequired]
         public ActionResult Address()
         {
+            if (TempData.ContainsKey("ThankYou"))
+            {
+                ViewBag.ThankYou = TempData["ThankYou"];
+                TempData.Remove("ThankYou");
+            }
+            else
+            {
+                ViewBag.ThankYou = false;
+            }
             var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
             var customer = workContext.CurrentCustomer;
             //ShoppingCartType carttype = ShoppingCartType.ShoppingCart;
@@ -150,6 +178,44 @@ namespace Orbio.Web.UI.Controllers
             model.ShipPhone, model.ShipAddress, model.ShipCity, model.ShipPincode,model.ShipState, model.ShipCountry);
 
             return Json("Success");
+        }
+
+        
+
+        public ActionResult SubmitOrder(int transientCartId)
+        {
+            var customer = workContext.CurrentCustomer;
+            var cart = transientCartService.GetTransientCart(transientCartId, customer.Id);
+            var processRequest = new ProcessOrderRequest()
+            {
+                StoreId = storeContext.CurrentStore.Id,
+                CustomerId = workContext.CurrentCustomer.Id
+            };
+            processRequest.PaymentMethodSystemName = "Payments.CashOnDelivery";
+            processRequest.NewPaymentStatus = PaymentStatus.Pending; //Hardcoding it for now assuming only COD
+            processRequest.Cart = cart.ConvertToCartModel();
+            //do payment and set Success = true
+            processRequest.Success = true;             
+            var result = orderService.PlaceOrder(processRequest);
+            if (!TempData.ContainsKey("ThankYou"))
+            {
+                TempData.Add("ThankYou", true);
+            }
+            return RedirectToAction("Index", "CheckOut");
+        }
+
+        public ActionResult PayOrder()
+        {
+            
+            var cartModel = PrepareShoppingCartItemModel();
+            var transientCartId = transientCartService.UpdateTransientCart(0, workContext.CurrentCustomer.Id, new TransientCart
+            {
+                Discounts = cartModel.Discounts,
+                ShoppingCartItems = (from sci in cartModel.ShoppingCartItems 
+                                         select new TransientCartItem(sci)).ToList()
+            });
+
+            return RedirectToAction("SubmitOrder", "CheckOut", new RouteValueDictionary { { "transientCartId" , transientCartId} });
         }
 
         //private void PrepareShoppingCartItemModel(int customerId, ShoppingCartType cartType)

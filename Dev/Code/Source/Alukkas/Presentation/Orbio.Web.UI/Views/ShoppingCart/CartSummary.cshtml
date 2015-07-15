@@ -1,7 +1,9 @@
 ﻿@model Orbio.Web.UI.Models.Orders.CartModel
 
 @{
+    if( ViewBag.ShowCartSummary == true){
     Html.RenderPartial("Summary", this.Model.ShoppingCartItems);
+    }
     Html.RenderPartial("_orderTotalSummary", Model, new ViewDataDictionary() { { "Type", "CheckOut" }, { "Currencycode", ViewBag.Currencycode } });
 }
  <!-- Order Summary -->

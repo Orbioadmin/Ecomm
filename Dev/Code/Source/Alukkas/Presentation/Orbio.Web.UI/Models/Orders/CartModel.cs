@@ -7,6 +7,7 @@ using Orbio.Services.Orders;
 using Nop.Core.Infrastructure;
 using Orbio.Services.Taxes;
 using Orbio.Core;
+using Orbio.Web.UI.Models.Catalog;
 
 namespace Orbio.Web.UI.Models.Orders
 {
@@ -45,7 +46,9 @@ namespace Orbio.Web.UI.Models.Orders
              }
          }
 
-         public List<ShoppingCartItemModel> ShoppingCartItems { get; private set; }
+        
+
+         public List<ShoppingCartItemModel> ShoppingCartItems { get;  set; }
 
          public List<Discount> Discounts { get; set; }
 

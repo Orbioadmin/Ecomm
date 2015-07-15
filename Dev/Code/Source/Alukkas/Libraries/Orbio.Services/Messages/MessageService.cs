@@ -14,6 +14,7 @@ using System.Data.SqlClient;
 using Orbio.Core.Domain.Catalog;
 using System.Data;
 using System.Configuration;
+using Orbio.Core.Domain.Orders;
 
 namespace Orbio.Services.Messages
 {
@@ -205,6 +206,22 @@ namespace Orbio.Services.Messages
                Sent.Body = bodyReplaced;
 
                return Sent;
+        }
+
+
+        public int SendNewOrderNotification(Customer customer,  Order order)
+        {
+
+            //TODO : sent order email
+
+            return 1;
+        }
+
+
+        public int SendQuantityBelowStoreOwnerNotification(string productIds)
+        {
+            //TODO: sent low stock email
+            return 1;
         }
     }
 }

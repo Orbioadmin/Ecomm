@@ -28,26 +28,28 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE PROCEDURE [dbo].[usp_UpdateTransientCart]
-	 @transientCartId int,
 	 @customerId int,
-	 @transientCartXml xml	 
+	 @transientCartXml xml,
+	 @transientCartId int output
+	   
 AS
 BEGIN
-	DECLARE @Id int =  @transientCartId
+	 
 	
-	IF EXISTS(SELECT 1 FROM TransientCart WHERE Id=@transientCartId AND CustomerId= @customerId)
+	IF EXISTS(SELECT 1 FROM TransientCart WHERE  CustomerId= @customerId)
 	BEGIN
 		UPDATE dbo.TransientCart SET TransientCartXml = @transientCartXml , ModifiedDate = GETDATE()
-		WHERE Id = @transientCartId AND CustomerId= @customerId
+		WHERE   CustomerId= @customerId
+		SELECT @transientCartId = Id from TransientCart	WHERE CustomerId = @customerId
 	END
-	ELSE
+	ELSE IF(@transientCartId =0)
 	BEGIN
 		INSERT INTO dbo.TransientCart(CustomerId,TransientCartXml)
 		VALUES(@customerId, @transientCartXml)
 		SET @transientCartId = SCOPE_IDENTITY()
 	END
 	
-	RETURN @Id
+	RETURN @transientCartId
 END
 
 

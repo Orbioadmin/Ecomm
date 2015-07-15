@@ -213,7 +213,9 @@
                     <button id="activate-step-3" class="Proceed_pay">PLACE ORDER</button>
                 </div>
                 <div class="col-md-4 col-sm-4">
-                    <div class="well">
+                    <!-- Order Summary -->
+                    @Html.Action("CartSummary", "ShoppingCart",  new RouteValueDictionary { { "showCartSummary", false } })
+                  @*  <div class="well">
 
                         <div class="cart_total">
                             <h1 class="order_sum">ORDER SUMMARY</h1>
@@ -230,7 +232,7 @@
                                 <dd class="cart_total">@ViewBag.Currencycode.@ViewBag.subtotal</dd>
                             </dl>
                         </div>
-                    </div>
+                    </div>*@
 
 
 
@@ -245,7 +247,7 @@
                     <div class="col-md-12">
                         <div class="Thank_step">
                             <h1>THANK YOU FOR YOUR ORDER !!</h1>
-                            <p>Order Number : <span>234587</span></p>
+                            @*<p>Order Number : <span>234587</span></p>*@
                             <p>Your order has been confirmed and you will get a confirmation email shortly.</p>
                         </div>
                     </div>
@@ -308,7 +310,15 @@
 
             $('ul.setup-panel li.active a').trigger('click');
 
-
+            var fromThankYou = @(ViewBag.ThankYou == true?"true;":"false;") 
+            if (fromThankYou) {
+                $('ul.setup-panel li:eq(1)').removeClass('disabled');
+                $('ul.setup-panel li a[href="#step-2"]').trigger('click');
+                $(this).remove();
+                $('ul.setup-panel li:eq(2)').removeClass('disabled');
+                $('ul.setup-panel li a[href="#step-3"]').trigger('click');
+                $(this).remove();
+            }
             $('#activate-step-2').on('click', function (e) {
                 if (($("#ShipFirstName").val() == "") || ($("#ShipLastName").val() == "") || ($("#ShipPhone").val() == "" || $("#ShipPhone").val().length != 10)
                     || ($("#ShipAddress").val() == "") || ($("#ShipCity").val() == "") || ($("#ShipPincode").val() == "")
@@ -394,9 +404,19 @@
 
 
             $('#activate-step-3').on('click', function (e) {
-                $('ul.setup-panel li:eq(2)').removeClass('disabled');
-                $('ul.setup-panel li a[href="#step-3"]').trigger('click');
-                $(this).remove();
+                //$('ul.setup-panel li:eq(2)').removeClass('disabled');
+                //$('ul.setup-panel li a[href="#step-3"]').trigger('click');
+                //$(this).remove();
+                window.location.href = '@Url.Action("PayOrder", "CheckOut")';
+                @*var url = '@Url.Action("PayOrder", "CheckOut")';
+                $.post(url, null, function (response) {
+                    if (response != null && response == "Success") {
+                       
+                    }
+                    else {
+                        ShowError(response);
+                    }
+                })*@
             })
         });
 

@@ -37,7 +37,7 @@ BEGIN
 	C.value('(IsRemove)[1]','bit') AS [IsRemove]
     INTO #temptable
     FROM @list.nodes('/ArrayOfShoppingCartItem/ShoppingCartItem') as T(C)
-	select * from #temptable
+
 
 	update sc set Quantity = t.Quantity
 		from [dbo].[ShoppingCartItem] sc

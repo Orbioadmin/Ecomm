@@ -113,7 +113,7 @@ namespace Orbio.Services.Orders
             {
                 int appliedDiscountId = 0;
                 discountAmount += GetDiscountAmount(sci.Discounts, GetFinalPrice(sci, false, false), out appliedDiscountId) * sci.Quantity;
-                if (appliedDiscountId != 0)
+                if (appliedDiscountId != int.MinValue)
                 {
                     appliedDiscountIds.Add(appliedDiscountId);
                 }
@@ -123,7 +123,7 @@ namespace Orbio.Services.Orders
                                   select d).ToList();
             int appliedOrderDiscountId = 0;
             discountAmount += GetDiscountAmount(orderDiscounts, subTotal - discountAmount, out appliedOrderDiscountId);
-            if (appliedOrderDiscountId != 0)
+            if (appliedOrderDiscountId != int.MinValue)
             {
                 appliedDiscountIds.Add(appliedOrderDiscountId);
             }
@@ -175,6 +175,7 @@ namespace Orbio.Services.Orders
             {
                 foreach (var d in discounts)
                 {
+                    appliedDiscountId = d.Id;
                     if (d.UsePercentage)
                     {
                         discountAmount = (finalPrice * d.DiscountPercentage) / 100;

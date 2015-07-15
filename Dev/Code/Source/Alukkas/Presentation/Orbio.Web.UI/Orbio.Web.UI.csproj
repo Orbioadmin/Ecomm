@@ -247,6 +247,7 @@
     <Compile Include="Models\Customer\PasswordRecoveryModel.cs" />
     <Compile Include="Models\Home\ContactModel.cs" />
     <Compile Include="Models\Home\PriceBarModel.cs" />
+    <Compile Include="Models\Orders\CartExtension.cs" />
     <Compile Include="Models\Orders\CartHeaderModel.cs" />
     <Compile Include="Models\Orders\OrderDetailsModel.cs" />
     <Compile Include="Models\Orders\OrderSummaryModel.cs" />

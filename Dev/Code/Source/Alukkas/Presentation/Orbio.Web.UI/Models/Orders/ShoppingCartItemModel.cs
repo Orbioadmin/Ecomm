@@ -18,6 +18,9 @@ namespace Orbio.Web.UI.Models.Orders
             //this.items = new List<ShoppingCartItemModel>();
            
         }
+
+       
+
         public ShoppingCartItemModel(ShoppingCartItem productDetail)
             : base(productDetail)
         {

@@ -20,6 +20,8 @@ namespace Orbio.Web.UI.Models.Catalog
             this.ProductVariantAttributes = new List<ProductVariantAttributeModel>();
             this.SpecificationAttributes = new List<SpecificationAttribute>();
         }
+
+       
         public ProductDetailModel(ProductDetail productDetail) : base(productDetail)  
         {
            
@@ -160,7 +162,7 @@ namespace Orbio.Web.UI.Models.Catalog
             //this.ProductPrice.Price = (priceAdjustment + productDetail.Price).ToString("#,##0.00");
 
         }
-        public List<ProductVariantAttributeModel> ProductVariantAttributes { get; private set; }
+        public List<ProductVariantAttributeModel> ProductVariantAttributes { get;  set; }
 
         public List<SpecificationAttribute> SpecificationAttributes { get; private set; }
 

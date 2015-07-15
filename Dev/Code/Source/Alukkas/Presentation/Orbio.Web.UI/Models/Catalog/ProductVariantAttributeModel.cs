@@ -15,6 +15,8 @@ namespace Orbio.Web.UI.Models.Catalog
             Values = new List<ProductVariantAttributeValueModel>();
         }
 
+       
+
         public int Id { get; set; }
 
         public int ProductAttributeId { get; set; }

@@ -1,5 +1,6 @@
 ﻿using Orbio.Core.Domain.Catalog;
 using Orbio.Core.Domain.Customers;
+using Orbio.Core.Domain.Orders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +17,7 @@ namespace Orbio.Services.Messages
         int SendCustomerPasswordRecoveryMessage(Customer customer);
         int SendCustomerWelcomeMessage(Customer customer);
         int SendCustomerEmailFrendMessage(Customer customer,ProductDetail product, string email,string message,string name,string url);
+        int SendNewOrderNotification(Customer customer, Order order);
+        int SendQuantityBelowStoreOwnerNotification(string productIds);
     }
 }

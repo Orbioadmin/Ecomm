@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Orbio.Core.Domain.Admin.Orders;
+using Orbio.Core.Payments;
 namespace Orbio.Services.Admin.Orders
 {
     public partial interface IOrderReportService

@@ -380,7 +380,7 @@ namespace Nop.Admin.Models.Catalog
         public AddProductSpecificationAttributeModel AddSpecificationAttributeModel { get; set; }
 
 
-
+        
         //copy product
         public CopyProductModel CopyProductModel { get; set; }
         
@@ -670,7 +670,7 @@ namespace Nop.Admin.Models.Catalog
             public string ViewEditText { get; set; }
             public string ViewEditSizeGuide { get; set; }
             public string ProductPictureUrl { get; set; }
-
+            
            
         }
         public partial class ProductVariantAttributeValueListModel : BaseNopModel

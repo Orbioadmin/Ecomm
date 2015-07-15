@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Orbio.Core.Domain.Orders;
 using Orbio.Core.Domain.Catalog.Abstract;
+using Orbio.Core.Payments;
 
 namespace Orbio.Services.Payments
 {
@@ -16,6 +17,7 @@ namespace Orbio.Services.Payments
             this.CustomValues = new Dictionary<string, object>();
         }
 
+        
         /// <summary>
         /// Gets or sets a store identifier
         /// </summary>
@@ -126,5 +128,10 @@ namespace Orbio.Services.Payments
         /// </summary>
         //public List<ShoppingCartItemModel> ShoppingCartItems { get; set; }
         public ICart Cart { get; set; }
+
+        /// <summary>
+        /// Gets or sets a payment status after processing
+        /// </summary>
+        public PaymentStatus NewPaymentStatus { get; set; }
     }
 }
