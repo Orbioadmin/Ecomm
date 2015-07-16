@@ -158,16 +158,16 @@ namespace Orbio.Web.UI.Controllers
         public ActionResult CategoryPaging(string seName, string spec, string keyWord, int? pageNumber)
         {
             int pageSize = (ConfigurationManager.AppSettings["CatelogProductsPageSize"].ToString() != "") ? Convert.ToInt32(ConfigurationManager.AppSettings["CatelogProductsPageSize"]) : 10;
-            if (seName != "Search")
-            {
+            //if (seName != "Search")
+            //{
                 var model = PrepareCategoryProductModel(seName, spec, keyWord, pageNumber, pageSize);
                 return PartialView("_CategoryProducts", model);
-            }
-            else
-            {
-                var model = PrepareCategoryProductModelBySearch(seName, spec, keyWord, pageNumber, pageSize);
-                return PartialView("_CategoryProductBySearch", model);
-            }
+            //}
+            //else
+            //{
+            //    var model = PrepareCategoryProductModelBySearch(seName, spec, keyWord, pageNumber, pageSize);
+                //return PartialView("_CategoryProductBySearch", model);
+            //}
         }
 
         [ChildActionOnly]
