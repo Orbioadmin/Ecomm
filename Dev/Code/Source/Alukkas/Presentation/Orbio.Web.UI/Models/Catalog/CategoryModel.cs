@@ -34,7 +34,7 @@ namespace Orbio.Web.UI.Models.Catalog
             if (categoryProduct.BreadCrumbs != null && categoryProduct.BreadCrumbs.Count > 0)
             {
                 this.BreadCrumbs = (from c in categoryProduct.BreadCrumbs
-                                    select new CategoryModel { Name = c.Name, SeName = c.SeName }).ToList();
+                                    select new CategoryModel { Id= c.Id, Name = c.Name, SeName = c.SeName }).ToList();
             }
         }
 

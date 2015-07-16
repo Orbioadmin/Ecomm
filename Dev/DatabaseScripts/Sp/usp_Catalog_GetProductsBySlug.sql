@@ -37,105 +37,130 @@ BEGIN
  DECLARE @parentCategoryIds varchar(500)
  DECLARE @categoryId INT 
  
- SELECT @categoryId = EntityId FROM UrlRecord where Slug = @slug and EntityName = @entityName
-and IsActive = 1 and LanguageId = 0
+  IF(LTRIM(RTRIM(@slug)) = 'search' AND  ISNULL(@keyWord,'')<>'' )
+ BEGIN
+	SET @categoryId = 0	 
+END
+ELSE
+BEGIN
+	SET @keyWord = ''
+	SELECT @categoryId = EntityId FROM UrlRecord where Slug = @slug and EntityName = @entityName
+	and IsActive = 1 and LanguageId = 0
+END
  
  SELECT @parentCategoryIds = dbo.ufn_GetAllParentCateoryIds(@categoryId,null)
  
  SELECT * , IDENTITY(int, 1,1) AS OrderBy
 INTO #temp  FROM  [dbo].[nop_splitstring_to_table](@parentCategoryIds, ',')
 
-  SELECT SAO.SpecificationAttributeId,FILTERS.* , IDENTITY(int, 1,1) AS OrderBy
+  SELECT FILTERS.* , IDENTITY(int, 1,1) AS OrderBy
 INTO #filterIds FROM  [dbo].[nop_splitstring_to_table](@specificationFilterIds, ',') FILTERS
-INNER JOIN SpecificationAttributeOption SAO ON SAO.Id = FILTERS.data
+
 
 
 SELECT    * INTO #products FROM  ufn_GetProductsBySearch(@categoryId,@keyWord)
 
-
-DECLARE @filterId NVARCHAR(100)
-while EXISTS(SELECT 1 FROM #filterIds)
+IF EXISTS(SELECT 1 FROM #filterIds)
 BEGIN
-	SELECT TOP 1 @filterId = SAO.SpecificationAttributeId from #filterIds INNER JOIN
-	SpecificationAttributeOption SAO ON #filterIds.data = SAO.Id 
-	
-	
-	  DELETE FROM #products WHERE #products.Id NOT IN (
-	 select ProductId from #products INNER JOIN
+	DELETE FROM #products WHERE #products.Id NOT IN (
+ SELECT #products.Id FROM #products INNER JOIN
 	  Product_SpecificationAttribute_Mapping PSM 
 	 ON 
-	 #products.Id = PSM.ProductId and psm.AllowFiltering=1
-	 WHERE PSM.SpecificationAttributeOptionId IN (
-	 SELECT data FROM #filterIds WHERE SpecificationAttributeId = @filterId)
-	 )
-	
-	DELETE FROM #filterIds WHERE SpecificationAttributeId = @filterId
-	
+	 #products.Id = PSM.ProductId AND psm.AllowFiltering=1
+      INNER JOIN #filterIds on PSM.SpecificationAttributeOptionId = #filterIds.data
+     )
 END
+--DECLARE @filterId NVARCHAR(100)
+--while EXISTS(SELECT 1 FROM #filterIds)
+--BEGIN
+--	SELECT TOP 1 @filterId = SAO.SpecificationAttributeId from #filterIds INNER JOIN
+--	SpecificationAttributeOption SAO ON #filterIds.data = SAO.Id 
+	
+	
+--	  DELETE FROM #products WHERE #products.Id NOT IN (
+--	 select ProductId from #products INNER JOIN
+--	  Product_SpecificationAttribute_Mapping PSM 
+--	 ON 
+--	 #products.Id = PSM.ProductId and psm.AllowFiltering=1
+--	 WHERE PSM.SpecificationAttributeOptionId IN (
+--	 SELECT data FROM #filterIds WHERE SpecificationAttributeId = @filterId)
+--	 )
+	
+--	DELETE FROM #filterIds WHERE SpecificationAttributeId = @filterId
+	
+--END
  
  IF(@minPrice IS NOT NULL AND @maxPrice IS NOT NULL)
  BEGIN
    DELETE FROM #products WHERE #products.Price<@minPrice OR #products.Price>@maxPrice
  END
  --TODO get all subcategories for the given slug and include products also
- select *,ROW_NUMBER() OVER(ORDER BY CategoryId) as RowNumber into #temptableproducts from #products
+ SELECT *,ROW_NUMBER() OVER(ORDER BY CategoryId) as RowNumber INTO #temptableproducts FROM #products  
+  IF(@categoryId=0)
+  BEGIN
+   
+	DELETE FROM #temptableproducts  WHERE dbo.ufn_GetAllChildCategoryIds(Id,CategoryId,'')<>''
+	 
+	INSERT INTO #temp SELECT DISTINCT CategoryId FROM #temptableproducts
+  END
 
 DECLARE @XmlResult xml
 
-if(@specificationFilterIds is null)
-begin
+--if(@specificationFilterIds is null)
+--begin
 --WITH XMLNAMESPACES ('http://schemas.datacontract.org/2004/07/Orbio.Core.Domain.Catalog' AS ns)
-SELECT @XmlResult = ( select Category.Id as 'CategoryId', Category.Name  as 'Name',  MetaKeywords as 'MetaKeywords',
-MetaTitle as 'MetaTitle', MetaDescription as 'MetaDescription', @slug as 'SeName', 
-CASE WHEN CT.ViewPath IS NULL THEN 'CategoryTemplate.ProductsInGridOrLines' ELSE CT.ViewPath END
-AS TemplateViewPath, Category.PageSize,
-(SELECT Name, Slug AS SeName from Category INNER JOIN #temp ON Category.Id = #temp.data
- LEFT JOIN UrlRecord UR ON Category.Id = UR.EntityId AND UR.IsActive=1
- AND UR.LanguageId = 0 AND EntityName = @entityName ORDER BY #temp.OrderBy
-FOR XML PATH('Category'), ROOT('BreadCrumbs'),type)
-,
- 
-(select   *,ROW_NUMBER() OVER(ORDER BY PC.CategoryId),[dbo].[ufn_GetProductPriceDetails](PC.Id),
-(select Weight from [dbo].[ufn_GetProductPriceDetail](PC.Id)) as 'GoldWeight', 
-(select ProductUnit as 'ProductUnit' from [dbo].[ufn_GetProductPriceDetail](PC.Id))  as 'ProductUnit',
-(select value from [dbo].[Setting] where Name = 'Product.PriceUnit') as PriceUnit,
-(select value from [dbo].[Setting] where Name = 'Product.MarketUnitPrice') as MarketUnitPrice
-FROM  #products PC  WHERE PC.CategoryId = Category.Id and PC.RowNum BETWEEN ((@pageNumber - 1) * @pageSize + 1) AND (@pageNumber * @pageSize)
-FOR XML PATH('Product'), ROOT('Products') , type)  from Category 
-LEFT JOIN CategoryTemplate CT ON Category.CategoryTemplateId = CT.Id  
-where Category.Id = @categoryId
-FOR XML PATH('CategoryProduct') )
+	SELECT @XmlResult = ( select Category.Id as 'CategoryId', Category.Name  as 'Name',  MetaKeywords as 'MetaKeywords',
+	MetaTitle as 'MetaTitle', MetaDescription as 'MetaDescription', @slug as 'SeName', 
+	CASE WHEN CT.ViewPath IS NULL THEN 'CategoryTemplate.ProductsInGridOrLines' ELSE CT.ViewPath END
+	AS TemplateViewPath, Category.PageSize,
+	(SELECT Category.Id, Name, Slug AS SeName from Category INNER JOIN #temp ON Category.Id = #temp.data
+	 LEFT JOIN UrlRecord UR ON Category.Id = UR.EntityId AND UR.IsActive=1
+	 AND UR.LanguageId = 0 AND EntityName = @entityName ORDER BY #temp.OrderBy
+	FOR XML PATH('Category'), ROOT('BreadCrumbs'),type)
+	,
+	 
+	(select   *,ROW_NUMBER() OVER(ORDER BY PC.CategoryId),[dbo].[ufn_GetProductPriceDetails](PC.Id),
+	(select Weight from [dbo].[ufn_GetProductPriceDetail](PC.Id)) as 'GoldWeight', 
+	(select ProductUnit as 'ProductUnit' from [dbo].[ufn_GetProductPriceDetail](PC.Id))  as 'ProductUnit',
+	(select value from [dbo].[Setting] where Name = 'Product.PriceUnit') as PriceUnit,
+	(select value from [dbo].[Setting] where Name = 'Product.MarketUnitPrice') as MarketUnitPrice
+	FROM  #temptableproducts PC  WHERE PC.CategoryId = Category.Id and PC.RowNumber BETWEEN ((@pageNumber - 1) * @pageSize + 1) AND (@pageNumber * @pageSize)
+	FOR XML PATH('Product'), ROOT('Products') , type)  from Category 
+	LEFT JOIN CategoryTemplate CT ON Category.CategoryTemplateId = CT.Id  
+	where ( @categoryId>0 AND Category.Id  = @categoryId ) OR (@categoryId=0 AND 
+	Category.Id IN (SELECT data from #temp))
+	FOR XML PATH('CategoryProduct') )
 
-SELECT @XmlResult as XmlResult
-   end
+	SELECT @XmlResult as XmlResult
+   --END
 
-else
-	begin
-	--WITH XMLNAMESPACES ('http://schemas.datacontract.org/2004/07/Orbio.Core.Domain.Catalog' AS ns)
-SELECT @XmlResult = ( select Category.Id as 'CategoryId', Category.Name  as 'Name',  MetaKeywords as 'MetaKeywords',
-MetaTitle as 'MetaTitle', MetaDescription as 'MetaDescription', @slug as 'SeName',
-CASE WHEN CT.ViewPath IS NULL THEN 'CategoryTemplate.ProductsInGridOrLines' ELSE CT.ViewPath END
-AS TemplateViewPath, Category.PageSize,
-(SELECT Name, Slug AS SeName from Category INNER JOIN #temp ON Category.Id = #temp.data
- LEFT JOIN UrlRecord UR ON Category.Id = UR.EntityId AND UR.IsActive=1
- AND UR.LanguageId = 0 AND EntityName = @entityName ORDER BY #temp.OrderBy
-FOR XML PATH('Category'), ROOT('BreadCrumbs'),type)
-,
- 
-(select   *,ROW_NUMBER() OVER(ORDER BY PC.CategoryId),[dbo].[ufn_GetProductPriceDetails](PC.Id),
-(select Weight from [dbo].[ufn_GetProductPriceDetail](PC.Id)) as 'GoldWeight', 
-(select ProductUnit as 'ProductUnit' from [dbo].[ufn_GetProductPriceDetail](PC.Id))  as 'ProductUnit',
-(select value from [dbo].[Setting] where Name = 'Product.PriceUnit') as PriceUnit,
-(select value from [dbo].[Setting] where Name = 'Product.MarketUnitPrice') as MarketUnitPrice  
-FROM  #temptableproducts  PC   WHERE PC.CategoryId = Category.Id and PC.RowNumber BETWEEN ((@pageNumber - 1) * @pageSize + 1) AND (@pageNumber * @pageSize)
-FOR XML PATH('Product'), ROOT('Products') , type)  from Category 
-LEFT JOIN CategoryTemplate CT ON Category.CategoryTemplateId = CT.Id  
-where Category.Id = @categoryId
-FOR XML PATH('CategoryProduct') )
+--ELSE
+--	BEGIN
+--	--WITH XMLNAMESPACES ('http://schemas.datacontract.org/2004/07/Orbio.Core.Domain.Catalog' AS ns)
+--	SELECT @XmlResult = ( select Category.Id as 'CategoryId', Category.Name  as 'Name',  MetaKeywords as 'MetaKeywords',
+--	MetaTitle as 'MetaTitle', MetaDescription as 'MetaDescription', @slug as 'SeName',
+--	CASE WHEN CT.ViewPath IS NULL THEN 'CategoryTemplate.ProductsInGridOrLines' ELSE CT.ViewPath END
+--	AS TemplateViewPath, Category.PageSize,
+--	(SELECT Name, Slug AS SeName from Category INNER JOIN #temp ON Category.Id = #temp.data
+--	 LEFT JOIN UrlRecord UR ON Category.Id = UR.EntityId AND UR.IsActive=1
+--	 AND UR.LanguageId = 0 AND EntityName = @entityName ORDER BY #temp.OrderBy
+--	FOR XML PATH('Category'), ROOT('BreadCrumbs'),type)
+--	,
+	 
+--	(select   *,ROW_NUMBER() OVER(ORDER BY PC.CategoryId),[dbo].[ufn_GetProductPriceDetails](PC.Id),
+--	(select Weight from [dbo].[ufn_GetProductPriceDetail](PC.Id)) as 'GoldWeight', 
+--	(select ProductUnit as 'ProductUnit' from [dbo].[ufn_GetProductPriceDetail](PC.Id))  as 'ProductUnit',
+--	(select value from [dbo].[Setting] where Name = 'Product.PriceUnit') as PriceUnit,
+--	(select value from [dbo].[Setting] where Name = 'Product.MarketUnitPrice') as MarketUnitPrice  
+--	FROM  #temptableproducts  PC   WHERE PC.CategoryId = Category.Id and PC.RowNumber BETWEEN ((@pageNumber - 1) * @pageSize + 1) AND (@pageNumber * @pageSize)
+--	FOR XML PATH('Product'), ROOT('Products') , type)  from Category 
+--	LEFT JOIN CategoryTemplate CT ON Category.CategoryTemplateId = CT.Id  
+--	where Category.Id = @categoryId
+--	FOR XML PATH('CategoryProduct') )
 
-SELECT @XmlResult as XmlResult
-	end
-END  
+--	SELECT @XmlResult as XmlResult
+--	END
+END    
 
 GO
 PRINT 'Created the procedure usp_Catalog_GetProductsBySlug'

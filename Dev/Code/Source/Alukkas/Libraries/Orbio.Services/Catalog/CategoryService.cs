@@ -5,6 +5,7 @@ using Nop.Core.Domain;
 using Nop.Data;
 using Orbio.Core.Domain.Catalog;
 using Orbio.Core.Utility;
+using System;
 
 namespace Orbio.Services.Catalog
 {
@@ -50,7 +51,7 @@ namespace Orbio.Services.Catalog
         public CategoryProduct GetProductsBySlug(string slug, string filterIds, decimal? minPrice, decimal? maxPrice, string keyWord, int? pageNumber, int? pageSize)
         {
             var sqlParamList = new List<SqlParameter>();
-            sqlParamList.Add(new SqlParameter() { ParameterName = "@slug", Value = slug, DbType = System.Data.DbType.String });
+            sqlParamList.Add(new SqlParameter() { ParameterName = "@slug", Value = (object)slug ?? DBNull.Value, DbType = System.Data.DbType.String });
             sqlParamList.Add(new SqlParameter { ParameterName = "@entityName", Value = entityName, DbType = System.Data.DbType.String });
             sqlParamList.Add(new SqlParameter { ParameterName = "@keyWord", Value = keyWord, DbType = System.Data.DbType.String });
             sqlParamList.Add(new SqlParameter { ParameterName = "@pageNumber", Value = pageNumber, DbType = System.Data.DbType.Int32 });
@@ -73,10 +74,10 @@ namespace Orbio.Services.Catalog
             var result = context.ExecuteFunction<XmlResultSet>("usp_Catalog_GetProductsBySlug",
                 sqlParamList.ToArray()
                 ).FirstOrDefault();
-            if(result!=null)
+            if (result != null && result.XmlResult!=null)
             {
                 var categoryProduct = Serializer.GenericDeSerializer<CategoryProduct>(result.XmlResult); 
-            return categoryProduct;
+                return categoryProduct;
             }
 
             return new CategoryProduct();

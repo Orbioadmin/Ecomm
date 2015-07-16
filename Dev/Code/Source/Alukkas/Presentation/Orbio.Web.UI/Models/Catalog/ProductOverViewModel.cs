@@ -40,8 +40,7 @@ namespace Orbio.Web.UI.Models.Catalog
             this.CurrencyCode = product.CurrencyCode;
             this.GoldWeight = product.GoldWeight;
             this.ProductUnit = product.ProductUnit;
-            this.ProductPrice.Price = product.CalculatePrice();// product.Price.ToString("#,##0.00");
-            this.ProductPrice.OldPrice = product.OldPrice;
+            
             this.ComponentDetails = product.GetComponentDetails();
             this.Discounts = product.Discounts == null ? new List<Discount>() : product.Discounts;
         
@@ -54,7 +53,10 @@ namespace Orbio.Web.UI.Models.Catalog
             }
 
             this.ComponentDetails.Add("Taxes", this.ProductPrice.TaxAmount.ToString("#,##0.00"));
-
+            this.ProductPrice.Price = product.CalculatePrice();// product.Price.ToString("#,##0.00");
+            this.ProductPrice.OldPrice = product.Price;
+            var priceCalculationService = EngineContext.Current.Resolve<IPriceCalculationService>();
+             
         }
 
       

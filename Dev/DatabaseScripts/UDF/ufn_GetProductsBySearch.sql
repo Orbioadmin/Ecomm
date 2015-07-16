@@ -68,13 +68,14 @@ BEGIN
 	'CurrencyCode', pic.RelativeUrl  as 'ImageRelativeUrl', ur.Slug as SeName
 	from  dbo.Product_Category_Mapping pcm  
 	 
-	inner join Product p on pcm.ProductId = p.Id  and p.Deleted=0 and p.Published = 1  
-	inner join Product_Picture_Mapping ppm on p.Id = ppm.ProductId  
-	inner join Picture pic on pic.Id = ppm.PictureId and ppm.DisplayOrder=1 --get only 1 pic rec
+	INNER JOIN Product p on pcm.ProductId = p.Id  and p.Deleted=0 and p.Published = 1  
+	LEFT JOIN Product_Picture_Mapping ppm on p.Id = ppm.ProductId  AND ppm.DisplayOrder=1
+	LEFT JOIN Picture pic on pic.Id = ppm.PictureId and ppm.DisplayOrder=1 --get only 1 pic rec
 	inner join ProductTemplate pt on p.ProductTemplateId = pt.Id 
 	Left  join UrlRecord ur on p.Id = ur.EntityId AND EntityName='Product' AND ur.IsActive=1
 	AND ur.LanguageId=0
-	where p.Name like '%'+@keword+'%' and pcm.CategoryId = @category
+	where --p.Name like '%'+@keword+'%' and
+	 pcm.CategoryId = @category
 	ORDER BY pcm.DisplayOrder, p.Name
 	end
  RETURN  

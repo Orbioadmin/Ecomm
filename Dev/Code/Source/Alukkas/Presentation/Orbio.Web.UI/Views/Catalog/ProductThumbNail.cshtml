@@ -49,8 +49,16 @@
                         
     <div class="price-box">
                        <span class="regular-price" id="">
-                                            <span class="price">@this.Model.CurrencyCode.@this.Model.ProductPrice.Price.ToString("#,##0.00")  </span>                                    </span>
-                        
+                           @{
+                               var finalPrice = Convert.ToDecimal(this.Model.ProductPrice.Price) - this.Model.DiscountAmount;
+                           }
+                                            <span class="price">@this.Model.CurrencyCode.@finalPrice.ToString("#,##0.00")  </span>    
+                            @if (this.Model.ProductPrice.OldPrice != finalPrice)
+                                            {
+                                                <s>@this.Model.CurrencyCode.@this.Model.ProductPrice.OldPrice.ToString("#,##0.00")</s>
+                                            }
+                       </span>
+                                            
         </div>
 
                                 </div>

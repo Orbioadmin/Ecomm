@@ -43,8 +43,8 @@ namespace Orbio.Web.UI.Controllers
             //var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
             //var curcustomer = workContext.CurrentCustomer;
             //ShoppingCartType carttype = ShoppingCartType.ShoppingCart;
-            PrepareShoppingCartItemModel();
-            var address = new AddressModel();
+           // PrepareShoppingCartItemModel();
+            //var address = new AddressModel();
             if (TempData.ContainsKey("ThankYou"))
             {
                 ViewBag.ThankYou = TempData["ThankYou"];
@@ -54,7 +54,7 @@ namespace Orbio.Web.UI.Controllers
             {
                 ViewBag.ThankYou = false;
             }
-            return View(address);
+            return View();
 
         }
 
@@ -73,7 +73,7 @@ namespace Orbio.Web.UI.Controllers
             var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
             var customer = workContext.CurrentCustomer;
             //ShoppingCartType carttype = ShoppingCartType.ShoppingCart;
-            PrepareShoppingCartItemModel(customer.Id);
+            //PrepareShoppingCartItemModel(customer.Id);
             if (customer.Email == null)
             {
                 return RedirectToAction("MyAccount", "Login");
@@ -109,7 +109,7 @@ namespace Orbio.Web.UI.Controllers
                             address = new AddressModel(customerBillAddress, customerShipAddress);
                         }
                     }
-                    return View("~/Views/CheckOut/Index.cshtml", address);
+                    return PartialView("_address", address);
                 }
             }
         }
