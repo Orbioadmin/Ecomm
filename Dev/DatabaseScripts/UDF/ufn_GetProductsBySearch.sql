@@ -43,19 +43,20 @@ BEGIN
 	p.Price as 'Price', pt.ViewPath as 'ViewPath',
 	 @currencyCode as  
 	'CurrencyCode', pic.RelativeUrl  as 'ImageRelativeUrl', ur.Slug as SeName
-	from  dbo.Product_Category_Mapping pcm  
+	from  Product p  -- 
 	 
-	inner join Product p on pcm.ProductId = p.Id  and p.Deleted=0 and p.Published = 1  
-	inner join Product_Picture_Mapping ppm on p.Id = ppm.ProductId  
-	inner join Picture pic on pic.Id = ppm.PictureId and ppm.DisplayOrder=1 --get only 1 pic rec
+	inner join dbo.Product_Category_Mapping pcm 
+	 on pcm.ProductId = p.Id  and p.Deleted=0 and p.Published = 1  
+	left join Product_Picture_Mapping ppm on p.Id = ppm.ProductId  and ppm.DisplayOrder=1 --get only 1 pic rec
+	left join Picture pic on pic.Id = ppm.PictureId and ppm.DisplayOrder=1 --get only 1 pic rec
 	inner join ProductTemplate pt on p.ProductTemplateId = pt.Id 
 	Left  join UrlRecord ur on p.Id = ur.EntityId AND EntityName='Product' AND ur.IsActive=1
 	AND ur.LanguageId=0
 	where p.Name like '%'+@keword+'%'
 	ORDER BY pcm.DisplayOrder, p.Name
-	end
-	else
-	begin
+	END
+	ELSE
+	BEGIN
 	 SELECT @currencyCode = CurrencyCode FROM Currency WHERE Id = (SELECT   
  CAST(value as INT) FROM Setting  WHERE Name = 'currencysettings.primarystorecurrencyid' )  
     INSERT @TABLE
