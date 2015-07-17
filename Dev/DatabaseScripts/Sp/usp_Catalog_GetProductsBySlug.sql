@@ -130,7 +130,8 @@ DECLARE @XmlResult xml
 		(select Weight from [dbo].[ufn_GetProductPriceDetail](PC.Id)) as 'GoldWeight', 
 		(select ProductUnit as 'ProductUnit' from [dbo].[ufn_GetProductPriceDetail](PC.Id))  as 'ProductUnit',
 		(select value from [dbo].[Setting] where Name = 'Product.PriceUnit') as PriceUnit,
-		(select value from [dbo].[Setting] where Name = 'Product.MarketUnitPrice') as MarketUnitPrice
+		(select value from [dbo].[Setting] where Name = 'Product.MarketUnitPrice') as MarketUnitPrice,
+		dbo.ufn_GetProductDiscounts(PC.Id)
 		FROM  #temptableproducts PC  WHERE PC.CategoryId = Category.Id and PC.RowNumber BETWEEN ((@pageNumber - 1) * @pageSize + 1) AND (@pageNumber * @pageSize)
 		FOR XML PATH('Product'), ROOT('Products') , type)  from Category 
 		LEFT JOIN CategoryTemplate CT ON Category.CategoryTemplateId = CT.Id  
@@ -153,7 +154,8 @@ DECLARE @XmlResult xml
 		(select Weight from [dbo].[ufn_GetProductPriceDetail](PC.Id)) as 'GoldWeight', 
 		(select ProductUnit as 'ProductUnit' from [dbo].[ufn_GetProductPriceDetail](PC.Id))  as 'ProductUnit',
 		(select value from [dbo].[Setting] where Name = 'Product.PriceUnit') as PriceUnit,
-		(select value from [dbo].[Setting] where Name = 'Product.MarketUnitPrice') as MarketUnitPrice
+		(select value from [dbo].[Setting] where Name = 'Product.MarketUnitPrice') as MarketUnitPrice,
+		dbo.ufn_GetProductDiscounts(PC.Id)
 		FROM  #temptableproducts PC  WHERE  
 		PC.RowNumber BETWEEN ((@pageNumber - 1) * @pageSize + 1) AND (@pageNumber * @pageSize)
 		FOR XML PATH('Product'), ROOT('Products') , type)  from #cat 

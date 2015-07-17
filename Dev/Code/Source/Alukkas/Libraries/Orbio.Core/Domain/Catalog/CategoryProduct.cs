@@ -62,5 +62,11 @@ namespace Orbio.Core.Domain.Catalog
         /// </summary>
         [DataMember]
         public int PageSize { get; set; }
+
+        /// <summary>
+        /// gets or sets the Total Product Count includes all pages
+        /// </summary>
+        [DataMember]
+        public int TotalProductCount { get; set; }
     }
 }
