@@ -62,7 +62,7 @@ namespace Orbio.Services.Orders
              var result = dbContext.ExecuteFunction<XmlResultSet>("usp_Customer_Order_Details",
                            sqlParamList.ToArray()
                            ).FirstOrDefault();
-             if (result != null)
+             if (result != null && result.XmlResult != null)
              {
                  var orderDetails = Serializer.GenericDeSerializer<List<OrderSummary>>(result.XmlResult);
                  foreach(var item in orderDetails)
@@ -130,10 +130,10 @@ namespace Orbio.Services.Orders
                      var taxRates = new Dictionary<decimal, decimal>();
                      var orderTaxTotal = taxCalculationService.CalculateTax(cart, customer, out taxRates);
                      var orderSubTotal = priceCalculationService.GetCartSubTotal(cart, true);
-
+                     var orderTotal = priceCalculationService.GetOrderTotal(cart ,true);
                      var shippingStatus = ShippingStatus.NotYetShipped;
 
-                     order = GetOrder(processOrderRequest, shippingMethodName, shippingRateComputationMethodSystemName, orderDiscountAmount, taxRates, orderTaxTotal, orderSubTotal, shippingStatus);
+                     order = GetOrder(processOrderRequest, shippingMethodName, shippingRateComputationMethodSystemName, orderDiscountAmount, taxRates, orderTaxTotal, orderSubTotal, orderTotal,shippingStatus);
 
                      SetOrderItems(customer, cart, order);
                      
@@ -270,7 +270,7 @@ namespace Orbio.Services.Orders
              }
          }
 
-         private Order GetOrder(ProcessOrderRequest processOrderRequest, string shippingMethodName, string shippingRateComputationMethodSystemName, decimal orderDiscountAmount, Dictionary<decimal, decimal> taxRates, decimal orderTaxTotal, decimal orderSubTotal, ShippingStatus shippingStatus)
+         private Order GetOrder(ProcessOrderRequest processOrderRequest, string shippingMethodName, string shippingRateComputationMethodSystemName, decimal orderDiscountAmount, Dictionary<decimal, decimal> taxRates, decimal orderTaxTotal, decimal orderSubTotal, decimal orderTotal, ShippingStatus shippingStatus)
          {
              var order = new Order()
              {
@@ -293,7 +293,7 @@ namespace Orbio.Services.Orders
                                  kv.Key.ToString(CultureInfo.InvariantCulture), kv.Value.ToString(CultureInfo.InvariantCulture))).ToList()
                                   .Aggregate((t1, t2) => t1 + "," + t2):null,
                  OrderTax = orderTaxTotal, //not caluclating now
-                 //////////// OrderTotal = orderTotal.Value,
+                 OrderTotal = orderTotal,
                  RefundedAmount = decimal.Zero,
                  OrderDiscount = orderDiscountAmount, //need to implement discounts
                  // CheckoutAttributeDescription = checkoutAttributeDescription,

@@ -50,7 +50,7 @@
                                             </li>
                                         </ul>
                                     </div>
-                                    <div class="list_thumb_offer">@products.CurrencyCode. @products.ProductPrice.Price</div>
+                                    <div class="list_thumb_offer">@products.CurrencyCode. @products.ProductPrice.Price.ToString("#,##0.00")</div>
                                 </div>
                             </div>
                         </li>
@@ -88,7 +88,7 @@
     else
     {
         <div style="text-align:center">
-            <img src="~/Images/Basic_image/banner1.jpg" />
+            <img src="~/Images/Basic_image/banner1.jpg" style="width: 25%;"/>
         </div>
     }
 </div>

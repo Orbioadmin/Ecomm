@@ -38,14 +38,17 @@
                         ShowSuccessMsg("The item added to your cart.");
                     }, 1000)
                     $(".cart_item").load('@(Url.Action("CartItem", "ShoppingCart"))');
-                    
+
                 }
                 else {
                     setTimeout(function () {
                         $("#Intro").css("display", "none");
                         $("#Inner").css("display", "none");
                     }, 2000)
-                    window.location.href = window.location.origin + "/" + result + "?p=pt";
+                    var productUrl = "@Url.RouteUrl("Category", new { SeName = "sename" })";
+                    productUrl = productUrl.replace("sename", result);
+                    window.location.href = productUrl + "?p=pt";
+
                 }
             }
         });

@@ -26,6 +26,7 @@ namespace Orbio.Web.UI.Models.Customer
 
         [Required(ErrorMessage = "First Name Required")]
         [DataType(DataType.Text)]
+        [RegularExpression("^([a-zA-Z.&'-]+)$", ErrorMessage = "Invalid First Name")]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
@@ -48,7 +49,7 @@ namespace Orbio.Web.UI.Models.Customer
 
         [Required(ErrorMessage="Mobile Number Required")]
         [DataType(DataType.PhoneNumber)]
-        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Entered mobile number is not valid.")]
+        [RegularExpression(@"^\(?([1-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Entered mobile number is not valid.")]
         [Display(Name = "Mobile")]
         public string Mobile { get; set; }
 

@@ -769,6 +769,7 @@
     <Content Include="Views\Catalog\Review.cshtml" />
     <Content Include="Views\Catalog\ProductRating.cshtml" />
     <Content Include="Views\Catalog\ProductStar.cshtml" />
+    <None Include="Properties\PublishProfiles\AlukkasEcom.pubxml" />
     <None Include="Properties\PublishProfiles\alukkastest.pubxml" />
     <None Include="Properties\PublishProfiles\Alukkas_Ecom.pubxml" />
     <Content Include="Views\ShoppingCart\OrderSummary.cshtml" />

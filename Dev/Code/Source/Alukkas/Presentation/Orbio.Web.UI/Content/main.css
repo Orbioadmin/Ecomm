@@ -90,8 +90,8 @@ header .navbar{margin-bottom: 0;}
 .menu_desc li{float: left; padding: 8px 19px 7px 19px; height: 53px; }
 .menu_desc li a span{ color: #fff;}.menu_desc li.item_span a{color: #fff;}.menu_desc li.user a{color: #fff;}
 .menu_select{border: 1px #ccc solid; height: 24px; margin: 0; padding: 0; position: absolute; font-size: 12px;}
-.select_text{/*margin-left: -4px;*/ padding: 0 5px; width: 187px; border: 1px #ccc solid; position: absolute; left: 96px; height: 24px;  font-size: 12px;}
-input.search_butt {position: absolute;left: 259px; border-top: 1px #ccc solid; border-right: 1px #ccc solid;
+.select_text{/*margin-left: -4px;*/ padding: 0 5px; width: 325px; border: 1px #ccc solid; position: absolute; left: 0px; height: 24px;  font-size: 12px;}
+input.search_butt {position: absolute;left: 302px; border-top: 1px #ccc solid; border-right: 1px #ccc solid;
 border-bottom: 1px #ccc solid; border-left: 0px #ccc solid;
  background: url("../images/Basic_image/image-sprites.png") no-repeat scroll -88px -220px #fff;
    
@@ -2232,4 +2232,25 @@ width: 152px;
     border-bottom: 3px #940c0c solid;
   color:#fff;
   padding: 1px 15px;
+}
+
+
+/*20-7-2015*/
+.similar_main img {width: 100%;}
+@media(max-width: 380px){div.price-button{top:-124px;}}
+@media(max-width: 320px){.navbar-brand img{width: 190px;}}
+
+.mob-no .col-sm-1 {
+padding-right: 0;
+}
+.mob-no .col-sm-9 {
+padding-left: 0;
+}
+.mob-no .col-sm-1 .form-control {
+border-radius: 4px 0 0 4px;
+border-right: 0 none;
+padding: 6px;
+}
+.mob-no .col-sm-9 .form-control {
+border-radius: 0 4px 4px 0;
 }

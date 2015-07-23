@@ -212,9 +212,30 @@ namespace Orbio.Services.Messages
         public int SendNewOrderNotification(Customer customer,  Order order)
         {
 
-            //TODO : sent order email
+            if (customer == null)
+                throw new ArgumentNullException("customer");
+            var store = storeContext.CurrentStore;
+            var result = context.ExecuteFunction<MessageTemplate>("usp_MessageTemplate",
+                new SqlParameter() { ParameterName = "@messagename", Value = "OrderPlaced.CustomerNotification", DbType = System.Data.DbType.String });
 
-            return 1;
+            var messageTemplate = new MessageTemplate();
+            messageTemplate = result.FirstOrDefault();
+            if (messageTemplate == null)
+                return 0;
+
+            //tokens
+            var tokens = new List<Token>();
+            messageTokenProvider.AddStoreTokens(tokens, store);
+            messageTokenProvider.AddCustomerTokens(tokens, customer);
+            messageTokenProvider.AddOrderTokens(tokens, order);
+
+            var toEmail = customer.Email;
+            var toName = "";
+
+            EmailDetail Sent = SendNotification(messageTemplate, tokens, toEmail, toName);
+            return emailService.SentEmail(Sent);
+
+            //return 1;
         }
 
 

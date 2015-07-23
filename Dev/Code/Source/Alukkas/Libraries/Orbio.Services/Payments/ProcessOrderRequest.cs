@@ -16,9 +16,6 @@ namespace Orbio.Services.Payments
         {
             this.CustomValues = new Dictionary<string, object>();
         }
-
-        
-        /// <summary>
         /// Gets or sets a store identifier
         /// </summary>
         public int StoreId { get; set; }

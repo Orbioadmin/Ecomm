@@ -52,7 +52,7 @@
                                                 <dt>Gender</dt>
                                                 <dd>@((Model.Gender == "M") ? "Male" : "Female")</dd>
                                                 <dt>Mobile No</dt>
-                                                <dd>@Model.Mobile</dd>
+                                                <dd>+91 @Model.Mobile</dd>
                                             </dl>
 
                                         </div>
@@ -99,13 +99,16 @@
                                                         @Html.Label("female", "Female")
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    @Html.LabelFor(m => m.Mobile, new { @class = "col-sm-2 control-label" })
-                                                    <div class="col-sm-10">
-                                                        @Html.TextBoxFor(m => m.Mobile, new { @class = "form-control", placeholder = "Mobile Number" })
-                                                        @Html.ValidationMessageFor(m => m.Mobile)
-                                                    </div>
-                                                </div>
+    <div class="form-group mob-no">
+        @Html.LabelFor(m => m.Mobile, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-1">
+            <input type="text" readonly="" value="+91" name="" id="" class="form-control">
+        </div>
+        <div class="col-sm-9">
+            @Html.TextBoxFor(m => m.Mobile, new { @class = "form-control", placeholder = "Mobile Number" })
+            @Html.ValidationMessageFor(m => m.Mobile)
+        </div>
+    </div>
                                                 <div class="form-group">
                                                     <div class="col-sm-offset-2 col-sm-10">
                                                         <input type="submit" value="UPDATE" class="Buynow">&nbsp;&nbsp; OR &nbsp;&nbsp;

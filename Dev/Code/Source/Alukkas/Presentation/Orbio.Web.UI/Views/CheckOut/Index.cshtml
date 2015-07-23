@@ -312,6 +312,7 @@
 
             var fromThankYou = @(ViewBag.ThankYou == true?"true;":"false;") 
             if (fromThankYou) {
+                $(".top_payment").css("display","none");
                 $('ul.setup-panel li:eq(1)').removeClass('disabled');
                 $('ul.setup-panel li a[href="#step-2"]').trigger('click');
                 $(this).remove();
