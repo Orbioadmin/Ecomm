@@ -31,19 +31,24 @@ CREATE PROCEDURE [dbo].[usp_Catalog_GetFiltersByCategory] (@categoryId Varchar(m
 AS    
 BEGIN 
  
- 
-
+ DECLARE @count INT
+ SELECT @count = COUNT(*) FROM  dbo.nop_splitstring_to_table(@categoryId, ',')
+ IF(@count>1) 
+ BEGIN
+    SET @categoryId = 0
+ END
+  
 select distinct SA.DisplayOrder as SpecifiationAttributeOrder,
 SA.Id as SpecificationAttributeId,   SA.Name as SpecificationAttributeName,
  SAO.Id as SpecificationAttributeOptionId,SAO.Name as SpecificationAttributeOptionName
- ,SAO.DisplayOrder as SpecifiationAttributeOptionOrder,(select Min(Price) from ufn_GetProductsBySearch(0,@keyWord)) as MinPrice ,
- (select Max(Price) from ufn_GetProductsBySearch(0,@keyWord)) as MaxPrice 
+ ,SAO.DisplayOrder as SpecifiationAttributeOptionOrder,(select Min(Price) from ufn_GetProductsBySearch(@categoryId,@keyWord)) as MinPrice ,
+ (select Max(Price) from ufn_GetProductsBySearch(@categoryId,@keyWord)) as MaxPrice 
 from Product p 
 inner join  Product_SpecificationAttribute_Mapping PSM on p.Id = psm.ProductId
 inner join SpecificationAttributeOption SAO on psm.SpecificationAttributeOptionId = sao.Id
 inner join SpecificationAttribute SA on SAO.SpecificationAttributeId = sa.Id
 inner join Product_Category_Mapping pcm on p.Id = pcm.ProductId
-inner join  ufn_GetProductsBySearch(0,@keyWord) PC on p.Id = pc.Id
+inner join  ufn_GetProductsBySearch(@categoryId ,@keyWord) PC on p.Id = pc.Id
 where PSM.AllowFiltering = 1 AND
 ','+@categoryId+',' LIKE '%,'+CAST(pcm.CategoryId AS varchar)+',%' 
  ORDER BY SA.DisplayOrder, SA.Name, SAO.DisplayOrder, SAO.Name

@@ -1,6 +1,6 @@
-﻿@model Orbio.Web.UI.Models.Catalog.SearchModel
+﻿@model Orbio.Web.UI.Models.Catalog.CategoryModel
 @{
-    ViewBag.Title = "Category";
+    ViewBag.Title = "Search";
 }
 @*@Html.Action("PriceBar", "Home")*@
 <section class="listing_page">
@@ -31,17 +31,18 @@
                     var keyword = Request.QueryString["q"].ToString();
                 }
 
-                @Html.Action("ProductFilterBySearch", "Catalog", new { categoryId = this.Model.CategoryId, selectedSpecs = this.Model.SelectedSpecificationAttributeIds, selectedPriceRange = this.Model.SelectedPriceRange, keyword = keyword })
+                @Html.Action("ProductFilter", "Catalog", new { categoryId = (from b in this.Model.BreadCrumbs
+                                                                                 select b.Id.ToString()).Aggregate((b1,b2)=>b1+","+b2), selectedSpecs = this.Model.SelectedSpecificationAttributeIds, selectedPriceRange = this.Model.SelectedPriceRange, keyword = keyword })
 
             </div>
             <div class="col-sm-10">
 
 
-                <div class="filter_cat">@this.Model.Products.Count @ViewBag.searchkeyword</div>
+                <div class="filter_cat">@this.Model.TotalProductCount @ViewBag.searchkeyword</div>
                 <div class="featured_items" align="center">
                     <ul class="feature_li four_items">
                         @{
-                            Html.RenderPartial("_CategoryProductBySearch", this.Model);
+                            Html.RenderPartial("_CategoryProducts", this.Model);
                         }
                         @Html.Hidden("specification")  @Html.Hidden("paging")
                     </ul>

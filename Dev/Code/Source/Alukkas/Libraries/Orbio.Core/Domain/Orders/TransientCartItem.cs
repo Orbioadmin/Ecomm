@@ -19,9 +19,10 @@ namespace Orbio.Core.Domain.Orders
             this.Price = cartItem.Price;
             this.Quantity = cartItem.Quantity;
             this.Discounts = new List<Discount>();
-            this.Discounts.AddRange((from d in cartItem.Discounts
-                                     select new Discount { DiscountAmount = d.DiscountAmount, DiscountPercentage=d.DiscountPercentage, 
-                                     DiscountTypeId = d.DiscountTypeId, UsePercentage = d.UsePercentage}));
+            this.Discounts.AddRange(cartItem.Discounts.Cast<Discount>());
+            //this.Discounts.AddRange((from d in cartItem.Discounts
+            //                         select new Discount {  Id = d.Id, DiscountAmount = d.DiscountAmount, DiscountPercentage=d.DiscountPercentage, 
+            //                         DiscountTypeId = d.DiscountTypeId, UsePercentage = d.UsePercentage, RequiresCouponCode=d.RequiresCouponCode}));
             this.Attributes = new List<TransientCartAttribute>();
             this.Attributes.AddRange((from pva in cartItem.ProductVariantPriceAdjustments
                                       select new TransientCartAttribute

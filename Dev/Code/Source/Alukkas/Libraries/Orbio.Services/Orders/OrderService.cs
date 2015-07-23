@@ -130,10 +130,13 @@ namespace Orbio.Services.Orders
                      var taxRates = new Dictionary<decimal, decimal>();
                      var orderTaxTotal = taxCalculationService.CalculateTax(cart, customer, out taxRates);
                      var orderSubTotal = priceCalculationService.GetCartSubTotal(cart, true);
-                     var orderTotal = priceCalculationService.GetOrderTotal(cart ,true);
+
+                     var orderTotal = priceCalculationService.GetOrderTotal(cart, true);
                      var shippingStatus = ShippingStatus.NotYetShipped;
 
-                     order = GetOrder(processOrderRequest, shippingMethodName, shippingRateComputationMethodSystemName, orderDiscountAmount, taxRates, orderTaxTotal, orderSubTotal, orderTotal,shippingStatus);
+                     order = GetOrder(processOrderRequest, shippingMethodName, shippingRateComputationMethodSystemName, orderDiscountAmount, taxRates, orderTaxTotal,
+                         orderSubTotal, orderTotal, shippingStatus);
+
 
                      SetOrderItems(customer, cart, order);
                      

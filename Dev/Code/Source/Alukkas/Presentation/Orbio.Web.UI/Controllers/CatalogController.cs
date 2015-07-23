@@ -119,18 +119,18 @@ namespace Orbio.Web.UI.Controllers
 
         public ActionResult Search(string seName, string spec, string keyWord)
         {
-            var model = new SearchModel();
+            var model = new CategoryModel();
             int pageNumber = 1;
             int pageSize = (ConfigurationManager.AppSettings["CatelogProductsPageSize"].ToString() != "") ? Convert.ToInt32(ConfigurationManager.AppSettings["CatelogProductsPageSize"]) : 10;
             if (keyWord.Length >= 3)
             {
 
-                model = PrepareCategoryProductModelBySearch(seName, spec, keyWord, pageNumber, pageSize);
+                model = PrepareCategoryProductModel(seName, spec, keyWord, pageNumber, pageSize);
                 ViewBag.searchkeyword = " ITEMS FOUND BY KEYWORD ''" + keyWord + "''";
             }
             else
             {
-                model = PrepareCategoryProductModelBySearch(seName, spec, "0", pageNumber, pageSize);
+                model = PrepareCategoryProductModel(seName, spec, "0", pageNumber, pageSize);
                 ViewBag.searchkeyword = " ITEMS FOUND";
                 ViewBag.Error = "Search term minimum length is 3 characters";
             }
@@ -158,20 +158,20 @@ namespace Orbio.Web.UI.Controllers
         public ActionResult CategoryPaging(string seName, string spec, string keyWord, int? pageNumber)
         {
             int pageSize = (ConfigurationManager.AppSettings["CatelogProductsPageSize"].ToString() != "") ? Convert.ToInt32(ConfigurationManager.AppSettings["CatelogProductsPageSize"]) : 10;
-            if (seName != "Search")
-            {
+            //if (seName != "Search")
+            //{
                 var model = PrepareCategoryProductModel(seName, spec, keyWord, pageNumber, pageSize);
                 return PartialView("_CategoryProducts", model);
-            }
-            else
-            {
-                var model = PrepareCategoryProductModelBySearch(seName, spec, keyWord, pageNumber, pageSize);
-                return PartialView("_CategoryProductBySearch", model);
-            }
+            //}
+            //else
+            //{
+            //    var model = PrepareCategoryProductModelBySearch(seName, spec, keyWord, pageNumber, pageSize);
+                //return PartialView("_CategoryProductBySearch", model);
+            //}
         }
 
         [ChildActionOnly]
-        public ActionResult ProductFilter(int categoryId, int[] selectedSpecs, string selectedPriceRange, string keyWord)
+        public ActionResult ProductFilter(string categoryId, int[] selectedSpecs, string selectedPriceRange, string keyWord)
         {
             var model = PrepareSpecificationFilterModel(categoryId, selectedSpecs, selectedPriceRange, keyWord);
 
@@ -185,9 +185,9 @@ namespace Orbio.Web.UI.Controllers
 
             return PartialView("ProductFilter", model);
         }
-        private List<SpecificationAttribute> PrepareSpecificationFilterModel(int categoryId, int[] selectedSpecs, string selectedPriceRange, string keyWord)
+        private List<SpecificationAttribute> PrepareSpecificationFilterModel(string categoryId, int[] selectedSpecs, string selectedPriceRange, string keyWord)
         {
-            var specFilterModels = categoryService.GetSpecificationFiltersByCategoryId(categoryId, keyWord);
+            var specFilterModels = categoryService.GetSpecificationFiltersByCategory(categoryId, keyWord);
             var specFilterByspecAttribute = from sa in specFilterModels
                                             group sa by sa.SpecificationAttributeName;
             var currentUrl = ControllerContext.RequestContext.HttpContext.Request.Url.AbsoluteUri;

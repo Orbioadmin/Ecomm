@@ -17,14 +17,15 @@ namespace Orbio.Core.Domain.Orders
         public TransientCart(ICart cart)
         {
             this.Discounts = new List<Discount>();
-            this.Discounts.AddRange((from d in cart.Discounts
-                                     select new Discount
-                                     {
-                                         DiscountAmount = d.DiscountAmount,
-                                         DiscountPercentage = d.DiscountPercentage,
-                                         DiscountTypeId = d.DiscountTypeId,
-                                         UsePercentage = d.UsePercentage
-                                     }).ToList());
+            this.Discounts.AddRange(cart.Discounts.Cast<Discount>());
+            //this.Discounts.AddRange((from d in cart.Discounts
+            //                         select new Discount
+            //                         {
+            //                             DiscountAmount = d.DiscountAmount,
+            //                             DiscountPercentage = d.DiscountPercentage,
+            //                             DiscountTypeId = d.DiscountTypeId,
+            //                             UsePercentage = d.UsePercentage
+            //                         }).ToList());
             this.ShoppingCartItems = new List<TransientCartItem>();
             this.ShoppingCartItems.AddRange((from sci in cart.ShoppingCartItems
                                              select new TransientCartItem(sci)).ToList());

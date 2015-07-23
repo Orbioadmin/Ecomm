@@ -113,8 +113,8 @@ namespace Orbio.Services.Orders
             {
                 int appliedDiscountId = 0;
                 discountAmount += GetDiscountAmount(sci.Discounts, GetFinalPrice(sci, false, false), out appliedDiscountId) * sci.Quantity;
-                if (appliedDiscountId != int.MinValue)
-                {
+                if (appliedDiscountId != int.MinValue && appliedDiscountIds.Exists(d=>d == appliedDiscountId))
+                {                    
                     appliedDiscountIds.Add(appliedDiscountId);
                 }
             }
@@ -123,7 +123,7 @@ namespace Orbio.Services.Orders
                                   select d).ToList();
             int appliedOrderDiscountId = 0;
             discountAmount += GetDiscountAmount(orderDiscounts, subTotal - discountAmount, out appliedOrderDiscountId);
-            if (appliedOrderDiscountId != int.MinValue)
+            if (appliedOrderDiscountId != int.MinValue && appliedDiscountIds.Exists(d => d == appliedOrderDiscountId))
             {
                 appliedDiscountIds.Add(appliedOrderDiscountId);
             }
