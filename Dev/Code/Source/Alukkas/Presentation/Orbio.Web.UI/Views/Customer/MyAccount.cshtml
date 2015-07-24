@@ -124,29 +124,29 @@
                                                 @Html.AntiForgeryToken()
                                                 @Html.ValidationSummary(true)
                                                 <div class="form-group">
-                                                    @Html.LabelFor(m => m.OldPassword, new { @for = "OldPassword", @class = "col-sm-2 control-label" })
-                                                    <div class="col-sm-10">
+                                                    @Html.LabelFor(m => m.OldPassword, new { @for = "OldPassword", @class = "col-sm-3 control-label" })
+                                                    <div class="col-sm-9">
                                                         @Html.TextBoxFor(m => m.OldPassword, new { type = "Password", @class = "form-control", placeholder = "Old Password" })
                                                         <span id="oldvalid" style="display:none" class="field-validation-error" data-valmsg-for="OldPassword" data-valmsg-replace="true">Old Password Required</span>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    @Html.LabelFor(m => m.NewPassword, new { @for = "NewPassword", @class = "col-sm-2 control-label" })
-                                                    <div class="col-sm-10">
+                                                    @Html.LabelFor(m => m.NewPassword, new { @for = "NewPassword", @class = "col-sm-3 control-label" })
+                                                    <div class="col-sm-9">
                                                         @Html.TextBoxFor(m => m.NewPassword, new { type = "Password", @class = "form-control", placeholder = "New Password" })
                                                         <span id="newvalid" style="display:none" class="field-validation-error" data-valmsg-for="NewPassword" data-valmsg-replace="true">New Password Required</span>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    @Html.LabelFor(m => m.ConfirmNewPassword, new { @for = "ConfirmNewPassword", @class = "col-sm-2 control-label" })
-                                                    <div class="col-sm-10">
+                                                    @Html.LabelFor(m => m.ConfirmNewPassword, new { @for = "ConfirmNewPassword", @class = "col-sm-3 control-label" })
+                                                    <div class="col-sm-9">
                                                         @Html.TextBoxFor(m => m.ConfirmNewPassword, new { type = "Password", @class = "form-control", placeholder = "ConfirmNewPassword" })
                                                         <span id="cnfnewvalid" style="display:none" class="field-validation-error" data-valmsg-for="ConfirmNewPassword" data-valmsg-replace="true">Confirm New Password Required</span>
                                                         <span id="pwdmatch" style="display:none" class="field-validation-error" data-valmsg-for="ConfirmNewPassword" data-valmsg-replace="true">Passwords does not match</span>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <div class="col-sm-offset-2 col-sm-10">
+                                                    <div class="col-sm-offset-3 col-sm-9">
                                                         <input id="chpwds" type="submit" value="UPDATE" class="Buynow">&nbsp;&nbsp; OR &nbsp;&nbsp;
                                                         <input id="canpwd" type="button" value="CANCEL" class="Buynow">
                                                     </div>
@@ -286,6 +286,15 @@
 <script>
     var mob = /^[1-9]{1}[0-9]{9}$/;
     if (mob.test($.trim($("#Mobile").val())) == false || $.trim("#Mobile").length == 10) {
+        $("#viewinfo").css("display", "none");
+        $("#editinfo").css("display", "block");
+        $("#changepwd").css("display", "none");
+        $('#edit').css("display", "none");
+        $('#chpwd').css("display", "none");
+    }
+
+    var firstName = /^[a-z ,.'-]+$/i;
+    if (firstName.test($.trim($("#FirstName").val())) == false) {
         $("#viewinfo").css("display", "none");
         $("#editinfo").css("display", "block");
         $("#changepwd").css("display", "none");

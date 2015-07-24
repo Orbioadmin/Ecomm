@@ -25,8 +25,8 @@ namespace Orbio.Web.UI.Models.Customer
         }
 
         [Required(ErrorMessage = "First Name Required")]
+        [RegularExpression("/^[a-z ,.'-]+$/i", ErrorMessage = "Invalid First Name")]
         [DataType(DataType.Text)]
-        [RegularExpression("^([a-zA-Z.&'-]+)$", ErrorMessage = "Invalid First Name")]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
