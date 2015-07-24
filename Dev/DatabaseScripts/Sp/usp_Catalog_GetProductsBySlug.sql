@@ -144,9 +144,9 @@ DECLARE @XmlResult xml
 		SELECT 0 as Id into #cat
 		
 		SELECT @XmlResult = ( select #cat.Id as 'CategoryId', (SELECT COUNT(1) FROM #temptableproducts) AS TotalProductCount, 
-		(SELECT Category.Id, Name, Slug AS SeName from Category INNER JOIN #temp ON Category.Id = #temp.data
+		(SELECT Category.Id, Name, Slug AS SeName from Category 
 		 LEFT JOIN UrlRecord UR ON Category.Id = UR.EntityId AND UR.IsActive=1
-		 AND UR.LanguageId = 0 AND EntityName = @entityName ORDER BY #temp.OrderBy
+		 AND UR.LanguageId = 0 AND EntityName = @entityName 
 		FOR XML PATH('Category'), ROOT('BreadCrumbs'),type)
 		,
 		 

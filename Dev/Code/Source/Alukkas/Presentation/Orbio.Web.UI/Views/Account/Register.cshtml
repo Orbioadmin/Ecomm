@@ -100,15 +100,18 @@
 
                         </div>
 
-                        <div class="form-group">
-                            @Html.LabelFor(m => m.MobileNo, new { @class = "col-sm-4 control-label" })
-                            @*<label for="inputPassword3" class="col-sm-4 control-label">Mobile No</label>*@
-                            <div class="col-sm-8">
-                                @Html.TextBoxFor(m => m.MobileNo, new { type = "number", @class = "form-control", placeholder = "Mobile No" })
-                                <span style="color:red">@Html.ValidationMessageFor(m => m.MobileNo)</span>
-                                @*<input type="number" class="form-control" id="inputPassword3" placeholder="Mobile No">*@
-                            </div>
-                        </div>
+    <div class="form-group mob-no">
+        @Html.LabelFor(m => m.MobileNo, new { @class = "col-sm-4 control-label" })
+        @*<label for="inputPassword3" class="col-sm-4 control-label">Mobile No</label>*@
+        <div class="col-sm-1">
+            <input type="text" readonly="" value="+91" name="" id="" class="form-control">
+        </div>
+        <div class="col-sm-7">
+            @Html.TextBoxFor(m => m.MobileNo, new { type = "number", @class = "form-control", placeholder = "Mobile No" })
+            <span style="color:red">@Html.ValidationMessageFor(m => m.MobileNo)</span>
+            @*<input type="number" class="form-control" id="inputPassword3" placeholder="Mobile No">*@
+        </div>
+    </div>
 
                         <div class="form-group">
                             <div class="col-sm-offset-4 col-sm-8">

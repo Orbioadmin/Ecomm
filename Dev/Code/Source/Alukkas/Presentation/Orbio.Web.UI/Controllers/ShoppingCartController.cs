@@ -29,7 +29,7 @@ namespace Orbio.Web.UI.Controllers
             this.priceCalculationService = priceCalculationService;
         }
 
-        [ContinueShoppingAttribute]
+        //[ContinueShoppingAttribute]
         public ActionResult Cart()
         {
             var model = PrepareShoppingCartItemModel();

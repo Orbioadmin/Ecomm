@@ -684,7 +684,7 @@ input.search_butt {left: 200px!important;}
 
 @-moz-document url-prefix(){
 .select_text {left: 32px;}
-input.search_butt{left: 218px;}
+input.search_butt{left: 334px;}
 
 @media (min-width: 768px) and (max-width: 1000px) {
 .select_text { left: 95px;}

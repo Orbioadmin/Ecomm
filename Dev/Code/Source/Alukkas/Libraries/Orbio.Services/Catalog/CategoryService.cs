@@ -149,7 +149,7 @@ namespace Orbio.Services.Catalog
         public List<SpecificationFilterModel> GetSpecificationFiltersByCategory(string categoryId, string keyWord)
         {
             var result = context.ExecuteFunction<SpecificationFilterModel>("usp_Catalog_GetFiltersByCategory",
-              new SqlParameter() { ParameterName = "@categoryId", Value = categoryId, DbType = System.Data.DbType.String },
+              new SqlParameter() { ParameterName = "@categoryIds", Value = categoryId, DbType = System.Data.DbType.String },
               new SqlParameter() { ParameterName = "@keyWord", Value = keyWord, DbType = System.Data.DbType.String });
 
             return result != null ? result : new List<SpecificationFilterModel>();

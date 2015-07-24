@@ -41,6 +41,7 @@ namespace Orbio.Web.UI.Models.Catalog
         public int Rating { get; set; }
 
         [Required(ErrorMessage = "Customer Name Required")]
+        [RegularExpression("^([a-zA-Z.&'-]+)$", ErrorMessage = "Invalid First Name")]
         [DataType(DataType.Text)]
         [Display(Name = "Name")]
         public string CustomerName { get; set; }

@@ -27,12 +27,13 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE PROCEDURE [dbo].[usp_Catalog_GetFiltersByCategory] (@categoryId Varchar(max),@keyWord Varchar(max)) 
+CREATE PROCEDURE [dbo].[usp_Catalog_GetFiltersByCategory] (@categoryIds Varchar(max),@keyWord Varchar(max)) 
 AS    
 BEGIN 
  
+ DECLARE @categoryId Varchar(max) = @categoryIds
  DECLARE @count INT
- SELECT @count = COUNT(*) FROM  dbo.nop_splitstring_to_table(@categoryId, ',')
+ SELECT @count = COUNT(*) FROM  dbo.nop_splitstring_to_table(@categoryIds, ',')
  IF(@count>1) 
  BEGIN
     SET @categoryId = 0
@@ -50,11 +51,10 @@ inner join SpecificationAttribute SA on SAO.SpecificationAttributeId = sa.Id
 inner join Product_Category_Mapping pcm on p.Id = pcm.ProductId
 inner join  ufn_GetProductsBySearch(@categoryId ,@keyWord) PC on p.Id = pc.Id
 where PSM.AllowFiltering = 1 AND
-','+@categoryId+',' LIKE '%,'+CAST(pcm.CategoryId AS varchar)+',%' 
+','+@categoryIds+',' LIKE '%,'+CAST(pcm.CategoryId AS varchar)+',%' 
  ORDER BY SA.DisplayOrder, SA.Name, SAO.DisplayOrder, SAO.Name
   
 END
-
 
 GO
 PRINT 'Created the procedure usp_Catalog_GetFiltersByCategory'
