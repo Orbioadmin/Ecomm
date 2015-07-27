@@ -110,10 +110,10 @@ namespace Orbio.Core.Domain.Orders
         ///// </summary>
         //public virtual Order Order { get; set; }
 
-        ///// <summary>
-        ///// Gets the product
-        ///// </summary>
-        //public virtual Product Product { get; set; }
+        /// <summary>
+        /// Gets the product
+        /// </summary>
+        public List<Product> Product { get; set; }
 
         ///// <summary>
         ///// Gets or sets the associated gift card

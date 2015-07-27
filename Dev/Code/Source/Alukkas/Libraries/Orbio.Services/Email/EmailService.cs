@@ -45,8 +45,9 @@ namespace Orbio.Services.Email
             catch (Exception ex)
             {
                 //TODO : need to log the error
+                return 0;
             }
-            return 0;
+            return 1;
         }
 
         //public int SendNotification(string fromaddress, string fromname, string message, string subject)

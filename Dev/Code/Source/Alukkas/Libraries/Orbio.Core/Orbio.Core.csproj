@@ -132,6 +132,7 @@
     <Compile Include="Domain\Orders\OrderNote.cs" />
     <Compile Include="Domain\Orders\OrderSummary.cs" />
     <Compile Include="Domain\Orders\OrderStatus.cs" />
+    <Compile Include="Domain\Orders\ProcessOrderResult.cs" />
     <Compile Include="Domain\Orders\ShoppingCartItem.cs" />
     <Compile Include="Domain\Orders\ShoppingCartType.cs" />
     <Compile Include="Domain\Orders\TransientCart.cs" />

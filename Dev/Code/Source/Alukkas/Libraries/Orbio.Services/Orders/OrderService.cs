@@ -129,7 +129,7 @@ namespace Orbio.Services.Orders
                      var orderDiscountAmount = priceCalculationService.GetAllDiscountAmount(cart, out appliedDiscounts);
                      var taxRates = new Dictionary<decimal, decimal>();
                      var orderTaxTotal = taxCalculationService.CalculateTax(cart, customer, out taxRates);
-                     var orderSubTotal = priceCalculationService.GetCartSubTotal(cart, true);
+                     var orderSubTotal = priceCalculationService.GetCartSubTotal(cart, false);
 
                      var orderTotal = priceCalculationService.GetOrderTotal(cart, true);
                      var shippingStatus = ShippingStatus.NotYetShipped;
@@ -148,10 +148,12 @@ namespace Orbio.Services.Orders
                                                               select new DiscountUsageHistory { DiscountId = duh, CreatedOnUtc = DateTime.UtcNow }).ToList());
                      }
 
-                     AddNotesAndSendNotifications(customer, order);
-                     var orderId = UpdateOrder(order);
-                     //check low stock and send email if required to admin
-                     try
+                     
+                     var processOrderResult = UpdateOrder(order);
+                     order = GetOrderResult(processOrderResult, order);
+                    AddNotesAndSendNotifications(customer, order);
+                    //check low stock and send email if required to admin
+                    try
                      {
                          var productIds = (from sci in cart.ShoppingCartItems
                                            select sci.ProductId.ToString()).Aggregate((p1, p2) => p1 + "," + p2);
@@ -173,17 +175,28 @@ namespace Orbio.Services.Orders
                  return ex.Message;
              }
 
-             return "Success"; //find a way to create ordernumber
+             return order.OrderId.ToString(); //find a way to create ordernumber
          }
 
-         private int UpdateOrder(Order order)
+         private ProcessOrderResult UpdateOrder(Order order)
          {
              var orderXml = Serializer.GenericSerializer<Order>(order);
-             var sqlParams = new SqlParameter[] {new SqlParameter{ ParameterName="@orderXml", 
-             Value=orderXml, DbType= System.Data.DbType.Xml}, new SqlParameter{ ParameterName="@orderId", 
-             Value=0, DbType= System.Data.DbType.Int32, Direction= System.Data.ParameterDirection.Output} };
-             var result = dbContext.ExecuteSqlCommand("EXEC [usp_Order_ProcessOrder] @orderXml, @orderId OUTPUT", false, null, sqlParams);
-             return Convert.ToInt32(sqlParams[1].Value);
+            //var sqlParams = new SqlParameter[] {new SqlParameter{ ParameterName="@orderXml", 
+            //Value=orderXml, DbType= System.Data.DbType.Xml}, new SqlParameter{ ParameterName="@orderId", 
+            //Value=0, DbType= System.Data.DbType.Int32, Direction= System.Data.ParameterDirection.Output} };
+            //var result1 = dbContext.ExecuteSqlCommand("EXEC [usp_Order_ProcessOrder] @orderXml, @orderId OUTPUT", false, null, sqlParams);
+            //return Convert.ToInt32(sqlParams[1].Value);
+            var sqlParamList = new List<SqlParameter>();
+            sqlParamList.Add(new SqlParameter { ParameterName = "@orderXml", Value = orderXml, DbType = System.Data.DbType.Xml });
+            var result = dbContext.ExecuteFunction<XmlResultSet>("usp_Order_ProcessOrder",
+                          sqlParamList.ToArray()
+                          ).FirstOrDefault();
+            if (result != null && result.XmlResult != null)
+            {
+                var orderResult = Serializer.GenericDeSerializer<ProcessOrderResult>(result.XmlResult);
+                return orderResult;
+            }
+            return new ProcessOrderResult();
          }
 
          private void AddNotesAndSendNotifications(Customer customer, Order order)
@@ -217,6 +230,16 @@ namespace Orbio.Services.Orders
                      CreatedOnUtc = DateTime.UtcNow
                  });
              }
+
+             UpdateOrderNote(order);
+         }
+
+         private void UpdateOrderNote(Order order)
+         {
+             var orderNoteXml = Serializer.GenericSerializer(order.OrderNotes);
+             dbContext.ExecuteFunction<OrderNote>("usp_Update_OrderNote",
+                new SqlParameter() { ParameterName = "@orderId", Value = order.OrderId, DbType = System.Data.DbType.Int32 },
+                new SqlParameter() { ParameterName = "@note", Value = orderNoteXml, DbType = System.Data.DbType.Xml });
          }
 
          private void SetOrderItems(Customer customer,ICart cart, Order order)
@@ -332,5 +355,24 @@ namespace Orbio.Services.Orders
              };
              return order;
          }
+
+         private Order GetOrderResult(ProcessOrderResult processOrderResult, Order orderDetail)
+        {
+            var order = new Order()
+            {
+                OrderId = processOrderResult.OrderId,
+                BillingAddress = processOrderResult.BillingAddress.FirstOrDefault(),
+                ShippingAddress = processOrderResult.ShippingAddress.FirstOrDefault(),
+                Customer=processOrderResult.Customer,
+                ShippingMethod = orderDetail.ShippingMethod,
+                PaymentMethodSystemName = orderDetail.PaymentMethodSystemName,
+                OrderItems = processOrderResult.OrderItems,
+                OrderSubTotalDiscountExclTax = orderDetail.OrderSubTotalDiscountExclTax,
+                OrderSubtotalExclTax = orderDetail.OrderSubtotalExclTax,
+                OrderTotal = orderDetail.OrderTotal,
+                CreatedOnUtc = orderDetail.CreatedOnUtc
+            };
+            return order;
+        }
     }
 }

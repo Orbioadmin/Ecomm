@@ -28,10 +28,10 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE PROCEDURE [dbo].[usp_Order_ProcessOrder] (
-@orderXml xml, @orderId INT OUTPUT)
+@orderXml xml)
 AS    
 BEGIN    
- DECLARE @orderItemXml xml, @customerId INT, @storeId INT
+ DECLARE @orderItemXml xml, @customerId INT, @storeId INT,@orderId INT
  SELECT @customerId = d.value('(StoreId)[1]','int' ) ,
 	   @storeId = d.value('(CustomerId)[1]','int' ) 
  from @orderXml.nodes('/Order') O(d)
@@ -125,7 +125,29 @@ BEGIN TRY
   
    COMMIT TRAN
    EXEC usp_Cart_Reset  @customerId, @storeId, @orderItemXml
-	 RETURN @orderId
+	 --RETURN @orderId
+	 
+	 	 	  DECLARE @XmlResult xml;
+
+--WITH XMLNAMESPACES ('http://schemas.datacontract.org/2004/07/Orbio.Core.Domain.order' AS ns)
+SELECT @XmlResult =(select @orderId as 'OrderId',(select FirstName,LastName,Email from dbo.Customer where Id = @customerId for xml path('Customer'),type),
+(select addr.Id,addr.FirstName,addr.LastName,addr.Email,addr.Company,addr.Address1,addr.Address2,
+addr.ZipPostalCode,addr.PhoneNumber,addr.FaxNumber,con.Name 'Country' ,sta.Name 'States' from dbo.Customer cus inner join dbo.Address addr 
+on cus.BillingAddress_Id = addr.Id inner join dbo.Country con on addr.CountryId = con.Id
+inner join dbo.StateProvince sta on addr.StateProvinceId = sta.Id where cus.Id = @customerId for xml path('Address'),ROOT('BillingAddress'),type),
+
+(select addr.Id,addr.FirstName,addr.LastName,addr.Email,addr.Company,addr.Address1,addr.Address2,
+addr.ZipPostalCode,addr.PhoneNumber,addr.FaxNumber,con.Name 'Country' ,sta.Name 'States' from dbo.Customer cus inner join dbo.Address addr 
+on cus.ShippingAddress_Id = addr.Id inner join dbo.Country con on addr.CountryId = con.Id
+inner join dbo.StateProvince sta on addr.StateProvinceId = sta.Id where cus.Id = @customerId for xml path('Address'),ROOT('ShippingAddress'),type),
+
+(Select ori.Quantity,ori.UnitPriceExclTax,ori.UnitPriceInclTax,ori.PriceInclTax,ori.PriceExclTax,ori.DiscountAmountInclTax,
+ori.AttributeDescription,[dbo].[ufn_GetOrderProductDetails](ori.Id) from OrderItem ori inner join [Order] ord on ori.OrderId = ord.Id
+inner join Product prd on ori.ProductId = prd.Id where ori.OrderId = @orderId for xml path('OrderItem'),Root('OrderItems'),type)
+
+	  for xml path('ProcessOrderResult'))
+ SELECT @XmlResult as XmlResult
+	 
  END TRY
  --CLEANUP CART
  

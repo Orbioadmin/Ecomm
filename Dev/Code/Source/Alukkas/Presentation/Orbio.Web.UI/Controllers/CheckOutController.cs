@@ -197,6 +197,11 @@ namespace Orbio.Web.UI.Controllers
             //do payment and set Success = true
             processRequest.Success = true;             
             var result = orderService.PlaceOrder(processRequest);
+            if (TempData.ContainsKey("OrderNumber"))
+            {
+                TempData.Remove("OrderNumber");
+            }
+            TempData.Add("OrderNumber", result); // set order number
             if (!TempData.ContainsKey("ThankYou"))
             {
                 TempData.Add("ThankYou", true);

@@ -17,7 +17,7 @@ namespace Orbio.Core.Domain.Catalog
             {
                 sb.Append(HttpUtility.HtmlEncode(pva.AttributeName)).Append(":"); 
                 sb.Append((from pvav in pva.ProductAttributeValues
-                           select string.Format("{0}[1](RS)", pvav.PriceAdjustment.ToString("#,##0.00"), HttpUtility.HtmlEncode(pvav.AttributeValue))
+                           select string.Format(" {0} , {1}(RS)",  HttpUtility.HtmlEncode(pvav.AttributeValue),pvav.PriceAdjustment.ToString("#,##0.00"))
                                        ).Aggregate((p1, p2) => p1 + "," + p2));
                 if (productAttr.Count() > 1)
                 {

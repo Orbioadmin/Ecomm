@@ -84,10 +84,12 @@ namespace Orbio.Web.UI.Models.CheckOut
          }
         [Required]
         [DataType(DataType.Text)]
+        [RegularExpression("/^[a-z ,.'-]+$/i", ErrorMessage = "Invalid First Name")]
         [Display(Name = "FirstName")]
         public string BillFirstName { get; set; }
 
         [Required]
+        [RegularExpression("/^[a-z ,.'-]+$/i", ErrorMessage = "Invalid Last Name")]
         [DataType(DataType.Text)]
         [Display(Name = "Last Name")]
         public string BillLastName { get; set; }
@@ -126,11 +128,13 @@ namespace Orbio.Web.UI.Models.CheckOut
         public bool SameAddress { get; set; }
 
         [Required]
+        [RegularExpression("/^[a-z ,.'-]+$/i", ErrorMessage = "Invalid First Name")]
         [DataType(DataType.Text)]
         [Display(Name = "FirstName")]
         public string ShipFirstName { get; set; }
 
         [Required]
+        [RegularExpression("/^[a-z ,.'-]+$/i", ErrorMessage = "Invalid Last Name")]
         [DataType(DataType.Text)]
         [Display(Name = "Last Name")]
         public string ShipLastName { get; set; }

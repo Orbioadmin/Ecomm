@@ -99,7 +99,7 @@
                 </div>
                 <div class="col-md-4 col-sm-4">
                     <!-- Order Summary -->
-                    @Html.Action("CartSummary", "ShoppingCart",  new RouteValueDictionary { { "showCartSummary", false } })
+                    @Html.Action("CartSummary", "ShoppingCart",  new RouteValueDictionary { { "showCartSummary", true } })
                   @*  <div class="well">
 
                         <div class="cart_total">
@@ -132,8 +132,9 @@
                     <div class="col-md-12">
                         <div class="Thank_step">
                             <h1>THANK YOU FOR YOUR ORDER !!</h1>
-                            @*<p>Order Number : <span>234587</span></p>*@
+                            <p>Order Number : <span>@TempData["OrderNumber"]</span></p>
                             <p>Your order has been confirmed and you will get a confirmation email shortly.</p>
+                            <p><a href="~/"><input type="submit" class="continue_shop" value="CONTINUE SHOPPING"></a></p>
                         </div>
                     </div>
                 </div>
@@ -195,7 +196,7 @@
 
             $('ul.setup-panel li.active a').trigger('click');
 
-            var fromThankYou = @(ViewBag.ThankYou == true?"true;":"false;") 
+            var fromThankYou = @(ViewBag.ThankYou == true?"true;":"false;")
             if (fromThankYou) {
                 $(".top_payment").css("display","none");
                 $('ul.setup-panel li:eq(1)').removeClass('disabled');
@@ -297,7 +298,7 @@
                 @*var url = '@Url.Action("PayOrder", "CheckOut")';
                 $.post(url, null, function (response) {
                     if (response != null && response == "Success") {
-                       
+
                     }
                     else {
                         ShowError(response);

@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using Orbio.Core.Domain.Discounts;
 using Orbio.Core.Domain.Shipping;
 using Orbio.Core.Payments;
+using Orbio.Core.Domain.Customers;
+using Orbio.Core.Domain.Checkout;
 
 namespace Orbio.Core.Domain.Orders
 {
@@ -69,6 +71,11 @@ namespace Orbio.Core.Domain.Orders
 
         #region Properties
 
+         ///<summary>
+         /// Get or sets the order id
+         /// </summary>
+         public int OrderId { get; set; }
+
         /// <summary>
         /// Gets or sets the order identifier
         /// </summary>
@@ -123,6 +130,21 @@ namespace Orbio.Core.Domain.Orders
         /// Gets or sets the currency rate
         /// </summary>
         public decimal CurrencyRate { get; set; }
+
+        /// <summary>
+        /// Gets or sets the customer
+        /// </summary>
+        public Customer Customer { get; set; }
+
+        /// <summary>
+        /// Gets or sets the billing address
+        /// </summary>
+        public Address BillingAddress { get; set; }
+
+        /// <summary>
+        /// Gets or sets the shipping address
+        /// </summary>
+        public Address ShippingAddress { get; set; }
 
         /// <summary>
         /// Gets or sets the customer tax display type identifier
