@@ -6,6 +6,7 @@ using Orbio.Services.Orders;
 using Orbio.Services.Taxes;
 using System;
 using System.Collections.Generic;
+using System.Web;
 
 namespace Orbio.Web.UI.Models.Catalog
 {
@@ -27,7 +28,7 @@ namespace Orbio.Web.UI.Models.Catalog
             //TODO: throw custom exception and show not found page
             if (product == null)
             {
-                throw new Exception("Page not found");
+                throw new HttpException(404, "Product does not exist");
             }
             // TODO: Complete member initialization
             this.Id = product.Id;

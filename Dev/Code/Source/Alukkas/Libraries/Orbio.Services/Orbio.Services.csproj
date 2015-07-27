@@ -76,6 +76,9 @@
     <Compile Include="Helpers\DateTimeHelper.cs" />
     <Compile Include="Helpers\DateTimeSettings.cs" />
     <Compile Include="Helpers\IDateTimeHelper.cs" />
+    <Compile Include="Logging\DefaultLogger.cs" />
+    <Compile Include="Logging\ILogger.cs" />
+    <Compile Include="Logging\LogginExtension.cs" />
     <Compile Include="Messages\IMessageService.cs" />
     <Compile Include="Messages\MessageService.cs" />
     <Compile Include="Messages\IMessageTokenProvider.cs" />

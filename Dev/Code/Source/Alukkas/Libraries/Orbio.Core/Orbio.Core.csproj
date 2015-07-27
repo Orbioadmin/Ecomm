@@ -57,6 +57,9 @@
     <Compile Include="Data\CustomerRole.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\Log.cs">
+      <DependentUpon>OrbioAdmin.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\OrbioAdmin.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -124,6 +127,7 @@
     <Compile Include="Domain\Discounts\DiscountUsageHistory.cs" />
     <Compile Include="Domain\Discounts\IDiscount.cs" />
     <Compile Include="Domain\Email\EmailDetail.cs" />
+    <Compile Include="Domain\Logging\LogLevel.cs" />
     <Compile Include="Domain\Messages\MessageTemplate.cs" />
     <Compile Include="Domain\Messages\Token.cs" />
     <Compile Include="Domain\Orders\Cart.cs" />

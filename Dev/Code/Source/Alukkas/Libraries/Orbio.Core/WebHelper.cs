@@ -362,5 +362,22 @@ namespace Orbio.Core
 
             return string.Empty;
         }
+
+        /// <summary>
+        /// Get URL referrer
+        /// </summary>
+        /// <returns>URL referrer</returns>
+        public virtual string GetUrlReferrer()
+        {
+            string referrerUrl = string.Empty;
+
+            //URL referrer is null in some case (for example, in IE 8)
+            if (httpContext != null &&
+                httpContext.Request != null &&
+                httpContext.Request.UrlReferrer != null)
+                referrerUrl = httpContext.Request.UrlReferrer.PathAndQuery;
+
+            return referrerUrl;
+        }
     }
 }

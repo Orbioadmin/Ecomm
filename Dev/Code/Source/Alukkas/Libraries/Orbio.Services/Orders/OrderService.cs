@@ -9,6 +9,7 @@ using Orbio.Core.Domain.Orders;
 using Orbio.Core.Domain.Shipping;
 using Orbio.Core.Utility;
 using Orbio.Services.Catalog;
+using Orbio.Services.Logging;
 using Orbio.Services.Messages;
 using Orbio.Services.Payments;
 using Orbio.Services.Taxes;
@@ -30,6 +31,7 @@ namespace Orbio.Services.Orders
          private readonly IMessageService messageService;
          private readonly IStoreContext storeContext;
          private readonly IProductService productService;
+         private readonly ILogger logger;
         /// <summary>
         /// instantiates Store service type
         /// </summary>
@@ -37,7 +39,8 @@ namespace Orbio.Services.Orders
          public OrderService(IDbContext context, IShoppingCartService shoppingCartService,
              IWebHelper webHelper, IPriceCalculationService priceCalculationService,
              ITaxCalculationService taxCalculationService, IWorkContext workContext,
-             IMessageService messageService, IStoreContext storeContext, IProductService productService)
+             IMessageService messageService, IStoreContext storeContext, IProductService productService,
+             ILogger logger)
         {
             this.dbContext = context;
             this.shoppingCartService = shoppingCartService;
@@ -48,6 +51,7 @@ namespace Orbio.Services.Orders
             this.messageService = messageService;
             this.storeContext = storeContext;
             this.productService = productService;
+            this.logger = logger;
         }
 
          /// <summary>
@@ -78,6 +82,7 @@ namespace Orbio.Services.Orders
          public string PlaceOrder(ProcessOrderRequest processOrderRequest)
          {
              var order = new Order();
+              var customer = workContext.CurrentCustomer;
              try
              {
                  if (processOrderRequest.OrderGuid == Guid.Empty)
@@ -122,7 +127,7 @@ namespace Orbio.Services.Orders
                  if (processOrderRequest.Success)
                  {
                      
-                     var customer = workContext.CurrentCustomer;
+                    
                      var cart = processOrderRequest.Cart;
                       
                      var appliedDiscounts = new List<int>();
@@ -159,7 +164,7 @@ namespace Orbio.Services.Orders
                      }
                      catch (Exception ex)
                      {
-                         //log error should not stop user.
+                         logger.Error("Send Quantity Below Notification failed. " + ex.ToString(), ex, customer);
                      }
                  }
              }
@@ -168,7 +173,10 @@ namespace Orbio.Services.Orders
                  //TODO log error
                  if (order != null)
                  {
-                     //log order xml also 
+                     var xml = Serializer.GenericSerializer<Order>(order);                     
+
+                     logger.Fatal("Order Submission failed", new Exception(xml + ex.ToString()), customer);
+
                  }
                  return ex.Message;
              }

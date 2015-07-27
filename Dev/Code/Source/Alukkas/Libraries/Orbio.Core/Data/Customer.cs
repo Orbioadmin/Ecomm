@@ -18,6 +18,7 @@ namespace Orbio.Core.Data
         {
             this.Orders = new HashSet<Order>();
             this.CustomerRoles = new HashSet<CustomerRole>();
+            this.Logs = new HashSet<Log>();
         }
     
         public int Id { get; set; }
@@ -50,5 +51,6 @@ namespace Orbio.Core.Data
     
         public virtual ICollection<Order> Orders { get; set; }
         public virtual ICollection<CustomerRole> CustomerRoles { get; set; }
+        public virtual ICollection<Log> Logs { get; set; }
     }
 }

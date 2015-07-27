@@ -29,5 +29,6 @@ namespace Orbio.Core.Data
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<CustomerRole> CustomerRoles { get; set; }
         public virtual DbSet<OrderItem> OrderItems { get; set; }
+        public virtual DbSet<Log> Logs { get; set; }
     }
 }

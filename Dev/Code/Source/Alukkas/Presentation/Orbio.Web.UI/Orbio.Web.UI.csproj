@@ -8,7 +8,7 @@
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{792EB613-2587-4DE8-B56F-75ED14145450}</ProjectGuid>
-    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Orbio.Web.UI</RootNamespace>
@@ -210,6 +210,7 @@
     <Compile Include="Controllers\CartBaseController.cs" />
     <Compile Include="Controllers\CatalogController.cs" />
     <Compile Include="Controllers\CheckOutController.cs" />
+    <Compile Include="Controllers\CommonController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
@@ -580,6 +581,7 @@
     <Content Include="Views\Catalog\Product.cshtml" />
     <Content Include="Views\ShoppingCart\_orderTotalSummary.cshtml" />
     <Content Include="Views\CheckOut\_address.cshtml" />
+    <Content Include="Views\Common\PageNotFound.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
