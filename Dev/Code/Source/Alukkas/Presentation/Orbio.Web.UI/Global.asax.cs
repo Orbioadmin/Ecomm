@@ -8,6 +8,10 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using Nop.Core.Infrastructure;
 using Nop.Web.Framework.Mvc;
+using System.Configuration;
+using Orbio.Services.Logging;
+using Orbio.Core;
+using Orbio.Web.UI.Controllers;
 
 namespace Orbio.Web.UI
 {
@@ -39,6 +43,36 @@ namespace Orbio.Web.UI
         {
             //we don't do it in Application_BeginRequest because a user is not authenticated yet
             SetWorkingCulture();
+        }
+
+        protected void Application_Error(Object sender, EventArgs e)
+        {
+            var exception = Server.GetLastError();
+
+            //log error
+            LogException(exception);
+
+            //process 404 HTTP errors
+            var httpException = exception as HttpException;
+            if (httpException != null && httpException.GetHttpCode() == 404)
+            {
+                var webHelper = EngineContext.Current.Resolve<IWebHelper>();
+                if (!webHelper.IsStaticResource(this.Request))
+                {
+                    Response.Clear();
+                    Server.ClearError();
+                    Response.TrySkipIisCustomErrors = true;
+
+                    // Call target Controller and pass the routeData.
+                    IController errorController = new CommonController();
+
+                    var routeData = new RouteData();
+                    routeData.Values.Add("controller", "Common");
+                    routeData.Values.Add("action", "PageNotFound");
+
+                    errorController.Execute(new RequestContext(new HttpContextWrapper(Context), routeData));
+                }
+            }
         }
 
         public override string GetVaryByCustomString(HttpContext context, string custom)
@@ -95,6 +129,33 @@ namespace Orbio.Web.UI
             //    //    Thread.CurrentThread.CurrentUICulture = culture;
             //    //}
             //}
+        }
+
+        protected void LogException(Exception exc)
+        {
+            if (exc == null)
+                return;
+
+            var log404Errors =  ConfigurationManager.AppSettings["Log404Errors"]!=null && 
+                ConfigurationManager.AppSettings["Log404Errors"].Equals("true");
+
+            //ignore 404 HTTP errors
+            var httpException = exc as HttpException;
+            if (httpException != null && httpException.GetHttpCode() == 404 &&
+                !log404Errors)
+                return;
+
+            try
+            {
+                //log
+                var logger = EngineContext.Current.Resolve<ILogger>();
+                var workContext = EngineContext.Current.Resolve<IWorkContext>();
+                logger.Error(exc.Message, exc, workContext.CurrentCustomer);
+            }
+            catch (Exception)
+            {
+                //don't throw new exception if occurs
+            }
         }
     }
 }

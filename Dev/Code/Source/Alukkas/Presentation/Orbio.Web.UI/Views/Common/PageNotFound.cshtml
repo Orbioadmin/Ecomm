@@ -1,0 +1,187 @@
+﻿ @{
+    ViewBag.Title = "Page not found";
+}
+@*@Html.Action("PriceBar", "Home")*@
+<section class="listing_page">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+           
+        </ol>
+
+        <div class="row">
+           <div class="col-sm-2">
+                
+                 <div class="left-sidebar">
+                    
+                    <div class="filter_by">FILTER BY</div>    
+                
+                        
+                    </div>
+            </div>
+            <div class="col-sm-10">
+
+
+     <div class="featured_items" align="center">
+        <ul class="feature_li four_items">
+            <p><strong>The page you requested was not found, and we have a fine guess why.</strong>
+            <ul>
+                <li>If you typed the URL directly, please make sure the spelling is correct.</li><li>The page no longer exists. In this case, we profusely apologize for the inconvenience and for any damage this may cause.</li></ul>
+
+        </ul></p>
+        <div class="clear"></div>
+        <div class="no-product">@*<span>NO @(this.Model.Products.Count > 0 ? "MORE" : "") PRODUCT TO DISPLAY</span>*@</div>
+    </div>
+</div>
+            <div id="load"></div>
+
+          
+
+        </div>
+    </div>
+
+</section>
+@section scripts{
+    <script type="text/javascript">
+
+        $(function () {
+            jQuery($('#sl2').slider()).on('slideStop', function (ev) {
+                if (ev != null && ev.value != null && ev.value.length > 1) {
+                    var specboxes = $('input[id=specFilterCheckBox]');
+                    var specs = '';
+                    $.each(specboxes, function () {
+                        if ($(this).is(':checked')) {
+                            specs += $(this).attr('data-id') + ",";
+                        }
+                    });
+                    window.location.href = $(this).attr('data-url') + '&spec=' + specs + ev.value[0] + '~' + ev.value[1];
+                }
+            });
+
+            if (($("#sl2").attr('data-slider-min') == 0 && $("#sl2").attr('data-slider-max') == 0) || ($("#sl2").attr('data-slider-min') == $("#sl2").attr('data-slider-max'))) {
+                $("div[id='priceFilter']").hide();
+            }
+            jQuery($('input[id=specFilterCheckBox]')).on('change', function (e) {
+                // if ($(this).is(':checked')) {
+                var specboxes = $('input[id=specFilterCheckBox]');
+                var specs = '';
+                $.each(specboxes, function () {
+                    if ($(this).is(':checked')) {
+                        specs += $(this).attr('data-id') + ",";
+                    }
+                });
+                var priceRange = $('div .price-range > div>div').children('.tooltip-inner').text();
+                var sliderMin = $('#sl2').data('slider-min');
+                var sliderMax = $('#sl2').data('slider-max');
+                var selectedRanges = priceRange.split(':');
+                var priceFilter = '';
+                if (selectedRanges[0].trim() != sliderMin || selectedRanges[1].trim() != sliderMax) {
+                    priceFilter = selectedRanges[0].trim() + '~' + selectedRanges[1].trim() + ',';
+                }
+                var n = specs.lastIndexOf(",");
+                var specs = specs.substring(0, n)
+                if (specs.length == 0) {
+                    var p = priceFilter.lastIndexOf(",");
+                    var priceFilter = priceFilter.substring(0, p)
+                }
+                window.location.href = $(this).attr('data-url') + '&spec=' + priceFilter + specs;
+                //}
+                //else {
+                //    //NEED TO REMOVE SPEC FORM URL
+                //}
+            });
+        });
+
+
+        // Carousel Auto-Cycle
+        $(document).ready(function () {
+            function lastPostFunc() {
+                var slug = $('#slug').val();
+                var keyWord = '@ViewBag.keyWord';
+            var str = '@ViewBag.spec';
+            $('#specification').val(str)
+            var spec = $('#specification').val();
+            var pageNumber = "";
+            if ($('#paging').val() == "")
+            { pageNumber = $('#paging').val(1); pageNumber = parseInt(pageNumber.val()) + 1; }
+            else
+            { pageNumber = $('#paging').val(); pageNumber = parseInt(pageNumber) + 1; }
+
+            $('#paging').val(pageNumber);
+            $('.no-product').html('<img src="Content/themes/base/images/torus_loader.gif" />');
+            $.ajax({
+                type: "POST",
+                url: '@(Url.Action("CategoryPaging", "Catalog"))?seName=' + slug + '&spec=' + spec + '&keyWord=' + keyWord + '&pageNumber=' + pageNumber,
+                success: function (data) {
+
+                    if (data.trim() != "") {
+                        $('.feature_li:last').append(data);
+                        $('.no-product').empty();
+                        //$("#sl2").attr('data-slider-value',"[ 5000,80000]");
+                        //$("#sl2").attr('data-slider-min',"5000");
+                        //$("#sl2").attr('data-slider-max', "80000");
+                        //$(".tooltip-inner").html('5000 : 80000');
+                        //$("#sl2").slider('refresh');
+                        //$slider = $('#sl2');
+                        //var value = $slider.data('slider').getValue();
+                        //value[1] = 80000;
+                        ////$slider.data('slider').max = 13;
+                        //$slider.slider('setValue', value);
+                        //$slider.
+                        //$('#sl2').slider('refresh');
+                    }
+                    else {
+                        $('.no-product').html('<span>NO MORE PRODUCT TO DISPLAY</span>')
+                    }
+
+                }
+
+            })
+        };
+
+        $(window).scroll(function () {
+            if ($(document).height() - 500 <= $(window).scrollTop() + $(window).height()) {
+                lastPostFunc();
+            }
+        });
+
+        $('.carousel').carousel({
+            interval: 3000
+        })
+    });
+
+
+    //Listview
+
+    //$('.listview button').on('click',function(e) {
+    //    if ($(this).hasClass('three_view')) {
+    //        $('.featured_items ul').removeClass('four_items');
+    //    }
+    //    else if($(this).hasClass('four_view')) {
+    //        $('.featured_items ul').addClass('four_items');
+    //    }
+    //});
+
+    //$('.listview button').click(function(e) {
+    //    e.preventDefault(); //prevent the link from being followed
+    //    $('.listview button').removeClass('selected');
+    //    $(this).addClass('selected');
+    //});
+
+
+    /*Price slider */
+
+    $("[data-slider]")
+   .each(function () {
+       var input = $(this);
+       $("<span>")
+         .addClass("output")
+         .insertAfter($(this));
+   })
+   .bind("slider:ready slider:changed", function (event, data) {
+       $(this)
+         .nextAll(".output:first")
+           .html(data.value.toFixed(3));
+   });
+</script>
+}

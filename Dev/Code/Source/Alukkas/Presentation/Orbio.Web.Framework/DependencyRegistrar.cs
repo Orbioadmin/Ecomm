@@ -43,7 +43,9 @@ namespace Orbio.Web.Framework
             builder.RegisterType<OBS.Admin.Orders.OrderReportService>().As<OBS.Admin.Orders.IOrderReportService>().InstancePerHttpRequest();
             //added by sankar
             builder.RegisterType<OBS.Admin.Customers.CustomerReportService>().As<OBS.Admin.Customers.ICustomerReportService>().InstancePerHttpRequest();
-
+            //added by madhu
+            builder.RegisterType<OBS.Logging.DefaultLogger>().As<OBS.Logging.ILogger>().InstancePerHttpRequest();
+            
         }
 
         public int Order

@@ -4,12 +4,40 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="OrbioAdminModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="OrbioAdminModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="OrbioAdminModelStoreContainer">
+          <EntitySet Name="Customer" EntityType="OrbioAdminModel.Store.Customer" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Customer_CustomerRole_Mapping" EntityType="OrbioAdminModel.Store.Customer_CustomerRole_Mapping" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CustomerRole" EntityType="OrbioAdminModel.Store.CustomerRole" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Log" EntityType="OrbioAdminModel.Store.Log" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Order" EntityType="OrbioAdminModel.Store.Order" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OrderItem" EntityType="OrbioAdminModel.Store.OrderItem" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="Customer_CustomerRoles_Source" Association="OrbioAdminModel.Store.Customer_CustomerRoles_Source">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Customer_CustomerRole_Mapping" EntitySet="Customer_CustomerRole_Mapping" />
+          </AssociationSet>
+          <AssociationSet Name="Customer_CustomerRoles_Target" Association="OrbioAdminModel.Store.Customer_CustomerRoles_Target">
+            <End Role="CustomerRole" EntitySet="CustomerRole" />
+            <End Role="Customer_CustomerRole_Mapping" EntitySet="Customer_CustomerRole_Mapping" />
+          </AssociationSet>
+          <AssociationSet Name="Log_Customer" Association="OrbioAdminModel.Store.Log_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Log" EntitySet="Log" />
+          </AssociationSet>
+          <AssociationSet Name="Order_Customer" Association="OrbioAdminModel.Store.Order_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="OrderItem_Order" Association="OrbioAdminModel.Store.OrderItem_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderItem" EntitySet="OrderItem" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="CustomerGuid" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Username" Type="nvarchar" MaxLength="1000" />
           <Property Name="Email" Type="nvarchar" MaxLength="1000" />
@@ -32,10 +60,10 @@
           <Property Name="ShippingAddress_Id" Type="int" />
           <Property Name="FirstName" Type="varchar" MaxLength="50" />
           <Property Name="LastName" Type="varchar" MaxLength="50" />
-          <Property Name="Gender" Type="varchar" MaxLength="50" />
+          <Property Name="Gender" Type="varchar" MaxLength="20" />
           <Property Name="DOB" Type="varchar" MaxLength="20" />
           <Property Name="CompanyName" Type="varchar" MaxLength="50" />
-          <Property Name="MobileNo" Type="varchar" MaxLength="15" />
+          <Property Name="MobileNo" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="Customer_CustomerRole_Mapping">
           <Key>
@@ -49,19 +77,33 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
           <Property Name="FreeShipping" Type="bit" Nullable="false" />
           <Property Name="TaxExempt" Type="bit" Nullable="false" />
           <Property Name="Active" Type="bit" Nullable="false" />
           <Property Name="IsSystemRole" Type="bit" Nullable="false" />
           <Property Name="SystemName" Type="nvarchar" MaxLength="255" />
         </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LogLevelId" Type="int" Nullable="false" />
+          <Property Name="ShortMessage" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FullMessage" Type="nvarchar(max)" />
+          <Property Name="IpAddress" Type="nvarchar" MaxLength="200" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="PageUrl" Type="nvarchar(max)" />
+          <Property Name="ReferrerUrl" Type="nvarchar(max)" />
+          <Property Name="CreatedOnUtc" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="Order">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="OrderGuid" Type="uniqueidentifier" Nullable="false" />
           <Property Name="StoreId" Type="int" Nullable="false" />
           <Property Name="CustomerId" Type="int" Nullable="false" />
@@ -72,22 +114,22 @@
           <Property Name="PaymentStatusId" Type="int" Nullable="false" />
           <Property Name="PaymentMethodSystemName" Type="nvarchar(max)" />
           <Property Name="CustomerCurrencyCode" Type="nvarchar(max)" />
-          <Property Name="CurrencyRate" Type="decimal" Precision="18" Scale="8" Nullable="false" />
+          <Property Name="CurrencyRate" Type="decimal" Nullable="false" Scale="8" />
           <Property Name="CustomerTaxDisplayTypeId" Type="int" Nullable="false" />
           <Property Name="VatNumber" Type="nvarchar(max)" />
-          <Property Name="OrderSubtotalInclTax" Type="decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="OrderSubtotalExclTax" Type="decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="OrderSubTotalDiscountInclTax" Type="decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="OrderSubTotalDiscountExclTax" Type="decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="OrderShippingInclTax" Type="decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="OrderShippingExclTax" Type="decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="PaymentMethodAdditionalFeeInclTax" Type="decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="PaymentMethodAdditionalFeeExclTax" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="OrderSubtotalInclTax" Type="decimal" Nullable="false" Scale="4" />
+          <Property Name="OrderSubtotalExclTax" Type="decimal" Nullable="false" Scale="4" />
+          <Property Name="OrderSubTotalDiscountInclTax" Type="decimal" Nullable="false" Scale="4" />
+          <Property Name="OrderSubTotalDiscountExclTax" Type="decimal" Nullable="false" Scale="4" />
+          <Property Name="OrderShippingInclTax" Type="decimal" Nullable="false" Scale="4" />
+          <Property Name="OrderShippingExclTax" Type="decimal" Nullable="false" Scale="4" />
+          <Property Name="PaymentMethodAdditionalFeeInclTax" Type="decimal" Nullable="false" Scale="4" />
+          <Property Name="PaymentMethodAdditionalFeeExclTax" Type="decimal" Nullable="false" Scale="4" />
           <Property Name="TaxRates" Type="nvarchar(max)" />
-          <Property Name="OrderTax" Type="decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="OrderDiscount" Type="decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="OrderTotal" Type="decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="RefundedAmount" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="OrderTax" Type="decimal" Nullable="false" Scale="4" />
+          <Property Name="OrderDiscount" Type="decimal" Nullable="false" Scale="4" />
+          <Property Name="OrderTotal" Type="decimal" Nullable="false" Scale="4" />
+          <Property Name="RefundedAmount" Type="decimal" Nullable="false" Scale="4" />
           <Property Name="RewardPointsWereAdded" Type="bit" Nullable="false" />
           <Property Name="CheckoutAttributeDescription" Type="nvarchar(max)" />
           <Property Name="CheckoutAttributesXml" Type="nvarchar(max)" />
@@ -120,30 +162,31 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="OrderItemGuid" Type="uniqueidentifier" Nullable="false" />
           <Property Name="OrderId" Type="int" Nullable="false" />
           <Property Name="ProductId" Type="int" Nullable="false" />
           <Property Name="Quantity" Type="int" Nullable="false" />
-          <Property Name="UnitPriceInclTax" Type="decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="UnitPriceExclTax" Type="decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="PriceInclTax" Type="decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="PriceExclTax" Type="decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="DiscountAmountInclTax" Type="decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="DiscountAmountExclTax" Type="decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="OriginalProductCost" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="UnitPriceInclTax" Type="decimal" Nullable="false" Scale="4" />
+          <Property Name="UnitPriceExclTax" Type="decimal" Nullable="false" Scale="4" />
+          <Property Name="PriceInclTax" Type="decimal" Nullable="false" Scale="4" />
+          <Property Name="PriceExclTax" Type="decimal" Nullable="false" Scale="4" />
+          <Property Name="DiscountAmountInclTax" Type="decimal" Nullable="false" Scale="4" />
+          <Property Name="DiscountAmountExclTax" Type="decimal" Nullable="false" Scale="4" />
+          <Property Name="OriginalProductCost" Type="decimal" Nullable="false" Scale="4" />
           <Property Name="AttributeDescription" Type="nvarchar(max)" />
           <Property Name="AttributesXml" Type="nvarchar(max)" />
           <Property Name="DownloadCount" Type="int" Nullable="false" />
           <Property Name="IsDownloadActivated" Type="bit" Nullable="false" />
           <Property Name="LicenseDownloadId" Type="int" />
-          <Property Name="ItemWeight" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="ItemWeight" Type="decimal" Scale="4" />
+          <Property Name="PriceDetailXml" Type="nvarchar(max)" />
         </EntityType>
         <Association Name="Customer_CustomerRoles_Source">
-          <End Role="Customer" Type="Self.Customer" Multiplicity="1">
+          <End Role="Customer" Type="OrbioAdminModel.Store.Customer" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Customer_CustomerRole_Mapping" Type="Self.Customer_CustomerRole_Mapping" Multiplicity="*" />
+          <End Role="Customer_CustomerRole_Mapping" Type="OrbioAdminModel.Store.Customer_CustomerRole_Mapping" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Customer">
               <PropertyRef Name="Id" />
@@ -154,10 +197,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Customer_CustomerRoles_Target">
-          <End Role="CustomerRole" Type="Self.CustomerRole" Multiplicity="1">
+          <End Role="CustomerRole" Type="OrbioAdminModel.Store.CustomerRole" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Customer_CustomerRole_Mapping" Type="Self.Customer_CustomerRole_Mapping" Multiplicity="*" />
+          <End Role="Customer_CustomerRole_Mapping" Type="OrbioAdminModel.Store.Customer_CustomerRole_Mapping" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CustomerRole">
               <PropertyRef Name="Id" />
@@ -167,11 +210,25 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="Order_Customer">
-          <End Role="Customer" Type="Self.Customer" Multiplicity="1">
+        <Association Name="Log_Customer">
+          <End Role="Customer" Type="OrbioAdminModel.Store.Customer" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <End Role="Log" Type="OrbioAdminModel.Store.Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Log">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Order_Customer">
+          <End Role="Customer" Type="OrbioAdminModel.Store.Customer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Order" Type="OrbioAdminModel.Store.Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Customer">
               <PropertyRef Name="Id" />
@@ -182,10 +239,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="OrderItem_Order">
-          <End Role="Order" Type="Self.Order" Multiplicity="1">
+          <End Role="Order" Type="OrbioAdminModel.Store.Order" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="OrderItem" Type="Self.OrderItem" Multiplicity="*" />
+          <End Role="OrderItem" Type="OrbioAdminModel.Store.OrderItem" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Order">
               <PropertyRef Name="Id" />
@@ -195,29 +252,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="OrbioAdminModelStoreContainer">
-          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Customer_CustomerRole_Mapping" EntityType="Self.Customer_CustomerRole_Mapping" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CustomerRole" EntityType="Self.CustomerRole" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="OrderItem" EntityType="Self.OrderItem" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="Customer_CustomerRoles_Source" Association="Self.Customer_CustomerRoles_Source">
-            <End Role="Customer" EntitySet="Customer" />
-            <End Role="Customer_CustomerRole_Mapping" EntitySet="Customer_CustomerRole_Mapping" />
-          </AssociationSet>
-          <AssociationSet Name="Customer_CustomerRoles_Target" Association="Self.Customer_CustomerRoles_Target">
-            <End Role="CustomerRole" EntitySet="CustomerRole" />
-            <End Role="Customer_CustomerRole_Mapping" EntitySet="Customer_CustomerRole_Mapping" />
-          </AssociationSet>
-          <AssociationSet Name="Order_Customer" Association="Self.Order_Customer">
-            <End Role="Customer" EntitySet="Customer" />
-            <End Role="Order" EntitySet="Order" />
-          </AssociationSet>
-          <AssociationSet Name="OrderItem_Order" Association="Self.OrderItem_Order">
-            <End Role="Order" EntitySet="Order" />
-            <End Role="OrderItem" EntitySet="OrderItem" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -249,12 +283,13 @@
           <Property Name="ShippingAddress_Id" Type="Int32" />
           <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="DOB" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="MobileNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="MobileNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Orders" Relationship="Self.Order_Customer" FromRole="Customer" ToRole="Order" />
           <NavigationProperty Name="CustomerRoles" Relationship="OrbioAdminModel.Customer_CustomerRole_Mapping" FromRole="Customer" ToRole="CustomerRole" />
+          <NavigationProperty Name="Logs" Relationship="OrbioAdminModel.Log_Customer" FromRole="Customer" ToRole="Log" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -348,6 +383,11 @@
             <End Role="Customer" EntitySet="Customers" />
             <End Role="CustomerRole" EntitySet="CustomerRoles" />
           </AssociationSet>
+          <EntitySet Name="Logs" EntityType="OrbioAdminModel.Log" />
+          <AssociationSet Name="Log_Customer" Association="OrbioAdminModel.Log_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Log" EntitySet="Logs" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="CustomerRole">
           <Key>
@@ -385,6 +425,7 @@
           <Property Name="LicenseDownloadId" Type="Int32" />
           <Property Name="ItemWeight" Type="Decimal" Precision="18" Scale="4" />
           <NavigationProperty Name="Order" Relationship="OrbioAdminModel.OrderItem_Order" FromRole="OrderItem" ToRole="Order" />
+          <Property Type="String" Name="PriceDetailXml" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="OrderItem_Order">
           <End Type="OrbioAdminModel.Order" Role="Order" Multiplicity="1">
@@ -403,6 +444,35 @@
         <Association Name="Customer_CustomerRole_Mapping">
           <End Type="OrbioAdminModel.Customer" Role="Customer" Multiplicity="*" />
           <End Type="OrbioAdminModel.CustomerRole" Role="CustomerRole" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="LogLevelId" Nullable="false" />
+          <Property Type="String" Name="ShortMessage" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FullMessage" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="IpAddress" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="CustomerId" />
+          <Property Type="String" Name="PageUrl" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ReferrerUrl" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreatedOnUtc" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="OrbioAdminModel.Log_Customer" FromRole="Log" ToRole="Customer" />
+        </EntityType>
+        <Association Name="Log_Customer">
+          <End Type="OrbioAdminModel.Customer" Role="Customer" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="OrbioAdminModel.Log" Role="Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Log">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -519,6 +589,7 @@
           <EntitySetMapping Name="OrderItems">
             <EntityTypeMapping TypeName="OrbioAdminModel.OrderItem">
               <MappingFragment StoreEntitySet="OrderItem">
+                <ScalarProperty Name="PriceDetailXml" ColumnName="PriceDetailXml" />
                 <ScalarProperty Name="ItemWeight" ColumnName="ItemWeight" />
                 <ScalarProperty Name="LicenseDownloadId" ColumnName="LicenseDownloadId" />
                 <ScalarProperty Name="IsDownloadActivated" ColumnName="IsDownloadActivated" />
@@ -548,6 +619,21 @@
               <ScalarProperty Name="Id" ColumnName="Customer_Id" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="Logs">
+            <EntityTypeMapping TypeName="OrbioAdminModel.Log">
+              <MappingFragment StoreEntitySet="Log">
+                <ScalarProperty Name="CreatedOnUtc" ColumnName="CreatedOnUtc" />
+                <ScalarProperty Name="ReferrerUrl" ColumnName="ReferrerUrl" />
+                <ScalarProperty Name="PageUrl" ColumnName="PageUrl" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+                <ScalarProperty Name="FullMessage" ColumnName="FullMessage" />
+                <ScalarProperty Name="ShortMessage" ColumnName="ShortMessage" />
+                <ScalarProperty Name="LogLevelId" ColumnName="LogLevelId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

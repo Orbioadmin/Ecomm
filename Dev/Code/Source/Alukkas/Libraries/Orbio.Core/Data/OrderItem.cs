@@ -32,6 +32,7 @@ namespace Orbio.Core.Data
         public bool IsDownloadActivated { get; set; }
         public Nullable<int> LicenseDownloadId { get; set; }
         public Nullable<decimal> ItemWeight { get; set; }
+        public string PriceDetailXml { get; set; }
     
         public virtual Order Order { get; set; }
     }

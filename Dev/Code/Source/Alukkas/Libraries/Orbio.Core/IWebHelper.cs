@@ -11,6 +11,11 @@ namespace Orbio.Core
     public interface IWebHelper
     {
         /// <summary>
+        /// Get URL referrer
+        /// </summary>
+        /// <returns>URL referrer</returns>
+        string GetUrlReferrer();
+        /// <summary>
         /// removes given query strings from the path and rewrites the path
         /// </summary>
         /// <param name="queryParamsToRemove">query params to be removed</param>

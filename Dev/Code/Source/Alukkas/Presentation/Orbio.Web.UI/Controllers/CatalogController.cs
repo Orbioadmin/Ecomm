@@ -18,6 +18,8 @@ using Orbio.Web.UI.Filters;
 using Orbio.Core.Domain.Catalog;
 using System.Data;
 using Orbio.Services.Taxes;
+using System.Web.Routing;
+using System.Web;
 
 namespace Orbio.Web.UI.Controllers
 {
@@ -145,6 +147,10 @@ namespace Orbio.Web.UI.Controllers
             int pageNumber = 1;
             int pageSize = (ConfigurationManager.AppSettings["CatelogProductsPageSize"].ToString() != "") ? Convert.ToInt32(ConfigurationManager.AppSettings["CatelogProductsPageSize"]) : 10;
             var model = PrepareCategoryProductModel(seName, spec, keyWord, pageNumber, pageSize);
+            if (string.IsNullOrEmpty(model.ViewPath))
+            {
+                throw new HttpException(404, "Category not found");
+            }
             if (!string.IsNullOrEmpty(keyWord))
             { ViewBag.searchkeyword = " ITEMS FOUND BY KEYWORD ''" + keyWord + "''"; }
             var queryString = new NameValueCollection(ControllerContext.HttpContext.Request.QueryString);
@@ -732,8 +738,8 @@ namespace Orbio.Web.UI.Controllers
 
         private ProductDetailModel PrepareProductdetailsModel(string seName)
         {
-            var model = new ProductDetailModel(productService.GetProductsDetailsBySlug(seName));
-
+                var model = new ProductDetailModel(productService.GetProductsDetailsBySlug(seName));
+            
             return model;
         }
         private RelatedProductsModel PrepareRelatedProductdetailsModel(int productId)
@@ -858,7 +864,21 @@ namespace Orbio.Web.UI.Controllers
                           }).ToList();
 
             return rating;
-        }      
+        }
+
+        protected virtual ActionResult InvokeHttp404()
+        {
+            // Call target Controller and pass the routeData.
+            IController errorController = new CommonController();
+
+            var routeData = new RouteData();
+            routeData.Values.Add("controller", "Common");
+            routeData.Values.Add("action", "PageNotFound");
+
+            errorController.Execute(new RequestContext(this.HttpContext, routeData));
+
+            return new EmptyResult();
+        }
 
 
     }
