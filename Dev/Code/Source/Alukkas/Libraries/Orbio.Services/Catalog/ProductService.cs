@@ -96,12 +96,12 @@ namespace Orbio.Services.Catalog
         public int InsertReviews(int id, int productId, bool isApproved, string reviewTitle, string reviewText, int rating, string customerName)
         {
             var result = context.ExecuteFunction<ProductDetail>("usp_Customer_InsertCustomerReview",
-                  new SqlParameter() { ParameterName = "@customerid", Value = id, DbType = System.Data.DbType.Int16 },
-                   new SqlParameter() { ParameterName = "@productid", Value = productId, DbType = System.Data.DbType.Int16 },
+                  new SqlParameter() { ParameterName = "@customerid", Value = id, DbType = System.Data.DbType.Int32 },
+                   new SqlParameter() { ParameterName = "@productid", Value = productId, DbType = System.Data.DbType.Int32 },
                     new SqlParameter() { ParameterName = "@isapproved", Value = isApproved, DbType = System.Data.DbType.Boolean },
                      new SqlParameter() { ParameterName = "@reviewtitle", Value = reviewTitle, DbType = System.Data.DbType.String },
                       new SqlParameter() { ParameterName = "@reviewtext", Value = reviewText, DbType = System.Data.DbType.String },
-                      new SqlParameter() { ParameterName = "@rating", Value = rating, DbType = System.Data.DbType.Int16},
+                      new SqlParameter() { ParameterName = "@rating", Value = rating, DbType = System.Data.DbType.Int32},
                        new SqlParameter() { ParameterName = "@name", Value = customerName, DbType = System.Data.DbType.String });
 
             return 0;
@@ -111,7 +111,7 @@ namespace Orbio.Services.Catalog
         {
             var sqlParamList = new List<SqlParameter>();
             sqlParamList.Add(new SqlParameter() { ParameterName = "@Value", Value = value, DbType = System.Data.DbType.String });
-            sqlParamList.Add(new SqlParameter() { ParameterName = "@ProductId", Value = productId, DbType = System.Data.DbType.Int16 });
+            sqlParamList.Add(new SqlParameter() { ParameterName = "@ProductId", Value = productId, DbType = System.Data.DbType.Int32 });
             sqlParamList.Add(new SqlParameter() { ParameterName = "@pageNumber", Value = pageNumber, DbType = System.Data.DbType.Int32 });
             sqlParamList.Add(new SqlParameter() { ParameterName = "@pageSize", Value = pageSize, DbType = System.Data.DbType.Int32 });
 

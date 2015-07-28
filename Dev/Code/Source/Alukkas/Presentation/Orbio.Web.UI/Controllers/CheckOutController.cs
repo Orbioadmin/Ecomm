@@ -80,15 +80,16 @@ namespace Orbio.Web.UI.Controllers
             }
             else
             {
+                var address = new AddressModel();
                 var customerBillAddress = checkoutService.GetCustomerAddress(customer.Email, "Billing");
                 var customerShipAddress = checkoutService.GetCustomerAddress(customer.Email, "Shipping");
                 if (customerBillAddress == null && customerShipAddress==null)
                 {
-                    return RedirectToAction("Index", "CheckOut");
+                    return PartialView("_address", address);
                 }
                 else
                 {
-                    var address = new AddressModel();
+                    
                     if (customerBillAddress.BillingAddress_Id == customerBillAddress.ShippingAddress_Id)
                     {
                         address = new AddressModel(customerBillAddress);

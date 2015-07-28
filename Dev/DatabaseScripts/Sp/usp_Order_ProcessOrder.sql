@@ -32,8 +32,8 @@ CREATE PROCEDURE [dbo].[usp_Order_ProcessOrder] (
 AS    
 BEGIN    
  DECLARE @orderItemXml xml, @customerId INT, @storeId INT,@orderId INT
- SELECT @customerId = d.value('(StoreId)[1]','int' ) ,
-	   @storeId = d.value('(CustomerId)[1]','int' ) 
+ SELECT @customerId = d.value('(CustomerId)[1]','int' ) ,
+	   @storeId = d.value('(StoreId)[1]','int' ) 
  from @orderXml.nodes('/Order') O(d)
  SELECT @orderItemXml = @orderXml.query('/Order/OrderItems')
 BEGIN TRY
