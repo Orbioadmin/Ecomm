@@ -34,7 +34,7 @@
                             <img src="~/images/Basic_image/user.png">
                              @if (workContext.CurrentCustomer.IsRegistered)
                                {
-                                <span class="span-title">Hi @ViewBag.UserName</span>
+                                <span class="span-title">Hi @workContext.CurrentCustomer.Email</span>
                                }
                              else
                                { 
