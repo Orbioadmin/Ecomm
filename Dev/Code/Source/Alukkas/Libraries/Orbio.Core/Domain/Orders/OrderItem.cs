@@ -24,10 +24,10 @@ namespace Orbio.Core.Domain.Orders
         /// </summary>
         public int OrderId { get; set; }
 
-        /// <summary>
-        /// Gets or sets the product identifier
-        /// </summary>
-        public int ProductId { get; set; }
+        ///// <summary>
+        ///// Gets or sets the product identifier
+        ///// </summary>
+        //public int ProductId { get; set; }
 
         /// <summary>
         /// Gets or sets the quantity
