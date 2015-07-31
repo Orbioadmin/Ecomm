@@ -206,6 +206,7 @@
                 $('ul.setup-panel li a[href="#step-3"]').trigger('click');
                 $(this).remove();
             }
+
             $('#activate-step-2').on('click', function (e) {
                 if (($("#ShipFirstName").val() == "") || ($("#ShipLastName").val() == "") || ($("#ShipPhone").val() == "" || $("#ShipPhone").val().length != 10)
                     || ($("#ShipAddress").val() == "") || ($("#ShipCity").val() == "") || ($("#ShipPincode").val() == "")
@@ -247,6 +248,7 @@
                     if ($("#BillFirstName").val() == "") {
                         $("#billfirstname").css("display", "");
                     }
+
                     if ($("#BillLastName").val() == "") {
                         $("#billlastname").css("display", "");
                     }
@@ -450,6 +452,172 @@
                 if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
                     e.preventDefault();
                 }
+            });
+
+            $("#ShipFirstName").keydown(function (e) {
+                // Allow: backspace, delete, tab, escape, enter and .
+                if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+                    // Allow: Ctrl+A
+                    (e.keyCode == 65 && e.ctrlKey === true) ||
+                    // Allow: home, end, left, right, down, up
+                    (e.keyCode >= 35 && e.keyCode <= 40)) {
+                    // let it happen, don't do anything
+                    return;
+                }
+                // Ensure that it is a number and stop the keypress
+                if ((e.shiftKey || (e.keyCode < 65 || e.keyCode > 90)) && (e.keyCode < 97 || e.keyCode > 122) && e.keyCode != 32 && e.keyCode != 46) {
+                    e.preventDefault();
+                }
+
+            });
+
+            $("#ShipLastName").keydown(function (e) {
+                // Allow: backspace, delete, tab, escape, enter and .
+                if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+                    // Allow: Ctrl+A
+                    (e.keyCode == 65 && e.ctrlKey === true) ||
+                    // Allow: home, end, left, right, down, up
+                    (e.keyCode >= 35 && e.keyCode <= 40)) {
+                    // let it happen, don't do anything
+                    return;
+                }
+                // Ensure that it is a number and stop the keypress
+                if ((e.shiftKey || (e.keyCode < 65 || e.keyCode > 90)) && (e.keyCode < 97 || e.keyCode > 122) && e.keyCode != 32 && e.keyCode != 46) {
+                    e.preventDefault();
+                }
+
+            });
+
+            $("#BillFirstName").keydown(function (e) {
+                // Allow: backspace, delete, tab, escape, enter and .
+                if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+                    // Allow: Ctrl+A
+                    (e.keyCode == 65 && e.ctrlKey === true) ||
+                    // Allow: home, end, left, right, down, up
+                    (e.keyCode >= 35 && e.keyCode <= 40)) {
+                    // let it happen, don't do anything
+                    return;
+                }
+                // Ensure that it is a number and stop the keypress
+                if ((e.shiftKey || (e.keyCode < 65 || e.keyCode > 90)) && (e.keyCode < 97 || e.keyCode > 122) && e.keyCode != 32 && e.keyCode != 46) {
+                    e.preventDefault();
+                }
+
+            });
+
+            $("#BillLastName").keydown(function (e) {
+                // Allow: backspace, delete, tab, escape, enter and .
+                if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+                    // Allow: Ctrl+A
+                    (e.keyCode == 65 && e.ctrlKey === true) ||
+                    // Allow: home, end, left, right, down, up
+                    (e.keyCode >= 35 && e.keyCode <= 40)) {
+                    // let it happen, don't do anything
+                    return;
+                }
+                // Ensure that it is a number and stop the keypress
+                if ((e.shiftKey || (e.keyCode < 65 || e.keyCode > 90)) && (e.keyCode < 97 || e.keyCode > 122) && e.keyCode != 32 && e.keyCode != 46) {
+                    e.preventDefault();
+                }
+
+            });
+
+            $("#ShipCity").keydown(function (e) {
+                // Allow: backspace, delete, tab, escape, enter and .
+                if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+                    // Allow: Ctrl+A
+                    (e.keyCode == 65 && e.ctrlKey === true) ||
+                    // Allow: home, end, left, right, down, up
+                    (e.keyCode >= 35 && e.keyCode <= 40)) {
+                    // let it happen, don't do anything
+                    return;
+                }
+                // Ensure that it is a number and stop the keypress
+                if ((e.shiftKey || (e.keyCode < 65 || e.keyCode > 90)) && (e.keyCode < 97 || e.keyCode > 122) && e.keyCode != 32) {
+                    e.preventDefault();
+                }
+
+            });
+
+            $("#BillCity").keydown(function (e) {
+                // Allow: backspace, delete, tab, escape, enter and .
+                if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+                    // Allow: Ctrl+A
+                    (e.keyCode == 65 && e.ctrlKey === true) ||
+                    // Allow: home, end, left, right, down, up
+                    (e.keyCode >= 35 && e.keyCode <= 40)) {
+                    // let it happen, don't do anything
+                    return;
+                }
+                // Ensure that it is a number and stop the keypress
+                if ((e.shiftKey || (e.keyCode < 65 || e.keyCode > 90)) && (e.keyCode < 97 || e.keyCode > 122) && e.keyCode != 32) {
+                    e.preventDefault();
+                }
+
+            });
+            $("#ShipState").keydown(function (e) {
+                // Allow: backspace, delete, tab, escape, enter and .
+                if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+                    // Allow: Ctrl+A
+                    (e.keyCode == 65 && e.ctrlKey === true) ||
+                    // Allow: home, end, left, right, down, up
+                    (e.keyCode >= 35 && e.keyCode <= 40)) {
+                    // let it happen, don't do anything
+                    return;
+                }
+                // Ensure that it is a number and stop the keypress
+                if ((e.shiftKey || (e.keyCode < 65 || e.keyCode > 90)) && (e.keyCode < 97 || e.keyCode > 122) && e.keyCode != 32) {
+                    e.preventDefault();
+                }
+
+            });
+            $("#BillState").keydown(function (e) {
+                // Allow: backspace, delete, tab, escape, enter and .
+                if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+                    // Allow: Ctrl+A
+                    (e.keyCode == 65 && e.ctrlKey === true) ||
+                    // Allow: home, end, left, right, down, up
+                    (e.keyCode >= 35 && e.keyCode <= 40)) {
+                    // let it happen, don't do anything
+                    return;
+                }
+                // Ensure that it is a number and stop the keypress
+                if ((e.shiftKey || (e.keyCode < 65 || e.keyCode > 90)) && (e.keyCode < 97 || e.keyCode > 122) && e.keyCode != 32) {
+                    e.preventDefault();
+                }
+
+            });
+            $("#ShipCountry").keydown(function (e) {
+                // Allow: backspace, delete, tab, escape, enter and .
+                if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+                    // Allow: Ctrl+A
+                    (e.keyCode == 65 && e.ctrlKey === true) ||
+                    // Allow: home, end, left, right, down, up
+                    (e.keyCode >= 35 && e.keyCode <= 40)) {
+                    // let it happen, don't do anything
+                    return;
+                }
+                // Ensure that it is a number and stop the keypress
+                if ((e.shiftKey || (e.keyCode < 65 || e.keyCode > 90)) && (e.keyCode < 97 || e.keyCode > 122) && e.keyCode != 32) {
+                    e.preventDefault();
+                }
+
+            });
+            $("#BillCountry").keydown(function (e) {
+                // Allow: backspace, delete, tab, escape, enter and .
+                if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+                    // Allow: Ctrl+A
+                    (e.keyCode == 65 && e.ctrlKey === true) ||
+                    // Allow: home, end, left, right, down, up
+                    (e.keyCode >= 35 && e.keyCode <= 40)) {
+                    // let it happen, don't do anything
+                    return;
+                }
+                // Ensure that it is a number and stop the keypress
+                if ((e.shiftKey || (e.keyCode < 65 || e.keyCode > 90)) && (e.keyCode < 97 || e.keyCode > 122) && e.keyCode != 32) {
+                    e.preventDefault();
+                }
+
             });
         })
 

@@ -75,7 +75,7 @@ namespace Orbio.Web.UI.Models
         [Required(ErrorMessage = "Email Required")]
         [DataType(DataType.EmailAddress)]
         [RegularExpression(@"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", ErrorMessage = "Entered Email format is not valid.")]
-        [Display(Name = "User Name")]
+        [Display(Name = "Email")]
         public string UserName { get; set; }
 
         [Required(ErrorMessage = "Password Required")]

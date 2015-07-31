@@ -22,13 +22,13 @@ namespace Orbio.Core.Domain.Orders
         /// Default billing address
         /// </summary>
         [DataMember]
-        public List<Address> BillingAddress { get; set; }
+        public Address BillingAddress { get; set; }
 
         /// <summary>
         /// Default shipping address
         /// </summary>
         [DataMember]
-        public List<Address> ShippingAddress { get; set; }
+        public Address ShippingAddress { get; set; }
 
         /// <summary>
         /// Get or set customer details

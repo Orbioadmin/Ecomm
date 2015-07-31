@@ -201,7 +201,7 @@ namespace Orbio.Services.Orders
                           ).FirstOrDefault();
             if (result != null && result.XmlResult != null)
             {
-                var orderResult = Serializer.GenericDeSerializer<ProcessOrderResult>(result.XmlResult);
+                var orderResult = Serializer.GenericDeSerializer <ProcessOrderResult> (result.XmlResult);
                 return orderResult;
             }
             return new ProcessOrderResult();
@@ -276,14 +276,16 @@ namespace Orbio.Services.Orders
 
                  ////attributes
                  //string attributeDescription = _productAttributeFormatter.FormatAttributes(sc.Product, sc.AttributesXml, customer);
-
                  // var itemWeight = _shippingService.GetShoppingCartItemWeight(sc);
                  var attributeDescription = sci.ProductVariantPriceAdjustments.FormatAttribute();
+
+                 //Product Id
+                 var product = new Product(){Id = sci.ProductId};
                  //save order item
                  var orderItem = new OrderItem()
                  {
                      OrderItemGuid = Guid.NewGuid(),
-                     ProductId = sci.ProductId,
+                     Product = product,
                      UnitPriceInclTax = scUnitPriceInclTax,
                      UnitPriceExclTax = scUnitPriceExclTax,
                      PriceInclTax = scSubTotalInclTax,
@@ -369,8 +371,8 @@ namespace Orbio.Services.Orders
             var order = new Order()
             {
                 OrderId = processOrderResult.OrderId,
-                BillingAddress = processOrderResult.BillingAddress.FirstOrDefault(),
-                ShippingAddress = processOrderResult.ShippingAddress.FirstOrDefault(),
+                BillingAddress = processOrderResult.BillingAddress,
+                ShippingAddress = processOrderResult.ShippingAddress,
                 Customer=processOrderResult.Customer,
                 ShippingMethod = orderDetail.ShippingMethod,
                 PaymentMethodSystemName = orderDetail.PaymentMethodSystemName,

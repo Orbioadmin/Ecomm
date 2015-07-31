@@ -113,7 +113,7 @@ namespace Orbio.Core.Domain.Orders
         /// <summary>
         /// Gets the product
         /// </summary>
-        public List<Product> Product { get; set; }
+        public Product Product { get; set; }
 
         ///// <summary>
         ///// Gets or sets the associated gift card

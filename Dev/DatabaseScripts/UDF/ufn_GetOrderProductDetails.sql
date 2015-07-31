@@ -25,8 +25,8 @@ BEGIN
 	 
 		--WITH XMLNAMESPACES ('http://schemas.datacontract.org/2004/07/Orbio.Core.Domain.Catalog' AS ns)
 		SELECT @xmlResult = ( Select prd.Name from OrderItem ori inner join [Order] ord on ori.OrderId = ord.Id
-		inner join Product prd on ori.ProductId = prd.Id where ori.Id = @orderItemId for xml path('Product'),Root('Product'),type )
-		    
+		inner join Product prd on ori.ProductId = prd.Id where ori.Id = @orderItemId for xml path('Product'),type )
+		
 	 Return @xmlresult
 
 END

@@ -95,7 +95,6 @@ namespace Orbio.Web.UI.Models.CheckOut
         public string BillLastName { get; set; }
 
         [Required(ErrorMessage = "Phone Number Required")]
-        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Entered phone number is not valid.")]
         [Display(Name = "Phone")]
         public string BillPhone { get; set; }
 
@@ -106,6 +105,7 @@ namespace Orbio.Web.UI.Models.CheckOut
 
         [Required]
         [DataType(DataType.Text)]
+        [RegularExpression("/^[a-z ,.'-]+$/i", ErrorMessage = "Invalid City Name")]
         [Display(Name = "City")]
         public string BillCity { get; set; }
 
@@ -116,11 +116,13 @@ namespace Orbio.Web.UI.Models.CheckOut
 
         [Required]
         [DataType(DataType.Text)]
+        [RegularExpression("/^[a-z ,.'-]+$/i", ErrorMessage = "Invalid State Name")]
         [Display(Name = "State")]
         public string BillState { get; set; }
 
         [Required]
         [DataType(DataType.Text)]
+        [RegularExpression("/^[a-z ,.'-]+$/i", ErrorMessage = "Invalid Country Name")]
         [Display(Name = "Country")]
         public string BillCountry { get; set; }
 
@@ -140,7 +142,6 @@ namespace Orbio.Web.UI.Models.CheckOut
         public string ShipLastName { get; set; }
 
         [Required(ErrorMessage = "Phone Number Required")]
-        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Entered phone number is not valid.")]
         [Display(Name = "Phone")]
         public string ShipPhone { get; set; }
 
@@ -151,6 +152,7 @@ namespace Orbio.Web.UI.Models.CheckOut
 
         [Required]
         [DataType(DataType.Text)]
+        [RegularExpression("/^[a-z ,.'-]+$/i", ErrorMessage = "Invalid City Name")]
         [Display(Name = "City")]
         public string ShipCity { get; set; }
 
@@ -161,11 +163,13 @@ namespace Orbio.Web.UI.Models.CheckOut
 
         [Required]
         [DataType(DataType.Text)]
+        [RegularExpression("/^[a-z ,.'-]+$/i", ErrorMessage = "Invalid State Name")]
         [Display(Name = "State")]
         public string ShipState { get; set; }
 
         [Required]
         [DataType(DataType.Text)]
+        [RegularExpression("/^[a-z ,.'-]+$/i", ErrorMessage = "Invalid Country Name")]
         [Display(Name = "Country")]
         public string ShipCountry { get; set; }
     }

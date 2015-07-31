@@ -53,7 +53,7 @@ namespace Orbio.Services.Messages
 
                 sb.AppendLine(string.Format("<tr style=\"background-color: {0};text-align: center;\">", "white"));
 
-                sb.AppendLine("<td style=\"padding: 0.6em 0.4em;text-align: left;\">" + HttpUtility.HtmlEncode(product.FirstOrDefault().Name));
+                sb.AppendLine("<td style=\"padding: 0.6em 0.4em;text-align: left;\">" + HttpUtility.HtmlEncode(product.Name));
 
                 //attributes
                 if (!String.IsNullOrEmpty(orderItem.AttributeDescription))
