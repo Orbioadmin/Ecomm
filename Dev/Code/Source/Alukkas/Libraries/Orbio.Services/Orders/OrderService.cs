@@ -153,9 +153,14 @@ namespace Orbio.Services.Orders
                                                               select new DiscountUsageHistory { DiscountId = duh, CreatedOnUtc = DateTime.UtcNow }).ToList());
                      }
 
-                     
+                     order.OrderNotes.Add(new OrderNote()
+                     {
+                         Note = "Order placed",
+                         DisplayToCustomer = false,
+                         CreatedOnUtc = DateTime.UtcNow
+                     });
                      var processOrderResult = UpdateOrder(order);
-                     order = GetOrderResult(processOrderResult, order);
+                     order = GetOrderResult(customer, processOrderResult, order);
                     AddNotesAndSendNotifications(customer, order);
                     //check low stock and send email if required to admin
                     try
@@ -209,12 +214,7 @@ namespace Orbio.Services.Orders
 
          private void AddNotesAndSendNotifications(Customer customer, Order order)
          {
-             order.OrderNotes.Add(new OrderNote()
-             {
-                 Note = "Order placed",
-                 DisplayToCustomer = false,
-                 CreatedOnUtc = DateTime.UtcNow
-             });
+             
 
              //TODO
              //Send email to customer and add order note
@@ -366,22 +366,22 @@ namespace Orbio.Services.Orders
              return order;
          }
 
-         private Order GetOrderResult(ProcessOrderResult processOrderResult, Order orderDetail)
+         private Order GetOrderResult(Customer customer, ProcessOrderResult processOrderResult, Order order)
         {
-            var order = new Order()
+
+            order.OrderId = processOrderResult.OrderId;
+            order.BillingAddress = processOrderResult.BillingAddress;
+            order.ShippingAddress = processOrderResult.ShippingAddress;
+            order.Customer = customer;
+            var oiprods = from oi in order.OrderItems
+                          join poi in processOrderResult.Products
+                          on oi.Product.Id equals poi.Id
+                          select new { Oiprod = oi, PoiProd = poi };
+            foreach (var oip in oiprods)
             {
-                OrderId = processOrderResult.OrderId,
-                BillingAddress = processOrderResult.BillingAddress,
-                ShippingAddress = processOrderResult.ShippingAddress,
-                Customer=processOrderResult.Customer,
-                ShippingMethod = orderDetail.ShippingMethod,
-                PaymentMethodSystemName = orderDetail.PaymentMethodSystemName,
-                OrderItems = processOrderResult.OrderItems,
-                OrderSubTotalDiscountExclTax = orderDetail.OrderSubTotalDiscountExclTax,
-                OrderSubtotalExclTax = orderDetail.OrderSubtotalExclTax,
-                OrderTotal = orderDetail.OrderTotal,
-                CreatedOnUtc = orderDetail.CreatedOnUtc
-            };
+                oip.Oiprod.Product = oip.PoiProd;
+            }
+
             return order;
         }
     }
