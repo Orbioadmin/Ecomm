@@ -31,7 +31,7 @@ CREATE PROCEDURE [dbo].[usp_Cart_Reset] (@customerId int, @storeId int, @orderIt
 AS    
 BEGIN    
   
-   SELECT O.D.value('(ProductId)[1]','int') as ProductId 
+   SELECT O.D.value('(./Product/Id)[1]','int') as ProductId 
    INTO #prod
   FROM @orderItemsList.nodes('/OrderItems/OrderItem') O(d)
   

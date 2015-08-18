@@ -1,4 +1,5 @@
-﻿using Orbio.Core.Domain.Checkout;
+﻿using Orbio.Core.Domain.Catalog;
+using Orbio.Core.Domain.Checkout;
 using Orbio.Core.Domain.Customers;
 using System;
 using System.Collections.Generic;
@@ -40,7 +41,7 @@ namespace Orbio.Core.Domain.Orders
         /// Get or set order items
         /// </summary>
         [DataMember]
-        public List<OrderItem> OrderItems { get; set; }
+        public List<Product> Products { get; set; }
 
     }
 }
