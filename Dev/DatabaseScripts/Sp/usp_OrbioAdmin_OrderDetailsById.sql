@@ -47,14 +47,14 @@ SELECT @XmlResult = (select Id as 'OrderId',OrderGuid,StoreId,CustomerId,Billing
 		 PaymentMethodAdditionalFeeInclTax,PaymentMethodAdditionalFeeExclTax,
 		 TaxRates,OrderTax, OrderDiscount, OrderTotal,RefundedAmount, RewardPointsWereAdded,
 		 CustomerLanguageId,AffiliateId, CustomerIp, AllowStoringCreditCardNumber,
-		 Deleted, CreatedOnUtc,[dbo].[ufn_GetAdminOrderProductDetails](Id),[dbo].[ufn_GetAdminOrderNoteDetails](@Id),(select FirstName,LastName,Email from dbo.Customer where Id = @customerId for xml path('Customer'),type),
+		 Deleted, CreatedOnUtc,[dbo].[ufn_GetAdminOrderProductDetails](Id),[dbo].[ufn_GetAdminOrderNoteDetails](@Id),[dbo].[ufn_GetAdminCustomerDetail](Id),
 -- Get Billing Address
-(select addr.Id,addr.FirstName,addr.LastName,addr.Email,addr.Company,addr.Address1,addr.Address2,
+(select addr.Id as 'BillingAddress_Id',addr.FirstName,addr.LastName,addr.Email,addr.Company,addr.Address1,addr.Address2,
 addr.ZipPostalCode,addr.PhoneNumber,addr.FaxNumber,con.Name 'Country' ,sta.Name 'States' from dbo.Customer cus inner join dbo.Address addr 
 on cus.BillingAddress_Id = addr.Id inner join dbo.Country con on addr.CountryId = con.Id
 inner join dbo.StateProvince sta on addr.StateProvinceId = sta.Id where cus.Id = @customerId for xml path('BillingAddress'),type),
 -- Get shipping Address
-(select addr.Id,addr.FirstName,addr.LastName,addr.Email,addr.Company,addr.Address1,addr.Address2,
+(select addr.Id as 'ShippingAddress_Id',addr.FirstName,addr.LastName,addr.Email,addr.Company,addr.Address1,addr.Address2,
 addr.ZipPostalCode,addr.PhoneNumber,addr.FaxNumber,con.Name 'Country' ,sta.Name 'States' from dbo.Customer cus inner join dbo.Address addr 
 on cus.ShippingAddress_Id = addr.Id inner join dbo.Country con on addr.CountryId = con.Id
 inner join dbo.StateProvince sta on addr.StateProvinceId = sta.Id where cus.Id = @customerId for xml path('ShippingAddress'),type) 
@@ -65,6 +65,7 @@ SELECT @XmlResult as XmlResult
 	
 END
 
+--exec usp_OrbioAdmin_OrderDetailsById 56
 GO
 PRINT 'Created the procedure usp_OrbioAdmin_OrderDetailsById'
 GO  

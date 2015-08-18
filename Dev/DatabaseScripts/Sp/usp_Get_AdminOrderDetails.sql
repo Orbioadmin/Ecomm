@@ -74,8 +74,11 @@ BEGIN
 		begin
 			Set @query += ' and ord.Id = '+convert(varchar,@orderNo)+''
 		end
+		
 	
-	exec('Select ord.Id as OrderId,ord.OrderGuid,ord.StoreId,ord.CustomerId,ord.BillingAddressId,
+	
+	exec('DECLARE @XmlResult xml
+	SELECT @XmlResult = (Select ord.Id as OrderId,ord.OrderGuid,ord.StoreId,ord.CustomerId,ord.BillingAddressId,
 		ord.ShippingAddressId, ord.OrderStatusId, ord.ShippingStatusId, ord.PaymentStatusId,
 		ord.PaymentMethodSystemName, ord.CurrencyRate,ord.CustomerTaxDisplayTypeId,
 		 ord.OrderSubtotalInclTax,ord.OrderSubtotalExclTax,ord.OrderSubTotalDiscountInclTax,
@@ -83,13 +86,13 @@ BEGIN
 		 ord.PaymentMethodAdditionalFeeInclTax,ord.PaymentMethodAdditionalFeeExclTax,
 		 ord.TaxRates,OrderTax, ord.OrderDiscount, ord.OrderTotal,ord.RefundedAmount, ord.RewardPointsWereAdded,
 		 ord.CustomerLanguageId,ord.AffiliateId, ord.CustomerIp, ord.AllowStoringCreditCardNumber,
-		 ord.Deleted, ord.CreatedOnUtc from [Order] as ord
+		 ord.Deleted, ord.CreatedOnUtc,[dbo].[ufn_GetAdminCustomerDetail](ord.Id) from [Order] as ord
 	inner join [Address] as adr on ord.ShippingAddressId = adr.Id
-	where ord.Deleted <> 1'+@query)
+	where ord.Deleted <> 1'+@query+' for xml path(''Order''),Root(''ArrayOfOrder'')) SELECT @XmlResult as XmlResult')
 END
 
 
-
+--exec [dbo].[usp_Get_AdminOrderDetails] 0,0,0,0,'1/30/2015 6:30:00 PM','8/15/2015 6:30:00 PM',null,0
 
 GO
 PRINT 'Created the procedure usp_Get_AdminOrderDetails'
