@@ -13,5 +13,7 @@ namespace Orbio.Services.Messages
         void AddCustomerTokens(IList<Token> tokens, Customer customer);
 
         void AddOrderTokens(IList<Token> tokens, Order order);
+
+        void AddOrderNoteTokens(IList<Token> tokens, OrderNote orderNote);
     }
 }

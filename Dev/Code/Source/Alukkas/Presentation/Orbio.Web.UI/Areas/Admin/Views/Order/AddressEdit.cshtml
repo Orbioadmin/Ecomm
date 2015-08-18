@@ -1,0 +1,34 @@
+﻿@model Orbio.Web.UI.Area.Admin.Models.CheckOut.AddressModel
+@{
+    ViewBag.Title = "AddressEdit";
+}
+@using (Html.BeginForm("AddressEdit", "Order", FormMethod.Post, new { @class = "form-horizontal " }))
+                                            {
+<div role="tabpanel" class="tab-pane " id="shippingInfo">
+    <div class="col-md-3">Address Edit</div>
+    <div class="col-md-9">
+        <div class="pull-left">
+            <div class="col-md-7 billingInfo">
+                @Html.HiddenFor(m=>m.Id)
+                @Html.HiddenFor(m => m.OrderId)
+                <div class="col-md-4">Full name:</div>
+                <div class="col-md-8">@Html.TextBoxFor(m=>m.FirstName)</div>
+                <div class="col-md-4">Phone:</div>
+                <div class="col-md-8">@Html.TextBoxFor(m=>m.Phone)</div>
+                <div class="col-md-4">Address:</div>
+                <div class="col-md-8">@Html.TextBoxFor(m => m.Address)</div>
+                <div class="col-md-4">City:</div>
+                <div class="col-md-8">@Html.TextBoxFor(m => m.City)</div>
+                <div class="col-md-4">Country:</div>
+                <div class="col-md-8">@Html.DropDownList("CountryId", Model.AvailableCountries)  </div>
+                <div class="col-md-4">State/province:</div>
+                <div class="col-md-8">@Html.DropDownList("StateProvinceId", Model.AvailableStates)</div>
+                <div class="col-md-4">Zip/postal code:</div>
+                <div class="col-md-8">@Html.TextBoxFor(m => m.Pincode)</div>
+                <div class="col-md-12"><div class="pull-left">
+                    <input type="submit" class="editbut" value="Save" /></div></div>
+            </div>
+        </div>
+    </div>
+</div>
+}

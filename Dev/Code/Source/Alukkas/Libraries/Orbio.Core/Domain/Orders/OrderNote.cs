@@ -12,6 +12,11 @@ namespace Orbio.Core.Domain.Orders
     public partial class OrderNote  
     {
         /// <summary>
+        /// Gets or sets the order not identifier
+        /// </summary>
+        public int Id { get; set; }
+ 
+        /// <summary>
         /// Gets or sets the order identifier
         /// </summary>
         public int OrderId { get; set; }

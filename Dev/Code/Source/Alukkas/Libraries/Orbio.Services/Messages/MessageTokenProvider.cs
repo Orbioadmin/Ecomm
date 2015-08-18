@@ -33,14 +33,16 @@ namespace Orbio.Services.Messages
             var result = "";
 
             var sb = new StringBuilder();
-            sb.AppendLine("<table border=\"0\" style=\"width:100%;\">");
+            sb.AppendLine("<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"   style=\"margin-left:10px;width:600px;margin-right:10px;border:1px solid #cccccc\" align=\"center\">");
 
             #region Products
-            sb.AppendLine("<tr style=\"background-color:white;text-align:center;\">");
-            sb.AppendLine("<th>Name</th>");
-            sb.AppendLine("<th>Price</th>");
-            sb.AppendLine("<th>Quantity</th>");
-            sb.AppendLine("<th>Total</th>");
+            sb.AppendLine("<tr  style=\"background-color:#f8c301;font-family:'Arial'\">");
+            sb.AppendLine("<td style=\"padding:5px;font-size:12px;color:#282828;border-right:1px solid #cccccc;font-family:'Arial'\" align=\"center\"> S No.</td> ");
+            sb.AppendLine("<td style=\"padding:5px;font-size:12px;color:#282828;border-right:1px solid #cccccc;font-family:'Arial'\" align=\"center\"> Product Code</td>");
+            sb.AppendLine("<td style=\"padding:5px;font-size:12px;color:#282828;border-right:1px solid #cccccc;font-family:'Arial'\" align=\"center\"> Item Name</td>");
+            sb.AppendLine("<td style=\"padding:5px;font-size:12px;color:#282828;border-right:1px solid #cccccc;font-family:'Arial'\" align=\"center\"> Quantity</td>");
+            sb.AppendLine("<td style=\"padding:5px;font-size:12px;color:#282828;border-right:1px solid #cccccc;font-family:'Arial'\" align=\"center\"> Unit Price</td>");
+            sb.AppendLine("<td style=\"padding:5px;font-size:12px;color:#282828;border-right:1px solid #cccccc;font-family:'Arial'\" align=\"center\"> Price</td>");
             sb.AppendLine("</tr>");
 
             var table = order.OrderItems.ToList();
@@ -51,9 +53,13 @@ namespace Orbio.Services.Messages
                 if (product == null)
                     continue;
 
-                sb.AppendLine(string.Format("<tr style=\"background-color: {0};text-align: center;\">", "white"));
+                sb.AppendLine("<tr>");
 
-                sb.AppendLine("<td style=\"padding: 0.6em 0.4em;text-align: left;\">" + HttpUtility.HtmlEncode(product.Name));
+                sb.AppendLine("<td style=\"font-size:12px;color:#434343;border-right:1px solid #cccccc;border-bottom: 1px solid #cccccc;font-family:'Arial'\" align=\"center\" valign=\"top\">" + (i + 1) + "</td>");
+
+                sb.AppendLine(string.Format("<td style=\"font-size:12px;color:#434343;border-right:1px solid #cccccc;border-bottom: 1px solid #cccccc;font-family:'Arial'\" align=\"center\" valign=\"top\">{0}</td>", product.Sku));
+
+                sb.AppendLine(string.Format("<td style=\"font-size:12px;color:#434343;border-right:1px solid #cccccc;border-bottom: 1px solid #cccccc;font-family:'Arial'\" align=\"center\" valign=\"top\">{0}", product.Name));
 
                 //attributes
                 if (!String.IsNullOrEmpty(orderItem.AttributeDescription))
@@ -64,11 +70,12 @@ namespace Orbio.Services.Messages
 
                 sb.AppendLine("</td>");
 
-                sb.AppendLine(string.Format("<td style=\"padding: 0.6em 0.4em;text-align: right;\">{0}</td>", orderItem.UnitPriceInclTax.ToString("#,##0.00")));
 
-                sb.AppendLine(string.Format("<td style=\"padding: 0.6em 0.4em;text-align: center;\">{0}</td>", orderItem.Quantity));
+                sb.AppendLine(string.Format("<td style=\"font-size:12px;color:#434343;border-right:1px solid #cccccc;border-bottom: 1px solid #cccccc;font-family:'Arial'\" align=\"center\" valign=\"top\">{0}</td>", orderItem.Quantity));
 
-                sb.AppendLine(string.Format("<td style=\"padding: 0.6em 0.4em;text-align: right;\">{0}</td>", orderItem.PriceInclTax.ToString("#,##0.00")));
+                sb.AppendLine(string.Format("<td style=\"font-size:12px;color:#434343;border-right:1px solid #cccccc;border-bottom: 1px solid #cccccc;font-family:'Arial'\" align=\"center\" valign=\"top\"><span>&nbsp;{0} </span>{1}</td>", "Rs", orderItem.UnitPriceInclTax.ToString("#,##0.00")));
+
+                sb.AppendLine(string.Format("<td style=\"font-size:12px;color:#434343;border-right:1px solid #cccccc;border-bottom: 1px solid #cccccc;font-family:'Arial'\" align=\"center\" valign=\"top\"><span>&nbsp;{0} </span>{1}</td>", "Rs", orderItem.PriceInclTax.ToString("#,##0.00")));
 
                 sb.AppendLine("</tr>");
             }
@@ -76,17 +83,31 @@ namespace Orbio.Services.Messages
 
             #region Totals
 
+            sb.AppendLine("<tr>");
+
+            sb.AppendLine("<td style=\"padding:5px;border-top:1px solid #cccccc;;border-right:1px solid #cccccc\" align=\"center\" colspan=\"3\"></td>");
+
+            sb.AppendLine("<td style=\"font-size:12px;color:#434343;border-top:1px solid #cccccc;border-right:1px solid #cccccc;font-family:'Arial'\" align=\"right\" colspan=\"2\" ><p style=\"padding-right: 6px;\">SUB TOTAL</p><p style=\"padding-right: 6px;\">Promotional Discounts</p><p style=\"padding-right: 6px;\">SHIPPING COST</p></td>");
+
             //subtotal
-            sb.AppendLine(string.Format("<tr style=\"text-align:right;\"><td>&nbsp;</td><td colspan=\"2\" style=\"background-color: white;padding:0.6em 0.4 em;\"><strong>Sub Total</strong></td> <td style=\"background-color: white;padding:0.6em 0.4 em;\"><strong>{0}</strong></td></tr>", order.OrderSubtotalExclTax.ToString("#,##0.00")));
+            sb.AppendLine(string.Format("<td style=\"font-size:12px;color:#434343;border-top:1px solid #cccccc;font-family:'Arial'\" align=\"center\"><p><span>&nbsp;{0} </span>{1}</p>", "Rs", order.OrderSubtotalExclTax.ToString("#,##0.00")));
 
             //discount
-            sb.AppendLine(string.Format("<tr style=\"text-align:right;\"><td>&nbsp;</td><td colspan=\"2\" style=\"background-color: white;padding:0.6em 0.4 em;\"><strong>Promotional Discounts</strong></td> <td style=\"background-color: white;padding:0.6em 0.4 em;\"><strong>{0}</strong></td></tr>", order.OrderSubTotalDiscountExclTax.ToString("#,##0.00")));
+            sb.AppendLine(string.Format("<p><span>&nbsp;&nbsp;&nbsp;&nbsp; </span><span>&nbsp;{0}  </span>{1}</p>", "Rs",order.OrderSubTotalDiscountExclTax.ToString("#,##0.00")));
+            
+            ///shipping
+            sb.AppendLine(string.Format("<P><span>&nbsp;  </span><span>&nbsp;{0} </span> {1} </P></td>", "Rs", order.OrderShippingExclTax.ToString("#,##0.00")));
+
+            sb.AppendLine("</tr>");
+
+            sb.AppendLine("<tr style=\"background-color:#282828\"><td style=\"padding:5px\" align=\"center\" colspan=\"4\"></td>");
             
             ////total
-            sb.AppendLine(string.Format("<tr style=\"text-align:right;\"><td>&nbsp;</td><td colspan=\"2\" style=\"background-color: white;padding:0.6em 0.4 em;\"><strong>Order Total</strong></td> <td style=\"background-color: white;padding:0.6em 0.4 em;\"><strong>{0}</strong></td></tr>", order.OrderTotal.ToString("#,##0.00")));
+            sb.AppendLine("<td style=\"font-size:12px;color:#fff;font-family:'Arial';padding-top: 5px;padding-bottom: 5px;\" align=\"center\" colspan=\"0\"> TOTAL</td>");
+            sb.AppendLine(string.Format("<td style=\"font-size:12px;color:#fff;font-family:'Arial'\" align=\"center\"><span>&nbsp;{0} </span>{1}</td>","Rs" ,order.OrderTotal.ToString("#,##0.00")));
             #endregion
 
-            sb.AppendLine("</table>");
+            sb.AppendLine("</tr></table>");
             result = sb.ToString();
             return result;
         }
@@ -175,6 +196,14 @@ namespace Orbio.Services.Messages
             tokens.Add(new Token("Order.OrderURLForCustomer", string.Format("{0}Customer/MyAccount", webHelper.GetStoreLocation(false)), true));
 
 
+        }
+
+        public virtual void AddOrderNoteTokens(IList<Token> tokens, OrderNote orderNote)
+        {
+            tokens.Add(new Token("Order.NewNoteText", orderNote.Note, true));
+
+            //event notification
+            //_eventPublisher.EntityTokensAdded(orderNote, tokens);
         }
 
         #endregion

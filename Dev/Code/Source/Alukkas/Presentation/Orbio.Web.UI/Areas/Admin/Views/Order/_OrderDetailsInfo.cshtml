@@ -1,0 +1,200 @@
+﻿@model Orbio.Web.UI.Areas.Admin.Models.Orders.OrderModel
+@using Orbio.Core.Domain.Orders
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        toggleChangeOrderStatus(false);
+        toggleOrderTotals(false);
+    });
+
+    function toggleChangeOrderStatus(editmode) {
+        if (editmode) {
+            $('#pnlChangeOrderStatus').show();
+            $('#btnChangeOrderStatus').hide();
+        } else {
+            $('#pnlChangeOrderStatus').hide();
+            $('#btnChangeOrderStatus').show();
+        }
+    }
+
+    function toggleOrderTotals(editmode) {
+        if (editmode) {
+            $('#trEditOrderTotals').show();
+            $('#btnEditOrderTotals').hide();
+            $('#btnSaveOrderTotals').show();
+            $('#btnCancelOrderTotals').show();
+        } else {
+            $('#trEditOrderTotals').hide();
+            $('#btnEditOrderTotals').show();
+            $('#btnSaveOrderTotals').hide();
+            $('#btnCancelOrderTotals').hide();
+        }
+    }
+
+</script>
+
+<div class="col-md-9 editOrderTab">
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="info">
+            <div class="col-md-3">Order status:</div>
+            <div class="col-md-9">
+                <div class="pull-left">
+                    <span>@Model.OrderStatus</span>
+                    
+                    @using (Html.BeginForm("CancelOrder", "Order", new { id = this.Model.Id }, FormMethod.Post, new { Id = "formCancelOrder" }))
+            {
+                    <input type="submit" name="cancelorder" value="Cancel Order" id="cancelorder" class="editbut" onclick="return confirm('Are You Sure');" />
+                    }
+                    <input type="submit" name="btnChangeOrderStatus" value="Change status" onclick="toggleChangeOrderStatus(true);return false;" id="btnChangeOrderStatus" class="editbut" />
+
+@using (Html.BeginForm("ChangeOrderStatus", "Order", new { id = this.Model.Id }, FormMethod.Post, new { Id = "formchangestatus" }))
+    {
+    <div id="pnlChangeOrderStatus" style="display:none">
+
+        <input type="submit" name="changestatus" value="Save" id="changestatus" class="editbut" onclick="return confirm('Are You Sure');" />
+        <input type="submit" name="btnCancelOrderStatus" value="Cancel" onclick="toggleChangeOrderStatus(false);return false;" id="btnCancelOrderStatus" class="editbut" />
+
+
+        @Html.DropDownListFor(model => model.OrderStatusId, from OrderStatus orderStatus in Enum.GetValues(typeof(OrderStatus))
+                                                                        select new SelectListItem() { Text = orderStatus.ToString(), Value = ((int)orderStatus).ToString() })
+        </div>
+    }
+    </div>
+            </div>            
+            <div class="col-md-3">Order ID:</div>
+            <div class="col-md-9"><div class="pull-left"><span>@Model.Id</span></div></div>
+            <div class="col-md-3">Order GUID:</div>
+            <div class="col-md-9"><div class="pull-left"><span>@Model.OrderGuid</span></div></div>
+            <div class="col-md-12" style="border-bottom:1px solid #ccc;margin-top:20px;margin-bottom:10px;"></div>
+            <div class="col-md-3">Customer:</div>
+            <div class="col-md-9"><div class="pull-left"><span>@Model.CustomerInfo</span></div></div>
+            <div class="col-md-3">Customer IP Address:</div>
+            <div class="col-md-9"><div class="pull-left"><span>@Model.CustomerIp</span></div></div>
+            <div class="col-md-3">Order subtotal (excl tax):</div>
+            <div class="col-md-9"><div class="pull-left"><span>@Model.OrderSubtotalExclTax</span></div></div>
+            <div class="col-md-3">Order shipping (excl tax):</div>
+            <div class="col-md-9"><div class="pull-left"><span>@Model.OrderShippingExclTax</span></div></div>
+            <div class="col-md-3">Order Tax:</div>
+            <div class="col-md-9"><div class="pull-left"><span>@Model.Tax</span></div></div>
+            <div class="col-md-3">Order Total:</div>
+            <div class="col-md-9"><div class="pull-left"><span>@Model.OrderTotal</span></div></div>
+        @using (Html.BeginForm("EditOrderTotals", "Order", new { id = this.Model.Id }, FormMethod.Post, new { Id = "formEditOrderTotal" }))
+            {
+            <div class="col-md-9" id="trEditOrderTotals" style="display:none">
+                <div class="pull-left">
+                    <table style="border: solid 1px black; padding: 5px;">
+                        <tr>
+                            <td>
+                                Order Subtotal :
+                            </td>
+                            <td>
+                                InclTax : @Html.EditorFor(model => model.OrderSubtotalInclTaxValue)
+                            </td>
+                            <td>
+                                ExclTax : @Html.EditorFor(model => model.OrderSubtotalExclTaxValue)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Order subtotal discount :
+                            </td>
+                            <td>
+                                InclTax : @Html.EditorFor(model => model.OrderSubTotalDiscountInclTaxValue)
+                            </td>
+                            <td>
+                                ExclTax : @Html.EditorFor(model => model.OrderSubTotalDiscountExclTaxValue)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Order shipping :
+                            </td>
+                            <td>
+                                InclTax : @Html.EditorFor(model => model.OrderShippingInclTaxValue)
+                            </td>
+                            <td>
+                                ExclTax : @Html.EditorFor(model => model.OrderShippingExclTaxValue)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Payment method additional fee :
+                            </td>
+                            <td>
+                                InclTax : @Html.EditorFor(model => model.PaymentMethodAdditionalFeeInclTaxValue)
+                            </td>
+                            <td>
+                                ExclTax : @Html.EditorFor(model => model.PaymentMethodAdditionalFeeExclTaxValue)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Order tax rates :
+                            </td>
+                            <td colspan="2">
+                                @Html.EditorFor(model => model.TaxRatesValue)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Order discount:
+                            </td>
+                            <td colspan="2">
+                                @Html.EditorFor(model => model.TaxValue)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Order tax:
+                            </td>
+                            <td colspan="2">
+                                @Html.EditorFor(model => model.OrderTotalDiscountValue)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Order total:
+                            </td>
+                            <td colspan="2">
+                                @Html.EditorFor(model => model.OrderTotalValue)
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-10">
+                <input type="submit" name="btnEditOrderTotals" value="Edit Order Total" onclick="toggleOrderTotals(true);return false;" id="btnEditOrderTotals" class="editbut" />
+                <input type="submit" name="btnSaveOrderTotals" value="Save Order Total" id="btnSaveOrderTotals" class="editbut" style="display:none;" onclick=" return confirm('Are You Sure'); " />
+                <input type="submit" name="btnCancelOrderTotals" value="Cancel" onclick="toggleOrderTotals(false);return false; " id="btnCancelOrderTotals" class="editbut" style="display:none;" />
+            </div>
+            }
+                <div class="col-md-12" style="border-bottom:1px solid #ccc;margin-top:20px;margin-bottom:10px;"></div>
+                <div class="col-md-3">Payment method:</div>
+                <div class="col-md-9"><div class="pull-left"><span>@Model.PaymentMethod</span></div></div>
+                <div class="col-md-3">Payment status:</div>
+                <div class="col-md-9">
+                    <div class="pull-left">
+                        <span>@Model.PaymentStatus</span>
+                        @if (Model.PaymentStatus != "Paid")
+                        {
+                            using (Html.BeginForm("MarkOrderAsPaid", "Order", new { id = this.Model.Id }, FormMethod.Post, new { Id = "formmarkaspaid" }))
+                            {
+
+                                <input type="submit" name="markaspaid" value="Mark as paid" id="markaspaid" class="editbut" onclick="return confirm('Are You Sure');" />
+                            }
+                        }
+                    </div>
+                </div>
+                <div class="col-md-3">Created on:</div>
+                <div class="col-md-9"><div class="pull-left"><span>@Model.CreatedOn</span></div></div>
+                <div class="col-md-12" style="padding-bottom:20px"></div>
+</div>
+        @Html.Partial("_orderdetailAddress", Model)
+        <div role="tabpanel" class="tab-pane " id="products">
+            @Html.Partial("_orderdetailsproduct",Model)
+        </div>
+        <div role="tabpanel" class="tab-pane " id="orderNotes">
+            @Html.Partial("_OrderDetailsOrderNote",Model)
+         </div>
+    </div>
+</div>

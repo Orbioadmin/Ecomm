@@ -1,7 +1,7 @@
 /*
  ===================================================================================================================================================
  Author:  Sankar T S
- Create date: 27 july 2015
+ Create date: 16 Aug 2015
  Description: This function will return the order product detail
  ===================================================================================================================================================  
 */
@@ -24,9 +24,9 @@ BEGIN
 	   DECLARE @xmlResult xml;
 	 
 		--WITH XMLNAMESPACES ('http://schemas.datacontract.org/2004/07/Orbio.Core.Domain.Catalog' AS ns)
-		SELECT @xmlResult = ( Select prd.Name from OrderItem ori inner join [Order] ord on ori.OrderId = ord.Id
+		SELECT @xmlResult = ( Select prd.Id,prd.Sku,prd.Name from OrderItem ori inner join [Order] ord on ori.OrderId = ord.Id
 		inner join Product prd on ori.ProductId = prd.Id where ori.Id = @orderItemId for xml path('Product'),type )
-		
+		    
 	 Return @xmlresult
 
 END

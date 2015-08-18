@@ -12,6 +12,8 @@ namespace Orbio.Core.Data
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class OrbioAdminContext : DbContext
     {
@@ -30,5 +32,82 @@ namespace Orbio.Core.Data
         public virtual DbSet<CustomerRole> CustomerRoles { get; set; }
         public virtual DbSet<OrderItem> OrderItems { get; set; }
         public virtual DbSet<Log> Logs { get; set; }
+        public virtual DbSet<Address> Addresses { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<RecurringPayment> RecurringPayments { get; set; }
+    
+        public virtual ObjectResult<Order> usp_Get_AdminOrderDetails(Nullable<int> orderStatusId, Nullable<int> paymentStatusId, Nullable<int> shippingStatusId, Nullable<int> customerId, Nullable<System.DateTime> createdFromUtc, Nullable<System.DateTime> createdToUtc, string billingEmail, Nullable<int> orderNo)
+        {
+            var orderStatusIdParameter = orderStatusId.HasValue ?
+                new ObjectParameter("orderStatusId", orderStatusId) :
+                new ObjectParameter("orderStatusId", typeof(int));
+    
+            var paymentStatusIdParameter = paymentStatusId.HasValue ?
+                new ObjectParameter("paymentStatusId", paymentStatusId) :
+                new ObjectParameter("paymentStatusId", typeof(int));
+    
+            var shippingStatusIdParameter = shippingStatusId.HasValue ?
+                new ObjectParameter("shippingStatusId", shippingStatusId) :
+                new ObjectParameter("shippingStatusId", typeof(int));
+    
+            var customerIdParameter = customerId.HasValue ?
+                new ObjectParameter("customerId", customerId) :
+                new ObjectParameter("customerId", typeof(int));
+    
+            var createdFromUtcParameter = createdFromUtc.HasValue ?
+                new ObjectParameter("createdFromUtc", createdFromUtc) :
+                new ObjectParameter("createdFromUtc", typeof(System.DateTime));
+    
+            var createdToUtcParameter = createdToUtc.HasValue ?
+                new ObjectParameter("createdToUtc", createdToUtc) :
+                new ObjectParameter("createdToUtc", typeof(System.DateTime));
+    
+            var billingEmailParameter = billingEmail != null ?
+                new ObjectParameter("billingEmail", billingEmail) :
+                new ObjectParameter("billingEmail", typeof(string));
+    
+            var orderNoParameter = orderNo.HasValue ?
+                new ObjectParameter("orderNo", orderNo) :
+                new ObjectParameter("orderNo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Order>("usp_Get_AdminOrderDetails", orderStatusIdParameter, paymentStatusIdParameter, shippingStatusIdParameter, customerIdParameter, createdFromUtcParameter, createdToUtcParameter, billingEmailParameter, orderNoParameter);
+        }
+    
+        public virtual ObjectResult<Order> usp_Get_AdminOrderDetails(Nullable<int> orderStatusId, Nullable<int> paymentStatusId, Nullable<int> shippingStatusId, Nullable<int> customerId, Nullable<System.DateTime> createdFromUtc, Nullable<System.DateTime> createdToUtc, string billingEmail, Nullable<int> orderNo, MergeOption mergeOption)
+        {
+            var orderStatusIdParameter = orderStatusId.HasValue ?
+                new ObjectParameter("orderStatusId", orderStatusId) :
+                new ObjectParameter("orderStatusId", typeof(int));
+    
+            var paymentStatusIdParameter = paymentStatusId.HasValue ?
+                new ObjectParameter("paymentStatusId", paymentStatusId) :
+                new ObjectParameter("paymentStatusId", typeof(int));
+    
+            var shippingStatusIdParameter = shippingStatusId.HasValue ?
+                new ObjectParameter("shippingStatusId", shippingStatusId) :
+                new ObjectParameter("shippingStatusId", typeof(int));
+    
+            var customerIdParameter = customerId.HasValue ?
+                new ObjectParameter("customerId", customerId) :
+                new ObjectParameter("customerId", typeof(int));
+    
+            var createdFromUtcParameter = createdFromUtc.HasValue ?
+                new ObjectParameter("createdFromUtc", createdFromUtc) :
+                new ObjectParameter("createdFromUtc", typeof(System.DateTime));
+    
+            var createdToUtcParameter = createdToUtc.HasValue ?
+                new ObjectParameter("createdToUtc", createdToUtc) :
+                new ObjectParameter("createdToUtc", typeof(System.DateTime));
+    
+            var billingEmailParameter = billingEmail != null ?
+                new ObjectParameter("billingEmail", billingEmail) :
+                new ObjectParameter("billingEmail", typeof(string));
+    
+            var orderNoParameter = orderNo.HasValue ?
+                new ObjectParameter("orderNo", orderNo) :
+                new ObjectParameter("orderNo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Order>("usp_Get_AdminOrderDetails", mergeOption, orderStatusIdParameter, paymentStatusIdParameter, shippingStatusIdParameter, customerIdParameter, createdFromUtcParameter, createdToUtcParameter, billingEmailParameter, orderNoParameter);
+        }
     }
 }

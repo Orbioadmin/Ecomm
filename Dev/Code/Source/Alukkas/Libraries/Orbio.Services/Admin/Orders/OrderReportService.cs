@@ -178,6 +178,57 @@ namespace Orbio.Services.Admin.Orders
             return item;
         }
 
+        /// <summary>
+        /// Get profit report
+        /// </summary>
+        /// <param name="storeId">Store identifier</param>
+        /// <param name="vendorId">Vendor identifier</param>
+        /// <param name="startTimeUtc">Start date</param>
+        /// <param name="endTimeUtc">End date</param>
+        /// <param name="os">Order status; null to load all records</param>
+        /// <param name="ps">Order payment status; null to load all records</param>
+        /// <param name="ss">Shipping status; null to load all records</param>
+        /// <param name="billingEmail">Billing email. Leave empty to load all records.</param>
+        /// <returns>Result</returns>
+        public virtual decimal ProfitReport(int storeId, int vendorId,
+            OrderStatus? os, PaymentStatus? ps, ShippingStatus? ss,
+            DateTime? startTimeUtc, DateTime? endTimeUtc,
+            string billingEmail)
+        {
+            int? orderStatusId = null;
+            if (os.HasValue)
+                orderStatusId = (int)os.Value;
+
+            int? paymentStatusId = null;
+            if (ps.HasValue)
+                paymentStatusId = (int)ps.Value;
+
+            int? shippingStatusId = null;
+            if (ss.HasValue)
+                shippingStatusId = (int)ss.Value;
+            //We cannot use String.IsNullOrEmpty(billingEmail) in SQL Compact
+            bool dontSearchEmail = String.IsNullOrEmpty(billingEmail);
+            var query = from orderItem in context.OrderItems.AsQueryable()
+                        join o in context.Orders on orderItem.OrderId equals o.Id
+                        where (!startTimeUtc.HasValue || startTimeUtc.Value <= o.CreatedOnUtc) &&
+                              (!endTimeUtc.HasValue || endTimeUtc.Value >= o.CreatedOnUtc) &&
+                              (!orderStatusId.HasValue || orderStatusId == o.OrderStatusId) &&
+                              (!paymentStatusId.HasValue || paymentStatusId == o.PaymentStatusId) &&
+                              (!shippingStatusId.HasValue || shippingStatusId == o.ShippingStatusId) &&
+                              (!o.Deleted)
+                        //we do not ignore deleted products when calculating order reports
+                        //(!p.Deleted) &&
+                        //(!pv.Deleted) &&
+
+                        select orderItem;
+
+            var productCost = Convert.ToDecimal(query.Sum(orderItem => (decimal?)orderItem.OriginalProductCost * orderItem.Quantity));
+
+            var reportSummary = GetOrderAverageReportLine(storeId, vendorId, os, ps, ss, startTimeUtc, endTimeUtc, billingEmail);
+            var profit = reportSummary.SumOrders - reportSummary.SumShippingExclTax - reportSummary.SumTax - productCost;
+            return profit;
+        }
+
         #endregion
     }
 }

@@ -50,10 +50,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\Address\AddressService.cs" />
+    <Compile Include="Admin\Address\IAddressService.cs" />
     <Compile Include="Admin\Customers\CustomerReportService.cs" />
     <Compile Include="Admin\Customers\ICustomerReportService.cs" />
+    <Compile Include="Admin\Orders\IOrderProcessingService.cs" />
+    <Compile Include="Admin\Orders\OrderProcessingService.cs" />
+    <Compile Include="Directory\CountryService.cs" />
+    <Compile Include="Directory\ICountryService.cs" />
     <Compile Include="Admin\Orders\IOrderReportService.cs" />
+    <Compile Include="Admin\Orders\IOrderService.cs" />
     <Compile Include="Admin\Orders\OrderReportService.cs" />
+    <Compile Include="Admin\Orders\OrderService.cs" />
     <Compile Include="Authentication\FormsAuthenticationService.cs" />
     <Compile Include="Authentication\IAuthenticationService.cs" />
     <Compile Include="Catalog\CategoryService.cs" />
@@ -71,6 +79,8 @@
     <Compile Include="Customers\CustomerRegistrationRequest.cs" />
     <Compile Include="Customers\CustomerService.cs" />
     <Compile Include="Customers\ICustomerService.cs" />
+    <Compile Include="Directory\IStateProvinceService.cs" />
+    <Compile Include="Directory\StateProvinceService.cs" />
     <Compile Include="Email\EmailService.cs" />
     <Compile Include="Email\IEmailService.cs" />
     <Compile Include="Helpers\DateTimeHelper.cs" />
@@ -146,6 +156,7 @@
     <Content Include="bin\Debug\System.Web.WebPages.Razor.xml" />
     <Content Include="bin\Debug\System.Web.WebPages.xml" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

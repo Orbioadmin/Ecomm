@@ -244,5 +244,127 @@ namespace Orbio.Services.Messages
             //TODO: sent low stock email
             return 1;
         }
+
+
+        /// <summary>
+        /// Sends an order completed notification to a customer
+        /// </summary>
+        /// <param name="order">Order instance</param>
+        /// <param name="languageId">Message language identifier</param>
+        /// <param name="attachmentFilePath">Attachment file path</param>
+        /// <param name="attachmentFileName">Attachment file name. If specified, then this file name will be sent to a recipient. Otherwise, "AttachmentFilePath" name will be used.</param>
+        /// <returns>Queued email identifier</returns>
+        public virtual int SendOrderCompletedCustomerNotification(Order order,int languageId,
+            string attachmentFilePath = null, string attachmentFileName = null)
+        {
+            if (order == null)
+                throw new ArgumentNullException("order");
+
+            var store = storeContext.CurrentStore;
+
+            var result = context.ExecuteFunction<MessageTemplate>("usp_MessageTemplate",
+                 new SqlParameter() { ParameterName = "@messagename", Value = "OrderCompleted.CustomerNotification", DbType = System.Data.DbType.String });
+            var messageTemplate = new MessageTemplate();
+            messageTemplate = result.FirstOrDefault();
+
+            if (messageTemplate == null)
+                return 0;
+
+            //tokens
+            var tokens = new List<Token>();
+            messageTokenProvider.AddStoreTokens(tokens, store);
+            messageTokenProvider.AddOrderTokens(tokens, order);
+            messageTokenProvider.AddCustomerTokens(tokens, order.Customer);
+
+            var toEmail = order.Customer.Email;
+            var toName = "";
+
+            EmailDetail Sent = SendNotification(messageTemplate, tokens, toEmail, toName);
+            return emailService.SentEmail(Sent);
+
+            //event notification
+            //_eventPublisher.MessageTokensAdded(messageTemplate, tokens);
+
+            //return SendNotification(messageTemplate, emailAccount,
+            //    languageId, tokens,
+            //    toEmail, toName,
+            //    attachmentFilePath,
+            //    attachmentFileName);
+        }
+
+        /// <summary>
+        /// Sends an order cancelled notification to a customer
+        /// </summary>
+        /// <param name="order">Order instance</param>
+        /// <param name="languageId">Message language identifier</param>
+        /// <returns>Queued email identifier</returns>
+        public virtual int SendOrderCancelledCustomerNotification(Order order, int languageId)
+        {
+            if (order == null)
+                throw new ArgumentNullException("order");
+
+            var store = storeContext.CurrentStore;
+
+            var result = context.ExecuteFunction<MessageTemplate>("usp_MessageTemplate",
+                 new SqlParameter() { ParameterName = "@messagename", Value = "OrderCancelled.CustomerNotification", DbType = System.Data.DbType.String });
+            var messageTemplate = new MessageTemplate();
+            messageTemplate = result.FirstOrDefault();
+
+            //tokens
+            var tokens = new List<Token>();
+            messageTokenProvider.AddStoreTokens(tokens, store);
+            messageTokenProvider.AddOrderTokens(tokens, order);
+            messageTokenProvider.AddCustomerTokens(tokens, order.Customer);
+
+            var toEmail = order.Customer.Email;
+            var toName = "";
+
+            EmailDetail Sent = SendNotification(messageTemplate, tokens, toEmail, toName);
+            return emailService.SentEmail(Sent);
+
+            //return SendNotification(messageTemplate, emailAccount,
+            //    languageId, tokens,
+            //    toEmail, toName);
+        }
+
+        /// <summary>
+        /// Sends a new order note added notification to a customer
+        /// </summary>
+        /// <param name="orderNote">Order note</param>
+        /// <param name="languageId">Message language identifier</param>
+        /// <returns>Queued email identifier</returns>
+        public virtual int SendNewOrderNoteAddedCustomerNotification(OrderNote orderNote, int languageId)
+        {
+            if (orderNote == null)
+                throw new ArgumentNullException("orderNote");
+
+            var order = orderNote.Order;
+            var store = storeContext.CurrentStore;
+
+            var result = context.ExecuteFunction<MessageTemplate>("usp_MessageTemplate",
+                 new SqlParameter() { ParameterName = "@messagename", Value = "Customer.NewOrderNote", DbType = System.Data.DbType.String });
+            var messageTemplate = new MessageTemplate();
+            messageTemplate = result.FirstOrDefault();
+
+            if (messageTemplate == null)
+                return 0;
+
+            //tokens
+            var tokens = new List<Token>();
+            messageTokenProvider.AddStoreTokens(tokens, store);
+            messageTokenProvider.AddOrderNoteTokens(tokens, orderNote);
+            messageTokenProvider.AddOrderTokens(tokens, orderNote.Order);
+            messageTokenProvider.AddCustomerTokens(tokens, orderNote.Order.Customer);
+
+            var toEmail = order.Customer.Email;
+            var toName = "";
+
+            EmailDetail Sent = SendNotification(messageTemplate, tokens, toEmail, toName);
+            return emailService.SentEmail(Sent);
+
+            //return SendNotification(messageTemplate, emailAccount,
+            //    languageId, tokens,
+            //    toEmail, toName);
+        }
     }
 }

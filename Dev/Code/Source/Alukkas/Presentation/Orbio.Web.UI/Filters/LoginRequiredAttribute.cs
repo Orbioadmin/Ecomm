@@ -27,10 +27,10 @@ namespace Orbio.Web.UI.Filters
                         }
                    );
             }
-            if (!filterContext.RouteData.Values["controller"].ToString().ToLowerInvariant().Equals("checkout"))
-            {
+            //if (!filterContext.RouteData.Values["controller"].ToString().ToLowerInvariant().Equals("checkout"))
+            //{
                 genericAttributeService.SaveGenericAttributes(workContext.CurrentCustomer.Id, "Customer", SystemCustomerAttributeNames.LastContinueShoppingPage, filterContext.HttpContext.Request.RawUrl, store.CurrentStore.Id);
-            }
+            //}
 
         }
     }

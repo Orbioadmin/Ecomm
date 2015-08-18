@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8076e97ea71a457fab33e39b18c4ff34" Name="Diagram1" ZoomLevel="100">
+      <Diagram DiagramId="8076e97ea71a457fab33e39b18c4ff34" Name="Diagram1" ZoomLevel="31">
         <EntityTypeShape EntityType="OrbioAdminModel.Customer" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="OrbioAdminModel.Order" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
         <AssociationConnector Association="OrbioAdminModel.Order_Customer" ManuallyRouted="false" />
@@ -14,6 +14,15 @@
         <AssociationConnector Association="OrbioAdminModel.Customer_CustomerRole_Mapping" />
         <EntityTypeShape EntityType="OrbioAdminModel.Log" Width="1.5" PointX="2.746255255651779" PointY="21.296963805936727" />
         <AssociationConnector Association="OrbioAdminModel.Log_Customer" />
+        <EntityTypeShape EntityType="OrbioAdminModel.Address" Width="1.5" PointX="0.75" PointY="5.25" />
+        <EntityTypeShape EntityType="OrbioAdminModel.Product" Width="1.5" PointX="9.625" PointY="1.75" />
+        <AssociationConnector Association="OrbioAdminModel.Customer_BillingAddress" />
+        <AssociationConnector Association="OrbioAdminModel.Customer_ShippingAddress" />
+        <AssociationConnector Association="OrbioAdminModel.Order_BillingAddress" />
+        <AssociationConnector Association="OrbioAdminModel.Order_ShippingAddress" />
+        <AssociationConnector Association="OrbioAdminModel.OrderItem_Product" />
+        <EntityTypeShape EntityType="OrbioAdminModel.RecurringPayment" Width="1.5" PointX="5.25" PointY="11.125" />
+        <AssociationConnector Association="OrbioAdminModel.RecurringPayment_InitialOrder" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
