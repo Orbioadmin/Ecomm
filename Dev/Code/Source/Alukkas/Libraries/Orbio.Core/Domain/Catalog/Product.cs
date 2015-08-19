@@ -15,6 +15,12 @@ namespace Orbio.Core.Domain.Catalog
         public int Id { get; set; }
 
         /// <summary>
+        /// Gets or Sets the Sku
+        /// </summary>
+        [DataMember]
+        public string Sku { get; set; }
+
+        /// <summary>
         /// Gets or sets the name
         /// </summary>
         [DataMember]

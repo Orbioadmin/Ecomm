@@ -1,0 +1,108 @@
+﻿@model Orbio.Web.UI.Areas.Admin.Models.Orders.OrderModel
+<section class="wp-bestseller wp-product-edit">
+    <div class="container">
+        <div class="catalog-bulk col-md-12" style="padding-left:0px;">
+            <div class="pull-left">
+                <label class="catalog"></label>
+                <h1>EDIT ORDER DETAILS</h1>
+            </div>
+            <div class="pull-right"><a href="@Url.Action("List","Order")"><input type="button" value="BACK TO ORDER LIST" class="but butt"><i class="back"></i></a></div>
+        </div>
+        <div class="col-lg-12" style="padding-left:0px;"></div>
+        <div class="col-lg-12 top-but" style="padding-right:5px;">
+            <div class="pull-right but-pro-ul">
+                <li><input type="button" value="Invoice pdf"></li>
+               @using (Html.BeginForm("Delete", "Order", new { id = this.Model.Id }, FormMethod.Post, new { Id = "formDeleteOrder" }))
+            {
+                <li><input type="submit" value="Delete"></li>
+               }
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="tab-product">
+            <div class="col-md-3" style="padding-left:0px;">
+                <ul class="nav  nav-stacked product-info">
+                    <li class="active"><a href="#info" role="tab" data-toggle="tab">INFO</a></li>
+                    <li><a href="#billingInfo" role="tab" data-toggle="tab">BILLING INFO</a></li>
+                    <li><a href="#shippingInfo" role="tab" data-toggle="tab">SHIPPING INFO</a></li>
+                    <li><a href="#products" role="tab" data-toggle="tab">PRODUCTS</a></li>
+                    <li><a href="#orderNotes" role="tab" data-toggle="tab">ORDER NOTES</a></li>
+                </ul>
+            </div>
+            @Html.Partial("_OrderDetailsInfo",Model)
+        </div>
+    </div>
+</section>
+@section scripts{
+
+<script type="text/javascript">
+            $(document).ready(function() {
+                $('#tableData').paging({limit:4});
+            });
+            $(document).ready(function() {
+                $('#tableData1').paging({limit:4});
+
+            });
+            $(document).ready(function() {
+                $('#reltable').paging({limit:4});
+
+            });
+             $(document).ready(function() {
+                $('#reltable1').paging({limit:4});
+
+            });
+             $(document).ready(function() {
+                $('#reltable2').paging({limit:4});
+
+            });
+            // $(document).ready(function(){
+            //     $('li').click(function(){
+
+            //          $("li").removeClass("active");
+            //         $(this).addClass("active");
+            //     })
+            // })
+</script>
+<script src="~/Areas/Admin/Scripts/tinymce.jquery.min.js"></script>
+<script type="text/javascript">
+tinymce.init({
+    selector: ".word",
+    theme: "modern",
+    plugins: [
+        "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+        "searchreplace wordcount visualblocks visualchars code fullscreen",
+        "insertdatetime media nonbreaking save table contextmenu directionality",
+        "emoticons template paste textcolor colorpicker textpattern"
+    ],
+    toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+    toolbar2: "print preview media | forecolor backcolor emoticons",
+    image_advtab: true,
+    templates: [
+        {title: 'Test template 1', content: 'Test 1'},
+        {title: 'Test template 2', content: 'Test 2'}
+    ]
+});
+</script>
+
+<script>
+            $(document).ready(function () {
+                // create DateTimePicker from input HTML element
+                $("#datetimepicker").kendoDateTimePicker({
+                    value:new Date()
+                });
+                $("#datetimepicker1").kendoDateTimePicker({
+                    value:new Date()
+                });
+                $("#datetimepicker2").kendoDateTimePicker({
+                    value:new Date()
+                });
+                $("#datetimepicker3").kendoDateTimePicker({
+                    value:new Date()
+                });
+                $("#datetimepicker4").kendoDateTimePicker({
+                    value:new Date()
+                });
+            });
+</script>
+    }

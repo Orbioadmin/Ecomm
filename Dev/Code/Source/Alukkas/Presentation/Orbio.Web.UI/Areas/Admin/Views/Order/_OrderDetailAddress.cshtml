@@ -1,0 +1,88 @@
+﻿@model Orbio.Web.UI.Areas.Admin.Models.Orders.OrderModel
+<div role="tabpanel" class="tab-pane " id="billingInfo">
+    <div class="col-md-3">Billing Address:</div>
+    <div class="col-md-9">
+        <div class="pull-left">
+            <div class="col-md-7 billingInfo">
+                <div class="col-md-4">Full name:</div>
+                <div class="col-md-8">@Model.BillingAddress.FirstName</div>
+                <div class="col-md-4">Phone:</div>
+                <div class="col-md-8">@Model.BillingAddress.PhoneNumber</div>
+                <div class="col-md-4">Address:</div>
+                <div class="col-md-8">@Model.BillingAddress.Address1</div>
+                <div class="col-md-4">City:</div>
+                <div class="col-md-8">@Model.BillingAddress.City</div>
+                <div class="col-md-4">State/province:</div>
+                <div class="col-md-8">@Model.BillingAddress.States</div>
+                <div class="col-md-4">Zip/postal code:</div>
+                <div class="col-md-8">@Model.BillingAddress.ZipPostalCode</div>
+                <div class="col-md-4">Country:</div>
+                <div class="col-md-8">@Model.BillingAddress.Country</div>
+                <div class="col-md-12"><div class="pull-left"><a class="editbut" href="@Url.Action("AddressEdit", new { addressId = Model.BillingAddress.BillingAddress_Id, orderId =Model.Id })">edit</a></div></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div role="tabpanel" class="tab-pane " id="shippingInfo">
+    <div class="col-md-3">Shipping Address:</div>
+    <div class="col-md-9">
+        <div class="pull-left">
+            <div class="col-md-7 billingInfo">
+                <div class="col-md-4">Full name:</div>
+                <div class="col-md-8">@Model.ShippingAddress.FirstName</div>
+                <div class="col-md-4">Phone:</div>
+                <div class="col-md-8">@Model.ShippingAddress.PhoneNumber</div>
+                <div class="col-md-4">Address:</div>
+                <div class="col-md-8">@Model.ShippingAddress.Address1</div>
+                <div class="col-md-4">City:</div>
+                <div class="col-md-8">@Model.ShippingAddress.City</div>
+                <div class="col-md-4">State/province:</div>
+                <div class="col-md-8">@Model.ShippingAddress.States</div>
+                <div class="col-md-4">Zip/postal code:</div>
+                <div class="col-md-8">@Model.ShippingAddress.ZipPostalCode</div>
+                <div class="col-md-4">Country:</div>
+                <div class="col-md-8">@Model.ShippingAddress.Country</div>
+                <div class="col-md-12"><div class="pull-left"><a class="editbut" href="@Url.Action("AddressEdit", new { addressId = Model.ShippingAddress.ShippingAddress_Id, orderId = Model.Id })">edit</a></div></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3"></div>
+    <div class="col-md-9"><div class="pull-left"><span>View Address on Google Maps</span></div></div>
+    <div class="col-md-3">Shipping method</div>
+    <div class="col-md-9"><div class="pull-left"><button class="editbut">edit</button></div></div>
+    <div class="col-md-3">Shipping status</div>
+    <div class="col-md-9"><div class="pull-left"><span>@Model.ShippingStatus</span></div></div>
+    <div class="col-md-12"><span>Shipment</span></div>
+    <div class="table-home">
+        <div class="col-md-12">
+            <div class="table-responsive best-seller-table editOrderTable">
+                <table class="table table-bordered table-striped  ">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Shipment</th>
+                            <th>Tracking Number</th>
+                            <th>Total Weight</th>
+                            <th>Date Shipped</th>
+                            <th>Date delivered</th>
+                            <th>View</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="display: table-row;">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="pull-left"><input class="but-refresh" type="button"></div>
+            </div>
+        </div>
+    </div>
+</div>

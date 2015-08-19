@@ -17,7 +17,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE FUNCTION [dbo].[ufn_GetProductsBySearch] (@category int,@keword varchar(max))  
+CREATE FUNCTION [dbo].[ufn_GetProductsBySearch] (@category int,@keword nvarchar(400))  
 RETURNS @TABLE TABLE (RowNum INT, CategoryId INT,
    Id INT,
    Name nvarchar(400),
@@ -31,7 +31,8 @@ AS
 BEGIN  
   
  DECLARE @currencyCode nvarchar(5) 
- 
+	SET @keword = '%' + @keword + '%'
+
  if(@category = 0)
  begin
  SELECT @currencyCode = CurrencyCode FROM Currency WHERE Id = (SELECT   
@@ -52,7 +53,7 @@ BEGIN
 	inner join ProductTemplate pt on p.ProductTemplateId = pt.Id 
 	Left  join UrlRecord ur on p.Id = ur.EntityId AND EntityName='Product' AND ur.IsActive=1
 	AND ur.LanguageId=0
-	where p.Name like '%'+@keword+'%'
+where PATINDEX(@keword, p.[Name]) > 0 OR PATINDEX(@keword, p.FullDescription) > 0 OR PATINDEX(@keword, p.ShortDescription) > 0 OR PATINDEX(@keword, p.Sku) > 0
 	ORDER BY pcm.DisplayOrder, p.Name
 	END
 	ELSE
@@ -81,6 +82,7 @@ BEGIN
  RETURN  
    
 END
+
 
 GO
 PRINT 'Created UDF [dbo].[ufn_GetProductsBySearch]`'

@@ -1,0 +1,49 @@
+﻿@model Orbio.Web.UI.Areas.Admin.Models.Orders.OrderModel
+<div class="col-md-7 billingInfo">
+ @using (Html.BeginForm("DeleteOrderNote", "Order", new { id = this.Model.Id }, FormMethod.Post, new { Id = "formDeleteOrderNote" }))
+    {
+foreach (var orderNote in Model.OrderNotes)
+{
+
+    <div class="col-md-4">Note:</div>
+    <div class="col-md-8">@orderNote.Note</div>
+    <div class="col-md-4">Created On:</div>
+    <div class="col-md-8">@orderNote.CreatedOn</div>
+    <div><input type="submit" name="btnDeleteOrderNote@(orderNote.Id)" value="Delete" id="btnDeleteOrderNote@(orderNote.Id)" class="editbut" onclick=" return confirm('Are You Sure'); " /></div>
+
+}
+    }
+</div>
+<p>
+    <strong>
+        Add Order Note
+    </strong>
+</p>
+ @using (Html.BeginForm("OrderNoteAdd", "Order", new { orderId = this.Model.Id }, FormMethod.Post, new { Id = "formAddOrderItem" }))
+            {
+<table class="adminContent">
+    <tr>
+        <td class="adminTitle">
+            Note :
+        </td>
+        <td class="adminData">
+            @Html.TextAreaFor(model => model.AddOrderNoteMessage, new { style = "Width: 350px; Height: 150px;" })
+            @Html.ValidationMessageFor(model => model.AddOrderNoteMessage)
+        </td>
+    </tr>
+    <tr>
+        <td class="adminTitle">
+           Display To Customer :
+        </td>
+        <td class="adminData">
+            @Html.EditorFor(model => model.AddOrderNoteDisplayToCustomer)
+            @Html.ValidationMessageFor(model => model.AddOrderNoteDisplayToCustomer)
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" align="left">
+            <input type="submit" id="addOrderNote" class="editbut" value="Add" />
+        </td>
+    </tr>
+</table>
+}

@@ -15,6 +15,11 @@ namespace Orbio.Core.Domain.Orders
         //private ICollection<GiftCard> _associatedGiftCards;
 
         /// <summary>
+        /// Gets or sets the order identifier
+        /// </summary>
+        public int Id { get; set; }
+
+        /// <summary>
         /// Gets or sets the order item identifier
         /// </summary>
         public Guid OrderItemGuid { get; set; }

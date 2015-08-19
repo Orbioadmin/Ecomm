@@ -1,0 +1,118 @@
+﻿@model Orbio.Web.UI.Areas.Admin.Models.Orders.OrderListModel
+@using (Html.BeginForm())
+{
+<section class="wp-bestseller wp-order">
+    <div class="container">
+        <div class="catalog-bulk col-md-12" style="padding-left:0px;">
+            <div class="pull-left">
+                <label class="shipment-icon"></label>
+                <h1>ORDERS SUMMARY</h1>
+            </div>
+            <!-- <div class="pull-right"><input type="button" value="Export to XML (all)" class="Sbut ssbut ssbut1">
+              <input type="button" value="Export to XML (selected)" class="Sbut ssbut ssbut1">
+              <input type="button" value="Export to Excel (all)" class="Sbut ssbut ssbut1">
+              <input type="button" value="Export to Excel (selected)" class="Sbut ssbut ssbut1">
+              <input type="button" value="Print PDF invoices (selected)" class="Sbut ssbut ssbut2">
+              </div>
+            </div> -->
+        </div>
+    </div>
+    <div class="container">
+        <div class="col-md-12 form-seller">
+            <div class="form-seller-inner ">
+                <div class="col-md-12 orderForm">
+                    <div class="orderFormSelection">
+                        @Html.TextBoxFor(model => model.StartDate, new { @class = "start", placeholder = "From" }) 
+                    </div>
+                    <div class="orderFormSelection">
+                        @Html.TextBoxFor(model => model.EndDate, new { @class = "start", placeholder = "To" })
+                    </div>
+                    <div class="orderFormSelection">@Html.TextBoxFor(model => model.CustomerEmail, new { placeholder = "Billing email address" })</div>
+                    <div class="orderFormSelection">@Html.DropDownList("OrderStatusId", Model.AvailableOrderStatuses, new { @class = "payment-status" })</div>
+                    <div class="orderFormSelection">@Html.DropDownList("PaymentStatusId", Model.AvailablePaymentStatuses, new { @class = "payment-status" })</div>
+                    <div class="orderFormSelection">@Html.DropDownList("PaymentStatusId", Model.AvailableShippingStatuses, new { @class = "payment-status" })</div>
+                    <div class="orderFormSelection" style="width:14%;">@Html.TextBoxFor(model => model.GoDirectlyToNumber, new { placeholder = "Order No", type = "number" })</div>
+                    @*<div class="orderFormSelection" style="width:65px;"></div>*@
+
+                </div>
+                <!--  <select class="manufacturer"><option value="manufacture">City</option></select> -->
+                <div align="center" style="width:100%;"><input type="submit" value="SEARCH" class="run-report"></div>
+
+            </div>
+
+        </div>
+
+        <!-- <div class="col-md-12 product-specification">
+        <div class="row">
+            <div class="col-md-4 colmd">
+              <div class="col-md-3 colmd"><label>Start date</label></div>
+              <div class="col-md-9 colmd"><input class="t-input produtxt2 ordertxt" data-val="true" data-val-date="The field Start date must be a date." id="StartDate" name="StartDate" type="text" autocomplete="off"></div>
+            </div>
+            <div class="col-md-4 colmd">
+              <div class="col-md-3 colmd"><label>End date</label></div>
+              <div class="col-md-9 colmd"><input class="t-input produtxt2 ordertxt" data-val="true" data-val-date="The field Start date must be a date." id="endDate" name="endDate" type="text" autocomplete="off"></div>
+            </div>
+            <div class="col-md-4 colmd">
+               <input type="text" class="produtxt1 ordertxt" placeholder="Billing email address">
+            </div>
+            </div>
+            <div class="col-md-12 deviderorder"></div>
+            <div class="row">
+              <div class="col-md-3 ">
+                <select class="produtxt1 ordertxt" placeholder="Order status">
+                 <option value="">Order status</option>
+                  <option value="">All</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+
+                 <select class="produtxt1 ordertxt" placeholder="Order status">
+                 <option value="">Payment status</option>
+                  <option value="">All</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <input type="text" class="produtxt1 ordertxt" placeholder="Order GUID">
+              </div>
+              <div class="col-md-3">
+                <input type="number" class="ordernum"><input type="button" value="Go" class="go1">
+              </div>
+              <div class="col-md-12 text-center serorder"><input type="submit" value="Search" class="but-search"></div>
+            </div>
+        </div> -->
+        <div class="col-md-12 colmd colmd1">
+            <div class="table-responsive">
+                <table id="tableData" class="table table-bordered table-striped ">
+                    <thead>
+                    <th><input type="checkbox"></th>
+                    <th>Order ID</th>
+                    <th>Order Status</th>
+                    <th>Payment Status</th>
+                    <th>Shipping Status</th>
+                    <th>Email</th>
+                    <!--   <th>Store</th> -->
+                    <th>Created On</th>
+                    <th>Order Total</th>
+                    <th>View</th>
+                    </thead>
+                    @Html.Action("OrderSummary", "Order")
+                    <tbody>
+                        @Html.Action("OrderList", "Order")
+                    </tbody>
+                </table>
+                <div class="pull-left1"><input type="button" class="but-refresh"></div>
+                <div class="pull-right1"><input value="export to excel" class="export-excel" type="button"><span class="export"></span></div>
+            </div>
+        </div>
+
+    </div>
+</section>
+}
+@section scripts {
+<script>
+            $(document).ready(function () {
+                // create DateTimePicker from input HTML element
+                 $("#StartDate").kendoDatePicker();
+                 $("#EndDate").kendoDatePicker();
+                    });   </script>
+    }

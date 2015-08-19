@@ -1,0 +1,129 @@
+﻿@model Orbio.Web.UI.Areas.Admin.Models.Orders.OrderModel
+<div role="tabpanel" class="tab-pane" id="info">
+@foreach (var item in Model.Items)
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            toggleOrderItemEdit@(item.ProductId)(false);
+        });
+    </script>
+
+    <script type="text/javascript">
+        function toggleOrderItemEdit@(item.ProductId)(editMode) {
+            if (editMode) {
+                $('#pnlEditPvUnitPrice@(item.ProductId)').show();
+                $('#pnlEditPvQuantity@(item.ProductId)').show();
+                $('#pnlEditPvDiscount@(item.ProductId)').show();
+                $('#pnlEditPvPrice@(item.ProductId)').show();
+                $('#btnEditOrderItem@(item.ProductId)').hide();
+                $('#btnDeleteOrderItem@(item.ProductId)').hide();
+                $('#btnSaveOrderItem@(item.ProductId)').show();
+                $('#btnCancelOrderItem@(item.ProductId)').show();
+            }
+            else {
+                $('#pnlEditPvUnitPrice@(item.ProductId)').hide();
+                $('#pnlEditPvQuantity@(item.ProductId)').hide();
+                $('#pnlEditPvDiscount@(item.ProductId)').hide();
+                $('#pnlEditPvPrice@(item.ProductId)').hide();
+                $('#btnEditOrderItem@(item.ProductId)').show();
+                $('#btnDeleteOrderItem@(item.ProductId)').show();
+                $('#btnSaveOrderItem@(item.ProductId)').hide();
+                $('#btnCancelOrderItem@(item.ProductId)').hide();
+            }
+        }
+    </script>
+
+    <div class="col-md-3">Product Name:</div>
+    <div class="col-md-9"><div class="pull-left"><span>@item.ProductName<br />@item.Sku<br />@item.AttributeInfo</span></div></div>
+    <div class="col-md-3">Price:</div>
+    <div class="col-md-9"><div class="pull-left"><span>@item.UnitPriceInclTax <br />@item.UnitPriceExclTax</span></div></div>
+    <div class="col-md-3">Quantity:</div>
+    <div class="col-md-9"><div class="pull-left"><span>@item.Quantity</span></div></div>
+    <div class="col-md-12" style="border-bottom:1px solid #ccc;margin-top:20px;margin-bottom:10px;"></div>
+    <div class="col-md-3">Discount:</div>
+    <div class="col-md-9"><div class="pull-left"><span>@item.DiscountInclTax<br />@item.DiscountExclTax</span></div></div>
+    <div class="col-md-3">Total:</div>
+    <div class="col-md-9"><div class="pull-left"><span>@item.SubTotalInclTax<br />@item.SubTotalExclTax</span></div></div>
+    <div class="col-md-12" style="padding-bottom:20px"></div>
+    using (Html.BeginForm("EditOrderItem", "Order", new { id = this.Model.Id }, FormMethod.Post, new { Id = "formEditOrderItem" }))
+    {
+    <div id="pnlEditPvUnitPrice@(item.ProductId)" style="display:none;">
+        <table class="order-edit">
+            <tr>
+                <td>
+                    Unit Price InclTax :
+                </td>
+                <td>
+                    <input name="pvUnitPriceInclTax@(item.ProductId)" type="text" value="@item.UnitPriceInclTaxValue" id="pvUnitPriceInclTax@(item.ProductId)" class="adminInput" style="width:100px;" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Unit Price ExclTaxValue
+                </td>
+                <td>
+                    <input name="pvUnitPriceExclTax@(item.ProductId)" type="text" value="@item.UnitPriceExclTaxValue" id="pvUnitPriceExclTax@(item.ProductId)" class="adminInput" style="width:100px;" />
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="pnlEditPvQuantity@(item.ProductId)" style="display:none;">
+        <table class="order-edit">
+            <tr>
+                <td>Quantity :</td>
+                <td colspan="2">
+                    <input name="pvQuantity@(item.ProductId)" type="text" value="@item.Quantity" id="pvQuantity@(item.ProductId)" class="adminInput" style="width:100px;" />
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="pnlEditPvDiscount@(item.ProductId)" style="display:none;">
+        <table class="order-edit">
+            <tr>
+                <td>
+                    Discount InclTaxValue :
+                </td>
+                <td>
+                    <input name="pvDiscountInclTax@(item.ProductId)" type="text" value="@item.DiscountInclTaxValue" id="pvDiscountInclTax@(item.ProductId)" class="adminInput" style="width:100px;" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Discount ExclTaxValue :
+                </td>
+                <td>
+                    <input name="pvDiscountExclTax@(item.ProductId)" type="text" value="@item.DiscountExclTaxValue" id="pvDiscountExclTax@(item.ProductId)" class="adminInput" style="width:100px;" />
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="pnlEditPvPrice@(item.ProductId)" style="display:none;">
+        <table class="order-edit">
+            <tr>
+                <td>
+                    SubTotal InclTaxValue :
+                </td>
+                <td>
+                    <input name="pvPriceInclTax@(item.ProductId)" type="text" value="@item.SubTotalInclTaxValue" id="pvPriceInclTax@(item.ProductId)" class="adminInput" style="width:100px;" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    SubTotal ExclTaxValue :
+                </td>
+                <td>
+                    <input name="pvPriceExclTax@(item.ProductId)" type="text" value="@item.SubTotalExclTaxValue" id="pvPriceExclTax@(item.ProductId)" class="adminInput" style="width:100px;" />
+                </td>
+            </tr>
+        </table>
+    </div>
+    <input type="submit" name="btnSaveOrderItem@(item.ProductId)" value="Save" id="btnSaveOrderItem@(item.ProductId)" class="editbut" style="display:none;" onclick=" return confirm('Are You Sure'); " />
+    }
+    <input type="submit" name="btnCancelOrderItem@(item.ProductId)" value="Cancel" onclick="toggleOrderItemEdit@(item.ProductId)    (false);return false; " id="btnCancelOrderItem@(item.ProductId)" class="editbut" style="display:none;" />
+    <input type="submit" name="btnEditOrderItem@(item.ProductId)" value="Edit" onclick="toggleOrderItemEdit@(item.ProductId)(true);return false; " id="btnEditOrderItem@(item.ProductId)" class="editbut"  />
+        using (Html.BeginForm("DeleteOrderItem", "Order", new { id = this.Model.Id }, FormMethod.Post, new { Id = "formDeleteOrderItem" }))
+            {
+    <input type="submit" name="btnDeleteOrderItem@(item.ProductId)" value="Delete" id="btnDeleteOrderItem@(item.ProductId)" class="editbut" onclick=" return confirm('Are You Sure'); " />
+}
+}
+</div>

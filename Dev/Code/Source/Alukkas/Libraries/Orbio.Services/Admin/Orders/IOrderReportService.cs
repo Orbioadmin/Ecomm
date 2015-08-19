@@ -36,5 +36,20 @@ namespace Orbio.Services.Admin.Orders
         /// <param name="os">Order status</param>
         /// <returns>Result</returns>
         OrderAverageReportLineSummary OrderAverageReport(int storeId, OrderStatus os);
+
+        /// <summary>
+        /// Get profit report
+        /// </summary>
+        /// <param name="storeId">Store identifier</param>
+        /// <param name="vendorId">Vendor identifier</param>
+        /// <param name="startTimeUtc">Start date</param>
+        /// <param name="endTimeUtc">End date</param>
+        /// <param name="os">Order status; null to load all records</param>
+        /// <param name="ps">Order payment status; null to load all records</param>
+        /// <param name="ss">Shipping status; null to load all records</param>
+        /// <param name="billingEmail">Billing email. Leave empty to load all records.</param>
+        /// <returns>Result</returns>
+        decimal ProfitReport(int storeId, int vendorId, OrderStatus? os, PaymentStatus? ps, ShippingStatus? ss,
+            DateTime? startTimeUtc, DateTime? endTimeUtc, string billingEmail);
     }
 }

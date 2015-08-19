@@ -45,6 +45,16 @@ namespace Orbio.Web.Framework
             builder.RegisterType<OBS.Admin.Customers.CustomerReportService>().As<OBS.Admin.Customers.ICustomerReportService>().InstancePerHttpRequest();
             //added by madhu
             builder.RegisterType<OBS.Logging.DefaultLogger>().As<OBS.Logging.ILogger>().InstancePerHttpRequest();
+            //added by sankar
+            builder.RegisterType<OBS.Admin.Orders.OrderService>().As<OBS.Admin.Orders.IOrderService>().InstancePerHttpRequest();
+            //added by sankar
+            builder.RegisterType<OBS.Admin.Address.AddressService>().As<OBS.Admin.Address.IAddressService>().InstancePerHttpRequest();
+            //added by sankar
+            builder.RegisterType<OBS.Directory.CountryService>().As<OBS.Directory.ICountryService>().InstancePerHttpRequest();
+            //added by sankar
+            builder.RegisterType<OBS.Directory.StateProvinceService>().As<OBS.Directory.IStateProvinceService>().InstancePerHttpRequest();
+            //added by sankar
+            builder.RegisterType<OBS.Admin.Orders.OrderProcessingService>().As<OBS.Admin.Orders.IOrderProcessingService>().InstancePerHttpRequest();
             
         }
 

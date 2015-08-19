@@ -2257,4 +2257,14 @@ border-radius: 0 4px 4px 0;
 .login_form .mob-no .col-sm-1 {width:9.333333333333332%;}
 .login_form .mob-no .col-sm-7 {width:57.333333333333336%;}
 
+
 .reset_data{float: left;top: 9px;position: relative;background-color: #f8c301;border: 0px;padding: 4px 10px;color: #141414;}
+
+  @media(max-width: 768px){.menu_desc button#toggle{right:150px;}
+.technical_spec .col-md-5 img{width:100%;}
+.navbar-default .navbar-toggle{margin-top:36px;}
+}
+.review_line {
+     word-wrap: break-word; 
+}
+

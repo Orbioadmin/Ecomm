@@ -379,7 +379,7 @@ namespace Orbio.Services.Customers
             //if (String.IsNullOrWhiteSpace(customer.ToString()))
             //    return CustomerRegistrationResult.;
             string action = "";
-            if (customer.Id == null)
+            if (!customer.IsRegistered)
             {
                 action = "Insert";
             }

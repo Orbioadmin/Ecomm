@@ -52,5 +52,7 @@ namespace Orbio.Core.Data
         public virtual ICollection<Order> Orders { get; set; }
         public virtual ICollection<CustomerRole> CustomerRoles { get; set; }
         public virtual ICollection<Log> Logs { get; set; }
+        public virtual Address Address { get; set; }
+        public virtual Address Address1 { get; set; }
     }
 }
