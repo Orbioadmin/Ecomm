@@ -292,6 +292,56 @@
             });
 
 
+
+
+            // Clear Billing and Shipping address
+
+            $('#clear').on('click', function (e) {
+
+                $("#ShipFirstName").val("");
+                $("#ShipLastName").val("");
+                $("#ShipPhone").val("");
+                $("#ShipPhone").val("");
+                $("#ShipAddress").val("");
+                $("#ShipCity").val("");
+                $("#ShipPincode").val("");
+                $("#ShipState").val("");
+                $("#ShipCountry").val("");
+                $("#BillFirstName").val("");
+                $("#BillLastName").val("");
+                $("#BillPhone").val("");
+                $("#BillAddress").val("");
+                $("#BillPhone").val("");
+                $("#BillCity").val("");
+                $("#BillPincode").val("");
+                $("#BillState").val("");
+                $("#BillCountry").val("");
+                $("#SameAddress").removeAttr('checked');
+                $("#BillFirstName").removeAttr("disabled");
+                $("#BillLastName").removeAttr("disabled");
+                $("#BillPhone").removeAttr("disabled");
+                $("#BillAddress").removeAttr("disabled");
+                $("#BillCity").removeAttr("disabled");
+                $("#BillPincode").removeAttr("disabled");
+                $("#BillState").removeAttr("disabled");
+                $("#BillCountry").removeAttr("disabled");
+            })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             $('#activate-step-3').on('click', function (e) {
                 //$('ul.setup-panel li:eq(2)').removeClass('disabled');
                 //$('ul.setup-panel li a[href="#step-3"]').trigger('click');
