@@ -49,20 +49,39 @@ namespace Orbio.Core.Domain.Orders
         /// </summary>
         public int Quantity { get; set; }
 
-        ///// <summary>
-        ///// Gets or sets the Item count
-        ///// </summary>
-        //public int ItemCount { get; set; }
+        /// <summary>
+        /// Gets or sets the Item count
+        /// </summary>
+        public int ShoppingCartStatusId { get; set; }
 
         /// <summary>
         /// Gets or sets the Total Price
         /// </summary>
-       // public decimal TotalPrice { get; set; }
+        public DateTime UpdatedOnUtc { get; set; }
 
         /// <summary>
         /// Gets or sets the Total Price
         /// </summary>
         public bool IsRemove { get; set; }
+
+        #region Custom properties
+
+        /// <summary>
+        /// Gets or sets the cart status
+        /// </summary>
+        public ShoppingCartStatus ShoppingCartStatus
+        {
+            get
+            {
+                return (ShoppingCartStatus)this.ShoppingCartStatusId;
+            }
+            set
+            {
+                this.ShoppingCartStatusId = (int)value;
+            }
+        }
+
+        #endregion
 
     }
 }

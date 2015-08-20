@@ -1,0 +1,60 @@
+﻿@model List<Orbio.Web.UI.Areas.Admin.Models.Customers.CustomerModel>
+    @{
+        var count = 0;
+        var date = "";
+        var status = "";
+    }
+@foreach (var customer in this.Model)
+{
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#@count" style="background-color: white;">
+                    @if (customer.Email != null)
+                    {
+                        @customer.Email
+                    }
+                    else
+                    {
+                        <span>Guest</span>
+                    }
+                    <div style="float:right">
+                        <span style="margin-left:50px">@customer.shoppingCart.ShoppingCartItems.Count()</span>
+                    </div>
+                    <div style="float:right">
+                        <span style="margin-left:50px">@customer.shoppingCart.Total</span>
+                    </div>
+                    <div style="float:right">
+                        <span style="margin-left:50px">@customer.shoppingCart.DiscountAmount</span>
+                    </div>
+                    <div style="float:right">
+                        <span style="margin-left:50px">@customer.shoppingCart.SubTotal</span>
+                    </div>
+                    <div style="float:right">
+                        <span style="margin-left:50px">
+                            @{
+                                date = customer.shoppingCart.ShoppingCartItems.Select(element => element.UpdatedOnUtc).First().ToString();
+                            }
+                            @date
+                        </span>
+                    </div>
+                    <div style="float:right">
+                        <span style="margin-left:50px">
+                        @{
+                           status = customer.shoppingCart.ShoppingCartItems.Select(element => element.ShoppingCartStatus).First().ToString();
+                        }
+                            @status
+                        </span>
+                    </div>
+</a>
+            </h4>
+
+        </div><!--/.panel-heading -->
+    </div><!-- /.panel -->
+    <div id="@count" class="panel-collapse collapse">
+        @{
+            Html.RenderPartial("CartItems", customer.shoppingCart);
+         }
+    </div>
+                    count++;
+}

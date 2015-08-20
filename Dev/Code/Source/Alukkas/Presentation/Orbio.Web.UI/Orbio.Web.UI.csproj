@@ -217,13 +217,16 @@
     <Compile Include="Areas\Admin\Controllers\CustomerController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ShoppingCartController.cs" />
     <Compile Include="Areas\Admin\MappingExtensions.cs" />
     <Compile Include="Areas\Admin\Models\CheckOut\AddressModel.cs" />
+    <Compile Include="Areas\Admin\Models\Customers\CustomerModel.cs" />
     <Compile Include="Areas\Admin\Models\Customers\RegisteredCustomerReportLineModel.cs" />
     <Compile Include="Areas\Admin\Models\Orders\OrderAverageReportLineSummaryModel.cs" />
     <Compile Include="Areas\Admin\Models\Orders\OrderIncompleteReportLineModel.cs" />
     <Compile Include="Areas\Admin\Models\Orders\OrderListModel.cs" />
     <Compile Include="Areas\Admin\Models\Orders\OrderModel.cs" />
+    <Compile Include="Areas\Admin\Models\Orders\ShoppingCartModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CartBaseController.cs" />
     <Compile Include="Controllers\CatalogController.cs" />
@@ -293,6 +296,7 @@
     <Content Include="Areas\Admin\images\back.png" />
     <Content Include="Areas\Admin\images\blue_arrow.png" />
     <Content Include="Areas\Admin\images\chk-box_2.png" />
+    <Content Include="Areas\Admin\images\edit.png" />
     <Content Include="Areas\Admin\images\form.jpg" />
     <Content Include="Areas\Admin\images\form.png" />
     <Content Include="Areas\Admin\images\form1.jpg" />
@@ -879,6 +883,10 @@
     <Content Include="Areas\Admin\Views\Order\_orderDetailsProduct.cshtml" />
     <Content Include="Areas\Admin\Views\Order\_OrderDetailsOrderNote.cshtml" />
     <Content Include="Areas\Admin\Views\Order\_OrderDetailAddress.cshtml" />
+    <Content Include="Areas\Admin\Views\ShoppingCart\CurrentCarts.cshtml" />
+    <Content Include="Areas\Admin\Views\ShoppingCart\CartItems.cshtml" />
+    <Content Include="Areas\Admin\Views\ShoppingCart\_OrderSummary.cshtml" />
+    <Content Include="Areas\Admin\Views\ShoppingCart\_CartCustomer.cshtml" />
     <None Include="Properties\PublishProfiles\Alukkas.pubxml" />
     <Content Include="Views\Catalog\Search.cshtml" />
     <Content Include="Views\Catalog\_productAttribute.cshtml" />

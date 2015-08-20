@@ -28,7 +28,7 @@ namespace Orbio.Services.Admin.Orders
         /// <returns>Order collection</returns>
         List<Orbio.Core.Domain.Orders.Order> SearchOrders(int customerId = 0, DateTime? createdFromUtc = null, DateTime? createdToUtc = null,
             OrderStatus? os = null, PaymentStatus? ps = null, ShippingStatus? ss = null,
-            string billingEmail = null, int oderNumber = 0);
+            string billingEmail = null, int? oderNumber = 0);
 
        /// <summary>
        /// Get order by Id

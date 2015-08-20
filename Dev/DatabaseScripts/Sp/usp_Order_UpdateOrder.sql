@@ -40,9 +40,6 @@ BEGIN
  SELECT @orderItemXml = @orderXml.query('/Order/OrderItems')
 BEGIN TRY
 	BEGIN TRANSACTION
-		--adjust inventory first
-		
-		EXEC [usp_Product_AdjustInventory] @orderItemXml
 		
 		select d.value('(OrderId)[1]','nvarchar(100)' ) as OrderId,
 	   d.value('(OrderStatusId)[1]','int' ) as OrderStatusId,

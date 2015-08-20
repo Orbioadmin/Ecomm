@@ -142,15 +142,15 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             //order statuses
             var model = new OrderListModel();
             model.AvailableOrderStatuses = OrderStatus.Pending.ToSelectList(false).ToList();
-            model.AvailableOrderStatuses.Insert(0, new SelectListItem() { Text = "ALL", Value = "0" });
+            model.AvailableOrderStatuses.Insert(0, new SelectListItem() { Text = "Order Status", Value = "0" });
 
             //payment statuses
             model.AvailablePaymentStatuses = PaymentStatus.Pending.ToSelectList(false).ToList();
-            model.AvailablePaymentStatuses.Insert(0, new SelectListItem() { Text = "ALL", Value = "0" });
+            model.AvailablePaymentStatuses.Insert(0, new SelectListItem() { Text = "Payment Status", Value = "0" });
 
             //shipping statuses
             model.AvailableShippingStatuses = ShippingStatus.NotYetShipped.ToSelectList(false).ToList();
-            model.AvailableShippingStatuses.Insert(0, new SelectListItem() { Text = "ALL", Value = "0" });
+            model.AvailableShippingStatuses.Insert(0, new SelectListItem() { Text = "Shipping Status", Value = "0" });
 
             return View(model);
         }
@@ -818,5 +818,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             return RedirectToAction("Edit", "Order", new { id = order.OrderId });
         }
         #endregion
+
+
     }
 }

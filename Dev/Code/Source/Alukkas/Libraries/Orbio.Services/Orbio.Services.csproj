@@ -54,6 +54,8 @@
     <Compile Include="Admin\Address\IAddressService.cs" />
     <Compile Include="Admin\Customers\CustomerReportService.cs" />
     <Compile Include="Admin\Customers\ICustomerReportService.cs" />
+    <Compile Include="Admin\Orders\IShoppingCartService.cs" />
+    <Compile Include="Admin\Orders\ShoppingCartService.cs" />
     <Compile Include="Admin\Orders\IOrderProcessingService.cs" />
     <Compile Include="Admin\Orders\OrderProcessingService.cs" />
     <Compile Include="Directory\CountryService.cs" />

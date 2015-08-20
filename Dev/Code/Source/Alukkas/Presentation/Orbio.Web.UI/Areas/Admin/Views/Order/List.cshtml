@@ -30,8 +30,8 @@
                     <div class="orderFormSelection">@Html.TextBoxFor(model => model.CustomerEmail, new { placeholder = "Billing email address" })</div>
                     <div class="orderFormSelection">@Html.DropDownList("OrderStatusId", Model.AvailableOrderStatuses, new { @class = "payment-status" })</div>
                     <div class="orderFormSelection">@Html.DropDownList("PaymentStatusId", Model.AvailablePaymentStatuses, new { @class = "payment-status" })</div>
-                    <div class="orderFormSelection">@Html.DropDownList("PaymentStatusId", Model.AvailableShippingStatuses, new { @class = "payment-status" })</div>
-                    <div class="orderFormSelection" style="width:14%;">@Html.TextBoxFor(model => model.GoDirectlyToNumber, new { placeholder = "Order No", type = "number" })</div>
+                    <div class="orderFormSelection">@Html.DropDownList("ShippingStatusId", Model.AvailableShippingStatuses, new { @class = "payment-status" })</div>
+                    <div class="orderFormSelection" style="width:14%;"><span style="color:#000000">Order Number:</span>@Html.TextBoxFor(model => model.GoDirectlyToNumber, new { placeholder = "Order No" })</div>
                     @*<div class="orderFormSelection" style="width:65px;"></div>*@
 
                 </div>
@@ -84,7 +84,7 @@
             <div class="table-responsive">
                 <table id="tableData" class="table table-bordered table-striped ">
                     <thead>
-                    <th><input type="checkbox"></th>
+                    @*<th><input type="checkbox"></th>*@
                     <th>Order ID</th>
                     <th>Order Status</th>
                     <th>Payment Status</th>
