@@ -55,6 +55,10 @@ namespace Orbio.Web.Framework
             builder.RegisterType<OBS.Directory.StateProvinceService>().As<OBS.Directory.IStateProvinceService>().InstancePerHttpRequest();
             //added by sankar
             builder.RegisterType<OBS.Admin.Orders.OrderProcessingService>().As<OBS.Admin.Orders.IOrderProcessingService>().InstancePerHttpRequest();
+            //added by sankar
+            builder.RegisterType<OBS.Admin.Catalog.CategoryServices>().As<OBS.Admin.Catalog.ICategoryServices>().InstancePerHttpRequest();
+            //added by sankar
+            builder.RegisterType<OBS.Admin.Catalog.ManufacturerService>().As<OBS.Admin.Catalog.IManufacturerService>().InstancePerHttpRequest();
             
         }
 

@@ -54,13 +54,31 @@
     <Compile Include="Data\Address.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\Category.cs">
+      <DependentUpon>OrbioAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CategoryTemplate.cs">
+      <DependentUpon>OrbioAdmin.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\Customer.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\CustomerRole.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\Discount.cs">
+      <DependentUpon>OrbioAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Discount_AppliedToCategories.cs">
+      <DependentUpon>OrbioAdmin.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\Log.cs">
+      <DependentUpon>OrbioAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Manufacturer.cs">
+      <DependentUpon>OrbioAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ManufacturerTemplate.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\OrbioAdmin.Context.cs">
@@ -84,10 +102,22 @@
     <Compile Include="Data\OrderItem.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\Picture.cs">
+      <DependentUpon>OrbioAdmin.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\Product.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\Product_Category_Mapping.cs">
+      <DependentUpon>OrbioAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Product_Manufacturer_Mapping.cs">
+      <DependentUpon>OrbioAdmin.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\RecurringPayment.cs">
+      <DependentUpon>OrbioAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\UrlRecord.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\usp_Get_AdminOrderDetails_Result.cs">
@@ -96,6 +126,13 @@
     <Compile Include="Data\usp_OrbioAdmin_OrderDetails_Result.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
+    <Compile Include="Domain\Admin\Catalog\CategoryDetails.cs" />
+    <Compile Include="Domain\Admin\Catalog\CategoryList.cs" />
+    <Compile Include="Domain\Admin\Catalog\DiscountDetails.cs" />
+    <Compile Include="Domain\Admin\Catalog\ManufacturerDetails.cs" />
+    <Compile Include="Domain\Admin\Catalog\Manufacturers.cs" />
+    <Compile Include="Domain\Admin\Catalog\ProductDetails.cs" />
+    <Compile Include="Domain\Admin\Catalog\Templates.cs" />
     <Compile Include="Domain\Admin\Customers\BestCustomerReportLine.cs" />
     <Compile Include="Domain\Admin\Orders\OrderAverageReportLine.cs" />
     <Compile Include="Domain\Admin\Orders\OrderAverageReportLineSummary.cs" />

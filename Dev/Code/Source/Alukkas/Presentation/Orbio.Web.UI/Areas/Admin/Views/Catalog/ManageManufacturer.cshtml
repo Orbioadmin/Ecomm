@@ -1,0 +1,90 @@
+﻿@model Orbio.Web.UI.Areas.Admin.Models.Catalog.ManufacturerDetailModel
+@{
+    ViewBag.Title = "ManageManufacturer";
+}
+
+<section class="wp-bestseller manufacture">
+    <div class="container">
+        <div class="catalog-bulk col-md-12" style="padding-left:0px;">
+            <div class="pull-left">
+                <label class="shipment-icon"></label>
+                <h1>MANUFACTURERS</h1>
+            </div>
+            <div class="pull-right">
+                <a href="@Url.Action("AddManufacturer","Catalog")"><input type="button" value="Add New" class=" Sbut ssbut ssbut1"></a>
+            <input type="button" value="Export to XML" class=" Sbut ssbut ssbut1 savdel"></div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="col-md-12 manufature product-specification">
+            @using (Html.BeginForm("SearchManufacturer", "Catalog", FormMethod.Post, new { @class = "form-horizontal " }))
+            { 
+            <div class="col-md-12 colmd">
+                <div class="col-md-2 colmd"><label>Manufacture name:</label></div>
+                <div class="col-md-3">@Html.TextBoxFor(m=>m.Search)</div>
+                <div class="col-md-3"><input type="submit" value="Search" class="bet"></div>
+            </div>
+            }
+            <div class="col-md-12 colmd"></div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="table-home">
+            <div class="col-md-12">
+                <div class="table-responsive best-seller-table">
+                    <table id="tableData1" class="table table-bordered table-striped ">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Published</th>
+                                <th>Display order </th>
+                                <th>Edit </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if(Model.ManufacturerList!=null)
+                            {
+                                if (Model.ManufacturerList.Count > 0)
+                             {
+                                 foreach (var item in Model.ManufacturerList)
+                            { 
+                            <tr style="display: table-row;">
+                                <td>@item.Name </td>
+                                <td>
+                                @if(item.Published==true)
+                                { 
+                                <label class="img_sprite1"></label>
+                                }
+                                else
+                                {
+                                    <label class="img_sprite"></label>
+                                }</td>
+                                <td>@item.DisplayOrder</td>
+                                <td><a href="@Url.Action("EditManufacturers", "Catalog", new { Id = item.Id })"><label class="edit"></label></a></td>
+                            </tr>
+                            }
+                             }
+                             else
+                             {
+                                <tr style="display: table-row;">
+
+                                    <td colspan="4">No records to diaplay</td>
+                                </tr>
+                             }
+                            }
+                            else
+                            {
+                            <tr style="display: table-row;">
+                               
+                                <td colspan="4">No records to diaplay</td>
+                            </tr> 
+                            }
+                        </tbody>
+                    </table>
+                    <div class="pull-left1"><a href="@Url.Action("Manufacturers","Catalog")"><input type="button" class="but-refresh"></a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

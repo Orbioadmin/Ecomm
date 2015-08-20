@@ -24,6 +24,43 @@
           <Property Name="FaxNumber" Type="nvarchar(max)" />
           <Property Name="CreatedOnUtc" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="400" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="CategoryTemplateId" Type="int" Nullable="false" />
+          <Property Name="MetaKeywords" Type="nvarchar" MaxLength="400" />
+          <Property Name="MetaDescription" Type="nvarchar(max)" />
+          <Property Name="MetaTitle" Type="nvarchar" MaxLength="400" />
+          <Property Name="ParentCategoryId" Type="int" Nullable="false" />
+          <Property Name="PictureId" Type="int" Nullable="false" />
+          <Property Name="PageSize" Type="int" Nullable="false" />
+          <Property Name="AllowCustomersToSelectPageSize" Type="bit" Nullable="false" />
+          <Property Name="PageSizeOptions" Type="nvarchar" MaxLength="200" />
+          <Property Name="PriceRanges" Type="nvarchar" MaxLength="400" />
+          <Property Name="ShowOnHomePage" Type="bit" Nullable="false" />
+          <Property Name="IncludeInTopMenu" Type="bit" Nullable="false" />
+          <Property Name="HasDiscountsApplied" Type="bit" Nullable="false" />
+          <Property Name="SubjectToAcl" Type="bit" Nullable="false" />
+          <Property Name="LimitedToStores" Type="bit" Nullable="false" />
+          <Property Name="Published" Type="bit" Nullable="false" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
+          <Property Name="CreatedOnUtc" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedOnUtc" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CategoryTemplate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="400" Nullable="false" />
+          <Property Name="ViewPath" Type="nvarchar" MaxLength="400" Nullable="false" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="Id" />
@@ -76,6 +113,33 @@
           <Property Name="IsSystemRole" Type="bit" Nullable="false" />
           <Property Name="SystemName" Type="nvarchar" MaxLength="255" />
         </EntityType>
+        <EntityType Name="Discount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="DiscountTypeId" Type="int" Nullable="false" />
+          <Property Name="UsePercentage" Type="bit" Nullable="false" />
+          <Property Name="DiscountPercentage" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="DiscountAmount" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="StartDateUtc" Type="datetime" />
+          <Property Name="EndDateUtc" Type="datetime" />
+          <Property Name="RequiresCouponCode" Type="bit" Nullable="false" />
+          <Property Name="CouponCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="DiscountLimitationId" Type="int" Nullable="false" />
+          <Property Name="LimitationTimes" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Discount_AppliedToCategories">
+          <Key>
+            <PropertyRef Name="Discount_Id" />
+            <PropertyRef Name="Category_Id" />
+          </Key>
+          <Property Name="Discount_Id" Type="int" Nullable="false" />
+          <Property Name="Category_Id" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Log">
           <Key>
             <PropertyRef Name="Id" />
@@ -89,6 +153,39 @@
           <Property Name="PageUrl" Type="nvarchar(max)" />
           <Property Name="ReferrerUrl" Type="nvarchar(max)" />
           <Property Name="CreatedOnUtc" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Manufacturer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="400" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="ManufacturerTemplateId" Type="int" Nullable="false" />
+          <Property Name="MetaKeywords" Type="nvarchar" MaxLength="400" />
+          <Property Name="MetaDescription" Type="nvarchar(max)" />
+          <Property Name="MetaTitle" Type="nvarchar" MaxLength="400" />
+          <Property Name="PictureId" Type="int" Nullable="false" />
+          <Property Name="PageSize" Type="int" Nullable="false" />
+          <Property Name="AllowCustomersToSelectPageSize" Type="bit" Nullable="false" />
+          <Property Name="PageSizeOptions" Type="nvarchar" MaxLength="200" />
+          <Property Name="PriceRanges" Type="nvarchar" MaxLength="400" />
+          <Property Name="SubjectToAcl" Type="bit" Nullable="false" />
+          <Property Name="LimitedToStores" Type="bit" Nullable="false" />
+          <Property Name="Published" Type="bit" Nullable="false" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
+          <Property Name="CreatedOnUtc" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedOnUtc" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ManufacturerTemplate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="400" Nullable="false" />
+          <Property Name="ViewPath" Type="nvarchar" MaxLength="400" Nullable="false" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -172,6 +269,17 @@
           <Property Name="LicenseDownloadId" Type="int" />
           <Property Name="ItemWeight" Type="decimal" Precision="18" Scale="4" />
           <Property Name="PriceDetailXml" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Picture">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PictureBinary" Type="varbinary(max)" />
+          <Property Name="MimeType" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="SeoFilename" Type="nvarchar" MaxLength="300" />
+          <Property Name="IsNew" Type="bit" Nullable="false" />
+          <Property Name="RelativeUrl" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -271,6 +379,26 @@
           <Property Name="MakingCost" Type="decimal" Precision="18" Scale="4" />
           <Property Name="ProductUnit" Type="decimal" Precision="18" Scale="4" />
         </EntityType>
+        <EntityType Name="Product_Category_Mapping">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="IsFeaturedProduct" Type="bit" Nullable="false" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product_Manufacturer_Mapping">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="ManufacturerId" Type="int" Nullable="false" />
+          <Property Name="IsFeaturedProduct" Type="bit" Nullable="false" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="RecurringPayment">
           <Key>
             <PropertyRef Name="Id" />
@@ -284,6 +412,17 @@
           <Property Name="Deleted" Type="bit" Nullable="false" />
           <Property Name="InitialOrderId" Type="int" Nullable="false" />
           <Property Name="CreatedOnUtc" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UrlRecord">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EntityId" Type="int" Nullable="false" />
+          <Property Name="EntityName" Type="nvarchar" MaxLength="400" Nullable="false" />
+          <Property Name="Slug" Type="nvarchar" MaxLength="400" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="LanguageId" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="Customer_BillingAddress">
           <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
@@ -334,6 +473,66 @@
             </Principal>
             <Dependent Role="Customer">
               <PropertyRef Name="ShippingAddress_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Category_CategoryTemplate">
+          <End Role="CategoryTemplate" Type="Self.CategoryTemplate" Multiplicity="1" />
+          <End Role="Category" Type="Self.Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryTemplate">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Category">
+              <PropertyRef Name="CategoryTemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Category_Picture">
+          <End Role="Picture" Type="Self.Picture" Multiplicity="1" />
+          <End Role="Category" Type="Self.Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Picture">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Category">
+              <PropertyRef Name="PictureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Discount_AppliedToCategories_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Discount_AppliedToCategories" Type="Self.Discount_AppliedToCategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Discount_AppliedToCategories">
+              <PropertyRef Name="Category_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Manufacturer_ManufacturerTemplate">
+          <End Role="ManufacturerTemplate" Type="Self.ManufacturerTemplate" Multiplicity="1" />
+          <End Role="Manufacturer" Type="Self.Manufacturer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ManufacturerTemplate">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Manufacturer">
+              <PropertyRef Name="ManufacturerTemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ManufacturerTemplate_ManufacturerTemplate">
+          <End Role="ManufacturerTemplate" Type="Self.ManufacturerTemplate" Multiplicity="1" />
+          <End Role="ManufacturerTemplate1" Type="Self.ManufacturerTemplate" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ManufacturerTemplate">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ManufacturerTemplate1">
+              <PropertyRef Name="Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -417,6 +616,34 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="ProductCategory_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Product_Category_Mapping" Type="Self.Product_Category_Mapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product_Category_Mapping">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProductManufacturer_Manufacturer">
+          <End Role="Manufacturer" Type="Self.Manufacturer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Product_Manufacturer_Mapping" Type="Self.Product_Manufacturer_Mapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Manufacturer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product_Manufacturer_Mapping">
+              <PropertyRef Name="ManufacturerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="RecurringPayment_InitialOrder">
           <End Role="Order" Type="Self.Order" Multiplicity="1" />
           <End Role="RecurringPayment" Type="Self.RecurringPayment" Multiplicity="*" />
@@ -441,14 +668,29 @@
         </Function>
         <EntityContainer Name="OrbioAdminModelStoreContainer">
           <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CategoryTemplate" EntityType="Self.CategoryTemplate" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer_CustomerRole_Mapping" EntityType="Self.Customer_CustomerRole_Mapping" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CustomerRole" EntityType="Self.CustomerRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Discount" EntityType="Self.Discount" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Log" EntityType="Self.Log" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Manufacturer" EntityType="Self.Manufacturer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ManufacturerTemplate" EntityType="Self.ManufacturerTemplate" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderItem" EntityType="Self.OrderItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Picture" EntityType="Self.Picture" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product_Category_Mapping" EntityType="Self.Product_Category_Mapping" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product_Manufacturer_Mapping" EntityType="Self.Product_Manufacturer_Mapping" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RecurringPayment" EntityType="Self.RecurringPayment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UrlRecord" EntityType="Self.UrlRecord" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Discount_AppliedToCategories" EntityType="Self.Discount_AppliedToCategories" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Discount_AppliedToCategories].[Discount_Id] AS [Discount_Id], 
+    [Discount_AppliedToCategories].[Category_Id] AS [Category_Id]
+    FROM [dbo].[Discount_AppliedToCategories] AS [Discount_AppliedToCategories]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="Customer_BillingAddress" Association="Self.Customer_BillingAddress">
             <End Role="Address" EntitySet="Address" />
             <End Role="Customer" EntitySet="Customer" />
@@ -464,6 +706,26 @@
           <AssociationSet Name="Customer_ShippingAddress" Association="Self.Customer_ShippingAddress">
             <End Role="Address" EntitySet="Address" />
             <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Category_CategoryTemplate" Association="Self.FK_Category_CategoryTemplate">
+            <End Role="CategoryTemplate" EntitySet="CategoryTemplate" />
+            <End Role="Category" EntitySet="Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Category_Picture" Association="Self.FK_Category_Picture">
+            <End Role="Picture" EntitySet="Picture" />
+            <End Role="Category" EntitySet="Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Discount_AppliedToCategories_Category" Association="Self.FK_Discount_AppliedToCategories_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Discount_AppliedToCategories" EntitySet="Discount_AppliedToCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Manufacturer_ManufacturerTemplate" Association="Self.FK_Manufacturer_ManufacturerTemplate">
+            <End Role="ManufacturerTemplate" EntitySet="ManufacturerTemplate" />
+            <End Role="Manufacturer" EntitySet="Manufacturer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ManufacturerTemplate_ManufacturerTemplate" Association="Self.FK_ManufacturerTemplate_ManufacturerTemplate">
+            <End Role="ManufacturerTemplate" EntitySet="ManufacturerTemplate" />
+            <End Role="ManufacturerTemplate1" EntitySet="ManufacturerTemplate" />
           </AssociationSet>
           <AssociationSet Name="Log_Customer" Association="Self.Log_Customer">
             <End Role="Customer" EntitySet="Customer" />
@@ -488,6 +750,14 @@
           <AssociationSet Name="OrderItem_Product" Association="Self.OrderItem_Product">
             <End Role="Product" EntitySet="Product" />
             <End Role="OrderItem" EntitySet="OrderItem" />
+          </AssociationSet>
+          <AssociationSet Name="ProductCategory_Category" Association="Self.ProductCategory_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Product_Category_Mapping" EntitySet="Product_Category_Mapping" />
+          </AssociationSet>
+          <AssociationSet Name="ProductManufacturer_Manufacturer" Association="Self.ProductManufacturer_Manufacturer">
+            <End Role="Manufacturer" EntitySet="Manufacturer" />
+            <End Role="Product_Manufacturer_Mapping" EntitySet="Product_Manufacturer_Mapping" />
           </AssociationSet>
           <AssociationSet Name="RecurringPayment_InitialOrder" Association="Self.RecurringPayment_InitialOrder">
             <End Role="Order" EntitySet="Order" />
@@ -672,6 +942,44 @@
             <End Role="Order" EntitySet="Orders" />
             <End Role="RecurringPayment" EntitySet="RecurringPayments" />
           </AssociationSet>
+          <EntitySet Name="Discount_AppliedToCategories" EntityType="OrbioAdminModel.Discount_AppliedToCategories" />
+          <EntitySet Name="Categories" EntityType="OrbioAdminModel.Category" />
+          <EntitySet Name="CategoryTemplates" EntityType="OrbioAdminModel.CategoryTemplate" />
+          <EntitySet Name="Manufacturers" EntityType="OrbioAdminModel.Manufacturer" />
+          <EntitySet Name="ManufacturerTemplates" EntityType="OrbioAdminModel.ManufacturerTemplate" />
+          <EntitySet Name="Pictures" EntityType="OrbioAdminModel.Picture" />
+          <EntitySet Name="UrlRecords" EntityType="OrbioAdminModel.UrlRecord" />
+          <AssociationSet Name="FK_Category_CategoryTemplate" Association="OrbioAdminModel.FK_Category_CategoryTemplate">
+            <End Role="CategoryTemplate" EntitySet="CategoryTemplates" />
+            <End Role="Category" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Category_Picture" Association="OrbioAdminModel.FK_Category_Picture">
+            <End Role="Picture" EntitySet="Pictures" />
+            <End Role="Category" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Discount_AppliedToCategories_Category" Association="OrbioAdminModel.FK_Discount_AppliedToCategories_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Discount_AppliedToCategories" EntitySet="Discount_AppliedToCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Manufacturer_ManufacturerTemplate" Association="OrbioAdminModel.FK_Manufacturer_ManufacturerTemplate">
+            <End Role="ManufacturerTemplate" EntitySet="ManufacturerTemplates" />
+            <End Role="Manufacturer" EntitySet="Manufacturers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ManufacturerTemplate_ManufacturerTemplate" Association="OrbioAdminModel.FK_ManufacturerTemplate_ManufacturerTemplate">
+            <End Role="ManufacturerTemplate" EntitySet="ManufacturerTemplates" />
+            <End Role="ManufacturerTemplate1" EntitySet="ManufacturerTemplates" />
+          </AssociationSet>
+          <EntitySet Name="Product_Category_Mapping" EntityType="OrbioAdminModel.Product_Category_Mapping" />
+          <EntitySet Name="Product_Manufacturer_Mapping" EntityType="OrbioAdminModel.Product_Manufacturer_Mapping" />
+          <AssociationSet Name="ProductCategory_Category" Association="OrbioAdminModel.ProductCategory_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Product_Category_Mapping" EntitySet="Product_Category_Mapping" />
+          </AssociationSet>
+          <AssociationSet Name="ProductManufacturer_Manufacturer" Association="OrbioAdminModel.ProductManufacturer_Manufacturer">
+            <End Role="Manufacturer" EntitySet="Manufacturers" />
+            <End Role="Product_Manufacturer_Mapping" EntitySet="Product_Manufacturer_Mapping" />
+          </AssociationSet>
+          <EntitySet Name="Discounts" EntityType="OrbioAdminModel.Discount" />
         </EntityContainer>
         <EntityType Name="CustomerRole">
           <Key>
@@ -1033,6 +1341,245 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Discount_AppliedToCategories">
+          <Key>
+            <PropertyRef Name="Discount_Id" />
+            <PropertyRef Name="Category_Id" />
+          </Key>
+          <Property Name="Discount_Id" Type="Int32" Nullable="false" />
+          <Property Name="Category_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Category" Relationship="OrbioAdminModel.FK_Discount_AppliedToCategories_Category" FromRole="Discount_AppliedToCategories" ToRole="Category" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryTemplateId" Type="Int32" Nullable="false" />
+          <Property Name="MetaKeywords" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="MetaDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MetaTitle" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="ParentCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="PictureId" Type="Int32" Nullable="false" />
+          <Property Name="PageSize" Type="Int32" Nullable="false" />
+          <Property Name="AllowCustomersToSelectPageSize" Type="Boolean" Nullable="false" />
+          <Property Name="PageSizeOptions" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="PriceRanges" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="ShowOnHomePage" Type="Boolean" Nullable="false" />
+          <Property Name="IncludeInTopMenu" Type="Boolean" Nullable="false" />
+          <Property Name="HasDiscountsApplied" Type="Boolean" Nullable="false" />
+          <Property Name="SubjectToAcl" Type="Boolean" Nullable="false" />
+          <Property Name="LimitedToStores" Type="Boolean" Nullable="false" />
+          <Property Name="Published" Type="Boolean" Nullable="false" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="CategoryTemplate" Relationship="OrbioAdminModel.FK_Category_CategoryTemplate" FromRole="Category" ToRole="CategoryTemplate" />
+          <NavigationProperty Name="Picture" Relationship="OrbioAdminModel.FK_Category_Picture" FromRole="Category" ToRole="Picture" />
+          <NavigationProperty Name="Discount_AppliedToCategories" Relationship="OrbioAdminModel.FK_Discount_AppliedToCategories_Category" FromRole="Category" ToRole="Discount_AppliedToCategories" />
+          <NavigationProperty Name="Product_Category_Mapping" Relationship="OrbioAdminModel.ProductCategory_Category" FromRole="Category" ToRole="Product_Category_Mapping" />
+        </EntityType>
+        <EntityType Name="CategoryTemplate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="ViewPath" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Categories" Relationship="OrbioAdminModel.FK_Category_CategoryTemplate" FromRole="CategoryTemplate" ToRole="Category" />
+        </EntityType>
+        <EntityType Name="Manufacturer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ManufacturerTemplateId" Type="Int32" Nullable="false" />
+          <Property Name="MetaKeywords" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="MetaDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MetaTitle" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="PictureId" Type="Int32" Nullable="false" />
+          <Property Name="PageSize" Type="Int32" Nullable="false" />
+          <Property Name="AllowCustomersToSelectPageSize" Type="Boolean" Nullable="false" />
+          <Property Name="PageSizeOptions" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="PriceRanges" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="SubjectToAcl" Type="Boolean" Nullable="false" />
+          <Property Name="LimitedToStores" Type="Boolean" Nullable="false" />
+          <Property Name="Published" Type="Boolean" Nullable="false" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="ManufacturerTemplate" Relationship="OrbioAdminModel.FK_Manufacturer_ManufacturerTemplate" FromRole="Manufacturer" ToRole="ManufacturerTemplate" />
+          <NavigationProperty Name="Product_Manufacturer_Mapping" Relationship="OrbioAdminModel.ProductManufacturer_Manufacturer" FromRole="Manufacturer" ToRole="Product_Manufacturer_Mapping" />
+        </EntityType>
+        <EntityType Name="ManufacturerTemplate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="ViewPath" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Manufacturers" Relationship="OrbioAdminModel.FK_Manufacturer_ManufacturerTemplate" FromRole="ManufacturerTemplate" ToRole="Manufacturer" />
+          <NavigationProperty Name="ManufacturerTemplate1" Relationship="OrbioAdminModel.FK_ManufacturerTemplate_ManufacturerTemplate" FromRole="ManufacturerTemplate" ToRole="ManufacturerTemplate1" />
+          <NavigationProperty Name="ManufacturerTemplate2" Relationship="OrbioAdminModel.FK_ManufacturerTemplate_ManufacturerTemplate" FromRole="ManufacturerTemplate1" ToRole="ManufacturerTemplate" />
+        </EntityType>
+        <EntityType Name="Picture">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PictureBinary" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="MimeType" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="SeoFilename" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="IsNew" Type="Boolean" Nullable="false" />
+          <Property Name="RelativeUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Categories" Relationship="OrbioAdminModel.FK_Category_Picture" FromRole="Picture" ToRole="Category" />
+        </EntityType>
+        <EntityType Name="UrlRecord">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EntityId" Type="Int32" Nullable="false" />
+          <Property Name="EntityName" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="Slug" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="LanguageId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Category_CategoryTemplate">
+          <End Type="OrbioAdminModel.CategoryTemplate" Role="CategoryTemplate" Multiplicity="1" />
+          <End Type="OrbioAdminModel.Category" Role="Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryTemplate">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Category">
+              <PropertyRef Name="CategoryTemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Category_Picture">
+          <End Type="OrbioAdminModel.Picture" Role="Picture" Multiplicity="1" />
+          <End Type="OrbioAdminModel.Category" Role="Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Picture">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Category">
+              <PropertyRef Name="PictureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Discount_AppliedToCategories_Category">
+          <End Type="OrbioAdminModel.Category" Role="Category" Multiplicity="1" />
+          <End Type="OrbioAdminModel.Discount_AppliedToCategories" Role="Discount_AppliedToCategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Discount_AppliedToCategories">
+              <PropertyRef Name="Category_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Manufacturer_ManufacturerTemplate">
+          <End Type="OrbioAdminModel.ManufacturerTemplate" Role="ManufacturerTemplate" Multiplicity="1" />
+          <End Type="OrbioAdminModel.Manufacturer" Role="Manufacturer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ManufacturerTemplate">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Manufacturer">
+              <PropertyRef Name="ManufacturerTemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ManufacturerTemplate_ManufacturerTemplate">
+          <End Type="OrbioAdminModel.ManufacturerTemplate" Role="ManufacturerTemplate" Multiplicity="1" />
+          <End Type="OrbioAdminModel.ManufacturerTemplate" Role="ManufacturerTemplate1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ManufacturerTemplate">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ManufacturerTemplate1">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Product_Category_Mapping">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="IsFeaturedProduct" Type="Boolean" Nullable="false" />
+          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Category" Relationship="OrbioAdminModel.ProductCategory_Category" FromRole="Product_Category_Mapping" ToRole="Category" />
+        </EntityType>
+        <EntityType Name="Product_Manufacturer_Mapping">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="ManufacturerId" Type="Int32" Nullable="false" />
+          <Property Name="IsFeaturedProduct" Type="Boolean" Nullable="false" />
+          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Manufacturer" Relationship="OrbioAdminModel.ProductManufacturer_Manufacturer" FromRole="Product_Manufacturer_Mapping" ToRole="Manufacturer" />
+        </EntityType>
+        <Association Name="ProductCategory_Category">
+          <End Type="OrbioAdminModel.Category" Role="Category" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="OrbioAdminModel.Product_Category_Mapping" Role="Product_Category_Mapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product_Category_Mapping">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProductManufacturer_Manufacturer">
+          <End Type="OrbioAdminModel.Manufacturer" Role="Manufacturer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="OrbioAdminModel.Product_Manufacturer_Mapping" Role="Product_Manufacturer_Mapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Manufacturer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product_Manufacturer_Mapping">
+              <PropertyRef Name="ManufacturerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Discount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DiscountTypeId" Type="Int32" Nullable="false" />
+          <Property Name="UsePercentage" Type="Boolean" Nullable="false" />
+          <Property Name="DiscountPercentage" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="DiscountAmount" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="StartDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="EndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="RequiresCouponCode" Type="Boolean" Nullable="false" />
+          <Property Name="CouponCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DiscountLimitationId" Type="Int32" Nullable="false" />
+          <Property Name="LimitationTimes" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1325,6 +1872,152 @@
                 <ScalarProperty Name="TotalCycles" ColumnName="TotalCycles" />
                 <ScalarProperty Name="CyclePeriodId" ColumnName="CyclePeriodId" />
                 <ScalarProperty Name="CycleLength" ColumnName="CycleLength" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Discount_AppliedToCategories">
+            <EntityTypeMapping TypeName="OrbioAdminModel.Discount_AppliedToCategories">
+              <MappingFragment StoreEntitySet="Discount_AppliedToCategories">
+                <ScalarProperty Name="Category_Id" ColumnName="Category_Id" />
+                <ScalarProperty Name="Discount_Id" ColumnName="Discount_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="OrbioAdminModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="UpdatedOnUtc" ColumnName="UpdatedOnUtc" />
+                <ScalarProperty Name="CreatedOnUtc" ColumnName="CreatedOnUtc" />
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Published" ColumnName="Published" />
+                <ScalarProperty Name="LimitedToStores" ColumnName="LimitedToStores" />
+                <ScalarProperty Name="SubjectToAcl" ColumnName="SubjectToAcl" />
+                <ScalarProperty Name="HasDiscountsApplied" ColumnName="HasDiscountsApplied" />
+                <ScalarProperty Name="IncludeInTopMenu" ColumnName="IncludeInTopMenu" />
+                <ScalarProperty Name="ShowOnHomePage" ColumnName="ShowOnHomePage" />
+                <ScalarProperty Name="PriceRanges" ColumnName="PriceRanges" />
+                <ScalarProperty Name="PageSizeOptions" ColumnName="PageSizeOptions" />
+                <ScalarProperty Name="AllowCustomersToSelectPageSize" ColumnName="AllowCustomersToSelectPageSize" />
+                <ScalarProperty Name="PageSize" ColumnName="PageSize" />
+                <ScalarProperty Name="PictureId" ColumnName="PictureId" />
+                <ScalarProperty Name="ParentCategoryId" ColumnName="ParentCategoryId" />
+                <ScalarProperty Name="MetaTitle" ColumnName="MetaTitle" />
+                <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
+                <ScalarProperty Name="MetaKeywords" ColumnName="MetaKeywords" />
+                <ScalarProperty Name="CategoryTemplateId" ColumnName="CategoryTemplateId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CategoryTemplates">
+            <EntityTypeMapping TypeName="OrbioAdminModel.CategoryTemplate">
+              <MappingFragment StoreEntitySet="CategoryTemplate">
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="ViewPath" ColumnName="ViewPath" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Manufacturers">
+            <EntityTypeMapping TypeName="OrbioAdminModel.Manufacturer">
+              <MappingFragment StoreEntitySet="Manufacturer">
+                <ScalarProperty Name="UpdatedOnUtc" ColumnName="UpdatedOnUtc" />
+                <ScalarProperty Name="CreatedOnUtc" ColumnName="CreatedOnUtc" />
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Published" ColumnName="Published" />
+                <ScalarProperty Name="LimitedToStores" ColumnName="LimitedToStores" />
+                <ScalarProperty Name="SubjectToAcl" ColumnName="SubjectToAcl" />
+                <ScalarProperty Name="PriceRanges" ColumnName="PriceRanges" />
+                <ScalarProperty Name="PageSizeOptions" ColumnName="PageSizeOptions" />
+                <ScalarProperty Name="AllowCustomersToSelectPageSize" ColumnName="AllowCustomersToSelectPageSize" />
+                <ScalarProperty Name="PageSize" ColumnName="PageSize" />
+                <ScalarProperty Name="PictureId" ColumnName="PictureId" />
+                <ScalarProperty Name="MetaTitle" ColumnName="MetaTitle" />
+                <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
+                <ScalarProperty Name="MetaKeywords" ColumnName="MetaKeywords" />
+                <ScalarProperty Name="ManufacturerTemplateId" ColumnName="ManufacturerTemplateId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ManufacturerTemplates">
+            <EntityTypeMapping TypeName="OrbioAdminModel.ManufacturerTemplate">
+              <MappingFragment StoreEntitySet="ManufacturerTemplate">
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="ViewPath" ColumnName="ViewPath" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pictures">
+            <EntityTypeMapping TypeName="OrbioAdminModel.Picture">
+              <MappingFragment StoreEntitySet="Picture">
+                <ScalarProperty Name="RelativeUrl" ColumnName="RelativeUrl" />
+                <ScalarProperty Name="IsNew" ColumnName="IsNew" />
+                <ScalarProperty Name="SeoFilename" ColumnName="SeoFilename" />
+                <ScalarProperty Name="MimeType" ColumnName="MimeType" />
+                <ScalarProperty Name="PictureBinary" ColumnName="PictureBinary" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UrlRecords">
+            <EntityTypeMapping TypeName="OrbioAdminModel.UrlRecord">
+              <MappingFragment StoreEntitySet="UrlRecord">
+                <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Slug" ColumnName="Slug" />
+                <ScalarProperty Name="EntityName" ColumnName="EntityName" />
+                <ScalarProperty Name="EntityId" ColumnName="EntityId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product_Category_Mapping">
+            <EntityTypeMapping TypeName="OrbioAdminModel.Product_Category_Mapping">
+              <MappingFragment StoreEntitySet="Product_Category_Mapping">
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="IsFeaturedProduct" ColumnName="IsFeaturedProduct" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product_Manufacturer_Mapping">
+            <EntityTypeMapping TypeName="OrbioAdminModel.Product_Manufacturer_Mapping">
+              <MappingFragment StoreEntitySet="Product_Manufacturer_Mapping">
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="IsFeaturedProduct" ColumnName="IsFeaturedProduct" />
+                <ScalarProperty Name="ManufacturerId" ColumnName="ManufacturerId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Discounts">
+            <EntityTypeMapping TypeName="OrbioAdminModel.Discount">
+              <MappingFragment StoreEntitySet="Discount">
+                <ScalarProperty Name="LimitationTimes" ColumnName="LimitationTimes" />
+                <ScalarProperty Name="DiscountLimitationId" ColumnName="DiscountLimitationId" />
+                <ScalarProperty Name="CouponCode" ColumnName="CouponCode" />
+                <ScalarProperty Name="RequiresCouponCode" ColumnName="RequiresCouponCode" />
+                <ScalarProperty Name="EndDateUtc" ColumnName="EndDateUtc" />
+                <ScalarProperty Name="StartDateUtc" ColumnName="StartDateUtc" />
+                <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+                <ScalarProperty Name="DiscountPercentage" ColumnName="DiscountPercentage" />
+                <ScalarProperty Name="UsePercentage" ColumnName="UsePercentage" />
+                <ScalarProperty Name="DiscountTypeId" ColumnName="DiscountTypeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

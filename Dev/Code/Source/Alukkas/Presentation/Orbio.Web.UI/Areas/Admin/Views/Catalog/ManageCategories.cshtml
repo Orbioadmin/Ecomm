@@ -1,0 +1,156 @@
+﻿@model CategoryDetailModel
+
+@using Orbio.Web.UI.Areas.Admin.Models.Catalog
+@{
+    ViewBag.Title = "ManageCategories";
+}
+
+<section class="wp-bestseller tree-view">
+    <div class="container">
+        <div class="catalog-bulk col-md-12" style="padding-left:0px;">
+            <div class="pull-left">
+                <label class="shipment-icon"></label>
+                <h1>MANAGE CATEGORIES</h1>
+            </div>
+            @*<div class="pull-right"><a href="list.html"><input type="button" value="BACK TO  LIST VIEW" class="but butt"><i class="back"></i></a></div>*@
+
+        </div>
+    </div>
+    <div class="container addcontainer">
+        <div class="col-md-12 colmd1">
+            <div class="pull-right"><a href="@Url.Action("AddCategory","Catalog")"><input type="button" value="Add New" class=" Sbut  ssbut1"></a></div>
+        </div>
+    </div>
+    <div class="container">
+
+        <div class="panel-group" id="accordion">
+@helper RenderCategoryLine(CategoryModel category, int level)
+{
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#@level">
+                            @category.Name
+                        </a>
+                    </h4>
+                        <label class="jewdelete" onclick="DeleteCategory(@category.Id)"></label>
+                        <label class="jewedit" onclick="EditCategory(@category.Id)"></label>
+                </div><!--/.panel-heading -->
+                
+                <div id=@level class="panel-collapse collapse">
+                    @if (category.SubCategories.Count > 0)
+                    {
+                        int count = 0;
+                        string id = "cat" + count;
+
+                        @*<div class="panel-body">*@
+                            <!-- nested -->
+                        <div class="panel-group" id="nested">
+                            @foreach (var subCategory in category.SubCategories)
+                            {
+                                @RenderSubCategoryLine(subCategory, id)
+                                count++;
+                                id = "cat" + count;
+                            }
+
+                        </div>
+                        @*</div>*@
+
+                    }
+                </div>
+            </div>
+
+}
+            @helper RenderSubCategoryLine(CategoryModel category, string count)
+{
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="collapsed" data-toggle="collapse" data-parent="#nested" href="#@count">
+                           @category.Name
+                        </a>
+                    </h4>
+                    <label class="jewdelete" onclick="DeleteCategory(@category.Id)"></label>
+                    <label class="jewedit" onclick="EditCategory(@category.Id)"></label>
+                </div>
+                <div id=@count class="panel-collapse collapse ">
+                    @if (category.SubCategories.Count > 0)
+                    {
+
+                        <div class="panel-group" id="nested-inner" style="margin-bottom:0px;">
+                            @foreach (var subCategories in category.SubCategories)
+                            {
+                                @*<div class="panel-body">*@
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a href="#" class="notcollapse">
+                                                 @subCategories.Name
+                                            </a>
+                                        </h4>
+                                        <label class="jewdelete" onclick="DeleteCategory(@subCategories.Id)"></label>
+                                        <label class="jewedit" onclick="EditCategory(@subCategories.Id)"></label>
+                                    </div>
+                                </div>
+                                @*</div>*@
+                            }
+                        </div>
+                    }
+
+                </div>
+
+            </div>
+}
+
+
+            @if (Model != null)
+            {
+                if (Model.SubCategories.Count > 0)
+                {
+                    int level = 0;
+                    foreach (var category in Model.SubCategories)
+                    {
+                        @RenderCategoryLine(category, level)
+                        level++;
+                    }
+                }
+            }
+        </div>
+
+    </div>
+</section>
+
+<script>
+    function EditCategory(Id)
+    {
+        window.location.href = '@Url.Action("EditCategory","Catalog")?id='+Id;
+    }
+</script>
+<script>
+    function DeleteCategory(Id) {
+        window.location.href = '@Url.Action("DeleteCategory","Catalog")?id=' + Id;
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

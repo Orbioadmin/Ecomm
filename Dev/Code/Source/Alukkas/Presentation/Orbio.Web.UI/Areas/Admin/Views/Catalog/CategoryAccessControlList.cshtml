@@ -1,0 +1,11 @@
+﻿@model Orbio.Web.UI.Areas.Admin.Models.Catalog.CategoryDetailModel
+<div class="col-lg-12 protab">
+    <div class="col-md-3"><label>Subject to ACL</label></div>
+    <div class="col-md-4">
+        @*<label class="edit-show2">*@
+            @Html.CheckBoxFor(m => m.Categories.SubjectToACL, new { @class = "show-page2"  })
+            @*<input type="checkbox" class="show-page2">*@
+            <span></span>
+        @*</label>*@
+    </div>
+</div>

@@ -1,0 +1,116 @@
+﻿@model Orbio.Web.UI.Areas.Admin.Models.Catalog.CategoryDetailModel
+
+<div role="tabpanel" class="tab-pane active">
+    <div class="col-md-12 standerd">
+        <div class="col-md-12 ">
+            @Html.HiddenFor(m => m.Categories.ParentCategoryList, new { Value=Model.Categories.ParentCategoryList})
+            @Html.HiddenFor(m => m.Categories.CategoryTemplateList, new { Value = Model.Categories.CategoryTemplateList })
+
+            <div class="col-md-2"><label>Category Name:</label></div>
+            <div class="col-md-4">@Html.TextBoxFor(m => m.Categories.Name, new { @class = "creatext", onkeyup = "javascript:GenerateScript()", id = "catgname" })
+            @Html.ValidationMessageFor(m => m.Categories.Name)</div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-2"><label>Description:</label></div>
+            <div class="col-md-4">
+                @Html.TextAreaFor(m => m.Categories.Description, new { @class = "metainput" })
+            </div>
+            </div>
+        </div>
+     <div class="col-md-12 admin-content" style="margin-top:10px;">
+        <div class="col-md-12 rproduct">
+            <div class="col-md-12">
+                <div class="col-md-3 colmd"><label>Meta title:</label></div>
+                <div class="col-md-4">@Html.TextBoxFor(m => m.Categories.MetaTitle, new { @class = "creatext" })</div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="col-md-3 colmd"><label>Meta description:</label></div>
+                <div class="col-md-4">
+                    @Html.TextAreaFor(m => m.Categories.MetaDescription, new { @class = "creatext" })
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-md-3 colmd"><label>Meta keywords:</label></div>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(m => m.Categories.MetaKeyWords, new { @class = "creatext" })
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-md-3 colmd"><label>Search engine friendly page name:</label></div>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(m => m.Categories.SearchEngine, new { @class = "creatext", id = "slug" })
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="col-md-3 colmd"><label>Category template</label></div>
+                <div class="col-md-4">
+                    @Html.DropDownListFor(m => m.Categories.CategoryTemplate, new SelectList(Model.Categories.CategoryTemplateList, "Id", "Name"), new { @class = "creatext jewellery" })
+                </div>
+               </div>
+                <div class="col-md-12">
+                    <div class="col-md-3 colmd"><label>Parent Category</label></div>
+                    <div class="col-md-4">
+                        @Html.DropDownListFor(m => m.Categories.ParentCategory, new SelectList(Model.Categories.ParentCategoryList, "Id", "Name"), "[none]", new { @class = "creatext jewellery" })
+                    </div>
+                </div>
+               
+                <div class="col-md-12">
+                    <div class="col-md-3 colmd"><label>Show on home page:</label></div>
+                    <div class="col-md-4 ">
+                        @Html.CheckBoxFor(m => m.Categories.ShowOnHomePage, new { @class = "show-page2" })
+                        <span></span>
+                       
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-3 colmd"><label>Published</label></div>
+                    <div class="col-md-4">
+                        @Html.CheckBoxFor(m => m.Categories.Published, new { @class = "show-page2" })
+                        <span></span>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-3 colmd"><label>Display order</label></div>
+                    <div class="col-md-4">
+                        @Html.TextBoxFor(m => m.Categories.DisplayOrder, new { @type = "number", @class = "creatext" })
+                    </div>
+                </div>
+
+                @*<div class="col-md-12">
+            <div class="col-md-3 colmd"><label>Price Range</label></div>
+            <div class="col-md-4">@Html.TextBoxFor(m => m.Categories.PriceRange, new { @class = "creatext" })</div>
+            </div>*@
+                @*<div class="col-md-12 ">
+                <div class="col-md-3 colmd"><label>Include in top menu</label></div>
+                <div class="col-md-4">
+                        @Html.CheckBoxFor(m => m.Categories.IncludeInTopMenu, new { @class = "show-page2" })
+                        <span></span>
+                </div>
+            </div>*@
+
+                @*<div class="col-md-12">
+                    <div class="col-md-3 colmd"><label>Picture</label></div>
+                    <div class="col-md-4">
+                        <div id="picture2134714071image">
+                            <img src="~/Areas/Admin/images/thumbs/0000140_jewellery_tb.jpeg">
+                        </div>
+                        <span id="picture2134714071remove" class="t-button">Remove picture</span><br />
+                        <div class="upload fupload">
+                            Upload a file
+                            <input multiple="multiple" type="file" name="file" class="filtext" style="">
+                        </div>
+                    </div>
+                </div>*@
+            </div>
+        </div>
+    </div>
+<script>
+    function GenerateScript()
+    {
+        var key = $("#catgname").val().trim();
+        key = key.replace(/ /g, "-");
+        $("#slug").val(key);
+    }
+</script>
