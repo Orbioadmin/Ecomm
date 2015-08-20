@@ -787,6 +787,7 @@ namespace Orbio.Web.UI.Controllers
                         var productdetails = PrepareProductdetailsModel(seName);
                         var productresult = productService.InsertReviews(workContext.CurrentCustomer.Id, productdetails.Id
                         , workContext.CurrentCustomer.IsApproved, model.ReviewTitle, model.ReviewText, model.Rating, model.CustomerName);
+                       TempData["Review"] = "Review Added Successfully";
                     }
                     else
                     {

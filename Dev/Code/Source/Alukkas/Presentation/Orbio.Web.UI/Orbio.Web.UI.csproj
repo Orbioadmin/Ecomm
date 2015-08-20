@@ -60,11 +60,11 @@
     </Reference>
     <Reference Include="AutoMapper, Version=3.1.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\AutoMapper.dll</HintPath>
+      <HintPath>..\..\packages\AutoMapper.3.1.0\lib\net40\AutoMapper.dll</HintPath>
     </Reference>
     <Reference Include="AutoMapper.Net4, Version=3.1.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\AutoMapper.Net4.dll</HintPath>
+      <HintPath>..\..\packages\AutoMapper.3.1.0\lib\net40\AutoMapper.Net4.dll</HintPath>
     </Reference>
     <Reference Include="dotless.Core, Version=1.5.0.0, Culture=neutral, PublicKeyToken=96b446c9e63eae34, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -214,11 +214,19 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\BundleConfig.cs" />
+    <Compile Include="Areas\Admin\Controllers\CatalogController.cs" />
     <Compile Include="Areas\Admin\Controllers\CustomerController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
     <Compile Include="Areas\Admin\Controllers\ShoppingCartController.cs" />
     <Compile Include="Areas\Admin\MappingExtensions.cs" />
+    <Compile Include="Areas\Admin\Models\Catalog\CategoryDetailModel.cs" />
+    <Compile Include="Areas\Admin\Models\Catalog\CategoryModel.cs" />
+    <Compile Include="Areas\Admin\Models\Catalog\DiscountModel.cs" />
+    <Compile Include="Areas\Admin\Models\Catalog\ManufacturerDetailModel.cs" />
+    <Compile Include="Areas\Admin\Models\Catalog\ManufacturerModel.cs" />
+    <Compile Include="Areas\Admin\Models\Catalog\ProductModel.cs" />
+    <Compile Include="Areas\Admin\Models\Catalog\TemplateModel.cs" />
     <Compile Include="Areas\Admin\Models\CheckOut\AddressModel.cs" />
     <Compile Include="Areas\Admin\Models\Customers\CustomerModel.cs" />
     <Compile Include="Areas\Admin\Models\Customers\RegisteredCustomerReportLineModel.cs" />
@@ -308,6 +316,7 @@
     <Content Include="Areas\Admin\images\thumbs\0000140_jewellery_tb.jpeg" />
     <Content Include="Areas\Admin\images\thumbs\0000198_bracelet.jpeg" />
     <Content Include="Areas\Admin\images\thumbs\sprite.png" />
+    <Content Include="Areas\Admin\images\trash-black.png" />
     <Content Include="Areas\Admin\images\white_arrow.png" />
     <Content Include="Areas\Admin\Scripts\bootstrap.min.js" />
     <Content Include="Areas\Admin\Scripts\highcharts.js" />
@@ -887,6 +896,22 @@
     <Content Include="Areas\Admin\Views\ShoppingCart\CartItems.cshtml" />
     <Content Include="Areas\Admin\Views\ShoppingCart\_OrderSummary.cshtml" />
     <Content Include="Areas\Admin\Views\ShoppingCart\_CartCustomer.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\AddorEditCategory.cshtml" />
+    <Content Include="Areas\Admin\Views\Manufacturer\AddOrEditManufacturer.cshtml" />
+    <Content Include="Areas\Admin\Views\Manufacturer\AddProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\CategoryAccessControlList.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\CategoryInfo.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\CategoryMenu.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\CategoryProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\DiscountCategory.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\ManageCategories.cshtml" />
+    <Content Include="Areas\Admin\Views\Manufacturer\ManageManufacturer.cshtml" />
+    <Content Include="Areas\Admin\Views\Manufacturer\ManufacturerACL.cshtml" />
+    <Content Include="Areas\Admin\Views\Manufacturer\ManufacturerInfo.cshtml" />
+    <Content Include="Areas\Admin\Views\Manufacturer\ManufacturerMenu.cshtml" />
+    <Content Include="Areas\Admin\Views\Manufacturer\ManufacturerProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\Attributes\CreateProductAttribute.cshtml" />
+    <Content Include="Areas\Admin\Views\Attributes\ProductAttribute.cshtml" />
     <None Include="Properties\PublishProfiles\Alukkas.pubxml" />
     <Content Include="Views\Catalog\Search.cshtml" />
     <Content Include="Views\Catalog\_productAttribute.cshtml" />

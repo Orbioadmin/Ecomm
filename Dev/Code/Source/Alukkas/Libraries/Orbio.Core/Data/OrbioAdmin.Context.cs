@@ -35,6 +35,15 @@ namespace Orbio.Core.Data
         public virtual DbSet<Address> Addresses { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<RecurringPayment> RecurringPayments { get; set; }
+        public virtual DbSet<Discount_AppliedToCategories> Discount_AppliedToCategories { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<CategoryTemplate> CategoryTemplates { get; set; }
+        public virtual DbSet<Manufacturer> Manufacturers { get; set; }
+        public virtual DbSet<ManufacturerTemplate> ManufacturerTemplates { get; set; }
+        public virtual DbSet<Picture> Pictures { get; set; }
+        public virtual DbSet<UrlRecord> UrlRecords { get; set; }
+        public virtual DbSet<Product_Category_Mapping> Product_Category_Mapping { get; set; }
+        public virtual DbSet<Product_Manufacturer_Mapping> Product_Manufacturer_Mapping { get; set; }
     
         public virtual ObjectResult<Order> usp_Get_AdminOrderDetails(Nullable<int> orderStatusId, Nullable<int> paymentStatusId, Nullable<int> shippingStatusId, Nullable<int> customerId, Nullable<System.DateTime> createdFromUtc, Nullable<System.DateTime> createdToUtc, string billingEmail, Nullable<int> orderNo)
         {

@@ -1,0 +1,93 @@
+﻿@model Orbio.Web.UI.Areas.Admin.Models.Catalog.CategoryDetailModel
+@{
+    ViewBag.Title = "AddorEditCategory";
+}
+
+<section class="wp-bestseller">
+    @using (Html.BeginForm("UpdateCategory", "Catalog", FormMethod.Post, new { @class = "form-horizontal " }))
+    {
+    if (Model.Categories != null)
+{
+        @Html.HiddenFor(m => m.Categories.Id, new { Value = Model.Categories.Id })
+        <div class="container">
+            <div class="catalog-bulk col-md-12" style="padding-left:0px;">
+                <div class="pull-left">
+                    <label class="catalog"></label>
+                    <h1>EDIT CATEGORY DETAILS - @Model.Categories.Name <a href="@Url.Action("ManageCategories", "Catalog")">(back to category list)</a></h1>
+
+                </div>
+                <div class="pull-right">
+                    @*<input type="button" value="Preview" class="Sbut ssbut ssbut1">*@
+                    <input type="submit" value="Save" class="Sbut ssbut ssbut1">
+                    @*<input type="submit" value="Save and Continue Edit" class="Sbut ssbut">*@
+                    <a href="@Url.Action("DeleteCategory", "Catalog", new { Id = Model.Categories.Id })"><input type="button" value="Delete" class="Sbut ssbut "></a>
+                </div>
+            </div>
+        </div>
+        }
+        else
+        {
+        <div class="container">
+            <div class="catalog-bulk col-md-12" style="padding-left:0px;">
+                <div class="pull-left">
+                    <label class="catalog"></label>
+                    <h1>ADD NEW CATEGORY<a href="@Url.Action("ManageCategories", "Catalog")">(back to category list)</a></h1>
+
+                </div>
+                <div class="pull-right">
+                    <input type="submit" value="Save" class="Sbut ssbut ssbut1">
+                </div>
+            </div>
+        </div>
+    }
+
+        <div class="container">
+            <div class="tab-product">
+                <div class="col-md-3" style="padding-left:0px;">
+                    <ul class="nav  nav-stacked product-info">
+                        <li class="active"><a href="#productinfo" role="tab" data-toggle="tab">CATEGORY INFO</a></li>
+                        <li><a href="#products" role="tab" data-toggle="tab">PRODUCTS</a></li>
+                        <li><a href="#categorymappings" role="tab" data-toggle="tab">DISCOUNTS</a></li>
+                        <li><a href="#manufature" role="tab" data-toggle="tab">ACCESS CONTROL LIST</a></li>
+                        @*<li><a href="#Specificationattributes" role="tab" data-toggle="tab">STORES  </a></li>*@
+
+                    </ul>
+                </div>
+                <div class="col-md-9">
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="productinfo">
+                            <div class="tab-content">
+                                @{
+                                    Html.RenderPartial("CategoryInfo", this.Model);
+                                }
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="products">
+                            @{
+                            Html.RenderPartial("CategoryProduct", this.Model);
+                            }
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="categorymappings">
+                            @{
+                               Html.RenderPartial("DiscountCategory", this.Model);
+                            }
+
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="manufature">
+                            @{
+                               Html.RenderPartial("CategoryAccessControlList", this.Model);
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*</div>*@
+    }
+</section>
+
+<script>
+    function refresh() {
+        window.location.reload();
+    }
+</script>

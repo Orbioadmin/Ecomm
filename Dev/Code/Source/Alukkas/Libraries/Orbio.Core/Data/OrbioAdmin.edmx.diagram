@@ -23,6 +23,22 @@
         <AssociationConnector Association="OrbioAdminModel.OrderItem_Product" />
         <EntityTypeShape EntityType="OrbioAdminModel.RecurringPayment" Width="1.5" PointX="5.25" PointY="11.125" />
         <AssociationConnector Association="OrbioAdminModel.RecurringPayment_InitialOrder" />
+        <EntityTypeShape EntityType="OrbioAdminModel.Discount_AppliedToCategories" Width="1.5" PointX="23" PointY="1" />
+        <EntityTypeShape EntityType="OrbioAdminModel.Category" Width="1.5" PointX="29.375" PointY="4.125" />
+        <EntityTypeShape EntityType="OrbioAdminModel.CategoryTemplate" Width="1.5" PointX="27.25" PointY="9" />
+        <EntityTypeShape EntityType="OrbioAdminModel.Manufacturer" Width="1.5" PointX="22.375" PointY="8.625" />
+        <EntityTypeShape EntityType="OrbioAdminModel.ManufacturerTemplate" Width="1.5" PointX="20" PointY="10.125" />
+        <EntityTypeShape EntityType="OrbioAdminModel.Picture" Width="1.5" PointX="27.25" PointY="11.75" />
+        <EntityTypeShape EntityType="OrbioAdminModel.UrlRecord" Width="1.5" PointX="22.375" PointY="5.875" />
+        <AssociationConnector Association="OrbioAdminModel.FK_Category_CategoryTemplate" />
+        <AssociationConnector Association="OrbioAdminModel.FK_Category_Picture" />
+        <AssociationConnector Association="OrbioAdminModel.FK_Discount_AppliedToCategories_Category" />
+        <AssociationConnector Association="OrbioAdminModel.FK_Manufacturer_ManufacturerTemplate" />
+        <AssociationConnector Association="OrbioAdminModel.FK_ManufacturerTemplate_ManufacturerTemplate" />
+        <EntityTypeShape EntityType="OrbioAdminModel.Product_Category_Mapping" Width="1.5" PointX="31.75" PointY="5.125" />
+        <EntityTypeShape EntityType="OrbioAdminModel.Product_Manufacturer_Mapping" Width="1.5" PointX="24.5" PointY="10.25" />
+        <AssociationConnector Association="OrbioAdminModel.ProductCategory_Category" />
+        <AssociationConnector Association="OrbioAdminModel.ProductManufacturer_Manufacturer" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

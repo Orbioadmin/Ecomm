@@ -1,0 +1,30 @@
+﻿@model List<Orbio.Web.UI.Areas.Admin.Models.Catalog.ProductModel>
+@{
+    ViewBag.Title = "NewProduct";
+}
+
+
+<div class="container">
+    <div class="col-md-12 colmd colmd1">
+        <div class="table-responsive">
+            <table id="tableData" class="table table-bordered table-striped ">
+                <thead>
+                <th></th>
+                <th>Name</th>
+                </thead>
+                <tbody>
+                   @foreach(var item in this.Model)
+                   { 
+                    <tr>
+                        <td>@che</td>
+                        <td>@item.name</td>
+                    </tr>
+                   }
+                </tbody>
+            </table>
+            <div class="pull-left1"><input type="button" value="Cancel" class="but-refresh"></div>
+            <div class="pull-right1"><input value="Save" class="export-excel" type="button"></div>
+        </div>
+    </div>
+    </div>
+

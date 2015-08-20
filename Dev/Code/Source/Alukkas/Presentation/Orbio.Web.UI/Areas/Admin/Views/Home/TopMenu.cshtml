@@ -44,13 +44,13 @@
 <li class="dropdown">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Catalog <span class="caret"></span></a>
 <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
-<li class="dropdown-submenu">
-<a href="#" tabindex="-1">Categories</a>
-<ul class="dropdown-menu">
-<li><a tabindex="-1" href="#">Tree view</a></li>
-</ul>
-</li>
-<li><a href="#">Manufacturers</a></li>
+    <li class="dropdown-submenu">
+        <a href="@Url.Action("ManageCategories","Catalog")" tabindex="-1">Categories</a>
+        <ul class="dropdown-menu">
+            <li><a tabindex="-1" href="@Url.Action("ManageCategories","Catalog")">Tree view</a></li>
+        </ul>
+    </li>
+    <li><a href="@Url.Action("ManageManufacturer", "Catalog")">Manufacturers</a></li>
 <li class="dropdown-submenu">
 <a href="#" tabindex="-1">Products</a>
 <ul class="dropdown-menu">

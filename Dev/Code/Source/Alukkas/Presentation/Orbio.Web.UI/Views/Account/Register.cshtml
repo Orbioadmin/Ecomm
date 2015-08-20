@@ -59,7 +59,7 @@
                             @Html.LabelFor(m => m.Password, new { @class = "col-sm-4 control-label" })
                             @*<label for="inputPassword3" class="col-sm-4 control-label">Password</label>*@
                             <div class="col-sm-8">
-                                @Html.TextBoxFor(m => m.Password, new { type = "password", @class = "form-control", placeholder = "Password" })
+                                @Html.TextBoxFor(m => m.Password, new { type = "password", @class = "form-control", placeholder = "Password", maxlength = "20" })
                                 <span style="color:red">@Html.ValidationMessageFor(m => m.Password)</span>
                                 @*<input type="password" class="form-control" id="inputPassword3" placeholder="Password">*@
                             </div>
@@ -68,7 +68,7 @@
                             @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-sm-4 control-label" })
                             @*<label for="inputPassword3" class="col-sm-4 control-label">Confirm Password</label>*@
                             <div class="col-sm-8">
-                                @Html.TextBoxFor(m => m.ConfirmPassword, new { type = "password", @class = "form-control", placeholder = "Confirm Password" })
+                                @Html.TextBoxFor(m => m.ConfirmPassword, new { type = "password", @class = "form-control", placeholder = "Confirm Password", maxlength = "20" })
                                 <span style="color:red">@Html.ValidationMessageFor(m => m.ConfirmPassword)</span>
                                 @*<input type="password" class="form-control" id="inputPassword3" placeholder="Confirm Password">*@
                             </div>

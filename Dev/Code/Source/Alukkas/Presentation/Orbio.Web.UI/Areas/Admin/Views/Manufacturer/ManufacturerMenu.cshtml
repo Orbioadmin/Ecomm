@@ -1,0 +1,34 @@
+﻿@model Orbio.Web.UI.Areas.Admin.Models.Catalog.ManufacturerModel
+
+@if (Model.Id != 0)
+{
+    @Html.HiddenFor(m => m.Id, new { Value = Model.Id })
+    <div class="container">
+        <div class="catalog-bulk col-md-12" style="padding-left:0px;">
+            <div class="pull-left">
+                <label class="catalog"></label>
+                <h1>EDIT MANUFACTURER DETAILS - @Model.Name <a href="@Url.Action("ManageManufacturer", "Catalog")">(back to manufacturer list)</a></h1>
+
+            </div>
+            <div class="pull-right">
+                <input type="submit" value="Save" class="Sbut ssbut ssbut1">
+                <a href="@Url.Action("DeleteManufacturer", "Catalog", new { Id = Model.Id })"><input type="button" value="Delete" class="Sbut ssbut"></a>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="container">
+        <div class="catalog-bulk col-md-12" style="padding-left:0px;">
+            <div class="pull-left">
+                <label class="catalog"></label>
+                <h1>ADD NEW MANUFACTURER<a href="@Url.Action("ManageManufacturer", "Catalog")">(back to manufacturer list)</a></h1>
+
+            </div>
+            <div class="pull-right">
+                <input type="submit" value="Save" class="Sbut ssbut ssbut1">
+            </div>
+        </div>
+    </div>
+}

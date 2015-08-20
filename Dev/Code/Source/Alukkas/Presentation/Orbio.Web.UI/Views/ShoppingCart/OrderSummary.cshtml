@@ -23,7 +23,8 @@
                 @foreach (var attribute in scpd.ProductVariantAttributes)
                 {
                     @attribute.TextPrompt<span>:</span>
-                    @attribute.Values[0].Name<span>,</span>
+                    @attribute.Values[0].Name
+                     @((attribute != scpd.ProductVariantAttributes.Last()) ? ", " : "")
                 }
             </td>
             <td data-title="Remove" class="remove-table">@Html.CheckBox(scpdr, scpd.IsRemove)@*<input type="checkbox" name="Remove" value="@scpd.CartId" />*@</td>

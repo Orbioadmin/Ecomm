@@ -81,6 +81,8 @@ namespace Orbio.Web.UI.Models
         [Required(ErrorMessage = "Password Required")]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
+        [RegularExpression(@"^(?=(.*[a-zA-Z].*))(?=.*\d.*)(?=.*\W.*)[a-zA-Z0-9\S]{6,20}$", ErrorMessage = "Password must contain atleast 1 special character and number")]
+        //Strong passwords with min 6 - max 20 character length, at least two letters (not case sensitive), one number, one special character (all, not just defined), space is not allowed.      
         [Display(Name = "Password")]
         public string Password { get; set; }
 

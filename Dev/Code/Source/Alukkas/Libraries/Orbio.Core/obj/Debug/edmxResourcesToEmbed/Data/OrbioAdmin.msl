@@ -1,0 +1,422 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="OrbioAdminModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="OrbioAdminModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CustomerGuid" ColumnName="CustomerGuid" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="PasswordFormatId" ColumnName="PasswordFormatId" />
+          <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+          <ScalarProperty Name="AdminComment" ColumnName="AdminComment" />
+          <ScalarProperty Name="IsTaxExempt" ColumnName="IsTaxExempt" />
+          <ScalarProperty Name="AffiliateId" ColumnName="AffiliateId" />
+          <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="IsSystemAccount" ColumnName="IsSystemAccount" />
+          <ScalarProperty Name="SystemName" ColumnName="SystemName" />
+          <ScalarProperty Name="LastIpAddress" ColumnName="LastIpAddress" />
+          <ScalarProperty Name="CreatedOnUtc" ColumnName="CreatedOnUtc" />
+          <ScalarProperty Name="LastLoginDateUtc" ColumnName="LastLoginDateUtc" />
+          <ScalarProperty Name="LastActivityDateUtc" ColumnName="LastActivityDateUtc" />
+          <ScalarProperty Name="BillingAddress_Id" ColumnName="BillingAddress_Id" />
+          <ScalarProperty Name="ShippingAddress_Id" ColumnName="ShippingAddress_Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="OrbioAdminModel.Order">
+        <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OrderGuid" ColumnName="OrderGuid" />
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="BillingAddressId" ColumnName="BillingAddressId" />
+          <ScalarProperty Name="ShippingAddressId" ColumnName="ShippingAddressId" />
+          <ScalarProperty Name="OrderStatusId" ColumnName="OrderStatusId" />
+          <ScalarProperty Name="ShippingStatusId" ColumnName="ShippingStatusId" />
+          <ScalarProperty Name="PaymentStatusId" ColumnName="PaymentStatusId" />
+          <ScalarProperty Name="PaymentMethodSystemName" ColumnName="PaymentMethodSystemName" />
+          <ScalarProperty Name="CustomerCurrencyCode" ColumnName="CustomerCurrencyCode" />
+          <ScalarProperty Name="CurrencyRate" ColumnName="CurrencyRate" />
+          <ScalarProperty Name="CustomerTaxDisplayTypeId" ColumnName="CustomerTaxDisplayTypeId" />
+          <ScalarProperty Name="VatNumber" ColumnName="VatNumber" />
+          <ScalarProperty Name="OrderSubtotalInclTax" ColumnName="OrderSubtotalInclTax" />
+          <ScalarProperty Name="OrderSubtotalExclTax" ColumnName="OrderSubtotalExclTax" />
+          <ScalarProperty Name="OrderSubTotalDiscountInclTax" ColumnName="OrderSubTotalDiscountInclTax" />
+          <ScalarProperty Name="OrderSubTotalDiscountExclTax" ColumnName="OrderSubTotalDiscountExclTax" />
+          <ScalarProperty Name="OrderShippingInclTax" ColumnName="OrderShippingInclTax" />
+          <ScalarProperty Name="OrderShippingExclTax" ColumnName="OrderShippingExclTax" />
+          <ScalarProperty Name="PaymentMethodAdditionalFeeInclTax" ColumnName="PaymentMethodAdditionalFeeInclTax" />
+          <ScalarProperty Name="PaymentMethodAdditionalFeeExclTax" ColumnName="PaymentMethodAdditionalFeeExclTax" />
+          <ScalarProperty Name="TaxRates" ColumnName="TaxRates" />
+          <ScalarProperty Name="OrderTax" ColumnName="OrderTax" />
+          <ScalarProperty Name="OrderDiscount" ColumnName="OrderDiscount" />
+          <ScalarProperty Name="OrderTotal" ColumnName="OrderTotal" />
+          <ScalarProperty Name="RefundedAmount" ColumnName="RefundedAmount" />
+          <ScalarProperty Name="RewardPointsWereAdded" ColumnName="RewardPointsWereAdded" />
+          <ScalarProperty Name="CheckoutAttributeDescription" ColumnName="CheckoutAttributeDescription" />
+          <ScalarProperty Name="CheckoutAttributesXml" ColumnName="CheckoutAttributesXml" />
+          <ScalarProperty Name="CustomerLanguageId" ColumnName="CustomerLanguageId" />
+          <ScalarProperty Name="AffiliateId" ColumnName="AffiliateId" />
+          <ScalarProperty Name="CustomerIp" ColumnName="CustomerIp" />
+          <ScalarProperty Name="AllowStoringCreditCardNumber" ColumnName="AllowStoringCreditCardNumber" />
+          <ScalarProperty Name="CardType" ColumnName="CardType" />
+          <ScalarProperty Name="CardName" ColumnName="CardName" />
+          <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+          <ScalarProperty Name="MaskedCreditCardNumber" ColumnName="MaskedCreditCardNumber" />
+          <ScalarProperty Name="CardCvv2" ColumnName="CardCvv2" />
+          <ScalarProperty Name="CardExpirationMonth" ColumnName="CardExpirationMonth" />
+          <ScalarProperty Name="CardExpirationYear" ColumnName="CardExpirationYear" />
+          <ScalarProperty Name="AuthorizationTransactionId" ColumnName="AuthorizationTransactionId" />
+          <ScalarProperty Name="AuthorizationTransactionCode" ColumnName="AuthorizationTransactionCode" />
+          <ScalarProperty Name="AuthorizationTransactionResult" ColumnName="AuthorizationTransactionResult" />
+          <ScalarProperty Name="CaptureTransactionId" ColumnName="CaptureTransactionId" />
+          <ScalarProperty Name="CaptureTransactionResult" ColumnName="CaptureTransactionResult" />
+          <ScalarProperty Name="SubscriptionTransactionId" ColumnName="SubscriptionTransactionId" />
+          <ScalarProperty Name="PurchaseOrderNumber" ColumnName="PurchaseOrderNumber" />
+          <ScalarProperty Name="PaidDateUtc" ColumnName="PaidDateUtc" />
+          <ScalarProperty Name="ShippingMethod" ColumnName="ShippingMethod" />
+          <ScalarProperty Name="ShippingRateComputationMethodSystemName" ColumnName="ShippingRateComputationMethodSystemName" />
+          <ScalarProperty Name="CustomValuesXml" ColumnName="CustomValuesXml" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="CreatedOnUtc" ColumnName="CreatedOnUtc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerRoles">
+      <EntityTypeMapping TypeName="OrbioAdminModel.CustomerRole">
+        <MappingFragment StoreEntitySet="CustomerRole">
+          <ScalarProperty Name="SystemName" ColumnName="SystemName" />
+          <ScalarProperty Name="IsSystemRole" ColumnName="IsSystemRole" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="TaxExempt" ColumnName="TaxExempt" />
+          <ScalarProperty Name="FreeShipping" ColumnName="FreeShipping" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderItems">
+      <EntityTypeMapping TypeName="OrbioAdminModel.OrderItem">
+        <MappingFragment StoreEntitySet="OrderItem">
+          <ScalarProperty Name="PriceDetailXml" ColumnName="PriceDetailXml" />
+          <ScalarProperty Name="ItemWeight" ColumnName="ItemWeight" />
+          <ScalarProperty Name="LicenseDownloadId" ColumnName="LicenseDownloadId" />
+          <ScalarProperty Name="IsDownloadActivated" ColumnName="IsDownloadActivated" />
+          <ScalarProperty Name="DownloadCount" ColumnName="DownloadCount" />
+          <ScalarProperty Name="AttributesXml" ColumnName="AttributesXml" />
+          <ScalarProperty Name="AttributeDescription" ColumnName="AttributeDescription" />
+          <ScalarProperty Name="OriginalProductCost" ColumnName="OriginalProductCost" />
+          <ScalarProperty Name="DiscountAmountExclTax" ColumnName="DiscountAmountExclTax" />
+          <ScalarProperty Name="DiscountAmountInclTax" ColumnName="DiscountAmountInclTax" />
+          <ScalarProperty Name="PriceExclTax" ColumnName="PriceExclTax" />
+          <ScalarProperty Name="PriceInclTax" ColumnName="PriceInclTax" />
+          <ScalarProperty Name="UnitPriceExclTax" ColumnName="UnitPriceExclTax" />
+          <ScalarProperty Name="UnitPriceInclTax" ColumnName="UnitPriceInclTax" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="OrderItemGuid" ColumnName="OrderItemGuid" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Customer_CustomerRole_Mapping" TypeName="OrbioAdminModel.Customer_CustomerRole_Mapping" StoreEntitySet="Customer_CustomerRole_Mapping">
+      <EndProperty Name="CustomerRole">
+        <ScalarProperty Name="Id" ColumnName="CustomerRole_Id" />
+      </EndProperty>
+      <EndProperty Name="Customer">
+        <ScalarProperty Name="Id" ColumnName="Customer_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="Logs">
+      <EntityTypeMapping TypeName="OrbioAdminModel.Log">
+        <MappingFragment StoreEntitySet="Log">
+          <ScalarProperty Name="CreatedOnUtc" ColumnName="CreatedOnUtc" />
+          <ScalarProperty Name="ReferrerUrl" ColumnName="ReferrerUrl" />
+          <ScalarProperty Name="PageUrl" ColumnName="PageUrl" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+          <ScalarProperty Name="FullMessage" ColumnName="FullMessage" />
+          <ScalarProperty Name="ShortMessage" ColumnName="ShortMessage" />
+          <ScalarProperty Name="LogLevelId" ColumnName="LogLevelId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Addresses">
+      <EntityTypeMapping TypeName="OrbioAdminModel.Address">
+        <MappingFragment StoreEntitySet="Address">
+          <ScalarProperty Name="CreatedOnUtc" ColumnName="CreatedOnUtc" />
+          <ScalarProperty Name="FaxNumber" ColumnName="FaxNumber" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="ZipPostalCode" ColumnName="ZipPostalCode" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="StateProvinceId" ColumnName="StateProvinceId" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="Company" ColumnName="Company" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="OrbioAdminModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="ProductUnit" ColumnName="ProductUnit" />
+          <ScalarProperty Name="MakingCost" ColumnName="MakingCost" />
+          <ScalarProperty Name="StoneCost" ColumnName="StoneCost" />
+          <ScalarProperty Name="GoldCost" ColumnName="GoldCost" />
+          <ScalarProperty Name="UpdatedOnUtc" ColumnName="UpdatedOnUtc" />
+          <ScalarProperty Name="CreatedOnUtc" ColumnName="CreatedOnUtc" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Published" ColumnName="Published" />
+          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+          <ScalarProperty Name="AvailableEndDateTimeUtc" ColumnName="AvailableEndDateTimeUtc" />
+          <ScalarProperty Name="AvailableStartDateTimeUtc" ColumnName="AvailableStartDateTimeUtc" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="Width" ColumnName="Width" />
+          <ScalarProperty Name="Length" ColumnName="Length" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="HasDiscountsApplied" ColumnName="HasDiscountsApplied" />
+          <ScalarProperty Name="HasTierPrices" ColumnName="HasTierPrices" />
+          <ScalarProperty Name="MaximumCustomerEnteredPrice" ColumnName="MaximumCustomerEnteredPrice" />
+          <ScalarProperty Name="MinimumCustomerEnteredPrice" ColumnName="MinimumCustomerEnteredPrice" />
+          <ScalarProperty Name="CustomerEntersPrice" ColumnName="CustomerEntersPrice" />
+          <ScalarProperty Name="SpecialPriceEndDateTimeUtc" ColumnName="SpecialPriceEndDateTimeUtc" />
+          <ScalarProperty Name="SpecialPriceStartDateTimeUtc" ColumnName="SpecialPriceStartDateTimeUtc" />
+          <ScalarProperty Name="SpecialPrice" ColumnName="SpecialPrice" />
+          <ScalarProperty Name="ProductCost" ColumnName="ProductCost" />
+          <ScalarProperty Name="OldPrice" ColumnName="OldPrice" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="CallForPrice" ColumnName="CallForPrice" />
+          <ScalarProperty Name="PreOrderAvailabilityStartDateTimeUtc" ColumnName="PreOrderAvailabilityStartDateTimeUtc" />
+          <ScalarProperty Name="AvailableForPreOrder" ColumnName="AvailableForPreOrder" />
+          <ScalarProperty Name="DisableWishlistButton" ColumnName="DisableWishlistButton" />
+          <ScalarProperty Name="DisableBuyButton" ColumnName="DisableBuyButton" />
+          <ScalarProperty Name="AllowedQuantities" ColumnName="AllowedQuantities" />
+          <ScalarProperty Name="OrderMaximumQuantity" ColumnName="OrderMaximumQuantity" />
+          <ScalarProperty Name="OrderMinimumQuantity" ColumnName="OrderMinimumQuantity" />
+          <ScalarProperty Name="AllowBackInStockSubscriptions" ColumnName="AllowBackInStockSubscriptions" />
+          <ScalarProperty Name="BackorderModeId" ColumnName="BackorderModeId" />
+          <ScalarProperty Name="NotifyAdminForQuantityBelow" ColumnName="NotifyAdminForQuantityBelow" />
+          <ScalarProperty Name="LowStockActivityId" ColumnName="LowStockActivityId" />
+          <ScalarProperty Name="MinStockQuantity" ColumnName="MinStockQuantity" />
+          <ScalarProperty Name="DisplayStockQuantity" ColumnName="DisplayStockQuantity" />
+          <ScalarProperty Name="DisplayStockAvailability" ColumnName="DisplayStockAvailability" />
+          <ScalarProperty Name="StockQuantity" ColumnName="StockQuantity" />
+          <ScalarProperty Name="ManageInventoryMethodId" ColumnName="ManageInventoryMethodId" />
+          <ScalarProperty Name="TaxCategoryId" ColumnName="TaxCategoryId" />
+          <ScalarProperty Name="IsTaxExempt" ColumnName="IsTaxExempt" />
+          <ScalarProperty Name="WarehouseId" ColumnName="WarehouseId" />
+          <ScalarProperty Name="DeliveryDateId" ColumnName="DeliveryDateId" />
+          <ScalarProperty Name="AdditionalShippingCharge" ColumnName="AdditionalShippingCharge" />
+          <ScalarProperty Name="IsFreeShipping" ColumnName="IsFreeShipping" />
+          <ScalarProperty Name="IsShipEnabled" ColumnName="IsShipEnabled" />
+          <ScalarProperty Name="RecurringTotalCycles" ColumnName="RecurringTotalCycles" />
+          <ScalarProperty Name="RecurringCyclePeriodId" ColumnName="RecurringCyclePeriodId" />
+          <ScalarProperty Name="RecurringCycleLength" ColumnName="RecurringCycleLength" />
+          <ScalarProperty Name="IsRecurring" ColumnName="IsRecurring" />
+          <ScalarProperty Name="UserAgreementText" ColumnName="UserAgreementText" />
+          <ScalarProperty Name="HasUserAgreement" ColumnName="HasUserAgreement" />
+          <ScalarProperty Name="SampleDownloadId" ColumnName="SampleDownloadId" />
+          <ScalarProperty Name="HasSampleDownload" ColumnName="HasSampleDownload" />
+          <ScalarProperty Name="DownloadActivationTypeId" ColumnName="DownloadActivationTypeId" />
+          <ScalarProperty Name="DownloadExpirationDays" ColumnName="DownloadExpirationDays" />
+          <ScalarProperty Name="MaxNumberOfDownloads" ColumnName="MaxNumberOfDownloads" />
+          <ScalarProperty Name="UnlimitedDownloads" ColumnName="UnlimitedDownloads" />
+          <ScalarProperty Name="DownloadId" ColumnName="DownloadId" />
+          <ScalarProperty Name="IsDownload" ColumnName="IsDownload" />
+          <ScalarProperty Name="AutomaticallyAddRequiredProducts" ColumnName="AutomaticallyAddRequiredProducts" />
+          <ScalarProperty Name="RequiredProductIds" ColumnName="RequiredProductIds" />
+          <ScalarProperty Name="RequireOtherProducts" ColumnName="RequireOtherProducts" />
+          <ScalarProperty Name="GiftCardTypeId" ColumnName="GiftCardTypeId" />
+          <ScalarProperty Name="IsGiftCard" ColumnName="IsGiftCard" />
+          <ScalarProperty Name="Gtin" ColumnName="Gtin" />
+          <ScalarProperty Name="ManufacturerPartNumber" ColumnName="ManufacturerPartNumber" />
+          <ScalarProperty Name="Sku" ColumnName="Sku" />
+          <ScalarProperty Name="LimitedToStores" ColumnName="LimitedToStores" />
+          <ScalarProperty Name="SubjectToAcl" ColumnName="SubjectToAcl" />
+          <ScalarProperty Name="NotApprovedTotalReviews" ColumnName="NotApprovedTotalReviews" />
+          <ScalarProperty Name="ApprovedTotalReviews" ColumnName="ApprovedTotalReviews" />
+          <ScalarProperty Name="NotApprovedRatingSum" ColumnName="NotApprovedRatingSum" />
+          <ScalarProperty Name="ApprovedRatingSum" ColumnName="ApprovedRatingSum" />
+          <ScalarProperty Name="AllowCustomerReviews" ColumnName="AllowCustomerReviews" />
+          <ScalarProperty Name="MetaTitle" ColumnName="MetaTitle" />
+          <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
+          <ScalarProperty Name="MetaKeywords" ColumnName="MetaKeywords" />
+          <ScalarProperty Name="ShowOnHomePage" ColumnName="ShowOnHomePage" />
+          <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+          <ScalarProperty Name="ProductTemplateId" ColumnName="ProductTemplateId" />
+          <ScalarProperty Name="AdminComment" ColumnName="AdminComment" />
+          <ScalarProperty Name="FullDescription" ColumnName="FullDescription" />
+          <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="VisibleIndividually" ColumnName="VisibleIndividually" />
+          <ScalarProperty Name="ParentGroupedProductId" ColumnName="ParentGroupedProductId" />
+          <ScalarProperty Name="ProductTypeId" ColumnName="ProductTypeId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="usp_Get_AdminOrderDetails" FunctionName="OrbioAdminModel.Store.usp_Get_AdminOrderDetails" />
+    <EntitySetMapping Name="RecurringPayments">
+      <EntityTypeMapping TypeName="OrbioAdminModel.RecurringPayment">
+        <MappingFragment StoreEntitySet="RecurringPayment">
+          <ScalarProperty Name="CreatedOnUtc" ColumnName="CreatedOnUtc" />
+          <ScalarProperty Name="InitialOrderId" ColumnName="InitialOrderId" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="StartDateUtc" ColumnName="StartDateUtc" />
+          <ScalarProperty Name="TotalCycles" ColumnName="TotalCycles" />
+          <ScalarProperty Name="CyclePeriodId" ColumnName="CyclePeriodId" />
+          <ScalarProperty Name="CycleLength" ColumnName="CycleLength" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Discount_AppliedToCategories">
+      <EntityTypeMapping TypeName="OrbioAdminModel.Discount_AppliedToCategories">
+        <MappingFragment StoreEntitySet="Discount_AppliedToCategories">
+          <ScalarProperty Name="Category_Id" ColumnName="Category_Id" />
+          <ScalarProperty Name="Discount_Id" ColumnName="Discount_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="OrbioAdminModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="UpdatedOnUtc" ColumnName="UpdatedOnUtc" />
+          <ScalarProperty Name="CreatedOnUtc" ColumnName="CreatedOnUtc" />
+          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Published" ColumnName="Published" />
+          <ScalarProperty Name="LimitedToStores" ColumnName="LimitedToStores" />
+          <ScalarProperty Name="SubjectToAcl" ColumnName="SubjectToAcl" />
+          <ScalarProperty Name="HasDiscountsApplied" ColumnName="HasDiscountsApplied" />
+          <ScalarProperty Name="IncludeInTopMenu" ColumnName="IncludeInTopMenu" />
+          <ScalarProperty Name="ShowOnHomePage" ColumnName="ShowOnHomePage" />
+          <ScalarProperty Name="PriceRanges" ColumnName="PriceRanges" />
+          <ScalarProperty Name="PageSizeOptions" ColumnName="PageSizeOptions" />
+          <ScalarProperty Name="AllowCustomersToSelectPageSize" ColumnName="AllowCustomersToSelectPageSize" />
+          <ScalarProperty Name="PageSize" ColumnName="PageSize" />
+          <ScalarProperty Name="PictureId" ColumnName="PictureId" />
+          <ScalarProperty Name="ParentCategoryId" ColumnName="ParentCategoryId" />
+          <ScalarProperty Name="MetaTitle" ColumnName="MetaTitle" />
+          <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
+          <ScalarProperty Name="MetaKeywords" ColumnName="MetaKeywords" />
+          <ScalarProperty Name="CategoryTemplateId" ColumnName="CategoryTemplateId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CategoryTemplates">
+      <EntityTypeMapping TypeName="OrbioAdminModel.CategoryTemplate">
+        <MappingFragment StoreEntitySet="CategoryTemplate">
+          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+          <ScalarProperty Name="ViewPath" ColumnName="ViewPath" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Manufacturers">
+      <EntityTypeMapping TypeName="OrbioAdminModel.Manufacturer">
+        <MappingFragment StoreEntitySet="Manufacturer">
+          <ScalarProperty Name="UpdatedOnUtc" ColumnName="UpdatedOnUtc" />
+          <ScalarProperty Name="CreatedOnUtc" ColumnName="CreatedOnUtc" />
+          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Published" ColumnName="Published" />
+          <ScalarProperty Name="LimitedToStores" ColumnName="LimitedToStores" />
+          <ScalarProperty Name="SubjectToAcl" ColumnName="SubjectToAcl" />
+          <ScalarProperty Name="PriceRanges" ColumnName="PriceRanges" />
+          <ScalarProperty Name="PageSizeOptions" ColumnName="PageSizeOptions" />
+          <ScalarProperty Name="AllowCustomersToSelectPageSize" ColumnName="AllowCustomersToSelectPageSize" />
+          <ScalarProperty Name="PageSize" ColumnName="PageSize" />
+          <ScalarProperty Name="PictureId" ColumnName="PictureId" />
+          <ScalarProperty Name="MetaTitle" ColumnName="MetaTitle" />
+          <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
+          <ScalarProperty Name="MetaKeywords" ColumnName="MetaKeywords" />
+          <ScalarProperty Name="ManufacturerTemplateId" ColumnName="ManufacturerTemplateId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ManufacturerTemplates">
+      <EntityTypeMapping TypeName="OrbioAdminModel.ManufacturerTemplate">
+        <MappingFragment StoreEntitySet="ManufacturerTemplate">
+          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+          <ScalarProperty Name="ViewPath" ColumnName="ViewPath" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pictures">
+      <EntityTypeMapping TypeName="OrbioAdminModel.Picture">
+        <MappingFragment StoreEntitySet="Picture">
+          <ScalarProperty Name="RelativeUrl" ColumnName="RelativeUrl" />
+          <ScalarProperty Name="IsNew" ColumnName="IsNew" />
+          <ScalarProperty Name="SeoFilename" ColumnName="SeoFilename" />
+          <ScalarProperty Name="MimeType" ColumnName="MimeType" />
+          <ScalarProperty Name="PictureBinary" ColumnName="PictureBinary" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UrlRecords">
+      <EntityTypeMapping TypeName="OrbioAdminModel.UrlRecord">
+        <MappingFragment StoreEntitySet="UrlRecord">
+          <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Slug" ColumnName="Slug" />
+          <ScalarProperty Name="EntityName" ColumnName="EntityName" />
+          <ScalarProperty Name="EntityId" ColumnName="EntityId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product_Category_Mapping">
+      <EntityTypeMapping TypeName="OrbioAdminModel.Product_Category_Mapping">
+        <MappingFragment StoreEntitySet="Product_Category_Mapping">
+          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+          <ScalarProperty Name="IsFeaturedProduct" ColumnName="IsFeaturedProduct" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product_Manufacturer_Mapping">
+      <EntityTypeMapping TypeName="OrbioAdminModel.Product_Manufacturer_Mapping">
+        <MappingFragment StoreEntitySet="Product_Manufacturer_Mapping">
+          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+          <ScalarProperty Name="IsFeaturedProduct" ColumnName="IsFeaturedProduct" />
+          <ScalarProperty Name="ManufacturerId" ColumnName="ManufacturerId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

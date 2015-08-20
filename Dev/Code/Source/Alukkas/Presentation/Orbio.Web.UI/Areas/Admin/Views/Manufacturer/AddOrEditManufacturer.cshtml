@@ -1,0 +1,65 @@
+﻿@model Orbio.Web.UI.Areas.Admin.Models.Catalog.ManufacturerDetailModel
+@{
+    ViewBag.Title = "AddOrEditManufacturer";
+}
+
+<section class="wp-bestseller">
+   @using (Html.BeginForm("UpdateManufacturer", "Catalog", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal " }))
+   {
+      
+       Html.RenderPartial("ManufacturerMenu",this.Model.Manufacturer);
+       
+       
+    <div class="container">
+        <div class="tab-product">
+            <div class="col-md-3" style="padding-left:0px;">
+                <ul class="nav  nav-stacked product-info">
+                    <li class="active"><a href="#productinfo" role="tab" data-toggle="tab">MANUFACTURES INFO</a></li>
+                    <li><a href="#pictures" role="tab" data-toggle="tab">PRODUCTS</a></li>
+                    <li><a href="#manufature" role="tab" data-toggle="tab">ACCESS CONTROL LIST</a></li>
+
+                </ul>
+            </div>
+            <div class="col-md-9">
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="productinfo">
+                        <div class="tab-content">
+                            @{
+                            Html.RenderPartial("ManufacturerInfo", this.Model);
+                            }
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="pictures">
+                        <div class="col-lg-12 protab">
+                           @{
+                            Html.RenderPartial("ManufacturerProduct", this.Model);
+                           }
+
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="manufature">
+                        @{
+                        Html.RenderPartial("ManufacturerACL", this.Model);
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*</div>*@
+   }
+</section>
+
+<script>
+    function refresh() {
+       window.location.reload();
+    }
+</script>
+
+
+
+
+
+
+
+
