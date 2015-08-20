@@ -11,7 +11,7 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Catalog
     {
         public CategoryDetailModel()
         {
-            SubCategories = new List<CategoryModel>();
+            ParentCategories = new List<CategoryModel>();
         }
 
         public CategoryDetailModel(CategoryDetails result)
@@ -49,6 +49,6 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Catalog
 
         public List<DiscountModel> Discount { get; set; }
 
-        public IList<CategoryModel> SubCategories { get; set; }
+        public IList<CategoryModel> ParentCategories { get; set; }
     }
 }

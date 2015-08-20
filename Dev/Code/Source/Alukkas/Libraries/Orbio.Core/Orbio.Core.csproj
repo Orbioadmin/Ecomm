@@ -66,9 +66,6 @@
     <Compile Include="Data\CustomerRole.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\Discount.cs">
-      <DependentUpon>OrbioAdmin.tt</DependentUpon>
-    </Compile>
     <Compile Include="Data\Discount_AppliedToCategories.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>

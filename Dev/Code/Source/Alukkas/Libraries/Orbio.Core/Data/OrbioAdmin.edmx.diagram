@@ -39,7 +39,6 @@
         <EntityTypeShape EntityType="OrbioAdminModel.Product_Manufacturer_Mapping" Width="1.5" PointX="24.5" PointY="10.25" />
         <AssociationConnector Association="OrbioAdminModel.ProductCategory_Category" />
         <AssociationConnector Association="OrbioAdminModel.ProductManufacturer_Manufacturer" />
-        <EntityTypeShape EntityType="OrbioAdminModel.Discount" Width="1.5" PointX="25.625" PointY="3.625" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

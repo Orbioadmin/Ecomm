@@ -38,7 +38,7 @@
                 </div><!--/.panel-heading -->
                 
                 <div id=@level class="panel-collapse collapse">
-                    @if (category.SubCategories.Count > 0)
+                    @if (category.CategoryList.Count > 0)
                     {
                         int count = 0;
                         string id = "cat" + count;
@@ -46,7 +46,7 @@
                         @*<div class="panel-body">*@
                             <!-- nested -->
                         <div class="panel-group" id="nested">
-                            @foreach (var subCategory in category.SubCategories)
+                            @foreach (var subCategory in category.CategoryList)
                             {
                                 @RenderSubCategoryLine(subCategory, id)
                                 count++;
@@ -74,11 +74,11 @@
                     <label class="jewedit" onclick="EditCategory(@category.Id)"></label>
                 </div>
                 <div id=@count class="panel-collapse collapse ">
-                    @if (category.SubCategories.Count > 0)
+                    @if (category.CategoryList.Count > 0)
                     {
 
                         <div class="panel-group" id="nested-inner" style="margin-bottom:0px;">
-                            @foreach (var subCategories in category.SubCategories)
+                            @foreach (var subCategories in category.CategoryList)
                             {
                                 @*<div class="panel-body">*@
                                 <div class="panel panel-default">
@@ -105,10 +105,10 @@
 
             @if (Model != null)
             {
-                if (Model.SubCategories.Count > 0)
+                if (Model.ParentCategories.Count > 0)
                 {
                     int level = 0;
-                    foreach (var category in Model.SubCategories)
+                    foreach (var category in Model.ParentCategories)
                     {
                         @RenderCategoryLine(category, level)
                         level++;

@@ -107,14 +107,14 @@ namespace Orbio.Services.Admin.Catalog
                                   DisplayOrder = p.DisplayOrder,
                               }).ToList();
 
-            model.Discount = (from d in context.Discounts.AsQueryable()
-                              join dc in context.Discount_AppliedToCategories.AsQueryable() on d.Id equals dc.Discount_Id
-                              where dc.Category_Id == Id
-                              select new DiscountDetails()
-                              {
-                                  Id = d.Id,
-                                  Name = d.Name,
-                              }).ToList();
+            //model.Discount = (from d in context.Discounts.AsQueryable()
+            //                  join dc in context.Discount_AppliedToCategories.AsQueryable() on d.Id equals dc.Discount_Id
+            //                  where dc.Category_Id == Id
+            //                  select new DiscountDetails()
+            //                  {
+            //                      Id = d.Id,
+            //                      Name = d.Name,
+            //                  }).ToList();
             return model;
         }
 

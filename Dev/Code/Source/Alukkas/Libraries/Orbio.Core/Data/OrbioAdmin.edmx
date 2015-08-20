@@ -113,23 +113,6 @@
           <Property Name="IsSystemRole" Type="bit" Nullable="false" />
           <Property Name="SystemName" Type="nvarchar" MaxLength="255" />
         </EntityType>
-        <EntityType Name="Discount">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="DiscountTypeId" Type="int" Nullable="false" />
-          <Property Name="UsePercentage" Type="bit" Nullable="false" />
-          <Property Name="DiscountPercentage" Type="decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="DiscountAmount" Type="decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="StartDateUtc" Type="datetime" />
-          <Property Name="EndDateUtc" Type="datetime" />
-          <Property Name="RequiresCouponCode" Type="bit" Nullable="false" />
-          <Property Name="CouponCode" Type="nvarchar" MaxLength="100" />
-          <Property Name="DiscountLimitationId" Type="int" Nullable="false" />
-          <Property Name="LimitationTimes" Type="int" Nullable="false" />
-        </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Discount_AppliedToCategories">
@@ -673,7 +656,6 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer_CustomerRole_Mapping" EntityType="Self.Customer_CustomerRole_Mapping" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CustomerRole" EntityType="Self.CustomerRole" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Discount" EntityType="Self.Discount" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Log" EntityType="Self.Log" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Manufacturer" EntityType="Self.Manufacturer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ManufacturerTemplate" EntityType="Self.ManufacturerTemplate" Schema="dbo" store:Type="Tables" />
@@ -979,7 +961,6 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
             <End Role="Manufacturer" EntitySet="Manufacturers" />
             <End Role="Product_Manufacturer_Mapping" EntitySet="Product_Manufacturer_Mapping" />
           </AssociationSet>
-          <EntitySet Name="Discounts" EntityType="OrbioAdminModel.Discount" />
         </EntityContainer>
         <EntityType Name="CustomerRole">
           <Key>
@@ -1563,23 +1544,6 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Discount">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="DiscountTypeId" Type="Int32" Nullable="false" />
-          <Property Name="UsePercentage" Type="Boolean" Nullable="false" />
-          <Property Name="DiscountPercentage" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
-          <Property Name="DiscountAmount" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
-          <Property Name="StartDateUtc" Type="DateTime" Precision="3" />
-          <Property Name="EndDateUtc" Type="DateTime" Precision="3" />
-          <Property Name="RequiresCouponCode" Type="Boolean" Nullable="false" />
-          <Property Name="CouponCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="DiscountLimitationId" Type="Int32" Nullable="false" />
-          <Property Name="LimitationTimes" Type="Int32" Nullable="false" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2000,24 +1964,6 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
                 <ScalarProperty Name="IsFeaturedProduct" ColumnName="IsFeaturedProduct" />
                 <ScalarProperty Name="ManufacturerId" ColumnName="ManufacturerId" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Discounts">
-            <EntityTypeMapping TypeName="OrbioAdminModel.Discount">
-              <MappingFragment StoreEntitySet="Discount">
-                <ScalarProperty Name="LimitationTimes" ColumnName="LimitationTimes" />
-                <ScalarProperty Name="DiscountLimitationId" ColumnName="DiscountLimitationId" />
-                <ScalarProperty Name="CouponCode" ColumnName="CouponCode" />
-                <ScalarProperty Name="RequiresCouponCode" ColumnName="RequiresCouponCode" />
-                <ScalarProperty Name="EndDateUtc" ColumnName="EndDateUtc" />
-                <ScalarProperty Name="StartDateUtc" ColumnName="StartDateUtc" />
-                <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
-                <ScalarProperty Name="DiscountPercentage" ColumnName="DiscountPercentage" />
-                <ScalarProperty Name="UsePercentage" ColumnName="UsePercentage" />
-                <ScalarProperty Name="DiscountTypeId" ColumnName="DiscountTypeId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
