@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Orbio.Web.UI.Areas.Admin.Models.Attribute
 {
@@ -14,11 +15,15 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Attribute
 
         public ProductAttributeModel(ProductAttribute p)
         {
+            Id = p.Id;
             Name = p.Name;
+            Description = p.Description;
         }
+        public int Id { get; set; }
 
         public string Name { get; set; }
 
+        [AllowHtml]
         public string Description { get; set; }
     }
 }
