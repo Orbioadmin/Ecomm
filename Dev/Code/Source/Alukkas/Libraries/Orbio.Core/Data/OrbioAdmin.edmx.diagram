@@ -39,6 +39,10 @@
         <EntityTypeShape EntityType="OrbioAdminModel.Product_Manufacturer_Mapping" Width="1.5" PointX="24.5" PointY="10.25" />
         <AssociationConnector Association="OrbioAdminModel.ProductCategory_Category" />
         <AssociationConnector Association="OrbioAdminModel.ProductManufacturer_Manufacturer" />
+        <EntityTypeShape EntityType="OrbioAdminModel.Product_ProductAttribute_Mapping" Width="1.5" PointX="11.875" PointY="9.875" />
+        <EntityTypeShape EntityType="OrbioAdminModel.ProductAttribute" Width="1.5" PointX="9.625" PointY="23.5" />
+        <AssociationConnector Association="OrbioAdminModel.ProductVariantAttribute_Product" />
+        <AssociationConnector Association="OrbioAdminModel.ProductVariantAttribute_ProductAttribute" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

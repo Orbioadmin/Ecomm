@@ -3,7 +3,7 @@
 <div role="tabpanel" class="tab-pane active">
     <div class="col-md-12 standerd">
         <div class="col-md-12 ">
-            @Html.HiddenFor(m => m.Categories.ParentCategoryList, new { Value=Model.Categories.ParentCategoryList})
+            @Html.HiddenFor(m => m.Categories.CategoryList, new { Value = Model.Categories.CategoryList })
             @Html.HiddenFor(m => m.Categories.CategoryTemplateList, new { Value = Model.Categories.CategoryTemplateList })
 
             <div class="col-md-2"><label>Category Name:</label></div>
@@ -52,7 +52,7 @@
                 <div class="col-md-12">
                     <div class="col-md-3 colmd"><label>Parent Category</label></div>
                     <div class="col-md-4">
-                        @Html.DropDownListFor(m => m.Categories.ParentCategory, new SelectList(Model.Categories.ParentCategoryList, "Id", "Name"), "[none]", new { @class = "creatext jewellery" })
+                        @Html.DropDownListFor(m => m.Categories.ParentCategory, new SelectList(Model.Categories.CategoryList, "Id", "Name"), "[none]", new { @class = "creatext jewellery" })
                     </div>
                 </div>
                

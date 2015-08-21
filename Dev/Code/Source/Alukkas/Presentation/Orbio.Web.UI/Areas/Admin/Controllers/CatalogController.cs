@@ -60,7 +60,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             var result = categoryServices.GetCategoryDetails();
             var model = new CategoryDetailModel(result);
             model.Categories.CategoryList = GetFormattedBreadCrumb(model.Categories.CategoryList, categoryService);
-            return View("AddorEditCategory","Category", model);
+            return View("AddorEditCategory", model);
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             var result = categoryServices.GetCategoryDetailsById(Id);
             var model = new CategoryDetailModel(result);
             model.Categories.CategoryList = GetFormattedBreadCrumb(model.Categories.CategoryList, categoryService);
-            return View("AddorEditCategory", "Category", model);
+            return View("AddorEditCategory", model);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             }
             else 
             {
-                return View("AddorEditCategory", "Category", model); 
+                return View("AddorEditCategory", model); 
             }
         }
 
@@ -142,7 +142,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         {
             var result = manufacturerService.GetManufacturerDetailsById(Id);
             var model = new ManufacturerDetailModel(result);
-            return View("AddOrEditManufacturer","Manufacturer", model);
+            return View("AddOrEditManufacturer", model);
         }
 
         /// <summary>
@@ -153,7 +153,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         {
             var result = manufacturerService.GetManufacturerDetails();
             var model = new ManufacturerDetailModel(result);
-            return View("AddOrEditManufacturer", "Manufacturer", model);
+            return View("AddOrEditManufacturer", model);
         }
 
         /// <summary>
@@ -165,7 +165,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         {
             var result = new ManufacturerDetailModel(manufacturerService.SearchManufacturerByName(model.Search));
             result.Search = model.Search;
-            return View("ManageManufacturer", "Manufacturer", result);
+            return View("ManageManufacturer", result);
         }
 
         /// <summary>
@@ -184,7 +184,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             }
             else
             {
-                return View("ManageManufacturer", "Manufacturer", model);
+                return View("ManageManufacturer", model);
             }
         }
 

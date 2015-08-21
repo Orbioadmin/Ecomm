@@ -1,4 +1,5 @@
-﻿
+﻿@model Orbio.Web.UI.Areas.Admin.Models.Attribute.ProductAttributeModel
+
 @{
     ViewBag.Title = "CreateProductAttribute";
 }
@@ -34,14 +35,12 @@
                         <div class="col-md-12 product-specification">
                             <div class="col-md-12">
                                 <div class="col-md-3"><label> Name:</label></div>
-                                <div class="col-md-3"><input type="text" class="produtxt"></div>
+                                <div class="col-md-3">@Html.TextBoxFor(m => m.Name, new { @class = "produtxt" })</div>
                             </div>
                             <div class="col-md-12">
                                 <div class="col-md-3"><label> Description:</label></div>
                                 <div class="col-md-9">
-                                    <form method="post" action="somepage">
-                                        <textarea name="content" style="width:95%" class="word"></textarea>
-                                    </form>
+                                        @Html.TextAreaFor(m => m.Description, new { @class = "produtxt" })
                                 </div>
                             </div>
                         </div>
