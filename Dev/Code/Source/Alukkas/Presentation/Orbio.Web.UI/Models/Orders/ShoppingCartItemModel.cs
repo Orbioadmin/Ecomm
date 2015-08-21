@@ -89,6 +89,8 @@ namespace Orbio.Web.UI.Models.Orders
 
             this.AttributeXml = productDetail.AttributesXml;
             this.IsRemove = false;
+            this.ShoppingCartStatus = productDetail.ShoppingCartStatus;
+            this.UpdatedOnUtc = productDetail.UpdatedOnUtc;
         }
         //public int ItemCount { get; set; }
         //public string TotalPrice { get; set; }
@@ -98,6 +100,10 @@ namespace Orbio.Web.UI.Models.Orders
         public bool IsRemove { get; set; }
 
         public string TotalPrice{get;set;}
+
+        public ShoppingCartStatus ShoppingCartStatus { get; set; }
+
+        public DateTime UpdatedOnUtc { get; set; }
 
         public string UnitPrice
         {

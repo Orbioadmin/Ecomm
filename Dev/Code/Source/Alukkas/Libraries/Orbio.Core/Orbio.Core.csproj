@@ -120,6 +120,7 @@
     <Compile Include="Data\RecurringPayment.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\ShoppingCartItem.cs"/>
     <Compile Include="Data\UrlRecord.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
@@ -137,8 +138,10 @@
     <Compile Include="Domain\Admin\Catalog\ProductDetails.cs" />
     <Compile Include="Domain\Admin\Catalog\Templates.cs" />
     <Compile Include="Domain\Admin\Customers\BestCustomerReportLine.cs" />
+    <Compile Include="Domain\Admin\Customers\Customer.cs" />
     <Compile Include="Domain\Admin\Orders\OrderAverageReportLine.cs" />
     <Compile Include="Domain\Admin\Orders\OrderAverageReportLineSummary.cs" />
+    <Compile Include="Domain\Admin\Orders\ShoppingCart.cs" />
     <Compile Include="Domain\Catalog\Abstract\ICart.cs" />
     <Compile Include="Domain\Catalog\Abstract\IPriceComponent.cs" />
     <Compile Include="Domain\Catalog\Abstract\IProductAttribute.cs" />
@@ -195,6 +198,7 @@
     <Compile Include="Domain\Orders\OrderStatus.cs" />
     <Compile Include="Domain\Orders\ProcessOrderResult.cs" />
     <Compile Include="Domain\Orders\ShoppingCartItem.cs" />
+    <Compile Include="Domain\Orders\ShoppingCartStatus.cs" />
     <Compile Include="Domain\Orders\ShoppingCartType.cs" />
     <Compile Include="Domain\Orders\TransientCart.cs" />
     <Compile Include="Domain\Orders\TransientCartAttribute.cs" />

@@ -1,0 +1,39 @@
+﻿@model List<Orbio.Web.UI.Models.Orders.ShoppingCartItemModel>
+
+@{
+    var count = 0;
+
+    if (this.Model.Count > 0)
+    {
+        foreach (var scpd in this.Model)
+        {
+            <tr>
+                <td data-title="Item"><a href="#"><img src="@scpd.DefaultPicture.ImageUrl"></a></td>
+                <td data-title="Title">
+                    <a class="cartitem" href="#">
+                        @scpd.Name
+                    </a><br />
+                    @foreach (var attribute in scpd.ProductVariantAttributes)
+                    {
+                        @attribute.TextPrompt<span>:</span>
+                        @attribute.Values[0].Name<span>,</span>
+                    }
+                </td>
+                <td data-title="Quantity" class="quantity-table">
+                    @scpd.SelectedQuantity
+                <td data-title="Item Price">@scpd.CurrencyCode.@scpd.UnitPrice</td>
+                <td data-title="Total Price">@scpd.CurrencyCode.@scpd.TotalPrice </td>
+                <td data-title="Total Price">@scpd.ShoppingCartStatus</td>
+                <td data-title="Total Price">@scpd.UpdatedOnUtc</td>
+            </tr>
+                    count++;
+        }
+
+    }
+    else
+    {
+        <tr>
+            <td colspan="6" class="cart_empty_msg">Your shopping cart is empty!</td>
+        </tr>
+    }
+}

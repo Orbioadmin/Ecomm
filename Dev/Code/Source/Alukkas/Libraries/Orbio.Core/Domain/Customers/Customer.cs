@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,6 +10,7 @@ namespace Orbio.Core.Domain.Customers
     /// <summary>
     /// Represents a customer
     /// </summary>
+    [DataContract]
     public partial class Customer 
     {
         //private ICollection<ExternalAuthenticationRecord> _externalAuthenticationRecords;
@@ -176,6 +178,7 @@ namespace Orbio.Core.Domain.Customers
         /// Gets or sets is approved
         /// </summary>
         public bool IsApproved { get; set; }
+
 
         #region Navigation properties
 

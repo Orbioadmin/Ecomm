@@ -54,7 +54,7 @@ namespace Orbio.Services.Admin.Orders
         /// <returns>Order collection</returns>
         public virtual List<Orbio.Core.Domain.Orders.Order> SearchOrders(int customerId = 0, DateTime? createdFromUtc = null, DateTime? createdToUtc = null,
              OrderStatus? os = null, PaymentStatus? ps = null, ShippingStatus? ss = null,
-             string billingEmail = null, int orderNumber = 0)
+             string billingEmail = null, int? orderNumber = 0)
         {
             int? orderStatusId = null;
             if (os.HasValue)
