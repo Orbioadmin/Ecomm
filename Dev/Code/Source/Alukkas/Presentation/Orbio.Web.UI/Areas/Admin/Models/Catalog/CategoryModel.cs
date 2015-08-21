@@ -13,8 +13,7 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Catalog
     {
         public CategoryModel()
         {
-            SubCategories = new List<CategoryModel>();
-            ParentCategoryList = new List<CategoryModel>();
+            CategoryList = new List<CategoryModel>();
             CategoryTemplateList = new List<TemplateModel>();
         }
 
@@ -27,7 +26,7 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Catalog
 
             if (category.SubCategories != null && category.SubCategories.Count > 0)
             {
-                this.SubCategories.AddRange((from c in category.SubCategories
+                CategoryList.AddRange((from c in category.SubCategories
                                              select new CategoryModel(c)).ToList());
             }
         }
@@ -48,7 +47,7 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Catalog
             ParentCategory = result.Categories.ParentCategory;
             CategoryTemplate = result.Categories.CategoryTemplate;
 
-            ParentCategoryList = (from c in result.Categories.ParentCategoryList
+            CategoryList = (from c in result.Categories.ParentCategoryList
                                   select new CategoryModel
                                   {
                                       Id = c.Id,
@@ -98,10 +97,7 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Catalog
 
         public bool SubjectToACL { get; set; }
 
-
-        public List<CategoryModel> SubCategories { get; set; }
-
-        public List<CategoryModel> ParentCategoryList { get; set; } 
+        public List<CategoryModel> CategoryList { get; set; } 
 
         public List<TemplateModel> CategoryTemplateList { get; set; }
     }

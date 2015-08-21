@@ -56,10 +56,13 @@ namespace Orbio.Web.Framework
             //added by sankar
             builder.RegisterType<OBS.Admin.Orders.OrderProcessingService>().As<OBS.Admin.Orders.IOrderProcessingService>().InstancePerHttpRequest();
             //added by sankar
+            builder.RegisterType<OBS.Admin.Orders.ShoppingCartService>().As<OBS.Admin.Orders.IShoppingCartService>().InstancePerHttpRequest();
+            
             builder.RegisterType<OBS.Admin.Catalog.CategoryServices>().As<OBS.Admin.Catalog.ICategoryServices>().InstancePerHttpRequest();
             //added by sankar
             builder.RegisterType<OBS.Admin.Catalog.ManufacturerService>().As<OBS.Admin.Catalog.IManufacturerService>().InstancePerHttpRequest();
-            
+            //added by roshni
+            builder.RegisterType<OBS.Admin.Attributes.ProductAttributeService>().As<OBS.Admin.Attributes.IProductAttributeService>().InstancePerHttpRequest();
         }
 
         public int Order

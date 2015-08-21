@@ -46,7 +46,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                       () => PrepareCategoryModels());
             var model = new CategoryDetailModel()
             {
-                SubCategories = cachedModel,
+                ParentCategories = cachedModel,
             };
             return View(model);
         }
@@ -59,7 +59,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         {
             var result = categoryServices.GetCategoryDetails();
             var model = new CategoryDetailModel(result);
-            model.Categories.ParentCategoryList = GetFormattedBreadCrumb(model.Categories.ParentCategoryList, categoryService);
+            model.Categories.CategoryList = GetFormattedBreadCrumb(model.Categories.CategoryList, categoryService);
             return View("AddorEditCategory", model);
         }
 
@@ -72,7 +72,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         {
             var result = categoryServices.GetCategoryDetailsById(Id);
             var model = new CategoryDetailModel(result);
-            model.Categories.ParentCategoryList = GetFormattedBreadCrumb(model.Categories.ParentCategoryList, categoryService);
+            model.Categories.CategoryList = GetFormattedBreadCrumb(model.Categories.CategoryList, categoryService);
             return View("AddorEditCategory", model);
         }
 
@@ -91,7 +91,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                 return RedirectToAction("ManageCategories");
             }
             else 
-            { 
+            {
                 return View("AddorEditCategory", model); 
             }
         }

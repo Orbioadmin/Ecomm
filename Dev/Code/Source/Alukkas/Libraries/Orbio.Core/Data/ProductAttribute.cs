@@ -12,19 +12,17 @@ namespace Orbio.Core.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class Discounts
+    public partial class ProductAttribute
     {
+        public ProductAttribute()
+        {
+            this.Product_ProductAttribute_Mapping = new HashSet<Product_ProductAttribute_Mapping>();
+        }
+    
         public int Id { get; set; }
         public string Name { get; set; }
-        public int DiscountTypeId { get; set; }
-        public bool UsePercentage { get; set; }
-        public decimal DiscountPercentage { get; set; }
-        public decimal DiscountAmount { get; set; }
-        public Nullable<System.DateTime> StartDateUtc { get; set; }
-        public Nullable<System.DateTime> EndDateUtc { get; set; }
-        public bool RequiresCouponCode { get; set; }
-        public string CouponCode { get; set; }
-        public int DiscountLimitationId { get; set; }
-        public int LimitationTimes { get; set; }
+        public string Description { get; set; }
+    
+        public virtual ICollection<Product_ProductAttribute_Mapping> Product_ProductAttribute_Mapping { get; set; }
     }
 }

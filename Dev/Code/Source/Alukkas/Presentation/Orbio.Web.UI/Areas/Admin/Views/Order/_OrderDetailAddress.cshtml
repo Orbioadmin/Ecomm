@@ -18,7 +18,7 @@
                 <div class="col-md-8">@Model.BillingAddress.ZipPostalCode</div>
                 <div class="col-md-4">Country:</div>
                 <div class="col-md-8">@Model.BillingAddress.Country</div>
-                <div class="col-md-12"><div class="pull-left"><a class="editbut" href="@Url.Action("AddressEdit", new { addressId = Model.BillingAddress.BillingAddress_Id, orderId =Model.Id })">edit</a></div></div>
+                <div class="col-md-12"><div class="pull-left"><a style="cursor:pointer"  class="editbut" href="@Url.Action("AddressEdit", new { addressId = Model.BillingAddress.BillingAddress_Id, orderId =Model.Id })">edit</a></div></div>
             </div>
         </div>
     </div>
@@ -43,7 +43,7 @@
                 <div class="col-md-8">@Model.ShippingAddress.ZipPostalCode</div>
                 <div class="col-md-4">Country:</div>
                 <div class="col-md-8">@Model.ShippingAddress.Country</div>
-                <div class="col-md-12"><div class="pull-left"><a class="editbut" href="@Url.Action("AddressEdit", new { addressId = Model.ShippingAddress.ShippingAddress_Id, orderId = Model.Id })">edit</a></div></div>
+                <div class="col-md-12"><div class="pull-left"><a style="cursor:pointer" class="editbut" href="@Url.Action("AddressEdit", new { addressId = Model.ShippingAddress.ShippingAddress_Id, orderId = Model.Id })">edit</a></div></div>
             </div>
         </div>
     </div>

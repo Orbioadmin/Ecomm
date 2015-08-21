@@ -3,7 +3,7 @@
                 @foreach (var items in this.Model)
                 {
                     <tr>
-                        <td><input type="checkbox"></td>
+                        @*<td><input type="checkbox"></td>*@
                         <td>@items.Id</td>
                         <td>@items.OrderStatus</td>
                         <td>@items.PaymentStatus</td>
@@ -12,6 +12,6 @@
                         <!--  <td>Your Store Name</td> -->
                         <td>@items.CreatedOn</td>
                         <td>@items.OrderTotal</td>
-                        <td><a href="@Url.Action("Edit", "Order", new { id = items.Id })">View</a></td>
+                        <td><a style="cursor:pointer" href="@Url.Action("Edit", "Order", new { id = items.Id })"><img src="~/Areas/Admin/images/edit.png" /></a></td>
                     </tr>
                 }

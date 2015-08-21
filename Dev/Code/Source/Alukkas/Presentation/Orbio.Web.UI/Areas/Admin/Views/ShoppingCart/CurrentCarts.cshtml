@@ -1,0 +1,25 @@
+﻿@model Orbio.Web.UI.Areas.Admin.Models.Orders.ShoppingCartModel
+@{
+    ViewBag.Title = "CurrentCarts";
+}
+
+<section class="wp-bestseller tree-view">
+    <div class="container">
+        <div class="catalog-bulk col-md-12" style="padding-left:0px;">
+            <div class="pull-left">
+                <label class="shipment-icon"></label>
+                <h1>Current Shopping Cart</h1>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="width:100%;margin-left:10px">
+
+        <div class="panel-group" id="accordion">
+            @{
+                Html.RenderPartial("_CartCustomer", this.Model.customers);
+            }
+    </div>
+
+    </div>
+</section>
+

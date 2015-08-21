@@ -17,6 +17,7 @@ namespace Orbio.Core.Data
         public Product()
         {
             this.OrderItems = new HashSet<OrderItem>();
+            this.Product_ProductAttribute_Mapping = new HashSet<Product_ProductAttribute_Mapping>();
         }
     
         public int Id { get; set; }
@@ -114,5 +115,6 @@ namespace Orbio.Core.Data
         public Nullable<decimal> ProductUnit { get; set; }
     
         public virtual ICollection<OrderItem> OrderItems { get; set; }
+        public virtual ICollection<Product_ProductAttribute_Mapping> Product_ProductAttribute_Mapping { get; set; }
     }
 }
