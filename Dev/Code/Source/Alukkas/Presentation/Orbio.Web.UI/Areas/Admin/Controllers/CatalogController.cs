@@ -118,6 +118,20 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             return result;
         }
 
+
+        /// <summary>
+        /// Deleteing Category Products
+        /// </summary>
+        /// <param name="id">Category Id</param>
+        /// <param name="cId">Product Id</param>
+        /// <returns></returns>
+        public ActionResult DeleteCategoryProduct(int id, int cId)
+        {
+            categoryServices.DeleteCategoryProduct(id, cId);
+            return RedirectToAction("EditCategory", new { id });
+        }
+
+
     #endregion
 
 

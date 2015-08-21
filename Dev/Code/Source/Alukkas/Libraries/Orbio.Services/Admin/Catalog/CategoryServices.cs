@@ -223,22 +223,26 @@ namespace Orbio.Services.Admin.Catalog
             }
         }
 
-        //public int DeleteProductMapping(int CategoryId, int ProductId)
-        //{
-        //    try
-        //    {
-        //        var category = context.Product_Category_Mapping.Where(m => m.CategoryId == CategoryId && m.ProductId == ProductId).FirstOrDefault();
-        //        if (category != null)
-        //        {
-        //            context.Product_Category_Mapping.Remove(category);
-        //            context.SaveChanges();
-        //        }
-        //        return 1;
-        //    }
-        //    catch(Exception)
-        //    {
-        //        return 0;
-        //    }
-        //}
+
+        /// <summary>
+        /// Delete Category Product From Category Product Mapping Table
+        /// </summary>
+        /// <param name="categoryId"></param>
+        /// <param name="productId"></param>
+        public void DeleteCategoryProduct(int categoryId, int productId)
+        {
+            try
+            {
+                var category = context.Product_Category_Mapping.Where(m => m.CategoryId == categoryId && m.ProductId == productId).FirstOrDefault();
+                if (category != null)
+                {
+                    context.Product_Category_Mapping.Remove(category);
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
     }
 }
