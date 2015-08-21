@@ -21,6 +21,11 @@ namespace Orbio.Services.Admin.Catalog
 
         Manufacturers GetManufacturerDetails();
 
-        //int DeleteProductMapping(int ManufacturerId, int ProductId);
+        /// <summary>
+        /// Delete manufacturer product
+        /// </summary>
+        /// <param name="manufacturerId">Manufacturer Id</param>
+        /// <param name="productId">Product Id</param>
+        void DeleteManufacturerProduct(int manufacturerId, int productId);
     }
 }

@@ -199,6 +199,24 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             return RedirectToAction("ManageManufacturer");
         }
 
+
+
+
+   /// <summary>
+  /// Deleting a manufacturer product
+   /// </summary>
+   /// <param name="id">Manufacture Id</param>
+   /// <param name="pId">Product Id</param>
+   /// <returns></returns>
+        public ActionResult DeleteManufacturerProduct(int id,int pId)
+        {
+           manufacturerService.DeleteManufacturerProduct(id, pId);
+           return RedirectToAction("EditManufacturers", new { id});
+        }
+
+
+
+
         #endregion
 
         /// <summary>

@@ -68,7 +68,7 @@
     </Reference>
     <Reference Include="dotless.Core, Version=1.5.0.0, Culture=neutral, PublicKeyToken=96b446c9e63eae34, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\..\Alukkas\Ecomm\Dev\Code\Source\Alukkas\Presentation\Orbio.Web.UI\bin\dotless.Core.dll</HintPath>
+      <HintPath>bin\dotless.Core.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -891,7 +891,6 @@
     <Content Include="Areas\Admin\Views\Order\_OrderDetailAddress.cshtml" />
     <Content Include="Areas\Admin\Views\Catalog\AddorEditCategory.cshtml" />
     <Content Include="Areas\Admin\Views\Catalog\AddOrEditManufacturer.cshtml" />
-    <Content Include="Areas\Admin\Views\Catalog\AddProduct.cshtml" />
     <Content Include="Areas\Admin\Views\Catalog\CategoryAccessControlList.cshtml" />
     <Content Include="Areas\Admin\Views\Catalog\CategoryInfo.cshtml" />
     <Content Include="Areas\Admin\Views\Catalog\CategoryMenu.cshtml" />
