@@ -377,6 +377,40 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
     <Property Name="IsFeaturedProduct" Type="bit" Nullable="false" />
     <Property Name="DisplayOrder" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="Product_ProductAttribute_Mapping">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="ProductAttributeId" Type="int" Nullable="false" />
+    <Property Name="TextPrompt" Type="nvarchar(max)" />
+    <Property Name="IsRequired" Type="bit" Nullable="false" />
+    <Property Name="AttributeControlTypeId" Type="int" Nullable="false" />
+    <Property Name="DisplayOrder" Type="int" Nullable="false" />
+    <Property Name="SizeGuideUrl" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Product_SpecificationAttribute_Mapping">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="SpecificationAttributeOptionId" Type="int" Nullable="false" />
+    <Property Name="CustomValue" Type="nvarchar" MaxLength="4000" />
+    <Property Name="AllowFiltering" Type="bit" Nullable="false" />
+    <Property Name="ShowOnProductPage" Type="bit" Nullable="false" />
+    <Property Name="DisplayOrder" Type="int" Nullable="false" />
+    <Property Name="SubTitle" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ProductAttribute">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+  </EntityType>
   <EntityType Name="RecurringPayment">
     <Key>
       <PropertyRef Name="Id" />
@@ -390,6 +424,23 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
     <Property Name="Deleted" Type="bit" Nullable="false" />
     <Property Name="InitialOrderId" Type="int" Nullable="false" />
     <Property Name="CreatedOnUtc" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SpecificationAttribute">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DisplayOrder" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SpecificationAttributeOption">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SpecificationAttributeId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DisplayOrder" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="UrlRecord">
     <Key>
@@ -622,6 +673,62 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="ProductSpecificationAttribute_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Product_SpecificationAttribute_Mapping" Type="Self.Product_SpecificationAttribute_Mapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product_SpecificationAttribute_Mapping">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductSpecificationAttribute_SpecificationAttributeOption">
+    <End Role="SpecificationAttributeOption" Type="Self.SpecificationAttributeOption" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Product_SpecificationAttribute_Mapping" Type="Self.Product_SpecificationAttribute_Mapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SpecificationAttributeOption">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product_SpecificationAttribute_Mapping">
+        <PropertyRef Name="SpecificationAttributeOptionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductVariantAttribute_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Product_ProductAttribute_Mapping" Type="Self.Product_ProductAttribute_Mapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product_ProductAttribute_Mapping">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductVariantAttribute_ProductAttribute">
+    <End Role="ProductAttribute" Type="Self.ProductAttribute" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Product_ProductAttribute_Mapping" Type="Self.Product_ProductAttribute_Mapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductAttribute">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product_ProductAttribute_Mapping">
+        <PropertyRef Name="ProductAttributeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="RecurringPayment_InitialOrder">
     <End Role="Order" Type="Self.Order" Multiplicity="1" />
     <End Role="RecurringPayment" Type="Self.RecurringPayment" Multiplicity="*" />
@@ -631,6 +738,20 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
       </Principal>
       <Dependent Role="RecurringPayment">
         <PropertyRef Name="InitialOrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SpecificationAttributeOption_SpecificationAttribute">
+    <End Role="SpecificationAttribute" Type="Self.SpecificationAttribute" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SpecificationAttributeOption" Type="Self.SpecificationAttributeOption" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SpecificationAttribute">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SpecificationAttributeOption">
+        <PropertyRef Name="SpecificationAttributeId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -660,7 +781,12 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
     <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Product_Category_Mapping" EntityType="Self.Product_Category_Mapping" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Product_Manufacturer_Mapping" EntityType="Self.Product_Manufacturer_Mapping" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product_ProductAttribute_Mapping" EntityType="Self.Product_ProductAttribute_Mapping" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product_SpecificationAttribute_Mapping" EntityType="Self.Product_SpecificationAttribute_Mapping" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductAttribute" EntityType="Self.ProductAttribute" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RecurringPayment" EntityType="Self.RecurringPayment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SpecificationAttribute" EntityType="Self.SpecificationAttribute" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SpecificationAttributeOption" EntityType="Self.SpecificationAttributeOption" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UrlRecord" EntityType="Self.UrlRecord" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Discount_AppliedToCategories" EntityType="Self.Discount_AppliedToCategories" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
@@ -736,9 +862,29 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
       <End Role="Manufacturer" EntitySet="Manufacturer" />
       <End Role="Product_Manufacturer_Mapping" EntitySet="Product_Manufacturer_Mapping" />
     </AssociationSet>
+    <AssociationSet Name="ProductSpecificationAttribute_Product" Association="Self.ProductSpecificationAttribute_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Product_SpecificationAttribute_Mapping" EntitySet="Product_SpecificationAttribute_Mapping" />
+    </AssociationSet>
+    <AssociationSet Name="ProductSpecificationAttribute_SpecificationAttributeOption" Association="Self.ProductSpecificationAttribute_SpecificationAttributeOption">
+      <End Role="SpecificationAttributeOption" EntitySet="SpecificationAttributeOption" />
+      <End Role="Product_SpecificationAttribute_Mapping" EntitySet="Product_SpecificationAttribute_Mapping" />
+    </AssociationSet>
+    <AssociationSet Name="ProductVariantAttribute_Product" Association="Self.ProductVariantAttribute_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Product_ProductAttribute_Mapping" EntitySet="Product_ProductAttribute_Mapping" />
+    </AssociationSet>
+    <AssociationSet Name="ProductVariantAttribute_ProductAttribute" Association="Self.ProductVariantAttribute_ProductAttribute">
+      <End Role="ProductAttribute" EntitySet="ProductAttribute" />
+      <End Role="Product_ProductAttribute_Mapping" EntitySet="Product_ProductAttribute_Mapping" />
+    </AssociationSet>
     <AssociationSet Name="RecurringPayment_InitialOrder" Association="Self.RecurringPayment_InitialOrder">
       <End Role="Order" EntitySet="Order" />
       <End Role="RecurringPayment" EntitySet="RecurringPayment" />
+    </AssociationSet>
+    <AssociationSet Name="SpecificationAttributeOption_SpecificationAttribute" Association="Self.SpecificationAttributeOption_SpecificationAttribute">
+      <End Role="SpecificationAttribute" EntitySet="SpecificationAttribute" />
+      <End Role="SpecificationAttributeOption" EntitySet="SpecificationAttributeOption" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

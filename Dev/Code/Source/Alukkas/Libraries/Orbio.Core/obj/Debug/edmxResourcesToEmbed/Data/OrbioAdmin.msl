@@ -418,5 +418,61 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Product_ProductAttribute_Mapping">
+      <EntityTypeMapping TypeName="OrbioAdminModel.Product_ProductAttribute_Mapping">
+        <MappingFragment StoreEntitySet="Product_ProductAttribute_Mapping">
+          <ScalarProperty Name="SizeGuideUrl" ColumnName="SizeGuideUrl" />
+          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+          <ScalarProperty Name="AttributeControlTypeId" ColumnName="AttributeControlTypeId" />
+          <ScalarProperty Name="IsRequired" ColumnName="IsRequired" />
+          <ScalarProperty Name="TextPrompt" ColumnName="TextPrompt" />
+          <ScalarProperty Name="ProductAttributeId" ColumnName="ProductAttributeId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductAttributes">
+      <EntityTypeMapping TypeName="OrbioAdminModel.ProductAttribute">
+        <MappingFragment StoreEntitySet="ProductAttribute">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SpecificationAttributes">
+      <EntityTypeMapping TypeName="OrbioAdminModel.SpecificationAttribute">
+        <MappingFragment StoreEntitySet="SpecificationAttribute">
+          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SpecificationAttributeOptions">
+      <EntityTypeMapping TypeName="OrbioAdminModel.SpecificationAttributeOption">
+        <MappingFragment StoreEntitySet="SpecificationAttributeOption">
+          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SpecificationAttributeId" ColumnName="SpecificationAttributeId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product_SpecificationAttribute_Mapping">
+      <EntityTypeMapping TypeName="OrbioAdminModel.Product_SpecificationAttribute_Mapping">
+        <MappingFragment StoreEntitySet="Product_SpecificationAttribute_Mapping">
+          <ScalarProperty Name="SubTitle" ColumnName="SubTitle" />
+          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+          <ScalarProperty Name="ShowOnProductPage" ColumnName="ShowOnProductPage" />
+          <ScalarProperty Name="AllowFiltering" ColumnName="AllowFiltering" />
+          <ScalarProperty Name="CustomValue" ColumnName="CustomValue" />
+          <ScalarProperty Name="SpecificationAttributeOptionId" ColumnName="SpecificationAttributeOptionId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

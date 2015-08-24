@@ -117,10 +117,19 @@
     <Compile Include="Data\Product_ProductAttribute_Mapping.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\Product_SpecificationAttribute_Mapping.cs">
+      <DependentUpon>OrbioAdmin.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\RecurringPayment.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\ShoppingCartItem.cs"/>
+    <Compile Include="Data\ShoppingCartItem.cs" />
+    <Compile Include="Data\SpecificationAttribute.cs">
+      <DependentUpon>OrbioAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SpecificationAttributeOption.cs">
+      <DependentUpon>OrbioAdmin.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\UrlRecord.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>

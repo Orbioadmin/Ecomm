@@ -59,7 +59,9 @@
     <Compile Include="Admin\Address\AddressService.cs" />
     <Compile Include="Admin\Address\IAddressService.cs" />
     <Compile Include="Admin\Attributes\IProductAttributeService.cs" />
+    <Compile Include="Admin\Attributes\ISpecificationAttributeService.cs" />
     <Compile Include="Admin\Attributes\ProductAttributeService.cs" />
+    <Compile Include="Admin\Attributes\SpecificationAttributeService.cs" />
     <Compile Include="Admin\Catalog\CategoryServices.cs" />
     <Compile Include="Admin\Catalog\ICategoryServices.cs" />
     <Compile Include="Admin\Catalog\IManufacturerService.cs" />

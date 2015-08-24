@@ -221,7 +221,9 @@
     <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
     <Compile Include="Areas\Admin\Controllers\ShoppingCartController.cs" />
     <Compile Include="Areas\Admin\MappingExtensions.cs" />
-    <Compile Include="Areas\Admin\Models\Attributes\ProductAttributeModel.cs" />
+    <Compile Include="Areas\Admin\Models\Attribute\ProductAttributeModel.cs" />
+    <Compile Include="Areas\Admin\Models\Attribute\SpecificationAttributeModel.cs" />
+    <Compile Include="Areas\Admin\Models\Attribute\SpecificationAttributeOptionModel.cs" />
     <Compile Include="Areas\Admin\Models\Catalog\CategoryDetailModel.cs" />
     <Compile Include="Areas\Admin\Models\Catalog\CategoryModel.cs" />
     <Compile Include="Areas\Admin\Models\Catalog\DiscountModel.cs" />
@@ -915,6 +917,11 @@
     <Content Include="Areas\Admin\Views\ShoppingCart\_OrderSummary.cshtml" />
     <Content Include="Areas\Admin\Views\ShoppingCart\_CartCustomer.cshtml" />
     <Content Include="Areas\Admin\Views\Attribute\_AddOrEditProductAttribute.cshtml" />
+    <Content Include="Areas\Admin\Views\Attribute\SpecificationAttribute.cshtml" />
+    <Content Include="Areas\Admin\Views\Attribute\ListSpecificationAttribute.cshtml" />
+    <Content Include="Areas\Admin\Views\Attribute\SpecificationAttributeOptions.cshtml" />
+    <Content Include="Areas\Admin\Views\Attribute\SpecificationAttributeDetails.cshtml" />
+    <Content Include="Areas\Admin\Views\Attribute\AddOrEditSpecificationAttributeOption.cshtml" />
     <None Include="Properties\PublishProfiles\Alukkas.pubxml" />
     <Content Include="Views\Catalog\Search.cshtml" />
     <Content Include="Views\Catalog\_productAttribute.cshtml" />
