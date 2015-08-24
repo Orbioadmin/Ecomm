@@ -930,6 +930,8 @@
     <Content Include="Areas\Admin\Views\Manufacturer\ManufacturerProduct.cshtml" />
     <Content Include="Areas\Admin\Views\Attributes\CreateProductAttribute.cshtml" />
     <Content Include="Areas\Admin\Views\Attributes\ProductAttribute.cshtml" />
+    <Content Include="Areas\Admin\Views\ShoppingCart\CurrentWishLists.cshtml" />
+    <Content Include="Areas\Admin\Views\ShoppingCart\_WishListCustomer.cshtml" />
     <None Include="Properties\PublishProfiles\Alukkas.pubxml" />
     <Content Include="Views\Catalog\Search.cshtml" />
     <Content Include="Views\Catalog\_productAttribute.cshtml" />

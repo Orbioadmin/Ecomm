@@ -54,7 +54,7 @@ namespace Orbio.Web.UI.Controllers
                             detailModel.AppliedCouponCode, storeContext.CurrentStore.Id);
                 }
                 cartUpdateItems = (from r in detailModel.ShoppingCartItems.AsEnumerable()
-                                   select new ShoppingCartItem { CartId = r.CartId, Quantity = Convert.ToInt32(r.SelectedQuantity), IsRemove = r.IsRemove }).ToList();
+                                   select new ShoppingCartItem { CartId = r.CartId, Quantity = Convert.ToInt32(r.SelectedQuantity), IsRemove = r.IsRemove,ShoppingCartStatus = r.ShoppingCartStatus }).ToList();
                 shoppingCartService.ModifyCartItem(cartUpdateItems);
             }
             

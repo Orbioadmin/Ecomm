@@ -1,7 +1,7 @@
 
 -- Add Columns ShoppingCartStatusId
 PRINT 'Adding columns ShoppingCartStatusId'
-IF EXISTS(SELECT 1 FROM SYS.OBJECTS WHERE name='ShoppingCartStatusId' and type='U')
+IF EXISTS(SELECT 1 FROM SYS.OBJECTS WHERE name='ShoppingCartItem' and type='U')
 BEGIN
 	IF  NOT EXISTS (SELECT 1 FROM sys.columns WHERE object_id = OBJECT_ID(N'[dbo].[ShoppingCartItem]') AND name='ShoppingCartStatusId')
 	Begin

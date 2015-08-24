@@ -229,6 +229,8 @@ ORDER BY PPM.DisplayOrder FOR XML PATH ('ProductPicture'),ROOT('ProductPictures'
    AllowedQuantities,
    sc.Id as 'CartId',
    sc.Quantity as 'Quantity',
+   sc.ShoppingCartStatusId as 'ShoppingCartStatusId',
+   sc.UpdatedOnUtc as 'UpdatedOnUtc',
    (Select TextPrompt,
    (Select Name,PriceAdjustment,WeightAdjustment,[dbo].[ufn_GetProductPriceDetailsByVarientValue](product.Id,VariantValueId) ,(select value from [dbo].[Setting] where Name = 'Product.PriceUnit') as PriceUnit,
 (select value from [dbo].[Setting] where Name = 'Product.MarketUnitPrice') as MarketUnitPrice,(select Weight from [dbo].[ufn_GetProductPriceDetail](product.Id)) as 'GoldWeight', (select ProductUnit as 'ProductUnit' from [dbo].[ufn_GetProductPriceDetail](product.Id))  as 'ProductUnit' from ufn_GetCartProductAttribute(sc.AttributesXml,product.Id,TextPrompt)  FOR XML PATH('ProductVariantAttributeValue'), ROOT('ProductVariantAttributeValues'), type)
