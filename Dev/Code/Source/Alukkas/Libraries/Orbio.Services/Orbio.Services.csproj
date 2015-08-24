@@ -32,17 +32,17 @@
   <ItemGroup>
     <Reference Include="Autofac, Version=3.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\..\Ecomm\Dev\Code\Source\Alukkas\Presentation\Orbio.Web.UI\bin\Autofac.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\..\Ecomm\Dev\Code\Source\Alukkas\Presentation\Orbio.Web.UI\bin\Autofac.dll</HintPath>
     </Reference>
     <Reference Include="Autofac.Integration.Mvc">
-      <HintPath>..\..\..\..\..\..\..\..\Ecomm\Dev\Code\Source\Alukkas\Presentation\Orbio.Web.UI\bin\Autofac.Integration.Mvc.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\..\Ecomm\Dev\Code\Source\Alukkas\Presentation\Orbio.Web.UI\bin\Autofac.Integration.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\..\Ecomm\Dev\Code\Source\Alukkas\Presentation\Orbio.Web.UI\bin\EntityFramework.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\..\Ecomm\Dev\Code\Source\Alukkas\Presentation\Orbio.Web.UI\bin\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\..\..\..\..\..\..\..\Ecomm\Dev\Code\Source\Alukkas\Presentation\Orbio.Web.UI\bin\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\..\Ecomm\Dev\Code\Source\Alukkas\Presentation\Orbio.Web.UI\bin\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />

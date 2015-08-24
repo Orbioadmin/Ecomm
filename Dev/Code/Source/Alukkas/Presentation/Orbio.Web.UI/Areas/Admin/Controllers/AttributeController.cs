@@ -30,5 +30,31 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
            
             return View(model);
         }
+
+        public ActionResult AddProductAttribute()
+        {
+            var model = new ProductAttributeModel();
+            return View("CreateOrEditProductAttribute", model);
+        }
+
+        public ActionResult EditProductAttribute(int Id)
+        {
+            var result = attributeService.GetProductAttributeById(Id);
+            var model= new ProductAttributeModel(result);
+            return View("CreateOrEditProductAttribute", model);
+        }
+
+        [HttpPost]
+        public ActionResult AddOrUpdateProductAttribute(ProductAttributeModel model)
+        {
+                int result = attributeService.AddOrUpdateProductAttribute(model.Id, model.Name, model.Description);
+                return RedirectToAction("ProductAttribute");
+        }
+
+        public ActionResult DeleteProductAttribute(int Id)
+        {
+            int result = attributeService.DeleteProductAttribute(Id);
+            return RedirectToAction("ProductAttribute");
+        }
     }
 }

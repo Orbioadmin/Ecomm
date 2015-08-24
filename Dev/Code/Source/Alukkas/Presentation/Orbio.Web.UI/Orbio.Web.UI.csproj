@@ -68,7 +68,7 @@
     </Reference>
     <Reference Include="dotless.Core, Version=1.5.0.0, Culture=neutral, PublicKeyToken=96b446c9e63eae34, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\..\Alukkas\Ecomm\Dev\Code\Source\Alukkas\Presentation\Orbio.Web.UI\bin\dotless.Core.dll</HintPath>
+      <HintPath>bin\dotless.Core.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -617,6 +617,7 @@
     <Content Include="Images\collection3.png" />
     <Content Include="Images\collections-bg.png" />
     <Content Include="Images\doublevalue_banner.jpg" />
+    <Content Include="Images\edit.png" />
     <Content Include="Images\footer-divider.png" />
     <Content Include="Images\header5.jpg" />
     <Content Include="Images\icon1.png" />
@@ -896,10 +897,8 @@
     <Content Include="Areas\Admin\Views\Order\_OrderDetailAddress.cshtml" />
     <Content Include="Areas\Admin\Views\Catalog\AddorEditCategory.cshtml" />
     <Content Include="Areas\Admin\Views\Catalog\AddOrEditManufacturer.cshtml" />
-    <Content Include="Areas\Admin\Views\Catalog\AddProduct.cshtml" />
     <Content Include="Areas\Admin\Views\Catalog\CategoryAccessControlList.cshtml" />
     <Content Include="Areas\Admin\Views\Catalog\CategoryInfo.cshtml" />
-    <Content Include="Areas\Admin\Views\Catalog\CategoryMenu.cshtml" />
     <Content Include="Areas\Admin\Views\Catalog\CategoryProduct.cshtml" />
     <Content Include="Areas\Admin\Views\Catalog\DiscountCategory.cshtml" />
     <Content Include="Areas\Admin\Views\Catalog\ManageCategories.cshtml" />
@@ -908,7 +907,7 @@
     <Content Include="Areas\Admin\Views\Catalog\ManufacturerInfo.cshtml" />
     <Content Include="Areas\Admin\Views\Catalog\ManufacturerMenu.cshtml" />
     <Content Include="Areas\Admin\Views\Catalog\ManufacturerProduct.cshtml" />
-    <Content Include="Areas\Admin\Views\Attribute\CreateProductAttribute.cshtml" />
+    <Content Include="Areas\Admin\Views\Attribute\CreateOrEditProductAttribute.cshtml" />
     <Content Include="Areas\Admin\Views\Attribute\ProductAttribute.cshtml" />
     <Content Include="Areas\Admin\Views\ShoppingCart\CurrentCarts.cshtml" />
     <Content Include="Areas\Admin\Views\ShoppingCart\CartItems.cshtml" />
@@ -932,6 +931,7 @@
     <Content Include="Areas\Admin\Views\Attributes\ProductAttribute.cshtml" />
     <Content Include="Areas\Admin\Views\ShoppingCart\CurrentWishLists.cshtml" />
     <Content Include="Areas\Admin\Views\ShoppingCart\_WishListCustomer.cshtml" />
+    <Content Include="Areas\Admin\Views\Attribute\_AddOrEditProductAttribute.cshtml" />
     <None Include="Properties\PublishProfiles\Alukkas.pubxml" />
     <Content Include="Views\Catalog\Search.cshtml" />
     <Content Include="Views\Catalog\_productAttribute.cshtml" />

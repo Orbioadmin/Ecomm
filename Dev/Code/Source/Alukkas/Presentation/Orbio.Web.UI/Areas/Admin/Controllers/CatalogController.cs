@@ -118,6 +118,20 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             return result;
         }
 
+
+        /// <summary>
+        /// Deleteing Category Products
+        /// </summary>
+        /// <param name="id">Category Id</param>
+        /// <param name="cId">Product Id</param>
+        /// <returns></returns>
+        public ActionResult DeleteCategoryProduct(int id, int cId)
+        {
+            categoryServices.DeleteCategoryProduct(id, cId);
+            return RedirectToAction("EditCategory", new { id });
+        }
+
+
     #endregion
 
 
@@ -198,6 +212,24 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             var result = manufacturerService.DeleteManufacturer(Id);
             return RedirectToAction("ManageManufacturer");
         }
+
+
+
+
+   /// <summary>
+  /// Deleting a manufacturer product
+   /// </summary>
+   /// <param name="id">Manufacture Id</param>
+   /// <param name="pId">Product Id</param>
+   /// <returns></returns>
+        public ActionResult DeleteManufacturerProduct(int id,int pId)
+        {
+           manufacturerService.DeleteManufacturerProduct(id, pId);
+           return RedirectToAction("EditManufacturers", new { id});
+        }
+
+
+
 
         #endregion
 

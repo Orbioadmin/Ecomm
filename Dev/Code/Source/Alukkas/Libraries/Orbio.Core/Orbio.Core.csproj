@@ -120,7 +120,6 @@
     <Compile Include="Data\RecurringPayment.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\ShoppingCartItem.cs"/>
     <Compile Include="Data\UrlRecord.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>

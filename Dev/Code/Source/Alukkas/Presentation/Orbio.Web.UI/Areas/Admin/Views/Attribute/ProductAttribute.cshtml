@@ -11,7 +11,7 @@
                 <label class="product-attr"></label>
                 <h1>PRODUCT ATTRIBUTES</h1>
             </div>
-            <div class="pull-right"><a href="product-attribute-create.html"><input type="button" value="Add New" class="Sbut  ssbut1"></a></div>
+            <div class="pull-right"><a href="@Url.Action("AddProductAttribute","Attribute")"><input type="button" value="Add New" class="Sbut  ssbut1"></a></div>
         </div>
     </div>
     <div class="container">
@@ -22,7 +22,7 @@
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Edit </th>
+                                <th>Edit/Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -30,16 +30,26 @@
                             {
                                 <tr style="display: table-row;">
                                     <td>@item.Name</td>
-                                    <td><label class="edit"></label></td>
+                                    <td>
+                                        <a href="@Url.Action("EditProductAttribute", "Attribute", new { Id=item.Id })"><label class="jewedit" style="top: 0;float:none;"></label></a>
+                                        <a href="@Url.Action("DeleteProductAttribute", "Attribute", new { Id=item.Id })"><label class="jewdelete" style="top: 0;float:none;"></label></a>
+                                    </td>
                                 </tr>
                             }
                         </tbody>
                     </table>
-                    <div class="pull-left1"><input type="button" class="but-refresh"></div>
+                    <div class="pull-left1"><input type="button" class="but-refresh" onclick="refresh()"></div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+<script>
+    function refresh()
+    {
+        window.location.reload();
+    }
+</script>
 
 

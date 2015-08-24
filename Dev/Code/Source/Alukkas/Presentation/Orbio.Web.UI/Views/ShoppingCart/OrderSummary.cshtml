@@ -14,6 +14,7 @@
         var scpdRemove = string.Format("ShoppingCartItems[{0}].IsRemove", count);
         var scpdQuantity = string.Format("ShoppingCartItems[{0}].SelectedQuantity", count);
         var scpdcartid = string.Format("ShoppingCartItems[{0}].CartId", count);
+        var scpdcartstatus = string.Format("ShoppingCartItems[{0}].ShoppingCartStatus", count);
         <tr>
             <td data-title="Item"><a href="@Url.RouteUrl("Category", new { SeName = scpd.SeName })?p=pt"><img src="@scpd.DefaultPicture.ImageUrl"></a></td>
             <td data-title="Title">
@@ -56,7 +57,7 @@
                 @*@Html.DropDownList(scpdqu, (IEnumerable<SelectListItem>)qtySelectList)*@
                 
                 @Html.TextBox(scpdqu, scpd.SelectedQuantity, new { type = "Number", @class = "form-control", min = "1", Style = "width:40px;height: 23px;padding: 0 4px;border-radius: 2px;" })
-                @Html.Hidden(scpdRemove, scpd.IsRemove)  @Html.Hidden(scpdQuantity, scpd.SelectedQuantity) @Html.Hidden(scpdcartid, scpd.CartId)
+                @Html.Hidden(scpdRemove, scpd.IsRemove)  @Html.Hidden(scpdQuantity, scpd.SelectedQuantity) @Html.Hidden(scpdcartid, scpd.CartId) @Html.Hidden(scpdcartstatus, scpd.ShoppingCartStatus)
             <td data-title="Item Price">@scpd.CurrencyCode.@scpd.UnitPrice @Html.Hidden(scpdId, scpd.Id)  @*@Html.Hidden(scpdTotalprice, scpd.TotalPrice)*@</td>
             <td data-title="Total Price">@scpd.CurrencyCode.@scpd.TotalPrice </td>
         </tr>

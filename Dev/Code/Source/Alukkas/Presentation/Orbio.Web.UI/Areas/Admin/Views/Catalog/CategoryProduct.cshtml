@@ -9,8 +9,7 @@
                         <th>PRODUCT</th>
                         <th>Is featured product?</th>
                         <th>Dsiplay Order</th>
-                        @*<th>VIEW</th>*@
-                        <th>Edit</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -24,9 +23,7 @@
                             <td>@item.Name</td>
                             <td>@item.IsFeaturedProduct</td>
                             <td>@item.DisplayOrder</td>
-                            @*<td>View</td>*@
-                            <td><label class="edit"></label>
-                                <a href="#"><label class="img_sprite"></label></a></td>
+                            <td><label class="img_sprite" onclick="Delete(@item.Id)"></label></td>
                         </tr>
                         }
                         }
@@ -45,9 +42,17 @@
                     }
                     </tbody>
             </table>
-              
-            <div class="pull-left1"><input type="button" class="but-refresh" onclick="refresh()"></div>
-            <div class="pull-right1"><input type="button" value="Add New Product" class="but ssbut "></div>
         </div>
     </div>
 </div>
+
+<script>
+    function Delete(Id) {
+        var r = confirm("Do you want to delete ?");
+        if (r == true) {
+            window.location.href = '@Url.Action("DeleteCategoryProduct", "Catalog", new { id = Model.Categories.Id })?cId=' + Id
+        }
+    }
+
+
+</script>
