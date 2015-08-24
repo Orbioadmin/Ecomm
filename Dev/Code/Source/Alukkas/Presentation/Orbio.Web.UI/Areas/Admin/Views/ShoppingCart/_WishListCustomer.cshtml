@@ -1,9 +1,8 @@
-﻿@model List<Orbio.Web.UI.Areas.Admin.Models.Customers.CustomerModel>
-    @{
-        var count = 0;
-        var date = "";
-        var status = "";
-    }
+﻿
+@model List<Orbio.Web.UI.Areas.Admin.Models.Customers.CustomerModel>
+@{
+    var count = 0;
+}
 @foreach (var customer in this.Model.GroupBy(x => x.Id).Select(y => y.First()))
 {
     <div class="panel panel-default">
@@ -30,31 +29,15 @@
                     <div style="float:right">
                         <span style="margin-left:50px">@customer.shoppingCart.SubTotal</span>
                     </div>
-                    <div style="float:right">
-                        <span style="margin-left:50px">
-                            @{
-                                date = customer.shoppingCart.ShoppingCartItems.Select(element => element.UpdatedOnUtc).First().ToString();
-                            }
-                            @date
-                        </span>
-                    </div>
-                    <div style="float:right">
-                        <span style="margin-left:50px">
-                        @{
-                           status = customer.shoppingCart.ShoppingCartItems.Select(element => element.ShoppingCartStatus).First().ToString();
-                        }
-                            @status
-                        </span>
-                    </div>
-</a>
+                </a>
             </h4>
 
         </div><!--/.panel-heading -->
     </div><!-- /.panel -->
     <div id="@count" class="panel-collapse collapse">
         @{
-            Html.RenderPartial("CartItems", customer.shoppingCart);
-         }
+    Html.RenderPartial("CartItems", customer.shoppingCart);
+        }
     </div>
-                    count++;
+    count++;
 }

@@ -35,6 +35,7 @@ namespace Orbio.Services.Admin.Catalog
             return model;
         }
 
+
         /// <summary>
         /// searching manufacturer by name
         /// </summary>
@@ -232,22 +233,28 @@ namespace Orbio.Services.Admin.Catalog
             return result;
         }
 
-        //public int DeleteProductMapping(int ManufacturerId, int ProductId)
-        //{
-        //    try
-        //    {
-        //        var product = context.Product_Manufacturer_Mapping.Where(m => m.ManufacturerId == ManufacturerId && m.ProductId == ProductId).FirstOrDefault();
-        //        if (product != null)
-        //        {
-        //            context.Product_Manufacturer_Mapping.Remove(product);
-        //            context.SaveChanges();
-        //        }
-        //        return 1;
-        //    }
-        //    catch (Exception)
-        //    {
-        //        return 0;
-        //    }
-        //}
+
+        /// <summary>
+        /// Deleteing manufacture product
+        /// </summary>
+        /// <param name="manufacturerId">Manufacture Id</param>
+        /// <param name="productId">Product Id</param>
+        public void DeleteManufacturerProduct(int manufacturerId, int productId)
+        {
+            try
+            {
+                var product = context.Product_Manufacturer_Mapping.Where(m => m.ManufacturerId == manufacturerId && m.ProductId == productId).FirstOrDefault();
+                if (product != null)
+                {
+                    context.Product_Manufacturer_Mapping.Remove(product);
+                    context.SaveChanges();
+                }
+               
+            }
+            catch (Exception)
+            {
+              
+            }
+        }
     }
 }

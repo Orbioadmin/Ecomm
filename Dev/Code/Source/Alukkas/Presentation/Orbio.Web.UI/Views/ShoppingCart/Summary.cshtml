@@ -13,7 +13,7 @@
                             <td><img src="@item.DefaultPicture.ImageUrl"></td>
                             <td>@item.Name</td>
                             <td>@item.SelectedQuantity</td>
-                            <td align="center">@item.TotalPrice</td>
+                            <td align="center">@item.CurrencyCode.@item.TotalPrice</td>
                         </tr>
                     }
 

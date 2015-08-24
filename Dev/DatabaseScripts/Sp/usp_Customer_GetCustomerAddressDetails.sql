@@ -30,12 +30,19 @@ GO
 CREATE PROCEDURE [dbo].[usp_Customer_GetCustomerAddressDetails] 
 	-- Add the parameters for the stored procedure here
 	@userName varchar(50),
-	@value varchar(50)
+	@value varchar(50),
+	@shoppingCartStatusId int = null,
+	@shoppingCartTypeId int = null
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
+	
+	-- Update shopping cart status	
+	update [dbo].[ShoppingCartItem] set ShoppingCartStatusId = @shoppingCartStatusId where  
+	ShoppingCartTypeId=@shoppingCartTypeId and CustomerId = (SELECT Id from dbo.Customer where Username=@userName and Deleted='False') 
+	
 if(@value='Billing')
 BEGIN
     -- Insert statements for procedure here

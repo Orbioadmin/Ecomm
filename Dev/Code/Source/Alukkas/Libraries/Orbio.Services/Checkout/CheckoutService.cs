@@ -1,6 +1,7 @@
 ﻿using Nop.Data;
 using Orbio.Core.Domain.Checkout;
 using Orbio.Core.Domain.Customers;
+using Orbio.Core.Domain.Orders;
 using Orbio.Services.Security;
 using System;
 using System.Collections.Generic;
@@ -26,14 +27,16 @@ namespace Orbio.Services.Checkout
             this.encryptionService = encryptionService;
         }
 
-        public Address GetCustomerAddress(string email, string billorShip)
+        public Address GetCustomerAddress(string email, string billorShip, ShoppingCartStatus shoppingCartStatus, ShoppingCartType shoppingCartType)
         {
             if (String.IsNullOrWhiteSpace(email))
                 return null;
 
             var result = context.ExecuteFunction<Address>("usp_Customer_GetCustomerAddressDetails",
                   new SqlParameter() { ParameterName = "@userName", Value = email, DbType = System.Data.DbType.String },
-                   new SqlParameter() { ParameterName = "@value", Value = billorShip, DbType = System.Data.DbType.String });
+                   new SqlParameter() { ParameterName = "@value", Value = billorShip, DbType = System.Data.DbType.String },
+                  new SqlParameter() { ParameterName = "@shoppingCartStatusId", Value = (int)shoppingCartStatus, DbType = System.Data.DbType.Int32 },
+                 new SqlParameter() { ParameterName = "@shoppingCartTypeId", Value = (int)shoppingCartType, DbType = System.Data.DbType.Int32 });
 
             var customerAddress = result.FirstOrDefault();
             return customerAddress;
@@ -41,7 +44,7 @@ namespace Orbio.Services.Checkout
 
         public void UpdateCustomerAddress(string email, bool sameAddress, string billFirstName, string billLastName, string billPhone, string billAddress,
                 string billCity, string billPincode, string billState, string billCountry, string shipFirstName, string shipLastName,
-                string shipPhone, string shipAddress, string shipCity, string shipPincode, string shipState, string shipCountry)
+                string shipPhone, string shipAddress, string shipCity, string shipPincode, string shipState, string shipCountry,ShoppingCartStatus shoppingCartStatus,ShoppingCartType shoppingCartType)
         {
             var result = context.ExecuteFunction<Customer>("usp_Customer_UpdateCustomerAddress",
                 new SqlParameter() { ParameterName = "@sameAddress", Value = sameAddress, DbType = System.Data.DbType.Boolean },
@@ -61,7 +64,9 @@ namespace Orbio.Services.Checkout
                  new SqlParameter() { ParameterName = "@shipCity", Value = shipCity, DbType = System.Data.DbType.String },
                  new SqlParameter() { ParameterName = "@shipPincode", Value = shipPincode, DbType = System.Data.DbType.String },
                  new SqlParameter() { ParameterName = "@shipState", Value = shipState, DbType = System.Data.DbType.String },
-                 new SqlParameter() { ParameterName = "@shipCountry", Value = shipCountry, DbType = System.Data.DbType.String });
+                 new SqlParameter() { ParameterName = "@shipCountry", Value = shipCountry, DbType = System.Data.DbType.String },
+                 new SqlParameter() { ParameterName = "@shoppingCartStatusId", Value = (int)shoppingCartStatus, DbType = System.Data.DbType.Int32 },
+                 new SqlParameter() { ParameterName = "@shoppingCartTypeId", Value = (int)shoppingCartType, DbType = System.Data.DbType.Int32 });
         }
 
     }

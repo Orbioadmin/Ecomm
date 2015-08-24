@@ -32,5 +32,13 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
 
             return View(model);
         }
+
+        public ActionResult CurrentWishLists()
+        {
+            ShoppingCartType cartType = ShoppingCartType.Wishlist;
+            var model = new ShoppingCartModel(_shoppingCartService.GetShoppingCartAllCustomer(cartType, _storeContext.CurrentStore.Id));
+
+            return View(model);
+        }
     }
 }

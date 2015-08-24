@@ -81,8 +81,8 @@ namespace Orbio.Web.UI.Controllers
             else
             {
                 var address = new AddressModel();
-                var customerBillAddress = checkoutService.GetCustomerAddress(customer.Email, "Billing");
-                var customerShipAddress = checkoutService.GetCustomerAddress(customer.Email, "Shipping");
+                var customerBillAddress = checkoutService.GetCustomerAddress(customer.Email, "Billing",ShoppingCartStatus.Address,ShoppingCartType.ShoppingCart);
+                var customerShipAddress = checkoutService.GetCustomerAddress(customer.Email, "Shipping", ShoppingCartStatus.Address, ShoppingCartType.ShoppingCart);
                 if (customerBillAddress == null && customerShipAddress==null)
                 {
                     return PartialView("_address", address);
@@ -134,7 +134,7 @@ namespace Orbio.Web.UI.Controllers
            {
                var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
                var customer = workContext.CurrentCustomer;
-               var customerBillAddress = checkoutService.GetCustomerAddress(customer.Email, "Billing");
+               var customerBillAddress = checkoutService.GetCustomerAddress(customer.Email, "Billing", ShoppingCartStatus.Address, ShoppingCartType.ShoppingCart);
                if (customerBillAddress == null)
                {
                    model.BillFirstName = null;
@@ -176,7 +176,7 @@ namespace Orbio.Web.UI.Controllers
             }
             checkoutService.UpdateCustomerAddress(customer.Email, sameaddress, model.BillFirstName, model.BillLastName, model.BillPhone, model.BillAddress,
             model.BillCity,model.BillPincode, model.BillState, model.BillCountry, model.ShipFirstName, model.ShipLastName,
-            model.ShipPhone, model.ShipAddress, model.ShipCity, model.ShipPincode,model.ShipState, model.ShipCountry);
+            model.ShipPhone, model.ShipAddress, model.ShipCity, model.ShipPincode,model.ShipState, model.ShipCountry,ShoppingCartStatus.Payment,ShoppingCartType.ShoppingCart);
 
             return Json("Success");
         }

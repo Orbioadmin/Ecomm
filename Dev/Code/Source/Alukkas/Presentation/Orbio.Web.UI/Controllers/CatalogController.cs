@@ -420,7 +420,7 @@ namespace Orbio.Web.UI.Controllers
                     if (string.IsNullOrEmpty(errorString))
                     {
                         var selectedAttributes = model.GetSelectedAttributeXml(true);
-                        shoppingCartService.AddCartItem("add", selectedCartType, 0, curCustomer.Id, selectedProduct.Id, selectedAttributes, Convert.ToInt32(selectedProduct.SelectedQuantity));
+                        shoppingCartService.AddCartItem("add", selectedCartType, 0, curCustomer.Id, selectedProduct.Id, selectedAttributes, Convert.ToInt32(selectedProduct.SelectedQuantity),ShoppingCartStatus.Cart);
 
                         ViewBag.Sucess = "Item added to the Cart";
                         bool flag = (ConfigurationManager.AppSettings["DisplayCartAfterAddingProduct"].ToString() != "") ? Convert.ToBoolean(ConfigurationManager.AppSettings["DisplayCartAfterAddingProduct"]) : false;
@@ -437,7 +437,7 @@ namespace Orbio.Web.UI.Controllers
                 else if (selectedCartType == ShoppingCartType.Wishlist)
                 {
                     var selectedAttributes = model.GetSelectedAttributeXml(true);
-                    string result = shoppingCartService.AddWishlistItem("addWishList", selectedCartType, 0, curCustomer.Id, selectedProduct.Id, selectedAttributes, Convert.ToInt32(selectedProduct.SelectedQuantity));
+                    string result = shoppingCartService.AddWishlistItem("addWishList", selectedCartType, 0, curCustomer.Id, selectedProduct.Id, selectedAttributes, Convert.ToInt32(selectedProduct.SelectedQuantity),ShoppingCartStatus.WishList);
 
                     ViewBag.Sucess = "Item added to the WishList";
                     bool flag = (ConfigurationManager.AppSettings["DisplayWishListAfterAddingProduct"].ToString() != "") ? Convert.ToBoolean(ConfigurationManager.AppSettings["DisplayWishListAfterAddingProduct"]) : false;

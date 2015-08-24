@@ -18,6 +18,11 @@ namespace Orbio.Services.Admin.Catalog
 
        int AddOrUpdateCategory(CategoryList model);
 
-       //int DeleteProductMapping(int CategoryId, int ProductId);
+       /// <summary>
+       /// Delete Category Product from category product mapping table
+       /// </summary>
+       /// <param name="categoryId">Category Id</param>
+       /// <param name="productId">Product Id</param>
+       void DeleteCategoryProduct(int categoryId, int productId);
     }
 }

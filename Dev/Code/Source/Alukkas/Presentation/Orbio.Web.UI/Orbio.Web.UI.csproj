@@ -68,7 +68,7 @@
     </Reference>
     <Reference Include="dotless.Core, Version=1.5.0.0, Culture=neutral, PublicKeyToken=96b446c9e63eae34, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\..\Alukkas\Ecomm\Dev\Code\Source\Alukkas\Presentation\Orbio.Web.UI\bin\dotless.Core.dll</HintPath>
+      <HintPath>bin\dotless.Core.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -899,7 +899,6 @@
     <Content Include="Areas\Admin\Views\Order\_OrderDetailAddress.cshtml" />
     <Content Include="Areas\Admin\Views\Catalog\AddorEditCategory.cshtml" />
     <Content Include="Areas\Admin\Views\Catalog\AddOrEditManufacturer.cshtml" />
-    <Content Include="Areas\Admin\Views\Catalog\AddProduct.cshtml" />
     <Content Include="Areas\Admin\Views\Catalog\CategoryAccessControlList.cshtml" />
     <Content Include="Areas\Admin\Views\Catalog\CategoryInfo.cshtml" />
     <Content Include="Areas\Admin\Views\Catalog\CategoryProduct.cshtml" />
@@ -916,6 +915,24 @@
     <Content Include="Areas\Admin\Views\ShoppingCart\CartItems.cshtml" />
     <Content Include="Areas\Admin\Views\ShoppingCart\_OrderSummary.cshtml" />
     <Content Include="Areas\Admin\Views\ShoppingCart\_CartCustomer.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\AddorEditCategory.cshtml" />
+    <Content Include="Areas\Admin\Views\Manufacturer\AddOrEditManufacturer.cshtml" />
+    <Content Include="Areas\Admin\Views\Manufacturer\AddProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\CategoryAccessControlList.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\CategoryInfo.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\CategoryMenu.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\CategoryProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\DiscountCategory.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\ManageCategories.cshtml" />
+    <Content Include="Areas\Admin\Views\Manufacturer\ManageManufacturer.cshtml" />
+    <Content Include="Areas\Admin\Views\Manufacturer\ManufacturerACL.cshtml" />
+    <Content Include="Areas\Admin\Views\Manufacturer\ManufacturerInfo.cshtml" />
+    <Content Include="Areas\Admin\Views\Manufacturer\ManufacturerMenu.cshtml" />
+    <Content Include="Areas\Admin\Views\Manufacturer\ManufacturerProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\Attributes\CreateProductAttribute.cshtml" />
+    <Content Include="Areas\Admin\Views\Attributes\ProductAttribute.cshtml" />
+    <Content Include="Areas\Admin\Views\ShoppingCart\CurrentWishLists.cshtml" />
+    <Content Include="Areas\Admin\Views\ShoppingCart\_WishListCustomer.cshtml" />
     <Content Include="Areas\Admin\Views\Attribute\_AddOrEditProductAttribute.cshtml" />
     <Content Include="Areas\Admin\Views\Attribute\SpecificationAttribute.cshtml" />
     <Content Include="Areas\Admin\Views\Attribute\ListSpecificationAttribute.cshtml" />
