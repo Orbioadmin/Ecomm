@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Orbio.Core.Domain.Checkout;
+using Orbio.Core.Domain.Orders;
 
 namespace Orbio.Services.Checkout
 {
@@ -15,7 +16,7 @@ namespace Orbio.Services.Checkout
         /// <param name="email"></param>
         /// <param name="billorship"></param>
         /// <returns></returns>
-        Address GetCustomerAddress(string email, string billorShip);
+       Address GetCustomerAddress(string email, string billorShip, ShoppingCartStatus shoppingCartStatus, ShoppingCartType shoppingCartType);
 
         /// <summary>
         /// update customer address
@@ -23,6 +24,6 @@ namespace Orbio.Services.Checkout
         /// 
         void UpdateCustomerAddress(string email, bool sameAddress, string billFirstName, string billLastName, string billPhone, string billAddress,
                 string billCity, string billPincode, string billState, string billCountry, string shipFirstName, string shipLastName,
-                string shipPhone, string shipAddress, string shipCity, string shipPincode, string shipState, string shipCountry);
+                string shipPhone, string shipAddress, string shipCity, string shipPincode, string shipState, string shipCountry, ShoppingCartStatus shoppingCartStatus, ShoppingCartType shoppingCartType);
     }
 }

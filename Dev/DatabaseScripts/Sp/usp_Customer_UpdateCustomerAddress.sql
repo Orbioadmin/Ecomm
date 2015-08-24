@@ -43,7 +43,9 @@ Create PROCEDURE [dbo].[usp_Customer_UpdateCustomerAddress] (@sameAddress bit,
 @shipCity varchar(50),
 @shipPincode varchar(50),
 @shipState varchar(50),
-@shipCountry varchar(50))
+@shipCountry varchar(50),
+@shoppingCartStatusId int = null,
+@shoppingCartTypeId int = null)
 
 AS
 BEGIN
@@ -55,6 +57,10 @@ DECLARE @billAddressId int,
 	-- SET NOCOUNT ON added to prevent extra result sets from
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
+	
+	-- Update shopping cart status	
+	update [dbo].[ShoppingCartItem] set ShoppingCartStatusId = @shoppingCartStatusId where  
+	ShoppingCartTypeId=@shoppingCartTypeId and CustomerId = (SELECT Id from dbo.Customer where Username=@email and Deleted='False') 
 	
 SET @billAddressId = (SELECT top 1 BillingAddress_Id from dbo.Customer where Username=@email and Deleted='False')
 SET @shipAddressId = (SELECT top 1 ShippingAddress_Id from dbo.Customer where Username=@email and Deleted='False')

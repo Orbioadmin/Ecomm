@@ -8,8 +8,16 @@ namespace Orbio.Core.Domain.Orders
         /// </summary>
         Cart = 10,
         /// <summary>
+        /// WishList
+        /// </summary>
+        WishList = 20,
+        /// <summary>
         /// Address
         /// </summary>
-        Address = 20
+        Address = 30,
+        /// <summary>
+        /// Payment
+        /// </summary>
+        Payment = 40
     }
 }

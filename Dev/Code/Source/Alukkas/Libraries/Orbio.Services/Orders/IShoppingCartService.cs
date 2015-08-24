@@ -18,13 +18,13 @@ namespace Orbio.Services.Orders
         /// Add shopping cart item
         /// </summary>
         /// <param name="action">Action</param>
-        void AddCartItem(string action, ShoppingCartType shoppingCartType, int curCustomerId, int customerId, int productId, string attributexml, int Quantity);
+        void AddCartItem(string action, ShoppingCartType shoppingCartType, int curCustomerId, int customerId, int productId, string attributexml, int Quantity, ShoppingCartStatus shoppingCartStatus);
 
         /// <summary>
         /// Add wishlist item
         /// </summary>
         /// <param name="action">Action</param>
-        string AddWishlistItem(string action, ShoppingCartType shoppingCartType, int curCustomerId, int customerId, int productId, string attributexml, int Quantity);
+        string AddWishlistItem(string action, ShoppingCartType shoppingCartType, int curCustomerId, int customerId, int productId, string attributexml, int Quantity, ShoppingCartStatus shoppingCartStatus);
         
         /// <summary>
         /// Migrate shopping cart item
@@ -48,6 +48,6 @@ namespace Orbio.Services.Orders
         /// Update wishlist items
         /// </summary>
         /// <param name="action">Action</param>
-        string UpdateWishListItems(string action, int id, ShoppingCartType shoppingCartType, int curCustomerId, int customerId, int productId, int quantity);
+        string UpdateWishListItems(string action, int id, ShoppingCartType shoppingCartType, int curCustomerId, int customerId, int productId, int quantity, ShoppingCartStatus shoppingCartStatus);
     }
 }

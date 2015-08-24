@@ -36,7 +36,8 @@ CREATE PROCEDURE [dbo].[usp_Shoppingcart_Items]
 	@productId int,
 	@attributexml varchar(max),
 	@quantity int,
-	@storeId int = null
+	@storeId int = null,
+	@shoppingCartStatusId int = null
 AS
 BEGIN
 
@@ -46,14 +47,14 @@ begin
 	if exists(select Id from [dbo].[ShoppingCartItem] where ShoppingCartTypeId=@shoppingCartTypeId and CustomerId = @customerId and
 				ProductId = @productId and AttributesXml =@attributexml)
 		begin
-			update [dbo].[ShoppingCartItem] set [AttributesXml] =@attributexml ,[Quantity] = (@quantity+Quantity),UpdatedOnUtc = CONVERT(VARCHAR(30),GETDATE(),121) where  
+			update [dbo].[ShoppingCartItem] set [AttributesXml] =@attributexml ,[Quantity] = (@quantity+Quantity),ShoppingCartStatusId = @shoppingCartStatusId ,UpdatedOnUtc = CONVERT(VARCHAR(30),GETDATE(),121) where  
 			ShoppingCartTypeId=@shoppingCartTypeId and CustomerId = @customerId and ProductId = @productId and AttributesXml =@attributexml
 		end
 
 	else
 		begin
-			insert into [dbo].[ShoppingCartItem](StoreId,ShoppingCartTypeId,CustomerId,ProductId,CustomerEnteredPrice,AttributesXml,Quantity,CreatedOnUtc,UpdatedOnUtc)
-			values(0,@shoppingCartTypeId,@customerId,@productId,0.00,@attributexml,@quantity,CONVERT(VARCHAR(30),GETDATE(),121),CONVERT(VARCHAR(30),GETDATE(),121))
+			insert into [dbo].[ShoppingCartItem](StoreId,ShoppingCartTypeId,CustomerId,ProductId,CustomerEnteredPrice,AttributesXml,Quantity,ShoppingCartStatusId,CreatedOnUtc,UpdatedOnUtc)
+			values(0,@shoppingCartTypeId,@customerId,@productId,0.00,@attributexml,@quantity,@shoppingCartStatusId,CONVERT(VARCHAR(30),GETDATE(),121),CONVERT(VARCHAR(30),GETDATE(),121))
 		end
 
 end
@@ -72,7 +73,7 @@ begin
 					end
 				else
 					begin
-						update [dbo].[ShoppingCartItem] set [AttributesXml] =@attributexml ,[Quantity] = (@quantity+Quantity),UpdatedOnUtc = CONVERT(VARCHAR(30),GETDATE(),121) where  
+						update [dbo].[ShoppingCartItem] set [AttributesXml] =@attributexml ,[Quantity] = (@quantity+Quantity),ShoppingCartStatusId = @shoppingCartStatusId ,UpdatedOnUtc = CONVERT(VARCHAR(30),GETDATE(),121) where  
 						ShoppingCartTypeId=@shoppingCartTypeId and CustomerId = @customerId and ProductId = @productId and AttributesXml =@attributexml
 						select 'Updated'
 					end
@@ -87,8 +88,8 @@ begin
 					end
 				else
 					begin
-						insert into [dbo].[ShoppingCartItem](StoreId,ShoppingCartTypeId,CustomerId,ProductId,CustomerEnteredPrice,AttributesXml,Quantity,CreatedOnUtc,UpdatedOnUtc)
-						values(0,@shoppingCartTypeId,@customerId,@productId,0.00,@attributexml,@quantity,CONVERT(VARCHAR(30),GETDATE(),121),CONVERT(VARCHAR(30),GETDATE(),121))
+						insert into [dbo].[ShoppingCartItem](StoreId,ShoppingCartTypeId,CustomerId,ProductId,CustomerEnteredPrice,AttributesXml,Quantity,ShoppingCartStatusId,CreatedOnUtc,UpdatedOnUtc)
+						values(0,@shoppingCartTypeId,@customerId,@productId,0.00,@attributexml,@quantity,@shoppingCartStatusId,CONVERT(VARCHAR(30),GETDATE(),121),CONVERT(VARCHAR(30),GETDATE(),121))
 						select 'Inserted'
 					end
 		end
@@ -102,15 +103,15 @@ begin
 	if exists(select Id from [dbo].[ShoppingCartItem] where ShoppingCartTypeId=@shoppingCartTypeId and CustomerId = @customerId and
 				ProductId = @productId and AttributesXml =@attributexml)
 		begin
-			update [dbo].[ShoppingCartItem] set [AttributesXml] =@attributexml ,[Quantity] = (@quantity+Quantity),UpdatedOnUtc = CONVERT(VARCHAR(30),GETDATE(),121) where  
+			update [dbo].[ShoppingCartItem] set [AttributesXml] =@attributexml ,[Quantity] = (@quantity+Quantity),ShoppingCartStatusId = @shoppingCartStatusId ,UpdatedOnUtc = CONVERT(VARCHAR(30),GETDATE(),121) where  
 			ShoppingCartTypeId=@shoppingCartTypeId and CustomerId = @customerId and ProductId = @productId and AttributesXml =@attributexml
 			select 'updated'
 		end
 
 	else
 		begin
-			insert into [dbo].[ShoppingCartItem](StoreId,ShoppingCartTypeId,CustomerId,ProductId,CustomerEnteredPrice,AttributesXml,Quantity,CreatedOnUtc,UpdatedOnUtc)
-			values(0,@shoppingCartTypeId,@customerId,@productId,0.00,@attributexml,@quantity,CONVERT(VARCHAR(30),GETDATE(),121),CONVERT(VARCHAR(30),GETDATE(),121))
+			insert into [dbo].[ShoppingCartItem](StoreId,ShoppingCartTypeId,CustomerId,ProductId,CustomerEnteredPrice,AttributesXml,Quantity,ShoppingCartStatusId,CreatedOnUtc,UpdatedOnUtc)
+			values(0,@shoppingCartTypeId,@customerId,@productId,0.00,@attributexml,@quantity,@shoppingCartStatusId ,CONVERT(VARCHAR(30),GETDATE(),121),CONVERT(VARCHAR(30),GETDATE(),121))
 			select 'inserted'
 		end
 

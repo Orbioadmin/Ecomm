@@ -128,7 +128,7 @@ namespace Orbio.Web.UI.Controllers
         {
             var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
             var curCustomer = workContext.CurrentCustomer;
-            string result = shoppingCartService.UpdateWishListItems("addCartItem",0, ShoppingCartType.ShoppingCart, 0, curCustomer.Id, id, 1);
+            string result = shoppingCartService.UpdateWishListItems("addCartItem",0, ShoppingCartType.ShoppingCart, 0, curCustomer.Id, id, 1,ShoppingCartStatus.Cart);
             if (result == "Updated" || result == "Inserted")
                 {
                     return Json("Success");

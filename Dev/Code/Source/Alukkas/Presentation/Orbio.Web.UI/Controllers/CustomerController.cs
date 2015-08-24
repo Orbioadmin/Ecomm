@@ -379,7 +379,7 @@ namespace Orbio.Web.UI.Controllers
 
             if (value == "addtocart")
             {
-                string result = shoppingCartService.UpdateWishListItems(value, itemId, ShoppingCartType.ShoppingCart, 0, 0, 0, 0);
+                string result = shoppingCartService.UpdateWishListItems(value, itemId, ShoppingCartType.ShoppingCart, 0, 0, 0, 0,ShoppingCartStatus.Cart);
                 if (result == "ShoppingCart")
                     return RedirectToRoute("ShoppingCart");
                 else
@@ -387,7 +387,7 @@ namespace Orbio.Web.UI.Controllers
             }
             else
             {
-                shoppingCartService.UpdateWishListItems(value, itemId, ShoppingCartType.Wishlist, 0, 0, 0, 0);
+                shoppingCartService.UpdateWishListItems(value, itemId, ShoppingCartType.Wishlist, 0, 0, 0, 0,ShoppingCartStatus.WishList);
                 return RedirectToAction("MyAccount", "Customer", new { wish = "#wish" });
             }
         }
@@ -398,7 +398,7 @@ namespace Orbio.Web.UI.Controllers
         {
             var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
             var curCustomer = workContext.CurrentCustomer;
-            string result = shoppingCartService.UpdateWishListItems("addWishList", 0, ShoppingCartType.Wishlist, 0, curCustomer.Id, id, 1);
+            string result = shoppingCartService.UpdateWishListItems("addWishList", 0, ShoppingCartType.Wishlist, 0, curCustomer.Id, id, 1,ShoppingCartStatus.WishList);
             if (result == "updated" || result == "inserted")
             {
                 return Json("Success");
