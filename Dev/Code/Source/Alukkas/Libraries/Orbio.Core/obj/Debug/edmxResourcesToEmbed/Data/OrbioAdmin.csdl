@@ -236,6 +236,14 @@
       <End Role="SpecificationAttributeOption" EntitySet="SpecificationAttributeOptions" />
       <End Role="Product_SpecificationAttribute_Mapping" EntitySet="Product_SpecificationAttribute_Mapping" />
     </AssociationSet>
+    <EntitySet Name="CheckoutAttributes" EntityType="OrbioAdminModel.CheckoutAttribute" />
+    <EntitySet Name="CheckoutAttributeValues" EntityType="OrbioAdminModel.CheckoutAttributeValue" />
+    <AssociationSet Name="CheckoutAttributeValue_CheckoutAttribute" Association="OrbioAdminModel.CheckoutAttributeValue_CheckoutAttribute">
+      <End Role="CheckoutAttribute" EntitySet="CheckoutAttributes" />
+      <End Role="CheckoutAttributeValue" EntitySet="CheckoutAttributeValues" />
+    </AssociationSet>
+    <EntitySet Name="ProductComponents" EntityType="OrbioAdminModel.ProductComponent" />
+    <EntitySet Name="PriceComponents" EntityType="OrbioAdminModel.PriceComponent" />
   </EntityContainer>
   <EntityType Name="CustomerRole">
     <Key>
@@ -950,4 +958,73 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="CheckoutAttribute">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="TextPrompt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsRequired" Type="Boolean" Nullable="false" />
+    <Property Name="ShippableProductRequired" Type="Boolean" Nullable="false" />
+    <Property Name="IsTaxExempt" Type="Boolean" Nullable="false" />
+    <Property Name="TaxCategoryId" Type="Int32" Nullable="false" />
+    <Property Name="AttributeControlTypeId" Type="Int32" Nullable="false" />
+    <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CheckoutAttributeValues" Relationship="OrbioAdminModel.CheckoutAttributeValue_CheckoutAttribute" FromRole="CheckoutAttribute" ToRole="CheckoutAttributeValue" />
+  </EntityType>
+  <EntityType Name="CheckoutAttributeValue">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CheckoutAttributeId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="ColorSquaresRgb" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PriceAdjustment" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+    <Property Name="WeightAdjustment" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+    <Property Name="IsPreSelected" Type="Boolean" Nullable="false" />
+    <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CheckoutAttribute" Relationship="OrbioAdminModel.CheckoutAttributeValue_CheckoutAttribute" FromRole="CheckoutAttributeValue" ToRole="CheckoutAttribute" />
+  </EntityType>
+  <Association Name="CheckoutAttributeValue_CheckoutAttribute">
+    <End Type="OrbioAdminModel.CheckoutAttribute" Role="CheckoutAttribute" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="OrbioAdminModel.CheckoutAttributeValue" Role="CheckoutAttributeValue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CheckoutAttribute">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CheckoutAttributeValue">
+        <PropertyRef Name="CheckoutAttributeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ProductComponent">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ComponentName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="Deleted" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="PriceComponent">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="Deleted" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>

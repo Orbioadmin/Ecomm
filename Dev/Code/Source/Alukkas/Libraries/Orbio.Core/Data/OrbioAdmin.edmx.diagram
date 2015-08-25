@@ -49,6 +49,11 @@
         <EntityTypeShape EntityType="OrbioAdminModel.Product_SpecificationAttribute_Mapping" Width="1.5" PointX="34.75" PointY="12" />
         <AssociationConnector Association="OrbioAdminModel.ProductSpecificationAttribute_Product" />
         <AssociationConnector Association="OrbioAdminModel.ProductSpecificationAttribute_SpecificationAttributeOption" />
+        <EntityTypeShape EntityType="OrbioAdminModel.CheckoutAttribute" Width="1.5" PointX="26.125" PointY="15.875" />
+        <EntityTypeShape EntityType="OrbioAdminModel.CheckoutAttributeValue" Width="1.5" PointX="28.375" PointY="16" />
+        <AssociationConnector Association="OrbioAdminModel.CheckoutAttributeValue_CheckoutAttribute" />
+        <EntityTypeShape EntityType="OrbioAdminModel.ProductComponent" Width="1.5" PointX="19.875" PointY="6.125" />
+        <EntityTypeShape EntityType="OrbioAdminModel.PriceComponent" Width="1.5" PointX="24.75" PointY="5.875" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

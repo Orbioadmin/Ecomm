@@ -216,11 +216,14 @@
     <Compile Include="Areas\Admin\BundleConfig.cs" />
     <Compile Include="Areas\Admin\Controllers\AttributeController.cs" />
     <Compile Include="Areas\Admin\Controllers\CatalogController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ComponentController.cs" />
     <Compile Include="Areas\Admin\Controllers\CustomerController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
     <Compile Include="Areas\Admin\Controllers\ShoppingCartController.cs" />
     <Compile Include="Areas\Admin\MappingExtensions.cs" />
+    <Compile Include="Areas\Admin\Models\Attribute\CheckoutAttributeModel.cs" />
+    <Compile Include="Areas\Admin\Models\Attribute\CheckoutAttributeValueModel.cs" />
     <Compile Include="Areas\Admin\Models\Attribute\ProductAttributeModel.cs" />
     <Compile Include="Areas\Admin\Models\Attribute\SpecificationAttributeModel.cs" />
     <Compile Include="Areas\Admin\Models\Attribute\SpecificationAttributeOptionModel.cs" />
@@ -232,6 +235,8 @@
     <Compile Include="Areas\Admin\Models\Catalog\ProductModel.cs" />
     <Compile Include="Areas\Admin\Models\Catalog\TemplateModel.cs" />
     <Compile Include="Areas\Admin\Models\CheckOut\AddressModel.cs" />
+    <Compile Include="Areas\Admin\Models\Component\PriceComponentModel.cs" />
+    <Compile Include="Areas\Admin\Models\Component\ProductComponentModel.cs" />
     <Compile Include="Areas\Admin\Models\Customers\CustomerModel.cs" />
     <Compile Include="Areas\Admin\Models\Customers\RegisteredCustomerReportLineModel.cs" />
     <Compile Include="Areas\Admin\Models\Orders\OrderAverageReportLineSummaryModel.cs" />
@@ -929,8 +934,6 @@
     <Content Include="Areas\Admin\Views\Manufacturer\ManufacturerInfo.cshtml" />
     <Content Include="Areas\Admin\Views\Manufacturer\ManufacturerMenu.cshtml" />
     <Content Include="Areas\Admin\Views\Manufacturer\ManufacturerProduct.cshtml" />
-    <Content Include="Areas\Admin\Views\Attributes\CreateProductAttribute.cshtml" />
-    <Content Include="Areas\Admin\Views\Attributes\ProductAttribute.cshtml" />
     <Content Include="Areas\Admin\Views\ShoppingCart\CurrentWishLists.cshtml" />
     <Content Include="Areas\Admin\Views\ShoppingCart\_WishListCustomer.cshtml" />
     <Content Include="Areas\Admin\Views\Attribute\_AddOrEditProductAttribute.cshtml" />
@@ -939,6 +942,12 @@
     <Content Include="Areas\Admin\Views\Attribute\SpecificationAttributeOptions.cshtml" />
     <Content Include="Areas\Admin\Views\Attribute\SpecificationAttributeDetails.cshtml" />
     <Content Include="Areas\Admin\Views\Attribute\AddOrEditSpecificationAttributeOption.cshtml" />
+    <Content Include="Areas\Admin\Views\Attribute\ListCheckoutAttribute.cshtml" />
+    <Content Include="Areas\Admin\Views\Attribute\AddOrEditCheckoutAttribute.cshtml" />
+    <Content Include="Areas\Admin\Views\Component\ListProductComponent.cshtml" />
+    <Content Include="Areas\Admin\Views\Component\AddOrEditProductComponent.cshtml" />
+    <Content Include="Areas\Admin\Views\Component\ListPriceComponent.cshtml" />
+    <Content Include="Areas\Admin\Views\Component\AddOrEditPriceComponent.cshtml" />
     <None Include="Properties\PublishProfiles\Alukkas.pubxml" />
     <Content Include="Views\Catalog\Search.cshtml" />
     <Content Include="Views\Catalog\_productAttribute.cshtml" />

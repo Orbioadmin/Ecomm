@@ -474,5 +474,62 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="CheckoutAttributes">
+      <EntityTypeMapping TypeName="OrbioAdminModel.CheckoutAttribute">
+        <MappingFragment StoreEntitySet="CheckoutAttribute">
+          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+          <ScalarProperty Name="AttributeControlTypeId" ColumnName="AttributeControlTypeId" />
+          <ScalarProperty Name="TaxCategoryId" ColumnName="TaxCategoryId" />
+          <ScalarProperty Name="IsTaxExempt" ColumnName="IsTaxExempt" />
+          <ScalarProperty Name="ShippableProductRequired" ColumnName="ShippableProductRequired" />
+          <ScalarProperty Name="IsRequired" ColumnName="IsRequired" />
+          <ScalarProperty Name="TextPrompt" ColumnName="TextPrompt" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CheckoutAttributeValues">
+      <EntityTypeMapping TypeName="OrbioAdminModel.CheckoutAttributeValue">
+        <MappingFragment StoreEntitySet="CheckoutAttributeValue">
+          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+          <ScalarProperty Name="IsPreSelected" ColumnName="IsPreSelected" />
+          <ScalarProperty Name="WeightAdjustment" ColumnName="WeightAdjustment" />
+          <ScalarProperty Name="PriceAdjustment" ColumnName="PriceAdjustment" />
+          <ScalarProperty Name="ColorSquaresRgb" ColumnName="ColorSquaresRgb" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CheckoutAttributeId" ColumnName="CheckoutAttributeId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductComponents">
+      <EntityTypeMapping TypeName="OrbioAdminModel.ProductComponent">
+        <MappingFragment StoreEntitySet="ProductComponent">
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ComponentName" ColumnName="ComponentName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PriceComponents">
+      <EntityTypeMapping TypeName="OrbioAdminModel.PriceComponent">
+        <MappingFragment StoreEntitySet="PriceComponent">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
