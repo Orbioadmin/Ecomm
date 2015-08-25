@@ -1,0 +1,78 @@
+﻿@model Orbio.Web.UI.Areas.Admin.Models.Attribute.SpecificationAttributeModel
+@{
+    ViewBag.Title = "SpecificationAttribute";
+}
+
+<section class="wp-request wp-speci-attr-create">
+    <div class="container">
+        <div class="catalog-bulk col-md-12" style="padding-left:0px;">
+            <div class="pull-left">
+                <label class="gift-product"></label>
+                @if (Model.Id != 0)
+                {
+                    <h1>EDIT SPECIFICATION ATTRIBUTE DETAILS<a href="@Url.Action("ListSpecificationAttribute","Attribute")">(back to specification attribute list)</a></h1>
+                }
+                else
+                {
+                    <h1>ADD SPECIFICATION ATTRIBUTE DETAILS<a href="@Url.Action("ListSpecificationAttribute","Attribute")">(back to specification attribute list)</a></h1>
+                }
+            </div>
+        </div>
+    </div>
+        @using (Html.BeginForm("AddOrUpdateSpecificationAttribute", "Attribute", FormMethod.Post, new { @class="" }))
+            {
+                Html.HiddenFor(m => m.Id, new { Value = Model.Id });
+    <div class="container">
+        <div class="col-md-12">
+           
+            <div class="pull-right">
+                @if (Model.Id != 0)
+                {
+                    <div class="options">
+                        <input type="submit" value="Save" class=" Sbut   ssbut1">
+                        <a href="@Url.Action("DeleteSpecificationAttribute", "Attribute", new { Id=Model.Id })"><input type="button" value="Delete" class=" Sbut   ssbut1"></a>
+</div>
+                }
+                else
+                {
+                    <div class="options">
+                        <input type="submit" value="Save and Continue edit" class=" Sbut savbut  ssbut1">
+                        <a href="@Url.Action("DeleteSpecificationAttribute", "Attribute", new { Id=Model.Id })"><input type="submit" value="Delete" class=" Sbut   ssbut1"></a>
+</div>
+                }
+            </div>
+            
+        </div>
+    </div>
+    <div class="container">
+        <div class="col-md-12 ">
+            <div class="col-md-3 tabcustomer " style="padding-left:0px;">
+                <ul class="nav  nav-stacked product-info">
+                    <li class="active"><a href="#attributeinfo" role="tab" data-toggle="tab">ATTRIBUTE INFO</a></li>
+                    <li><a href="#option" role="tab" data-toggle="tab">OPTIONS</a></li>
+                </ul>
+            </div>
+            <div class="col-md-9 tabcustomer ">
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane in active" id="attributeinfo">
+
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane in active" id="standard">
+                                @{
+                                    Html.RenderPartial("SpecificationAttributeDetails", Model);
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane in " id="option">
+                        @{
+                            Html.RenderPartial("SpecificationAttributeOptions",Model);
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        }
+</section>
+

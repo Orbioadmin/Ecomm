@@ -211,6 +211,39 @@
       <End Role="Manufacturer" EntitySet="Manufacturers" />
       <End Role="Product_Manufacturer_Mapping" EntitySet="Product_Manufacturer_Mapping" />
     </AssociationSet>
+    <EntitySet Name="Product_ProductAttribute_Mapping" EntityType="OrbioAdminModel.Product_ProductAttribute_Mapping" />
+    <EntitySet Name="ProductAttributes" EntityType="OrbioAdminModel.ProductAttribute" />
+    <AssociationSet Name="ProductVariantAttribute_Product" Association="OrbioAdminModel.ProductVariantAttribute_Product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Product_ProductAttribute_Mapping" EntitySet="Product_ProductAttribute_Mapping" />
+    </AssociationSet>
+    <AssociationSet Name="ProductVariantAttribute_ProductAttribute" Association="OrbioAdminModel.ProductVariantAttribute_ProductAttribute">
+      <End Role="ProductAttribute" EntitySet="ProductAttributes" />
+      <End Role="Product_ProductAttribute_Mapping" EntitySet="Product_ProductAttribute_Mapping" />
+    </AssociationSet>
+    <EntitySet Name="SpecificationAttributes" EntityType="OrbioAdminModel.SpecificationAttribute" />
+    <EntitySet Name="SpecificationAttributeOptions" EntityType="OrbioAdminModel.SpecificationAttributeOption" />
+    <AssociationSet Name="SpecificationAttributeOption_SpecificationAttribute" Association="OrbioAdminModel.SpecificationAttributeOption_SpecificationAttribute">
+      <End Role="SpecificationAttribute" EntitySet="SpecificationAttributes" />
+      <End Role="SpecificationAttributeOption" EntitySet="SpecificationAttributeOptions" />
+    </AssociationSet>
+    <EntitySet Name="Product_SpecificationAttribute_Mapping" EntityType="OrbioAdminModel.Product_SpecificationAttribute_Mapping" />
+    <AssociationSet Name="ProductSpecificationAttribute_Product" Association="OrbioAdminModel.ProductSpecificationAttribute_Product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Product_SpecificationAttribute_Mapping" EntitySet="Product_SpecificationAttribute_Mapping" />
+    </AssociationSet>
+    <AssociationSet Name="ProductSpecificationAttribute_SpecificationAttributeOption" Association="OrbioAdminModel.ProductSpecificationAttribute_SpecificationAttributeOption">
+      <End Role="SpecificationAttributeOption" EntitySet="SpecificationAttributeOptions" />
+      <End Role="Product_SpecificationAttribute_Mapping" EntitySet="Product_SpecificationAttribute_Mapping" />
+    </AssociationSet>
+    <EntitySet Name="CheckoutAttributes" EntityType="OrbioAdminModel.CheckoutAttribute" />
+    <EntitySet Name="CheckoutAttributeValues" EntityType="OrbioAdminModel.CheckoutAttributeValue" />
+    <AssociationSet Name="CheckoutAttributeValue_CheckoutAttribute" Association="OrbioAdminModel.CheckoutAttributeValue_CheckoutAttribute">
+      <End Role="CheckoutAttribute" EntitySet="CheckoutAttributes" />
+      <End Role="CheckoutAttributeValue" EntitySet="CheckoutAttributeValues" />
+    </AssociationSet>
+    <EntitySet Name="ProductComponents" EntityType="OrbioAdminModel.ProductComponent" />
+    <EntitySet Name="PriceComponents" EntityType="OrbioAdminModel.PriceComponent" />
   </EntityContainer>
   <EntityType Name="CustomerRole">
     <Key>
@@ -419,6 +452,8 @@
     <Property Name="MakingCost" Type="Decimal" Precision="18" Scale="4" />
     <Property Name="ProductUnit" Type="Decimal" Precision="18" Scale="4" />
     <NavigationProperty Name="OrderItems" Relationship="OrbioAdminModel.OrderItem_Product" FromRole="Product" ToRole="OrderItem" />
+    <NavigationProperty Name="Product_ProductAttribute_Mapping" Relationship="OrbioAdminModel.ProductVariantAttribute_Product" FromRole="Product" ToRole="Product_ProductAttribute_Mapping" />
+    <NavigationProperty Name="Product_SpecificationAttribute_Mapping" Relationship="OrbioAdminModel.ProductSpecificationAttribute_Product" FromRole="Product" ToRole="Product_SpecificationAttribute_Mapping" />
   </EntityType>
   <Association Name="Customer_BillingAddress">
     <End Type="OrbioAdminModel.Address" Role="Address" Multiplicity="0..1" />
@@ -794,4 +829,202 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="Product_ProductAttribute_Mapping">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="ProductAttributeId" Type="Int32" Nullable="false" />
+    <Property Name="TextPrompt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsRequired" Type="Boolean" Nullable="false" />
+    <Property Name="AttributeControlTypeId" Type="Int32" Nullable="false" />
+    <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+    <Property Name="SizeGuideUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Product" Relationship="OrbioAdminModel.ProductVariantAttribute_Product" FromRole="Product_ProductAttribute_Mapping" ToRole="Product" />
+    <NavigationProperty Name="ProductAttribute" Relationship="OrbioAdminModel.ProductVariantAttribute_ProductAttribute" FromRole="Product_ProductAttribute_Mapping" ToRole="ProductAttribute" />
+  </EntityType>
+  <EntityType Name="ProductAttribute">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Product_ProductAttribute_Mapping" Relationship="OrbioAdminModel.ProductVariantAttribute_ProductAttribute" FromRole="ProductAttribute" ToRole="Product_ProductAttribute_Mapping" />
+  </EntityType>
+  <Association Name="ProductVariantAttribute_Product">
+    <End Type="OrbioAdminModel.Product" Role="Product" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="OrbioAdminModel.Product_ProductAttribute_Mapping" Role="Product_ProductAttribute_Mapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product_ProductAttribute_Mapping">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductVariantAttribute_ProductAttribute">
+    <End Type="OrbioAdminModel.ProductAttribute" Role="ProductAttribute" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="OrbioAdminModel.Product_ProductAttribute_Mapping" Role="Product_ProductAttribute_Mapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductAttribute">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product_ProductAttribute_Mapping">
+        <PropertyRef Name="ProductAttributeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="SpecificationAttribute">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="SpecificationAttributeOptions" Relationship="OrbioAdminModel.SpecificationAttributeOption_SpecificationAttribute" FromRole="SpecificationAttribute" ToRole="SpecificationAttributeOption" />
+  </EntityType>
+  <EntityType Name="SpecificationAttributeOption">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SpecificationAttributeId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="SpecificationAttribute" Relationship="OrbioAdminModel.SpecificationAttributeOption_SpecificationAttribute" FromRole="SpecificationAttributeOption" ToRole="SpecificationAttribute" />
+    <NavigationProperty Name="Product_SpecificationAttribute_Mapping" Relationship="OrbioAdminModel.ProductSpecificationAttribute_SpecificationAttributeOption" FromRole="SpecificationAttributeOption" ToRole="Product_SpecificationAttribute_Mapping" />
+  </EntityType>
+  <Association Name="SpecificationAttributeOption_SpecificationAttribute">
+    <End Type="OrbioAdminModel.SpecificationAttribute" Role="SpecificationAttribute" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="OrbioAdminModel.SpecificationAttributeOption" Role="SpecificationAttributeOption" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SpecificationAttribute">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SpecificationAttributeOption">
+        <PropertyRef Name="SpecificationAttributeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Product_SpecificationAttribute_Mapping">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="SpecificationAttributeOptionId" Type="Int32" Nullable="false" />
+    <Property Name="CustomValue" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="AllowFiltering" Type="Boolean" Nullable="false" />
+    <Property Name="ShowOnProductPage" Type="Boolean" Nullable="false" />
+    <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+    <Property Name="SubTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Product" Relationship="OrbioAdminModel.ProductSpecificationAttribute_Product" FromRole="Product_SpecificationAttribute_Mapping" ToRole="Product" />
+    <NavigationProperty Name="SpecificationAttributeOption" Relationship="OrbioAdminModel.ProductSpecificationAttribute_SpecificationAttributeOption" FromRole="Product_SpecificationAttribute_Mapping" ToRole="SpecificationAttributeOption" />
+  </EntityType>
+  <Association Name="ProductSpecificationAttribute_Product">
+    <End Type="OrbioAdminModel.Product" Role="Product" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="OrbioAdminModel.Product_SpecificationAttribute_Mapping" Role="Product_SpecificationAttribute_Mapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product_SpecificationAttribute_Mapping">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductSpecificationAttribute_SpecificationAttributeOption">
+    <End Type="OrbioAdminModel.SpecificationAttributeOption" Role="SpecificationAttributeOption" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="OrbioAdminModel.Product_SpecificationAttribute_Mapping" Role="Product_SpecificationAttribute_Mapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SpecificationAttributeOption">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product_SpecificationAttribute_Mapping">
+        <PropertyRef Name="SpecificationAttributeOptionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="CheckoutAttribute">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="TextPrompt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsRequired" Type="Boolean" Nullable="false" />
+    <Property Name="ShippableProductRequired" Type="Boolean" Nullable="false" />
+    <Property Name="IsTaxExempt" Type="Boolean" Nullable="false" />
+    <Property Name="TaxCategoryId" Type="Int32" Nullable="false" />
+    <Property Name="AttributeControlTypeId" Type="Int32" Nullable="false" />
+    <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CheckoutAttributeValues" Relationship="OrbioAdminModel.CheckoutAttributeValue_CheckoutAttribute" FromRole="CheckoutAttribute" ToRole="CheckoutAttributeValue" />
+  </EntityType>
+  <EntityType Name="CheckoutAttributeValue">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CheckoutAttributeId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="ColorSquaresRgb" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PriceAdjustment" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+    <Property Name="WeightAdjustment" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+    <Property Name="IsPreSelected" Type="Boolean" Nullable="false" />
+    <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CheckoutAttribute" Relationship="OrbioAdminModel.CheckoutAttributeValue_CheckoutAttribute" FromRole="CheckoutAttributeValue" ToRole="CheckoutAttribute" />
+  </EntityType>
+  <Association Name="CheckoutAttributeValue_CheckoutAttribute">
+    <End Type="OrbioAdminModel.CheckoutAttribute" Role="CheckoutAttribute" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="OrbioAdminModel.CheckoutAttributeValue" Role="CheckoutAttributeValue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CheckoutAttribute">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CheckoutAttributeValue">
+        <PropertyRef Name="CheckoutAttributeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ProductComponent">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ComponentName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="Deleted" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="PriceComponent">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="Deleted" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>

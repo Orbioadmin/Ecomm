@@ -60,6 +60,12 @@
     <Compile Include="Data\CategoryTemplate.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\CheckoutAttribute.cs">
+      <DependentUpon>OrbioAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CheckoutAttributeValue.cs">
+      <DependentUpon>OrbioAdmin.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\Customer.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
@@ -102,10 +108,16 @@
     <Compile Include="Data\Picture.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\PriceComponent.cs">
+      <DependentUpon>OrbioAdmin.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\Product.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\ProductAttribute.cs">
+      <DependentUpon>OrbioAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ProductComponent.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Product_Category_Mapping.cs">
@@ -117,7 +129,17 @@
     <Compile Include="Data\Product_ProductAttribute_Mapping.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\Product_SpecificationAttribute_Mapping.cs">
+      <DependentUpon>OrbioAdmin.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\RecurringPayment.cs">
+      <DependentUpon>OrbioAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ShoppingCartItem.cs" />
+    <Compile Include="Data\SpecificationAttribute.cs">
+      <DependentUpon>OrbioAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SpecificationAttributeOption.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\UrlRecord.cs">
@@ -129,6 +151,7 @@
     <Compile Include="Data\usp_OrbioAdmin_OrderDetails_Result.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
+    <Compile Include="Domain\Admin\Catalog\AttributeControlTypes.cs" />
     <Compile Include="Domain\Admin\Catalog\CategoryDetails.cs" />
     <Compile Include="Domain\Admin\Catalog\CategoryList.cs" />
     <Compile Include="Domain\Admin\Catalog\DiscountDetails.cs" />

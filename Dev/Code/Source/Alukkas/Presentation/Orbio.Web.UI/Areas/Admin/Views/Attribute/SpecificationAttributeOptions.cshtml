@@ -1,0 +1,47 @@
+﻿@model Orbio.Web.UI.Areas.Admin.Models.Attribute.SpecificationAttributeModel
+
+<div class="table-responsive">
+    @if(Model.Id!=0)
+    {
+    <table id="spetable" class="table table-border spepro">
+        <thead>
+        <th>Name</th>
+        <th>Display Order</th>
+        <th>Number of Associated products</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        </thead>
+
+        <tbody>
+            @if (Model.SpecificationOption.Count > 0)
+            {
+                foreach (var item in Model.SpecificationOption)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.DisplayOrder</td>
+                        <td>@item.ProductCount</td>
+                        <td><a href="@Url.Action("AddOrEditSpecificationAttributeOption", "Attribute", new { id = item.Id })"><label class="edit" onclick="EditSpec(@item.Id)"></label></a></td>
+                        <td><a href="@Url.Action("DeleteSpecificationAttributeOption", "Attribute", new { id = item.Id, Spec = Model.Id })"><label class="img_sprite"></label></a></td>
+                    </tr>
+            }
+            }
+            else
+            {
+        <tr>
+            <td colspan="5">
+                No records found
+             </td>
+            </tr>
+            }
+    </tbody>
+    </table>
+    <div class="pull-left1"><input type="button" class="but-refresh"></div>
+    <div class="pull-right"><a href="@Url.Action("AddOrEditSpecificationAttributeOption", "Attribute", new { id = 0,Spec=Model.Id })"><input type="button" class="but-search" value="Add a new option"></a></div>
+    }
+    else
+    {
+       <label>You need to save the data before adding an option</label>
+    }
+</div>
+

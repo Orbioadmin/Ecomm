@@ -1,0 +1,43 @@
+﻿@model Orbio.Web.UI.Areas.Admin.Models.Attribute.SpecificationAttributeOptionModel
+
+@{
+    ViewBag.Title = "AddOrEditSpecificationAttributeOption";
+}
+
+<section class="wp-request wp-speci-attr-create" style="margin-top:10%">
+@using (Html.BeginForm("AddorEditOptions", "Attribute", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.SpecificationAttributeId, new { Value=Model.SpecificationAttributeId })
+    <div class="container">
+        <div class="col-md-12">
+            <div class="pull-right">
+                <div class="options">
+                    <input type="submit" value="Save" class=" Sbut   ssbut1">
+                    <a href="@Url.Action("EditSpecificationAttribute", "Attribute", new { Id = Model.SpecificationAttributeId })"><input type="button" value="Cancel" class=" Sbut   ssbut1"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div role="tabpanel" class="tab-pane in" id="option">
+            <div class="tab-content ">
+                <div role="tabpanel" class="tab-pane in active" id="standard">
+                    <div class="col-md-12 product-specification">
+                        <div class="col-md-12">
+                            <div class="col-md-3"><label> Name:</label></div>
+                            <div class="col-md-3">@Html.TextBoxFor(m => m.Name, new { @class = "produtxt" })</div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-3"><label> Display Order:</label></div>
+                            <div class="col-md-3">
+                                @Html.TextBoxFor(m => m.DisplayOrder, new { @class = "produtxt", @type = "number" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   }
+</section>
+

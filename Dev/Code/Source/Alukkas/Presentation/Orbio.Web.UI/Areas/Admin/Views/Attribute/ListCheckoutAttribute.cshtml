@@ -1,0 +1,48 @@
+﻿@model List<Orbio.Web.UI.Areas.Admin.Models.Attribute.CheckoutAttributeModel>
+@{
+    ViewBag.Title = "ListCheckoutAttribute";
+}
+
+<section class="wp-bestseller wp-producttags">
+    <div class="container">
+        <div class="catalog-bulk col-md-12" style="padding-left:0px;">
+            <label class="checkout-att"></label>
+            <h1>CHECKOUT ATTRIBUTES</h1>
+            <div class="pull-right"><a href="checkout-product-create.html"><input type="button" value="Add New" class="Sbut  ssbut1"></a></div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="table-home">
+            <div class="col-md-12">
+                <div class="table-responsive best-seller-table">
+                    <table id="tableData1" class="table table-bordered table-striped ">
+                        <thead>
+                            <tr>
+                                <th>Name    </th>
+                                <th>Control type</th>
+                                <th>Required  </th>
+                                <th>Display order</th>
+                                <th>Edit</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach(var item in Model)
+                            { 
+                            <tr style="display: table-row;">
+                                <td>@item.Name</td>
+                                <td>@item.ControlType</td>
+                                <td>@item.IsRequired</td>
+                                <td>@item.DisplayOrder</td>
+                                <td><label class="edit"></label></td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <div class="pull-left1"><input type="button" class="but-refresh"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,13 @@
+﻿@model Orbio.Web.UI.Areas.Admin.Models.Attribute.SpecificationAttributeModel
+
+<div class="col-md-12 product-specification">
+    <div class="col-md-12">
+        <div class="col-md-3"><label> Name:</label></div>
+        <div class="col-md-3">@Html.TextBoxFor(m => m.Name, new { @class = "produtxt" })</div>
+    </div>
+
+    <div class="col-md-3"><label>Display Order</label></div>
+    <div class="col-md-4">
+        @Html.TextBoxFor(m => m.DisplayOrder, new { @class = "produtxt", @type = "number" })
+    </div>
+</div>
