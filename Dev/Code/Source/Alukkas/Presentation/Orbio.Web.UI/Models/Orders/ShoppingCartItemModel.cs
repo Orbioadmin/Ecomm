@@ -39,7 +39,7 @@ namespace Orbio.Web.UI.Models.Orders
             //this.TotalPrice = (Convert.ToDecimal(ProductPrice.Price) * productDetail.Quantity).ToString("#,##0.00");
             var priceCalculationService = EngineContext.Current.Resolve<IPriceCalculationService>();
             //this.ProductPrice.Price = priceCalculationService.GetUnitPrice(this);
-            this.ProductPrice.OldPrice = priceCalculationService.GetUnitPrice(this);
+            //this.ProductPrice.OldPrice = priceCalculationService.GetUnitPrice(this);
             this.TotalPrice = priceCalculationService.GetFinalPrice(this, false, true).ToString("#,##0.00");
             this.CartId = productDetail.CartId;
             
