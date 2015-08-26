@@ -1,0 +1,70 @@
+﻿@model Orbio.Web.UI.Areas.Admin.Models.Attribute.CheckoutAttributeValueModel
+
+@{
+    ViewBag.Title = "AddOrEditCheckoutAttributeValue";
+}
+
+
+<section class="wp-request wp-speci-attr-create">
+    <div class="container">
+        <div class="catalog-bulk col-md-12 ">
+            <div class="pull-left">
+                <label class="gift-product"></label>
+                @if (Model.Id != 0)
+                {
+                    <h1>ADD NEW CHECKOUT ATTRIBUTE Value<a href="@Url.Action("GetCheckoutAttribute","Attribute")">(back to checkout attribute list)</a></h1>
+                }
+                else
+                {
+                    <h1>EDIT CHECKOUT ATTRIBUTE Value<a href="@Url.Action("GetCheckoutAttribute","Attribute")">(back to checkout attribute list)</a></h1>
+                }
+            </div>
+        </div>
+        @using (Html.BeginForm("SaveCheckoutAttributeValue", "Attribute", FormMethod.Post))
+        {
+            @Html.HiddenFor(m => m.CheckoutAttributeId, new { Value = Model.CheckoutAttributeId })
+            <div class="container">
+                <div class="col-md-12">
+                    <div class="pull-right">
+                        <div class="options">
+                            <input type="submit" value="Save" class=" Sbut   ssbut1">
+                            <a href="@Url.Action("EditCheckoutAttribute", "Attribute", new { Id = Model.CheckoutAttributeId })"><input type="button" value="Cancel" class=" Sbut   ssbut1"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div role="tabpanel" class="tab-pane in" id="option">
+                    <div class="tab-content ">
+                        <div role="tabpanel" class="tab-pane in active" id="standard">
+                            <div class="col-md-12 product-specification">
+                                <div class="col-md-12 product-specification1">
+                                    <div class="col-md-5">Name</div>
+                                    <div class="col-md-6">@Html.TextBoxFor(m => m.Name, new { @class = "produtxt" })</div>
+                                </div>
+
+                                <div class="col-md-12 product-specification1">
+                                    <div class="col-md-5">Price Adjustment:</div>
+
+                                    <div class="col-md-6">@Html.TextBoxFor(m => m.PriceAdjustment, new { @class = "produtxt", @type = "number" })</div>
+                                </div>
+                                <div class="col-md-12 product-specification1">
+                                    <div class="col-md-5">Weight Adjustment:</div>
+                                    <div class="col-md-6">@Html.TextBoxFor(m => m.WeightAdjustment, new { @class = "produtxt", @type = "number" })</div>
+                                </div>
+                                <div class="col-md-12 product-specification1">
+                                    <div class="col-md-5">Pre-selected:</div>
+                                    <div class="col-md-6">@Html.CheckBoxFor(m => m.IsPreSelected, new { @class = "produtxt" })</div>
+                                </div>
+                                <div class="col-md-12 product-specification1">
+                                    <div class="col-md-5">Display Order:</div>
+                                    <div class="col-md-6">@Html.TextBoxFor(m => m.DisplayOrder, new { @class = "produtxt", @type = "number" })</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>

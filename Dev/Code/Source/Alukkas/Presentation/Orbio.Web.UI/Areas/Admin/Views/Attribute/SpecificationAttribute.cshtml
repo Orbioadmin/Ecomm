@@ -30,14 +30,14 @@
                 {
                     <div class="options">
                         <input type="submit" value="Save" class=" Sbut   ssbut1">
-                        <a href="@Url.Action("DeleteSpecificationAttribute", "Attribute", new { Id=Model.Id })"><input type="button" value="Delete" class=" Sbut   ssbut1"></a>
+                        <a href="@Url.Action("DeleteSpecificationAttribute", "Attribute", new { Id=Model.Id })"><input type="button" value="Delete" class=" Sbut   ssbut1" onclick=" return confirm('Are You Sure'); "></a>
 </div>
                 }
                 else
                 {
                     <div class="options">
                         <input type="submit" value="Save and Continue edit" class=" Sbut savbut  ssbut1">
-                        <a href="@Url.Action("DeleteSpecificationAttribute", "Attribute", new { Id=Model.Id })"><input type="submit" value="Delete" class=" Sbut   ssbut1"></a>
+                        <a href="@Url.Action("DeleteSpecificationAttribute", "Attribute", new { Id=Model.Id })"><input type="submit" value="Delete" class=" Sbut   ssbut1" onclick=" return confirm('Are You Sure'); "></a>
 </div>
                 }
             </div>

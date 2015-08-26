@@ -233,6 +233,7 @@
     <Compile Include="Areas\Admin\Models\Catalog\ManufacturerDetailModel.cs" />
     <Compile Include="Areas\Admin\Models\Catalog\ManufacturerModel.cs" />
     <Compile Include="Areas\Admin\Models\Catalog\ProductModel.cs" />
+    <Compile Include="Areas\Admin\Models\Catalog\TaxCategoryModel.cs" />
     <Compile Include="Areas\Admin\Models\Catalog\TemplateModel.cs" />
     <Compile Include="Areas\Admin\Models\CheckOut\AddressModel.cs" />
     <Compile Include="Areas\Admin\Models\Component\PriceComponentModel.cs" />
@@ -948,6 +949,9 @@
     <Content Include="Areas\Admin\Views\Component\AddOrEditProductComponent.cshtml" />
     <Content Include="Areas\Admin\Views\Component\ListPriceComponent.cshtml" />
     <Content Include="Areas\Admin\Views\Component\AddOrEditPriceComponent.cshtml" />
+    <Content Include="Areas\Admin\Views\Attribute\CheckoutAttribute.cshtml" />
+    <Content Include="Areas\Admin\Views\Attribute\CheckoutAttributeValue.cshtml" />
+    <Content Include="Areas\Admin\Views\Attribute\AddOrEditCheckoutAttributeValue.cshtml" />
     <None Include="Properties\PublishProfiles\Alukkas.pubxml" />
     <Content Include="Views\Catalog\Search.cshtml" />
     <Content Include="Views\Catalog\_productAttribute.cshtml" />

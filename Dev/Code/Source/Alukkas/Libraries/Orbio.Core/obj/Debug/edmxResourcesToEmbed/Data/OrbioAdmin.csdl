@@ -236,14 +236,19 @@
       <End Role="SpecificationAttributeOption" EntitySet="SpecificationAttributeOptions" />
       <End Role="Product_SpecificationAttribute_Mapping" EntitySet="Product_SpecificationAttribute_Mapping" />
     </AssociationSet>
+    <EntitySet Name="ProductComponents" EntityType="OrbioAdminModel.ProductComponent" />
+    <EntitySet Name="PriceComponents" EntityType="OrbioAdminModel.PriceComponent" />
     <EntitySet Name="CheckoutAttributes" EntityType="OrbioAdminModel.CheckoutAttribute" />
     <EntitySet Name="CheckoutAttributeValues" EntityType="OrbioAdminModel.CheckoutAttributeValue" />
     <AssociationSet Name="CheckoutAttributeValue_CheckoutAttribute" Association="OrbioAdminModel.CheckoutAttributeValue_CheckoutAttribute">
       <End Role="CheckoutAttribute" EntitySet="CheckoutAttributes" />
       <End Role="CheckoutAttributeValue" EntitySet="CheckoutAttributeValues" />
     </AssociationSet>
-    <EntitySet Name="ProductComponents" EntityType="OrbioAdminModel.ProductComponent" />
-    <EntitySet Name="PriceComponents" EntityType="OrbioAdminModel.PriceComponent" />
+    <EntitySet Name="TaxCategories" EntityType="OrbioAdminModel.TaxCategory" />
+    <AssociationSet Name="FK_CheckoutAttribute_TaxCategory" Association="OrbioAdminModel.FK_CheckoutAttribute_TaxCategory">
+      <End Role="TaxCategory" EntitySet="TaxCategories" />
+      <End Role="CheckoutAttribute" EntitySet="CheckoutAttributes" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="CustomerRole">
     <Key>
@@ -958,6 +963,32 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="ProductComponent">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ComponentName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="Deleted" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="PriceComponent">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="Deleted" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+  </EntityType>
   <EntityType Name="CheckoutAttribute">
     <Key>
       <PropertyRef Name="Id" />
@@ -972,6 +1003,7 @@
     <Property Name="AttributeControlTypeId" Type="Int32" Nullable="false" />
     <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
     <NavigationProperty Name="CheckoutAttributeValues" Relationship="OrbioAdminModel.CheckoutAttributeValue_CheckoutAttribute" FromRole="CheckoutAttribute" ToRole="CheckoutAttributeValue" />
+    <NavigationProperty Name="TaxCategory" Relationship="OrbioAdminModel.FK_CheckoutAttribute_TaxCategory" FromRole="CheckoutAttribute" ToRole="TaxCategory" />
   </EntityType>
   <EntityType Name="CheckoutAttributeValue">
     <Key>
@@ -1001,30 +1033,25 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="ProductComponent">
+  <EntityType Name="TaxCategory">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ComponentName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="IsActive" Type="Boolean" Nullable="false" />
-    <Property Name="Deleted" Type="Boolean" Nullable="false" />
-    <Property Name="CreatedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="ModifiedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CheckoutAttributes" Relationship="OrbioAdminModel.FK_CheckoutAttribute_TaxCategory" FromRole="TaxCategory" ToRole="CheckoutAttribute" />
   </EntityType>
-  <EntityType Name="PriceComponent">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="IsActive" Type="Boolean" Nullable="false" />
-    <Property Name="Deleted" Type="Boolean" Nullable="false" />
-    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="CreatedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="ModifiedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-  </EntityType>
+  <Association Name="FK_CheckoutAttribute_TaxCategory">
+    <End Type="OrbioAdminModel.TaxCategory" Role="TaxCategory" Multiplicity="1" />
+    <End Type="OrbioAdminModel.CheckoutAttribute" Role="CheckoutAttribute" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaxCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CheckoutAttribute">
+        <PropertyRef Name="TaxCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

@@ -128,7 +128,10 @@
 </script>
 <script>
     function DeleteCategory(Id) {
-        window.location.href = '@Url.Action("DeleteCategory","Catalog")?id=' + Id;
+        var r = confirm("Do you want to delete ?");
+        if (r == true) {
+            window.location.href = '@Url.Action("DeleteCategory","Catalog")?id=' + Id;
+        }
     }
 </script>
 

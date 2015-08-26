@@ -500,6 +500,14 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
           <Property Name="DisplayOrder" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="TaxCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="400" Nullable="false" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="UrlRecord">
           <Key>
             <PropertyRef Name="Id" />
@@ -598,6 +606,18 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
             </Principal>
             <Dependent Role="Category">
               <PropertyRef Name="PictureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CheckoutAttribute_TaxCategory">
+          <End Role="TaxCategory" Type="Self.TaxCategory" Multiplicity="1" />
+          <End Role="CheckoutAttribute" Type="Self.CheckoutAttribute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaxCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CheckoutAttribute">
+              <PropertyRef Name="TaxCategoryId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -863,6 +883,7 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <EntitySet Name="RecurringPayment" EntityType="Self.RecurringPayment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SpecificationAttribute" EntityType="Self.SpecificationAttribute" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SpecificationAttributeOption" EntityType="Self.SpecificationAttributeOption" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TaxCategory" EntityType="Self.TaxCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UrlRecord" EntityType="Self.UrlRecord" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Discount_AppliedToCategories" EntityType="Self.Discount_AppliedToCategories" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -897,6 +918,10 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <AssociationSet Name="FK_Category_Picture" Association="Self.FK_Category_Picture">
             <End Role="Picture" EntitySet="Picture" />
             <End Role="Category" EntitySet="Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CheckoutAttribute_TaxCategory" Association="Self.FK_CheckoutAttribute_TaxCategory">
+            <End Role="TaxCategory" EntitySet="TaxCategory" />
+            <End Role="CheckoutAttribute" EntitySet="CheckoutAttribute" />
           </AssociationSet>
           <AssociationSet Name="FK_Discount_AppliedToCategories_Category" Association="Self.FK_Discount_AppliedToCategories_Category">
             <End Role="Category" EntitySet="Category" />
@@ -1207,14 +1232,19 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
             <End Role="SpecificationAttributeOption" EntitySet="SpecificationAttributeOptions" />
             <End Role="Product_SpecificationAttribute_Mapping" EntitySet="Product_SpecificationAttribute_Mapping" />
           </AssociationSet>
+          <EntitySet Name="ProductComponents" EntityType="OrbioAdminModel.ProductComponent" />
+          <EntitySet Name="PriceComponents" EntityType="OrbioAdminModel.PriceComponent" />
           <EntitySet Name="CheckoutAttributes" EntityType="OrbioAdminModel.CheckoutAttribute" />
           <EntitySet Name="CheckoutAttributeValues" EntityType="OrbioAdminModel.CheckoutAttributeValue" />
           <AssociationSet Name="CheckoutAttributeValue_CheckoutAttribute" Association="OrbioAdminModel.CheckoutAttributeValue_CheckoutAttribute">
             <End Role="CheckoutAttribute" EntitySet="CheckoutAttributes" />
             <End Role="CheckoutAttributeValue" EntitySet="CheckoutAttributeValues" />
           </AssociationSet>
-          <EntitySet Name="ProductComponents" EntityType="OrbioAdminModel.ProductComponent" />
-          <EntitySet Name="PriceComponents" EntityType="OrbioAdminModel.PriceComponent" />
+          <EntitySet Name="TaxCategories" EntityType="OrbioAdminModel.TaxCategory" />
+          <AssociationSet Name="FK_CheckoutAttribute_TaxCategory" Association="OrbioAdminModel.FK_CheckoutAttribute_TaxCategory">
+            <End Role="TaxCategory" EntitySet="TaxCategories" />
+            <End Role="CheckoutAttribute" EntitySet="CheckoutAttributes" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="CustomerRole">
           <Key>
@@ -1929,6 +1959,32 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="ProductComponent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ComponentName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="PriceComponent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="CheckoutAttribute">
           <Key>
             <PropertyRef Name="Id" />
@@ -1943,6 +1999,7 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <Property Name="AttributeControlTypeId" Type="Int32" Nullable="false" />
           <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
           <NavigationProperty Name="CheckoutAttributeValues" Relationship="OrbioAdminModel.CheckoutAttributeValue_CheckoutAttribute" FromRole="CheckoutAttribute" ToRole="CheckoutAttributeValue" />
+          <NavigationProperty Name="TaxCategory" Relationship="OrbioAdminModel.FK_CheckoutAttribute_TaxCategory" FromRole="CheckoutAttribute" ToRole="TaxCategory" />
         </EntityType>
         <EntityType Name="CheckoutAttributeValue">
           <Key>
@@ -1972,32 +2029,27 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="ProductComponent">
+        <EntityType Name="TaxCategory">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ComponentName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="Deleted" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ModifiedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CheckoutAttributes" Relationship="OrbioAdminModel.FK_CheckoutAttribute_TaxCategory" FromRole="TaxCategory" ToRole="CheckoutAttribute" />
         </EntityType>
-        <EntityType Name="PriceComponent">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="Deleted" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ModifiedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-        </EntityType>
+        <Association Name="FK_CheckoutAttribute_TaxCategory">
+          <End Type="OrbioAdminModel.TaxCategory" Role="TaxCategory" Multiplicity="1" />
+          <End Type="OrbioAdminModel.CheckoutAttribute" Role="CheckoutAttribute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaxCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CheckoutAttribute">
+              <PropertyRef Name="TaxCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2478,6 +2530,34 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ProductComponents">
+            <EntityTypeMapping TypeName="OrbioAdminModel.ProductComponent">
+              <MappingFragment StoreEntitySet="ProductComponent">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ComponentName" ColumnName="ComponentName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PriceComponents">
+            <EntityTypeMapping TypeName="OrbioAdminModel.PriceComponent">
+              <MappingFragment StoreEntitySet="PriceComponent">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="CheckoutAttributes">
             <EntityTypeMapping TypeName="OrbioAdminModel.CheckoutAttribute">
               <MappingFragment StoreEntitySet="CheckoutAttribute">
@@ -2507,35 +2587,16 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ProductComponents">
-            <EntityTypeMapping TypeName="OrbioAdminModel.ProductComponent">
-              <MappingFragment StoreEntitySet="ProductComponent">
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="ComponentName" ColumnName="ComponentName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PriceComponents">
-            <EntityTypeMapping TypeName="OrbioAdminModel.PriceComponent">
-              <MappingFragment StoreEntitySet="PriceComponent">
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <EntitySetMapping Name="TaxCategories">
+            <EntityTypeMapping TypeName="OrbioAdminModel.TaxCategory">
+              <MappingFragment StoreEntitySet="TaxCategory">
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

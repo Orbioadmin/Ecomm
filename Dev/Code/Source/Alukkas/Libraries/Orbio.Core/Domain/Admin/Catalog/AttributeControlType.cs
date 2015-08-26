@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Orbio.Core.Domain.Admin.Catalog
 {
-    public enum AttributeControlTypes
+    public enum AttributeControlType
     {
         /// <summary>
         /// Dropdown list

@@ -35,7 +35,7 @@
         <AssociationConnector Association="OrbioAdminModel.FK_Discount_AppliedToCategories_Category" />
         <AssociationConnector Association="OrbioAdminModel.FK_Manufacturer_ManufacturerTemplate" />
         <AssociationConnector Association="OrbioAdminModel.FK_ManufacturerTemplate_ManufacturerTemplate" />
-        <EntityTypeShape EntityType="OrbioAdminModel.Product_Category_Mapping" Width="1.5" PointX="31.75" PointY="5.125" />
+        <EntityTypeShape EntityType="OrbioAdminModel.Product_Category_Mapping" Width="1.5" PointX="33.875" PointY="5.25" />
         <EntityTypeShape EntityType="OrbioAdminModel.Product_Manufacturer_Mapping" Width="1.5" PointX="24.5" PointY="10.25" />
         <AssociationConnector Association="OrbioAdminModel.ProductCategory_Category" />
         <AssociationConnector Association="OrbioAdminModel.ProductManufacturer_Manufacturer" />
@@ -49,12 +49,14 @@
         <EntityTypeShape EntityType="OrbioAdminModel.Product_SpecificationAttribute_Mapping" Width="1.5" PointX="34.75" PointY="12" />
         <AssociationConnector Association="OrbioAdminModel.ProductSpecificationAttribute_Product" />
         <AssociationConnector Association="OrbioAdminModel.ProductSpecificationAttribute_SpecificationAttributeOption" />
-        <EntityTypeShape EntityType="OrbioAdminModel.CheckoutAttribute" Width="1.5" PointX="26.125" PointY="15.875" />
-        <EntityTypeShape EntityType="OrbioAdminModel.CheckoutAttributeValue" Width="1.5" PointX="28.375" PointY="16" />
-        <AssociationConnector Association="OrbioAdminModel.CheckoutAttributeValue_CheckoutAttribute" />
         <EntityTypeShape EntityType="OrbioAdminModel.ProductComponent" Width="1.5" PointX="19.875" PointY="6.125" />
         <EntityTypeShape EntityType="OrbioAdminModel.PriceComponent" Width="1.5" PointX="24.75" PointY="5.875" />
-      </Diagram>
+        <EntityTypeShape EntityType="OrbioAdminModel.CheckoutAttribute" Width="1.5" PointX="17.625" PointY="2.125" />
+        <EntityTypeShape EntityType="OrbioAdminModel.CheckoutAttributeValue" Width="1.5" PointX="19.875" PointY="2.25" />
+        <AssociationConnector Association="OrbioAdminModel.CheckoutAttributeValue_CheckoutAttribute" />
+        <EntityTypeShape EntityType="OrbioAdminModel.TaxCategory" Width="1.5" PointX="15.375" PointY="2.75" />
+        <AssociationConnector Association="OrbioAdminModel.FK_CheckoutAttribute_TaxCategory" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

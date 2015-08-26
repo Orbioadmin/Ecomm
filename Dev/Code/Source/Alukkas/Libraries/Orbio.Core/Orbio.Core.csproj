@@ -142,6 +142,9 @@
     <Compile Include="Data\SpecificationAttributeOption.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\TaxCategory.cs">
+      <DependentUpon>OrbioAdmin.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\UrlRecord.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
@@ -151,7 +154,7 @@
     <Compile Include="Data\usp_OrbioAdmin_OrderDetails_Result.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
-    <Compile Include="Domain\Admin\Catalog\AttributeControlTypes.cs" />
+    <Compile Include="Domain\Admin\Catalog\AttributeControlType.cs" />
     <Compile Include="Domain\Admin\Catalog\CategoryDetails.cs" />
     <Compile Include="Domain\Admin\Catalog\CategoryList.cs" />
     <Compile Include="Domain\Admin\Catalog\DiscountDetails.cs" />

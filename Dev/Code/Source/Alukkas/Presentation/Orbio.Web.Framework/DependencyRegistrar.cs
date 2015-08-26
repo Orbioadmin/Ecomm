@@ -66,6 +66,8 @@ namespace Orbio.Web.Framework
             //added by roshni
             builder.RegisterType<OBS.Admin.Attributes.SpecificationAttributeService>().As<OBS.Admin.Attributes.ISpecificationAttributeService>().InstancePerHttpRequest();
             //added by roshni
+            builder.RegisterType<OBS.Admin.Attributes.CheckoutAttributeService>().As<OBS.Admin.Attributes.ICheckoutAttributeService>().InstancePerHttpRequest();
+            //added by roshni
             builder.RegisterType<OBS.Admin.Components.ProductComponentService>().As<OBS.Admin.Components.IProductComponentService>().InstancePerHttpRequest();
             //added by roshni
             builder.RegisterType<OBS.Admin.Components.PriceComponentService>().As<OBS.Admin.Components.IPriceComponentService>().InstancePerHttpRequest();
