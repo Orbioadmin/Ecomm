@@ -126,21 +126,24 @@
                                                 <div class="form-group">
                                                     @Html.LabelFor(m => m.OldPassword, new { @for = "OldPassword", @class = "col-sm-3 control-label" })
                                                     <div class="col-sm-9">
-                                                        @Html.TextBoxFor(m => m.OldPassword, new { type = "Password", @class = "form-control", placeholder = "Old Password" })
+                                                        @Html.TextBoxFor(m => m.OldPassword, new { type = "Password", @class = "form-control", placeholder = "Old Password", maxlength = "20"})
                                                         <span id="oldvalid" style="display:none" class="field-validation-error" data-valmsg-for="OldPassword" data-valmsg-replace="true">Old Password Required</span>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     @Html.LabelFor(m => m.NewPassword, new { @for = "NewPassword", @class = "col-sm-3 control-label" })
                                                     <div class="col-sm-9">
-                                                        @Html.TextBoxFor(m => m.NewPassword, new { type = "Password", @class = "form-control", placeholder = "New Password" })
+                                                        @Html.TextBoxFor(m => m.NewPassword, new { type = "Password", @class = "form-control", placeholder = "New Password", maxlength = "20"})
                                                         <span id="newvalid" style="display:none" class="field-validation-error" data-valmsg-for="NewPassword" data-valmsg-replace="true">New Password Required</span>
+                                                        <span id="newvalidreg" style="display:none" class="field-validation-error" data-valmsg-for="NewPassword" data-valmsg-replace="true">Password must contain atleast 1 special character and number</span>
+                                                        <span id="newvalidlen" style="display:none" class="field-validation-error" data-valmsg-for="NewPassword" data-valmsg-replace="true">The Password must be at least 6 characters long.</span>
+
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     @Html.LabelFor(m => m.ConfirmNewPassword, new { @for = "ConfirmNewPassword", @class = "col-sm-3 control-label" })
                                                     <div class="col-sm-9">
-                                                        @Html.TextBoxFor(m => m.ConfirmNewPassword, new { type = "Password", @class = "form-control", placeholder = "ConfirmNewPassword" })
+                                                        @Html.TextBoxFor(m => m.ConfirmNewPassword, new { type = "Password", @class = "form-control", placeholder = "ConfirmNewPassword", maxlength = "20" })
                                                         <span id="cnfnewvalid" style="display:none" class="field-validation-error" data-valmsg-for="ConfirmNewPassword" data-valmsg-replace="true">Confirm New Password Required</span>
                                                         <span id="pwdmatch" style="display:none" class="field-validation-error" data-valmsg-for="ConfirmNewPassword" data-valmsg-replace="true">Passwords does not match</span>
                                                     </div>
@@ -190,6 +193,7 @@
             $("#detail").css("display", "none");
             $("#myaccount").css("display", "none");
             $("#cWishlist").addClass("active");
+
         }
     </script>
     <script>
@@ -221,41 +225,76 @@
         });
 
         $('#chpwds').click(function (e) {
-            if ($("#OldPassword").val() == "" && $("#NewPassword").val() == "" && $("#ConfirmNewPassword").val() == "") {
+            //if ($("#OldPassword").val() == "" && $("#NewPassword").val() == "" && $("#ConfirmNewPassword").val() == "") {
+            //    $("#oldvalid").css("display", "");
+            //    $("#newvalid").css("display", "");
+            //    $("#cnfnewvalid").css("display", "");
+            //    $("#pwdmatch").css("display", "none");
+            //    return false;
+            //}
+
+            if ($("#OldPassword").val() == "") {
                 $("#oldvalid").css("display", "");
-                $("#newvalid").css("display", "");
-                $("#cnfnewvalid").css("display", "");
-                $("#pwdmatch").css("display", "none");
-                return false;
-            }
-            else if ($("#OldPassword").val() == "") {
-                $("#oldvalid").css("display", "");
                 $("#newvalid").css("display", "none");
                 $("#cnfnewvalid").css("display", "none");
                 $("#pwdmatch").css("display", "none");
+                $("#newvalidreg").css("display", "none");
+                $("#newvalidlen").css("display", "none");
                 return false;
             }
-            else if ($("#NewPassword").val() == "") {
+
+            
+            if ($("#NewPassword").val() == "") {
                 $("#oldvalid").css("display", "none");
                 $("#newvalid").css("display", "");
                 $("#cnfnewvalid").css("display", "none");
                 $("#pwdmatch").css("display", "none");
+                $("#newvalidreg").css("display", "none");
+                $("#newvalidlen").css("display", "none");
                 return false;
             }
-            else if ($("#ConfirmNewPassword").val() == "") {
-                $("#oldvalid").css("display", "none");
+
+            if ($("#NewPassword").val() != "") {
                 $("#newvalid").css("display", "none");
-                $("#cnfnewvalid").css("display", "");
-                $("#pwdmatch").css("display", "none");
-                return false;
+                if ($("#NewPassword").val().length > 5) {
+                    var pattern = /^(?=(.*[a-zA-Z].*))(?=.*\d.*)(?=.*\W.*)[a-zA-Z0-9\S]{6,20}$/;
+                    var pswd = $("#NewPassword").val();
+                    if (pattern.test(pswd)) {
+                        $("#newvalidreg").css("display", "none");
+                        if ($("#ConfirmNewPassword").val() == "") {
+                            $("#oldvalid").css("display", "none");
+                            $("#newvalid").css("display", "none");
+                            $("#cnfnewvalid").css("display", "");
+                            $("#pwdmatch").css("display", "none");
+                            $("#newvalidreg").css("display", "none");
+                            $("#newvalidlen").css("display", "none");
+                            return false;
+                        }
+                        else if ($("#ConfirmNewPassword").val() != $("#NewPassword").val()) {
+                            $("#oldvalid").css("display", "none");
+                            $("#newvalid").css("display", "none");
+                            $("#cnfnewvalid").css("display", "none");
+                            $("#pwdmatch").css("display", "");
+                            $("#newvalidreg").css("display", "none");
+                            $("#newvalidlen").css("display", "none");
+                            return false;
+                        }
+                    }
+                    else {
+                        $("#newvalidreg").css("display", "");
+
+                        $("#newvalidlen").css("display", "none");
+                        return false;
+                    }
+                }
+                else {
+                    $("#newvalidlen").css("display", "");
+                    $("#newvalidreg").css("display", "none");
+                    return false;
+                }
             }
-            else if ($("#ConfirmNewPassword").val() != $("#NewPassword").val()) {
-                $("#oldvalid").css("display", "none");
-                $("#newvalid").css("display", "none");
-                $("#cnfnewvalid").css("display", "none");
-                $("#pwdmatch").css("display", "");
-                return false;
-            }
+
+
         });
 
         $('#can').click(function (e) {
@@ -312,5 +351,8 @@
                 changeYear: true
             });
         });
+
     </script>
+
+
 }

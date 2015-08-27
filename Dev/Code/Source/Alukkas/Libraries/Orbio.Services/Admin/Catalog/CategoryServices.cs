@@ -172,7 +172,7 @@ namespace Orbio.Services.Admin.Catalog
                     context.SaveChanges();
                     int Id = category.Id;
 
-                   var UrlRecord = context.UrlRecords.Where(m => m.EntityId == model.Id && m.EntityName == "Category").FirstOrDefault();
+                    var UrlRecord = context.UrlRecords.Where(m => m.EntityName == "Category").FirstOrDefault();
                    
                     UrlRecord.EntityId = Id;
                     UrlRecord.EntityName = "Category";

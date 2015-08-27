@@ -169,8 +169,8 @@ if not exists(select Id from [dbo].[ShoppingCartItem] where ShoppingCartTypeId=@
 						else
 							begin
 								
-								insert into [dbo].[ShoppingCartItem](StoreId,ShoppingCartTypeId,CustomerId,ProductId,CustomerEnteredPrice,AttributesXml,Quantity,CreatedOnUtc,UpdatedOnUtc)
-								values(0,@shoppingCartTypeId, (select CustomerId from [dbo].[ShoppingCartItem] where Id = @id ),(select ProductId from [dbo].[ShoppingCartItem] where Id = @id ),0.00,(select AttributesXml from [dbo].[ShoppingCartItem] where Id = @id ),(select Quantity from [dbo].[ShoppingCartItem] where Id = @id ),(select CreatedOnUtc from [dbo].[ShoppingCartItem] where Id = @id ),(select UpdatedOnUtc from [dbo].[ShoppingCartItem] where Id = @id ))
+								insert into [dbo].[ShoppingCartItem](StoreId,ShoppingCartTypeId,CustomerId,ProductId,CustomerEnteredPrice,AttributesXml,Quantity,ShoppingCartStatusId,CreatedOnUtc,UpdatedOnUtc)
+								values(0,@shoppingCartTypeId, (select CustomerId from [dbo].[ShoppingCartItem] where Id = @id ),(select ProductId from [dbo].[ShoppingCartItem] where Id = @id ),0.00,(select AttributesXml from [dbo].[ShoppingCartItem] where Id = @id ),(select Quantity from [dbo].[ShoppingCartItem] where Id = @id ),@shoppingCartStatusId,(select CreatedOnUtc from [dbo].[ShoppingCartItem] where Id = @id ),(select UpdatedOnUtc from [dbo].[ShoppingCartItem] where Id = @id ))
 								select 'ShoppingCart'
 
 							end
@@ -180,8 +180,8 @@ if not exists(select Id from [dbo].[ShoppingCartItem] where ShoppingCartTypeId=@
 				else
 					begin
 
-						insert into [dbo].[ShoppingCartItem](StoreId,ShoppingCartTypeId,CustomerId,ProductId,CustomerEnteredPrice,AttributesXml,Quantity,CreatedOnUtc,UpdatedOnUtc)
-						values(0,@shoppingCartTypeId, (select CustomerId from [dbo].[ShoppingCartItem] where Id = @id ),(select ProductId from [dbo].[ShoppingCartItem] where Id = @id ),0.00,(select AttributesXml from [dbo].[ShoppingCartItem] where Id = @id ),(select Quantity from [dbo].[ShoppingCartItem] where Id = @id ),(select CreatedOnUtc from [dbo].[ShoppingCartItem] where Id = @id ),(select UpdatedOnUtc from [dbo].[ShoppingCartItem] where Id = @id ))
+						insert into [dbo].[ShoppingCartItem](StoreId,ShoppingCartTypeId,CustomerId,ProductId,CustomerEnteredPrice,AttributesXml,Quantity,ShoppingCartStatusId,CreatedOnUtc,UpdatedOnUtc)
+						values(0,@shoppingCartTypeId, (select CustomerId from [dbo].[ShoppingCartItem] where Id = @id ),(select ProductId from [dbo].[ShoppingCartItem] where Id = @id ),0.00,(select AttributesXml from [dbo].[ShoppingCartItem] where Id = @id ),(select Quantity from [dbo].[ShoppingCartItem] where Id = @id ),@shoppingCartStatusId,(select CreatedOnUtc from [dbo].[ShoppingCartItem] where Id = @id ),(select UpdatedOnUtc from [dbo].[ShoppingCartItem] where Id = @id ))
 						select 'ShoppingCart'
 
 					end
