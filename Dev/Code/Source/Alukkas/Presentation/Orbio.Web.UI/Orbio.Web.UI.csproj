@@ -348,7 +348,6 @@
     <None Include="Areas\Admin\Scripts\_references.js" />
     <Content Include="Areas\Admin\Scripts\paging.js" />
     <Content Include="Areas\Admin\Scripts\tinymce.jquery.min.js" />
-    <Content Include="Areas\Admin\Scripts\tinymce\license.txt" />
     <Content Include="Areas\Admin\Scripts\tinymce\plugins\advlist\plugin.min.js" />
     <Content Include="Areas\Admin\Scripts\tinymce\plugins\anchor\plugin.min.js" />
     <Content Include="Areas\Admin\Scripts\tinymce\plugins\autolink\plugin.min.js" />
@@ -715,6 +714,7 @@
     <Content Include="Views\ShoppingCart\_orderTotalSummary.cshtml" />
     <Content Include="Views\CheckOut\_address.cshtml" />
     <Content Include="Views\Common\PageNotFound.cshtml" />
+    <None Include="Properties\PublishProfiles\NopCommerce.pubxml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -920,20 +920,6 @@
     <Content Include="Areas\Admin\Views\ShoppingCart\CartItems.cshtml" />
     <Content Include="Areas\Admin\Views\ShoppingCart\_OrderSummary.cshtml" />
     <Content Include="Areas\Admin\Views\ShoppingCart\_CartCustomer.cshtml" />
-    <Content Include="Areas\Admin\Views\Category\AddorEditCategory.cshtml" />
-    <Content Include="Areas\Admin\Views\Manufacturer\AddOrEditManufacturer.cshtml" />
-    <Content Include="Areas\Admin\Views\Manufacturer\AddProduct.cshtml" />
-    <Content Include="Areas\Admin\Views\Category\CategoryAccessControlList.cshtml" />
-    <Content Include="Areas\Admin\Views\Category\CategoryInfo.cshtml" />
-    <Content Include="Areas\Admin\Views\Category\CategoryMenu.cshtml" />
-    <Content Include="Areas\Admin\Views\Category\CategoryProduct.cshtml" />
-    <Content Include="Areas\Admin\Views\Category\DiscountCategory.cshtml" />
-    <Content Include="Areas\Admin\Views\Category\ManageCategories.cshtml" />
-    <Content Include="Areas\Admin\Views\Manufacturer\ManageManufacturer.cshtml" />
-    <Content Include="Areas\Admin\Views\Manufacturer\ManufacturerACL.cshtml" />
-    <Content Include="Areas\Admin\Views\Manufacturer\ManufacturerInfo.cshtml" />
-    <Content Include="Areas\Admin\Views\Manufacturer\ManufacturerMenu.cshtml" />
-    <Content Include="Areas\Admin\Views\Manufacturer\ManufacturerProduct.cshtml" />
     <Content Include="Areas\Admin\Views\ShoppingCart\CurrentWishLists.cshtml" />
     <Content Include="Areas\Admin\Views\ShoppingCart\_WishListCustomer.cshtml" />
     <Content Include="Areas\Admin\Views\Attribute\_AddOrEditProductAttribute.cshtml" />
