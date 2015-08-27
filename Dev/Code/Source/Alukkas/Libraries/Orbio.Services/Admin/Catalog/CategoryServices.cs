@@ -147,6 +147,12 @@ namespace Orbio.Services.Admin.Catalog
                         category.DisplayOrder = model.DisplayOrder;
                         category.UpdatedOnUtc = DateTime.Now;
                         context.SaveChanges();
+                        var UrlRecord = context.UrlRecords.Where(m =>m.EntityId==model.Id && m.EntityName == "Category").FirstOrDefault();
+                        if (UrlRecord != null)
+                        {
+                            UrlRecord.Slug = model.SearchEngine;
+                            context.SaveChanges();
+                        }
                     }
                 }
                 else
@@ -171,20 +177,15 @@ namespace Orbio.Services.Admin.Catalog
                     context.Categories.Add(category);
                     context.SaveChanges();
                     int Id = category.Id;
-
                     var UrlRecord = context.UrlRecords.Where(m => m.EntityName == "Category").FirstOrDefault();
-                   
-                    UrlRecord.EntityId = Id;
-                    UrlRecord.EntityName = "Category";
-                    UrlRecord.Slug = model.SearchEngine;
-                    UrlRecord.IsActive = true;
-                    UrlRecord.LanguageId = 0;
                     if (UrlRecord != null)
                     {
-                        context.SaveChanges();
-                    }
-                    else
-                    {
+
+                        UrlRecord.EntityId = Id;
+                        UrlRecord.EntityName = "Category";
+                        UrlRecord.Slug = model.SearchEngine;
+                        UrlRecord.IsActive = true;
+                        UrlRecord.LanguageId = 0;
                         context.UrlRecords.Add(UrlRecord);
                         context.SaveChanges();
                     }

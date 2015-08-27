@@ -5,7 +5,8 @@
         <div class="col-md-12">
             <div class="col-md-2"><label>Manufacturer Name:</label></div>
             <div class="col-md-4">@Html.TextBoxFor(m => m.Manufacturer.Name, new { @class = "creatext", onkeyup = "javascript:GenerateScript()", id = "manufname" }) 
-            @*<input type="text" name="prorductname" class="creatext">*@</div>
+          @Html.HiddenFor(m=>m.Manufacturer.Id)
+              @*<input type="text" name="prorductname" class="creatext">*@</div>
         </div>
 
         <div class="col-md-12" style="padding-bottom:20px;">
