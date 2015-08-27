@@ -8,7 +8,7 @@
         <div class="catalog-bulk col-md-12" style="padding-left:0px;">
             <label class="checkout-att"></label>
             <h1>CHECKOUT ATTRIBUTES</h1>
-            <div class="pull-right"><a href="checkout-product-create.html"><input type="button" value="Add New" class="Sbut  ssbut1"></a></div>
+            <div class="pull-right"><a href="@Url.Action("AddCheckoutAttribute","Attribute")"><input type="button" value="Add New" class="Sbut  ssbut1"></a></div>
         </div>
     </div>
     <div class="container">
@@ -34,7 +34,9 @@
                                 <td>@item.ControlType</td>
                                 <td>@item.IsRequired</td>
                                 <td>@item.DisplayOrder</td>
-                                <td><label class="edit"></label></td>
+                                <td><a href="@Url.Action("EditCheckoutAttribute", "Attribute", new { Id=item.Id })"><label class="jewedit" style="top:0px;float:none;"></label></a>
+                                    <a href="@Url.Action("DeleteCheckoutAttribute", "Attribute", new { Id=item.Id })"><label class="jewdelete" style="top:0px;float:none;" onclick=" return confirm('Are You Sure'); "></label></a>
+                                </td>
                             </tr>
                             }
                         </tbody>

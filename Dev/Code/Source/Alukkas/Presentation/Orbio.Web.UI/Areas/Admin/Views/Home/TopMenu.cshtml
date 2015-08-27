@@ -66,14 +66,14 @@
 <ul class="dropdown-menu">
 <li><a href="@Url.Action("ProductAttribute", "Attribute")">Product Attributes</a></li>
 <li><a href="@Url.Action("ListSpecificationAttribute", "Attribute")">Specification Attributes</a></li>
-<li><a href="#">Checkout Attributes</a></li>
+<li><a href="@Url.Action("GetCheckoutAttribute","Attribute")">Checkout Attributes</a></li>
 </ul>
 </li>
 <li class="dropdown-submenu">
 <a href="#" tabindex="-1">components</a>
 <ul class="dropdown-menu">
-<li><a href="#">Product component</a></li>
-<li><a href="#">Price component</a></li>
+<li><a href="@Url.Action("ProductComponent", "Component")">Product component</a></li>
+<li><a href="@Url.Action("PriceComponent", "Component")">Price component</a></li>
 </ul>
 </li>
 

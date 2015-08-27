@@ -32,7 +32,7 @@
                                     <td>@item.Name</td>
                                     <td>@item.DisplayOrder</td>
                                     <td><a href="@Url.Action("EditSpecificationAttribute", "Attribute", new { Id=item.Id })"><label class="jewedit" style="float:none;top:0px;"></label></a>
-                                        <a href="@Url.Action("DeleteSpecificationAttribute", "Attribute", new { Id=item.Id })"><label class="jewdelete" style="float:none;top:0px;"></label></a>
+                                        <a href="@Url.Action("DeleteSpecificationAttribute", "Attribute", new { Id=item.Id })"><label class="jewdelete" style="float:none;top:0px;" onclick=" return confirm('Are You Sure'); "></label></a>
                                     </td>
                                 </tr>
                             }

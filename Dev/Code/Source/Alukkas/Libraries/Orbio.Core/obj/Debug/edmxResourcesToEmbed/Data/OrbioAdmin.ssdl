@@ -495,6 +495,14 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
     <Property Name="DisplayOrder" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="TaxCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="400" Nullable="false" />
+    <Property Name="DisplayOrder" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="UrlRecord">
     <Key>
       <PropertyRef Name="Id" />
@@ -593,6 +601,18 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
       </Principal>
       <Dependent Role="Category">
         <PropertyRef Name="PictureId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CheckoutAttribute_TaxCategory">
+    <End Role="TaxCategory" Type="Self.TaxCategory" Multiplicity="1" />
+    <End Role="CheckoutAttribute" Type="Self.CheckoutAttribute" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaxCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CheckoutAttribute">
+        <PropertyRef Name="TaxCategoryId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -858,6 +878,7 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
     <EntitySet Name="RecurringPayment" EntityType="Self.RecurringPayment" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SpecificationAttribute" EntityType="Self.SpecificationAttribute" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SpecificationAttributeOption" EntityType="Self.SpecificationAttributeOption" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TaxCategory" EntityType="Self.TaxCategory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UrlRecord" EntityType="Self.UrlRecord" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Discount_AppliedToCategories" EntityType="Self.Discount_AppliedToCategories" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
@@ -892,6 +913,10 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
     <AssociationSet Name="FK_Category_Picture" Association="Self.FK_Category_Picture">
       <End Role="Picture" EntitySet="Picture" />
       <End Role="Category" EntitySet="Category" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CheckoutAttribute_TaxCategory" Association="Self.FK_CheckoutAttribute_TaxCategory">
+      <End Role="TaxCategory" EntitySet="TaxCategory" />
+      <End Role="CheckoutAttribute" EntitySet="CheckoutAttribute" />
     </AssociationSet>
     <AssociationSet Name="FK_Discount_AppliedToCategories_Category" Association="Self.FK_Discount_AppliedToCategories_Category">
       <End Role="Category" EntitySet="Category" />

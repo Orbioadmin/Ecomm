@@ -12,24 +12,17 @@ namespace Orbio.Core.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class CheckoutAttribute
+    public partial class TaxCategory
     {
-        public CheckoutAttribute()
+        public TaxCategory()
         {
-            this.CheckoutAttributeValues = new HashSet<CheckoutAttributeValue>();
+            this.CheckoutAttributes = new HashSet<CheckoutAttribute>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
-        public string TextPrompt { get; set; }
-        public bool IsRequired { get; set; }
-        public bool ShippableProductRequired { get; set; }
-        public bool IsTaxExempt { get; set; }
-        public int TaxCategoryId { get; set; }
-        public int AttributeControlTypeId { get; set; }
         public int DisplayOrder { get; set; }
     
-        public virtual ICollection<CheckoutAttributeValue> CheckoutAttributeValues { get; set; }
-        public virtual TaxCategory TaxCategory { get; set; }
+        public virtual ICollection<CheckoutAttribute> CheckoutAttributes { get; set; }
     }
 }

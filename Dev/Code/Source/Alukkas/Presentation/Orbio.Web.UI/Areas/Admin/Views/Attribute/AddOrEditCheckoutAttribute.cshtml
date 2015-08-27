@@ -1,4 +1,7 @@
-﻿
+﻿@using Orbio.Web.UI.Areas.Admin.Models.Attribute
+
+@model CheckoutAttributeModel
+
 @{
     ViewBag.Title = "AddOrEditCheckoutAttribute";
 }
@@ -8,26 +11,40 @@
         <div class="catalog-bulk col-md-12 ">
             <div class="pull-left">
                 <label class="gift-product"></label>
-                <h1>ADD A NEW  DETAILS</h1>
+                @if(Model.Id!=0)
+                { 
+                <h1>ADD NEW CHECKOUT ATTRIBUTE<a href="@Url.Action("GetCheckoutAttribute","Attribute")">(back to checkout attribute list)</a></h1>
+                }
+                else
+                {
+                    <h1>EDIT CHECKOUT ATTRIBUTE<a href="@Url.Action("GetCheckoutAttribute","Attribute")">(back to checkout attribute list)</a></h1>
+                }
             </div>
-
-            <div class="pull-right"><a href="checkout-attributes.html"><input type="button" value="BACK TO CHECKOUT ATTRIBUTE LIST" class="but butt"><i class="back"></i></a></div>
-
         </div>
         
+        @using(Html.BeginForm("SaveCheckoutAttribute","Attribute",FormMethod.Post))
+        { 
         <div class="col-md-12">
             <div class="pull-right">
+                @if(Model.Id!=0)
+                { 
                 <div class="options">
-                    <input type="button" value="Save" class=" Sbut   ssbut1">
-                    <input type="button" value="Save and Continue Edit" class=" Sbut   ssbut1">
-                    <input type="button" value="Delete" class=" Sbut   ssbut1">
+                <input type="submit" value="Save" class=" Sbut   ssbut1">
+                    <a href="@Url.Action("DeleteCheckoutAttribute", "Attribute", new { Id=Model.Id })"><input type="button" value="Delete" class=" Sbut   ssbut1"></a>
                 </div>
-            </div>
+                }
+                else
+                {
+                    <div class="options">
+                        <input type="submit" value="Save and Continue Edit" class=" Sbut   ssbut1">
+                        <a href="@Url.Action("DeleteCheckoutAttribute", "Attribute", new { Id=Model.Id })"><input type="button" value="Delete" class=" Sbut   ssbut1" onclick=" return confirm('Are You Sure'); "></a>
+                    </div>
+                }
+    </div>
         </div>
-        
         <div class="container">
             <div class="col-md-12 colmd12 ">
-                <div class="col-md-3 tabcustomer  " style="padding-left:0px;">
+                <div class="col-md-3 tabcustomer" style="padding-left:0px;">
                     <ul class="nav  nav-stacked product-info">
                         <li class="active"><a href="#attributeinfo" role="tab" data-toggle="tab">ATTRIBUTE INFO</a></li>
                         <li><a href="#option" role="tab" data-toggle="tab">ATTRIBUTE VALUES</a></li>
@@ -37,108 +54,28 @@
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane in active" id="attributeinfo">
 
-                            <div class="tab-content">
-                                <div role="tabpanel" class="tab-pane in active" id="standard">
-                                    <div class="col-md-12 product-specification1">
-
-                                        <div class="col-md-3"><label> Name:</label></div>
-                                        <div class="col-md-3"><input type="text" class="produtxt"></div>
-                                    </div>
-                                    <div class="col-md-12 product-specification1">
-                                        <div class="col-md-3"><label> Text Prompt:</label></div>
-                                        <div class="col-md-3"><input type="text" class="produtxt"></div>
-                                    </div>
-
-                                    <div class="col-md-12 product-specification1">
-                                        <div class="col-md-3"><label> Required:</label></div>
-                                        <div class="col-md-3"><input type="checkbox" class=""></div>
-                                    </div>
-                                    <div class="col-md-12 product-specification1">
-                                        <div class="col-md-3"><label> Shipable Product Required:</label></div>
-                                        <div class="col-md-3"><input type="checkbox" class=""></div>
-                                    </div>
-                                    <div class="col-md-12 product-specification1">
-                                        <div class="col-md-3"><label> Tax Category:</label></div>
-                                        <div class="col-md-3"><select class="jewellery produtxt"><option></option></select></div>
-                                    </div>
-                                    <div class="col-md-12 product-specification1">
-                                        <div class="col-md-3"><label> Control Type:</label></div>
-                                        <div class="col-md-3"><select class="jewellery produtxt"><option>Drop Down List</option></select> </div>
-                                    </div>
-                                    <div class="col-md-12 product-specification1">
-                                        <div class="col-md-3"><label> Display Order:</label></div>
-                                        <div class="col-md-3"><input type="number" class="produtxt"></div>
-                                    </div>
-                                </div>
-                            </div>
+                           @{
+                               Html.RenderPartial("CheckoutAttribute", this.Model);
+                           }
                         </div>
                         <div role="tabpanel" class="tab-pane in " id="option">
-                            <div class="table-responsive">
-                                <table id="spetable" class="table table-border checkborder">
-                                    <thead>
-                                    <th>Name</th>
-                                    <th>Display Order</th>
-                                    <th>Number of Associated products</th>
-                                    <th>Edit</th>
-                                    <th>Delete</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Artificial Jewellery</td>
-                                            <td>1</td>
-                                            <td>4</td>
-                                            <td><label class="edit"></label></td>
-                                            <td><label class="img_sprite"></label></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <div class="pull-left1"><input type="button" class="but-refresh"></div>
-                                <div class="pull-right"><a href="#myModal" data-toggle="modal"><input type="button" class="but-search" value="Add a new option"></a></div>
-                            </div>
+                            @{
+                                if (Model.Id != 0)
+                                {
+                                    Html.RenderPartial("CheckoutAttributeValue", this.Model);
+                                }
+                                else
+                                {
+                                    <label>You need to save before adding a value</label>
+                                }
+                            }
+                            
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        }
         </div>
 </section>
-
-<div id="myModal" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title"> Add new associated product</h4>
-            </div>
-            <div class="modal-body">
-                <div class="tab-content ">
-                    <div role="tabpanel" class="tab-pane in active" id="standard">
-                        <div class="col-md-12 product-specification">
-                            <div class="col-md-5">Name</div>
-                            <div class="col-md-6"><input type="text" class="produtxt"></div>
-                        </div>
-
-                        <div class="col-md-12 product-specification1">
-                            <div class="col-md-5">Price Adjustment:</div>
-
-                            <div class="col-md-6"><input type="number" class="produtxt"></div>
-                        </div>
-                        <div class="col-md-12 product-specification1">
-                            <div class="col-md-5">Weight Adjustment:</div>
-                            <div class="col-md-6"><input type="number" class="produtxt"></div>
-                        </div>
-                        <div class="col-md-12 product-specification1">
-                            <div class="col-md-5">Pre-selected:</div>
-                            <div class="col-md-6"><input type="checkbox" class="produtxt"></div>
-                        </div>
-                        <div class="col-md-12 product-specification1">
-                            <div class="col-md-5">Display Order:</div>
-                            <div class="col-md-6"><input type="number" class="produtxt"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
