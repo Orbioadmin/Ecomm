@@ -247,23 +247,30 @@ namespace Orbio.Services.Messages
 
 
         /// <summary>
-        /// Sends an order completed notification to a customer
+        /// Sends an order notification to a customer
         /// </summary>
         /// <param name="order">Order instance</param>
         /// <param name="languageId">Message language identifier</param>
         /// <param name="attachmentFilePath">Attachment file path</param>
         /// <param name="attachmentFileName">Attachment file name. If specified, then this file name will be sent to a recipient. Otherwise, "AttachmentFilePath" name will be used.</param>
         /// <returns>Queued email identifier</returns>
-        public virtual int SendOrderCompletedCustomerNotification(Order order,int languageId,
-            string attachmentFilePath = null, string attachmentFileName = null)
+        public virtual int SendOrderCustomerNotification(Order order,int languageId,
+            string attachmentFilePath = null, string attachmentFileName = null, int orderStatusId = 0)
         {
             if (order == null)
                 throw new ArgumentNullException("order");
 
             var store = storeContext.CurrentStore;
-
+            string value = "";
+            OrderStatus? orderStatus = orderStatusId > 0 ? (OrderStatus?)orderStatusId : null;
+            if (orderStatus.ToString() == "Processing")
+            { value = "OrderProcessed.CustomerNotification"; }
+            else if (orderStatus.ToString() == "Complete")
+            { value = "OrderCompleted.CustomerNotification"; }
+            else if (orderStatus.ToString() == "Cancelled")
+            { value = "OrderCancelled.CustomerNotification"; }
             var result = context.ExecuteFunction<MessageTemplate>("usp_MessageTemplate",
-                 new SqlParameter() { ParameterName = "@messagename", Value = "OrderCompleted.CustomerNotification", DbType = System.Data.DbType.String });
+                 new SqlParameter() { ParameterName = "@messagename", Value = value, DbType = System.Data.DbType.String });
             var messageTemplate = new MessageTemplate();
             messageTemplate = result.FirstOrDefault();
 
@@ -290,41 +297,6 @@ namespace Orbio.Services.Messages
             //    toEmail, toName,
             //    attachmentFilePath,
             //    attachmentFileName);
-        }
-
-        /// <summary>
-        /// Sends an order cancelled notification to a customer
-        /// </summary>
-        /// <param name="order">Order instance</param>
-        /// <param name="languageId">Message language identifier</param>
-        /// <returns>Queued email identifier</returns>
-        public virtual int SendOrderCancelledCustomerNotification(Order order, int languageId)
-        {
-            if (order == null)
-                throw new ArgumentNullException("order");
-
-            var store = storeContext.CurrentStore;
-
-            var result = context.ExecuteFunction<MessageTemplate>("usp_MessageTemplate",
-                 new SqlParameter() { ParameterName = "@messagename", Value = "OrderCancelled.CustomerNotification", DbType = System.Data.DbType.String });
-            var messageTemplate = new MessageTemplate();
-            messageTemplate = result.FirstOrDefault();
-
-            //tokens
-            var tokens = new List<Token>();
-            messageTokenProvider.AddStoreTokens(tokens, store);
-            messageTokenProvider.AddOrderTokens(tokens, order);
-            messageTokenProvider.AddCustomerTokens(tokens, order.Customer);
-
-            var toEmail = order.Customer.Email;
-            var toName = "";
-
-            EmailDetail Sent = SendNotification(messageTemplate, tokens, toEmail, toName);
-            return emailService.SentEmail(Sent);
-
-            //return SendNotification(messageTemplate, emailAccount,
-            //    languageId, tokens,
-            //    toEmail, toName);
         }
 
         /// <summary>
@@ -365,6 +337,44 @@ namespace Orbio.Services.Messages
             //return SendNotification(messageTemplate, emailAccount,
             //    languageId, tokens,
             //    toEmail, toName);
+        }
+
+        /// <summary>
+        /// Sends a shipment sent notification to a customer
+        /// </summary>
+        /// <param name="shipment">Shipment</param>
+        /// <param name="languageId">Message language identifier</param>
+        /// <returns>Queued email identifier</returns>
+        public virtual int SendShipmentSentCustomerNotification(Orbio.Core.Data.Shipment shipment,Order order, int languageId)
+        {
+            if (shipment == null)
+                throw new ArgumentNullException("shipment");
+
+            if (order == null)
+                throw new Exception("Order cannot be loaded");
+
+            var store = storeContext.CurrentStore;
+
+            var result = context.ExecuteFunction<MessageTemplate>("usp_MessageTemplate",
+            new SqlParameter() { ParameterName = "@messagename", Value = "ShipmentSent.CustomerNotification", DbType = System.Data.DbType.String });
+            var messageTemplate = new MessageTemplate();
+            messageTemplate = result.FirstOrDefault();
+
+            if (messageTemplate == null)
+                return 0;
+
+            //tokens
+            var tokens = new List<Token>();
+            messageTokenProvider.AddStoreTokens(tokens, store);
+            messageTokenProvider.AddShipmentTokens(tokens, shipment, order, languageId);
+            messageTokenProvider.AddOrderTokens(tokens, order);
+            messageTokenProvider.AddCustomerTokens(tokens, order.Customer);
+
+            var toEmail = order.Customer.Email;
+            var toName = "";
+
+            EmailDetail Sent = SendNotification(messageTemplate, tokens, toEmail, toName);
+            return emailService.SentEmail(Sent);
         }
     }
 }

@@ -12,19 +12,11 @@ namespace Orbio.Core.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class SpecificationAttributeOption
+    public partial class ShippingMethod
     {
-        public SpecificationAttributeOption()
-        {
-            this.Product_SpecificationAttribute_Mapping = new HashSet<Product_SpecificationAttribute_Mapping>();
-        }
-    
         public int Id { get; set; }
-        public int SpecificationAttributeId { get; set; }
         public string Name { get; set; }
+        public string Description { get; set; }
         public int DisplayOrder { get; set; }
-    
-        public virtual ICollection<Product_SpecificationAttribute_Mapping> Product_SpecificationAttribute_Mapping { get; set; }
-        public virtual SpecificationAttribute SpecificationAttribute { get; set; }
     }
 }

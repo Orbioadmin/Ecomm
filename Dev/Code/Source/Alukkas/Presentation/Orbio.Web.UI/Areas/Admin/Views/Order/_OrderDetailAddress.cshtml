@@ -1,5 +1,53 @@
 ﻿@model Orbio.Web.UI.Areas.Admin.Models.Orders.OrderModel
-<div role="tabpanel" class="tab-pane " id="billingInfo">
+
+<div aria-labelledby="home-tab" id="address" class="tab-pane fade " role="tabpanel" style="opacity:1">
+    <table style="width:100%">
+        <tr>
+            <td style="width:50%">
+                <div class="billing_address_main">
+                    <h3>Billing Address</h3>
+                    <div class="left_address_form">
+                        <table>
+                            <tr><td>Full Name </td><td>:  @Model.BillingAddress.FirstName</td></tr>
+                            <tr><td>Phone </td><td>: @Model.BillingAddress.PhoneNumber</td></tr>
+                            <tr><td>Address </td><td>: @Model.BillingAddress.Address1</td></tr>
+                            <tr><td>City </td><td>: @Model.BillingAddress.City</td></tr>
+                            <tr><td>State/province </td><td>: @Model.BillingAddress.States</td></tr>
+                            <tr><td>Zip/Postal code</td><td>: @Model.BillingAddress.ZipPostalCode</td></tr>
+                            <tr><td>Contry</td><td>: @Model.BillingAddress.Country</td></tr>
+                            <tr><td></td><td>
+                                             <a style="cursor:pointer" target="_blank" class="add_product_submit" href="@Url.Action("AddressEdit", new { addressId = Model.BillingAddress.BillingAddress_Id, orderId =Model.Id })">Edit</a>
+                                </td></tr>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td style="width:50%">
+                <div class="billing_address_main">
+                    <div class="left_address_form">
+
+                        <h3>Shipping Address</h3>
+                        <table>
+                            <tr><td>Full Name </td><td>:  @Model.ShippingAddress.FirstName</td></tr>
+                            <tr><td>Phone </td><td>: @Model.ShippingAddress.PhoneNumber</td></tr>
+                            <tr><td>Address </td><td>: @Model.ShippingAddress.Address1</td></tr>
+                            <tr><td>City </td><td>: @Model.ShippingAddress.City</td></tr>
+                            <tr><td>State/province </td><td>: @Model.ShippingAddress.States</td></tr>
+                            <tr><td>Zip/Postal code</td><td>: @Model.ShippingAddress.ZipPostalCode</td></tr>
+                            <tr><td>Contry</td><td>: @Model.ShippingAddress.Country</td></tr>
+                            <tr><td></td><td>
+                                             <a style="cursor:pointer" target="_blank" class="add_product_submit" href="@Url.Action("AddressEdit", new { addressId = Model.BillingAddress.BillingAddress_Id, orderId =Model.Id })">Edit</a>
+                                </td></tr>
+                        </table>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+@*<div role="tabpanel" class="tab-pane " id="billingInfo">
     <div class="col-md-3">Billing Address:</div>
     <div class="col-md-9">
         <div class="pull-left">
@@ -47,42 +95,4 @@
             </div>
         </div>
     </div>
-    <div class="col-md-3"></div>
-    <div class="col-md-9"><div class="pull-left"><span>View Address on Google Maps</span></div></div>
-    <div class="col-md-3">Shipping method</div>
-    <div class="col-md-9"><div class="pull-left"><button class="editbut">edit</button></div></div>
-    <div class="col-md-3">Shipping status</div>
-    <div class="col-md-9"><div class="pull-left"><span>@Model.ShippingStatus</span></div></div>
-    <div class="col-md-12"><span>Shipment</span></div>
-    <div class="table-home">
-        <div class="col-md-12">
-            <div class="table-responsive best-seller-table editOrderTable">
-                <table class="table table-bordered table-striped  ">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Shipment</th>
-                            <th>Tracking Number</th>
-                            <th>Total Weight</th>
-                            <th>Date Shipped</th>
-                            <th>Date delivered</th>
-                            <th>View</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr style="display: table-row;">
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="pull-left"><input class="but-refresh" type="button"></div>
-            </div>
-        </div>
-    </div>
-</div>
+</div>*@

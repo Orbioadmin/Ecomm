@@ -3,6 +3,7 @@ using Orbio.Core.Domain.Checkout;
 using Orbio.Web.UI.Models.CheckOut;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -18,6 +19,7 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Orders
             Items = new List<OrderItemModel>();
             UsedDiscounts = new List<UsedDiscountModel>();
             OrderNotes = new List<OrderNote>();
+            AvailableShippingMethods = new List<SelectListItem>();
         }
 
         public bool IsLoggedInAsVendor { get; set; }
@@ -103,6 +105,11 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Orders
 
         public decimal OrderTotalDiscountValue { get; set; }
 
+        public string OrderTotalAdjustment { get; set; }
+
+        [DisplayName("Free Shipping")]
+        public bool OrderFreeShipping { get; set; }
+
         public decimal OrderTotalValue { get; set; }
 
         //associated recurring payment id
@@ -152,11 +159,16 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Orders
 
         public string ShippingStatus { get; set; }
 
+        public int ShippingStatusId { get; set; }
+
         public Address ShippingAddress { get; set; }
 
         public string ShippingMethod { get; set; }
+
         public string ShippingAddressGoogleMapsUrl { get; set; }
         public bool CanAddNewShipments { get; set; }
+
+        public Shipping shipping { get; set; }
 
         //billing info
 
@@ -197,6 +209,8 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Orders
         public string aggregatortax { get; set; }
         public string aggregatortotal { get; set; }
 
+        public IList<SelectListItem> AvailableShippingMethods { get; set; }
+
         #region Nested Classes
 
         public partial class OrderItemModel
@@ -210,6 +224,7 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Orders
             public string ProductName { get; set; }
             public string VendorName { get; set; }
             public string Sku { get; set; }
+            public string ImageUrl { get; set; }
 
             public string UnitPriceInclTax { get; set; }
             public string UnitPriceExclTax { get; set; }
@@ -261,6 +276,23 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Orders
             public bool DisplayToCustomer { get; set; }
 
             public string Note { get; set; }
+
+            public DateTime CreatedOn { get; set; }
+        }
+
+        public partial class Shipping
+        {
+            public int Id { get; set; }
+
+            public string TrackingNumber { get; set; }
+
+            public decimal? TotalWeight { get; set; }
+
+            public string Comment { get; set; }
+
+            public DateTime? DateShipped { get; set; }
+
+            public DateTime? DateDelivered { get; set; }
 
             public DateTime CreatedOn { get; set; }
         }

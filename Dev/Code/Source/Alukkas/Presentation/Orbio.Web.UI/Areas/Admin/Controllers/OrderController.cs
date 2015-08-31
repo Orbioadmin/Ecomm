@@ -19,6 +19,7 @@ using Orbio.Services.Admin.Address;
 using Orbio.Services.Directory;
 using Orbio.Core.Domain.Directory;
 using Orbio.Services.Messages;
+using System.Configuration;
 
 namespace Orbio.Web.UI.Areas.Admin.Controllers
 {
@@ -33,11 +34,12 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         private readonly IStateProvinceService _stateProvinceService;
         private readonly IOrderProcessingService _orderProcessingService;
         private readonly IMessageService _messageService;
+        private readonly IShippingService _shippingService;
         #endregion
 
         #region Ctor
 
-        public OrderController(Orbio.Services.Admin.Orders.IOrderService orderService, IOrderReportService orderReportService, IAddressService addressService, IDateTimeHelper dateTimeHelper, ICountryService CountryService, IStateProvinceService stateProvinceService, IOrderProcessingService orderProcessingService,IMessageService messageService)
+        public OrderController(Orbio.Services.Admin.Orders.IOrderService orderService, IOrderReportService orderReportService, IAddressService addressService, IDateTimeHelper dateTimeHelper, ICountryService CountryService, IStateProvinceService stateProvinceService, IOrderProcessingService orderProcessingService, IMessageService messageService, IShippingService shippingService)
         {
             this._orderService = orderService;
             this._addressService = addressService;
@@ -47,6 +49,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             this._stateProvinceService = stateProvinceService;
             this._orderProcessingService = orderProcessingService;
             this._messageService = messageService;
+            this._shippingService = shippingService;
         }
 
         #endregion
@@ -179,7 +182,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                     OrderStatus = x.OrderStatus.ToString(),
                     PaymentStatus = x.PaymentStatus.ToString(),
                     ShippingStatus = x.ShippingStatus.ToString(),
-                    CustomerEmail = x.Customer.Email,
+                    //CustomerEmail = x.Customer.Email,
                     CreatedOn = _dateTimeHelper.ConvertToUserTime(x.CreatedOnUtc, DateTimeKind.Utc)
                 };
             }).ToList();
@@ -472,10 +475,21 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
 
 
             model.ShippingStatus = order.ShippingStatus.ToString();
+            model.ShippingStatusId = order.ShippingStatusId;
             if (order.ShippingStatus != ShippingStatus.ShippingNotRequired)
             {
                 model.ShippingAddress = order.ShippingAddress;
             }
+            model.ShippingMethod = order.ShippingMethod;
+            foreach (var c in _shippingService.GetAllShippingMethods().GroupBy(x => x.Name).Select(y => y.First()))
+                model.AvailableShippingMethods.Add(new SelectListItem() { Text = c.Name, Value = c.Id.ToString(), Selected = (c.Name == order.ShippingMethod) });
+            //model.AvailableShippingMethods.Insert(0, new SelectListItem() { Text = "Shipping Method", Value = "0" });
+            var shipping = _shippingService.SelectShippingInfoByOrderId(order.OrderId);
+            if(shipping != null)
+            {
+                model.shipping = shipping.ToModel();
+            }
+
 
             #endregion
 
@@ -492,7 +506,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             //}
             foreach (var orderItem in products)
             {
-
+                var baseUrl = ConfigurationManager.AppSettings["ImageServerBaseUrl"];
                 var orderItemModel = new OrderModel.OrderItemModel()
                 {
                     //Id = orderItem.Id,
@@ -503,7 +517,9 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                     //IsDownload = orderItem.Product.IsDownload,
                     DownloadCount = orderItem.DownloadCount,
                     //DownloadActivationType = orderItem.Product.DownloadActivationType,
-                    IsDownloadActivated = orderItem.IsDownloadActivated
+                    IsDownloadActivated = orderItem.IsDownloadActivated,
+
+                    ImageUrl = baseUrl+orderItem.Product.ImageRelativeUrl
                 };
                 //license file
                 //if (orderItem.LicenseDownloadId.HasValue)
@@ -568,33 +584,9 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             #endregion
         }
 
-
         #endregion
 
         #region OrderProcessing
-
-        [HttpPost]
-        public ActionResult CancelOrder(int id)
-        {
-
-            var order = _orderService.GetOrderById(id);
-            if (order == null)
-                //No order found with the specified id
-                return RedirectToAction("List");
-
-            try
-            {
-                _orderProcessingService.CancelOrder(order);
-
-                return RedirectToAction("Edit", "Order", new { id = order.OrderId });
-            }
-            catch (Exception exc)
-            {
-                //error
-                //ErrorNotification(exc, false);
-                return RedirectToAction("Edit", "Order", new { id = order.OrderId });
-            }
-        }
 
         [HttpPost]
         public ActionResult MarkOrderAsPaid(int id)
@@ -630,8 +622,10 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
 
             try
             {
+                order.CreatedOnUtc = DateTime.UtcNow;
                 order.OrderStatusId = model.OrderStatusId;
                 _orderService.UpdateOrder(order);
+                _messageService.SendOrderCustomerNotification(order, 1, null, null, model.OrderStatusId);
                 return RedirectToAction("Edit", "Order", new { id = order.OrderId });
             }
             catch (Exception exc)
@@ -642,7 +636,6 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             }
         }
 
-        [HttpPost]
         public ActionResult Delete(int id)
         {
 
@@ -658,26 +651,35 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult EditOrderTotals(int id, OrderModel model)
         {
-
+            var orderNote = new OrderNote();
             var order = _orderService.GetOrderById(id);
+            order.OrderNotes.Clear();
             if (order == null)
                 //No order found with the specified id
                 return RedirectToAction("List");
-
-            order.OrderSubtotalInclTax = model.OrderSubtotalInclTaxValue;
-            order.OrderSubtotalExclTax = model.OrderSubtotalExclTaxValue;
-            order.OrderSubTotalDiscountInclTax = model.OrderSubTotalDiscountInclTaxValue;
-            order.OrderSubTotalDiscountExclTax = model.OrderSubTotalDiscountExclTaxValue;
-            order.OrderShippingInclTax = model.OrderShippingInclTaxValue;
-            order.OrderShippingExclTax = model.OrderShippingExclTaxValue;
-            order.PaymentMethodAdditionalFeeInclTax = model.PaymentMethodAdditionalFeeInclTaxValue;
-            order.PaymentMethodAdditionalFeeExclTax = model.PaymentMethodAdditionalFeeExclTaxValue;
-            order.TaxRates = model.TaxRatesValue;
-            order.OrderTax = model.TaxValue;
-            order.OrderDiscount = model.OrderTotalDiscountValue;
-            order.OrderTotal = model.OrderTotalValue;
+            order.OrderTotal = order.OrderTotal + Convert.ToDecimal(model.OrderTotalAdjustment);
+            if (model.OrderFreeShipping)
+            {
+                order.OrderTotal = order.OrderTotal - model.OrderShippingExclTaxValue;
+                orderNote = new OrderNote()
+                {
+                    DisplayToCustomer = model.AddOrderNoteDisplayToCustomer,
+                    Note = "Remove Shipping charge from your order",
+                    CreatedOnUtc = DateTime.UtcNow,
+                };
+                order.OrderNotes.Add(orderNote);
+            }
             _orderService.UpdateOrder(order);
-
+            _messageService.SendNewOrderNoteAddedCustomerNotification(orderNote, 1);
+            orderNote = new OrderNote()
+            {
+                DisplayToCustomer = model.AddOrderNoteDisplayToCustomer,
+                Note = "Add some adjustment in your order",
+                CreatedOnUtc = DateTime.UtcNow,
+            };
+            order.OrderNotes.Add(orderNote);
+            _orderService.UpdateOrderNotes(order);
+            _messageService.SendNewOrderNoteAddedCustomerNotification(orderNote, 1);
             return RedirectToAction("Edit", "Order", new { id = order.OrderId });
         }
 
@@ -699,40 +701,40 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             if (orderItem == null)
                 throw new ArgumentException("No order item found with the specified id");
 
-
-            decimal unitPriceInclTax, unitPriceExclTax, discountInclTax, discountExclTax, priceInclTax, priceExclTax;
             int quantity;
-            if (!decimal.TryParse(form["pvUnitPriceInclTax" + orderItemId], out unitPriceInclTax))
-                unitPriceInclTax = orderItem.UnitPriceInclTax;
-            if (!decimal.TryParse(form["pvUnitPriceExclTax" + orderItemId], out unitPriceExclTax))
-                unitPriceExclTax = orderItem.UnitPriceExclTax;
             if (!int.TryParse(form["pvQuantity" + orderItemId], out quantity))
                 quantity = orderItem.Quantity;
-            if (!decimal.TryParse(form["pvDiscountInclTax" + orderItemId], out discountInclTax))
-                discountInclTax = orderItem.DiscountAmountInclTax;
-            if (!decimal.TryParse(form["pvDiscountExclTax" + orderItemId], out discountExclTax))
-                discountExclTax = orderItem.DiscountAmountExclTax;
-            if (!decimal.TryParse(form["pvPriceInclTax" + orderItemId], out priceInclTax))
-                priceInclTax = orderItem.PriceInclTax;
-            if (!decimal.TryParse(form["pvPriceExclTax" + orderItemId], out priceExclTax))
-                priceExclTax = orderItem.PriceExclTax;
-
             if (quantity > 0)
             {
-                orderItem.UnitPriceInclTax = unitPriceInclTax;
-                orderItem.UnitPriceExclTax = unitPriceExclTax;
                 orderItem.Quantity = quantity;
-                orderItem.DiscountAmountInclTax = discountInclTax;
-                orderItem.DiscountAmountExclTax = discountExclTax;
-                orderItem.PriceInclTax = priceInclTax;
-                orderItem.PriceExclTax = priceExclTax;
-                _orderService.UpdateOrder(order);
+                order.OrderTotal = GetFinalPrice(order, orderItem, false,false);
+                order.OrderDiscount = GetOrderItemDiscount(orderItem, false);
+                orderItem.PriceExclTax = GetOrderItemPrice(orderItem, false);
+                orderItem.PriceInclTax = GetOrderItemPrice(orderItem, true);
+                var orderNote = new OrderNote()
+                {
+                    DisplayToCustomer = false,
+                    Note = "Your order item quantity has been updated",
+                    CreatedOnUtc = DateTime.UtcNow,
+                };
+                order.OrderNotes.Add(orderNote);
+               _orderService.UpdateOrder(order);
+               _messageService.SendNewOrderNoteAddedCustomerNotification(orderNote, 1);
             }
             else
             {
+                order.OrderTotal = GetFinalPrice(order, orderItem, false, true);
+                order.OrderDiscount = (order.OrderDiscount - orderItem.DiscountAmountExclTax);
+                var orderNote = new OrderNote()
+                {
+                    DisplayToCustomer = false,
+                    Note = "Your Order Item has been removed",
+                    CreatedOnUtc = DateTime.UtcNow,
+                };
+                order.OrderNotes.Add(orderNote);
+                _orderService.UpdateOrder(order);
                 _orderService.DeleteOrderItem(orderItem);
             }
-
             var model = new OrderModel();
             PrepareOrderDetailsModel(model, order);
 
@@ -760,7 +762,17 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             var orderItem = order.OrderItems.FirstOrDefault(x => x.Product.Id == orderItemId);
             if (orderItem == null)
                 throw new ArgumentException("No order item found with the specified id");
-
+            
+            order.OrderTotal = GetFinalPrice(order, orderItem, false,true);
+            order.OrderDiscount = (order.OrderDiscount - orderItem.DiscountAmountExclTax);
+            var orderNote = new OrderNote()
+            {
+                DisplayToCustomer = false,
+                Note = "Your Order Item has been removed",
+                CreatedOnUtc = DateTime.UtcNow,
+            };
+            order.OrderNotes.Add(orderNote);
+            _orderService.UpdateOrder(order);
             _orderService.DeleteOrderItem(orderItem);
 
             return RedirectToAction("Edit", "Order", new { id = order.OrderId });
@@ -781,6 +793,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                 Note = model.AddOrderNoteMessage,
                 CreatedOnUtc = DateTime.UtcNow,
             };
+            order.OrderNotes.Clear();
             order.OrderNotes.Add(orderNote);
             _orderService.UpdateOrderNotes(order);
 
@@ -819,6 +832,95 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         }
         #endregion
 
+        #region ShippingInfo
+        [HttpPost]
+        public ActionResult InsertOrUpdateShippingInfo(int id, OrderModel model, FormCollection form)
+        {
 
+            var order = _orderService.GetOrderById(id);
+            if (order == null)
+                //No order found with the specified id
+                return RedirectToAction("List");
+            try
+            {
+                var shipping = _shippingService.SelectShippingInfoByOrderId(id);
+                var shippingInfo = new Orbio.Core.Data.Shipment
+                {
+                    OrderId = id,
+                    TrackingNumber = model.shipping.TrackingNumber,
+                    TotalWeight = model.shipping.TotalWeight,
+                    ShippedDateUtc = model.shipping.DateShipped,
+                    DeliveryDateUtc = model.shipping.DateDelivered
+
+                };
+                if (shipping == null)
+                {
+                    foreach (var item in order.OrderItems)
+                    {
+                        var orderItemModel = new Orbio.Core.Data.ShipmentItem()
+                        {
+                            OrderItemId = item.Id,
+                            Quantity = item.Quantity,
+                        };
+                        shippingInfo.ShipmentItems.Add(orderItemModel);
+                    }
+                    _shippingService.InsertShippingInfo(shippingInfo);
+                    _messageService.SendShipmentSentCustomerNotification(shippingInfo, order, 1);
+                }
+                else
+                {
+                    shippingInfo.Id = shipping.Id;
+                    _shippingService.UpdateShippingInfo(shippingInfo);
+                }
+                if (!string.IsNullOrEmpty(model.shipping.Comment))
+                {
+                    var orderNote = new OrderNote()
+                    {
+                        DisplayToCustomer = model.AddOrderNoteDisplayToCustomer,
+                        Note = model.shipping.Comment,
+                        CreatedOnUtc = DateTime.UtcNow,
+                    };
+                    order.OrderNotes.Clear();
+                    order.OrderNotes.Add(orderNote);
+                    _orderService.UpdateOrderNotes(order);
+                }
+                var shippingMethods = _shippingService.GetAllShippingMethods();
+                order.ShippingMethod = (from s in shippingMethods
+                                            where s.Id == Convert.ToInt32(model.ShippingMethod)
+                                            select s.Name).First();
+                order.ShippingStatusId = model.ShippingStatusId;
+                _orderService.UpdateOrder(order);
+               
+                return RedirectToAction("Edit", "Order", new { id = order.OrderId });
+            }
+            catch (Exception exc)
+            {
+                //error
+                //ErrorNotification(exc, false);
+                return RedirectToAction("Edit", "Order", new { id = order.OrderId });
+            }
+        }
+        #endregion
+
+        public decimal GetFinalPrice(Order order,OrderItem orderItem,bool inclTax,bool del)
+        {
+            order.OrderTotal = (inclTax != true) ? (order.OrderTotal - orderItem.PriceExclTax) : (order.OrderTotal - orderItem.PriceInclTax);
+            if (del)
+            { 
+                return order.OrderTotal; 
+            }
+            decimal orderSubtotal = GetOrderItemPrice(orderItem, inclTax);
+            return order.OrderTotal = order.OrderTotal + orderSubtotal;
+        }
+        public decimal GetOrderItemPrice(OrderItem orderItem, bool inclTax)
+        {
+            decimal orderItemPrice = (inclTax != true) ? (orderItem.Quantity * orderItem.UnitPriceExclTax) : (orderItem.Quantity * orderItem.UnitPriceInclTax);
+            return orderItemPrice;
+        }
+        public decimal GetOrderItemDiscount(OrderItem orderItem, bool inclTax)
+        {
+            decimal orderItemDiscount = (inclTax != true) ? (orderItem.Quantity * orderItem.DiscountAmountExclTax) : (orderItem.Quantity * orderItem.DiscountAmountInclTax);
+            return orderItemDiscount;
+        }
     }
 }

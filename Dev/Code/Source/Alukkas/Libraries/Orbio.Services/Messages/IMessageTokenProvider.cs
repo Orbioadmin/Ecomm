@@ -15,5 +15,7 @@ namespace Orbio.Services.Messages
         void AddOrderTokens(IList<Token> tokens, Order order);
 
         void AddOrderNoteTokens(IList<Token> tokens, OrderNote orderNote);
+
+        void AddShipmentTokens(IList<Token> tokens, Orbio.Core.Data.Shipment shipment, Order order, int languageId);
     }
 }

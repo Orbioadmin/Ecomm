@@ -30,5 +30,20 @@ namespace Orbio.Web.UI.Areas.Admin
         }
 
         #endregion
+
+        #region Shipment
+        public static Orbio.Web.UI.Areas.Admin.Models.Orders.OrderModel.Shipping ToModel(this Shipment entity)
+        {
+
+            Mapper.CreateMap<Shipment, Orbio.Web.UI.Areas.Admin.Models.Orders.OrderModel.Shipping>()
+                 .ForMember(ev => ev.Id, m => m.MapFrom(a => a.Id))
+                .ForMember(ev => ev.TrackingNumber, m => m.MapFrom(a => a.TrackingNumber))
+                .ForMember(ev => ev.TotalWeight, m => m.MapFrom(a => a.TotalWeight))
+                .ForMember(ev => ev.DateShipped, m => m.MapFrom(a => a.ShippedDateUtc))
+                .ForMember(ev => ev.DateDelivered, m => m.MapFrom(a => a.DeliveryDateUtc));
+
+            return Mapper.Map<Shipment, Orbio.Web.UI.Areas.Admin.Models.Orders.OrderModel.Shipping>(entity);
+        }
+        #endregion
     }
 }

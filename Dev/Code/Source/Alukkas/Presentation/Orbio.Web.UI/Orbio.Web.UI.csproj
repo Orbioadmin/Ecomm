@@ -315,6 +315,7 @@
     <Content Include="Areas\Admin\images\blue_arrow.png" />
     <Content Include="Areas\Admin\images\chk-box_2.png" />
     <Content Include="Areas\Admin\images\edit.png" />
+    <Content Include="Areas\Admin\images\Edit_order_sprite.png" />
     <Content Include="Areas\Admin\images\form.jpg" />
     <Content Include="Areas\Admin\images\form.png" />
     <Content Include="Areas\Admin\images\form1.jpg" />
@@ -322,6 +323,7 @@
     <Content Include="Areas\Admin\images\image sprites.png" />
     <Content Include="Areas\Admin\images\menu_line.png" />
     <Content Include="Areas\Admin\images\single-arrow.png" />
+    <Content Include="Areas\Admin\images\SKU.png" />
     <Content Include="Areas\Admin\images\sprite.png" />
     <Content Include="Areas\Admin\images\thumbs\0000140_jewellery_tb.jpeg" />
     <Content Include="Areas\Admin\images\thumbs\0000198_bracelet.jpeg" />
@@ -346,6 +348,9 @@
     <Content Include="Areas\Admin\Scripts\tinymce\skins\lightgray\fonts\tinymce.eot" />
     <Content Include="Areas\Admin\Scripts\tinymce\skins\lightgray\fonts\tinymce.ttf" />
     <Content Include="Areas\Admin\Scripts\tinymce\skins\lightgray\fonts\tinymce.woff" />
+    <Content Include="Areas\Admin\Content\fonts\Roboto-Bold.eot" />
+    <Content Include="Areas\Admin\Content\fonts\Roboto-Bold.ttf" />
+    <Content Include="Areas\Admin\Content\fonts\Roboto-Bold.woff" />
     <None Include="Areas\Admin\Scripts\_references.js" />
     <Content Include="Areas\Admin\Scripts\paging.js" />
     <Content Include="Areas\Admin\Scripts\tinymce.jquery.min.js" />
@@ -924,6 +929,7 @@
     <Content Include="Areas\Admin\Views\ShoppingCart\CurrentWishLists.cshtml" />
     <Content Include="Areas\Admin\Views\ShoppingCart\_WishListCustomer.cshtml" />
     <Content Include="Areas\Admin\Views\Attribute\_AddOrEditProductAttribute.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout1.cshtml" />
     <Content Include="Areas\Admin\Views\Attribute\SpecificationAttribute.cshtml" />
     <Content Include="Areas\Admin\Views\Attribute\ListSpecificationAttribute.cshtml" />
     <Content Include="Areas\Admin\Views\Attribute\SpecificationAttributeOptions.cshtml" />

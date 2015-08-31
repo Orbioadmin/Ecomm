@@ -6,6 +6,7 @@ using Orbio.Core.Domain.Shipping;
 using Orbio.Core.Payments;
 using Orbio.Core.Utility;
 using Orbio.Services.Helpers;
+using Orbio.Services.Orders;
 using Orbio.Services.Payments;
 using System;
 using System.Collections;
@@ -24,7 +25,6 @@ namespace Orbio.Services.Admin.Orders
         private readonly IDbContext dbContext;
         private readonly OrbioAdminContext context = new OrbioAdminContext(); 
         private readonly IDateTimeHelper _dateTimeHelper;
-        
         #endregion
 
         /// instantiates Store service type

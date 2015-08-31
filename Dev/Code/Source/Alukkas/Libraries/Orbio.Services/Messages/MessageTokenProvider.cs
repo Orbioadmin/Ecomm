@@ -112,6 +112,7 @@ namespace Orbio.Services.Messages
             return result;
         }
 
+
         #endregion
 
         #region Methods
@@ -204,6 +205,15 @@ namespace Orbio.Services.Messages
 
             //event notification
             //_eventPublisher.EntityTokensAdded(orderNote, tokens);
+        }
+
+        public virtual void AddShipmentTokens(IList<Token> tokens, Orbio.Core.Data.Shipment shipment,Order order, int languageId)
+        {
+            tokens.Add(new Token("Shipment.ShipmentNumber", shipment.Id.ToString()));
+            tokens.Add(new Token("Shipment.TrackingNumber", shipment.TrackingNumber));
+            tokens.Add(new Token("Shipment.Product(s)", ProductListToHtmlTable(order), true));
+            tokens.Add(new Token("Shipment.URLForCustomer", string.Format("{0}orderdetails/shipment/{1}", webHelper.GetStoreLocation(false), shipment.Id), true));
+
         }
 
         #endregion
