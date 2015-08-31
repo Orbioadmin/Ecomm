@@ -56,7 +56,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult AddOrUpdateProductAttribute(ProductAttributeModel model)
         {
-            int result = productAttributeService.AddOrUpdateProductAttribute(model.Id, model.Name, model.Description);
+            productAttributeService.AddOrUpdateProductAttribute(model.Id, model.Name, model.Description);
                 return RedirectToAction("ProductAttribute");
         }
 

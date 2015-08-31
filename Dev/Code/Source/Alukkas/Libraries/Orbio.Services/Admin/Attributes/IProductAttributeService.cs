@@ -13,7 +13,7 @@ namespace Orbio.Services.Admin.Attributes
 
      ProductAttribute GetProductAttributeById(int Id);
 
-     int AddOrUpdateProductAttribute(int Id, string Name, string Description);
+     void AddOrUpdateProductAttribute(int Id, string Name, string Description);
 
      int DeleteProductAttribute(int Id);
     }

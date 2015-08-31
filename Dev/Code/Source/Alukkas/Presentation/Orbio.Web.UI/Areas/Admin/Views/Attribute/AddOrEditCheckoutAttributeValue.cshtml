@@ -23,6 +23,7 @@
         @using (Html.BeginForm("SaveCheckoutAttributeValue", "Attribute", FormMethod.Post))
         {
             @Html.HiddenFor(m => m.CheckoutAttributeId, new { Value = Model.CheckoutAttributeId })
+            @Html.HiddenFor(m => m.Id, new {Value = Model.Id})
             <div class="container">
                 <div class="col-md-12">
                     <div class="pull-right">

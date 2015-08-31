@@ -8,6 +8,7 @@
 @using (Html.BeginForm("AddorEditOptions", "Attribute", FormMethod.Post))
 {
     @Html.HiddenFor(m => m.SpecificationAttributeId, new { Value=Model.SpecificationAttributeId })
+    @Html.HiddenFor(m => m.Id, new { Value=Model.Id })
     <div class="container">
         <div class="col-md-12">
             <div class="pull-right">

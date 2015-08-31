@@ -21,7 +21,7 @@
                         <td>@item.Name</td>
                         <td>@item.DisplayOrder</td>
                         <td>@item.ProductCount</td>
-                        <td><a href="@Url.Action("AddOrEditSpecificationAttributeOption", "Attribute", new { id = item.Id })"><label class="edit" onclick="EditSpec(@item.Id)"></label></a></td>
+                        <td><a href="@Url.Action("AddOrEditSpecificationAttributeOption", "Attribute", new { id = item.Id, Spec = Model.Id })"><label class="edit" onclick="EditSpec(@item.Id)"></label></a></td>
                         <td><a href="@Url.Action("DeleteSpecificationAttributeOption", "Attribute", new { id = item.Id, Spec = Model.Id })"><label class="img_sprite" onclick=" return confirm('Are You Sure'); "></label></a></td>
                     </tr>
             }

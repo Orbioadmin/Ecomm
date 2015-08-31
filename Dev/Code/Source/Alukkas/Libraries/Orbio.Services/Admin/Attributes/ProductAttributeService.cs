@@ -25,7 +25,7 @@ namespace Orbio.Services.Admin.Attributes
             return model;
         }
 
-        public int AddOrUpdateProductAttribute(int Id, string Name, string Description)
+        public void AddOrUpdateProductAttribute(int Id, string Name, string Description)
         {
             var result = context.ProductAttributes.Where(m => m.Id == Id).FirstOrDefault();
             if(result!=null)
@@ -42,7 +42,6 @@ namespace Orbio.Services.Admin.Attributes
                 context.ProductAttributes.Add(productAttribute);
                 context.SaveChanges();
             }
-            return result.Id;
         }
 
         public int DeleteProductAttribute(int Id)
