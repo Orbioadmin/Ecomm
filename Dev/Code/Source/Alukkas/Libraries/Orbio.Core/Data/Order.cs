@@ -18,6 +18,7 @@ namespace Orbio.Core.Data
         {
             this.OrderItems = new HashSet<OrderItem>();
             this.RecurringPayments = new HashSet<RecurringPayment>();
+            this.Shipments = new HashSet<Shipment>();
         }
     
         public int Id { get; set; }
@@ -80,5 +81,6 @@ namespace Orbio.Core.Data
         public virtual Address Address { get; set; }
         public virtual Address Address1 { get; set; }
         public virtual ICollection<RecurringPayment> RecurringPayments { get; set; }
+        public virtual ICollection<Shipment> Shipments { get; set; }
     }
 }

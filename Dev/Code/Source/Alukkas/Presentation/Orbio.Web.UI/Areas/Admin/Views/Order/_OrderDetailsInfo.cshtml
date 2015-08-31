@@ -1,6 +1,137 @@
 ﻿@model Orbio.Web.UI.Areas.Admin.Models.Orders.OrderModel
 @using Orbio.Core.Domain.Orders
+<div class="tab_side_solutions col-md-12">
+    <div class="tab-content tab_content_solutions" id="myTabContent">
+        <div aria-labelledby="home-tab" id="info" class="tab-pane fade in active  " role="tabpanel">
+            <div class="col-md-12">
+@using (Html.BeginForm("ChangeOrderStatus", "Order", new { id = this.Model.Id }, FormMethod.Post, new { Id = "formchangestatus" }))
+    {
+                <ul class="top_label">
+                    <li style="margin-left:0px"><span class="customer">Customer : </span><span>@Model.CustomerInfo</span></li>
+                    <li><span class="date_admin"></span><span>@Model.CreatedOn.Date.ToShortDateString()</span></li>
+                    <li><span class="time_admin"></span><span>@Model.CreatedOn.Date.ToShortTimeString()</span></li>
+                    <li><span class="customer">Order Status : </span></li>
+                    <li>
+                        @Html.DropDownListFor(model => model.OrderStatusId, from OrderStatus orderStatus in Enum.GetValues(typeof(OrderStatus))
+                                                            select new SelectListItem() { Text = orderStatus.ToString(), Value = ((int)orderStatus).ToString() })
+                    </li>
+                    <li><input type="submit" class="save_pending" value="Save"></li>
+                </ul>
+}
+            </div>
+            @Html.Partial("_orderdetailsproduct", Model)
+            
+            <div class="col-md-3 add_new_projects">
+                <h3>Add new Product</h3>
+                <form action="" method="">
+                    <input type="text" value="" class="text_sku" placeholder="Name or sku">
+                    <select class="choose-varient">
+                        <option selected="true">Choose Varient</option>
+                    </select>
+                    <select class="choose-varient">
+                        <option selected="true">Choose Quantity</option>
+                    </select>
+                    <input type="submit" value="Add Product" class="add_product_submit">
+                </form>
+            </div>
+            <div class="col-md-12">
+                <div class="col-md-6 order_total_div">
+                    <h3>Order Total</h3>
+                    <table>
+                        <tbody>
+                            <tr><td><label class="subtotal_label">Subtotal : </label><label class="subtotal_no"> @Model.OrderSubtotalExclTaxValue.ToString("#,##0.00")</label></td><td><label class="subtotal_label">Discount : </label><label class="subtotal_no"> @Model.OrderTotalDiscountValue.ToString("#,##0.00")</label></td><td></td><td><label class="subtotal_label">Tax : </label><label class="subtotal_no"> @Model.TaxValue.ToString("#,##0.00")</label></td></tr>
+                            <tr><td><label class="subtotal_label">Shipping charges : </label><label class="subtotal_no"> &nbsp; @Model.OrderShippingExclTaxValue.ToString("#,##0.00")</label></td><td></td><td><label class="subtotal_label">Total : </label><label class="subtotal_no"> &nbsp; @Model.OrderTotalValue.ToString("#,##0.00")</label></td><td><label class="edit_order_total"></label></td></tr>
+                        </tbody>
+                    </table>
+        @using (Html.BeginForm("EditOrderTotals", "Order", new { id = this.Model.Id }, FormMethod.Post, new { Id = "formEditOrderTotal" }))
+            {
+                    <ul class="free_shipping" style="display:none">
+                        <li style="margin-left:0px">Free Shipping <span>@Html.CheckBoxFor(model => model.OrderFreeShipping, new { @class = "checkbox_shipp" })</span></li>
+                        <li>Adjustments : <span>@Html.TextBoxFor(model => model.OrderTotalAdjustment, new { @class = "text_shipp" })</span></li>
+                        <li><input type="submit" value="Save" class="submit_shipp"></li>
 
+                    </ul>
+            }
+                </div>
+                <div class="col-md-3 payment_details">
+                    <h3>Payment Details</h3>
+                    <table>
+                        <tbody>
+                            <tr><td>Payment : </td><td><label>@Model.PaymentMethod</label></td></tr>
+                            <tr>
+                                <td>Payment Status : </td>
+                                <td>
+                                    <label>@Model.PaymentStatus</label>
+                                </td>
+                            </tr>
+                            <tr><td></td><td>
+                         @if (Model.PaymentStatus != "Paid")
+                           {
+                            using (Html.BeginForm("MarkOrderAsPaid", "Order", new { id = this.Model.Id }, FormMethod.Post, new { Id = "formmarkaspaid" }))
+                            {
+                                <input type="submit" value="Mark as Paid" class="mark_as">
+                            }
+                           }
+                                </td></tr>
+                            <tr><td>Realised on :</td><td><label>@Model.CreatedOn</label></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-md-9 shipping_details">
+                    <h3>Shipping Details</h3>
+@using (Html.BeginForm("InsertOrUpdateShippingInfo", "Order", new { id = this.Model.Id }, FormMethod.Post, new { Id = "formsaveShippinginfo" }))
+{
+                        <div class="left_side">
+                            <div class="form-group">
+                                <label>Shipping Method : </label>
+                                @Html.DropDownList("ShippingMethod", Model.AvailableShippingMethods, new { @class = "pending_selectd" })
+                            </div>
+                            <div class="form-group">
+                                <label>Tracking Number : </label>
+                                @Html.TextBoxFor(m => m.shipping.TrackingNumber, new { @class = "pending_selectd tracking_number" })
+                            </div>
+                            <div class="form-group">
+                                <label>Date Shipped : </label>
+                                @Html.TextBoxFor(m => m.shipping.DateShipped, new { @class = "pending_selectd date_shipped" })
+                            </div>
+                        </div>
+                        <div class="right_side">
+                            <div class="form-group">
+                                <label>Shipping Status : </label>
+                                    @Html.DropDownListFor(model => model.ShippingStatusId, from Orbio.Core.Domain.Shipping.ShippingStatus shippingStatus in Enum.GetValues(typeof(Orbio.Core.Domain.Shipping.ShippingStatus))
+                                                                                           select new SelectListItem() { Text = shippingStatus.ToString(), Value = ((int)shippingStatus).ToString() }, new { @class = "pending_selectd shipping_status" })
+                            </div>
+                            <div class="form-group">
+                                <label>Total Weight : </label>
+                                @Html.TextBoxFor(m => m.shipping.TotalWeight, new { @class = "pending_selectd total_weight" })
+                            </div>
+                            <div class="form-group">
+                                <label>Date Delivered: </label>
+                                @Html.TextBoxFor(m => m.shipping.DateDelivered, new { @class = "pending_selectd date_delivered" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label style="float: left;">Comments : </label>
+                            @Html.TextAreaFor(m => m.shipping.Comment, new { @class = "comments", style = "Width: 620px; Height: 150px;" })
+                        </div>
+                        <input type="submit" class="shipping_submit" value="Save">
+}
+                </div>
+            </div>
+        </div>
+        <div aria-labelledby="home-tab" id="address" class="tab-pane fade " role="tabpanel">
+            @Html.Partial("_orderdetailAddress", Model)
+        </div>
+        <div aria-labelledby="home-tab" id="order_notes" class="tab-pane fade " role="tabpanel">
+            @Html.Partial("_OrderDetailsOrderNote", Model)
+        </div>
+    </div>
+</div>
+
+
+@*<script src="~/Areas/Admin/Scripts/jquery.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         toggleChangeOrderStatus(false);
@@ -85,78 +216,18 @@
                     <table style="border: solid 1px black; padding: 5px;">
                         <tr>
                             <td>
-                                Order Subtotal :
-                            </td>
-                            <td>
-                                InclTax : @Html.EditorFor(model => model.OrderSubtotalInclTaxValue)
-                            </td>
-                            <td>
-                                ExclTax : @Html.EditorFor(model => model.OrderSubtotalExclTaxValue)
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Order subtotal discount :
-                            </td>
-                            <td>
-                                InclTax : @Html.EditorFor(model => model.OrderSubTotalDiscountInclTaxValue)
-                            </td>
-                            <td>
-                                ExclTax : @Html.EditorFor(model => model.OrderSubTotalDiscountExclTaxValue)
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Order shipping :
-                            </td>
-                            <td>
-                                InclTax : @Html.EditorFor(model => model.OrderShippingInclTaxValue)
-                            </td>
-                            <td>
-                                ExclTax : @Html.EditorFor(model => model.OrderShippingExclTaxValue)
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Payment method additional fee :
-                            </td>
-                            <td>
-                                InclTax : @Html.EditorFor(model => model.PaymentMethodAdditionalFeeInclTaxValue)
-                            </td>
-                            <td>
-                                ExclTax : @Html.EditorFor(model => model.PaymentMethodAdditionalFeeExclTaxValue)
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Order tax rates :
+                                Adjustment:
                             </td>
                             <td colspan="2">
-                                @Html.EditorFor(model => model.TaxRatesValue)
+                                @Html.EditorFor(model => model.OrderTotalAdjustment)
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                Order discount:
+                               Free Shipping:
                             </td>
                             <td colspan="2">
-                                @Html.EditorFor(model => model.TaxValue)
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Order tax:
-                            </td>
-                            <td colspan="2">
-                                @Html.EditorFor(model => model.OrderTotalDiscountValue)
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Order total:
-                            </td>
-                            <td colspan="2">
-                                @Html.EditorFor(model => model.OrderTotalValue)
+                                @Html.CheckBoxFor(model=>model.OrderFreeShipping)
                             </td>
                         </tr>
                     </table>
@@ -197,4 +268,4 @@
             @Html.Partial("_OrderDetailsOrderNote",Model)
          </div>
     </div>
-</div>
+</div>*@

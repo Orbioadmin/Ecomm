@@ -43,6 +43,11 @@
         <EntityTypeShape EntityType="OrbioAdminModel.ProductAttribute" Width="1.5" PointX="9.625" PointY="23.5" />
         <AssociationConnector Association="OrbioAdminModel.ProductVariantAttribute_Product" />
         <AssociationConnector Association="OrbioAdminModel.ProductVariantAttribute_ProductAttribute" />
+        <EntityTypeShape EntityType="OrbioAdminModel.Shipment" Width="1.5" PointX="5.25" PointY="26.25" />
+        <EntityTypeShape EntityType="OrbioAdminModel.ShipmentItem" Width="1.5" PointX="7.5" PointY="26.625" />
+        <EntityTypeShape EntityType="OrbioAdminModel.ShippingMethod" Width="1.5" PointX="5.375" PointY="0.75" />
+        <AssociationConnector Association="OrbioAdminModel.Shipment_Order" />
+        <AssociationConnector Association="OrbioAdminModel.ShipmentItem_Shipment" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

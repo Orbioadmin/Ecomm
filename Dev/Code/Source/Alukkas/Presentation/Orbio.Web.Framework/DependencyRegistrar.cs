@@ -63,6 +63,8 @@ namespace Orbio.Web.Framework
             builder.RegisterType<OBS.Admin.Catalog.ManufacturerService>().As<OBS.Admin.Catalog.IManufacturerService>().InstancePerHttpRequest();
             //added by roshni
             builder.RegisterType<OBS.Admin.Attributes.ProductAttributeService>().As<OBS.Admin.Attributes.IProductAttributeService>().InstancePerHttpRequest();
+            //added by sankar
+            builder.RegisterType<OBS.Admin.Orders.ShippingService>().As<OBS.Admin.Orders.IShippingService>().InstancePerHttpRequest();
         }
 
         public int Order

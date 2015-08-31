@@ -19,8 +19,8 @@ namespace Orbio.Services.Messages
         int SendCustomerEmailFrendMessage(Customer customer,ProductDetail product, string email,string message,string name,string url);
         int SendNewOrderNotification(Customer customer, Order order);
         int SendQuantityBelowStoreOwnerNotification(string productIds);
-        int SendOrderCompletedCustomerNotification(Order order, int languageId, string attachmentFilePath = null, string attachmentFileName = null);
-        int SendOrderCancelledCustomerNotification(Order order, int languageId);
+        int SendOrderCustomerNotification(Order order, int languageId, string attachmentFilePath = null, string attachmentFileName = null, int orderStatusId = 0);
         int SendNewOrderNoteAddedCustomerNotification(OrderNote orderNote, int languageId);
+        int SendShipmentSentCustomerNotification(Orbio.Core.Data.Shipment shipment, Order order, int languageId);
     }
 }

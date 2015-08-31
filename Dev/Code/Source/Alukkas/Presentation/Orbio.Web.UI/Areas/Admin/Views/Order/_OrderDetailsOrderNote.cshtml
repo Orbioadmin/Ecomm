@@ -1,20 +1,47 @@
 ﻿@model Orbio.Web.UI.Areas.Admin.Models.Orders.OrderModel
-<div class="col-md-7 billingInfo">
- @using (Html.BeginForm("DeleteOrderNote", "Order", new { id = this.Model.Id }, FormMethod.Post, new { Id = "formDeleteOrderNote" }))
-    {
-foreach (var orderNote in Model.OrderNotes)
-{
 
-    <div class="col-md-4">Note:</div>
-    <div class="col-md-8">@orderNote.Note</div>
-    <div class="col-md-4">Created On:</div>
-    <div class="col-md-8">@orderNote.CreatedOn</div>
-    <div><input type="submit" name="btnDeleteOrderNote@(orderNote.Id)" value="Delete" id="btnDeleteOrderNote@(orderNote.Id)" class="editbut" onclick=" return confirm('Are You Sure'); " /></div>
+<div aria-labelledby="home-tab" id="order_notes" class="tab-pane fade " role="tabpanel" style="opacity:1">
+    <table style="width:100%">
+        <tr>
+            <td style="width:50%">
+                <h3 class="add_order_noteshead">Order Notes</h3>
+                <div class="add_order_notes">
+                    @using (Html.BeginForm("DeleteOrderNote", "Order", new { id = this.Model.Id }, FormMethod.Post, new { Id = "formDeleteOrderNote" }))
+                    {
+                        <table class="">
 
+                            @foreach (var orderNote in Model.OrderNotes)
+                            {
+                                <tr><td>Note : </td><td>  @orderNote.Note</td></tr>
+                                <tr><td>Created on : </td><td>@orderNote.CreatedOn</td></tr>
+                                <tr><td colspan="2"><input type="submit" name="btnDeleteOrderNote@(orderNote.Id)" value="Delete" id="btnDeleteOrderNote@(orderNote.Id)" class="add_product_submit" /> </td><td></td></tr>
+                            }
+                        </table>
+                    }
+                </div>
+            </td>
+            <td style="vertical-align:top;width:50%">
+                <h3 class="add_order_noteshead" style="padding-left: 10px;">Add Order Note</h3>
+@using (Html.BeginForm("OrderNoteAdd", "Order", new { orderId = this.Model.Id }, FormMethod.Post, new { Id = "formAddOrderItem" }))
+            {
+                <div class="right_order_notes">
+                    <table class="">
+                        <tr><td>Note : </td><td> <textarea></textarea></td></tr>
+                        <tr><td>Display to Customer : </td><td><input type="checkbox" class="add_notes_checkbox"></td></tr>
+                        <tr><td colspan="2">
+                                <input type="submit" id="addOrderNote" class="add_notes_delete" value="Add" />
+                         </td><td></td></tr>
+                    </table>
+
+                </div>
 }
-    }
+            </td>
+        </tr>
+    </table>
+
 </div>
-<p>
+
+@*<p>
     <strong>
         Add Order Note
     </strong>
@@ -46,4 +73,4 @@ foreach (var orderNote in Model.OrderNotes)
         </td>
     </tr>
 </table>
-}
+}*@

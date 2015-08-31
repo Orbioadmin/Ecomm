@@ -102,6 +102,7 @@ namespace Orbio.Services.Admin.Orders
             _orderService.UpdateOrder(order);
 
             //order notes, notifications
+            order.OrderNotes.Clear();
             order.OrderNotes.Add(new OrderNote()
             {
                 Note = string.Format("Order status has been changed to {0}", os.ToString()),
@@ -143,7 +144,7 @@ namespace Orbio.Services.Admin.Orders
                 if (orderCancelledCustomerNotificationQueuedEmailId > 0)
                 {
                     _orderService.UpdateOrder(order);
-
+                    order.OrderNotes.Clear();
                     order.OrderNotes.Add(new OrderNote()
                     {
                         Note = string.Format("\"Order cancelled\" email (to customer) has been queued. Queued email identifier: {0}.", orderCancelledCustomerNotificationQueuedEmailId),
@@ -207,6 +208,7 @@ namespace Orbio.Services.Admin.Orders
             order.PaidDateUtc = DateTime.UtcNow;
             _orderService.UpdateOrder(order);
             //add a note
+            order.OrderNotes.Clear();
             order.OrderNotes.Add(new OrderNote()
             {
                 Note = "Order has been marked as paid",
@@ -256,6 +258,7 @@ namespace Orbio.Services.Admin.Orders
             _orderService.DeleteOrder(order);
 
             //add a note
+            order.OrderNotes.Clear();
             order.OrderNotes.Add(new OrderNote()
             {
                 Note = "Order has been deleted",

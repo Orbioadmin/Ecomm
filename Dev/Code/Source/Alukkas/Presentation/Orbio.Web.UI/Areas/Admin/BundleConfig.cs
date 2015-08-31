@@ -23,7 +23,7 @@ namespace Orbio.Web.UI.Areas.Admin
             bundles.Add(new ScriptBundle("~/bundles/modernizradmin").Include(
                         "~/Areas/Admin/Scripts/modernizr-*"));
 
-            bundles.Add(new StyleBundle("~/Content/cssadmin").Include("~/Areas/Admin/Content/bootstrap.min.css", "~/Areas/Admin/Content/style.css", "~/Areas/Admin/Content/main.less", "~/Areas/Admin/Content/*.css",
+            bundles.Add(new StyleBundle("~/Content/cssadmin").Include("~/Areas/Admin/Content/bootstrap.min.css", "~/Areas/Admin/Content/style.css", "~/Areas/Admin/Content/*.css",
                 "~/Areas/Admin/Content/kendo.common.min.css", "~/Areas/Admin/Content/kendo.default.min.css", "~/Areas/Admin/Content/kendo.dataviz.min.css", "~/Areas/Admin/Content/kendo.dataviz.default.min.css"));
         }
     }

@@ -40,6 +40,9 @@ BEGIN
  SELECT @orderItemXml = @orderXml.query('/Order/OrderItems')
 BEGIN TRY
 	BEGIN TRANSACTION
+		--adjust inventory first
+		
+		
 		
 		select d.value('(OrderId)[1]','nvarchar(100)' ) as OrderId,
 	   d.value('(OrderStatusId)[1]','int' ) as OrderStatusId,
@@ -52,8 +55,10 @@ BEGIN TRY
 		  d.value('(TaxRates)[1]','nvarchar(100)' ) as TaxRates,
 		   d.value('(OrderTax)[1]','decimal(18,4)' ) as OrderTax,
 		  d.value('(OrderDiscount)[1]','decimal(18,4)' ) as OrderDiscount,
+		   d.value('(ShippingMethod)[1]','nvarchar(100)' ) as ShippingMethod,
 		   d.value('(OrderTotal)[1]','decimal(18,4)' ) as OrderTotal,
 			 d.value('(AllowStoringCreditCardNumber)[1]','bit' ) as AllowStoringCreditCardNumber,
+			 d.value('(CreatedOnUtc)[1]','DATETIME' ) as CreatedOnUtc,
 			 d.value('(Deleted)[1]','bit' ) as Deleted --Deleted
 			  Into #tempOrderDetail
 		from @orderXml.nodes('/Order') O(d)
@@ -64,8 +69,8 @@ BEGIN TRY
 		 ord.OrderSubTotalDiscountInclTax = torder.OrderSubTotalDiscountInclTax,
 		 ord.OrderSubTotalDiscountExclTax = torder.OrderSubTotalDiscountExclTax,
 		 ord.TaxRates = torder.TaxRates,ord.OrderTax = torder.OrderTax, ord.OrderDiscount = torder.OrderDiscount, 
-		 ord.OrderTotal = torder.OrderTotal,ord.AllowStoringCreditCardNumber = torder.AllowStoringCreditCardNumber,
-		 ord.Deleted = torder.Deleted
+		 ord.ShippingMethod = torder.ShippingMethod,ord.OrderTotal = torder.OrderTotal,ord.AllowStoringCreditCardNumber = torder.AllowStoringCreditCardNumber,
+		 ord.CreatedOnUtc = torder.CreatedOnUtc,ord.Deleted = torder.Deleted
 		 from [Order] ord
 		 inner join #tempOrderDetail torder on
 				ord.Id = torder.OrderId
@@ -135,7 +140,6 @@ BEGIN TRY
 				);
 	END CATCH
 END
-
 
 
 GO
