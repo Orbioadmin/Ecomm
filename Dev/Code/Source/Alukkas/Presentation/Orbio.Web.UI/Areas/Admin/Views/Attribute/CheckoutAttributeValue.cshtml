@@ -1,0 +1,48 @@
+﻿@model Orbio.Web.UI.Areas.Admin.Models.Attribute.CheckoutAttributeModel
+
+<div class="table-responsive">
+        <table id="spetable" class="table table-border spepro">
+            <thead>
+<th>Name</th>
+<th>Price Adjustment</th>
+<th>Weight Adjustment</th>
+<th>Pre-Selected</th>
+<th>Display Order</th>
+<th>Edit</th>
+<th>Delete</th>
+        </th>
+            <tbody>
+                @if (Model.CheckoutAttributeValue.Count > 0)
+                {
+                    @Html.HiddenFor(m => m.Id, new { Value=Model.Id })
+                    foreach (var item in Model.CheckoutAttributeValue)
+                    {
+                        <tr>
+                            <td>@item.Name</td>
+                            <td>@item.PriceAdjustment</td>
+                            <td>@item.WeightAdjustment</td>
+                            <td>@item.IsPreSelected</td>
+                            <td>@item.DisplayOrder</td>
+                            <td><a href="@Url.Action("EditCheckoutAttributeValue", "Attribute", new { Id=item.Id,AttrId=Model.Id })"><label class="edit"></label></a></td>
+                            <td><a href="@Url.Action("DeleteCheckoutAttributeValue", "Attribute", new { Id = item.Id, AttrId = Model.Id })"><label class="img_sprite" onclick=" return confirm('Are You Sure'); "></label></a></td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="7">
+                            No records found
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="pull-left1"><input type="button" class="but-refresh" onclick="refresh()"></div>
+        <div class="pull-right"><a href="@Url.Action("AddCheckoutAttributeValue", "Attribute", new { Id=Model.Id })" data-toggle="modal"><input type="button" class="but-search" value="Add a new value"></a></div>
+</div>
+<script>
+    function refresh() {
+        window.location.reload();
+    }
+</script>

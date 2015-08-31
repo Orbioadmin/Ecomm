@@ -84,8 +84,15 @@ namespace Orbio.Services.Admin.Catalog
                         manufacturers.Deleted = false;
                         manufacturers.DisplayOrder = model.DisplayOrder;
                         manufacturers.UpdatedOnUtc = DateTime.Now;
-
                         context.SaveChanges();
+
+
+                        var UrlRecord = context.UrlRecords.Where(m => m.EntityId == model.Id && m.EntityName == "Manufacturer").FirstOrDefault();
+                        if (UrlRecord != null)
+                        {
+                            UrlRecord.Slug = model.SearchEngine;
+                            context.SaveChanges();
+                        }
                     }
                 }
                 else
@@ -109,23 +116,33 @@ namespace Orbio.Services.Admin.Catalog
                     context.SaveChanges();
                     int Id = manufacturers.Id;
 
-                    var UrlRecord = context.UrlRecords.Where(m => m.EntityId == model.Id && m.EntityName == "Manufacturer").FirstOrDefault();
-
-                    UrlRecord.EntityId = Id;
-                    UrlRecord.EntityName = "Manufacturer";
-                    UrlRecord.Slug = model.SearchEngine;
-                    UrlRecord.IsActive = true;
-                    UrlRecord.LanguageId = 0;
-
+                    var UrlRecord = context.UrlRecords.Where(m => m.EntityName == "Manufacturer").FirstOrDefault();
                     if (UrlRecord != null)
-                    { 
-                        context.SaveChanges(); 
-                    }
-                    else
                     {
+
+                        UrlRecord.EntityId = Id;
+                        UrlRecord.EntityName = "Manufacturer";
+                        UrlRecord.Slug = model.SearchEngine;
+                        UrlRecord.IsActive = true;
+                        UrlRecord.LanguageId = 0;
                         context.UrlRecords.Add(UrlRecord);
                         context.SaveChanges();
                     }
+                    //UrlRecord.EntityId = Id;
+                    //UrlRecord.EntityName = "Manufacturer";
+                    //UrlRecord.Slug = model.SearchEngine;
+                    //UrlRecord.IsActive = true;
+                    //UrlRecord.LanguageId = 0;
+
+                    //if (UrlRecord != null)
+                    //{ 
+                    //    context.SaveChanges(); 
+                    //}
+                    //else
+                    //{
+                    //    context.UrlRecords.Add(UrlRecord);
+                    //    context.SaveChanges();
+                    //}
                 }
                 return 1;
             }

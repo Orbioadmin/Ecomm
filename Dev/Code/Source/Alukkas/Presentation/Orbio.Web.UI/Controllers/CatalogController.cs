@@ -537,7 +537,9 @@ namespace Orbio.Web.UI.Controllers
                 foreach (var pvav in pvValues)
                 {
                     model.ProductPrice.Price = pvav.PriceAdjustment + model.ProductPrice.Price;
+                    
                 }
+                model.ProductPrice.OldPrice = model.ProductPrice.Price;
                 //string pvavliid = string.Format("liProductVariantAttributes_{0}__Values_{1}__Id", attr_count, value_count);
                 //ViewData["productvariantid"] = pvavliid;
             }

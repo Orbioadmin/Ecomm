@@ -20,7 +20,7 @@
                     @*<input type="button" value="Preview" class="Sbut ssbut ssbut1">*@
                     <input type="submit" value="Save" class="Sbut ssbut ssbut1">
                     @*<input type="submit" value="Save and Continue Edit" class="Sbut ssbut">*@
-                    <a href="@Url.Action("DeleteCategory", "Catalog", new { Id = Model.Categories.Id })"><input type="button" value="Delete" class="Sbut ssbut "></a>
+                    <a href="@Url.Action("DeleteCategory", "Catalog", new { Id = Model.Categories.Id })"><input type="button" value="Delete" class="Sbut ssbut" onclick=" return confirm('Are You Sure'); "></a>
                 </div>
             </div>
         </div>

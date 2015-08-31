@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Orbio.Web.UI.Areas.Admin.Models.Attribute
+namespace Orbio.Web.UI.Areas.Admin.Models.Attributes
 {
     public class ProductAttributeModel
     {

@@ -58,15 +58,23 @@
   <ItemGroup>
     <Compile Include="Admin\Address\AddressService.cs" />
     <Compile Include="Admin\Address\IAddressService.cs" />
+    <Compile Include="Admin\Attributes\CheckoutAttributeService.cs" />
+    <Compile Include="Admin\Attributes\ICheckoutAttributeService.cs" />
     <Compile Include="Admin\Attributes\IProductAttributeService.cs" />
+    <Compile Include="Admin\Attributes\ISpecificationAttributeService.cs" />
     <Compile Include="Admin\Attributes\ProductAttributeService.cs" />
+    <Compile Include="Admin\Attributes\SpecificationAttributeService.cs" />
     <Compile Include="Admin\Catalog\CategoryServices.cs" />
     <Compile Include="Admin\Catalog\ICategoryServices.cs" />
     <Compile Include="Admin\Catalog\IManufacturerService.cs" />
     <Compile Include="Admin\Catalog\ManufacturerService.cs" />
+    <Compile Include="Admin\Components\IPriceComponentService.cs" />
+    <Compile Include="Admin\Components\PriceComponentService.cs" />
+    <Compile Include="Admin\Components\ProductComponentService.cs" />
     <Compile Include="Admin\Customers\CustomerReportService.cs" />
     <Compile Include="Admin\Customers\ICustomerReportService.cs" />
     <Compile Include="Admin\Orders\IShippingService.cs" />
+    <Compile Include="Admin\Components\IProductComponentService.cs" />
     <Compile Include="Admin\Orders\IShoppingCartService.cs" />
     <Compile Include="Admin\Orders\ShippingService.cs" />
     <Compile Include="Admin\Orders\ShoppingCartService.cs" />

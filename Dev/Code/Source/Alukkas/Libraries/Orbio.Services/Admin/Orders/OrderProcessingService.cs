@@ -119,8 +119,7 @@ namespace Orbio.Services.Admin.Orders
                 //notification
                 var orderCompletedAttachmentFilePath = "";
                 var orderCompletedAttachmentFileName = "";
-                int orderCompletedCustomerNotificationQueuedEmailId = _messageService
-                    .SendOrderCompletedCustomerNotification(order, order.CustomerLanguageId, orderCompletedAttachmentFilePath,
+                int orderCompletedCustomerNotificationQueuedEmailId = _messageService.SendOrderCustomerNotification(order, order.CustomerLanguageId, orderCompletedAttachmentFilePath,
                     orderCompletedAttachmentFileName);
                 if (orderCompletedCustomerNotificationQueuedEmailId > 0)
                 {
@@ -140,7 +139,7 @@ namespace Orbio.Services.Admin.Orders
                 && notifyCustomer)
             {
                 //notification
-                int orderCancelledCustomerNotificationQueuedEmailId = _messageService.SendOrderCancelledCustomerNotification(order, order.CustomerLanguageId);
+                int orderCancelledCustomerNotificationQueuedEmailId = _messageService.SendOrderCustomerNotification(order, order.CustomerLanguageId);
                 if (orderCancelledCustomerNotificationQueuedEmailId > 0)
                 {
                     _orderService.UpdateOrder(order);

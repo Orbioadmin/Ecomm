@@ -1,0 +1,53 @@
+﻿@model List<Orbio.Web.UI.Areas.Admin.Models.Attribute.SpecificationAttributeModel>
+
+@{
+    ViewBag.Title = "ListSpecificationAttribute";
+}
+
+<section class="wp-bestseller wp-speci-attr">
+    <div class="container">
+        <div class="catalog-bulk col-md-12" style="padding-left:0px;">
+            <label class=" specific-att"></label>
+            <h1>SPECIFICATION ATTRIBUTES</h1>
+            <div class="pull-right"><a href="@Url.Action("AddSpecificationAttribute","Attribute")"><input type="button" value="Add New" class="Sbut  ssbut1"></a></div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="table-home">
+            <div class="col-md-12">
+                <div class="table-responsive best-seller-table">
+                    <table id="tableData1" class="table table-bordered table-striped ">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Display Order</th>
+                                <th>Edit/Delete </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr style="display: table-row;">
+                                    <td>@item.Name</td>
+                                    <td>@item.DisplayOrder</td>
+                                    <td><a href="@Url.Action("EditSpecificationAttribute", "Attribute", new { Id=item.Id })"><label class="jewedit" style="float:none;top:0px;"></label></a>
+                                        <a href="@Url.Action("DeleteSpecificationAttribute", "Attribute", new { Id=item.Id })"><label class="jewdelete" style="float:none;top:0px;" onclick=" return confirm('Are You Sure'); "></label></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <div class="pull-left1"><input type="button" class="but-refresh" onclick="refresh()"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function refresh()
+    {
+        window.location.reload();
+    }
+</script>

@@ -282,6 +282,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                 MetaTitle = model.Manufacturer.MetaTitle,
                 SubjectToACL = model.Manufacturer.SubjectToACL,
                 ManufacturerTemplate = model.Manufacturer.ManufacturerTemplate,
+                SearchEngine=model.Manufacturer.SearchEngine,
             };
             return manufacturerModel;
         }

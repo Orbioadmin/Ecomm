@@ -14,7 +14,7 @@ namespace Orbio.Core.Data
     using System.Data.Entity.Infrastructure;
     using System.Data.Entity.Core.Objects;
     using System.Linq;
-    
+
     public partial class OrbioAdminContext : DbContext
     {
         public OrbioAdminContext()
@@ -49,6 +49,14 @@ namespace Orbio.Core.Data
         public virtual DbSet<Shipment> Shipments { get; set; }
         public virtual DbSet<ShipmentItem> ShipmentItems { get; set; }
         public virtual DbSet<ShippingMethod> ShippingMethods { get; set; }
+        public virtual DbSet<CheckoutAttribute> CheckoutAttributes { get; set; }
+        public virtual DbSet<CheckoutAttributeValue> CheckoutAttributeValues { get; set; }
+        public virtual DbSet<PriceComponent> PriceComponents { get; set; }
+        public virtual DbSet<Product_SpecificationAttribute_Mapping> Product_SpecificationAttribute_Mapping { get; set; }
+        public virtual DbSet<ProductComponent> ProductComponents { get; set; }
+        public virtual DbSet<SpecificationAttribute> SpecificationAttributes { get; set; }
+        public virtual DbSet<SpecificationAttributeOption> SpecificationAttributeOptions { get; set; }
+        public virtual DbSet<TaxCategory> TaxCategories { get; set; }
     
         public virtual ObjectResult<Order> usp_Get_AdminOrderDetails(Nullable<int> orderStatusId, Nullable<int> paymentStatusId, Nullable<int> shippingStatusId, Nullable<int> customerId, Nullable<System.DateTime> createdFromUtc, Nullable<System.DateTime> createdToUtc, string billingEmail, Nullable<int> orderNo)
         {

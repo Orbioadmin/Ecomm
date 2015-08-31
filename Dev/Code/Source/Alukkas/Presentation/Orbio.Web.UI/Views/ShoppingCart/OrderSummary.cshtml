@@ -58,7 +58,10 @@
                 
                 @Html.TextBox(scpdqu, scpd.SelectedQuantity, new { type = "Number", @class = "form-control", min = "1", Style = "width:40px;height: 23px;padding: 0 4px;border-radius: 2px;" })
                 @Html.Hidden(scpdRemove, scpd.IsRemove)  @Html.Hidden(scpdQuantity, scpd.SelectedQuantity) @Html.Hidden(scpdcartid, scpd.CartId) @Html.Hidden(scpdcartstatus, scpd.ShoppingCartStatus)
-            <td data-title="Item Price">@scpd.CurrencyCode.@scpd.UnitPrice @Html.Hidden(scpdId, scpd.Id)  @*@Html.Hidden(scpdTotalprice, scpd.TotalPrice)*@</td>
+            <td data-title="Item Price">
+           
+            
+            @scpd.CurrencyCode.@scpd.UnitPrice@Html.Hidden(scpdId, scpd.Id)  @*@Html.Hidden(scpdTotalprice, scpd.TotalPrice)*@</td>
             <td data-title="Total Price">@scpd.CurrencyCode.@scpd.TotalPrice </td>
         </tr>
                 count++;

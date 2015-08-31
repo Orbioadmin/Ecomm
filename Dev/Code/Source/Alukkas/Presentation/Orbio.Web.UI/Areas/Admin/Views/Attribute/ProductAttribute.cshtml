@@ -32,7 +32,7 @@
                                     <td>@item.Name</td>
                                     <td>
                                         <a href="@Url.Action("EditProductAttribute", "Attribute", new { Id=item.Id })"><label class="jewedit" style="top: 0;float:none;"></label></a>
-                                        <a href="@Url.Action("DeleteProductAttribute", "Attribute", new { Id=item.Id })"><label class="jewdelete" style="top: 0;float:none;"></label></a>
+                                        <a href="@Url.Action("DeleteProductAttribute", "Attribute", new { Id=item.Id })"><label class="jewdelete" style="top: 0;float:none;" onclick=" return confirm('Are You Sure'); "></label></a>
                                     </td>
                                 </tr>
                             }
