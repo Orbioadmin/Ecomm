@@ -2,20 +2,9 @@
     @{
         Layout = null;
     }
-<div class="table-responsive">
-    <table cellpadding="0" cellspacing="0" width="100%" class="shopping_table">
-        <tr>
-            <th width="150" class="item_table" style="color: #0082c7;text-align: center;">Item</th>
-            <th width="30%"></th>
-            <th style="color: #0082c7;text-align: center;">Quantity</th>
-            <th style="color: #0082c7;text-align: center;">Item Price</th>
-            <th style="color: #0082c7;text-align: center;">Total Price</th>
-            <th style="color: #0082c7;text-align: center;">Status</th>
-            <th style="color: #0082c7;text-align: center;">Updated Date</th>
-        </tr>
+
         @{
             Html.RenderPartial("_OrderSummary", this.Model.ShoppingCartItems);
         }
-    </table>
-</div>
+
 

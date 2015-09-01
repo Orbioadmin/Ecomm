@@ -1,25 +1,36 @@
 ﻿@model Orbio.Web.UI.Areas.Admin.Models.Orders.ShoppingCartModel
 @{
     ViewBag.Title = "Current WishList";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout1.cshtml";
 }
 
-<section class="wp-bestseller tree-view">
-    <div class="container">
-        <div class="catalog-bulk col-md-12" style="padding-left:0px;">
-            <div class="pull-left">
-                <label class="shipment-icon"></label>
-                <h1>Current WishLists</h1>
-            </div>
-        </div>
-    </div>
-    <div class="container" style="width:100%;margin-left:10px">
-
-        <div class="panel-group" id="accordion">
-            @{
-                Html.RenderPartial("_WishListCustomer", this.Model.customers);
-            }
-        </div>
+<div class="container">
+    <div class="main_edit_order">
+        <span class="edit_order_details"><span class="edit_cart"></span><a href="">Current WishLists</a></span>
 
     </div>
-</section>
+    <div class="collapsable_table_main">
+        @{
+            Html.RenderPartial("_WishListCustomer", this.Model.customers);
+        }
 
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".btn_collapse").accordion({
+                collapsible: true,
+                active: false
+            }).on("click", "h3.ui-accordion-header", function (e) {
+                $("h3.ui-accordion-header").each(function (i, el) {
+                    $(this).find(".panel-icon").text($(el).is(".ui-state-active") ? "-" : "+")
+                })
+            });
+
+        });
+
+
+    </script>
+}
