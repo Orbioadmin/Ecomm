@@ -288,6 +288,27 @@ footer a{font-family: 'Roboto-Regular';color:#424242;font-size: 13px;}
 .per_page_number{font-family: 'Roboto-Regular';font-size: 11px;color:#000;}
 td h3:focus{border:0px ;}
 
+/*add_cart*/
+.add_cat_button{border:1px solid #0082c7;background-color:#fff;font-family: 'Roboto-Regular';font-size: 13px;padding: 5px 10px;}
+.delete_cat_button{border:1px solid #0082c7;background-color:#fff;font-family: 'Roboto-Regular';font-size: 13px;padding: 5px 10px;}
+.add_cart_left_side h3{font-size: 18px;color:#0082c7;text-transform: uppercase;font-family: 'Roboto-Bold';padding: 10px 0px;}
+.add_cart_left_side h3{font-size: 16px;color:#0082c7;text-transform: uppercase;font-family: 'Roboto-Bold';padding: 10px 0px;}
+.description_cart{position: relative;top:-55px;}
+.add_cart_left_side label{font-size: 13px;font-family: 'Roboto-Regular';color:#373737;font-weight: normal;}
+.category_text_add_cat{height: 30px;margin-left: 20%;width: 50%;font-size: 13px;font-family: 'Roboto-Regular';color:#373737;border:1px solid #9fd2eb}
+.description_textarea{margin-left: 17%;width: 50%;height: 122px;font-size: 13px;font-family: 'Roboto-Regular';color:#373737;border:1px solid #9fd2eb}
+.category_select_add_cat{height: 30px;margin-left: 9%;width: 50%;font-size: 13px;font-family: 'Roboto-Regular';color:#373737;border:1px solid #9fd2eb}
+.none_select_add_cat{height: 30px;margin-left: 11.5%;width: 50%;font-size: 13px;font-family: 'Roboto-Regular';color:#373737;border:1px solid #9fd2eb}
+.show_on_home_page_check{margin-left: 8px;width: 20px;height: 20px;position: relative;top: 4px;left:7px;}
+.published_add_cart{margin-left: 15px;font-size: 13px;font-family: 'Roboto-Regular';color:#373737}
+.display_order_add_cart{height: 30px;margin-left: 15%;width: 50%;font-size: 13px;font-family: 'Roboto-Regular';color:#373737;border:1px solid #9fd2eb}
+.category_text_seo_cat{height: 30px;margin-left: 24.5%;width: 50%;font-size: 13px;font-family: 'Roboto-Regular';color:#373737;border:1px solid #9fd2eb}
+.category_text_seo_frnd_name{height: 30px;margin-left: 5%;width: 50%;font-size: 13px;font-family: 'Roboto-Regular';color:#373737;border:1px solid #9fd2eb}
+.seo_description_textarea{margin-left: 22%;width: 50%;height: 122px;font-size: 13px;font-family: 'Roboto-Regular';color:#373737;border:1px solid #9fd2eb}
+.category_text_seo_meta{height: 30px;margin-left: 29.5%;width: 50%;font-size: 13px;font-family: 'Roboto-Regular';color:#373737;border:1px solid #9fd2eb}
+.product_add_cart{width:100%;margin-top: 10px;}
+.product_add_cart thead td{background-color: #0082c8;color:#fff;text-transform: uppercase;font-family: 'Roboto-Regular';font-size: 13px;padding: 10px 0px;text-align: center;border: 1px solid #fff;} 
+.product_add_cart tbody td{text-align: center;font-family: 'Roboto-Regular';font-size: 13px;padding: 7px 0px;}
 
 /*product_attr*/
 .product_attr_table{width:100%;position: relative;top:10px;}
