@@ -140,3 +140,56 @@ ul, li{list-style: none; margin: 0; padding: 0;}
 footer{ text-align: center;background: #e7e5e5}
 footer p{margin: 0; padding: 10px 0;font-family: 'Roboto-Regular';color:#424242;font-size: 13px;font-family: 'Roboto-Regular';}
 footer a{font-family: 'Roboto-Regular';color:#424242;font-size: 13px;}
+
+/*currentshopping*/
+.edit_cart{background: url("../images/Edit_order_sprite.png")-1px -101px no-repeat;height: 39px;width:50px;display: inline-block;float:left;}
+.collapsable_table_main{width:100%;margin-top:26px;}
+.collapsable_table_main table{width:100%;margin-top:10px;}
+.main_head{background-color: #0082c7;border-bottom: 2px;border-bottom:2px solid #2d2d2d;}
+.main_head td{padding: 10px 0px;color: #fff;text-transform: uppercase;font-size: 12px;font-family: 'Roboto-Regular';font-weight: normal;} 
+.alt_row_first{background-color: #f7f7f7 }
+.main_tbody td{padding: 10px 0px;color:#373737;font-size: 12px;font-family: 'Roboto-Regular';}
+.table-striped thead{background-color: #7f7f7f;text-align: center;text-transform: uppercase;} 
+.table-striped thead td{color: #fff;font-size: 12px;font-family: 'Roboto-Regular'} 
+.table-striped tbody td{vertical-align: middle;border:1px solid #7f7f7f;    padding: 5px 5px;}
+.subtotal{text-align: right;font-weight: bold}
+.qty{text-align: center;font-weight: bold}
+.ring{text-align: center;}
+.status_cart{font-weight: normal}
+.item_price{text-align: right;}
+.first_row_cart{background-color: #f7f7f7 }
+.second_row_cart{background-color: #dee6ea;}
+.customer_id_cart {text-align: center}
+.sub_total_cart{text-align: right;}
+.per_page{font-family: 'Roboto-Regular';font-size: 11px;color:#000;text-transform: uppercase;}
+.per_page_number{font-family: 'Roboto-Regular';font-size: 11px;color:#000;}
+td h3:focus{border:0px ;}
+
+/*pagination*/
+
+.paging-nav {
+  text-align: center;
+  padding-top: 2px;
+}
+
+.paging-nav a {
+  margin: auto 1px;
+  text-decoration: none;
+  display: inline-block;
+  padding: 1px 7px;
+  background: #91b9e6;
+  color: white;
+  border-radius: 3px;
+}
+
+.paging-nav .selected-page {
+  background: #187ed5;
+  font-weight: bold;
+}
+
+.paging-nav,
+#tableData {
+  
+  
+  font-family: Arial, sans-serif;
+}
