@@ -4,14 +4,13 @@
                 {
                     <tr>
                         @*<td><input type="checkbox"></td>*@
-                        <td class="align_center">@items.Id</td>
+                        <td class="align_center"><a style="cursor:pointer" href="@Url.Action("Edit", "Order", new { id = items.Id })">@items.Id</a></td>
                         <td class="align_center">@items.OrderStatus</td>
                         <td class="align_center">@items.PaymentStatus</td>
                         <td class="align_center">@items.ShippingStatus</td>
                         <td class="align_center">@items.CustomerEmail</td>
                         <!--  <td>Your Store Name</td> -->
                         <td class="align_center">@items.CreatedOn</td>
-                        <td class="align_center" style="text-align:right">@items.OrderTotal</td>
-                        <td class="align_center"><a style="cursor:pointer" href="@Url.Action("Edit", "Order", new { id = items.Id })"><label class="edit_ring"></label></a></td>
+                        <td class="align_center" style="text-align:right">@items.OrderTotal</td>                    
                     </tr>
                 }

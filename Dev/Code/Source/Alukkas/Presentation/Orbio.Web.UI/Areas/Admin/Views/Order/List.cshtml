@@ -39,9 +39,9 @@
         </div>
         <div class="refresh_xl">
             <span class="refresh_button"><a style="cursor:pointer" href="@Url.Action("List","Order")"><label></label></a></span>
-            <span class="report_xls">Export to excel <label></label></span>
+            @*<span class="report_xls">Export to excel <label></label></span>*@
         </div>
-        <div class="">
+        <div class="col-md-12">
             <table class="order_total_main_table" id="tableData">
                 <thead>
                 <td>order id</td>
@@ -51,7 +51,7 @@
                 <td>email</td>
                 <td>created on</td>
                 <td>order total</td>
-                <td>view</td></thead>
+                </thead>
                 <tbody>
                     @Html.Action("OrderList", "Order")
                 </tbody>
