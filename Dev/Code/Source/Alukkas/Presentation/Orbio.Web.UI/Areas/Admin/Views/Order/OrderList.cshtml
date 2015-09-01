@@ -4,14 +4,14 @@
                 {
                     <tr>
                         @*<td><input type="checkbox"></td>*@
-                        <td>@items.Id</td>
-                        <td>@items.OrderStatus</td>
-                        <td>@items.PaymentStatus</td>
-                        <td>@items.ShippingStatus</td>
-                        <td>@items.CustomerEmail</td>
+                        <td class="align_center">@items.Id</td>
+                        <td class="align_center">@items.OrderStatus</td>
+                        <td class="align_center">@items.PaymentStatus</td>
+                        <td class="align_center">@items.ShippingStatus</td>
+                        <td class="align_center">@items.CustomerEmail</td>
                         <!--  <td>Your Store Name</td> -->
-                        <td>@items.CreatedOn</td>
-                        <td>@items.OrderTotal</td>
-                        <td><a style="cursor:pointer" href="@Url.Action("Edit", "Order", new { id = items.Id })"><img src="~/Areas/Admin/images/edit.png" /></a></td>
+                        <td class="align_center">@items.CreatedOn</td>
+                        <td class="align_center" style="text-align:right">@items.OrderTotal</td>
+                        <td class="align_center"><a style="cursor:pointer" href="@Url.Action("Edit", "Order", new { id = items.Id })"><label class="edit_ring"></label></a></td>
                     </tr>
                 }

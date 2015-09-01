@@ -4,57 +4,80 @@
         var date = "";
         var status = "";
     }
-@foreach (var customer in this.Model.GroupBy(x => x.Id).Select(y => y.First()))
-{
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h4 class="panel-title">
-                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#@count" style="background-color: white;">
-                    @if (customer.Email != null)
-                    {
-                        @customer.Email
-                    }
-                    else
-                    {
-                        <span>Guest</span>
-                    }
-                    <div style="float:right">
-                        <span style="margin-left:50px">@customer.shoppingCart.ShoppingCartItems.Count()</span>
-                    </div>
-                    <div style="float:right">
-                        <span style="margin-left:50px">@customer.shoppingCart.Total</span>
-                    </div>
-                    <div style="float:right">
-                        <span style="margin-left:50px">@customer.shoppingCart.DiscountAmount</span>
-                    </div>
-                    <div style="float:right">
-                        <span style="margin-left:50px">@customer.shoppingCart.SubTotal</span>
-                    </div>
-                    <div style="float:right">
-                        <span style="margin-left:50px">
-                            @{
-                                date = customer.shoppingCart.ShoppingCartItems.Select(element => element.UpdatedOnUtc).First().ToString();
-                            }
-                            @date
-                        </span>
-                    </div>
-                    <div style="float:right">
-                        <span style="margin-left:50px">
-                        @{
-                           status = customer.shoppingCart.ShoppingCartItems.Select(element => element.ShoppingCartStatus).First().ToString();
-                        }
-                            @status
-                        </span>
-                    </div>
-</a>
-            </h4>
 
-        </div><!--/.panel-heading -->
-    </div><!-- /.panel -->
-    <div id="@count" class="panel-collapse collapse">
-        @{
-            Html.RenderPartial("CartItems", customer.shoppingCart);
-         }
-    </div>
-                    count++;
-}
+<table class="main_table" id="tableData">
+    <thead class="main_head">
+    <td class="customer_id_cart">Customer Or Id</td>
+    <td class="customer_id_cart">Status</td>
+    <td class="customer_id_cart">Last Updated</td>
+    <td class="sub_total_cart">Sub Total</td>
+    <td class="sub_total_cart">Product Discount</td>
+    <td class="sub_total_cart">Total Amount</td>
+    <td class="customer_id_cart">Total Product Count</td>
+    </thead>
+    <tbody class="main_tbody">
+        @foreach (var customer in this.Model.GroupBy(x => x.Id).Select(y => y.First()))
+{
+    var tr_id = customer.shoppingCart.ShoppingCartItems.Select(m => m.CartId).First().ToString();
+            if(count == 1)
+            { 
+             @:<tr data-toggle="collapse" data-target="#@tr_id" class="accordion-toggle first_row_cart">
+             count++;
+             }
+                else
+                {
+                    @:<tr data-toggle="collapse" data-target="#@tr_id" class="accordion-toggle second_row_cart">
+                    count = 1;
+                }
+                <td class="btn_collapse qty " style="text-align:left;">
+              
+                    <h3 style="outline:0">
+                        <span class="panel-icon">+</span>
+                        @if (customer.Email != null)
+                        {
+                            @customer.Email
+                        }
+                        else
+                        {
+                            <span>Guest</span>
+                        }
+                    </h3>
+</td>
+                <td class="qty">
+                    @{
+    status = customer.shoppingCart.ShoppingCartItems.Select(element => element.ShoppingCartStatus).First().ToString();
+                    }
+                    @status
+                </td>
+                <td class="qty">
+                    @{
+ date = customer.shoppingCart.ShoppingCartItems.Select(element => element.UpdatedOnUtc).First().ToString();
+                    }
+                    @date
+                </td>
+                <td class="subtotal">
+                    @customer.shoppingCart.SubTotal
+                </td>
+                <td class="subtotal">
+                    @customer.shoppingCart.DiscountAmount
+                </td>
+                <td class="subtotal">
+                    @customer.shoppingCart.Total
+                </td>
+                <td class="qty">
+                    @customer.shoppingCart.ShoppingCartItems.Count()
+                </td>
+            @:</tr>
+
+    <tr>
+        <td colspan="7" class="hiddenRow" style="padding:0px">
+            @{
+    Html.RenderPartial("CartItems", customer.shoppingCart);
+            }
+        </td>
+        </tr>
+        
+        }
+</tbody>
+                        </table>
+

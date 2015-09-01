@@ -46,6 +46,7 @@ namespace Orbio.Services.Admin.Orders
             if (order.PaymentStatus == PaymentStatus.Paid && !order.PaidDateUtc.HasValue)
             {
                 //ensure that paid date is set
+                order.CreatedOnUtc = DateTime.UtcNow;
                 order.PaidDateUtc = DateTime.UtcNow;
                 _orderService.UpdateOrder(order);
             }
