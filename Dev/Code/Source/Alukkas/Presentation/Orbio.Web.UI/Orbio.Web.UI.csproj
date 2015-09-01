@@ -912,7 +912,6 @@
     <Content Include="Areas\Admin\Views\Order\_OrderDetailAddress.cshtml" />
     <Content Include="Areas\Admin\Views\Catalog\AddorEditCategory.cshtml" />
     <Content Include="Areas\Admin\Views\Catalog\AddOrEditManufacturer.cshtml" />
-    <Content Include="Areas\Admin\Views\Catalog\CategoryAccessControlList.cshtml" />
     <Content Include="Areas\Admin\Views\Catalog\CategoryInfo.cshtml" />
     <Content Include="Areas\Admin\Views\Catalog\CategoryProduct.cshtml" />
     <Content Include="Areas\Admin\Views\Catalog\DiscountCategory.cshtml" />
