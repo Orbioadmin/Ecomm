@@ -1,20 +1,11 @@
 ﻿@model Orbio.Web.UI.Areas.Admin.Models.Attribute.ProductAttributeModel
 
-<div class="col-md-9 colmd1 tabcustomer ">
-    <div class="tab-content ">
-        <div role="tabpanel" class="tab-pane in active" id="standard">
-            <div class="col-md-12 product-specification">
-                <div class="col-md-12">
-                    <div class="col-md-3"><label> Name:</label></div>
-                    <div class="col-md-3">@Html.TextBoxFor(m => m.Name, new { @class = "produtxt" })</div>
-                </div>
-                <div class="col-md-12">
-                    <div class="col-md-3"><label> Description:</label></div>
-                    <div class="col-md-9">
-                        @Html.TextAreaFor(m => m.Description, new { @class = "produtxt" })
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="form-group">
+        <label>Name : </label>
+        @Html.TextBoxFor(m => m.Name, new { @class = "add_product_attr_name" })
     </div>
-</div>
+    <div class="form-group">
+        <label class="description_label_add_prdct"> Description : </label>
+        @Html.TextAreaFor(m => m.Description, new { @class = "description_product_attr" })
+    </div>
+

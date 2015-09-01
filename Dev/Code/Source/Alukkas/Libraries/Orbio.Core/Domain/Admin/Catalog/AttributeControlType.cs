@@ -39,7 +39,7 @@ namespace Orbio.Core.Domain.Admin.Catalog
         /// <summary>
         /// Color squares
         /// </summary>
-        ColorSquares = 40,
+        //ColorSquares = 40,
         /// <summary>
         /// Td blocks
         /// </summary>

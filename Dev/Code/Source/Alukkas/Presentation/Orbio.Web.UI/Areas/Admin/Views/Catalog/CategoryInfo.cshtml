@@ -1,6 +1,92 @@
 ﻿@model Orbio.Web.UI.Areas.Admin.Models.Catalog.CategoryDetailModel
 
-<div role="tabpanel" class="tab-pane active">
+<div class="col-md-6 add_cart_left_side">
+    <h3>Category information</h3>
+        <div class="form-group">
+            <label>Category : </label>
+            @Html.TextBoxFor(m => m.Categories.Name, new { @class = "category_text_add_cat", onkeyup = "javascript:GenerateScript()", id = "catgname" })
+            @Html.ValidationMessageFor(m => m.Categories.Name)
+        </div>
+        <div class="form-group">
+            <label class="description_cart">Description : </label>
+            @Html.TextAreaFor(m => m.Categories.Description, new { @class = "description_textarea" })
+        </div>
+        <div class="form-group">
+            <label>Category template : </label>
+                @Html.DropDownListFor(m => m.Categories.CategoryTemplate, new SelectList(Model.Categories.CategoryTemplateList, "Id", "Name"), new { @class = "category_select_add_cat" })
+        </div>
+        <div class="form-group">
+            <label>Parent category : </label>
+                @Html.DropDownListFor(m => m.Categories.ParentCategory, new SelectList(Model.Categories.CategoryList, "Id", "Name"), "[none]", new { @class = "none_select_add_cat" })
+         </div>
+        <div class="form-group">
+            <label>Display order : </label>
+            @Html.TextBoxFor(m => m.Categories.DisplayOrder, new { @type = "number", @class = "creatext display_order_add_cart", value = "0" })
+        </div>
+    <div class="form-group">
+        <label>Show on Home Page : </label>
+        @Html.CheckBoxFor(m => m.Categories.ShowOnHomePage, new { @class = "show_on_home_page_check" })
+
+        <label class="published_add_cart">Published : </label>
+        @Html.CheckBoxFor(m => m.Categories.Published, new { @class = "show_on_home_page_check" })
+    </div>
+    <div class="form-group">
+        <label>Acess Control List : </label>
+        @Html.CheckBoxFor(m => m.Categories.SubjectToACL, new { @class = "show_on_home_page_check" })
+    </div>
+</div>
+<div class="col-md-6 add_cart_left_side">
+    <h3>Seo</h3>
+        <div class="form-group">
+            <label>Meta Title : </label>
+            @Html.TextBoxFor(m => m.Categories.MetaTitle, new { @class = "category_text_seo_meta" })
+            @*<input type="text" class="category_text_seo_meta">*@
+        </div>
+        <div class="form-group">
+            <label class="description_cart">Meta Description : </label>
+            @Html.TextAreaFor(m => m.Categories.MetaDescription, new { @class = "seo_description_textarea" })
+            @*<textarea class="seo_description_textarea"></textarea>*@
+        </div>
+        <div class="form-group">
+            <label>Meta keywords: </label>
+            @Html.TextBoxFor(m => m.Categories.MetaKeyWords, new { @class = "category_text_seo_cat" })
+        </div>
+        <div class="form-group">
+            <label>Search engine friendly page name : </label>
+            @Html.TextBoxFor(m => m.Categories.SearchEngine, new { @class = "category_text_seo_frnd_name", id = "slug" })
+        </div>
+    
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<div role="tabpanel" class="tab-pane active">
     <div class="col-md-12 standerd">
         <div class="col-md-12 ">
             @Html.HiddenFor(m => m.Categories.CategoryList, new { Value = Model.Categories.CategoryList })
@@ -103,9 +189,9 @@
                         </div>
                     </div>
                 </div>*@
-            </div>
+            @*</div>
         </div>
-    </div>
+    </div>*@
 <script>
     function GenerateScript()
     {

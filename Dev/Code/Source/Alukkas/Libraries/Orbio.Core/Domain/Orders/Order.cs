@@ -5,7 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Orbio.Core.Domain.Discounts;
+//using Orbio.Core.Domain.Discounts;
 using Orbio.Core.Domain.Shipping;
 using Orbio.Core.Payments;
 using Orbio.Core.Domain.Customers;
@@ -26,7 +26,7 @@ namespace Orbio.Core.Domain.Orders
 
         public Order()
         {
-            this.DiscountUsageHistory = new List<DiscountUsageHistory>();
+            this.DiscountUsageHistory = new List<Orbio.Core.Domain.Discounts.DiscountUsageHistory>();
             this.OrderNotes = new List<OrderNote>();
             this.OrderItems = new List<OrderItem>();
         }
@@ -358,7 +358,7 @@ namespace Orbio.Core.Domain.Orders
 
         public List<OrderItem> OrderItems { get; set; }
 
-        public List<DiscountUsageHistory> DiscountUsageHistory { get; set; }
+        public List<Orbio.Core.Domain.Discounts.DiscountUsageHistory> DiscountUsageHistory { get; set; }
 
         public List<OrderNote> OrderNotes { get; set; }
 

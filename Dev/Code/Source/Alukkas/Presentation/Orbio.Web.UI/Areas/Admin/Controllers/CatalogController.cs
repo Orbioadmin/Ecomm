@@ -125,10 +125,10 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         /// <param name="id">Category Id</param>
         /// <param name="cId">Product Id</param>
         /// <returns></returns>
-        public ActionResult DeleteCategoryProduct(int id, int cId)
+        public ActionResult DeleteCategoryProduct(int? Id, int? cId)
         {
-            categoryServices.DeleteCategoryProduct(id, cId);
-            return RedirectToAction("EditCategory", new { id });
+            categoryServices.DeleteCategoryProduct(Id.GetValueOrDefault(), cId.GetValueOrDefault());
+            return RedirectToAction("EditCategory", new { Id = Id.GetValueOrDefault() });
         }
 
 
@@ -177,9 +177,16 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         /// <returns></returns>
         public ActionResult SearchManufacturer(ManufacturerDetailModel model)
         {
-            var result = new ManufacturerDetailModel(manufacturerService.SearchManufacturerByName(model.Search));
-            result.Search = model.Search;
-            return View("ManageManufacturer", result);
+            if (string.IsNullOrEmpty(model.Search))
+            {
+                var result = new ManufacturerDetailModel(manufacturerService.SearchManufacturerByName(model.Search));
+                result.Search = model.Search;
+                return View("ManageManufacturer", result);
+            }
+            else
+            {
+                return RedirectToAction("ManageManufacturer");
+            }
         }
 
         /// <summary>
@@ -190,16 +197,17 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
          [HttpPost]
         public ActionResult UpdateManufacturer(ManufacturerDetailModel model)
         {
-            if (ModelState.IsValid)
-            {
                 var manufacturerDetail = GetManufacturer(model);
                 var result = manufacturerService.AddOrUpdateManufacturer(manufacturerDetail.Manufacturer);
-                return RedirectToAction("ManageManufacturer");
-            }
-            else
-            {
-                return View("ManageManufacturer", model);
-            }
+                if (model.Manufacturer.Id != 0)
+                {
+                    return RedirectToAction("ManageManufacturer");
+                }
+                else
+                {
+                    return RedirectToAction("EditManufacturers", new { Id = result });
+                }
+            
         }
 
         /// <summary>

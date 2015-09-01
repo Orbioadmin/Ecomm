@@ -441,21 +441,78 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="SpecificationAttributes">
-      <EntityTypeMapping TypeName="OrbioAdminModel.SpecificationAttribute">
-        <MappingFragment StoreEntitySet="SpecificationAttribute">
+    <EntitySetMapping Name="Shipments">
+      <EntityTypeMapping TypeName="OrbioAdminModel.Shipment">
+        <MappingFragment StoreEntitySet="Shipment">
+          <ScalarProperty Name="CreatedOnUtc" ColumnName="CreatedOnUtc" />
+          <ScalarProperty Name="DeliveryDateUtc" ColumnName="DeliveryDateUtc" />
+          <ScalarProperty Name="ShippedDateUtc" ColumnName="ShippedDateUtc" />
+          <ScalarProperty Name="TotalWeight" ColumnName="TotalWeight" />
+          <ScalarProperty Name="TrackingNumber" ColumnName="TrackingNumber" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShipmentItems">
+      <EntityTypeMapping TypeName="OrbioAdminModel.ShipmentItem">
+        <MappingFragment StoreEntitySet="ShipmentItem">
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="OrderItemId" ColumnName="OrderItemId" />
+          <ScalarProperty Name="ShipmentId" ColumnName="ShipmentId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShippingMethods">
+      <EntityTypeMapping TypeName="OrbioAdminModel.ShippingMethod">
+        <MappingFragment StoreEntitySet="ShippingMethod">
           <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="SpecificationAttributeOptions">
-      <EntityTypeMapping TypeName="OrbioAdminModel.SpecificationAttributeOption">
-        <MappingFragment StoreEntitySet="SpecificationAttributeOption">
+    <EntitySetMapping Name="CheckoutAttributes">
+      <EntityTypeMapping TypeName="OrbioAdminModel.CheckoutAttribute">
+        <MappingFragment StoreEntitySet="CheckoutAttribute">
           <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+          <ScalarProperty Name="AttributeControlTypeId" ColumnName="AttributeControlTypeId" />
+          <ScalarProperty Name="TaxCategoryId" ColumnName="TaxCategoryId" />
+          <ScalarProperty Name="IsTaxExempt" ColumnName="IsTaxExempt" />
+          <ScalarProperty Name="ShippableProductRequired" ColumnName="ShippableProductRequired" />
+          <ScalarProperty Name="IsRequired" ColumnName="IsRequired" />
+          <ScalarProperty Name="TextPrompt" ColumnName="TextPrompt" />
           <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="SpecificationAttributeId" ColumnName="SpecificationAttributeId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CheckoutAttributeValues">
+      <EntityTypeMapping TypeName="OrbioAdminModel.CheckoutAttributeValue">
+        <MappingFragment StoreEntitySet="CheckoutAttributeValue">
+          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+          <ScalarProperty Name="IsPreSelected" ColumnName="IsPreSelected" />
+          <ScalarProperty Name="WeightAdjustment" ColumnName="WeightAdjustment" />
+          <ScalarProperty Name="PriceAdjustment" ColumnName="PriceAdjustment" />
+          <ScalarProperty Name="ColorSquaresRgb" ColumnName="ColorSquaresRgb" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CheckoutAttributeId" ColumnName="CheckoutAttributeId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PriceComponents">
+      <EntityTypeMapping TypeName="OrbioAdminModel.PriceComponent">
+        <MappingFragment StoreEntitySet="PriceComponent">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -488,45 +545,21 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="PriceComponents">
-      <EntityTypeMapping TypeName="OrbioAdminModel.PriceComponent">
-        <MappingFragment StoreEntitySet="PriceComponent">
-          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+    <EntitySetMapping Name="SpecificationAttributes">
+      <EntityTypeMapping TypeName="OrbioAdminModel.SpecificationAttribute">
+        <MappingFragment StoreEntitySet="SpecificationAttribute">
+          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="CheckoutAttributes">
-      <EntityTypeMapping TypeName="OrbioAdminModel.CheckoutAttribute">
-        <MappingFragment StoreEntitySet="CheckoutAttribute">
+    <EntitySetMapping Name="SpecificationAttributeOptions">
+      <EntityTypeMapping TypeName="OrbioAdminModel.SpecificationAttributeOption">
+        <MappingFragment StoreEntitySet="SpecificationAttributeOption">
           <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
-          <ScalarProperty Name="AttributeControlTypeId" ColumnName="AttributeControlTypeId" />
-          <ScalarProperty Name="TaxCategoryId" ColumnName="TaxCategoryId" />
-          <ScalarProperty Name="IsTaxExempt" ColumnName="IsTaxExempt" />
-          <ScalarProperty Name="ShippableProductRequired" ColumnName="ShippableProductRequired" />
-          <ScalarProperty Name="IsRequired" ColumnName="IsRequired" />
-          <ScalarProperty Name="TextPrompt" ColumnName="TextPrompt" />
           <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="CheckoutAttributeValues">
-      <EntityTypeMapping TypeName="OrbioAdminModel.CheckoutAttributeValue">
-        <MappingFragment StoreEntitySet="CheckoutAttributeValue">
-          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
-          <ScalarProperty Name="IsPreSelected" ColumnName="IsPreSelected" />
-          <ScalarProperty Name="WeightAdjustment" ColumnName="WeightAdjustment" />
-          <ScalarProperty Name="PriceAdjustment" ColumnName="PriceAdjustment" />
-          <ScalarProperty Name="ColorSquaresRgb" ColumnName="ColorSquaresRgb" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="CheckoutAttributeId" ColumnName="CheckoutAttributeId" />
+          <ScalarProperty Name="SpecificationAttributeId" ColumnName="SpecificationAttributeId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>

@@ -1,73 +1,44 @@
 ﻿@model Orbio.Web.UI.Areas.Admin.Models.Catalog.ManufacturerDetailModel
 
-<div role="tabpanel" class="tab-pane" id="products">
-    <div class="col-lg-12 protab">
-       
-            <div class="table-responsive best-seller-table">
-
-                <table id="tableData1" class="table table-bordered table-striped ">
-                    <thead>
+<div class="col-md-12">
+    <table class="product_add_cart">
+        <thead>
+        <td>Product</td>
+        <td>Is featured product?</td>
+        <td>Display order</td>
+        <td>Delete</td>
+        </thead>
+        <tbody>
+            @if (this.Model.Products != null)
+            {
+                if (this.Model.Products.Count > 0)
+                {
+                    foreach (var item in this.Model.Products)
+                    {
                         <tr>
-                            <th>PRODUCT</th>
-                            <th>Is featured product?</th>
-                            <th>Display Order</th>              
-                            <th>Edit</th>
+                            <td>@item.Name</td>
+                            <td>@item.IsFeaturedProduct</td>
+                            <td>@item.DisplayOrder</td>
+                            <td><a href="@Url.Action("DeleteManufacturerProduct", "Catalog", new { Id = Model.Manufacturer.Id, pId = item.Id })"><label class="delete_ring" onclick=" return confirm('Are You Sure'); "></label></a>
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        @if (this.Model.Products != null)
-                        {
-                        if (this.Model.Products.Count > 0)
-                        {
-                            foreach (var item in this.Model.Products)
-                            {
-                                <tr style="display: table-row;">
-                                    <td>@item.Name</td>
-                                    <td>@item.IsFeaturedProduct</td>
-                                    <td>@item.DisplayOrder</td>                            
-                                    <td>                                       
-                                        @*<a href="@Url.Action("DeleteManufacturerProduct", "Catalog", new { id=Model.Manufacturer.Id,pId=@item.Id })"><label class="img_sprite"></label></a>*@
-                                   
-                                        <label class="img_sprite" onclick="Delete(@item.Id)"></label>         
-                                     </td>
-                                </tr>
-                            }
-                        }
-                        else
-                        {
-                            <tr style="display: table-row;">
-                                <td colspan="4"> No products available</td>
-                            </tr>
-                        }
-                        }
-                        else
-                        {
-                            <tr style="display: table-row;">
-                                <td colspan="4"> No products available</td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-                <div class="pull-left1"><input type="button" class="but-refresh" onclick="refresh()"></div>
-      
-
-
-            
-            </div>
-    </div>
+                    }
+                }
+                else
+                {
+                    <tr style="display: table-row;">
+                        <td colspan="4"> No products available</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr style="display: table-row;">
+                    <td colspan="4"> No products available</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
-
-<script>
-    function Delete(Id)
-    {
-        var r = confirm("Do you want to delete ?");
-        if (r == true) { 
-            window.location.href = '@Url.Action("DeleteManufacturerProduct", "Catalog", new { id = Model.Manufacturer.Id })?pId=' + Id
-        }
-    }
-
-
-</script>
-
 
 

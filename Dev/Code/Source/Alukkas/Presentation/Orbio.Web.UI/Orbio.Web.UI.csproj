@@ -351,6 +351,7 @@
     <Content Include="Areas\Admin\Content\fonts\Roboto-Bold.eot" />
     <Content Include="Areas\Admin\Content\fonts\Roboto-Bold.ttf" />
     <Content Include="Areas\Admin\Content\fonts\Roboto-Bold.woff" />
+    <Content Include="Areas\Admin\Content\main.less" />
     <None Include="Areas\Admin\Scripts\_references.js" />
     <Content Include="Areas\Admin\Scripts\paging.js" />
     <Content Include="Areas\Admin\Scripts\tinymce.jquery.min.js" />
@@ -889,7 +890,6 @@
     <Content Include="Areas\Admin\Content\less\utilities.less" />
     <Content Include="Areas\Admin\Content\less\variables.less" />
     <Content Include="Areas\Admin\Content\less\wells.less" />
-    <Content Include="Areas\Admin\Content\main.less" />
     <Content Include="Areas\Admin\Views\Home\TopMenu.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\Error.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />

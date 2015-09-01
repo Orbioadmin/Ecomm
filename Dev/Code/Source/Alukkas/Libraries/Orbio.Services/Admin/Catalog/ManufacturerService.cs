@@ -143,6 +143,7 @@ namespace Orbio.Services.Admin.Catalog
                     //    context.UrlRecords.Add(UrlRecord);
                     //    context.SaveChanges();
                     //}
+                    return Id;
                 }
                 return 1;
             }

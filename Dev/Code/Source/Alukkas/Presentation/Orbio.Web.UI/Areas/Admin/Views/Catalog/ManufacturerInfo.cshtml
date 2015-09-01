@@ -1,78 +1,56 @@
 ﻿@model Orbio.Web.UI.Areas.Admin.Models.Catalog.ManufacturerDetailModel
 
-<div role="tabpanel" class="tab-pane active" id="standard">
-    <div class="col-md-12 standerd">
-        <div class="col-md-12">
-            <div class="col-md-2"><label>Manufacturer Name:</label></div>
-            <div class="col-md-4">@Html.TextBoxFor(m => m.Manufacturer.Name, new { @class = "creatext", onkeyup = "javascript:GenerateScript()", id = "manufname" }) 
-          @Html.HiddenFor(m=>m.Manufacturer.Id)
-              @*<input type="text" name="prorductname" class="creatext">*@</div>
-        </div>
-
-        <div class="col-md-12" style="padding-bottom:20px;">
-            <div class="col-md-2"> <label>Description:</label></div>
-            <div class="col-md-4">
-                @Html.TextAreaFor(m => m.Manufacturer.Description, new { @class = "metainput" })
-                @*<textarea name="content" style="width:100%" class="word"></textarea>*@
-            </div>
-
-        </div>
+<div class="col-md-6 add_cart_left_side">
+    <h3>Manufacturer Information</h3>
+    <div class="form-group">
+        <label>Manufacturer Name : </label>
+        @Html.TextBoxFor(m => m.Manufacturer.Name, new { @class = "creatext display_order_add_cart", onkeyup = "javascript:GenerateScript()", id = "manufname", @style = "margin-left:9%;" })
+        @Html.HiddenFor(m => m.Manufacturer.Id)
     </div>
-    <div class="col-md-12 admin-content" style="margin-top:10px;">
-        <div class="col-md-12 rproduct">
-            <div class="col-md-12">
-                <div class="col-md-3 colmd"><label>Meta title:</label></div>
-                <div class="col-md-5">@Html.TextBoxFor(m => m.Manufacturer.MetaTitle, new { @class = "metainput" })</div>
-            </div>
-            <div class="col-md-12">
-                <div class="col-md-3 colmd"><label>Meta description:</label></div>
-                <div class="col-md-5">@Html.TextAreaFor(m => m.Manufacturer.MetaDescription, new { @class = "metainput" })</div>
-            </div>
-            <div class="col-md-12">
-                <div class="col-md-3 colmd"><label>Meta keywords:</label></div>
-                <div class="col-md-5">@Html.TextBoxFor(m => m.Manufacturer.MetaKeyWords, new { @class = "metainput" })</div>
-            </div>
-            <div class="col-md-12">
-                <div class="col-md-3 colmd"><label>Search engine friendly page name:</label></div>
-                <div class="col-md-5">@Html.TextBoxFor(m => m.Manufacturer.SearchEngine, new { @class = "metainput", id = "slug" })</div>
-            </div>
-            <div class="col-md-12">
-                <div class="col-md-3 colmd"><label>Manufactures template</label></div>
-                <div class="col-md-5">@Html.DropDownListFor(m => m.Manufacturer.ManufacturerTemplate, new SelectList(Model.Manufacturer.ManufacturerTemplates, "Id", "Name"), new { @class = "creatext jewellery" })</div>
-            </div>
-            
-            <div class="col-md-12">
-                <div class="col-md-3 colmd"><label>Published</label></div>
-                <div class="col-md-5">
-                    @Html.CheckBoxFor(m => m.Manufacturer.Published, new { @class = "show-page2" })
-                    <span></span>
-
-                </div>
-            </div>
-            <div class="col-md-12">
-                <div class="col-md-3 colmd"><label>Display order</label></div>
-                <div class="col-md-5">@Html.TextBoxFor(m => m.Manufacturer.DisplayOrder, new { @type = "number", @class = "creatext" })</div>
-            </div>
-
-            @*<div class="col-md-12">
-            <div class="col-md-3 colmd"><label>Picture</label></div>
-            <div class="col-md-4 colmd">
-
-                <div class="upload">
-                    Upload a file
-                    <input multiple="multiple" type="file" name="file" class="filtext" style="">
-                </div>
-            </div>
-        </div>*@
-
-            @*<div class="col-md-12">
-            <div class="col-md-3 colmd"><label>Price Range</label></div>
-            <div class="col-md-4 colmd">@Html.TextBoxFor(m => m.Manufacturer.PriceRange, new { @class = "creatext" })</div>
-        </div>*@
-        </div>
-
+    <div class="form-group">
+        <label class="description_cart">Description : </label>
+        @Html.TextAreaFor(m => m.Manufacturer.Description, new { @class = "description_textarea" })
+    </div>
+    <div class="form-group">
+        <label>Category template : </label>
+        @Html.DropDownListFor(m => m.Manufacturer.ManufacturerTemplate, new SelectList(Model.Manufacturer.ManufacturerTemplates, "Id", "Name"), new { @class = "category_select_add_cat" })
+    </div>
+    <div class="form-group">
+        <label>Display order : </label>
+        @Html.TextBoxFor(m => m.Manufacturer.DisplayOrder, new { @type = "number", @class = "creatext display_order_add_cart", value = "0", @style="margin-left:14%;" })
+    </div>
+    <div class="form-group">
+        <label>Published : </label>
+        @Html.CheckBoxFor(m => m.Manufacturer.Published, new { @class = "show_on_home_page_check" })
+    </div>
+    <div class="form-group">
+        <label>Acess Control List : </label>
+        @Html.CheckBoxFor(m => m.Manufacturer.SubjectToACL, new { @class = "show_on_home_page_check" })
     </div>
 </div>
+<div class="col-md-6 add_cart_left_side">
+    <h3>Seo</h3>
+    <div class="form-group">
+        <label>Meta Title : </label>
+        @Html.TextBoxFor(m => m.Manufacturer.MetaTitle, new { @class = "category_text_seo_meta" })
+        @*<input type="text" class="category_text_seo_meta">*@
+    </div>
+    <div class="form-group">
+        <label class="description_cart">Meta Description : </label>
+        @Html.TextAreaFor(m => m.Manufacturer.MetaDescription, new { @class = "seo_description_textarea" })
+        @*<textarea class="seo_description_textarea"></textarea>*@
+    </div>
+    <div class="form-group">
+        <label>Meta keywords: </label>
+        @Html.TextBoxFor(m => m.Manufacturer.MetaKeyWords, new { @class = "category_text_seo_cat" })
+    </div>
+    <div class="form-group">
+        <label>Search engine friendly page name : </label>
+        @Html.TextBoxFor(m => m.Manufacturer.SearchEngine, new { @class = "category_text_seo_frnd_name", id = "slug" })
+    </div>
+
+</div>
+
 <script>
     function GenerateScript()
     {

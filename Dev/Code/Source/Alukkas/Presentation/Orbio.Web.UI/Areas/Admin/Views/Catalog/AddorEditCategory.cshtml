@@ -1,93 +1,62 @@
 ﻿@model Orbio.Web.UI.Areas.Admin.Models.Catalog.CategoryDetailModel
+
 @{
-    ViewBag.Title = "AddorEditCategory";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout1.cshtml";
 }
 
-<section class="wp-bestseller">
-    @using (Html.BeginForm("UpdateCategory", "Catalog", FormMethod.Post, new { @class = "form-horizontal " }))
+
+<div class="container">
+    @using (Html.BeginForm("UpdateCategory", "Catalog", FormMethod.Post))
     {
-    if (Model.Categories != null)
-{
-        @Html.HiddenFor(m => m.Categories.Id, new { Value = Model.Categories.Id })
-        <div class="container">
-            <div class="catalog-bulk col-md-12" style="padding-left:0px;">
-                <div class="pull-left">
-                    <label class="catalog"></label>
-                    <h1>EDIT CATEGORY DETAILS - @Model.Categories.Name <a href="@Url.Action("ManageCategories", "Catalog")">(back to category list)</a></h1>
+     if (Model.Categories.Id!=0)
+     {
+      @Html.HiddenFor(m => m.Categories.Id, new { Value = Model.Categories.Id })
+    <div class="main_edit_order">
+        <span class="edit_order_details"><span class="edit_order_icon"></span>EDIT CATEGORY DETAILS - @Model.Categories.Name<a href="@Url.Action("ManageCategories", "Catalog")" style="top:0px;text-transform:none;"> (back to category list)</a></span>
+        <span class="back_to_order" style="padding-top:0px">
+        <input type="submit" value="Save" class="add_cat_button"> 
+            <a href="@Url.Action("DeleteCategory", "Catalog", new { Id = Model.Categories.Id })"><input type="button" value="Delete" class="delete_cat_button" onclick=" return confirm('Are You Sure'); "></a></span>
+    </div>
+     }
+     else
+     {
+        <div class="main_edit_order">
+            <span class="edit_order_details"><span class="edit_order_icon"></span>ADD NEW CATEGORY<a href="@Url.Action("ManageCategories", "Catalog")" style="top:0px;text-transform:none;"> (back to category list) </a></span>
+            <span class="back_to_order" style="padding-top:0px">
+            <input type="submit" value="Save and continue edit" class="add_cat_button"> 
+                <a href="@Url.Action("ManageCategories", "Catalog")"><input type="button" value="Cancel" class="delete_cat_button"></a></div>
+     }
+    <div class="tab_main_order col-md-12">
+        <ul id="myTab" role="tablist" class="tabview_order_ul">
 
-                </div>
-                <div class="pull-right">
-                    @*<input type="button" value="Preview" class="Sbut ssbut ssbut1">*@
-                    <input type="submit" value="Save" class="Sbut ssbut ssbut1">
-                    @*<input type="submit" value="Save and Continue Edit" class="Sbut ssbut">*@
-                    <a href="@Url.Action("DeleteCategory", "Catalog", new { Id = Model.Categories.Id })"><input type="button" value="Delete" class="Sbut ssbut" onclick=" return confirm('Are You Sure'); "></a>
-                </div>
+            <li class="active cctv_resp_li" role="presentation"><a aria-expanded="true" aria-controls="based" data-toggle="tab" role="tab" id="home-tab" href="#info">INFO</a></li>
+
+            <li role="presentation our_value" class="control_resp_li"><a aria-controls="profile" data-toggle="tab" id="profile-tab" role="tab" href="#products">PRODUCTS</a></li>
+
+            <li role="presentation" class="gate_resp_li"><a aria-controls="wireless" data-toggle="tab" role="tab" href="#discount">DISCOUNT</a></li>
+
+        </ul>
+    </div>
+
+    <div class="tab_side_solutions col-md-12">
+        <div class="tab-content tab_content_solutions" id="myTabContent">
+            <div aria-labelledby="home-tab" id="info" class="tab-pane fade in active  " role="tabpanel">
+               
+                @{
+                    Html.RenderPartial("CategoryInfo", this.Model);
+                }
+            </div>
+            <div aria-labelledby="home-tab" id="products" class="tab-pane fade " role="tabpanel">
+                @{
+                    Html.RenderPartial("CategoryProduct", this.Model);
+                }
+            </div>
+            <div aria-labelledby="home-tab" id="discount" class="tab-pane fade " role="tabpanel">
+                @{
+                    Html.RenderPartial("DiscountCategory", this.Model);
+                }
             </div>
         </div>
-        }
-        else
-        {
-        <div class="container">
-            <div class="catalog-bulk col-md-12" style="padding-left:0px;">
-                <div class="pull-left">
-                    <label class="catalog"></label>
-                    <h1>ADD NEW CATEGORY<a href="@Url.Action("ManageCategories", "Catalog")">(back to category list)</a></h1>
-
-                </div>
-                <div class="pull-right">
-                    <input type="submit" value="Save" class="Sbut ssbut ssbut1">
-                </div>
-            </div>
-        </div>
+    </div>
     }
-
-        <div class="container">
-            <div class="tab-product">
-                <div class="col-md-3" style="padding-left:0px;">
-                    <ul class="nav  nav-stacked product-info">
-                        <li class="active"><a href="#productinfo" role="tab" data-toggle="tab">CATEGORY INFO</a></li>
-                        <li><a href="#products" role="tab" data-toggle="tab">PRODUCTS</a></li>
-                        <li><a href="#categorymappings" role="tab" data-toggle="tab">DISCOUNTS</a></li>
-                        <li><a href="#manufature" role="tab" data-toggle="tab">ACCESS CONTROL LIST</a></li>
-                        @*<li><a href="#Specificationattributes" role="tab" data-toggle="tab">STORES  </a></li>*@
-
-                    </ul>
-                </div>
-                <div class="col-md-9">
-                    <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane active" id="productinfo">
-                            <div class="tab-content">
-                                @{
-                                    Html.RenderPartial("CategoryInfo", this.Model);
-                                }
-                            </div>
-                        </div>
-                        <div role="tabpanel" class="tab-pane" id="products">
-                            @{
-                            Html.RenderPartial("CategoryProduct", this.Model);
-                            }
-                        </div>
-                        <div role="tabpanel" class="tab-pane" id="categorymappings">
-                            @{
-                               Html.RenderPartial("DiscountCategory", this.Model);
-                            }
-
-                        </div>
-                        <div role="tabpanel" class="tab-pane" id="manufature">
-                            @{
-                               Html.RenderPartial("CategoryAccessControlList", this.Model);
-                            }
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @*</div>*@
-    }
-</section>
-
-<script>
-    function refresh() {
-        window.location.reload();
-    }
-</script>
+</div>

@@ -478,6 +478,36 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
     <Property Name="InitialOrderId" Type="int" Nullable="false" />
     <Property Name="CreatedOnUtc" Type="datetime" Nullable="false" />
   </EntityType>
+  <EntityType Name="Shipment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderId" Type="int" Nullable="false" />
+    <Property Name="TrackingNumber" Type="nvarchar(max)" />
+    <Property Name="TotalWeight" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="ShippedDateUtc" Type="datetime" />
+    <Property Name="DeliveryDateUtc" Type="datetime" />
+    <Property Name="CreatedOnUtc" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ShipmentItem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ShipmentId" Type="int" Nullable="false" />
+    <Property Name="OrderItemId" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ShippingMethod">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="400" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="DisplayOrder" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="SpecificationAttribute">
     <Key>
       <PropertyRef Name="Id" />
@@ -828,6 +858,34 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="Shipment_Order">
+    <End Role="Order" Type="Self.Order" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Shipment" Type="Self.Shipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Shipment">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ShipmentItem_Shipment">
+    <End Role="Shipment" Type="Self.Shipment" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ShipmentItem" Type="Self.ShipmentItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Shipment">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ShipmentItem">
+        <PropertyRef Name="ShipmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="SpecificationAttributeOption_SpecificationAttribute">
     <End Role="SpecificationAttribute" Type="Self.SpecificationAttribute" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -876,6 +934,9 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
     <EntitySet Name="ProductAttribute" EntityType="Self.ProductAttribute" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ProductComponent" EntityType="Self.ProductComponent" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RecurringPayment" EntityType="Self.RecurringPayment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Shipment" EntityType="Self.Shipment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ShipmentItem" EntityType="Self.ShipmentItem" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ShippingMethod" EntityType="Self.ShippingMethod" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SpecificationAttribute" EntityType="Self.SpecificationAttribute" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SpecificationAttributeOption" EntityType="Self.SpecificationAttributeOption" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TaxCategory" EntityType="Self.TaxCategory" Schema="dbo" store:Type="Tables" />
@@ -981,6 +1042,14 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
     <AssociationSet Name="RecurringPayment_InitialOrder" Association="Self.RecurringPayment_InitialOrder">
       <End Role="Order" EntitySet="Order" />
       <End Role="RecurringPayment" EntitySet="RecurringPayment" />
+    </AssociationSet>
+    <AssociationSet Name="Shipment_Order" Association="Self.Shipment_Order">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="Shipment" EntitySet="Shipment" />
+    </AssociationSet>
+    <AssociationSet Name="ShipmentItem_Shipment" Association="Self.ShipmentItem_Shipment">
+      <End Role="Shipment" EntitySet="Shipment" />
+      <End Role="ShipmentItem" EntitySet="ShipmentItem" />
     </AssociationSet>
     <AssociationSet Name="SpecificationAttributeOption_SpecificationAttribute" Association="Self.SpecificationAttributeOption_SpecificationAttribute">
       <End Role="SpecificationAttribute" EntitySet="SpecificationAttribute" />

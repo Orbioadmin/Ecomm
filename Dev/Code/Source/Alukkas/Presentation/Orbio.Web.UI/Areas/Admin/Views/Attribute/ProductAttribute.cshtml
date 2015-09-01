@@ -1,55 +1,32 @@
 ﻿@model List<Orbio.Web.UI.Areas.Admin.Models.Attribute.ProductAttributeModel>
 
 @{
-    ViewBag.Title = "ProductAttribute";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout1.cshtml";
 }
 
-<section class="wp-bestseller">
-    <div class="container">
-        <div class="catalog-bulk col-md-12" style="padding-left:0px;">
-            <div class="pull-left">
-                <label class="product-attr"></label>
-                <h1>PRODUCT ATTRIBUTES</h1>
-            </div>
-            <div class="pull-right"><a href="@Url.Action("AddProductAttribute","Attribute")"><input type="button" value="Add New" class="Sbut  ssbut1"></a></div>
-        </div>
+<div class="container">
+    <div class="main_edit_order">
+        <span class="edit_order_details"><span class="edit_order_icon"></span><a href="">PRODUCT ATTRIBUTES</a></span>
+        <span class="back_to_order"><a href="@Url.Action("AddProductAttribute","Attribute")"><input type="button" value="Add New" class="add_cat_button"></a></span>
     </div>
-    <div class="container">
-        <div class="table-home">
-            <div class="col-md-12">
-                <div class="table-responsive best-seller-table">
-                    <table id="tableData1" class="table table-bordered table-striped ">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Edit/Delete</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model)
-                            {
-                                <tr style="display: table-row;">
-                                    <td>@item.Name</td>
-                                    <td>
-                                        <a href="@Url.Action("EditProductAttribute", "Attribute", new { Id=item.Id })"><label class="jewedit" style="top: 0;float:none;"></label></a>
-                                        <a href="@Url.Action("DeleteProductAttribute", "Attribute", new { Id=item.Id })"><label class="jewdelete" style="top: 0;float:none;" onclick=" return confirm('Are You Sure'); "></label></a>
-                                    </td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                    <div class="pull-left1"><input type="button" class="but-refresh" onclick="refresh()"></div>
-                </div>
-            </div>
-        </div>
+    <div class="col-md-12">
+        <table class="product_attr_table">
+            <thead>
+                <td>Name</td>
+                <td>Edit/Delete</td>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>
+                            <a href="@Url.Action("EditProductAttribute", "Attribute", new { Id=item.Id })"><label class="edit_ring"></label></a>
+                            <a href="@Url.Action("DeleteProductAttribute", "Attribute", new { Id=item.Id })"><label class="delete_ring" onclick=" return confirm('Are You Sure'); "></label></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
-</section>
-
-<script>
-    function refresh()
-    {
-        window.location.reload();
-    }
-</script>
-
-
+</div>
