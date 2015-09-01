@@ -182,7 +182,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                     OrderStatus = x.OrderStatus.ToString(),
                     PaymentStatus = x.PaymentStatus.ToString(),
                     ShippingStatus = x.ShippingStatus.ToString(),
-                    //CustomerEmail = x.Customer.Email,
+                    CustomerEmail = x.Customer.Email,
                     CreatedOn = _dateTimeHelper.ConvertToUserTime(x.CreatedOnUtc, DateTimeKind.Utc)
                 };
             }).ToList();
@@ -670,7 +670,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                 order.OrderNotes.Add(orderNote);
             }
             _orderService.UpdateOrder(order);
-            _messageService.SendNewOrderNoteAddedCustomerNotification(orderNote, 1);
+            _messageService.SendNewOrderNoteAddedCustomerNotification(order,orderNote, 1);
             orderNote = new OrderNote()
             {
                 DisplayToCustomer = model.AddOrderNoteDisplayToCustomer,
@@ -679,7 +679,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             };
             order.OrderNotes.Add(orderNote);
             _orderService.UpdateOrderNotes(order);
-            _messageService.SendNewOrderNoteAddedCustomerNotification(orderNote, 1);
+            _messageService.SendNewOrderNoteAddedCustomerNotification(order,orderNote, 1);
             return RedirectToAction("Edit", "Order", new { id = order.OrderId });
         }
 
@@ -719,7 +719,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                 };
                 order.OrderNotes.Add(orderNote);
                _orderService.UpdateOrder(order);
-               _messageService.SendNewOrderNoteAddedCustomerNotification(orderNote, 1);
+               _messageService.SendNewOrderNoteAddedCustomerNotification(order, orderNote, 1);
             }
             else
             {
@@ -802,7 +802,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             {
                 //email
                 _messageService.SendNewOrderNoteAddedCustomerNotification(
-                    orderNote, 0);
+                    order,orderNote, 0);
 
             }
 
