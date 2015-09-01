@@ -1,10 +1,10 @@
 
 @font-face {
   font-family: 'Roboto-Regular';
-  src: url('../../../../Areas/Admin/Content/fonts/Roboto-Regular.eot');
-  src: url('../../../../Areas/Admin/Content/fonts/Roboto-Regular.eot?#iefix') format('embedded-opentype'),
-       url('../../../../Areas/Admin/Content/fonts/Roboto-Regular.woff') format('woff'),
-       url('../../../../Areas/Admin/Content/fonts/Roboto-Regular.ttf') format('truetype');
+  src: url('fonts/Roboto-Regular.eot');
+  src: url('fonts/Roboto-Regular.eot?#iefix') format('embedded-opentype'),
+       url('fonts/Roboto-Regular.woff') format('woff'),
+       url('fonts/Roboto-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 
@@ -14,19 +14,19 @@
 
 @font-face {
   font-family: 'Roboto-Medium';
-  src: url('../../../../Areas/Admin/Content/fonts/Roboto-Medium.eot');
-  src: url('../../../../Areas/Admin/Content/fonts/Roboto-Medium.eot?#iefix') format('embedded-opentype'),
-       url('../../../../Areas/Admin/Content/fonts/Roboto-Medium.woff') format('woff'),
-       url('../../../../Areas/Admin/Content/fonts/Roboto-Medium.ttf') format('truetype');
+  src: url('fonts/Roboto-Medium.eot');
+  src: url('fonts/Roboto-Medium.eot?#iefix') format('embedded-opentype'),
+       url('fonts/Roboto-Medium.woff') format('woff'),
+       url('fonts/Roboto-Medium.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'Roboto-Bold';
-  src: url('../../../../Areas/Admin/Content/fonts/fonts/Roboto-Bold.eot');
-  src: url('../../../../Areas/Admin/Content/fonts/Roboto-Bold.eot?#iefix') format('embedded-opentype'),
-       url('../../../../Areas/Admin/Content/fonts/Roboto-Bold.woff') format('woff'),
-       url('../../../../Areas/Admin/Content/fonts/Roboto-Bold.ttf') format('truetype');
+  src: url('fonts/fonts/Roboto-Bold.eot');
+  src: url('fonts/Roboto-Bold.eot?#iefix') format('embedded-opentype'),
+       url('fonts/Roboto-Bold.woff') format('woff'),
+       url('fonts/Roboto-Bold.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -49,22 +49,22 @@ ul, li{list-style: none; margin: 0; padding: 0;}
 .logo{margin-top:10px;}
 .main_edit_order{width: 100%;padding-top: 15px}
 .tab_side_solutions {background-color: #fff;margin-bottom: 20px}
-.edit_order_icon{background: url("../../../../Areas/Admin/images/Edit_order_sprite.png")-1px -9px no-repeat;height: 39px;width:50px;display: inline-block;float:left;}
+.edit_order_icon{background: url("../images/Edit_order_sprite.png")-1px -9px no-repeat;height: 39px;width:50px;display: inline-block;float:left;}
 .edit_order_details a {position: relative;top:8px;text-transform: uppercase;text-decoration: none;color:#3e3e3e;font-size: 15px;font-family: 'Roboto-Regular'}
 .back_to_order{float:right;padding-top: 7px}
 .back_to_order a{text-transform: uppercase;font-size: 11px;color:#3e3e3e;font-family: 'Roboto-Bold';}
 .order_no{margin-top: 10px;border: 1px solid #0082c7;width: 100%;background-color:#e0eef5}
 .order_no p{text-transform: uppercase;padding-top: 10px;padding-left: 24px;color:#0082c7;font-size: 18px;font-family: 'Roboto-Bold'}
-.adobe_icon{background: url("../../../../Areas/Admin/images/Edit_order_sprite.png ")-54px -5px no-repeat;height:39px;width:25px;display: inline-block;}
-.close_icon{background: url("../../../../Areas/Admin/images/Edit_order_sprite.png ")-98px -5px no-repeat;height:39px;width:25px;display: inline-block;}
+.adobe_icon{background: url("../images/Edit_order_sprite.png ")-54px -5px no-repeat;height:39px;width:25px;display: inline-block;}
+.close_icon{background: url("../images/Edit_order_sprite.png ")-98px -5px no-repeat;height:39px;width:25px;display: inline-block;}
 .reader_icons{float:right;}
 .tab_main_order{background-color: #0082c7;border-bottom:2px solid #2b2b2b;}
 .tab_main_order li{display: inline-block;margin: 10px 15px;}
 .tab_main_order li a{color:#fff;text-decoration: none}
 .tab_main_order .active{border-bottom: 2px solid #2b2b2b}
 .top_label li{display: inline-block;margin: 5px 11px;font-size: 13px;font-family: 'Roboto-Regular';}
-.date_admin{background: url("../../../../Areas/Admin/images/Edit_order_sprite.png ")-148px -1px no-repeat;height:33px;width:25px;display:inline-block;margin-right: 8px }
-.time_admin{background: url("../../../../Areas/Admin/images/Edit_order_sprite.png ")-196px -1px no-repeat;height:33px;width:25px;display:inline-block;margin-right: 8px }
+.date_admin{background: url("../images/Edit_order_sprite.png ")-148px -1px no-repeat;height:33px;width:25px;display:inline-block;margin-right: 8px }
+.time_admin{background: url("../images/Edit_order_sprite.png ")-196px -1px no-repeat;height:33px;width:25px;display:inline-block;margin-right: 8px }
 .select_pending{width:172px;height: 27px}
 .customer{color:#0082c7;}
 .save_pending{background-color:#2b2b2b;color:#fff;border:0px;padding:5px 13px;}
@@ -80,10 +80,10 @@ ul, li{list-style: none; margin: 0; padding: 0;}
 .add_new_projects h3{font-size: 18px ;text-transform:uppercase;color:#0082c7;font-family: 'Roboto-Bold';}
 .text_sku{width:223px;height: 37px;    margin: 7px 0px 16px 0px;border:1px solid #d8d8d8;font-size: 13px;font-family: 'Roboto-Regular';}
 .choose-varient{width:223px ;height:37px;margin: 10px 0px 16px 0px;border:1px solid #d8d8d8;font-size: 13px;font-family: 'Roboto-Regular';}
-.edit_ring{background: url("../../../../Areas/Admin/images/Edit_order_sprite.png")-249px -9px no-repeat;height:33px;width:25px;display:inline-block;cursor:pointer;border: 0;}
-.delete_ring{background: url("../../../../Areas/Admin/images/Edit_order_sprite.png")-245px -38px no-repeat;height:33px;width:25px;display:inline-block;cursor: pointer;border: 0;}
-.edit_save{background: url("../../../../Areas/Admin/images/Edit_order_sprite.png")-281px -38px no-repeat;height:33px;width:25px;display:inline-block;cursor:pointer;border: 0;}
-.edit_cancel{background: url("../../../../Areas/Admin/images/Edit_order_sprite.png")-281px -9px no-repeat;height:33px;width:25px;display:inline-block;cursor: pointer;border: 0;}
+.edit_ring{background: url("../images/Edit_order_sprite.png")-249px -9px no-repeat;height:33px;width:25px;display:inline-block;cursor:pointer;border: 0;}
+.delete_ring{background: url("../images/Edit_order_sprite.png")-245px -38px no-repeat;height:33px;width:25px;display:inline-block;cursor: pointer;border: 0;}
+.edit_save{background: url("../images/Edit_order_sprite.png")-281px -38px no-repeat;height:33px;width:25px;display:inline-block;cursor:pointer;border: 0;}
+.edit_cancel{background: url("../images/Edit_order_sprite.png")-281px -9px no-repeat;height:33px;width:25px;display:inline-block;cursor: pointer;border: 0;}
 .add_product_submit{float: right;margin-right: 27px;background-color: #2b2b2b;color:#fff;border: 0px;padding: 5px 25px;font-size: 13px;font-family: 'Roboto-Regular'; }
 .order_total_div{background-color: #f4fbfd;border:1px solid #9fd2eb;margin-top: 28px;width:49%;padding-bottom: 13px}
 .order_total_div h3{text-transform: uppercase;font-size: 18px;font-family: 'Roboto-Bold';color:#0082c7;}
@@ -91,7 +91,7 @@ ul, li{list-style: none; margin: 0; padding: 0;}
 .order_total_div table td{text-align: left;padding: 8px 0px}
 .order_total_div table td label{font-size: 13px;font-family: 'Roboto-Regular';}
 .subtotal_no{font-family: 'Roboto-Regular';font-size: 13px;color:#6d6d6d;}
-.edit_order_total{background: url("../../../../Areas/Admin/images/Edit_order_sprite.png ")-13px -52px no-repeat;height:33px;width:29px;display:inline-block;cursor:pointer;margin-left: 21px;}
+.edit_order_total{background: url("../images/Edit_order_sprite.png ")-13px -52px no-repeat;height:33px;width:29px;display:inline-block;cursor:pointer;margin-left: 21px;}
 .subtotal_label{color:#0082c7;}
 .free_shipping li{display: inline-block;margin: 5px 4px;font-family: 'Roboto-Regular';font-size: 13px;color:#6d6d6d;}
 .checkbox_shipp{height: 20px;width:35px;position: relative;top:7px;}
