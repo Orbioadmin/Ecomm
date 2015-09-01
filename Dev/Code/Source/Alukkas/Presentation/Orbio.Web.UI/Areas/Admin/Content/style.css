@@ -288,6 +288,33 @@ footer a{font-family: 'Roboto-Regular';color:#424242;font-size: 13px;}
 .per_page_number{font-family: 'Roboto-Regular';font-size: 11px;color:#000;}
 td h3:focus{border:0px ;}
 
+
+/*product_attr*/
+.product_attr_table{width:100%;position: relative;top:10px;}
+.product_attr_table thead td{color:#fff;background-color: #0082c8;font-family: 'Roboto-Regular';font-size: 13px;text-align: center;padding:10px 0px;border:1px solid #fff;text-transform: uppercase;}
+.product_attr_table tbody{background-color: #fff;}
+.product_attr_table tbody td{text-align: center;font-size: 13px;color:#373737;border:1px solid #ddd;}
+.new_product_attribute_div{width:50%;background-color: #f4fbfd;margin: 36px auto;padding: 22px 0px 2px 0px;border:1px solid #9fd2eb ;}
+.add_product_attr_name{width:50%;margin-left:7.5%;height: 35px;border:1px solid #9fd2eb;}
+.new_product_attribute_div label{margin-left: 3%;font-family: 'Roboto-Regular';font-size: 13px;color:#373737;font-weight: normal}
+.description_product_attr{margin-left: 2%;width:50%;height: 120px;border:1px solid #9fd2eb;}
+.description_label_add_prdct{position: relative;top:-57px;}
+
+/*manufacturer*/
+.main_edit_order{width: 100%;padding-top: 15px}
+.refresh_xl{float:right;margin-top: 18px;}
+.refresh_button{height:35px;width:39px;background-color: #0082c7;float:left;}
+refresh_button label{background: url("../images/image sprites.png")no-repeat -51px -10px;height:31px;width:30px;cursor: pointer;}
+.order_total_main_table{width:100%;position: relative;top:0px;}
+.order_total_main_table thead td{text-align: center;color: #fff;background-color: #0082c7;text-transform: uppercase;padding: 5px 0px;border:1px solid #ddd;} 
+.order_total_main_table tbody td{font-family: 'Roboto-Regular';color:#373737;font-size: 13px;padding: 5px 0px;background-color: #fff;border:1px solid #ddd;}
+.align_center{text-align: center;}
+.edit_ring{background: url("../images/Edit_order_sprite.png")-249px -7px no-repeat;height:33px;width:25px;display:inline-block;cursor:pointer;}
+.order_list label{font-size: 13px;color:#373737;font-family: 'Roboto-Regular';font-weight: normal;}
+.man_search{background-color: #0082c7;color:#fff;border:1px solid #0082c7;padding: 5px}
+.shipmen_icon {background: url("../images/image sprites.png")-81px -42px no-repeat;height: 39px;width: 34px;display: inline-block;float: left;}
+.published_image{background: url("../images/image sprites.png")-296px -8px no-repeat;height: 36px;width: 27px;display: inline-block;}
+
 /*pagination*/
 
 .paging-nav {
