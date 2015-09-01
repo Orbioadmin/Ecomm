@@ -30,6 +30,47 @@
   font-weight: normal;
   font-style: normal;
 }
+html{height:100%}
+body{min-height:100%}
+
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu > .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+}
+.dropdown-submenu:hover > .dropdown-menu {
+  display: block;
+}
+.dropdown-submenu > a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: 2px;
+}
+.dropdown-submenu:hover > a:after {
+  border-left-color:#000;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left > .dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  -webkit-border-radius: 6px 0 6px 6px;
+  -moz-border-radius: 6px 0 6px 6px;
+  border-radius: 6px 0 6px 6px;
+}
 
 ul, li{list-style: none; margin: 0; padding: 0;}
 .rgt-side{float: right;}
@@ -137,6 +178,141 @@ ul, li{list-style: none; margin: 0; padding: 0;}
 .right_order_notes table td{text-align:left;padding: 8px 12px}
 .right_order_notes textarea{height: 81px;width:253px;}
 .add_notes_checkbox{height: 25px;width: 19px;}
-footer{ text-align: center;background: #e7e5e5}
+
+/*orderlist*/
+.order_list ul{margin-left: -22px}
+.order_list li{display: inline-block;}
+.start_order_date{width:95%;height: 35px;border:1px solid #9fd2eb;font-size: 13px;color:#373737;font-family: 'Roboto-Regular'}
+.sart_date{width:16.5%;float:left;}
+.billing_address_text{width:14%;float:left;}
+.order_status{width:12%;float:left;}
+.order_stat_select{height: 35px;width:96%;}
+.order_list{background-color: #fff;padding: 14px 0px 15px 38px;}
+.order_stat_select{border:1px solid #9fd2eb;font-size: 13px;color:#373737;font-family: 'Roboto-Regular'}
+.search_order_list{background-color: #0082c7;border:1px solid #0082c7;color:#fff;font-family: 'Roboto-Regular';font-size: 13px;margin-top: 19px;padding: 5px 10px}
+.order_total_main_table{width:100%;position: relative;top:0px;}
+.order_total_main_table thead td{text-align: center;color: #fff;background-color: #0082c7;text-transform: uppercase;padding: 5px 0px;border:1px solid #ddd;} 
+.order_total_main_table tbody td{font-family: 'Roboto-Regular';color:#373737;font-size: 13px;padding: 5px 0px;background-color: #fff;border:1px solid #ddd;}
+.align_center{text-align: center;}
+.align_left{text-align: right;}
+.refresh_xl{float:right;margin-top: 18px;}
+.refresh_button{height:35px;width:39px;background-color: #0082c7;float:left;}
+.refresh_button label{background: url("../images/image sprites.png")no-repeat -51px -10px;height:31px;width:30px;cursor: pointer;}
+.report_xls{height:35px;width:162px;background-color: #0082c7;float:left;margin-left: 5px;color:#fff;padding:5px 5px;}
+.report_xls label{background: url("../images/image sprites.png")no-repeat -168px -15px;height:31px;width:30px;float:right;cursor: pointer;}
+
+/*paging*/
+
+.pager {
+    margin-top: 15px;
+}
+.pager span.page-number,
+.pager span.first,
+.pager span.prev,
+.pager span.last,
+.pager span.next {
+    padding-right: 5px;
+    cursor: pointer;
+}
+.pager span.page-number:hover,
+.pager span.first:hover,
+.pager span.prev:hover,
+.pager span.last:hover,
+.pager span.next:hover {
+     color: green;   
+}
+.pager span.page-number.active {
+     color: red;   
+}
+
+.paging-nav {
+  text-align: center;
+  padding-top: 2px;
+  position: absolute;
+  left:50%;
+  margin-top: 30px
+}
+
+.paging-nav a {
+    padding-right: 5px;
+  cursor: pointer;
+  border: 1px solid #fff;
+  padding: 5px;
+  color: #373737;
+  /* margin-top: 32px; */
+ /* position: relative;*/
+  top: 10px;
+  margin: 4px;
+  background-color: #fff;
+  text-decoration: none;
+  border:1px solid #0082c7;
+  padding: 10px;
+
+
+}
+.selected-page{background-color: #333333;color:#fff;}
+
+.paging-nav .selected-page {
+  background: #333333;
+ /* font-weight: bold;*/
+  color:#fff;
+}
+.paging-nav #prev{background: url("../images/Edit_order_sprite.png")-142px -99px no-repeat;height:20px;width:20px;padding: 10px 10px 10px 10px }
+.paging-nav #next{background: url("../images/Edit_order_sprite.png")-187px -99px no-repeat;height:20px;width:20px;padding: 10px 10px 10px 10px }
+
+footer{ text-align: center;background: #e7e5e5;position:absolute;bottom:0px;left:0px;right:0px}
 footer p{margin: 0; padding: 10px 0;font-family: 'Roboto-Regular';color:#424242;font-size: 13px;font-family: 'Roboto-Regular';}
 footer a{font-family: 'Roboto-Regular';color:#424242;font-size: 13px;}
+
+/*currentshopping*/
+.edit_cart{background: url("../images/Edit_order_sprite.png")-1px -101px no-repeat;height: 39px;width:50px;display: inline-block;float:left;}
+.collapsable_table_main{width:100%;margin-top:26px;}
+.collapsable_table_main table{width:100%;margin-top:10px;}
+.main_head{background-color: #0082c7;border-bottom: 2px;border-bottom:2px solid #2d2d2d;}
+.main_head td{padding: 10px 0px;color: #fff;text-transform: uppercase;font-size: 12px;font-family: 'Roboto-Regular';font-weight: normal;} 
+.alt_row_first{background-color: #f7f7f7 }
+.main_tbody td{padding: 10px 0px;color:#373737;font-size: 12px;font-family: 'Roboto-Regular';}
+.table-striped thead{background-color: #7f7f7f;text-align: center;text-transform: uppercase;} 
+.table-striped thead td{color: #fff;font-size: 12px;font-family: 'Roboto-Regular'} 
+.table-striped tbody td{vertical-align: middle;border:1px solid #7f7f7f;    padding: 5px 5px;}
+.subtotal{text-align: right;font-weight: bold}
+.qty{text-align: center;font-weight: bold}
+.ring{text-align: center;}
+.status_cart{font-weight: normal}
+.item_price{text-align: right;}
+.first_row_cart{background-color: #f7f7f7 }
+.second_row_cart{background-color: #dee6ea;}
+.customer_id_cart {text-align: center}
+.sub_total_cart{text-align: right;}
+.per_page{font-family: 'Roboto-Regular';font-size: 11px;color:#000;text-transform: uppercase;}
+.per_page_number{font-family: 'Roboto-Regular';font-size: 11px;color:#000;}
+td h3:focus{border:0px ;}
+
+/*pagination*/
+
+.paging-nav {
+  text-align: center;
+  padding-top: 2px;
+}
+
+.paging-nav a {
+  margin: auto 1px;
+  text-decoration: none;
+  display: inline-block;
+  padding: 1px 7px;
+  background: #91b9e6;
+  color: white;
+  border-radius: 3px;
+}
+
+.paging-nav .selected-page {
+  background: #187ed5;
+  font-weight: bold;
+}
+
+.paging-nav,
+#tableData {
+  
+  
+  font-family: Arial, sans-serif;
+}

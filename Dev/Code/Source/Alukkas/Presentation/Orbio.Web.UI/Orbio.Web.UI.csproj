@@ -301,6 +301,7 @@
     <Content Include="Areas\Admin\Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Areas\Admin\Content\fonts\Roboto-Medium.svg" />
     <Content Include="Areas\Admin\Content\fonts\Roboto-Regular.svg" />
+    <Content Include="Areas\Admin\Content\jquery-ui.css" />
     <Content Include="Areas\Admin\Content\kendo.common.min.css" />
     <Content Include="Areas\Admin\Content\kendo.dataviz.default.min.css" />
     <Content Include="Areas\Admin\Content\kendo.dataviz.min.css" />
@@ -336,6 +337,7 @@
     <Content Include="Areas\Admin\Scripts\ie10-viewport-bug-workaround.js" />
     <Content Include="Areas\Admin\Scripts\jquery-ui.js" />
     <Content Include="Areas\Admin\Scripts\jquery.js" />
+    <Content Include="Areas\Admin\Scripts\jquery.min.1.11.1.js" />
     <Content Include="Areas\Admin\Scripts\kendo.all.min.js" />
     <Content Include="Areas\Admin\Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Areas\Admin\Scripts\knockout-2.2.0.js" />
