@@ -29,7 +29,7 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Orders
 
         public string OrderGuid { get; set; }
 
-        public int GoDirectlyToNumber { get; set; }
+        public int? GoDirectlyToNumber { get; set; }
 
         public bool IsLoggedInAsVendor { get; set; }
 

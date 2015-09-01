@@ -20,7 +20,7 @@ namespace Orbio.Services.Messages
         int SendNewOrderNotification(Customer customer, Order order);
         int SendQuantityBelowStoreOwnerNotification(string productIds);
         int SendOrderCustomerNotification(Order order, int languageId, string attachmentFilePath = null, string attachmentFileName = null, int orderStatusId = 0);
-        int SendNewOrderNoteAddedCustomerNotification(OrderNote orderNote, int languageId);
+        int SendNewOrderNoteAddedCustomerNotification(Order order,OrderNote orderNote, int languageId);
         int SendShipmentSentCustomerNotification(Orbio.Core.Data.Shipment shipment, Order order, int languageId);
     }
 }

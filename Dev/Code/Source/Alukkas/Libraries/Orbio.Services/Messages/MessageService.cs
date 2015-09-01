@@ -305,12 +305,11 @@ namespace Orbio.Services.Messages
         /// <param name="orderNote">Order note</param>
         /// <param name="languageId">Message language identifier</param>
         /// <returns>Queued email identifier</returns>
-        public virtual int SendNewOrderNoteAddedCustomerNotification(OrderNote orderNote, int languageId)
+        public virtual int SendNewOrderNoteAddedCustomerNotification(Order order,OrderNote orderNote, int languageId)
         {
             if (orderNote == null)
                 throw new ArgumentNullException("orderNote");
 
-            var order = orderNote.Order;
             var store = storeContext.CurrentStore;
 
             var result = context.ExecuteFunction<MessageTemplate>("usp_MessageTemplate",
@@ -325,8 +324,8 @@ namespace Orbio.Services.Messages
             var tokens = new List<Token>();
             messageTokenProvider.AddStoreTokens(tokens, store);
             messageTokenProvider.AddOrderNoteTokens(tokens, orderNote);
-            messageTokenProvider.AddOrderTokens(tokens, orderNote.Order);
-            messageTokenProvider.AddCustomerTokens(tokens, orderNote.Order.Customer);
+            messageTokenProvider.AddOrderTokens(tokens, order);
+            messageTokenProvider.AddCustomerTokens(tokens, order.Customer);
 
             var toEmail = order.Customer.Email;
             var toName = "";
