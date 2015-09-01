@@ -15,7 +15,6 @@ namespace Orbio.Web.UI.Areas.Admin
                         "~/Areas/Admin/Scripts/jquery-{version}.js", "~/Areas/Admin/Scripts/bootstrap.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryuiadmin").Include("~/Areas/Admin/Scripts/jquery.js",
-
                         "~/Areas/Admin/Scripts/less.js", "~/Areas/Admin/Scripts/ie-emulation-modes-warning.js", "~/Areas/Admin/Scripts/ie10-viewport-bug-workaround.js", "~/Areas/Admin/Scripts/highcharts.js", "~/Areas/Admin/Scripts/kendo.all.min.js", "~/Areas/Admin/Scripts/jquery-ui.js"));
 
 

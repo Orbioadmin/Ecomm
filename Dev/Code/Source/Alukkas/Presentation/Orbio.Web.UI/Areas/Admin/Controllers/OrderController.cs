@@ -476,10 +476,10 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
 
             model.ShippingStatus = order.ShippingStatus.ToString();
             model.ShippingStatusId = order.ShippingStatusId;
-            if (order.ShippingStatus != ShippingStatus.ShippingNotRequired)
-            {
+           // if (order.ShippingStatus != ShippingStatus.ShippingNotRequired)
+            //{
                 model.ShippingAddress = order.ShippingAddress;
-            }
+            //}
             model.ShippingMethod = order.ShippingMethod;
             foreach (var c in _shippingService.GetAllShippingMethods().GroupBy(x => x.Name).Select(y => y.First()))
                 model.AvailableShippingMethods.Add(new SelectListItem() { Text = c.Name, Value = c.Id.ToString(), Selected = (c.Name == order.ShippingMethod ? true : false) });
@@ -786,7 +786,6 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             var order = _orderService.GetOrderById(orderId);
             if (order == null)
                 return RedirectToAction("List");
-
             var orderNote = new OrderNote()
             {
                 DisplayToCustomer = model.AddOrderNoteDisplayToCustomer,
@@ -805,7 +804,6 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                     order,orderNote, 0);
 
             }
-
             return RedirectToAction("Edit", "Order", new { id = order.OrderId });
         }
         [HttpPost]

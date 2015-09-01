@@ -1,6 +1,7 @@
 ﻿@model Orbio.Web.UI.Area.Admin.Models.CheckOut.AddressModel
 @{
     ViewBag.Title = "AddressEdit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout1.cshtml";
 }
 @using (Html.BeginForm("AddressEdit", "Order", FormMethod.Post, new { @class = "form-horizontal " }))
                                             {
@@ -10,12 +11,12 @@
         <h3>Address Edit</h3>
         <div class="left_address_form">
             <table>
-                <tr><td>Full Name </td><td>:  @Html.TextBoxFor(m => m.FirstName)</td></tr>
-                <tr><td>Phone </td><td>: @Html.TextBoxFor(m => m.Phone)</td></tr>
-                <tr><td>Address </td><td>: @Html.TextBoxFor(m => m.Address)</td></tr>
-                <tr><td>City </td><td>: @Html.TextBoxFor(m => m.City)</td></tr>
-                <tr><td>Contry </td><td>: @Html.DropDownList("CountryId", Model.AvailableCountries)</td></tr>
-                <tr><td>State/province</td><td>: @Html.DropDownList("StateProvinceId", Model.AvailableStates)</td></tr>
+                <tr><td>Full Name </td><td>:  @Html.TextBoxFor(m => m.FirstName, new { required = "required" })</td></tr>
+                <tr><td>Phone </td><td>: @Html.TextBoxFor(m => m.Phone, new { required = "required" })</td></tr>
+                <tr><td>Address </td><td>: @Html.TextBoxFor(m => m.Address, new { required = "required" })</td></tr>
+                <tr><td>City </td><td>: @Html.TextBoxFor(m => m.City, new { required = "required" })</td></tr>
+                <tr><td>Contry </td><td>: @Html.DropDownList("CountryId", Model.AvailableCountries, new { required = "required" })</td></tr>
+                <tr><td>State/province</td><td>: @Html.DropDownList("StateProvinceId", Model.AvailableStates, new { required = "required" })</td></tr>
                 <tr><td>Zip/Postal code</td><td>: @Html.TextBoxFor(m => m.Pincode)</td></tr>
                 <tr>
                     <td></td>
