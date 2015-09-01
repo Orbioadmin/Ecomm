@@ -482,7 +482,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             }
             model.ShippingMethod = order.ShippingMethod;
             foreach (var c in _shippingService.GetAllShippingMethods().GroupBy(x => x.Name).Select(y => y.First()))
-                model.AvailableShippingMethods.Add(new SelectListItem() { Text = c.Name, Value = c.Id.ToString(), Selected = (c.Name == order.ShippingMethod) });
+                model.AvailableShippingMethods.Add(new SelectListItem() { Text = c.Name, Value = c.Id.ToString(), Selected = (c.Name == order.ShippingMethod ? true : false) });
             //model.AvailableShippingMethods.Insert(0, new SelectListItem() { Text = "Shipping Method", Value = "0" });
             var shipping = _shippingService.SelectShippingInfoByOrderId(order.OrderId);
             if(shipping != null)

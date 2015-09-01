@@ -209,7 +209,7 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Orders
         public string aggregatortax { get; set; }
         public string aggregatortotal { get; set; }
 
-        public IList<SelectListItem> AvailableShippingMethods { get; set; }
+        public List<SelectListItem> AvailableShippingMethods { get; set; }
 
         #region Nested Classes
 

@@ -33,41 +33,35 @@
         @Html.Partial("_OrderDetailsInfo", Model)
     </div>
 </section>
+
 @section scripts{
 
-<script type="text/javascript">
+    <script type="text/javascript">
+        var DateShipped = $("#shipping_DateShipped").val();
+        var DateDelivered = $("#shipping_DateDelivered").val();
+        if (DateShipped != "") {
+            $("#shipping_DateShipped").kendoDateTimePicker({
+                value: DateShipped
+            });
+        }
+        else {
+            $("#shipping_DateShipped").kendoDateTimePicker({
+                value: new Date()
+            });
+        }
+        if (DateDelivered != "") {
+            $("#shipping_DateDelivered").kendoDateTimePicker({
+                value: DateDelivered
+            });
+        }
+        else {
+            $("#shipping_DateDelivered").kendoDateTimePicker({
+                value: new Date()
+            });
+        }
 
-        $("#shipping_DateShipped").kendoDateTimePicker({
-            value: new Date()
+        $(".edit_order_total").click(function () {
+            $(".free_shipping").show();
         });
-        $("#shipping_DateDelivered").kendoDateTimePicker({
-            value: new Date()
-        });
-    $(".edit_order_total").click(function () {
-        $(".free_shipping").show();
-    });
-
-
-            $(document).ready(function() {
-                $('#tableData').paging({limit:4});
-            });
-            $(document).ready(function() {
-                $('#tableData1').paging({limit:4});
-
-            });
-            $(document).ready(function() {
-                $('#reltable').paging({limit:4});
-
-            });
-             $(document).ready(function() {
-                $('#reltable1').paging({limit:4});
-
-            });
-             $(document).ready(function() {
-                 $('#reltable2').paging({ limit: 4 });
-
-
-
-             });
-</script>
-    }
+    </script>
+}
