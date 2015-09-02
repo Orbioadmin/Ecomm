@@ -4,7 +4,7 @@
     <h3>Manufacturer Information</h3>
     <div class="form-group">
         <label>Manufacturer Name : </label>
-        @Html.TextBoxFor(m => m.Manufacturer.Name, new { @class = "creatext display_order_add_cart", onkeyup = "javascript:GenerateScript()", id = "manufname", @style = "margin-left:9%;" })
+        @Html.TextBoxFor(m => m.Manufacturer.Name, new { @class = "creatext display_order_add_cart", onkeyup = "javascript:GenerateScript()", id = "manufname", @style = "margin-left:8%;", required = "required" })
         @Html.HiddenFor(m => m.Manufacturer.Id)
     </div>
     <div class="form-group">
@@ -17,7 +17,7 @@
     </div>
     <div class="form-group">
         <label>Display order : </label>
-        @Html.TextBoxFor(m => m.Manufacturer.DisplayOrder, new { @type = "number", @class = "creatext display_order_add_cart", value = "0", @style="margin-left:14%;" })
+        @Html.TextBoxFor(m => m.Manufacturer.DisplayOrder, new { @type = "number", @class = "creatext display_order_add_cart", value = "0", @style="margin-left:15%;" })
     </div>
     <div class="form-group">
         <label>Published : </label>
@@ -46,7 +46,7 @@
     </div>
     <div class="form-group">
         <label>Search engine friendly page name : </label>
-        @Html.TextBoxFor(m => m.Manufacturer.SearchEngine, new { @class = "category_text_seo_frnd_name", id = "slug" })
+        @Html.TextBoxFor(m => m.Manufacturer.SearchEngine, new { @class = "category_text_seo_frnd_name", id = "slug", @style = "margin-left:3%;" })
     </div>
 
 </div>

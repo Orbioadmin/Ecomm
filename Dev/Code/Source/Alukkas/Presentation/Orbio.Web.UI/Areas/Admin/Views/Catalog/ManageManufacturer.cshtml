@@ -10,65 +10,64 @@
     @*<input type="button" value="Export to XML" class="delete_cat_button">*@
 </span>
     </div>
+   
     <div class="col-md-12 order_list">
             @using (Html.BeginForm("SearchManufacturer", "Catalog", FormMethod.Post))
             {
-        <div class="col-md-2 colmd"><label>Manufacture name:</label></div>
+        <div class="col-md-2 colmd"><label>Manufacturer Name:</label></div>
         <div class="col-md-3">@Html.TextBoxFor(m => m.Search)
         </div>
         <div class="col-md-3"><input type="submit" value="Search" class="man_search"></div>
             }
     </div>
-    <div class="refresh_xl">
-        <span class="refresh_button"><label> </label></span>
-    </div>
-    <table class="order_total_main_table">
+    <table class="order_total_main_table" style="top:7px;">
         <thead>
         <td>Name</td>
         <td>published</td>
         <td>display order</td>
-        <td>Edit</td></thead>
+        <td>Edit/Delete</td></thead>
         <tbody>
-           @if (Model.ManufacturerList != null)
-           {
-               if (Model.ManufacturerList.Count > 0)
-               {
-                   foreach (var item in Model.ManufacturerList)
-                   {
-                    <tr>
-                        <td class="align_center">@item.Name </td>
-                        <td class="align_center">
-                            @if (item.Published == true)
-                            {
-                                <label class="img_sprite1"></label>
-                            }
-                            else
-                            {
-                                <label class="img_sprite"></label>
-                            }
-                        </td>
-                        <td class="align_center">@item.DisplayOrder</td>
-                        <td class="align_center"><a href="@Url.Action("EditManufacturers", "Catalog", new { Id = item.Id })"><label class="edit_ring"></label></a>
-                            <a href="@Url.Action("DeleteManufacturer", "Catalog", new { Id = item.Id })"><label class="delete_ring" onclick=" return confirm('Are You Sure'); "></label></a>
-                        </td>
+            @if (Model.ManufacturerList != null)
+            {
+                if (Model.ManufacturerList.Count > 0)
+                {
+                    foreach (var item in Model.ManufacturerList)
+                    {
+                        <tr>
+                            <td class="align_center">@item.Name </td>
+                            <td class="align_center">
+                                @if (item.Published == true)
+                                {
+                                    <label class="img_sprite1"></label>
+                                }
+                                else
+                                {
+                                    <label class="img_sprite"></label>
+                                }
+                            </td>
+                            <td class="align_center">@item.DisplayOrder</td>
+                            <td class="align_center">
+                                <a href="@Url.Action("EditManufacturers", "Catalog", new { Id = item.Id })"><label class="edit_ring"></label></a>
+                                <a href="@Url.Action("DeleteManufacturer", "Catalog", new { Id = item.Id })"><label class="delete_ring" onclick=" return confirm('Are You Sure'); "></label></a>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr style="display: table-row;">
+
+                        <td colspan="4">No records to diaplay</td>
                     </tr>
-                   }
-               }
-               else
-               {
+                }
+            }
+            else
+            {
                 <tr style="display: table-row;">
 
                     <td colspan="4">No records to diaplay</td>
                 </tr>
-               }
-           }
-           else
-           {
-            <tr style="display: table-row;">
-
-                <td colspan="4">No records to diaplay</td>
-            </tr>
-           }
+            }
         </tbody>
     </table>
 </div>
