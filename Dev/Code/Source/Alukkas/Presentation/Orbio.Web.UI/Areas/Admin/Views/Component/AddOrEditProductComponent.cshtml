@@ -3,73 +3,38 @@
     ViewBag.Title = "AddOrEditProductComponent";
 }
 
-<section class="wp-request price-component-add">
-    <div class="container">
-        <div class="catalog-bulk col-md-12" style="padding-left:0px;">
-            <div class="pull-left">
-                <label class="price-add-icon"></label>
-                @if(Model.Id==0)
-                { 
-                <h1>ADD A NEW PRODUCT COMPONENT<a href="@Url.Action("ProductComponent","Component")">(back to product component list)</a></h1>
-                }
-                else
-                {
-                    <h1>EDIT PRODUCT COMPONENT<a href="@Url.Action("ProductComponent","Component")">(back to product component list)</a></h1>
-                }
-            </div>
+<div class="container">
+    @using (Html.BeginForm("AddOrUpdateProductComponent", "Component", FormMethod.Post, new { }))
+    {
+        @Html.HiddenFor(m => m.Id, new { Value = Model.Id })
+        <div class="main_edit_order">
+            @if (Model.Id == 0)
+            {
+                <span class="edit_order_details"><span class="edit_order_icon"></span><a href="" class="add_new_check">ADD A NEW PRODUCT COMPONENT</a> <a href="@Url.Action("ProductComponent", "Component")" class="back_to_checkout" style="color: #0082c7;">(back to product component list) </a></span>
+                <span class="back_to_order" style="padding-top:0px">
+                    <input type="submit" value="Save" class="add_cat_button">
+                    <a href="@Url.Action("ProductComponent", "Component")"> <input type="button" value="Cancel" class="delete_cat_button"></a>
+                </span>
+            }
+            else
+            {
+                <span class="edit_order_details"><span class="edit_order_icon"></span><a href="" class="add_new_check">EDIT PRODUCT COMPONENT</a> <a href="@Url.Action("ProductComponent", "Component")" class="back_to_checkout" style="color: #0082c7;">(back to product component list) </a></span>
+                <span class="back_to_order" style="padding-top:0px">
+                    <input type="submit" value="Save" class="add_cat_button">
+                    <a href="@Url.Action("DeleteProductComponent", "Component", new { Id = Model.Id })"> <input type="button" value="Delete" class="delete_cat_button"></a>
+                </span>
+            }
         </div>
-    </div>
-    @using (Html.BeginForm("AddOrUpdateProductComponent", "Component", FormMethod.Post))
-    { 
-        @Html.HiddenFor(m => m.Id, new { Value=Model.Id })
-    <div class="container">
-        <div class="col-md-12">
-            <div class="pull-right">
-                @if (Model.Id == 0)
-                {
-                <div class="options">
-                <input type="submit" value="Save and Continue edit" class=" Sbut savbut  ssbut1">
-                </div>
-                }
-                else
-                {
-                    <div class="options">
-                        <input type="submit" value="Save" class=" Sbut   ssbut1">
-                        <a href="@Url.Action("DeleteProductComponent", "Component", new {Id = Model.Id })"><input type="button" value="Delete" class=" Sbut   ssbut1" /></a>
-                    </div>
-                }
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="col-md-12 colmd12">
-            
-            <div class="col-md-9 tabcustomer ">
-                <div class="tab-content ">
-                    <div role="tabpanel" class="tab-pane in active" id="standard">
-                        <div class="col-md-12 product-specification">
-                            <div class="col-md-12">
-                                <div class="col-md-3"><label> Name:</label></div>
-                                <div class="col-md-4">@Html.TextBoxFor(m => m.Name, new { @class="produtxt" })</div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="col-md-3"><label> Is Active:</label></div>
-                                <div class="col-md-4">@Html.CheckBoxFor(m=>m.IsActive)</div>
-                            </div>
-                            @*<div class="col-md-12">
-                                <div class="col-md-3"><label> Created Date:</label></div>
-                                <div class="col-md-4"><input type="type" id="datetimepicker"></div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="col-md-3"><label> Modified Date:</label></div>
-                                <div class="col-md-4"><input type="type" id="datetimepicker1"></div>
-                            </div>*@
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    }
-</section>
 
+        <div class="new_product_attribute_div">
+            <div class="form-group">
+                <label>Name : </label>
+                @Html.TextBoxFor(m => m.Name, new { @class = "add_product_attr_name", required="required" })
+            </div>
+            <div class="form-group">
+                <label> Is Active: </label>
+                @Html.CheckBoxFor(m => m.IsActive, new { @class = "Component_check" })
+            </div>
+        </div>
+    }
+</div>

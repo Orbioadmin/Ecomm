@@ -6,41 +6,41 @@
 {
     <div class="container">
         <div class="main_edit_order">
-            <span class="edit_order_details"><span class="edit_order_icon"></span><a href="">order summary</a></span>
+            <span class="edit_order_details"><span class="edit_order_icon"></span><a href="" class="add_new_check">order summary</a></span><span class="refresh_button"><a style="cursor:pointer" href="@Url.Action("List","Order")"><label></label></a></span>
             <!-- <span class="back_to_order"><input type="button" value="Save" class="add_cat_button"></span> -->
         </div>
     </div>
     <div class="container">
         <div class="col-md-12 order_list">
             <div class="sart_date">
-                @Html.TextBoxFor(model => model.StartDate, new { @class = "start_order_date", placeholder = "From", style = "border-radius:0px:box-shadow:0px" })
+                @Html.TextBoxFor(model => model.StartDate, new { @class = "start_order_date_email", placeholder = "From", style = "border-radius:0px:box-shadow:0px" })
             </div>
             <div class=" sart_date">
-                @Html.TextBoxFor(model => model.EndDate, new { @class = "start_order_date", placeholder = "To" })
+                @Html.TextBoxFor(model => model.EndDate, new { @class = "start_order_date_email", placeholder = "To" })
             </div>
             <div class="billing_address_text">
-                @Html.TextBoxFor(model => model.CustomerEmail, new { @class = "start_order_date", placeholder = "Email" })
+                @Html.TextBoxFor(model => model.CustomerEmail, new { @class = "start_order_date_email", placeholder = "Email",type="email" })
             </div>
             <div class="order_status">
-                @Html.DropDownList("OrderStatusId", Model.AvailableOrderStatuses, new { @class = "order_stat_select" })
+                @Html.DropDownList("OrderStatusId", Model.AvailableOrderStatuses, new { @class = "start_order_date_email" })
             </div>
             <div class="order_status">
-                @Html.DropDownList("PaymentStatusId", Model.AvailablePaymentStatuses, new { @class = "order_stat_select" })
+                @Html.DropDownList("PaymentStatusId", Model.AvailablePaymentStatuses, new { @class = "start_order_date_email" })
             </div>
             <div class="order_status">
-                @Html.DropDownList("ShippingStatusId", Model.AvailableShippingStatuses, new { @class = "order_stat_select" })
+                @Html.DropDownList("ShippingStatusId", Model.AvailableShippingStatuses, new { @class = "start_order_date_email" })
             </div>
             <div class="billing_address_text">
-                @Html.TextBoxFor(model => model.GoDirectlyToNumber, new {@class="start_order_date", placeholder = "Order No" })
+                @Html.TextBoxFor(model => model.GoDirectlyToNumber, new { @class = "start_order_date_email", placeholder = "Order No" })
             </div>
-            <div class="col-md-2" align="center">
+            <div class="billing_address_text">
                 <input type="submit" class="search_order_list" value="SEARCH">
             </div>
         </div>
-        <div class="refresh_xl" style="padding-right:15px;">
-            <span class="refresh_button"><a style="cursor:pointer" href="@Url.Action("List","Order")"><label></label></a></span>
+        <div class="refresh_xl">
+           
 
-            <span class="report_xls">Export to excel <label></label></span>
+            @*<span class="report_xls">Export to excel <label></label></span>*@
         </div>
         <div class="">
 

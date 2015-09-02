@@ -2,59 +2,46 @@
 
 @using Orbio.Core.Domain.Admin.Catalog;
 
-<div class="tab-content">
-    <div role="tabpanel" class="tab-pane in active" id="standard">
-        <div class="col-md-12 product-specification1">
-            @Html.HiddenFor(m => m.Id, new { Value=Model.Id })
-            <div class="col-md-3"><label> Name:</label></div>
-            <div class="col-md-3">
-                @Html.TextBoxFor(m => m.Name, new { @class = "produtxt" })
-            @*<input type="text" class="produtxt">*@
-            </div>
+
+<div class="col-md-12 add_cart_left_side edit_checkout_attr_main">
+    <form action="" method="post">
+        <div class="form-group row" style="margin-top:10px">
+            @Html.HiddenFor(m => m.Id, new { Value = Model.Id })
+            <div class="col-md-2"><label>Name : </label></div>
+            <div class="col-md-4">@Html.TextBoxFor(m => m.Name, new { @class = "edit_text_checkout", required = "required" })</div>
         </div>
-        <div class="col-md-12 product-specification1">
-            <div class="col-md-3"><label> Text Prompt:</label></div>
-            <div class="col-md-3">
-                @Html.TextBoxFor(m => m.TextPrompt, new { @class = "produtxt" })
-            @*<input type="text" class="produtxt">*@
-            </div>
+        <div class="form-group row">
+            <div class="col-md-2"><label>Text Prompt : </label></div>
+            <div class="col-md-4">@Html.TextBoxFor(m => m.TextPrompt, new { @class = "edit_text_checkout" })</div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-2"><label>Required : </label></div>
+            <div class="col-md-4">@Html.CheckBoxFor(m => m.IsRequired, new { @class = "required_check_edit" })</div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-2"><label>Shipable Product Required:</label></div>
+            <div class="col-md-4">@Html.CheckBoxFor(m => m.ShippableProduct, new { @class = "required_check_edit" })</div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-2"><label>Tax Exempt : </label></div>
+            <div class="col-md-4">@Html.CheckBoxFor(m => m.IsTaxExempt, new { @class = "required_check_edit" })</div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-2"><label>Tax Category: </label></div>
+            <div class="col-md-4">
+            @Html.DropDownListFor(m => m.TaxCategoryId, new SelectList(Model.TaxCategory, "Id", "Name"), new { @class = "edit_text_checkout" })</div>
+        </div>
+        <div class="form-group row">
+        <div class="col-md-2"><label>Control Type:</label></div>
+        <div class="col-md-4">
+        @Html.DropDownListFor(m => m.ControlTypeId, from AttributeControlType controlType in Enum.GetValues(typeof(AttributeControlType))
+                                                    select new SelectListItem() { Text = controlType.ToString(), Value = ((int)controlType).ToString() }, new { @class = "edit_text_checkout" })
+    </div>
+    </div>
+        <div class="form-group row">
+            <div class="col-md-2"><label>Display order : </label></div>
+            <div class="col-md-4">@Html.TextBoxFor(m => m.DisplayOrder, new { @class = "edit_text_checkout", @type = "number" })</div>
         </div>
 
-        <div class="col-md-12 product-specification1">
-            <div class="col-md-3"><label> Required:</label></div>
-            <div class="col-md-3">
-                @Html.CheckBoxFor(m=>m.IsRequired)
-            @*<input type="checkbox" class="">*@
-            </div>
-        </div>
-        <div class="col-md-12 product-specification1">
-            <div class="col-md-3"><label> Shipable Product Required:</label></div>
-            <div class="col-md-3">
-                @Html.CheckBoxFor(m => m.ShippableProduct)
-            @*<input type="checkbox" class="">*@
-            </div>
-        </div>
-        <div class="col-md-12 product-specification1">
-            <div class="col-md-3"><label> Tax Exempt:</label></div>
-            <div class="col-md-3">
-                @Html.CheckBoxFor(m => m.IsTaxExempt)
-                @*<input type="checkbox" class="">*@
-            </div>
-        </div>
-        <div class="col-md-12 product-specification1">
-            <div class="col-md-3"><label> Tax Category:</label></div>
-            <div class="col-md-3">@Html.DropDownListFor(m => m.TaxCategoryId, new SelectList(Model.TaxCategory, "Id", "Name"), new { @class = "jewellery produtxt" })
-            @*<select class="jewellery produtxt"><option></option></select>*@
-            </div>
-        </div>
-        <div class="col-md-12 product-specification1">
-            <div class="col-md-3"><label> Control Type:</label></div>
-            <div class="col-md-3">@Html.DropDownListFor(m => m.ControlTypeId, from AttributeControlType controlType in Enum.GetValues(typeof(AttributeControlType))
-                                                                              select new SelectListItem() { Text = controlType.ToString(), Value = ((int)controlType).ToString() }, new { @class = "jewellery produtxt" })</div>
-        </div>
-        <div class="col-md-12 product-specification1">
-            <div class="col-md-3"><label> Display Order:</label></div>
-            <div class="col-md-3">@Html.TextBoxFor(m => m.DisplayOrder, new { @class="Produtxt",@type="number" })</div>
-        </div>
-    </div>
+    </form>
 </div>

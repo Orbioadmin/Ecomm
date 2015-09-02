@@ -1,47 +1,41 @@
 ﻿@model Orbio.Web.UI.Areas.Admin.Models.Attribute.SpecificationAttributeModel
 
-<div class="table-responsive">
-    @if(Model.Id!=0)
-    {
-    <table id="spetable" class="table table-border spepro">
+<div class="col-md-12">
+    <div class="refresh_xl">
+        <span class="refresh_button" style="height:32px"><label></label></span>
+        <span style="margin-left:5px"><a href="@Url.Action("AddOrEditSpecificationAttributeOption", "Attribute", new { id = 0, Spec = Model.Id })" data-toggle="modal"><input type="button" class="man_search" value="Add a new value"></a></span>
+    </div>
+    <table class="product_add_cart">
         <thead>
-        <th>Name</th>
-        <th>Display Order</th>
-        <th>Number of Associated products</th>
-        <th>Edit</th>
-        <th>Delete</th>
-        </thead>
-
+        <td>Name</td>
+        <td>Display Order</td>
+        <td>Number of Associated products</td>
+        <td>Edit</td>
+        <td>Delete</td></thead>
         <tbody>
+
             @if (Model.SpecificationOption.Count > 0)
             {
+                @Html.HiddenFor(m => m.Id, new { Value = Model.Id })
                 foreach (var item in Model.SpecificationOption)
                 {
                     <tr>
                         <td>@item.Name</td>
                         <td>@item.DisplayOrder</td>
                         <td>@item.ProductCount</td>
-                        <td><a href="@Url.Action("AddOrEditSpecificationAttributeOption", "Attribute", new { id = item.Id, Spec = Model.Id })"><label class="edit" onclick="EditSpec(@item.Id)"></label></a></td>
-                        <td><a href="@Url.Action("DeleteSpecificationAttributeOption", "Attribute", new { id = item.Id, Spec = Model.Id })"><label class="img_sprite" onclick=" return confirm('Are You Sure'); "></label></a></td>
+                        <td><a href="@Url.Action("AddOrEditSpecificationAttributeOption", "Attribute", new { id = item.Id, Spec = Model.Id })"><label class="edit_ring"></label></a></td>
+                        <td><a href="@Url.Action("DeleteSpecificationAttributeOption", "Attribute", new { id = item.Id, Spec = Model.Id })"><label class="delete_ring" onclick=" return confirm('Are You Sure'); "></label></a></td>
                     </tr>
-            }
+                }
             }
             else
             {
-        <tr>
-            <td colspan="5">
-                No records found
-             </td>
-            </tr>
+                <tr>
+                    <td colspan="7">
+                        No records found
+                    </td>
+                </tr>
             }
-    </tbody>
+        </tbody>
     </table>
-    <div class="pull-left1"><input type="button" class="but-refresh"></div>
-    <div class="pull-right"><a href="@Url.Action("AddOrEditSpecificationAttributeOption", "Attribute", new { id = 0,Spec=Model.Id })"><input type="button" class="but-search" value="Add a new option"></a></div>
-    }
-    else
-    {
-       <label>You need to save the data before adding an option</label>
-    }
 </div>
-

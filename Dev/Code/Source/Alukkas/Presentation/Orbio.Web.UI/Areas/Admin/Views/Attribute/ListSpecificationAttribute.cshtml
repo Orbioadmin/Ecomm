@@ -4,50 +4,51 @@
     ViewBag.Title = "ListSpecificationAttribute";
 }
 
-<section class="wp-bestseller wp-speci-attr">
-    <div class="container">
-        <div class="catalog-bulk col-md-12" style="padding-left:0px;">
-            <label class=" specific-att"></label>
-            <h1>SPECIFICATION ATTRIBUTES</h1>
-            <div class="pull-right"><a href="@Url.Action("AddSpecificationAttribute","Attribute")"><input type="button" value="Add New" class="Sbut  ssbut1"></a></div>
-        </div>
+<div class="container">
+    <div class="main_edit_order">
+        <span class="edit_order_details"><span class="edit_order_icon"></span><a href="">SPECIFICATION ATTRIBUTES</a></span>
+        <span class="back_to_order"><a href="@Url.Action("AddSpecificationAttribute", "Attribute")"><input type="button" value="Add New" class="add_cat_button"></a></span>
     </div>
-    <div class="container">
-        <div class="table-home">
-            <div class="col-md-12">
-                <div class="table-responsive best-seller-table">
-                    <table id="tableData1" class="table table-bordered table-striped ">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Display Order</th>
-                                <th>Edit/Delete </th>
+    <div class="col-md-12">
+        <table class="order_total_main_table">
+            <thead>
+            <td style="width:40%">Name</td>
+            <td>Display Order</td>
+            <td>Edit/Delete</td>
+            </thead>
+            <tbody>
 
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model)
-                            {
-                                <tr style="display: table-row;">
-                                    <td>@item.Name</td>
-                                    <td>@item.DisplayOrder</td>
-                                    <td><a href="@Url.Action("EditSpecificationAttribute", "Attribute", new { Id=item.Id })"><label class="jewedit" style="float:none;top:0px;"></label></a>
-                                        <a href="@Url.Action("DeleteSpecificationAttribute", "Attribute", new { Id=item.Id })"><label class="jewdelete" style="float:none;top:0px;" onclick=" return confirm('Are You Sure'); "></label></a>
-                                    </td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                    <div class="pull-left1"><input type="button" class="but-refresh" onclick="refresh()"></div>
-                </div>
-            </div>
-        </div>
+            <tbody>
+                @if (Model.Count > 0)
+                {
+
+                    foreach (var item in Model)
+                    {
+                        <tr style="display: table-row;">
+                            <td style="padding-left:8px">@item.Name</td>
+                            <td class="align_center">@item.DisplayOrder</td>
+                            <td class="align_center">
+                                <a href="@Url.Action("EditSpecificationAttribute", "Attribute", new { Id = item.Id })"><label class="edit_ring"></label></a>
+                                <a href="@Url.Action("DeleteSpecificationAttribute", "Attribute", new { Id = item.Id })"><label label class="delete_ring" onclick=" return confirm('Are You Sure'); "></label></a>
+                            </td>
+                        </tr>
+                    }
+
+                }
+                else
+                {
+                    <tr style="display: table-row;">
+
+                        <td colspan="3">No records to diaplay</td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
     </div>
-</section>
-
+</div>
 <script>
-    function refresh()
-    {
+    function refresh() {
         window.location.reload();
     }
 </script>

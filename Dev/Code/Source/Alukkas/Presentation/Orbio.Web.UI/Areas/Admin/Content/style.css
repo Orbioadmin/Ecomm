@@ -137,9 +137,9 @@ ul, li{list-style: none; margin: 0; padding: 0;}
 .free_shipping li{display: inline-block;margin: 5px 4px;font-family: 'Roboto-Regular';font-size: 13px;color:#6d6d6d;}
 .checkbox_shipp{height: 20px;width:35px;position: relative;top:7px;}
 .submit_shipp{background-color: #2b2b2b;color:#fff;border: 0px;padding: 5px 15px;font-size: 13px;font-family: 'Roboto-Regular'; }
-.payment_details{background-color: #f4fbfd;border: 1px solid #9fd2eb;width:24%;margin-left: 1.5%;margin-top:28px;height: 163px;}
+.payment_details{background-color: #f4fbfd;border: 1px solid #9fd2eb;width:24%;margin-left: 1.5%;margin-top:28px;height: 178px;}
 .payment_details h3{font-size: 18px ;text-transform:uppercase;color:#0082c7;font-family: 'Roboto-Bold';}
-.payment_details td {padding: 5px 0px 6px 0px;color:#6d6d6d;font-size: 11px;font-family: 'Roboto-Regular'}
+.payment_details td {padding: 0px 0px 0px 0px;color:#6d6d6d;font-size: 13px;font-family: 'Roboto-Regular'}
 .payment_details td  select{height: 30px;width:108px;}
 .mark_as{background-color: #2b2b2b;color:#fff;font-size: 13px;font-family: 'Roboto-Regular';padding: 5px 15px; margin-left: 8px;border: 0px}
 .payment_details label{margin-bottom: 0px;padding-left: 8px}
@@ -183,23 +183,25 @@ ul, li{list-style: none; margin: 0; padding: 0;}
 .order_list ul{margin-left: -22px}
 .order_list li{display: inline-block;}
 .start_order_date{width:95%;height: 35px;border:1px solid #9fd2eb;font-size: 13px;color:#373737;font-family: 'Roboto-Regular'}
-.sart_date{width:16.5%;float:left;}
-.billing_address_text{width:14%;float:left;}
-.order_status{width:12%;float:left;}
-.order_stat_select{height: 35px;width:96%;}
+.sart_date{width:15.5%;float:left;}
+.billing_address_text{width:12%;float:left;}
+.order_status{width:11%;float:left;}
+.order_stat_select{height: 28px;width:96%;}
 .order_list{background-color: #fff;padding: 14px 0px 15px 38px;}
 .order_stat_select{border:1px solid #9fd2eb;font-size: 13px;color:#373737;font-family: 'Roboto-Regular'}
-.search_order_list{background-color: #0082c7;border:1px solid #0082c7;color:#fff;font-family: 'Roboto-Regular';font-size: 13px;margin-top: 19px;padding: 5px 10px}
-.order_total_main_table{width:100%;position: relative;top:0px;}
+.search_order_list{background-color: #0082c7;border:1px solid #0082c7;color:#fff;font-family: 'Roboto-Regular';font-size: 13px;margin-top: 0px;padding: 7px 10px}
+.order_total_main_table{width:100%;position: relative;top:15px;}
 .order_total_main_table thead td{text-align: center;color: #fff;background-color: #0082c7;text-transform: uppercase;padding: 5px 0px;border:1px solid #ddd;} 
 .order_total_main_table tbody td{font-family: 'Roboto-Regular';color:#373737;font-size: 13px;padding: 5px 0px;background-color: #fff;border:1px solid #ddd;}
 .align_center{text-align: center;}
 .align_left{text-align: right;}
 .refresh_xl{float:right;margin-top: 18px;}
-.refresh_button{height:35px;width:39px;background-color: #0082c7;float:left;}
+.refresh_button{height:35px;width:39px;background-color: #0082c7;float:left;margin-left: 15px}
 .refresh_button label{background: url("../images/image sprites.png")no-repeat -51px -10px;height:31px;width:30px;cursor: pointer;}
 .report_xls{height:35px;width:162px;background-color: #0082c7;float:left;margin-left: 5px;color:#fff;padding:5px 5px;}
 .report_xls label{background: url("../images/image sprites.png")no-repeat -168px -15px;height:31px;width:30px;float:right;cursor: pointer;}
+.add_new_check {position: relative;top:8px;text-transform: uppercase;text-decoration: none;color:#3e3e3e;font-size: 15px;font-family: 'Roboto-Regular';float:left;}
+.start_order_date_email{width: 95%;height: 28px;border: 1px solid #E3E3E3;font-size: 13px;color: #373737;font-family: 'Roboto-Regular';border-radius: 4px;box-shadow: 0 9px 2px -2px #E3E3E3;}
 
 /*paging*/
 
@@ -364,3 +366,20 @@ refresh_button label{background: url("../images/image sprites.png")no-repeat -51
   
   font-family: Arial, sans-serif;
 }
+
+
+/*Component*/
+.Component_check{margin-left: 8px;width: 20px;height: 20px;position: relative;top: 4px;left:30px;}
+
+
+    .add_check_main{margin-top: 15px;background-color: #fff;padding: 10px 12px;}
+.edit_check_order_icon{background: url("../images/image sprites.png")-46px -42px no-repeat;height: 39px;width: 35px;display: inline-block;float: left;}
+
+
+
+/*edit checkout*/
+.edit_checkout_attr_main{margin-top: 15px;}
+.edit_text_checkout{height: 35px;width:100%;border:1px solid #9fd2eb;}
+.required_check_edit{height: 17px;width: 17px}
+.report_xls_addnew{height: 35px;width: 118px;background-color: #0082c7;float: left;margin-left: 5px;color: #fff;padding: 5px 5px;}
+.back_to_checkout{color:#0082c7;position: relative;top: 8px;text-transform: uppercase;text-decoration: none;font-size: 15px;font-family: 'Roboto-Regular';}

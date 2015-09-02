@@ -1,45 +1,48 @@
 ﻿@model Orbio.Web.UI.Areas.Admin.Models.Attribute.CheckoutAttributeModel
 
-<div class="table-responsive">
-        <table id="spetable" class="table table-border spepro">
-            <thead>
-<th>Name</th>
-<th>Price Adjustment</th>
-<th>Weight Adjustment</th>
-<th>Pre-Selected</th>
-<th>Display Order</th>
-<th>Edit</th>
-<th>Delete</th>
-        </th>
-            <tbody>
-                @if (Model.CheckoutAttributeValue.Count > 0)
-                {
-                    @Html.HiddenFor(m => m.Id, new { Value=Model.Id })
-                    foreach (var item in Model.CheckoutAttributeValue)
-                    {
-                        <tr>
-                            <td>@item.Name</td>
-                            <td>@item.PriceAdjustment</td>
-                            <td>@item.WeightAdjustment</td>
-                            <td>@item.IsPreSelected</td>
-                            <td>@item.DisplayOrder</td>
-                            <td><a href="@Url.Action("EditCheckoutAttributeValue", "Attribute", new { Id=item.Id,AttrId=Model.Id })"><label class="edit"></label></a></td>
-                            <td><a href="@Url.Action("DeleteCheckoutAttributeValue", "Attribute", new { Id = item.Id, AttrId = Model.Id })"><label class="img_sprite" onclick=" return confirm('Are You Sure'); "></label></a></td>
-                        </tr>
-                    }
-                }
-                else
+
+<div class="col-md-12">
+    <div class="refresh_xl">
+        <span class="refresh_button" style="height:32px"><label></label></span>
+        <span style="margin-left:5px"><a href="@Url.Action("AddCheckoutAttributeValue", "Attribute", new { Id=Model.Id })" data-toggle="modal"><input type="button" class="man_search" value="Add a new value"></a></span>
+    </div>
+    <table class="product_add_cart">
+        <thead>
+        <td>Name</td>
+        <td>Price adjustment</td>
+        <td>Weight adjustment</td>
+        <td>Pre-selected</td>
+        <td>display order</td>
+        <td>edit</td>
+        <td>delete</td></thead>
+        <tbody>
+
+            @if (Model.CheckoutAttributeValue.Count > 0)
+            {
+                @Html.HiddenFor(m => m.Id, new { Value = Model.Id })
+                foreach (var item in Model.CheckoutAttributeValue)
                 {
                     <tr>
-                        <td colspan="7">
-                            No records found
-                        </td>
+                        <td>@item.Name</td>
+                        <td>@item.PriceAdjustment</td>
+                        <td>@item.WeightAdjustment</td>
+                        <td>@item.IsPreSelected</td>
+                        <td>@item.DisplayOrder</td>
+                        <td><a href="@Url.Action("EditCheckoutAttributeValue", "Attribute", new { Id=item.Id,AttrId=Model.Id })"><label class="edit_ring"></label></a></td>
+                        <td><a href="@Url.Action("DeleteCheckoutAttributeValue", "Attribute", new { Id = item.Id, AttrId = Model.Id })"><label class="delete_ring" onclick=" return confirm('Are You Sure'); "></label></a></td>
                     </tr>
                 }
-            </tbody>
-        </table>
-        <div class="pull-left1"><input type="button" class="but-refresh" onclick="refresh()"></div>
-        <div class="pull-right"><a href="@Url.Action("AddCheckoutAttributeValue", "Attribute", new { Id=Model.Id })" data-toggle="modal"><input type="button" class="but-search" value="Add a new value"></a></div>
+            }
+            else
+            {
+                <tr>
+                    <td colspan="7">
+                        No records found
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
 <script>
     function refresh() {

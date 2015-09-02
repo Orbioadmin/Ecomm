@@ -4,41 +4,53 @@
     ViewBag.Title = "AddOrEditSpecificationAttributeOption";
 }
 
-<section class="wp-request wp-speci-attr-create" style="margin-top:10%">
-@using (Html.BeginForm("AddorEditOptions", "Attribute", FormMethod.Post))
-{
-    @Html.HiddenFor(m => m.SpecificationAttributeId, new { Value=Model.SpecificationAttributeId })
-    @Html.HiddenFor(m => m.Id, new { Value=Model.Id })
-    <div class="container">
-        <div class="col-md-12">
-            <div class="pull-right">
-                <div class="options">
-                    <input type="submit" value="Save" class=" Sbut   ssbut1">
-                    <a href="@Url.Action("EditSpecificationAttribute", "Attribute", new { Id = Model.SpecificationAttributeId })"><input type="button" value="Cancel" class=" Sbut   ssbut1"></a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div role="tabpanel" class="tab-pane in" id="option">
-            <div class="tab-content ">
-                <div role="tabpanel" class="tab-pane in active" id="standard">
-                    <div class="col-md-12 product-specification">
-                        <div class="col-md-12">
-                            <div class="col-md-3"><label> Name:</label></div>
-                            <div class="col-md-3">@Html.TextBoxFor(m => m.Name, new { @class = "produtxt" })</div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="col-md-3"><label> Display Order:</label></div>
-                            <div class="col-md-3">
-                                @Html.TextBoxFor(m => m.DisplayOrder, new { @class = "produtxt", @type = "number" })
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-   }
-</section>
 
+
+<div class="container">
+    @using (Html.BeginForm("AddorEditOptions", "Attribute", FormMethod.Post))
+    {
+        @Html.HiddenFor(m => m.SpecificationAttributeId, new { Value = Model.SpecificationAttributeId })
+        @Html.HiddenFor(m => m.Id, new { Value = Model.Id })
+        <div class="main_edit_order">
+            @if (Model.Id == 0)
+            {
+                <span class="back_to_order" style="padding-top:0px">
+                    <input type="submit" value="Save" class="add_cat_button">
+                    <a href="@Url.Action("EditSpecificationAttribute", "Attribute", new { Id = Model.SpecificationAttributeId })"> <input type="button" value="Cancel" class="delete_cat_button"></a>
+                </span>
+            }
+            else
+            {
+                <span class="back_to_order" style="padding-top:0px">
+                    <input type="submit" value="Save" class="add_cat_button">
+                </span>
+            }
+        </div>
+
+
+
+        <div class="tab_side_solutions col-md-12">
+            <div class="tab-content tab_content_solutions" id="myTabContent">
+                <div aria-labelledby="home-tab" id="info" class="tab-pane fade in active  " role="tabpanel">
+                    <div class="col-md-12 add_cart_left_side edit_checkout_attr_main">
+                        <form action="" method="post">
+                            <div class="form-group row" style="margin-top:10px">
+                                @Html.HiddenFor(m => m.Id, new { Value = Model.Id })
+                                <div class="col-md-2"><label>Name : </label></div>
+                                <div class="col-md-4"> @Html.TextBoxFor(m => m.Name, new { @class = "edit_text_checkout", required = "required" })</div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-2"><label>Display Order : </label></div>
+                                <div class="col-md-4">@Html.TextBoxFor(m => m.DisplayOrder, new { @class = "edit_text_checkout", @type = "number" })</div>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+    }
+</div>
