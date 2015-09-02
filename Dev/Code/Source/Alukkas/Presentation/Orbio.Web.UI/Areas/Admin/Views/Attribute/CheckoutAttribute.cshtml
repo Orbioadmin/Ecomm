@@ -8,7 +8,7 @@
             @Html.HiddenFor(m => m.Id, new { Value=Model.Id })
             <div class="col-md-3"><label> Name:</label></div>
             <div class="col-md-3">
-                @Html.TextBoxFor(m => m.Name, new { @class = "produtxt" })
+                @Html.TextBoxFor(m => m.Name, new { @class = "produtxt", required = "required" })
             @*<input type="text" class="produtxt">*@
             </div>
         </div>
@@ -37,11 +37,11 @@
         <div class="col-md-12 product-specification1">
             <div class="col-md-3"><label> Tax Exempt:</label></div>
             <div class="col-md-3">
-                @Html.CheckBoxFor(m => m.IsTaxExempt)
+                @Html.CheckBoxFor(m => m.IsTaxExempt, new { onchange="taxcategory()",id="taxexempt"})
                 @*<input type="checkbox" class="">*@
             </div>
         </div>
-        <div class="col-md-12 product-specification1">
+        <div class="col-md-12 product-specification1" id="taxcat">
             <div class="col-md-3"><label> Tax Category:</label></div>
             <div class="col-md-3">@Html.DropDownListFor(m => m.TaxCategoryId, new SelectList(Model.TaxCategory, "Id", "Name"), new { @class = "jewellery produtxt" })
             @*<select class="jewellery produtxt"><option></option></select>*@
@@ -58,3 +58,17 @@
         </div>
     </div>
 </div>
+
+<script>
+    function taxcategory()
+    {
+        var val = document.getElementById("taxexempt").value;
+        if(val)
+        {
+            document.getElementById("taxcat").style.display = none;
+        }
+        else {
+            document.getElementById("taxcat").style.display = block;
+        }
+    }
+</script>

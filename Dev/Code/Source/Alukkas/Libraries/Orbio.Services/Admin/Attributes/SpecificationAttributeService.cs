@@ -22,8 +22,10 @@ namespace Orbio.Services.Admin.Attributes
         public SpecificationAttribute GetSpecificationAttributesById(int Id)
         {
             var model = context.SpecificationAttributes.Where(m => m.Id == Id).FirstOrDefault();
-
-            model.SpecificationAttributeOptions = context.SpecificationAttributeOptions.Where(m => m.SpecificationAttributeId == Id).ToList();
+            if (model != null)
+            {
+                model.SpecificationAttributeOptions = context.SpecificationAttributeOptions.Where(m => m.SpecificationAttributeId == Id).ToList();
+            }
             return model;
         }
 

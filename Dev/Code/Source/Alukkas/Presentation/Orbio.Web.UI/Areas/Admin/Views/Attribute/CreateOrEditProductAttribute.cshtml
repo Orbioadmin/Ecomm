@@ -1,7 +1,7 @@
 ﻿@model Orbio.Web.UI.Areas.Admin.Models.Attribute.ProductAttributeModel
 
 @{
-    ViewBag.Title = "CreateOrEditProductAttribute";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout1.cshtml";
 }
 
 
@@ -20,7 +20,7 @@
         {
              <span class="edit_order_details"><span class="edit_order_icon"></span>EDIT PRODUCT ATTRIBUTE - @Model.Name<a href="@Url.Action("ProductAttribute", "Attribute")" style="top:0px;text-transform:none;"> (back to product attribute list)</a></span>
              <span class="back_to_order"><input type="submit" value="Save" class="add_cat_button">
-             <a href="@Url.Action("DeleteProductAttribute", "Attribute", new { Id = Model.Id })"><input type="button" value="Delete" class="delete_cat_button"></a></span>
+             <a href="@Url.Action("DeleteProductAttribute", "Attribute", new { Id = Model.Id })"><input type="button" value="Delete" class="delete_cat_button" onclick=" return confirm('Are You Sure'); "></a></span>
         }
     </div>
     
@@ -29,5 +29,5 @@
             Html.RenderPartial("_AddOrEditProductAttribute", this.Model);
         }
         </div>
-        }
+       }
     </div>

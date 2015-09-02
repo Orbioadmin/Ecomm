@@ -1,0 +1,96 @@
+﻿@model List<Orbio.Web.UI.Areas.Admin.Models.Customers.CustomerRoleModel>
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="container">
+    <div class="main_edit_order">
+        <span class="edit_order_details"><span class="shipmen_icon"></span><a href="">Customer Roles</a></span>
+        <span class="back_to_order" style="padding-top:0px">
+            <a href="@Url.Action("AddCustomerRole", "Customer")"><input type="button" value="Add New" class="add_cat_button"></a>
+            @*<input type="button" value="Export to XML" class="delete_cat_button">*@
+        </span>
+    </div>
+    <table class="order_total_main_table" style="top:7px;">
+        <thead>
+        <td>Name</td>
+        <td>Free Shipping</td>
+        <td>Tax Exempt</td>
+        <td>Active</td>
+        <td>Is System Role</td>
+        <td>Edit/Delete</td></thead>
+        <tbody>
+            @if (Model != null)
+            {
+                if (Model.Count > 0)
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="align_center">@item.Name </td>
+                            <td class="align_center">
+                                @if (item.FreeShipping == true)
+                                {
+                                    <label class="img_sprite1"></label>
+                                }
+                                else
+                                {
+                                    <label class="img_sprite"></label>
+                                }
+                            </td>
+                            <td class="align_center">
+                                @if (item.TaxExempt == true)
+                                {
+                                    <label class="img_sprite1"></label>
+                                }
+                                else
+                                {
+                                    <label class="img_sprite"></label>
+                                }
+                            </td>
+                            <td class="align_center">
+                                @if (item.Active == true)
+                                {
+                                    <label class="img_sprite1"></label>
+                                }
+                                else
+                                {
+                                    <label class="img_sprite"></label>
+                                }
+                            </td>
+                            <td class="align_center">
+                                @if (item.IsSystemRole == true)
+                                {
+                                    <label class="img_sprite1"></label>
+                                }
+                                else
+                                {
+                                    <label class="img_sprite"></label>
+                                }
+                            </td>
+                            <td class="align_center">
+                                <a href="@Url.Action("EditCustomerRole", "Customer", new { Id = item.Id })"><label class="edit_ring"></label></a>
+                                <a href="@Url.Action("DeleteCustomerRole", "Customer", new { Id = item.Id })"><label class="delete_ring" onclick=" return confirm('Are You Sure'); "></label></a>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr style="display: table-row;">
+
+                        <td colspan="6">No records to diaplay</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr style="display: table-row;">
+
+                    <td colspan="6">No records to diaplay</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

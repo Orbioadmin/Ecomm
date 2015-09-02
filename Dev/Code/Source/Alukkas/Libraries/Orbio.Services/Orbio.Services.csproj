@@ -72,7 +72,9 @@
     <Compile Include="Admin\Components\PriceComponentService.cs" />
     <Compile Include="Admin\Components\ProductComponentService.cs" />
     <Compile Include="Admin\Customers\CustomerReportService.cs" />
+    <Compile Include="Admin\Customers\CustomerRoleService.cs" />
     <Compile Include="Admin\Customers\ICustomerReportService.cs" />
+    <Compile Include="Admin\Customers\ICustomerRoleService.cs" />
     <Compile Include="Admin\Orders\IShippingService.cs" />
     <Compile Include="Admin\Components\IProductComponentService.cs" />
     <Compile Include="Admin\Orders\IShoppingCartService.cs" />

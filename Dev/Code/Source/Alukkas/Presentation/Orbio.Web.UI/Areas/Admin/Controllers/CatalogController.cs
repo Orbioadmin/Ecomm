@@ -177,7 +177,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         /// <returns></returns>
         public ActionResult SearchManufacturer(ManufacturerDetailModel model)
         {
-            if (string.IsNullOrEmpty(model.Search))
+            if (!string.IsNullOrEmpty(model.Search))
             {
                 var result = new ManufacturerDetailModel(manufacturerService.SearchManufacturerByName(model.Search));
                 result.Search = model.Search;

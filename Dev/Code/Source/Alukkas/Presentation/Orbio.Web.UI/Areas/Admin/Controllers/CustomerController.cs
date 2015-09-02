@@ -1,4 +1,5 @@
-﻿using Orbio.Services.Admin.Customers;
+﻿using Orbio.Core.Data;
+using Orbio.Services.Admin.Customers;
 using Orbio.Web.UI.Areas.Admin.Models.Customers;
 using System;
 using System.Collections.Generic;
@@ -13,14 +14,16 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
        #region Fields
 
         private readonly ICustomerReportService _customerReportService;
+        private readonly ICustomerRoleService customerRoleService;
 
         #endregion
 
         #region Ctor
 
-        public CustomerController(ICustomerReportService customerReportService)
+        public CustomerController(ICustomerReportService customerReportService, ICustomerRoleService customerRoleService)
         {
             this._customerReportService = customerReportService;
+            this.customerRoleService = customerRoleService;
         }
 
         #endregion
@@ -64,6 +67,53 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             var model = GetReportRegisteredCustomersModel();
             return PartialView(model);
         }
+
+        #region CustomerRole
+
+        public ActionResult ListCustomerRole()
+        {
+            var result = customerRoleService.GetAllCustomerRole();
+            var model = (from CR in result
+                         select new CustomerRoleModel(CR)).ToList();
+
+            return View("ListCustomerRole",model);
+        }
+
+        public ActionResult AddCustomerRole()
+        {
+            var model = new CustomerRoleModel();
+            return View("AddOrEditCustomerRole", model);
+        }
+
+        public ActionResult EditCustomerRole(int Id)
+        {
+            var result = customerRoleService.GetCustomerRoleById(Id);
+            var model = new CustomerRoleModel(result);
+            return View("AddOrEditCustomerRole", model);
+        }
+
+        public ActionResult DeleteCustomerRole(int Id)
+        {
+            int result = customerRoleService.DeleteCustomerRole(Id);
+            return RedirectToAction("ListCustomerRole");
+        }
+
+        public ActionResult AddOrEditCustomerRole(CustomerRoleModel model)
+        {
+            var customerRole = new CustomerRole
+                                {
+                                    Id=model.Id,
+                                    Name=model.Name,
+                                    SystemName=model.SystemName,
+                                    FreeShipping=model.FreeShipping,
+                                    TaxExempt=model.TaxExempt,
+                                    Active=model.Active,
+                                };
+            int result = customerRoleService.AddOrUpdateCustomerRole(customerRole);
+            return RedirectToAction("ListCustomerRole");
+        }
+
+        #endregion
 
     }
 }
