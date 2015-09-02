@@ -917,7 +917,6 @@
     <Content Include="Areas\Admin\Views\Catalog\DiscountCategory.cshtml" />
     <Content Include="Areas\Admin\Views\Catalog\ManageCategories.cshtml" />
     <Content Include="Areas\Admin\Views\Catalog\ManageManufacturer.cshtml" />
-    <Content Include="Areas\Admin\Views\Catalog\ManufacturerACL.cshtml" />
     <Content Include="Areas\Admin\Views\Catalog\ManufacturerInfo.cshtml" />
     <Content Include="Areas\Admin\Views\Catalog\ManufacturerMenu.cshtml" />
     <Content Include="Areas\Admin\Views\Catalog\ManufacturerProduct.cshtml" />

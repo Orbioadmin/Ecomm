@@ -19,7 +19,7 @@
                 @Html.TextBoxFor(model => model.EndDate, new { @class = "start_order_date", placeholder = "To" })
             </div>
             <div class="billing_address_text">
-                @Html.TextBoxFor(model => model.CustomerEmail, new { @class = "start_order_date", placeholder = "Billing email address" })
+                @Html.TextBoxFor(model => model.CustomerEmail, new { @class = "start_order_date", placeholder = "Email" })
             </div>
             <div class="order_status">
                 @Html.DropDownList("OrderStatusId", Model.AvailableOrderStatuses, new { @class = "order_stat_select" })
