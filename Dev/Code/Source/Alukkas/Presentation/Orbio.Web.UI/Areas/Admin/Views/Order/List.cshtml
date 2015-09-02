@@ -19,7 +19,7 @@
                 @Html.TextBoxFor(model => model.EndDate, new { @class = "start_order_date", placeholder = "To" })
             </div>
             <div class="billing_address_text">
-                @Html.TextBoxFor(model => model.CustomerEmail, new { @class = "start_order_date", placeholder = "Billing email address" })
+                @Html.TextBoxFor(model => model.CustomerEmail, new { @class = "start_order_date", placeholder = "Email" })
             </div>
             <div class="order_status">
                 @Html.DropDownList("OrderStatusId", Model.AvailableOrderStatuses, new { @class = "order_stat_select" })
@@ -46,7 +46,7 @@
 
             @*<span class="report_xls">Export to excel <label></label></span>*@
         </div>
-        <div class="col-md-12">
+        <div class="col-md-12" style=" margin-bottom: 34px;">
 
             <table class="order_total_main_table" id="tableData">
                 <thead>
@@ -57,7 +57,7 @@
                 <td>email</td>
                 <td>created on</td>
                 <td>order total</td>
-                <td>view</td></thead>
+                @*<td>view</td>*@</thead>
 
 
                 <tbody>
