@@ -12,7 +12,7 @@
     <div class="main_edit_order">
         @if (Model.Id == 0)
          {
-        <span class="edit_order_details"><span class="edit_order_icon"></span>ADD NEW PRODUCT ATTRIBUTE</span>
+        <span class="edit_order_details"><span class="edit_order_icon"></span>ADD NEW PRODUCT ATTRIBUTE <a href="@Url.Action("ProductAttribute", "Attribute")" style="top:0px;text-transform:none;">(back to product attribute list)</a></span>
         <span class="back_to_order"><input type="submit" value="Save" class="add_cat_button">
         <a href="@Url.Action("ProductAttribute","Attribute")"><input type="button" value="Cancel" class="delete_cat_button"></a></span>
          }
