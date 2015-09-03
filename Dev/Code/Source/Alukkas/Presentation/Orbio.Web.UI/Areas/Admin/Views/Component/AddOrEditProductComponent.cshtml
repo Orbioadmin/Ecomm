@@ -10,7 +10,7 @@
         <div class="main_edit_order">
             @if (Model.Id == 0)
             {
-                <span class="edit_order_details"><span class="edit_order_icon"></span><a href="" class="add_new_check">ADD A NEW PRODUCT COMPONENT</a> <a href="@Url.Action("ProductComponent", "Component")" class="back_to_checkout" style="color: #0082c7;">(back to product component list) </a></span>
+                <span class="edit_order_details"><span class="edit_order_icon"></span><a href="" class="add_new_check">ADD A NEW PRODUCT COMPONENT</a></span>
                 <span class="back_to_order" style="padding-top:0px">
                     <input type="submit" value="Save" class="add_cat_button">
                     <a href="@Url.Action("ProductComponent", "Component")"> <input type="button" value="Cancel" class="delete_cat_button"></a>
@@ -18,7 +18,7 @@
             }
             else
             {
-                <span class="edit_order_details"><span class="edit_order_icon"></span><a href="" class="add_new_check">EDIT PRODUCT COMPONENT</a> <a href="@Url.Action("ProductComponent", "Component")" class="back_to_checkout" style="color: #0082c7;">(back to product component list) </a></span>
+                <span class="edit_order_details"><span class="edit_order_icon"></span><a href="" class="add_new_check">EDIT PRODUCT COMPONENT</a> <a href="@Url.Action("ProductComponent", "Component")" class="back_to_checkout" style="top:0px;text-transform:none;font-size: small;color: #0082c7;">(back to product component list) </a></span>
                 <span class="back_to_order" style="padding-top:0px">
                     <input type="submit" value="Save" class="add_cat_button">
                     <a href="@Url.Action("DeleteProductComponent", "Component", new { Id = Model.Id })"> <input type="button" value="Delete" class="delete_cat_button"></a>

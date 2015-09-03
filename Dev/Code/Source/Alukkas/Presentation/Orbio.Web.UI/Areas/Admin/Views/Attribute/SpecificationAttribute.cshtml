@@ -11,7 +11,7 @@
         <div class="main_edit_order">
             @if (Model.Id == 0)
             {
-                <span class="edit_order_details"><span class="edit_order_icon"></span><a href="" class="add_new_check">ADD SPECIFICATION ATTRIBUTE DETAILS</a> <a href="@Url.Action("ListSpecificationAttribute", "Attribute")" class="back_to_checkout" style="color: #0082c7;">(back to specification attribute list) </a></span>
+                <span class="edit_order_details"><span class="edit_order_icon"></span><a href="" class="add_new_check">ADD SPECIFICATION ATTRIBUTE DETAILS</a></span>
                 <span class="back_to_order" style="padding-top:0px">
                     <input type="submit" value="Save" class="add_cat_button">
                     <a href="@Url.Action("DeleteSpecificationAttribute", "Attribute")"> <input type="button" value="Cancel" class="delete_cat_button"></a>
@@ -19,7 +19,7 @@
             }
             else
             {
-                <span class="edit_order_details"><span class="edit_order_icon"></span><a href="" class="add_new_check">EDIT SPECIFICATION ATTRIBUTE DETAILS - @Model.Name </a> <a href="@Url.Action("ListSpecificationAttribute", "Attribute")" class="back_to_checkout" style="color: #0082c7;">(back to specification attribute list) </a></span>
+                <span class="edit_order_details"><span class="edit_order_icon"></span><a href="" class="add_new_check">EDIT SPECIFICATION ATTRIBUTE DETAILS - @Model.Name </a> <a href="@Url.Action("ListSpecificationAttribute", "Attribute")" class="back_to_checkout" style="top:0px;text-transform:none;font-size: small;color: #0082c7;">(back to specification attribute list) </a></span>
                 <span class="back_to_order" style="padding-top:0px">
                     <input type="submit" value="Save" class="add_cat_button">
                     <a href="@Url.Action("DeleteSpecificationAttribute", "Attribute", new { Id = Model.Id })"> <input type="button" value="Delete" class="delete_cat_button"></a>
