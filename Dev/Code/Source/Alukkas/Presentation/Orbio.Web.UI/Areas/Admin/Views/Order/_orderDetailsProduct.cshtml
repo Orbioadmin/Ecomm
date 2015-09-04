@@ -13,9 +13,7 @@
         <td>Total</td>
         <td>Action</td></thead>
         <tbody>
-@using (Html.BeginForm("EditOrderItem", "Order", new { id = this.Model.Id }, FormMethod.Post, new { Id = "formEditOrderItem" }))
-    {
-        foreach (var item in Model.Items)
+        @foreach (var item in Model.Items)
             {
                 <script type="text/javascript">
                     $(document).ready(function () {
@@ -45,6 +43,8 @@
     
                 if (count == 1)
                 {
+        using (Html.BeginForm("EditOrderItem", "Order", new { id = this.Model.Id }, FormMethod.Post, new { Id = "formEditOrderItem"+item.ProductId }))
+            {
                    @:<tr class="first_row">
                    @:<td class="varient_align">
                    @:<img src="@item.ImageUrl" alt="ring" width="58" height="53"><label><label class="diamond">@item.ProductName </label></br><label class="varient">@(new HtmlString(item.AttributeInfo))</label></label>
@@ -62,10 +62,13 @@
                     }
                    @:</td>
                    @:</tr>
+            }
                    count++;
                }
               else
                   {
+                using (Html.BeginForm("EditOrderItem", "Order", new { id = this.Model.Id }, FormMethod.Post, new { Id = "formEditOrderItem" + item.ProductId }))
+                 {
                     @:<tr class="second_row"><td class="varient_align"><img src="@item.ImageUrl" alt="ring" width="58" height="53"><label><label class="diamond">@item.ProductName </label></br><label class="varient">@(new HtmlString(item.AttributeInfo))</label></label></td><td class="quantity"><input name="pvQuantity@(item.ProductId)" type="number" value="@item.Quantity" id="pvQuantity@(item.ProductId)" class="adminInput" style="width: 40px;height: 23px;padding: 0 4px;border-radius: 2px;border: 1px solid #ccc;" /></td><td class="number">@item.UnitPriceExclTaxValue.ToString("#,##0.00")</td><td class="number">@item.DiscountExclTaxValue.ToString("#,##0.00")</td><td class="number">@item.SubTotalExclTaxValue.ToString("#,##0.00")</td>
 
                     @:<td class="action_ring">
@@ -79,6 +82,7 @@
                         }
                     @:</td>
                     @:</tr>
+                }
                       count = 1;
                   }
             }     
