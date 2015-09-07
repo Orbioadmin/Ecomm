@@ -17,6 +17,11 @@ namespace Orbio.Core.Domain.Admin.Customers
         public int CustomerId { get; set; }
 
         /// <summary>
+        /// Gets or sets the email
+        /// </summary>
+        public string Email { get; set; }
+
+        /// <summary>
         /// Gets or sets the order total
         /// </summary>
         public decimal OrderTotal { get; set; }

@@ -2,31 +2,19 @@
 @{
     Layout = null;
 }
-
-<div class="main-table table-responsive">
-    <h2>REGISTERED CUSTOMERS</h2> <span class="refbutt"></span>
-
-    <table id="data" class="inner-table paginated" cellpadding="0" cellspacing="0" width="100%">
-        <thead>
+<table class="order_total_main_table" id="tableData">
+    <thead>
+    <td style="background-color: #f1eff0;color: #2e2e2e;font-size: 13px;">PERIOD</td>
+    <td style="background-color: #f1eff0;color: #2e2e2e;font-size: 13px;">COUNT</td>
+    </thead>
+    <tbody>
+        @foreach (var rcr in this.Model)
+        {
             <tr>
-                <th>PERIOD</th>
-                <th>COUNT</th>
+                <td class="align_center">@rcr.Period</td>
+                <td class="align_center">@rcr.Customers</td>
             </tr>
-        </thead>
-        <tbody>
-            @foreach (var rcr in this.Model)
-            {
-                <tr>
-                    <td>@rcr.Period</td>
-                    <td>@rcr.Customers</td>
-                </tr>
-            }
-            @*<tr>
-                <td>Total unpaid order (pending payment status)</td>
-                <td></td>
-            </tr>*@
+        }
 
-        </tbody>
-    </table>
-
-</div>
+    </tbody>
+</table>

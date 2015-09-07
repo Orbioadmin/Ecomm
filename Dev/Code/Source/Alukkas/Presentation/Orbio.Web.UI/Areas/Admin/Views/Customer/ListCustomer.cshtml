@@ -1,0 +1,67 @@
+﻿@model Orbio.Web.UI.Areas.Admin.Models.Customers.CustomerListModel
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout1.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="container">
+        <div class="main_edit_order">
+            <span class="edit_order_details"><span class="edit_order_icon"></span><a href="" class="add_new_check">Customers</a></span><span class="refresh_button"><a style="cursor:pointer" href="@Url.Action("List","Customer")"><label></label></a></span>
+            <!-- <span class="back_to_order"><input type="button" value="Save" class="add_cat_button"></span> -->
+        </div>
+    </div>
+    <div class="container">
+        <div class="col-md-12 order_list">
+            <div class="order_status">
+                @Html.ListBoxFor(m => m.Roles, new MultiSelectList(Model.CustomerRoles, "Id", "Name"), new { Multiple = "multiple", id = "role", @class = "start_order_date_email", placeholder = "Role" })
+            </div>
+            <div class="billing_address_text">
+                @Html.TextBoxFor(model => model.FirstName, new { @class = "start_order_date_email", placeholder = "First Name" })
+            </div>
+            <div class="billing_address_text">
+                @Html.TextBoxFor(model => model.LastName, new { @class = "start_order_date_email", placeholder = "Last Name" })
+            </div>
+            <div class="billing_address_text">
+                @Html.TextBoxFor(model => model.Email, new { @class = "start_order_date_email", placeholder = "Email", type = "email" })
+            </div>
+            <div class="billing_address_text">
+                <input type="submit" class="search_order_list" value="SEARCH">
+            </div>
+        </div>
+       
+        <div class="col-md-12" style=" margin-bottom: 34px;">
+
+            <table class="order_total_main_table" id="tableData">
+                <thead>
+                <td>Id</td>
+                <td>Email</td>
+                <td>Name</td>
+                <td>Customer Roles</td>
+                <td>Company Name</td>
+                <td>Active</td>
+                <td>Created On</td>
+                <td>Last Activity</td></thead>
+                <tbody>
+                    @Html.Action("CustomerList", "Customer")
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+}
+@section scripts {
+    <script>
+            $(document).ready(function () {
+                // create DateTimePicker from input HTML element
+                 $("#StartDate").kendoDatePicker();
+                 $("#EndDate").kendoDatePicker();
+                    });   </script>
+
+<script type="text/javascript">
+    $('#role').multiselect();
+</script>
+
+
+}

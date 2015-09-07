@@ -9,6 +9,12 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Customers
     {
         public string Period { get; set; }
 
+        public decimal OrderTotal { get; set; }
+
+        public int OrderCount { get; set; }
+
+        public string Email { get; set; }
+
         public int Customers { get; set; }
     }
 }

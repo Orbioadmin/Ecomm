@@ -1,4 +1,8 @@
 ﻿using Orbio.Core.Data;
+using Orbio.Core.Domain.Admin.Customers;
+using Orbio.Core.Domain.Orders;
+using Orbio.Core.Domain.Shipping;
+using Orbio.Core.Payments;
 using Orbio.Services.Customers;
 using Orbio.Services.Helpers;
 using System;
@@ -62,6 +66,66 @@ namespace Orbio.Services.Admin.Customers
                         select c;
             int count = query.Count();
             return count;
+        }
+
+
+        public List<BestCustomerReportLine> GetTopCustomerReport()
+        {
+            var query = (from c in context.Customers
+                         join o in context.Orders on c.Id equals o.CustomerId
+                         where (!o.Deleted && !c.Deleted)
+                         group o by o.CustomerId into temp
+                         select new BestCustomerReportLine
+                         {
+                             CustomerId = temp.Key,
+                             Email = temp.Select(c=>c.Customer.Email).FirstOrDefault(),
+                             OrderTotal = temp.Sum(o => o.OrderTotal),
+                             OrderCount = temp.Count(),
+                         }).Take(20).ToList();
+
+            return query;
+        }
+
+        public List<BestCustomerReportLine> SearchCustomerReport(DateTime? startDateValue, DateTime? endDateValue, OrderStatus? orderStatus,
+               PaymentStatus? paymentStatus, ShippingStatus? shippingStatus)
+        {
+            int? orderStatusId = null;
+            if (orderStatus.HasValue)
+                orderStatusId = (int)orderStatus.Value;
+
+            int? paymentStatusId = null;
+            if (paymentStatus.HasValue)
+                paymentStatusId = (int)paymentStatus.Value;
+
+            int? shippingStatusId = null;
+            if (shippingStatus.HasValue)
+                shippingStatusId = (int)shippingStatus.Value;
+
+            var query = context.Orders.Where(o=>!o.Deleted);
+            if (orderStatusId.HasValue)
+                query = query.Where(o => o.OrderStatusId == orderStatusId.Value);
+            if (paymentStatusId.HasValue)
+                query = query.Where(o => o.PaymentStatusId == paymentStatusId.Value);
+            if (shippingStatusId.HasValue)
+                query = query.Where(o => o.ShippingStatusId == shippingStatusId.Value);
+            if (startDateValue.HasValue)
+                query = query.Where(o => startDateValue.Value <= o.CreatedOnUtc);
+            if (endDateValue.HasValue)
+                query = query.Where(o => endDateValue.Value >= o.CreatedOnUtc);
+
+            var result = (from c in context.Customers
+                          join o in query on c.Id equals o.CustomerId
+                         where (!c.Deleted)
+                         group o by o.CustomerId into temp
+                         select new BestCustomerReportLine
+                         {
+                             CustomerId = temp.Key,
+                             Email = temp.Select(c => c.Customer.Email).FirstOrDefault(),
+                             OrderTotal = temp.Sum(o => o.OrderTotal),
+                             OrderCount = temp.Count(),
+                         }).Take(20).ToList();
+
+            return result;
         }
 
         #endregion

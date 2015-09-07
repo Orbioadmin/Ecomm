@@ -99,10 +99,10 @@
 <li class="dropdown">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Customers<span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="#">Customers</a></li>
+<li><a href="@Url.Action("ListCustomer","Customer")">Customers</a></li>
 <li><a href="@Url.Action("ListCustomerRole","Customer")">Customer roles</a></li>
-<li><a href="#">Online customers</a></li>
-<li><a href="#">Customer reports</a></li>
+<li><a href="@Url.Action("OnlineCustomers", "Customer")">Online customers</a></li>
+<li><a href="@Url.Action("CustomerReport", "Customer")">Customer reports</a></li>
 </ul>
 </li>
 <li>
