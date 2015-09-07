@@ -759,6 +759,7 @@
     <Content Include="Views\Common\PageNotFound.cshtml" />
     <Content Include="Areas\Admin\Views\Customer\ListCustomerRole.cshtml" />
     <Content Include="Areas\Admin\Views\Customer\AddOrEditCustomerRole.cshtml" />
+    <None Include="Properties\PublishProfiles\ecom.pubxml" />
     <None Include="Properties\PublishProfiles\NopCommerce.pubxml" />
   </ItemGroup>
   <ItemGroup />
