@@ -98,8 +98,12 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
 
         public ActionResult EditSpecificationAttribute(int? Id)
         {
+            var model = new SpecificationAttributeModel();
             var result = specAttributeService.GetSpecificationAttributesById(Id.GetValueOrDefault());
-            var model = new SpecificationAttributeModel(result);
+            if(result!=null)
+            {
+                model = new SpecificationAttributeModel(result);
+            }
             return View("SpecificationAttribute", model);
         }
 

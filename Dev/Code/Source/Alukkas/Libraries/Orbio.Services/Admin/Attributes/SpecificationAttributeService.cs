@@ -13,7 +13,7 @@ namespace Orbio.Services.Admin.Attributes
         {
             using (var context = new OrbioAdminContext())
             {
-                var model = context.SpecificationAttributes.ToList();
+                var model = context.SpecificationAttributes.Include("SpecificationAttributeOptions.Product_SpecificationAttribute_Mapping").ToList();
                 return model;
             }
         }
@@ -22,12 +22,9 @@ namespace Orbio.Services.Admin.Attributes
         {
             using (var context = new OrbioAdminContext())
             {
-                var model = context.SpecificationAttributes.Where(m => m.Id == Id).FirstOrDefault();
-                if (model != null)
-                {
-                    model.SpecificationAttributeOptions = context.SpecificationAttributeOptions.Where(m => m.SpecificationAttributeId == Id).ToList();
-                }
-                return model;
+                var spec = context.SpecificationAttributes.Include("SpecificationAttributeOptions.Product_SpecificationAttribute_Mapping").Where(m => m.Id == Id).FirstOrDefault();
+                
+                return spec;
             }
         }
 
