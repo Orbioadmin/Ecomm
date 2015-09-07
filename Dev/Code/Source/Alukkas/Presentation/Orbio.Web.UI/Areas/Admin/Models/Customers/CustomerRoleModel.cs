@@ -8,6 +8,8 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Customers
 {
     public class CustomerRoleModel
     {
+        private ICollection<CustomerRole> collection;
+
         public CustomerRoleModel()
         {
         }

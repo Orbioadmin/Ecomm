@@ -12,7 +12,7 @@
         <div class="main_edit_order">
             @if (Model.Id == 0)
             {
-       <span class="edit_order_details"><span class="edit_order_icon"></span><a href="" class="add_new_check">ADD NEW CHECKOUT ATTRIBUTE VALUE</a> <a href="@Url.Action("GetCheckoutAttribute", "Attribute")" class="back_to_checkout" style="color: #0082c7;">(back to checkout attribute list) </a></span>
+       <span class="edit_order_details"><span class="edit_order_icon"></span><a href="" class="add_new_check">ADD NEW CHECKOUT ATTRIBUTE VALUE</a></span>
     <span class="back_to_order" style="padding-top:0px">
         <input type="submit" value="Save" class="add_cat_button">
         <a href="@Url.Action("EditCheckoutAttribute", "Attribute")"> <input type="button" value="Cancel" class="delete_cat_button"></a>
@@ -22,7 +22,7 @@
             else
             {
 
-    <span class="edit_order_details"><span class="edit_order_icon"></span><a href="" class="add_new_check">EDIT CHECKOUT ATTRIBUTE - @Model.Name </a> <a href="@Url.Action("GetCheckoutAttribute", "Attribute")" class="back_to_checkout" style="color: #0082c7;">(back to checkout attribute list) </a></span>
+    <span class="edit_order_details"><span class="edit_order_icon"></span><a href="" class="add_new_check">EDIT CHECKOUT ATTRIBUTE - @Model.Name </a> <a href="@Url.Action("GetCheckoutAttribute", "Attribute")" class="back_to_checkout" style="top:0px;text-transform:none;font-size: small;color: #0082c7;">(back to checkout attribute list) </a></span>
     <span class="back_to_order" style="padding-top:0px">
         <input type="submit" value="Save" class="add_cat_button">
         <a href="@Url.Action("EditCheckoutAttribute", "Attribute", new { Id = Model.CheckoutAttributeId })"> <input type="button" value="Cancel" class="delete_cat_button"></a>

@@ -100,7 +100,7 @@
             $table.trigger('repaginate');
             var numRows = $table.find('tbody tr').length;
             var numPages = Math.ceil(numRows / numPerPage);
-            var $pager = $('<div class="pager"></div>');
+            //var $pager = $('<div class="pager"></div>');
             for (var page = 0; page < numPages; page++) {
                 $('<span class="page-number"></span>').text(page + 1).bind('click', {
                     newPage: page

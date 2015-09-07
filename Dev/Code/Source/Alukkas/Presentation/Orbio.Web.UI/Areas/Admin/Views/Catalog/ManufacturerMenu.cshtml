@@ -4,7 +4,7 @@
 {
     @Html.HiddenFor(m => m.Id, new { Value = Model.Id })
 <div class="main_edit_order">
-    <span class="edit_order_details"><span class="edit_order_icon"></span>EDIT MANUFACTURER DETAILS - @Model.Name <a href="@Url.Action("ManageManufacturer", "Catalog")" style="top:0px;text-transform:none;"> (back to manufacturer list) </a></span>
+    <span class="edit_order_details"><span class="edit_order_icon"></span>EDIT MANUFACTURER DETAILS - @Model.Name <a href="@Url.Action("ManageManufacturer", "Catalog")" style="top:0px;text-transform:none;font-size: small;color: #0082c7;"> (back to manufacturer list) </a></span>
     <span class="back_to_order" style="padding-top:0px">
         <input type="submit" value="Save" class="add_cat_button">
         <a href="@Url.Action("DeleteManufacturer", "Catalog", new { Id = Model.Id })"><input type="button" value="Delete" class="delete_cat_button" onclick=" return confirm('Are You Sure'); "></a>
@@ -14,7 +14,7 @@
         else
         {
 <div class="main_edit_order">
-    <span class="edit_order_details"><span class="edit_order_icon"></span>ADD NEW MANUFACTURER<a href="@Url.Action("ManageManufacturer", "Catalog")" style="top:0px;text-transform:none;"> (back to manufacturer list) </a></span>
+    <span class="edit_order_details"><span class="edit_order_icon"></span>ADD NEW MANUFACTURER</span>
     <span class="back_to_order" style="padding-top:0px">
         <input type="submit" value="Save and continue edit" class="add_cat_button">
         <a href="@Url.Action("ManageManufacturer", "Catalog")"><input type="button" value="Cancel" class="delete_cat_button"></a>
