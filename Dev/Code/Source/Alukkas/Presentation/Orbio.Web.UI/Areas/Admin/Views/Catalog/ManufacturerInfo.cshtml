@@ -12,11 +12,11 @@
         @Html.TextAreaFor(m => m.Manufacturer.Description, new { @class = "description_textarea" })
     </div>
     <div class="form-group">
-        <label>Category template : </label>
+        <label>Category Template : </label>
         @Html.DropDownListFor(m => m.Manufacturer.ManufacturerTemplate, new SelectList(Model.Manufacturer.ManufacturerTemplates, "Id", "Name"), new { @class = "category_select_add_cat" })
     </div>
     <div class="form-group">
-        <label>Display order : </label>
+        <label>Display Order : </label>
         @Html.TextBoxFor(m => m.Manufacturer.DisplayOrder, new { @type = "number", @class = "creatext display_order_add_cart", value = "0", @style="margin-left:15%;" })
     </div>
     <div class="form-group">
@@ -41,11 +41,11 @@
         @*<textarea class="seo_description_textarea"></textarea>*@
     </div>
     <div class="form-group">
-        <label>Meta keywords: </label>
+        <label>Meta Keywords: </label>
         @Html.TextBoxFor(m => m.Manufacturer.MetaKeyWords, new { @class = "category_text_seo_cat" })
     </div>
     <div class="form-group">
-        <label>Search engine friendly page name : </label>
+        <label>Search Engine Friendly Page Name : </label>
         @Html.TextBoxFor(m => m.Manufacturer.SearchEngine, new { @class = "category_text_seo_frnd_name", id = "slug", @style = "margin-left:3%;" })
     </div>
 

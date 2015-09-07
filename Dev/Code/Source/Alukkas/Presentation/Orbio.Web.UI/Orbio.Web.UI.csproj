@@ -68,7 +68,7 @@
     </Reference>
     <Reference Include="dotless.Core, Version=1.5.0.0, Culture=neutral, PublicKeyToken=96b446c9e63eae34, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\dotless.Core.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\Projects\Ecomm\Ecomm\Dev\Code\Source\Alukkas\Presentation\Orbio.Web.UI\bin\dotless.Core.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
