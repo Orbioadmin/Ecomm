@@ -14,8 +14,8 @@ namespace Orbio.Services.Admin.Customers
         {
             using (var context = new OrbioAdminContext())
             {
-                var result = context.CustomerRoles.AsQueryable();
-                return result.ToList();
+                var result = context.CustomerRoles.ToList();
+                return result;
             }
         }
 

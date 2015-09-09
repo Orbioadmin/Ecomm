@@ -1,7 +1,6 @@
 ﻿@model Orbio.Web.UI.Areas.Admin.Models.Attribute.SpecificationAttributeModel
 
 <div class="col-md-12 add_cart_left_side edit_checkout_attr_main">
-    <form action="" method="post">
         <div class="form-group row" style="margin-top:10px">
             @Html.HiddenFor(m => m.Id, new { Value = Model.Id })
             <div class="col-md-2"><label>Name : </label></div>
@@ -11,6 +10,4 @@
             <div class="col-md-2"><label>Display order : </label></div>
             <div class="col-md-4">@Html.TextBoxFor(m => m.DisplayOrder, new { @class = "edit_text_checkout", @type = "number" })</div>
         </div>
-
-    </form>
 </div>

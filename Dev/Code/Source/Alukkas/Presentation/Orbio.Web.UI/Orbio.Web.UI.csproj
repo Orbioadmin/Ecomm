@@ -271,7 +271,6 @@
     <Compile Include="Areas\Admin\Models\CheckOut\AddressModel.cs" />
     <Compile Include="Areas\Admin\Models\Component\PriceComponentModel.cs" />
     <Compile Include="Areas\Admin\Models\Component\ProductComponentModel.cs" />
-    <Compile Include="Areas\Admin\Models\Customers\CustomerListModel.cs" />
     <Compile Include="Areas\Admin\Models\Customers\CustomerModel.cs" />
     <Compile Include="Areas\Admin\Models\Customers\CustomerRoleModel.cs" />
     <Compile Include="Areas\Admin\Models\Customers\RegisteredCustomerReportLineModel.cs" />
@@ -767,6 +766,11 @@
     <Content Include="Areas\Admin\Views\Customer\CustomerReport.cshtml" />
     <Content Include="Areas\Admin\Views\Customer\TopCustomers.cshtml" />
     <Content Include="Areas\Admin\Views\Customer\CustomerReportSearch.cshtml" />
+    <Content Include="Areas\Admin\Views\Customer\AddCustomer.cshtml" />
+    <Content Include="Areas\Admin\Views\Customer\CustomerInfo.cshtml" />
+    <Content Include="Areas\Admin\Views\Customer\EditCustomer.cshtml" />
+    <Content Include="Areas\Admin\Views\Customer\OrderDetails.cshtml" />
+    <Content Include="Areas\Admin\Views\Customer\CustomerAddress.cshtml" />
     <None Include="Properties\PublishProfiles\NopCommerce.pubxml" />
   </ItemGroup>
   <ItemGroup />

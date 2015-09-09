@@ -12,6 +12,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Orbio.Services.Helpers;
+using Orbio.Services.Security;
+using System.Configuration;
+using System.Xml.Linq;
+using Orbio.Services.Messages;
 
 namespace Orbio.Web.UI.Areas.Admin.Controllers
 {
@@ -24,19 +28,24 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         private readonly ICustomerService customerService;
         private readonly IOnlineCustomerService onlineService;
         private readonly IDateTimeHelper _dateTimeHelper;
+        private readonly IEncryptionService encryptionService;
+        private readonly IMessageService messageService;
 
         #endregion
 
         #region Ctor
 
         public CustomerController(ICustomerReportService customerReportService, ICustomerRoleService customerRoleService,
-            ICustomerService customerService, IOnlineCustomerService onlineService, IDateTimeHelper _dateTimeHelper)
+            ICustomerService customerService, IOnlineCustomerService onlineService, IDateTimeHelper _dateTimeHelper,
+            IEncryptionService encryptionService, IMessageService messageService)
         {
             this._customerReportService = customerReportService;
             this.customerRoleService = customerRoleService;
             this.customerService = customerService;
             this.onlineService = onlineService;
             this._dateTimeHelper = _dateTimeHelper;
+            this.encryptionService = encryptionService;
+            this.messageService = messageService;
         }
 
         #endregion
@@ -133,14 +142,14 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         public ActionResult ListCustomer()
         {
             var result = customerRoleService.GetAllCustomerRole();
-            var model = new CustomerListModel();
+            var model = new CustomerModel();
             model.CustomerRoles=  (from CR in result
                                 select new CustomerRoleModel(CR)).ToList();
             return View(model);
         }
 
         [ChildActionOnly]
-        public ActionResult CustomerList(CustomerListModel model)
+        public ActionResult CustomerList(CustomerModel model)
         {
             var result = customerService.GetAllCustomer(model.FirstName, model.LastName, model.Email, model.Roles);
             var customer = (from cust in result
@@ -148,20 +157,20 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             return PartialView(customer);
         }
 
-        public ActionResult OnlineCustomers()
-        {
-            var result = onlineService.GetOnlineCustomers();
-            var model = (from cust in result
-                         select new CustomerModel
-                         {
-                             Id=cust.Id,
-                             Email=(!string.IsNullOrEmpty(cust.Email)?cust.Email:"Guest"),
-                             IPAddress=cust.LastIpAddress,
-                             LastActivity=cust.LastActivityDateUtc.ToLocalTime(),
-                         }).ToList();
+        //public ActionResult OnlineCustomers()
+        //{
+        //    var result = onlineService.GetOnlineCustomers();
+        //    var model = (from cust in result
+        //                 select new CustomerModel
+        //                 {
+        //                     Id=cust.Id,
+        //                     Email=(!string.IsNullOrEmpty(cust.Email)?cust.Email:"Guest"),
+        //                     IPAddress=cust.LastIpAddress,
+        //                     LastActivity=cust.LastActivityDateUtc.ToLocalTime(),
+        //                 }).ToList();
 
-            return View("ListOnlineCustomers",model);
-        }
+        //    return View("ListOnlineCustomers",model);
+        //}
 
         public ActionResult CustomerReport()
         {
@@ -210,6 +219,102 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                          }).ToList();
 
             return PartialView(topCustomers);
+        }
+
+        public ActionResult AddCustomer()
+        {
+            return View();
+        }
+
+        [ChildActionOnly]
+        public ActionResult CustomerInfo(int? Id)
+        {
+            var customer = customerService.GetCustomerById(Id.GetValueOrDefault());
+            var model = new CustomerModel(customer);
+            if(model.Id!=0)
+            {
+                model.Roles = model.CustomerRoles.Select(cr => cr.Id).ToList();
+                var result = customerRoleService.GetAllCustomerRole();
+                model.CustomerRoles = (from CR in result
+                             select new CustomerRoleModel(CR)).ToList();
+            }
+            return PartialView(model);
+        }
+
+        [HttpPost]
+        public ActionResult AddOrEditCustomer(CustomerModel model)
+        {
+            var customer = new Customer
+            {
+                Id=model.Id,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                Email = model.Email,
+                Gender = model.Gender,
+                DOB = model.DOB,
+                AdminComment = model.AdminComment,
+                IsTaxExempt = model.IsTaxExempt,
+                Active = model.Active,
+            };
+            customer = GeneratePassword(customer);
+            var result = customerService.AddOrUpdateCustomerInfo(customer,model.Roles);
+
+            return RedirectToAction("ListCustomer");
+        }
+
+        public ActionResult EditCustomer(int? Id)
+        {
+            var model = new CustomerModel();
+            model.Id = Id.GetValueOrDefault();
+            return View(model);
+        }
+
+        private Customer GeneratePassword(Customer customer)
+        {
+            string saltKey = encryptionService.CreateSaltKey(5);
+            customer.PasswordSalt = saltKey;
+            customer.Password = encryptionService.CreatePasswordHash(customer.FirstName, saltKey, ConfigurationManager.AppSettings["HashedPasswordFormat"]);
+
+            return customer;
+        }
+
+        [ChildActionOnly]
+        public ActionResult OrderDetails(int? Id)
+        {
+            var model = new CustomerModel();
+            var result = customerService.GetOrderDetails(Id.GetValueOrDefault());
+            model.Id = Id.GetValueOrDefault();
+            model.Order= result.Orders.Select(x =>
+            {
+                return new OrderModel()
+                {
+                    Id = x.Id,
+                    OrderTotal = x.OrderTotal.ToString("#,##0.00"),
+                    OrderStatus = x.OrderStatusId > 0 ? ((OrderStatus?)(x.OrderStatusId)).ToString() : null,
+                    PaymentStatus = x.PaymentStatusId > 0 ? ((PaymentStatus?)(x.PaymentStatusId)).ToString() : null,
+                    ShippingStatus = x.ShippingStatusId > 0 ? ((ShippingStatus?)(x.ShippingStatusId)).ToString() : null,
+                    CreatedOn = _dateTimeHelper.ConvertToUserTime(x.CreatedOnUtc, DateTimeKind.Utc)
+                };
+            }).ToList();
+
+            return PartialView(model);
+        }
+
+        [ChildActionOnly]
+        public ActionResult CustomerAddress(int? Id)
+        {
+            var model = new CustomerModel();
+            var result = customerService.GetCustomerAddressDetails(Id.GetValueOrDefault());
+            model.BillingAddress = result.Address1.ToModelBill();
+            model.ShippingAddress = result.Address1.ToModelShip();
+            return PartialView(model);
+        }
+
+        public ActionResult DeleteCustomer(int? Id)
+        {
+            var result = customerService.DeleteCustomer(Id.GetValueOrDefault());
+
+            return RedirectToAction("ListCustomer");
         }
 
         #endregion

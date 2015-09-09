@@ -1,4 +1,4 @@
-﻿@model Orbio.Web.UI.Areas.Admin.Models.Customers.CustomerListModel
+﻿@model Orbio.Web.UI.Areas.Admin.Models.Customers.CustomerModel
 
 @{
     Layout = "~/Areas/Admin/Views/Shared/_Layout1.cshtml";
@@ -8,26 +8,27 @@
 {
     <div class="container">
         <div class="main_edit_order">
-            <span class="edit_order_details"><span class="edit_order_icon"></span><a href="" class="add_new_check">Customers</a></span><span class="refresh_button"><a style="cursor:pointer" href="@Url.Action("List","Customer")"><label></label></a></span>
-            <!-- <span class="back_to_order"><input type="button" value="Save" class="add_cat_button"></span> -->
+            <span class="edit_order_details"><span class="edit_order_icon"></span><a href="" class="add_new_check">Customers</a></span><span class="refresh_button">
+            <a style="cursor:pointer" href="@Url.Action("ListCustomer", "Customer")"><label></label></a></span>
+             <span class="back_to_order"><a href="@Url.Action("AddCustomer", "Customer")"><input type="button" value="Add New" class="add_cat_button"></a></span> 
         </div>
     </div>
     <div class="container">
-        <div class="col-md-12 order_list">
+        <div class="col-md-12 cust_role">
             <div class="order_status">
-                @Html.ListBoxFor(m => m.Roles, new MultiSelectList(Model.CustomerRoles, "Id", "Name"), new { Multiple = "multiple", id = "role", @class = "start_order_date_email", placeholder = "Role" })
+                @Html.ListBoxFor(m => m.Roles, new MultiSelectList(Model.CustomerRoles, "Id", "Name"), new { Multiple = "multiple", id = "role", @class = "search_customer", placeholder = "Role" })
             </div>
             <div class="billing_address_text">
-                @Html.TextBoxFor(model => model.FirstName, new { @class = "start_order_date_email", placeholder = "First Name" })
+                @Html.TextBoxFor(model => model.FirstName, new { @class = "search_customer", placeholder = "First Name" })
             </div>
             <div class="billing_address_text">
-                @Html.TextBoxFor(model => model.LastName, new { @class = "start_order_date_email", placeholder = "Last Name" })
+                @Html.TextBoxFor(model => model.LastName, new { @class = "search_customer", placeholder = "Last Name" })
             </div>
             <div class="billing_address_text">
-                @Html.TextBoxFor(model => model.Email, new { @class = "start_order_date_email", placeholder = "Email", type = "email" })
+                @Html.TextBoxFor(model => model.Email, new { @class = "search_customer", placeholder = "Email", type = "email" })
             </div>
             <div class="billing_address_text">
-                <input type="submit" class="search_order_list" value="SEARCH">
+                <input type="submit" class="search_order_list" value="SEARCH" style="margin-left: 8px;">
             </div>
         </div>
        
@@ -39,7 +40,6 @@
                 <td>Email</td>
                 <td>Name</td>
                 <td>Customer Roles</td>
-                <td>Company Name</td>
                 <td>Active</td>
                 <td>Created On</td>
                 <td>Last Activity</td></thead>
@@ -52,16 +52,8 @@
     </div>
 }
 @section scripts {
-    <script>
-            $(document).ready(function () {
-                // create DateTimePicker from input HTML element
-                 $("#StartDate").kendoDatePicker();
-                 $("#EndDate").kendoDatePicker();
-                    });   </script>
-
-<script type="text/javascript">
-    $('#role').multiselect();
-</script>
-
-
+<script>
+ $('#role').multiselect();
+ $("#StartDate").kendoDatePicker();
+    </script>
 }

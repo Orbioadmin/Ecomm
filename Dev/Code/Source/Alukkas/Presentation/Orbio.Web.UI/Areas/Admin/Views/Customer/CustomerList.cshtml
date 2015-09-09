@@ -7,9 +7,12 @@ foreach (var items in this.Model)
     int count=0;
     <tr>
         @*<td><input type="checkbox"></td>*@
-        <td class="align_center"><a style="cursor:pointer" href="@Url.Action("Edit", "Customer", new { id = items.Id })">@items.Id</a></td>
-        <td class="align_center">@items.Email</td>
-        <td class="align_center">@items.Name</td>
+        <td class="align_center"><a style="cursor:pointer" href="@Url.Action("EditCustomer", "Customer", new { id = items.Id })">@items.Id</a></td>
+        <td class="align_center">@(!string.IsNullOrEmpty(items.Email) ? items.Email : "Guest")
+        </td>
+        <td class="align_center">@(items.FirstName + " " + items.LastName)
+       
+        </td>
         @if (items.CustomerRoles != null)
         {
             <td class="align_center">
@@ -24,7 +27,6 @@ foreach (var items in this.Model)
         {
             <td class="align_center"></td>
         }
-        <td class="align_center">@items.CompanyName</td>
 
         <td class="align_center">
             @if (items.Active)

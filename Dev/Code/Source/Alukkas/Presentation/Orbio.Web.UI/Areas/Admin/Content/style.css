@@ -202,6 +202,14 @@ ul, li{list-style: none; margin: 0; padding: 0;}
 .report_xls label{background: url("../images/image sprites.png")no-repeat -168px -15px;height:31px;width:30px;float:right;cursor: pointer;}
 .add_new_check {position: relative;top:8px;text-transform: uppercase;text-decoration: none;color:#3e3e3e;font-size: 15px;font-family: 'Roboto-Regular';float:left;}
 .start_order_date_email{width: 95%;height: 28px;border: 1px solid #E3E3E3;font-size: 13px;color: #373737;font-family: 'Roboto-Regular';border-radius: 4px;box-shadow: 0 9px 2px -2px #E3E3E3;}
+.search_customer{width: 95%;height: 34px;border: 1px solid #E3E3E3;font-size: 13px;color: #373737;font-family: 'Roboto-Regular';border-radius: 4px;/* box-shadow: 0 9px 2px -2px #E3E3E3; */text-align: center; margin-left: 8px;}
+.customer_multi_roles {width:11%;float:left;}
+.customer_multi_roles .multiselect {width: 247px;overflow: hidden;border: 1px solid #9fd2eb;}
+.order_status .multiselect {width: 126px;overflow: hidden;}
+.cust_role {background-color: #fff;padding: 14px 0px 15px 38px;}
+.cust_role ul{margin-left: 4px;height: 200px;overflow-y: scroll;padding-left: 8px;}
+.cust_role_edit {}
+.cust_role_edit ul{margin-left: 4px;height: 200px;overflow-y: scroll;padding-left: 8px;width: 239px;}
 
 /*paging*/
 

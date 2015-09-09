@@ -1,0 +1,53 @@
+﻿@model Orbio.Web.UI.Areas.Admin.Models.Customers.CustomerModel
+
+<div class="col-md-12 add_cart_left_side edit_checkout_attr_main">
+    @Html.HiddenFor(m => m.Id, new { Value = Model.Id })
+
+    <div class="form-group row" style="margin-top:10px">
+        <div class="col-md-2"><label>Email : </label></div>
+        <div class="col-md-4">@Html.TextBoxFor(m => m.Email, new { @class = "edit_text_checkout", required = "required",type="email" })</div>
+    </div>
+    <div class="form-group row" style="margin-top:10px">
+        <div class="col-md-2"><label>Gender : </label></div>
+        <div class="col-md-4">
+            @Html.RadioButtonFor(m => m.Gender, "M") Male
+            @Html.RadioButtonFor(m => m.Gender, "F") Female
+    </div>
+        </div>
+    <div class="form-group row" style="margin-top:10px">
+        <div class="col-md-2"><label>First Name : </label></div>
+        <div class="col-md-4">@Html.TextBoxFor(m => m.FirstName, new { @class = "edit_text_checkout", required = "required" })</div>
+    </div>
+
+    <div class="form-group row" style="margin-top:10px">
+        <div class="col-md-2"><label>Last Name : </label></div>
+        <div class="col-md-4">@Html.TextBoxFor(m => m.LastName, new { @class = "edit_text_checkout", required = "required" })</div>
+    </div>
+    <div class="form-group row" style="margin-top:10px">
+        <div class="col-md-2"><label>Date Of Birth : </label></div>
+        <div class="col-md-4">@Html.TextBoxFor(m => m.DOB, new { @class = "edit_text_checkout", required = "required", id = "dob", @style = "height: 28px;width: 72%; border: 1px solid #9fd2eb" })</div>
+    </div>
+    <div class="form-group row" style="margin-top:10px">
+        <div class="col-md-2"><label>Customer Roles : </label></div>
+        <div class="col-md-4 cust_role_edit">
+            <div class="customer_multi_roles">
+                @Html.ListBoxFor(m => m.Roles, new MultiSelectList(Model.CustomerRoles, "Id", "Name"), new { Multiple = "multiple", id = "role", @class = "search_customer", placeholder = "Role" })
+            </div>
+        </div>
+    </div>
+    <div class="form-group row" style="margin-top:10px">
+        <div class="col-md-2"><label>Admin Comment : </label></div>
+        <div class="col-md-4">@Html.TextBoxFor(m => m.AdminComment, new { @class = "edit_text_checkout" })</div>
+    </div>
+    <div class="form-group row" style="margin-top:10px">
+        <div class="col-md-2"><label>Is Tax Exempt : </label></div>
+        <div class="col-md-4">@Html.CheckBoxFor(m => m.IsTaxExempt, new { @class = "required_check_edit" })</div>
+    </div>
+    <div class="form-group row" style="margin-top:10px">
+        <div class="col-md-2"><label>Active : </label></div>
+        <div class="col-md-4">@Html.CheckBoxFor(m => m.Active, new { @class = "required_check_edit" })</div>
+    </div>
+    
+</div>
+
+   

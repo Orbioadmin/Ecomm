@@ -1,0 +1,43 @@
+﻿@model Orbio.Web.UI.Areas.Admin.Models.Customers.CustomerModel
+
+
+<table class="order_total_main_table" id="tableData">
+    <thead>
+    <td>Order Id</td>
+    <td>Order Total</td>
+    <td>Order Status</td>
+    <td>Payment Status</td>
+    <td>Shipping Status</td>
+    <td>Created On</td>
+    <tbody>
+        @if (Model.Order.Count > 0)
+        {
+            foreach (var items in this.Model.Order)
+            {
+                int count = 0;
+                <tr>
+                    @*<td><input type="checkbox"></td>*@
+                    <td class="align_center"><a style="cursor:pointer" href="@Url.Action("Edit", "Order", new { id = items.Id })">@items.Id</a></td>
+                    <td class="align_center">
+                       @items.OrderTotal
+                    </td>
+                    <td class="align_center">
+                      @items.OrderStatus
+                    </td>
+                    <td class="align_center">
+                        @items.PaymentStatus
+                    </td>
+                    <td class="align_center">@items.ShippingStatus</td>
+                    <!--  <td>Your Store Name</td> -->
+                    <td class="align_center">@items.CreatedOn</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td class="align_center" colspan="6">No records to display</td>
+            </tr>
+        }
+        </tbody>
+    </table>

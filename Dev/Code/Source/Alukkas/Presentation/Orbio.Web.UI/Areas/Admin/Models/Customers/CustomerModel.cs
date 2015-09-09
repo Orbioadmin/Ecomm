@@ -1,5 +1,7 @@
 ﻿
 using Orbio.Core.Domain.Admin.Customers;
+using Orbio.Core.Domain.Checkout;
+using Orbio.Web.UI.Areas.Admin.Models.Orders;
 using Orbio.Web.UI.Models.Orders;
 using System;
 using System.Collections.Generic;
@@ -26,12 +28,14 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Customers
         public CustomerModel(Orbio.Core.Data.Customer customer)
         {
             this.Id = customer.Id;
-            this.Name = (!string.IsNullOrEmpty(customer.FirstName) && !string.IsNullOrEmpty(customer.LastName)) ? customer.FirstName + " " + customer.LastName : "Guest";
+            this.FirstName = customer.FirstName;
+            this.LastName = customer.LastName;
             this.Email = customer.Email;
-            this.CompanyName = customer.CompanyName;
-            this.IPAddress = customer.LastIpAddress;
-            //this.Location=customer.lo
             this.Active = customer.Active;
+            this.Gender = customer.Gender;
+            this.DOB = customer.DOB;
+            this.AdminComment = customer.AdminComment;
+            this.IsTaxExempt = customer.IsTaxExempt;
             this.CreatedOn = customer.CreatedOnUtc;
             this.LastActivity = customer.LastActivityDateUtc;
             if (customer.CustomerRoles != null)
@@ -39,30 +43,46 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Customers
                 this.CustomerRoles = (from C in customer.CustomerRoles
                                       select new CustomerRoleModel(C)).ToList();
             }
+
+            //this.CompanyName = customer.CompanyName;
+            //this.IPAddress = customer.LastIpAddress;
         }
 
         public int Id { get; set; }
 
         public string Email { get; set; }
 
-        public string Name { get; set; }
+        public string FirstName { get; set; }
 
-        public string CompanyName { get; set; }
+        public string LastName { get; set; }
 
-        public string IPAddress { get; set; }
+        public string Gender { get; set; }
 
-        public string Location { get; set; }
+        public string DOB { get; set; }
 
-        public string LastVisitedPage { get; set; }
+        public string AdminComment { get; set; }
+
+        public bool IsTaxExempt { get; set; }
 
         public bool Active { get; set; }
 
         public DateTime CreatedOn { get; set; }
 
-        public DateTime LastActivity { get; set; } 
+        public DateTime LastActivity { get; set; }
+
+        public List<int> Roles { get; set; }
 
         public List<CustomerRoleModel> CustomerRoles { get; set; }
 
+        public List<OrderModel> Order { get; set; }
+
         public CartModel shoppingCart { get; set; }
+
+        //shipping info
+        public Address ShippingAddress { get; set; }
+
+        //billing info
+
+        public Address BillingAddress { get; set; }
     }
 }
