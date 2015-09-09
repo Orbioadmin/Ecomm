@@ -14,6 +14,11 @@ namespace Orbio.Core.Data
     
     public partial class ProductComponent
     {
+        public ProductComponent()
+        {
+            this.Product_ProductComponent_Mapping = new HashSet<Product_ProductComponent_Mapping>();
+        }
+    
         public int Id { get; set; }
         public string ComponentName { get; set; }
         public bool IsActive { get; set; }
@@ -22,5 +27,7 @@ namespace Orbio.Core.Data
         public System.DateTime CreatedDate { get; set; }
         public string ModifiedBy { get; set; }
         public System.DateTime ModifiedDate { get; set; }
+    
+        public virtual ICollection<Product_ProductComponent_Mapping> Product_ProductComponent_Mapping { get; set; }
     }
 }

@@ -59,7 +59,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         {
             var result = categoryServices.GetCategoryDetails();
             var model = new CategoryDetailModel(result);
-            model.Categories.CategoryList = GetFormattedBreadCrumb(model.Categories.CategoryList, categoryService);
+            model.Categories.CategoryList = model.Categories.CategoryList.GetFormattedBreadCrumb();
             return View("AddorEditCategory", model);
         }
 
@@ -72,7 +72,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         {
             var result = categoryServices.GetCategoryDetailsById(Id);
             var model = new CategoryDetailModel(result);
-            model.Categories.CategoryList = GetFormattedBreadCrumb(model.Categories.CategoryList, categoryService);
+            model.Categories.CategoryList = model.Categories.CategoryList.GetFormattedBreadCrumb();
             return View("AddorEditCategory", model);
         }
 
@@ -295,58 +295,6 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             return manufacturerModel;
         }
 
-        /// <summary>
-        /// generating parent categories
-        /// </summary>
-        /// <param name="categoryList"></param>
-        /// <param name="categoryService"></param>
-        /// <param name="separator"></param>
-        /// <returns></returns>
-        public List<CategoryModel> GetFormattedBreadCrumb(List<CategoryModel> categoryList,
-            ICategoryService categoryService, string separator = ">>")
-        {
-            if (categoryList == null)
-                throw new ArgumentNullException("category");
 
-            var resultList = new List<CategoryModel>();
-            foreach (var item in categoryList)
-            {
-                int Id = item.Id;
-                string result = string.Empty;
-                var alreadyProcessedCategoryIds = new List<int>() { };
-                var category = new CategoryModel();
-                while (item != null && //not null
-                   !alreadyProcessedCategoryIds.Contains(item.Id)) //prevent circular references
-                {
-                    if (String.IsNullOrEmpty(result))
-                    {
-                        result = item.Name;
-                    }
-                    else
-                    {
-                        result = string.Format("{0} {1} {2}", item.Name, separator, result);
-                        goto ListCategories;
-                    }
-
-                    alreadyProcessedCategoryIds.Add(item.Id);
-
-                    category = (from c in resultList
-                                where c.Id == item.ParentCategory
-                                select c).FirstOrDefault();
-                    if (category != null)
-                    {
-                        item.Id = category.Id;
-                        item.Name = category.Name;
-                    }
-                }
-            ListCategories:
-                resultList.Add(new CategoryModel()
-                {
-                    Id = Id,
-                    Name = result,
-                });
-            }
-            return resultList;
-        }
     }
 }

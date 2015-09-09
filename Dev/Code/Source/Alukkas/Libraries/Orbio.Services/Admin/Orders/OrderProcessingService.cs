@@ -239,21 +239,6 @@ namespace Orbio.Services.Admin.Orders
             if (order == null)
                 throw new ArgumentNullException("order");
 
-            if (order.OrderStatus != OrderStatus.Cancelled)
-            {
-                //cancel recurring payments
-                var recurringPayments = _orderService.SearchRecurringPayments(0, order.OrderId, null, 0, int.MaxValue);
-                foreach (var rp in recurringPayments)
-                {
-                    //use errors?
-                    //var errors = CancelRecurringPayment(rp);
-                }
-
-                //Adjust inventory
-                //foreach (var orderItem in order.OrderItems)
-                //    _productService.AdjustInventory(orderItem.Product, false, orderItem.Quantity, orderItem.AttributesXml);
-            }
-
             //now delete an order
             _orderService.DeleteOrder(order);
 

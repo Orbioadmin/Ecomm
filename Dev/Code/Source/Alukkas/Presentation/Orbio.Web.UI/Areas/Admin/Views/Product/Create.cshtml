@@ -1,0 +1,141 @@
+﻿@model Orbio.Web.UI.Areas.Admin.Models.Product.ProductModel
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="container">
+    <div class="main_edit_order">
+        <span class="edit_order_details"><span class="edit_order_icon"></span><a href="" class="add_new_check">Create product</a></span>
+        <span class="back_to_order"><u><a href="@Url.Action("List","Product")">Back to order list</a></u></span>
+    </div>
+    @using (Html.BeginForm("Create", "Product", FormMethod.Post, new { Id = "formaddproduct" }))
+    {
+        <div class="preview_main">
+            <ul>
+                @*<li><input type="button" class="prev_button" value="Preview"></li>*@
+                <li><input type="submit" class="prev_button" value="Save"></li>
+                @*<li><input type="button" class="prev_button" value="Save & Continue Edit"></li>*@
+                @*<li><input type="button" class="prev_button" value="Copy Product"></li>
+                    <li><input type="button" class="prev_button" value="Delete"></li>*@
+            </ul>
+        </div>
+        <div class="moving_menu_main">
+            <div class="srlBx">
+                <a href="#null" onmouseover="scrollDivRight('HomeMarquee_srlCont')" onmouseout="stopMe()" class="srlLt"></a>
+                <div id="HomeMarquee_srlCont" class="srlContHome">
+                    <div id="srlData" style="width:1729px;">
+                        <ul class="itabN1" id="myTab" role="tablist">
+                            <li role="presentation"><a href="#productinfo" class="" aria-expanded="true" aria-controls="based" data-toggle="tab" role="tab" id="home-tab"><div class="">Product info</div></a></li>
+                            <li role="presentation"><a href="#seo" class="" aria-expanded="true" aria-controls="based" data-toggle="tab" role="tab" id="home-tab"><div class="">SEO</div></a></li>
+                            <li role="presentation"><a href="" class=""> <div class="">Pictures</div></a></li>
+                            <li role="presentation"><a href="" class=""><div class="">Category Mappings</div></a></li>
+                            <li role="presentation"><a href="" class=""><div class="">Manufacturer Mappings</div></a></li>
+                            <li role="presentation"><a href="" class=""><div class="">Specification Attributes</div></a></li>
+                            <li role="presentation"><a href="" class=""><div class="">Products Attributes</div></a></li>
+                            <li role="presentation"><a href="" class=""><div class="">Product Component</div></a></li>
+                            <li role="presentation"><a href="" class=""><div class="">Price Component</div></a></li>
+                            <li role="presentation"><a href="" class=""><div class="">Access Control List</div></a></li>
+                            <li role="presentation"><a href="" class=""><div class="">Stores</div></a></li>
+                            <li role="presentation"><a href="" class=""><div class="">Related Products</div></a></li>
+                            <li role="presentation"><a href="" class=""><div class="">Cross-Sells</div></a></li>
+                            <li role="presentation"><a href="" class=""><div class="">Associated Products</div></a></li>
+                            <li role="presentation"><a href="" class=""><div class="">Purchased with Orders</div></a></li>
+                        </ul>
+                        <div class="cB"></div>
+                    </div>
+                </div>
+                <a href="#null" onmouseover="scrollDivLeft('HomeMarquee_srlCont')" onmouseout="stopMe()" class="srlRt"></a>
+                <div class="cB"></div>
+            </div>
+        </div>
+        <div class="tab-content product_add_tab_main" id="myTabContent">
+            @Html.Partial("_CreatOrUpdateInfo", Model);
+
+            <div aria-labelledby="home-tab" id="seo" class="tab-pane fade" role="tabpanel">
+                rfgerghrthfgrtghrth
+            </div>
+        </div>
+
+    }
+</div>
+
+@section scripts {
+    <script type="text/javascript">
+        tinymce.init({
+            selector: "#FullDescription",
+            plugins: [
+                    "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
+                    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+                    "table contextmenu directionality emoticons template textcolor paste fullpage textcolor colorpicker textpattern"
+            ],
+
+            toolbar1: "newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
+            toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
+            toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft",
+
+            menubar: false,
+            toolbar_items_size: 'small',
+
+            style_formats: [
+                    { title: 'Bold text', inline: 'b' },
+                    { title: 'Red text', inline: 'span', styles: { color: '#ff0000' } },
+                    { title: 'Red header', block: 'h1', styles: { color: '#ff0000' } },
+                    { title: 'Example 1', inline: 'span', classes: 'example1' },
+                    { title: 'Example 2', inline: 'span', classes: 'example2' },
+                    { title: 'Table styles' },
+                    { title: 'Table row 1', selector: 'tr', classes: 'tablerow1' }
+            ],
+
+            templates: [
+                    { title: 'Test template 1', content: 'Test 1' },
+                    { title: 'Test template 2', content: 'Test 2' }
+            ]
+        });</script>
+
+    <script type="text/javascript">
+        $().ready(function () {
+
+            $('.enabling').on('click', function () {
+                if ($('.enabling').is(':checked')) {
+                    $(".show_div_check_true").show();
+                } else {
+                    $(".show_div_check_true").hide();
+                }
+            });
+            $('.enablingTax').on('click', function () {
+                if ($('.enablingTax').is(':checked')) {
+                    $("#taxcat").show();
+                } else {
+                    $("#taxcat").hide();
+                }
+            });
+
+            $('.enablingInv').on('change', function () {
+                var invValue = $("#ManageInventoryMethodId").val();
+                if (invValue == 1) {
+                    $("#trackInv").show();
+                }
+                else {
+                    $("#trackInv").hide();
+                }
+            });
+
+            $("#SpecialPriceStartDateTimeUtc").kendoDateTimePicker({
+                value: new Date()
+            });
+            $("#SpecialPriceEndDateTimeUtc").kendoDateTimePicker({
+                value: new Date()
+            });
+            $("#AvailableStartDateTimeUtc").kendoDateTimePicker({
+                value: new Date()
+            });
+            $("#AvailableEndDateTimeUtc").kendoDateTimePicker({
+                value: new Date()
+            });
+
+        });
+
+    </script>
+}
+

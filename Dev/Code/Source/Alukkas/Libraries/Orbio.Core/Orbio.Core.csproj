@@ -72,6 +72,9 @@
     <Compile Include="Data\CustomerRole.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\DeliveryDate.cs">
+      <DependentUpon>OrbioAdmin.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\Discount_AppliedToCategories.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
@@ -120,13 +123,25 @@
     <Compile Include="Data\ProductComponent.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\ProductTag.cs">
+      <DependentUpon>OrbioAdmin.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\Product_Category_Mapping.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Product_Manufacturer_Mapping.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\Product_Picture_Mapping.cs">
+      <DependentUpon>OrbioAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Product_PriceComponent_Mapping.cs">
+      <DependentUpon>OrbioAdmin.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\Product_ProductAttribute_Mapping.cs">
+      <DependentUpon>OrbioAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Product_ProductComponent_Mapping.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Product_SpecificationAttribute_Mapping.cs">
@@ -163,6 +178,9 @@
     <Compile Include="Data\usp_OrbioAdmin_OrderDetails_Result.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\Warehouse.cs">
+      <DependentUpon>OrbioAdmin.tt</DependentUpon>
+    </Compile>
     <Compile Include="Domain\Admin\Catalog\AttributeControlType.cs" />
     <Compile Include="Domain\Admin\Catalog\CategoryDetails.cs" />
     <Compile Include="Domain\Admin\Catalog\CategoryList.cs" />
@@ -184,8 +202,10 @@
     <Compile Include="Domain\Catalog\AssociatedProduct.cs" />
     <Compile Include="Domain\Catalog\AttributeControlType.cs" />
     <Compile Include="Domain\Catalog\AttributeValueType.cs" />
+    <Compile Include="Domain\Catalog\BackorderMode.cs" />
     <Compile Include="Domain\Catalog\Category.cs" />
     <Compile Include="Domain\Catalog\CategoryProduct.cs" />
+    <Compile Include="Domain\Catalog\LowStockActivity.cs" />
     <Compile Include="Domain\Catalog\ManageInventoryMethod.cs" />
     <Compile Include="Domain\Catalog\PriceComponent.cs" />
     <Compile Include="Domain\Catalog\Product.cs" />

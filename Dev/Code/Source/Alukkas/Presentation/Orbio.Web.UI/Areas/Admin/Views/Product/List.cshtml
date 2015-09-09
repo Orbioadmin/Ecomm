@@ -1,0 +1,73 @@
+﻿@model Orbio.Web.UI.Areas.Admin.Models.Product.ProductListModel
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout1.cshtml";
+}
+
+@using (@Html.BeginForm())
+{
+    <div class="container">
+        <div class="main_edit_order">
+            <span class="edit_order_details"><span class="edit_order_icon"></span><a href="" class="add_new_check">Product Summary</a></span><span class="refresh_button"><a style="cursor:pointer" href="@Url.Action("List","Product")"><label></label></a></span>
+            <!-- <span class="back_to_order"><input type="button" value="Save" class="add_cat_button"></span> -->
+            <div class="preview_main" style="float:none">
+                <ul>
+                    @*<li><input type="button" class="prev_button" value="Preview"></li>*@
+                    <li style="border-bottom:1px solid #0082c7"><a href="@Url.Action("Create","Product")">Add new</a></li>
+                    <li style="border-bottom:1px solid #0082c7"><input type="submit" class="prev_button" name="DeleteSelected" value="Delete(Selected)"></li>
+                    @*<li><input type="button" class="prev_button" value="Copy Product"></li>
+                <li><input type="button" class="prev_button" value="Delete"></li>*@
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+     <div class="col-md-12 order_list">
+
+            <div class="billing_address_text" style="width:25%">
+                @Html.TextBoxFor(model => model.SearchProductNameOrSku, new { @class = "start_order_date_email", placeholder = "Product Name or Sku", type = "text" })
+            </div>
+            <div class="order_status" style="width:25%">
+                @Html.DropDownList("CategoryId", Model.AvailableCategories, new { @class = "start_order_date_email" })
+            </div>
+
+            <div class="order_status" style="width:25%">
+                @Html.DropDownList("ManufactureId", Model.AvailableManufacturers, new { @class = "start_order_date_email" })
+            </div>
+            <div class="billing_address_text">
+                <input type="submit" class="search_order_list" name="List" value="SEARCH">
+            </div>
+
+        </div>
+        <div class="refresh_xl">
+
+
+            @*<span class="report_xls">Export to excel <label></label></span>*@
+        </div>
+        <div class="">
+
+            @*<span class="report_xls">Export to excel <label></label></span>*@
+        </div>
+        <div class="col-md-12" style=" margin-bottom: 34px;margin-top:10px">
+
+            <table class="order_total_main_table" id="tableData">
+                <thead>
+                <td></td>
+                <td>Picture</td>
+                <td>Product Name</td>
+                <td>SKU</td>
+                <td>Price</td>
+                <td>Stock quantity</td>
+                <td>Published</td>
+                <td>Edit</td>
+                @*<td>view</td>*@</thead>
+
+
+                <tbody>
+                    @Html.Action("ProductList", "Product")
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    }
+

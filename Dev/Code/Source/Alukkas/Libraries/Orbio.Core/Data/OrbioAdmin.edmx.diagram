@@ -61,6 +61,18 @@
         <AssociationConnector Association="OrbioAdminModel.SpecificationAttributeOption_SpecificationAttribute" />
         <EntityTypeShape EntityType="OrbioAdminModel.TaxCategory" Width="1.5" PointX="3.2532059584060713" PointY="3.1682713195533823" />
         <AssociationConnector Association="OrbioAdminModel.FK_CheckoutAttribute_TaxCategory" />
+        <EntityTypeShape EntityType="OrbioAdminModel.Product_Picture_Mapping" Width="1.5" PointX="4.577880276636165" PointY="27.294885797097759" />
+        <EntityTypeShape EntityType="OrbioAdminModel.Product_PriceComponent_Mapping" Width="1.5" PointX="10.316823910138021" PointY="21.524880046734996" />
+        <EntityTypeShape EntityType="OrbioAdminModel.Product_ProductComponent_Mapping" Width="1.5" PointX="11.874483112187351" PointY="9.1276044292038332" />
+        <AssociationConnector Association="OrbioAdminModel.ProductPicture_Picture" />
+        <AssociationConnector Association="OrbioAdminModel.FK_Product_PriceComponent_Mapping_PriceComponents" />
+        <AssociationConnector Association="OrbioAdminModel.FK_Product_PriceComponent_Mapping_Product" />
+        <AssociationConnector Association="OrbioAdminModel.FK_Product_ProductComponent_Mapping_Product" />
+        <AssociationConnector Association="OrbioAdminModel.ProductPicture_Product" />
+        <AssociationConnector Association="OrbioAdminModel.FK_Product_ProductComponent_Mapping_ProductComponents" />
+        <EntityTypeShape EntityType="OrbioAdminModel.DeliveryDate" Width="1.5" PointX="8.2390354686598464" PointY="10.306619678766756" />
+        <EntityTypeShape EntityType="OrbioAdminModel.ProductTag" Width="1.5" PointX="1.5006342034324232" PointY="10.025042866368333" />
+        <EntityTypeShape EntityType="OrbioAdminModel.Warehouse" Width="1.5" PointX="4.8720733322538781" PointY="19.380168730104419" />
       </Diagram>
         <EntityTypeShape EntityType="OrbioAdminModel.SpecificationAttribute" Width="1.5" PointX="34.75" PointY="9" />
         <EntityTypeShape EntityType="OrbioAdminModel.SpecificationAttributeOption" Width="1.5" PointX="32.5" PointY="9" />

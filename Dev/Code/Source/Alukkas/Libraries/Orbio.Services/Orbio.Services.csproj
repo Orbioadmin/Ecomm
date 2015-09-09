@@ -82,6 +82,10 @@
     <Compile Include="Admin\Orders\ShoppingCartService.cs" />
     <Compile Include="Admin\Orders\IOrderProcessingService.cs" />
     <Compile Include="Admin\Orders\OrderProcessingService.cs" />
+    <Compile Include="Admin\Products\IProductService.cs" />
+    <Compile Include="Admin\Products\ProductService.cs" />
+    <Compile Include="Admin\Tax\ITaxCategoryService.cs" />
+    <Compile Include="Admin\Tax\TaxCategoryService.cs" />
     <Compile Include="Directory\CountryService.cs" />
     <Compile Include="Directory\ICountryService.cs" />
     <Compile Include="Admin\Orders\IOrderReportService.cs" />

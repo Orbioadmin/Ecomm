@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Orbio.Core.Data;
 using Orbio.Web.UI.Area.Admin.Models.CheckOut;
+using Orbio.Web.UI.Areas.Admin.Models.Product;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,6 +45,104 @@ namespace Orbio.Web.UI.Areas.Admin
 
             return Mapper.Map<Shipment, Orbio.Web.UI.Areas.Admin.Models.Orders.OrderModel.Shipping>(entity);
         }
+        #endregion
+
+        #region Product
+
+        public static ProductModel ToModel(this Product model)
+        {
+            Mapper.CreateMap<Product, ProductModel>()
+                 .ForMember(ev => ev.Id, m => m.MapFrom(a => a.Id))
+                .ForMember(ev => ev.Name, m => m.MapFrom(a => a.Name))
+                .ForMember(ev => ev.ShortDescription, m => m.MapFrom(a => a.ShortDescription))
+                .ForMember(ev => ev.FullDescription, m => m.MapFrom(a => a.FullDescription))
+                .ForMember(ev => ev.AdminComment, m => m.MapFrom(a => a.AdminComment))
+                .ForMember(ev => ev.ShowOnHomePage, m => m.MapFrom(a => a.ShowOnHomePage))
+                .ForMember(ev => ev.AllowCustomerReviews, m => m.MapFrom(a => a.AllowCustomerReviews))
+                .ForMember(ev => ev.Sku, m => m.MapFrom(a => a.Sku))
+                .ForMember(ev => ev.Price, m => m.MapFrom(a => a.Price))
+                .ForMember(ev => ev.ProductCost, m => m.MapFrom(a => a.ProductCost))
+                .ForMember(ev => ev.SpecialPrice, m => m.MapFrom(a => a.SpecialPrice))
+                .ForMember(ev => ev.SpecialPriceStartDateTimeUtc, m => m.MapFrom(a => a.SpecialPriceStartDateTimeUtc))
+                .ForMember(ev => ev.SpecialPriceEndDateTimeUtc, m => m.MapFrom(a => a.SpecialPriceEndDateTimeUtc))
+                .ForMember(ev => ev.FullDescription, m => m.MapFrom(a => a.FullDescription))
+                .ForMember(ev => ev.ProductUnit, m => m.MapFrom(a => a.ProductUnit))
+                .ForMember(ev => ev.IsShipEnabled, m => m.MapFrom(a => a.IsShipEnabled))
+                .ForMember(ev => ev.IsFreeShipping, m => m.MapFrom(a => a.IsFreeShipping))
+                .ForMember(ev => ev.AdditionalShippingCharge, m => m.MapFrom(a => a.AdditionalShippingCharge))
+                .ForMember(ev => ev.AllowCustomerReviews, m => m.MapFrom(a => a.AllowCustomerReviews))
+                .ForMember(ev => ev.Weight, m => m.MapFrom(a => a.Weight))
+                .ForMember(ev => ev.Height, m => m.MapFrom(a => a.Height))
+                .ForMember(ev => ev.Width, m => m.MapFrom(a => a.Width))
+                .ForMember(ev => ev.DeliveryDateId, m => m.MapFrom(a => a.DeliveryDateId))
+                .ForMember(ev => ev.IsTaxExempt, m => m.MapFrom(a => a.IsTaxExempt))
+                .ForMember(ev => ev.TaxCategoryId, m => m.MapFrom(a => a.TaxCategoryId))
+                .ForMember(ev => ev.ManageInventoryMethodId, m => m.MapFrom(a => a.ManageInventoryMethodId))
+                .ForMember(ev => ev.StockQuantity, m => m.MapFrom(a => a.StockQuantity))
+                .ForMember(ev => ev.DisplayStockAvailability, m => m.MapFrom(a => a.DisplayStockAvailability))
+                .ForMember(ev => ev.MinStockQuantity, m => m.MapFrom(a => a.MinStockQuantity))
+                .ForMember(ev => ev.LowStockActivityId, m => m.MapFrom(a => a.LowStockActivityId))
+                .ForMember(ev => ev.NotifyAdminForQuantityBelow, m => m.MapFrom(a => a.NotifyAdminForQuantityBelow))
+                .ForMember(ev => ev.BackorderModeId, m => m.MapFrom(a => a.BackorderModeId))
+                .ForMember(ev => ev.AllowBackInStockSubscriptions, m => m.MapFrom(a => a.AllowBackInStockSubscriptions))
+                .ForMember(ev => ev.OrderMinimumQuantity, m => m.MapFrom(a => a.OrderMinimumQuantity))
+                .ForMember(ev => ev.OrderMaximumQuantity, m => m.MapFrom(a => a.OrderMaximumQuantity))
+                .ForMember(ev => ev.AllowedQuantities, m => m.MapFrom(a => a.AllowedQuantities))
+                .ForMember(ev => ev.AvailableStartDateTimeUtc, m => m.MapFrom(a => a.AvailableStartDateTimeUtc))
+                .ForMember(ev => ev.AvailableEndDateTimeUtc, m => m.MapFrom(a => a.AvailableEndDateTimeUtc))
+                .ForMember(ev => ev.Published, m => m.MapFrom(a => a.Published))
+                .ForMember(ev => ev.CreatedOnUtc, m => m.MapFrom(a => a.CreatedOnUtc))
+                .ForMember(ev => ev.UpdatedOnUtc, m => m.MapFrom(a => a.UpdatedOnUtc));
+            return Mapper.Map<Product, ProductModel>(model);
+        }
+
+        public static Product ToEntity(this ProductModel model)
+        {
+            Mapper.CreateMap<ProductModel, Product>()
+                 .ForMember(ev => ev.Id, m => m.MapFrom(a => a.Id))
+                .ForMember(ev => ev.Name, m => m.MapFrom(a => a.Name))
+                .ForMember(ev => ev.ShortDescription, m => m.MapFrom(a => a.ShortDescription))
+                .ForMember(ev => ev.FullDescription, m => m.MapFrom(a => a.FullDescription.ToString()))
+                .ForMember(ev => ev.AdminComment, m => m.MapFrom(a => a.AdminComment))
+                .ForMember(ev => ev.ShowOnHomePage, m => m.MapFrom(a => a.ShowOnHomePage))
+                .ForMember(ev => ev.AllowCustomerReviews, m => m.MapFrom(a => a.AllowCustomerReviews))
+                .ForMember(ev => ev.Sku, m => m.MapFrom(a => a.Sku))
+                .ForMember(ev => ev.Price, m => m.MapFrom(a => a.Price))
+                .ForMember(ev => ev.ProductCost, m => m.MapFrom(a => a.ProductCost))
+                .ForMember(ev => ev.SpecialPrice, m => m.MapFrom(a => a.SpecialPrice))
+                .ForMember(ev => ev.SpecialPriceStartDateTimeUtc, m => m.MapFrom(a => a.SpecialPriceStartDateTimeUtc))
+                .ForMember(ev => ev.SpecialPriceEndDateTimeUtc, m => m.MapFrom(a => a.SpecialPriceEndDateTimeUtc))
+                .ForMember(ev => ev.FullDescription, m => m.MapFrom(a => a.FullDescription))
+                .ForMember(ev => ev.ProductUnit, m => m.MapFrom(a => a.ProductUnit))
+                .ForMember(ev => ev.IsShipEnabled, m => m.MapFrom(a => a.IsShipEnabled))
+                .ForMember(ev => ev.IsFreeShipping, m => m.MapFrom(a => a.IsFreeShipping))
+                .ForMember(ev => ev.AdditionalShippingCharge, m => m.MapFrom(a => a.AdditionalShippingCharge))
+                .ForMember(ev => ev.AllowCustomerReviews, m => m.MapFrom(a => a.AllowCustomerReviews))
+                .ForMember(ev => ev.Weight, m => m.MapFrom(a => a.Weight))
+                .ForMember(ev => ev.Height, m => m.MapFrom(a => a.Height))
+                .ForMember(ev => ev.Width, m => m.MapFrom(a => a.Width))
+                .ForMember(ev => ev.DeliveryDateId, m => m.MapFrom(a => a.DeliveryDateId))
+                .ForMember(ev => ev.IsTaxExempt, m => m.MapFrom(a => a.IsTaxExempt))
+                .ForMember(ev => ev.TaxCategoryId, m => m.MapFrom(a => a.TaxCategoryId))
+                .ForMember(ev => ev.ManageInventoryMethodId, m => m.MapFrom(a => a.ManageInventoryMethodId))
+                .ForMember(ev => ev.StockQuantity, m => m.MapFrom(a => a.StockQuantity))
+                .ForMember(ev => ev.DisplayStockAvailability, m => m.MapFrom(a => a.DisplayStockAvailability))
+                .ForMember(ev => ev.MinStockQuantity, m => m.MapFrom(a => a.MinStockQuantity))
+                .ForMember(ev => ev.LowStockActivityId, m => m.MapFrom(a => a.LowStockActivityId))
+                .ForMember(ev => ev.NotifyAdminForQuantityBelow, m => m.MapFrom(a => a.NotifyAdminForQuantityBelow))
+                .ForMember(ev => ev.BackorderModeId, m => m.MapFrom(a => a.BackorderModeId))
+                .ForMember(ev => ev.AllowBackInStockSubscriptions, m => m.MapFrom(a => a.AllowBackInStockSubscriptions))
+                .ForMember(ev => ev.OrderMinimumQuantity, m => m.MapFrom(a => a.OrderMinimumQuantity))
+                .ForMember(ev => ev.OrderMaximumQuantity, m => m.MapFrom(a => a.OrderMaximumQuantity))
+                .ForMember(ev => ev.AllowedQuantities, m => m.MapFrom(a => a.AllowedQuantities))
+                .ForMember(ev => ev.AvailableStartDateTimeUtc, m => m.MapFrom(a => a.AvailableStartDateTimeUtc))
+                .ForMember(ev => ev.AvailableEndDateTimeUtc, m => m.MapFrom(a => a.AvailableEndDateTimeUtc))
+                .ForMember(ev => ev.Published, m => m.MapFrom(a => a.Published))
+                .ForMember(ev => ev.CreatedOnUtc, m => m.MapFrom(a => a.CreatedOnUtc))
+                .ForMember(ev => ev.UpdatedOnUtc, m => m.MapFrom(a => a.UpdatedOnUtc));
+            return Mapper.Map<ProductModel, Product>(model);
+        }
+
         #endregion
     }
 }
