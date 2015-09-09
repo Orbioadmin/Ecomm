@@ -83,6 +83,30 @@ namespace Orbio.Services.Admin.Orders
             }
         }
 
+        /// <summary>
+        /// Get all deleivery date
+        /// </summary>
+        public List<DeliveryDate> GetAllDeliveryDates()
+        {
+            using (var context = new OrbioAdminContext())
+            {
+                var result = context.DeliveryDates.ToList();
+                return result;
+            }
+        }
+
+        /// <summary>
+        /// Get all ware house
+        /// </summary>
+        public List<Warehouse> GetAllWarehouses()
+        {
+            using (var context = new OrbioAdminContext())
+            {
+                var result = context.Warehouses.ToList();
+                return result;
+            }
+        }
+
         #endregion
     }
 }

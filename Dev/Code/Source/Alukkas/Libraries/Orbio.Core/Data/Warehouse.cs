@@ -12,22 +12,10 @@ namespace Orbio.Core.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class PriceComponent
+    public partial class Warehouse
     {
-        public PriceComponent()
-        {
-            this.Product_PriceComponent_Mapping = new HashSet<Product_PriceComponent_Mapping>();
-        }
-    
         public int Id { get; set; }
         public string Name { get; set; }
-        public bool IsActive { get; set; }
-        public bool Deleted { get; set; }
-        public System.DateTime CreatedDate { get; set; }
-        public string CreatedBy { get; set; }
-        public System.DateTime ModifiedDate { get; set; }
-        public string ModifiedBy { get; set; }
-    
-        public virtual ICollection<Product_PriceComponent_Mapping> Product_PriceComponent_Mapping { get; set; }
+        public int AddressId { get; set; }
     }
 }

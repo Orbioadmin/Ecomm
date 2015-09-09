@@ -17,6 +17,7 @@ namespace Orbio.Core.Data
         public Picture()
         {
             this.Categories = new HashSet<Category>();
+            this.Product_Picture_Mapping = new HashSet<Product_Picture_Mapping>();
         }
     
         public int Id { get; set; }
@@ -27,5 +28,6 @@ namespace Orbio.Core.Data
         public string RelativeUrl { get; set; }
     
         public virtual ICollection<Category> Categories { get; set; }
+        public virtual ICollection<Product_Picture_Mapping> Product_Picture_Mapping { get; set; }
     }
 }

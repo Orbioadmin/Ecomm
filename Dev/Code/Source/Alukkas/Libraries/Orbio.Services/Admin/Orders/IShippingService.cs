@@ -28,5 +28,15 @@ namespace Orbio.Services.Admin.Orders
         /// Update Shipping Ifo
         /// </summary>
         void UpdateShippingInfo(Shipment shipment);
+
+        /// <summary>
+        /// Get all deleivery date
+        /// </summary>
+        List<DeliveryDate> GetAllDeliveryDates();
+
+         /// <summary>
+        /// Get all ware house
+        /// </summary>
+        List<Warehouse> GetAllWarehouses();
     }
 }

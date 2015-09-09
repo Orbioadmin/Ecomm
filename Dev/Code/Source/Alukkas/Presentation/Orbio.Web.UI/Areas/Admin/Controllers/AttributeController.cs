@@ -100,7 +100,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         {
             var model = new SpecificationAttributeModel();
             var result = specAttributeService.GetSpecificationAttributesById(Id.GetValueOrDefault());
-            if (result != null)
+            if(result!=null)
             {
                 model = new SpecificationAttributeModel(result);
             }
