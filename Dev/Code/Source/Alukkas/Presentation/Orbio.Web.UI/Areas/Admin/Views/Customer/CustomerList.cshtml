@@ -1,0 +1,50 @@
+﻿@model List<Orbio.Web.UI.Areas.Admin.Models.Customers.CustomerModel>
+
+@if (Model.Count>0)
+{ 
+foreach (var items in this.Model)
+{
+    int count=0;
+    <tr>
+        @*<td><input type="checkbox"></td>*@
+        <td class="align_center"><a style="cursor:pointer" href="@Url.Action("Edit", "Customer", new { id = items.Id })">@items.Id</a></td>
+        <td class="align_center">@items.Email</td>
+        <td class="align_center">@items.Name</td>
+        @if (items.CustomerRoles != null)
+        {
+            <td class="align_center">
+                @foreach (var role in items.CustomerRoles)
+                {
+                    count++;
+                    @((count>1) ? ", " : "")@role.Name;
+                }
+            </td>
+        }
+        else
+        {
+            <td class="align_center"></td>
+        }
+        <td class="align_center">@items.CompanyName</td>
+
+        <td class="align_center">
+            @if (items.Active)
+            {
+                <label class="img_sprite1"></label>
+            }
+            else
+            {
+                <label class="img_sprite"></label>
+            }
+        </td>
+        <!--  <td>Your Store Name</td> -->
+        <td class="align_center">@items.CreatedOn</td>
+        <td class="align_center" style="text-align:right;padding-right:5px;">@items.LastActivity</td>
+    </tr>
+}
+}
+else
+{
+    <tr>
+        <td class="align_center" colspan="8">No records to display</td>
+    </tr>
+}

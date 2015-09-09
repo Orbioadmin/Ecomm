@@ -1,0 +1,23 @@
+﻿@model Orbio.Web.UI.Areas.Admin.Models.Orders.OrderListModel
+
+
+<div class="col-md-12 order_list">
+    <div class="sart_date">
+        @Html.TextBoxFor(model => model.StartDate, new { @class = "start_order_date_email", placeholder = "From", style = "border-radius:0px:box-shadow:0px" })
+    </div>
+    <div class=" sart_date">
+        @Html.TextBoxFor(model => model.EndDate, new { @class = "start_order_date_email", placeholder = "To" })
+    </div>
+    <div class="order_status">
+        @Html.DropDownList("OrderStatusId", Model.AvailableOrderStatuses, new { @class = "start_order_date_email" })
+    </div>
+    <div class="order_status">
+        @Html.DropDownList("PaymentStatusId", Model.AvailablePaymentStatuses, new { @class = "start_order_date_email" })
+    </div>
+    <div class="order_status">
+        @Html.DropDownList("ShippingStatusId", Model.AvailableShippingStatuses, new { @class = "start_order_date_email" })
+    </div>
+    <div class="billing_address_text">
+        <input type="submit" class="search_order_list" value="SEARCH">
+    </div>
+</div>

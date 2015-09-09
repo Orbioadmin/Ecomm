@@ -9,7 +9,7 @@
                 <ul class="top_label">
                     <li style="margin-left:0px"><span class="customer">Customer : </span><span>@Model.CustomerInfo</span></li>
                     <li><span class="date_admin"></span><span>@Model.CreatedOn.Date.ToShortDateString()</span></li>
-                    <li><span class="time_admin"></span><span>@Model.CreatedOn.Date.ToShortTimeString()</span></li>
+                    <li><span class="time_admin"></span><span>@Model.CreatedOn.ToShortTimeString()</span></li>
                     <li><span class="customer">Order Status : </span></li>
                     <li>
                         @Html.DropDownListFor(model => model.OrderStatusId, from OrderStatus orderStatus in Enum.GetValues(typeof(OrderStatus))

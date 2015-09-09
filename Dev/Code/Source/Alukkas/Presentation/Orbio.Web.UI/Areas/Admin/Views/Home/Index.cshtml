@@ -21,8 +21,11 @@
                 @Html.Action("OrderIncompleteReport", "Order")
             </div>
             <div class="col-md-6 col-sm-6">
-                @Html.Action("ReportRegisteredCustomers", "Customer")
-            </div>
+                <div class="main-table table-responsive">
+                    <h2>REGISTERED CUSTOMERS</h2> <span class="refbutt"></span>
+                    @Html.Action("ReportRegisteredCustomers", "Customer")
+                    </div>
+                </div>
         </div>
     </div> <!-- /container -->
 </section>

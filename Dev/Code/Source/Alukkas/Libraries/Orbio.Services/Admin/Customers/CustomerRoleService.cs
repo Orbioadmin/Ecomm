@@ -9,73 +9,80 @@ namespace Orbio.Services.Admin.Customers
 {
     public class CustomerRoleService :ICustomerRoleService
     {
-        #region Fields
-
-        private readonly OrbioAdminContext context = new OrbioAdminContext();
-       
-        #endregion
 
         public List<CustomerRole> GetAllCustomerRole()
         {
-            var result = context.CustomerRoles.AsQueryable();
-            return result.ToList();
+            using (var context = new OrbioAdminContext())
+            {
+                var result = context.CustomerRoles.AsQueryable();
+                return result.ToList();
+            }
         }
 
         public CustomerRole GetCustomerRoleById(int Id)
         {
-            var result = context.CustomerRoles.Where(m => m.Id == Id);
-            return result.FirstOrDefault();
+            using (var context = new OrbioAdminContext())
+            {
+                var result = context.CustomerRoles.Where(m => m.Id == Id);
+                return result.FirstOrDefault();
+            }
         }
 
         public int DeleteCustomerRole(int Id)
         {
-            try
+            using (var context = new OrbioAdminContext())
             {
-                var result = context.CustomerRoles.Where(m => m.Id == Id).FirstOrDefault();
-                if (result != null)
+                try
                 {
-                    context.CustomerRoles.Remove(result);
-                    context.SaveChanges();
+                    var result = context.CustomerRoles.Where(m => m.Id == Id).FirstOrDefault();
+                    if (result != null)
+                    {
+                        context.CustomerRoles.Remove(result);
+                        context.SaveChanges();
+                    }
+                    return 1;
                 }
-                return 1;
-            }
-            catch(Exception)
-            {
-                return 0;
+                catch (Exception)
+                {
+                    return 0;
+                }
             }
         }
 
         public int AddOrUpdateCustomerRole(CustomerRole customerRole)
         {
-            try
+            using (var context = new OrbioAdminContext())
             {
-                var result = context.CustomerRoles.Where(m => m.Id == customerRole.Id).FirstOrDefault();
-                if(result!=null)
+                try
                 {
-                    result.Name = customerRole.Name;
-                    result.SystemName = customerRole.SystemName;
-                    result.FreeShipping = customerRole.FreeShipping;
-                    result.TaxExempt = customerRole.TaxExempt;
-                    result.Active = customerRole.Active;
-                    context.SaveChanges();
+                    var result = context.CustomerRoles.Where(m => m.Id == customerRole.Id).FirstOrDefault();
+                    if (result != null)
+                    {
+                        result.Name = customerRole.Name;
+                        result.SystemName = customerRole.SystemName;
+                        result.FreeShipping = customerRole.FreeShipping;
+                        result.TaxExempt = customerRole.TaxExempt;
+                        result.Active = customerRole.Active;
+                        context.SaveChanges();
+                    }
+                    else
+                    {
+                        var role = context.CustomerRoles.FirstOrDefault();
+                        role.Name = customerRole.Name;
+                        role.SystemName = customerRole.SystemName;
+                        role.FreeShipping = customerRole.FreeShipping;
+                        role.TaxExempt = customerRole.TaxExempt;
+                        role.Active = customerRole.Active;
+                        role.IsSystemRole = false;
+                        context.CustomerRoles.Add(role);
+                        context.SaveChanges();
+                    }
+                    return 1;
                 }
-                else
+                catch (Exception)
                 {
-                    var role = context.CustomerRoles.FirstOrDefault();
-                    role.Name = customerRole.Name;
-                    role.SystemName = customerRole.SystemName;
-                    role.FreeShipping = customerRole.FreeShipping;
-                    role.TaxExempt = customerRole.TaxExempt;
-                    role.Active = customerRole.Active;
-                    role.IsSystemRole = false;
-                    context.CustomerRoles.Add(role);
-                    context.SaveChanges();
+                    return 0;
                 }
-                return 1;
-            }
-            catch (Exception)
-            {
-                return 0;
             }
         }
     }

@@ -9,121 +9,135 @@ namespace Orbio.Services.Admin.Attributes
 {
     public class SpecificationAttributeService : ISpecificationAttributeService
     {
-        #region Fields
-        private readonly OrbioAdminContext context = new OrbioAdminContext();
-        #endregion
-
         public List<SpecificationAttribute> GetSpecificationAttributes()
         {
-            var model = context.SpecificationAttributes.ToList();
-            return model;
+            using (var context = new OrbioAdminContext())
+            {
+                var model = context.SpecificationAttributes.Include("SpecificationAttributeOptions.Product_SpecificationAttribute_Mapping").ToList();
+                return model;
+            }
         }
 
         public SpecificationAttribute GetSpecificationAttributesById(int Id)
         {
-            var model = context.SpecificationAttributes.Where(m => m.Id == Id).FirstOrDefault();
-            if (model != null)
+            using (var context = new OrbioAdminContext())
             {
-                model.SpecificationAttributeOptions = context.SpecificationAttributeOptions.Where(m => m.SpecificationAttributeId == Id).ToList();
+                var spec = context.SpecificationAttributes.Include("SpecificationAttributeOptions.Product_SpecificationAttribute_Mapping").Where(m => m.Id == Id).FirstOrDefault();
+                
+                return spec;
             }
-            return model;
         }
 
         public int AddOrUpdate(int Id, string Name, int DisplayOrder)
         {
-            try
+            using (var context = new OrbioAdminContext())
             {
-                var spec = context.SpecificationAttributes.Where(m => m.Id == Id).FirstOrDefault();
-                if (spec != null)
+                try
                 {
-                    spec.Name = Name;
-                    spec.DisplayOrder = DisplayOrder;
-                    context.SaveChanges();
+                    var spec = context.SpecificationAttributes.Where(m => m.Id == Id).FirstOrDefault();
+                    if (spec != null)
+                    {
+                        spec.Name = Name;
+                        spec.DisplayOrder = DisplayOrder;
+                        context.SaveChanges();
+                    }
+                    else
+                    {
+                        var specification = context.SpecificationAttributes.FirstOrDefault();
+                        specification.Name = Name;
+                        specification.DisplayOrder = DisplayOrder;
+                        context.SpecificationAttributes.Add(specification);
+                        context.SaveChanges();
+                        return specification.Id;
+                    }
+                    return 1;
                 }
-                else
+                catch (Exception)
                 {
-                    var specification = context.SpecificationAttributes.FirstOrDefault();
-                    specification.Name = Name;
-                    specification.DisplayOrder = DisplayOrder;
-                    context.SpecificationAttributes.Add(specification);
-                    context.SaveChanges();
-                    return specification.Id;
+                    return 0;
                 }
-                return 1;
-            }
-            catch(Exception)
-            {
-                return 0;
             }
         }
 
         public int DeleteSpecificationAttribute(int Id)
         {
-            try
+            using (var context = new OrbioAdminContext())
             {
-                var spec = context.SpecificationAttributes.Where(m => m.Id == Id).FirstOrDefault();
-                if (spec != null)
+                try
                 {
-                    context.SpecificationAttributes.Remove(spec);
-                    context.SaveChanges();
+                    var spec = context.SpecificationAttributes.Where(m => m.Id == Id).FirstOrDefault();
+                    if (spec != null)
+                    {
+                        context.SpecificationAttributes.Remove(spec);
+                        context.SaveChanges();
+                    }
+                    return 1;
                 }
-                return 1;
-            }
-            catch(Exception)
-            {
-                return 0;
+                catch (Exception)
+                {
+                    return 0;
+                }
             }
         }
 
         public int DeleteSpecificationAttributeOption(int Id)
         {
-            try
+            using (var context = new OrbioAdminContext())
             {
-                var spec = context.SpecificationAttributeOptions.Where(m => m.Id == Id).FirstOrDefault();
-                if (spec != null)
+                try
                 {
-                    context.SpecificationAttributeOptions.Remove(spec);
-                    context.SaveChanges();
+                    var spec = context.SpecificationAttributeOptions.Where(m => m.Id == Id).FirstOrDefault();
+                    if (spec != null)
+                    {
+                        context.SpecificationAttributeOptions.Remove(spec);
+                        context.SaveChanges();
+                    }
+                    return 1;
                 }
-                return 1;
-            }
-            catch (Exception)
-            {
-                return 0;
+                catch (Exception)
+                {
+                    return 0;
+                }
             }
         }
 
         public SpecificationAttributeOption GetSpecificationAttributeOptionById(int Id)
         {
-            var result = context.SpecificationAttributeOptions.Where(m => m.Id == Id).FirstOrDefault();
-            return result;
+            using (var context = new OrbioAdminContext())
+            {
+                var result = context.SpecificationAttributeOptions.Where(m => m.Id == Id).FirstOrDefault();
+                return result;
+            }
         }
 
         public  int AddSpecificationOption(int Id,string Name,int DisplayOrder,int SpecificationAttributeId)
         {
-            try
+            using (var context = new OrbioAdminContext())
             {
-                var result = context.SpecificationAttributeOptions.Where(m => m.Id == Id).FirstOrDefault();
-                if (result != null)
+                try
                 {
-                    result.Name = Name;
-                    result.DisplayOrder = DisplayOrder;
-                    context.SaveChanges();
+                    var result = context.SpecificationAttributeOptions.Where(m => m.Id == Id).FirstOrDefault();
+                    if (result != null)
+                    {
+                        result.Name = Name;
+                        result.DisplayOrder = DisplayOrder;
+                        context.SaveChanges();
+                    }
+                    else
+                    {
+                        var spec = context.SpecificationAttributeOptions.FirstOrDefault();
+                        spec.Name = Name;
+                        spec.DisplayOrder = DisplayOrder;
+                        spec.SpecificationAttributeId = SpecificationAttributeId;
+                        context.SpecificationAttributeOptions.Add(spec);
+                        context.SaveChanges();
+                    }
+                    return 1;
                 }
-                else
+                catch (Exception)
                 {
-                    var spec = context.SpecificationAttributeOptions.FirstOrDefault();
-                    spec.Name = Name;
-                    spec.DisplayOrder = DisplayOrder;
-                    spec.SpecificationAttributeId = SpecificationAttributeId;
-                    context.SpecificationAttributeOptions.Add(spec);
-                    context.SaveChanges();
+                    return 0;
                 }
-                return 1;
-            }
-            catch(Exception)
-            {
-                return 0;
             }
         }
     }

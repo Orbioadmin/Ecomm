@@ -12,8 +12,10 @@
 
                             @foreach (var orderNote in Model.OrderNotes)
                             {
-                                <tr><td>Note : </td><td>  @orderNote.Note</td></tr>
-                                <tr><td>Created on : </td><td>@orderNote.CreatedOn</td></tr>
+                                @*<tr><td>Note : </td><td>  @orderNote.Note</td></tr>
+                                <tr><td>Created on : </td><td>@orderNote.CreatedOn</td></tr>*@
+    <tr><td colspan="2"><label style="font-size: initial;">Note :</label> @orderNote.Note</td><td>  </td></tr>
+    <tr><td colspan="2"><span class="date_admin"></span><span style="padding-right: 16px;">@orderNote.CreatedOn.Date.ToShortDateString()</span><span class="time_admin"></span><span>@orderNote.CreatedOn.ToShortTimeString()</span></td><td></td></tr>
                                 <tr><td colspan="2"><input type="submit" name="btnDeleteOrderNote@(orderNote.Id)" value="Delete" id="btnDeleteOrderNote@(orderNote.Id)" class="add_product_submit" /> </td><td></td></tr>
                             }
                         </table>
