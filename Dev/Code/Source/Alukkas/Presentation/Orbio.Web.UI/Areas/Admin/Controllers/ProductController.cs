@@ -100,7 +100,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                 return RedirectToAction("List");
             var model = product.ToModel();
             PrepareProductModel(model, product);
-            return View();
+            return View(model);
         }
 
         //delete products
