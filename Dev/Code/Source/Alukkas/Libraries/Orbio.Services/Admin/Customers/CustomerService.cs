@@ -34,16 +34,16 @@ namespace Orbio.Services.Admin.Customers
             using (var context = new OrbioAdminContext())
             {
                 var result = new List<Customer>();
-                var query = context.Customers.Include("CustomerRoles").Where(m => !m.Deleted);
-
+                var query = context.Customers.Include("CustomerRoles").Where(m => !m.Deleted && m.Email!=null).OrderByDescending(m=>m.Id);
+                
                 if (FirstName != null)
-                    query = query.Where(m => m.FirstName.Contains(FirstName));
+                    query = query.Where(m => m.FirstName.Contains(FirstName)).OrderByDescending(m => m.Id);
                 if (LastName != null)
-                    query = query.Where(m => m.LastName.Contains(LastName));
+                    query = query.Where(m => m.LastName.Contains(LastName)).OrderByDescending(m => m.Id);
                 if (Email != null)
-                    query = query.Where(m => m.Email.Contains(Email));
+                    query = query.Where(m => m.Email.Contains(Email)).OrderByDescending(m => m.Id);
                 if (Roles!=null)
-                query = query.Where(p => p.CustomerRoles.Any(cr=>Roles.Contains(cr.Id)));
+                    query = query.Where(p => p.CustomerRoles.Any(cr => Roles.Contains(cr.Id))).OrderByDescending(m => m.Id);
 
                 return query.ToList();
             }

@@ -1,0 +1,23 @@
+﻿
+@model Orbio.Web.UI.Areas.Admin.Models.Customers.CustomerRoleModel
+
+<h3>Add New Role</h3>
+@*<form action="" method="">*@
+@using (Html.BeginForm("AddCustomerRole", "Customer", FormMethod.Post, new { }))
+    {
+@Html.TextBoxFor(m => m.Name, new { @class = "text_sku", required = "required", onkeyup = "javascript:GenerateScript()", id = "rolename", @placeholder = "Name" })
+@Html.TextBoxFor(m => m.SystemName, new { @class = "text_sku", id = "rolesysname", @placeholder = "System Name" })
+<div class="form-group">
+    <label style="font-size: small;padding-left: 5px;"> Active : </label>
+    @Html.CheckBoxFor(m => m.Active, new { @class = "show_on_home_page_check",@style="top:0px;"})
+</div>
+<input type="submit" value="Add Role" class="add_product_submit">
+}
+
+<script>
+    function GenerateScript() {
+        var key = $("#rolename").val().trim();
+        key = key.replace(/ /g, "");
+        $("#rolesysname").val(key);
+    }
+</script>

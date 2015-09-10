@@ -56,10 +56,10 @@ namespace Orbio.Services.Admin.Catalog
                 var model = new CategoryDetails();
                 var categoryModel = new CategoryList();
 
-                categoryModel = (from c in context.Categories.AsQueryable()
-                                 join pic in context.Pictures.AsQueryable() on c.PictureId equals pic.Id into temp
+                categoryModel = (from c in context.Categories
+                                 join pic in context.Pictures on c.PictureId equals pic.Id into temp
                                  from j in temp.DefaultIfEmpty()
-                                 join url in context.UrlRecords.AsQueryable() on c.Id equals url.EntityId into tempurl
+                                 join url in context.UrlRecords on c.Id equals url.EntityId into tempurl
                                  from u in tempurl.DefaultIfEmpty()
                                  where c.Id == Id && u.EntityName == "Category"
                                  select new CategoryList()
@@ -79,7 +79,7 @@ namespace Orbio.Services.Admin.Catalog
                                      SearchEngine = u.Slug,
                                  }).FirstOrDefault();
 
-                categoryModel.ParentCategoryList = (from c in context.Categories.AsQueryable()
+                categoryModel.ParentCategoryList = (from c in context.Categories
                                                     where c.Deleted == false
                                                     select new CategoryList()
                                                     {
@@ -88,7 +88,7 @@ namespace Orbio.Services.Admin.Catalog
                                                         ParentCategory = c.ParentCategoryId,
                                                     }).ToList();
 
-                categoryModel.CategoryTemplateList = (from t in context.CategoryTemplates.AsQueryable()
+                categoryModel.CategoryTemplateList = (from t in context.CategoryTemplates
                                                       select new Templates()
                                                       {
                                                           Id = t.Id,
@@ -97,7 +97,7 @@ namespace Orbio.Services.Admin.Catalog
 
                 model.Categories = categoryModel;
 
-                model.Products = (from p in context.Products.AsQueryable()
+                model.Products = (from p in context.Products
                                   join pc in context.Product_Category_Mapping.AsQueryable() on p.Id equals pc.ProductId
                                   where pc.CategoryId == Id && p.Deleted == false
                                   select new ProductDetails()

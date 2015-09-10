@@ -63,6 +63,7 @@ namespace Orbio.Services.Admin.Customers
                         result.FreeShipping = customerRole.FreeShipping;
                         result.TaxExempt = customerRole.TaxExempt;
                         result.Active = customerRole.Active;
+                        result.IsSystemRole = customerRole.IsSystemRole;
                         context.SaveChanges();
                     }
                     else
@@ -73,7 +74,7 @@ namespace Orbio.Services.Admin.Customers
                         role.FreeShipping = customerRole.FreeShipping;
                         role.TaxExempt = customerRole.TaxExempt;
                         role.Active = customerRole.Active;
-                        role.IsSystemRole = false;
+                        role.IsSystemRole = true;
                         context.CustomerRoles.Add(role);
                         context.SaveChanges();
                     }

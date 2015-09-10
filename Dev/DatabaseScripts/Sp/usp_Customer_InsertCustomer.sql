@@ -54,7 +54,8 @@ CREATE PROCEDURE [dbo].[usp_Customer_InsertCustomer]
 	@gender varchar(100),
 	@dob varchar(15)=NULL,
 	@companyname varchar(50)=NULL,
-	@mobileno varchar(15),
+	@mobileno varchar(15)=null,
+	@customerroles xml=null,
 	@insertresult INT OUTPUT
 AS
 BEGIN
@@ -81,10 +82,18 @@ BEGIN
 						@deleted,@issystemaccount,@systemname,@lastipaddress,@createdonutc,@lastlogindateutc,@lastactivitydateutc,
 						@billingaddress_id,@shippingaddress_id,@firstname,@lastname,@gender,@dob,@companyname,@mobileno)
 						
-						insert into dbo.Customer_CustomerRole_Mapping (Customer_Id,CustomerRole_Id) 
-						values((select Id from dbo.Customer where Username=@email AND Deleted='False')
-						,(select top 1 Id from dbo.CustomerRole where SystemName='Registered'))
+						IF(@customerroles is not null)
+						BEGIN
+							insert into dbo.Customer_CustomerRole_Mapping (Customer_Id,CustomerRole_Id) 
+							SELECT @id, i.value('.','int') from @customerroles.nodes('/ArrayOfInt/int') x(i)	
+						END
 						
+						ELSE
+						BEGIN
+							insert into dbo.Customer_CustomerRole_Mapping (Customer_Id,CustomerRole_Id) 
+							values((select Id from dbo.Customer where Username=@email AND Deleted='False')
+							,(select top 1 Id from dbo.CustomerRole where SystemName='Registered'))
+						END
 						SET @insertresult=1;
 					RETURN
 					END
@@ -94,13 +103,25 @@ BEGIN
 					UPDATE  dbo.Customer SET Username=@email,Email=@email,Password=@password,PasswordFormatId=@passwordformatid,
 					PasswordSalt=@PasswordSalt,AdminComment=@AdminComment,IsTaxExempt=(select top 1 TaxExempt from dbo.CustomerRole where SystemName='Registered')
 					,AffiliateId=@affiliateid,VendorId=@vendorid,Active=@active,Deleted=@deleted,IsSystemAccount=@issystemaccount,
-					SystemName=@systemname,LastIpAddress=@lastipaddress,CreatedOnUtc=@createdonutc,LastLoginDateUtc=@lastlogindateutc,
-					LastActivityDateUtc=@lastactivitydateutc,Gender=@gender,MobileNo=@mobileno
+					 SystemName=@systemname,LastIpAddress=@lastipaddress,LastLoginDateUtc=@lastlogindateutc,
+					 LastActivityDateUtc=@lastactivitydateutc,Gender=@gender,MobileNo=@mobileno
 					where Id=@id
 					
-					insert into dbo.Customer_CustomerRole_Mapping (Customer_Id,CustomerRole_Id) 
-					values(@id,(select top 1 Id from dbo.CustomerRole where SystemName='Registered'))
-					
+					IF(@customerroles is not null)
+						BEGIN
+						delete from dbo.Customer_CustomerRole_Mapping where Customer_Id=@Id
+						
+							insert into dbo.Customer_CustomerRole_Mapping (Customer_Id,CustomerRole_Id) 
+							SELECT @id, i.value('.','int') from @customerroles.nodes('/ArrayOfInt/int') x(i)						
+						END
+						
+						ELSE
+						BEGIN
+						delete from dbo.Customer_CustomerRole_Mapping where Customer_Id=@Id
+						
+							insert into dbo.Customer_CustomerRole_Mapping (Customer_Id,CustomerRole_Id) 
+							values(@id,(select top 1 Id from dbo.CustomerRole where SystemName='Registered'))
+						END
 					SET @insertresult=1;
 					
 				END

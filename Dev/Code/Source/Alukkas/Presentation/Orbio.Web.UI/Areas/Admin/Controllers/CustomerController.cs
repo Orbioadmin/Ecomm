@@ -30,6 +30,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         private readonly IDateTimeHelper _dateTimeHelper;
         private readonly IEncryptionService encryptionService;
         private readonly IMessageService messageService;
+        private readonly Orbio.Services.Customers.ICustomerService custService;
 
         #endregion
 
@@ -37,7 +38,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
 
         public CustomerController(ICustomerReportService customerReportService, ICustomerRoleService customerRoleService,
             ICustomerService customerService, IOnlineCustomerService onlineService, IDateTimeHelper _dateTimeHelper,
-            IEncryptionService encryptionService, IMessageService messageService)
+            IEncryptionService encryptionService, IMessageService messageService, Orbio.Services.Customers.ICustomerService custService)
         {
             this._customerReportService = customerReportService;
             this.customerRoleService = customerRoleService;
@@ -46,6 +47,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             this._dateTimeHelper = _dateTimeHelper;
             this.encryptionService = encryptionService;
             this.messageService = messageService;
+            this.custService = custService;
         }
 
         #endregion
@@ -104,7 +106,8 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         public ActionResult AddCustomerRole()
         {
             var model = new CustomerRoleModel();
-            return View("AddOrEditCustomerRole", model);
+            //return PartialView("AddOrEditCustomerRole", model);
+            return PartialView(model);
         }
 
         public ActionResult EditCustomerRole(int Id)
@@ -120,18 +123,40 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             return RedirectToAction("ListCustomerRole");
         }
 
-        public ActionResult AddOrEditCustomerRole(CustomerRoleModel model)
+        [HttpPost]
+        public ActionResult AddCustomerRole(CustomerRoleModel model)
         {
             var customerRole = new CustomerRole
                                 {
                                     Id=model.Id,
                                     Name=model.Name,
                                     SystemName=model.SystemName,
-                                    FreeShipping=model.FreeShipping,
-                                    TaxExempt=model.TaxExempt,
+                                    //FreeShipping=model.FreeShipping,
+                                    //TaxExempt=model.TaxExempt,
                                     Active=model.Active,
                                 };
             int result = customerRoleService.AddOrUpdateCustomerRole(customerRole);
+            return RedirectToAction("ListCustomerRole");
+        }
+
+        [HttpPost]
+        public ActionResult EditCustomerRole(int Id, FormCollection form)
+        {
+            if (form != null)
+            {
+                var name = form["txtname" + Id];
+                var active = form["drpactive" + Id];
+                var systemRole = form["drpsystemrole" + Id];
+                var customerRole = new CustomerRole
+                {
+                    Id = Id,
+                    Name = name,
+                    SystemName = name,
+                    Active = Convert.ToBoolean(active),
+                    IsSystemRole = Convert.ToBoolean(systemRole),
+                };
+                int result = customerRoleService.AddOrUpdateCustomerRole(customerRole);
+            }
             return RedirectToAction("ListCustomerRole");
         }
 
@@ -244,9 +269,9 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult AddOrEditCustomer(CustomerModel model)
         {
-            var customer = new Customer
+            var customer = new Orbio.Core.Domain.Customers.Customer
             {
-                Id=model.Id,
+                Id = model.Id,
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 Email = model.Email,
@@ -255,10 +280,14 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                 AdminComment = model.AdminComment,
                 IsTaxExempt = model.IsTaxExempt,
                 Active = model.Active,
+                CreatedOnUtc = DateTime.UtcNow,
+                LastActivityDateUtc = DateTime.UtcNow,
+                LastLoginDateUtc = DateTime.UtcNow,
+                LastIpAddress = "::1",
+                IsRegistered = (model.Id != 0) ? true : false,
             };
-            customer = GeneratePassword(customer);
-            var result = customerService.AddOrUpdateCustomerInfo(customer,model.Roles);
-
+            var registrationRequest = new Orbio.Services.Customers.CustomerRegistrationRequest(customer, model.Email, model.Gender, null, model.FirstName, Orbio.Core.Domain.Customers.PasswordFormat.Hashed, true);
+            var registrationResult = custService.RegisterCustomer(registrationRequest, model.Roles);
             return RedirectToAction("ListCustomer");
         }
 
@@ -267,15 +296,6 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             var model = new CustomerModel();
             model.Id = Id.GetValueOrDefault();
             return View(model);
-        }
-
-        private Customer GeneratePassword(Customer customer)
-        {
-            string saltKey = encryptionService.CreateSaltKey(5);
-            customer.PasswordSalt = saltKey;
-            customer.Password = encryptionService.CreatePasswordHash(customer.FirstName, saltKey, ConfigurationManager.AppSettings["HashedPasswordFormat"]);
-
-            return customer;
         }
 
         [ChildActionOnly]

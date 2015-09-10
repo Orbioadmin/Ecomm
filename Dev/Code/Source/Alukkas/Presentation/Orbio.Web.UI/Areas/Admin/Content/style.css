@@ -341,8 +341,8 @@ td h3:focus{border:0px ;}
 .order_total_main_table tbody td{font-family: 'Roboto-Regular';color:#373737;font-size: 13px;padding: 5px 0px;background-color: #fff;border:1px solid #ddd;}
 .align_center{text-align: center;}
 .edit_ring{background: url("../images/Edit_order_sprite.png")-249px -7px no-repeat;height:33px;width:25px;display:inline-block;cursor:pointer;}
-.img_sprite{background:url('../images/Edit_order_sprite.png') -85px  -18px;width:45px;height:29px;cursor:pointer}
-.img_sprite1{background:url('../images/image sprites.png') -262px -18px;width:35px;height:29px;margin-bottom:0px;cursor:pointer}
+.img_sprite{background:url('../images/cross.png') no-repeat;width:45px;height:25px;cursor:pointer}
+.img_sprite1{background:url('../images/tick.png') no-repeat; width:35px;height:25px;margin-bottom:0px;cursor:pointer}
 .order_list label{font-size: 13px;color:#373737;font-family: 'Roboto-Regular';font-weight: normal;}
 .man_search{background-color: #0082c7;color:#fff;border:1px solid #0082c7;padding: 5px}
 .shipmen_icon {background: url("../images/image sprites.png")-81px -42px no-repeat;height: 39px;width: 34px;display: inline-block;float: left;}

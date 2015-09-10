@@ -355,6 +355,7 @@
     <Content Include="Areas\Admin\images\back.png" />
     <Content Include="Areas\Admin\images\blue_arrow.png" />
     <Content Include="Areas\Admin\images\chk-box_2.png" />
+    <Content Include="Areas\Admin\images\cross.png" />
     <Content Include="Areas\Admin\images\edit.png" />
     <Content Include="Areas\Admin\images\Edit_order_sprite.png" />
     <Content Include="Areas\Admin\images\form.jpg" />
@@ -369,6 +370,7 @@
     <Content Include="Areas\Admin\images\thumbs\0000140_jewellery_tb.jpeg" />
     <Content Include="Areas\Admin\images\thumbs\0000198_bracelet.jpeg" />
     <Content Include="Areas\Admin\images\thumbs\sprite.png" />
+    <Content Include="Areas\Admin\images\tick.png" />
     <Content Include="Areas\Admin\images\trash-black.png" />
     <Content Include="Areas\Admin\images\white_arrow.png" />
     <Content Include="Areas\Admin\Scripts\bootstrap-multiselect.js" />
@@ -772,6 +774,7 @@
     <Content Include="Areas\Admin\Views\Product\_CreatOrUpdateInfo.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Customer\AddCustomerRole.cshtml" />
     <None Include="Properties\PublishProfiles\ecom.pubxml" />
     <Content Include="Areas\Admin\Views\Customer\ListCustomer.cshtml" />
     <Content Include="Areas\Admin\Views\Customer\CustomerList.cshtml" />

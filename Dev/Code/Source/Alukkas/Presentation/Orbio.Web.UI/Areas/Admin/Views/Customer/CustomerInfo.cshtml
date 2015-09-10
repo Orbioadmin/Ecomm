@@ -5,27 +5,27 @@
 
     <div class="form-group row" style="margin-top:10px">
         <div class="col-md-2"><label>Email : </label></div>
-        <div class="col-md-4">@Html.TextBoxFor(m => m.Email, new { @class = "edit_text_checkout", required = "required",type="email" })</div>
+        <div class="col-md-4">@Html.TextBoxFor(m => m.Email, new { @class = "edit_text_checkout", required = "required", type = "email", @style = "font-size: small" })</div>
     </div>
     <div class="form-group row" style="margin-top:10px">
         <div class="col-md-2"><label>Gender : </label></div>
         <div class="col-md-4">
-            @Html.RadioButtonFor(m => m.Gender, "M") Male
-            @Html.RadioButtonFor(m => m.Gender, "F") Female
+            @Html.RadioButtonFor(m => m.Gender, "M", new { @style = "font-size: small" }) Male
+            @Html.RadioButtonFor(m => m.Gender, "F", new { @style = "font-size: small" }) Female
     </div>
         </div>
     <div class="form-group row" style="margin-top:10px">
         <div class="col-md-2"><label>First Name : </label></div>
-        <div class="col-md-4">@Html.TextBoxFor(m => m.FirstName, new { @class = "edit_text_checkout", required = "required" })</div>
+        <div class="col-md-4">@Html.TextBoxFor(m => m.FirstName, new { @class = "edit_text_checkout", required = "required", @style = "font-size: small" })</div>
     </div>
 
     <div class="form-group row" style="margin-top:10px">
         <div class="col-md-2"><label>Last Name : </label></div>
-        <div class="col-md-4">@Html.TextBoxFor(m => m.LastName, new { @class = "edit_text_checkout", required = "required" })</div>
+        <div class="col-md-4">@Html.TextBoxFor(m => m.LastName, new { @class = "edit_text_checkout", required = "required", @style = "font-size: small" })</div>
     </div>
     <div class="form-group row" style="margin-top:10px">
         <div class="col-md-2"><label>Date Of Birth : </label></div>
-        <div class="col-md-4">@Html.TextBoxFor(m => m.DOB, new { @class = "edit_text_checkout", required = "required", id = "dob", @style = "height: 28px;width: 72%; border: 1px solid #9fd2eb" })</div>
+        <div class="col-md-4">@Html.TextBoxFor(m => m.DOB, new { @class = "edit_text_checkout", required = "required", id = "dob", @style = "height: 28px;width: 72%; border: 1px solid #9fd2eb;font-size:small" })</div>
     </div>
     <div class="form-group row" style="margin-top:10px">
         <div class="col-md-2"><label>Customer Roles : </label></div>
@@ -37,7 +37,7 @@
     </div>
     <div class="form-group row" style="margin-top:10px">
         <div class="col-md-2"><label>Admin Comment : </label></div>
-        <div class="col-md-4">@Html.TextBoxFor(m => m.AdminComment, new { @class = "edit_text_checkout" })</div>
+        <div class="col-md-4">@Html.TextBoxFor(m => m.AdminComment, new { @class = "edit_text_checkout", @style = "font-size: small" })</div>
     </div>
     <div class="form-group row" style="margin-top:10px">
         <div class="col-md-2"><label>Is Tax Exempt : </label></div>
