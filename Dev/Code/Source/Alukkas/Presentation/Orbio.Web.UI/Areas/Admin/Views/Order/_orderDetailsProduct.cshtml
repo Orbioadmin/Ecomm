@@ -47,11 +47,11 @@
             {
                    @:<tr class="first_row">
                    @:<td class="varient_align">
-                   @:<img src="@item.ImageUrl" alt="ring" width="58" height="53"><label><label class="diamond">@item.ProductName </label></br><label class="varient">@(new HtmlString(item.AttributeInfo))</label></label>
+                   @:<img src="@item.ImageUrl" alt="ring" width="58" height="53"><label style="vertical-align: top;"><label class="diamond">@item.ProductName </label></br><label class="varient">@(new HtmlString(item.AttributeInfo))</label></label>
                    @:</td>
-                   @:<td class="quantity"><input name="pvQuantity@(item.ProductId)" type="number" value="@item.Quantity" id="pvQuantity@(item.ProductId)" class="adminInput" style="width: 40px;height: 23px;padding: 0 4px;border-radius: 2px;border: 1px solid #ccc;" /></td>
-                   @:<td class="number">@item.UnitPriceExclTaxValue.ToString("#,##0.00")</td><td class="number">@item.DiscountExclTaxValue.ToString("#,##0.00")</td>
-                   @: <td class="number">@item.SubTotalExclTaxValue.ToString("#,##0.00")</td>
+                   @:<td class="quantity" style="padding-top: 22px;"><input name="pvQuantity@(item.ProductId)" type="number" value="@item.Quantity" id="pvQuantity@(item.ProductId)" class="adminInput" style="width: 40px;height: 23px;padding: 0 4px;border-radius: 2px;border: 1px solid #ccc;" /></td>
+                   @:<td class="number" style="padding-top: 22px;">@item.UnitPriceExclTaxValue.ToString("#,##0.00")</td><td class="number" style="padding-top: 22px;">@item.DiscountExclTaxValue.ToString("#,##0.00")</td>
+                   @: <td class="number" style="padding-top: 22px;">@item.SubTotalExclTaxValue.ToString("#,##0.00")</td>
                    @: <td class="action_ring">
                    @:<input type="submit" name="btnSaveOrderItem@(item.ProductId)" value="" id="btnSaveOrderItem@(item.ProductId)" class="edit_save" style="display:none;" onclick=" return confirm('Are You Sure'); " />
                    @:<input type="submit" name="btnCancelOrderItem@(item.ProductId)" value="" onclick="toggleOrderItemEdit@(item.ProductId)    (false);return false; " id="btnCancelOrderItem@(item.ProductId)" class="edit_cancel" style="display:none;" />
@@ -69,7 +69,7 @@
                   {
                 using (Html.BeginForm("EditOrderItem", "Order", new { id = this.Model.Id }, FormMethod.Post, new { Id = "formEditOrderItem" + item.ProductId }))
                  {
-                    @:<tr class="second_row"><td class="varient_align"><img src="@item.ImageUrl" alt="ring" width="58" height="53"><label><label class="diamond">@item.ProductName </label></br><label class="varient">@(new HtmlString(item.AttributeInfo))</label></label></td><td class="quantity"><input name="pvQuantity@(item.ProductId)" type="number" value="@item.Quantity" id="pvQuantity@(item.ProductId)" class="adminInput" style="width: 40px;height: 23px;padding: 0 4px;border-radius: 2px;border: 1px solid #ccc;" /></td><td class="number">@item.UnitPriceExclTaxValue.ToString("#,##0.00")</td><td class="number">@item.DiscountExclTaxValue.ToString("#,##0.00")</td><td class="number">@item.SubTotalExclTaxValue.ToString("#,##0.00")</td>
+                    @:<tr class="second_row"><td class="varient_align"><img src="@item.ImageUrl" alt="ring" width="58" height="53"><label style="vertical-align: top;"><label class="diamond">@item.ProductName </label></br><label class="varient">@(new HtmlString(item.AttributeInfo))</label></label></td><td class="quantity" style="padding-top: 22px;"><input name="pvQuantity@(item.ProductId)" type="number" value="@item.Quantity" id="pvQuantity@(item.ProductId)" class="adminInput" style="width: 40px;height: 23px;padding: 0 4px;border-radius: 2px;border: 1px solid #ccc;" /></td><td class="number" style="padding-top: 22px;">@item.UnitPriceExclTaxValue.ToString("#,##0.00")</td><td class="number" style="padding-top: 22px;">@item.DiscountExclTaxValue.ToString("#,##0.00")</td><td class="number" style="padding-top: 22px;">@item.SubTotalExclTaxValue.ToString("#,##0.00")</td>
 
                     @:<td class="action_ring">
                     @:<input type="submit" name="btnSaveOrderItem@(item.ProductId)" value="" id="btnSaveOrderItem@(item.ProductId)" class="edit_save" style="display:none;" onclick=" return confirm('Are You Sure'); " />
