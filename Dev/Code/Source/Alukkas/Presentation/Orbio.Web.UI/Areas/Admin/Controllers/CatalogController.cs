@@ -258,13 +258,13 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                                           Published = model.Categories.Published,
                                           DisplayOrder = model.Categories.DisplayOrder,
                                           Picture = model.Categories.Picture,
-                                          MetaKeyWords = model.Categories.MetaKeyWords,
+                                          MetaKeywords = model.Categories.MetaKeyWords,
                                           MetaDescription = model.Categories.MetaDescription,
                                           MetaTitle = model.Categories.MetaTitle,
-                                          SearchEngine = model.Categories.SearchEngine,
+                                          Slug = model.Categories.SearchEngine,
                                           SubjectToACL = model.Categories.SubjectToACL,
-                                          ParentCategory=model.Categories.ParentCategory,
-                                          CategoryTemplate = model.Categories.CategoryTemplate,
+                                          ParentCategoryId=model.Categories.ParentCategory,
+                                          CategoryTemplateId = model.Categories.CategoryTemplate,
                                       };
             return categoryModel;
         }
