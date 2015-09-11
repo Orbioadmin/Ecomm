@@ -11,6 +11,7 @@ using Orbio.Core.Domain.Checkout;
 using Orbio.Services.Customers;
 using Orbio.Services.Security;
 using System.Text.RegularExpressions;
+using Orbio.Core.Utility;
 
 
 namespace Orbio.Services.Customers
@@ -250,7 +251,7 @@ namespace Orbio.Services.Customers
         /// </summary>
         /// <param name="request">Request</param>
         /// <returns>Result</returns>
-        public virtual CustomerRegistrationResult RegisterCustomer(CustomerRegistrationRequest request)
+        public virtual CustomerRegistrationResult RegisterCustomer(CustomerRegistrationRequest request,List<int> roles)
         {
 
             //if (request == null)
@@ -278,6 +279,7 @@ namespace Orbio.Services.Customers
             //    result.AddError(_localizationService.GetResource("Account.Register.Errors.EmailIsNotProvided"));
             //    return result;
             //}
+           
             if (String.IsNullOrWhiteSpace(request.password))
             {
                 return CustomerRegistrationResult.ProvidePassword;
@@ -357,7 +359,7 @@ namespace Orbio.Services.Customers
             //    _rewardPointsSettings.PointsForRegistration > 0)
             //    request.Customer.AddRewardPointsHistoryEntry(_rewardPointsSettings.PointsForRegistration, _localizationService.GetResource("RewardPoints.Message.EarnedForRegistration"));
 
-            var updatedresult = UpdateCustomer(request.customer);
+            var updatedresult = UpdateCustomer(request.customer,roles);
 
             return (CustomerRegistrationResult)updatedresult;
 
@@ -374,7 +376,7 @@ namespace Orbio.Services.Customers
             return customerRole;
         }
 
-        public virtual CustomerRegistrationResult UpdateCustomer(Customer customer)
+        public virtual CustomerRegistrationResult UpdateCustomer(Customer customer,List<int> roles)
         {
             //if (String.IsNullOrWhiteSpace(customer.ToString()))
             //    return CustomerRegistrationResult.;
@@ -387,6 +389,8 @@ namespace Orbio.Services.Customers
             {
                 action = "Update";
             }
+
+            var roleXml = (roles != null) ? Serializer.GenericSerializer(roles) : null;
 
             var outputSqlParam = new SqlParameter() { ParameterName = "@insertresult", Direction = System.Data.ParameterDirection.Output, DbType = System.Data.DbType.Int32 }; 
             var result = context.ExecuteFunction<Customer>("usp_Customer_InsertCustomer",
@@ -417,6 +421,7 @@ namespace Orbio.Services.Customers
                  new SqlParameter() { ParameterName = "@dob", Value = customer.DOB, DbType = System.Data.DbType.String },
                  new SqlParameter() { ParameterName = "@companyname", Value = customer.CompanyName, DbType = System.Data.DbType.String },
                  new SqlParameter() { ParameterName = "@mobileno", Value = customer.MobileNo, DbType = System.Data.DbType.String },
+                 new SqlParameter() { ParameterName = "@customerroles", Value = roleXml, DbType = System.Data.DbType.Xml },
                 outputSqlParam);
 
             //var updateresult = result.FirstOrDefault();

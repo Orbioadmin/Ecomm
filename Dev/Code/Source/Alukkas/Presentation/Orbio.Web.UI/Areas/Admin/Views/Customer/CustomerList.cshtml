@@ -1,46 +1,77 @@
 ﻿@model List<Orbio.Web.UI.Areas.Admin.Models.Customers.CustomerModel>
 
-@if (Model.Count>0)
-{ 
-foreach (var items in this.Model)
+@if (Model.Count > 0)
 {
-    int count=0;
-    <tr>
-        @*<td><input type="checkbox"></td>*@
-        <td class="align_center"><a style="cursor:pointer" href="@Url.Action("Edit", "Customer", new { id = items.Id })">@items.Id</a></td>
-        <td class="align_center">@items.Email</td>
-        <td class="align_center">@items.Name</td>
-        @if (items.CustomerRoles != null)
+    int rowCount = 1;
+    foreach (var items in this.Model)
+    {
+        int count = 0;
+        if (rowCount == 1)
         {
-            <td class="align_center">
-                @foreach (var role in items.CustomerRoles)
-                {
-                    count++;
-                    @((count>1) ? ", " : "")@role.Name;
-                }
-            </td>
+            <tr class="first_row">
+                <td class="varient_align"><a style="cursor:pointer" href="@Url.Action("EditCustomer", "Customer", new { id = items.Id })">@items.Id</a></td>
+                <td class="varient_align">
+                    @(!string.IsNullOrEmpty(items.Email) ? items.Email : "Guest")
+                </td>
+                <td class="varient_align">
+                    @(items.FirstName + " " + items.LastName)
+
+                </td>
+                <td class="varient_align">
+                    @if (items.CustomerRoles != null)
+                    {
+                        foreach (var role in items.CustomerRoles)
+                        {
+                            count++;
+                            @((count > 1) ? ", " : "")@role.Name;
+                        }
+
+                    }
+                               
+                            </td>
+
+                            <td class="varient_align">
+                                <label class="@(items.Active ? "img_sprite1" : "img_sprite")"></label>
+                            </td>
+                            <!--  <td>Your Store Name</td> -->
+                            <td class="varient_align">@items.CreatedOn</td>
+                            <td class="varient_align" style="text-align:right;padding-right:5px;">@items.LastActivity</td>
+                        </tr>
+    
+                    rowCount++;
         }
         else
         {
-            <td class="align_center"></td>
-        }
-        <td class="align_center">@items.CompanyName</td>
+            <tr class="second_row">
+                <td class="varient_align"><a style="cursor:pointer" href="@Url.Action(" editcustomer", "Customer" , new { id=items.Id })">@items.Id</a></td>
+                <td class="varient_align">
+                    @(!string.IsNullOrEmpty(items.Email) ? items.Email : "Guest")
+                </td>
+                <td class="varient_align">
+                    @(items.FirstName + " " + items.LastName)
 
-        <td class="align_center">
-            @if (items.Active)
-            {
-                <label class="img_sprite1"></label>
-            }
-            else
-            {
-                <label class="img_sprite"></label>
-            }
-        </td>
-        <!--  <td>Your Store Name</td> -->
-        <td class="align_center">@items.CreatedOn</td>
-        <td class="align_center" style="text-align:right;padding-right:5px;">@items.LastActivity</td>
-    </tr>
-}
+                </td>
+                <td class="varient_align">
+                    @if (items.CustomerRoles != null)
+                    {
+                        foreach (var role in items.CustomerRoles)
+                        {
+                            count++;
+                            @((count > 1) ? ", " : "")@role.Name;
+                        }
+                    }
+                </td>
+
+                <td class="varient_align">
+                    <label class="@(items.Active ? "img_sprite1" : "img_sprite")"></label>
+                </td>
+                <!--  <td>Your Store Name</td> -->
+                <td class="varient_align">@items.CreatedOn</td>
+                <td class="varient_align" style="text-align:right;padding-right:5px;">@items.LastActivity</td>
+            </tr>
+                    rowCount = 1;
+        }
+    }
 }
 else
 {
@@ -48,3 +79,6 @@ else
         <td class="align_center" colspan="8">No records to display</td>
     </tr>
 }
+
+
+   

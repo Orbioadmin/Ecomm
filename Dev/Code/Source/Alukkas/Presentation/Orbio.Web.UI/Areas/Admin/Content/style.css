@@ -231,6 +231,16 @@ ul, li{list-style: none; margin: 0; padding: 0;}
 .add_new_check {position: relative;top:8px;text-transform: uppercase;text-decoration: none;color:#3e3e3e;font-size: 15px;font-family: 'Roboto-Regular';float:left;}
 .start_order_date_email{width: 95%;height: 28px;border: 1px solid #E3E3E3;font-size: 13px;color: #373737;font-family: 'Roboto-Regular';border-radius: 4px;box-shadow: 0 6px 2px -2px #E3E3E3;}
 
+.start_order_date_email{width: 95%;height: 28px;border: 1px solid #E3E3E3;font-size: 13px;color: #373737;font-family: 'Roboto-Regular';border-radius: 4px;box-shadow: 0 9px 2px -2px #E3E3E3;}
+.search_customer{width: 95%;height: 34px;border: 1px solid #E3E3E3;font-size: 13px;color: #373737;font-family: 'Roboto-Regular';border-radius: 4px;/* box-shadow: 0 9px 2px -2px #E3E3E3; */text-align: center; margin-left: 8px;}
+.customer_multi_roles {width:11%;float:left;}
+.customer_multi_roles .multiselect {width: 247px;overflow: hidden;border: 1px solid #9fd2eb;}
+.order_status .multiselect {width: 126px;overflow: hidden;}
+.cust_role {background-color: #fff;padding: 14px 0px 15px 38px;}
+.cust_role ul{margin-left: 4px;height: 200px;overflow-y: scroll;padding-left: 8px;}
+.cust_role_edit {}
+.cust_role_edit ul{margin-left: 4px;height: 200px;overflow-y: scroll;padding-left: 8px;width: 239px;}
+
 /*paging*/
 
 .pager {
@@ -361,8 +371,8 @@ td h3:focus{border:0px ;}
 .order_total_main_table tbody td{font-family: 'Roboto-Regular';color:#373737;font-size: 13px;padding: 5px 0px;background-color: #fff;border:1px solid #ddd;}
 .align_center{text-align: center;}
 .edit_ring{background: url("../images/Edit_order_sprite.png")-249px -7px no-repeat;height:33px;width:25px;display:inline-block;cursor:pointer;}
-.img_sprite{background:url('../images/Edit_order_sprite.png') -85px  -18px;width:45px;height:29px;cursor:pointer}
-.img_sprite1{background:url('../images/image sprites.png') -262px -18px;width:35px;height:29px;margin-bottom:0px;cursor:pointer}
+.img_sprite{background:url('../images/cross.png') no-repeat;width:45px;height:25px;cursor:pointer}
+.img_sprite1{background:url('../images/tick.png') no-repeat; width:35px;height:25px;margin-bottom:0px;cursor:pointer}
 .order_list label{font-size: 13px;color:#373737;font-family: 'Roboto-Regular';font-weight: normal;}
 .man_search{background-color: #0082c7;color:#fff;border:1px solid #0082c7;padding: 5px}
 .shipmen_icon {background: url("../images/image sprites.png")-81px -42px no-repeat;height: 39px;width: 34px;display: inline-block;float: left;}
@@ -440,6 +450,7 @@ td h3:focus{border:0px ;}
 .less_width{width:1%;}
 .itabN1 .active{border-bottom: 5px solid #2b2b2b}
 .prev_button{color: #3e3e3e;text-decoration: none;font-size: 13px;font-family: 'Roboto-Regular';padding: 0px 12px;background: #fff;border:0px;}
+
 
 /* -------------- All Processing status color dot -------------- */
 

@@ -1,0 +1,58 @@
+﻿@model Orbio.Web.UI.Areas.Admin.Models.Customers.CustomerModel
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="container">
+    @using (Html.BeginForm("AddOrEditCustomer", "Customer", FormMethod.Post))
+    {
+        
+        <div class="main_edit_order">
+            @Html.HiddenFor(m => m.Id, new { Value=Model.Id })
+            <span class="edit_order_details"><span class="edit_order_icon"></span>EDIT A CUSTOMER<a href="@Url.Action("ListCustomer", "Customer")" class="back_to_checkout" style="top:0px;text-transform:none;font-size: small;color: #0082c7;">(back to customer list)</a></span>
+            <span class="back_to_order" style="padding-top:0px">
+                <input type="submit" value="Save" class="add_cat_button">
+                <a href="@Url.Action("DeleteCustomer", "Customer", new { Id=Model.Id })"> <input type="button" value="Delete" class="delete_cat_button" onclick="return confirm('are you sure');"></a>
+            </span>
+
+        </div>
+        <div class="tab_main_order col-md-12">
+            <ul id="myTab" role="tablist" class="tabview_order_ul">
+
+                <li class="active cctv_resp_li" role="presentation"><a aria-expanded="true" aria-controls="based" data-toggle="tab" role="tab" id="home-tab" href="#info">CUSTOMER INFO</a></li>
+
+                <li role="presentation our_value" class="control_resp_li"><a aria-controls="profile" data-toggle="tab" id="profile-tab" role="tab" href="#order">ORDER</a></li>
+
+                <li role="presentation our_value" class="control_resp_li"><a aria-controls="profile" data-toggle="tab" id="profile-tab" role="tab" href="#address">ADDRESS</a></li>
+            </ul>
+        </div>
+
+        <div class="tab_side_solutions col-md-12" style="margin-top: 14px;">
+            <div class="tab-content tab_content_solutions" id="myTabContent">
+                <div aria-labelledby="home-tab" id="info" class="tab-pane fade in active  " role="tabpanel">
+                    @Html.Action("CustomerInfo", "Customer", new { Id=Model.Id })
+                </div>
+
+                <div aria-labelledby="home-tab" id="order" class="tab-pane fade " role="tabpanel">
+                    @Html.Action("OrderDetails", "Customer")
+                </div>
+
+                <div aria-labelledby="home-tab" id="address" class="tab-pane fade " role="tabpanel">
+                    @Html.Action("CustomerAddress", "Customer")
+                </div>
+
+              </div>
+        </div>
+    }
+</div>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            // create DateTimePicker from input HTML element
+            $("#dob").kendoDatePicker();
+            $('#role').multiselect();
+        });   </script>
+
+}

@@ -1,0 +1,43 @@
+﻿@{
+      Layout = "~/Areas/Admin/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="container">
+    @using (Html.BeginForm("AddOrEditCustomer", "Customer", FormMethod.Post))
+    {
+        <div class="main_edit_order">
+           
+                <span class="edit_order_details"><span class="edit_order_icon"></span><a href="" class="add_new_check">ADD NEW CUSTOMER</a></span>
+                <span class="back_to_order" style="padding-top:0px">
+                    <input type="submit" value="Save" class="add_cat_button">
+                    <a href="@Url.Action("ListCustomer", "Customer")"> <input type="button" value="Cancel" class="delete_cat_button"></a>
+                </span>
+            
+        </div>
+        <div class="tab_main_order col-md-12">
+            <ul id="myTab" role="tablist" class="tabview_order_ul">
+
+                <li class="active cctv_resp_li" role="presentation"><a aria-expanded="true" aria-controls="based" data-toggle="tab" role="tab" id="home-tab" href="#info">CUSTOMER INFO</a></li>
+
+            </ul>
+        </div>
+
+        <div class="tab_side_solutions col-md-12">
+            <div class="tab-content tab_content_solutions" id="myTabContent">
+                <div aria-labelledby="home-tab" id="info" class="tab-pane fade in active  " role="tabpanel">
+                    @Html.Action("CustomerInfo", "Customer")
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            // create DateTimePicker from input HTML element
+            $("#dob").kendoDatePicker();
+            $('#role').multiselect();
+        });   </script>
+
+}

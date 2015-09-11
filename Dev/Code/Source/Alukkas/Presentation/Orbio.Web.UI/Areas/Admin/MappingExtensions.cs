@@ -13,6 +13,40 @@ namespace Orbio.Web.UI.Areas.Admin
     {
         #region Address
 
+        public static Orbio.Core.Domain.Checkout.Address ToModelBill(this Address entity)
+        {
+
+            Mapper.CreateMap<Address, Orbio.Core.Domain.Checkout.Address>()
+                 .ForMember(ev => ev.BillingAddress_Id, m => m.MapFrom(a => a.Id))
+                .ForMember(ev => ev.FirstName, m => m.MapFrom(a => a.FirstName))
+                .ForMember(ev => ev.LastName, m => m.MapFrom(a => a.LastName))
+                .ForMember(ev => ev.Address1, m => m.MapFrom(a => a.Address1 + ", " + a.Address2))
+                .ForMember(ev => ev.PhoneNumber, m => m.MapFrom(a => a.PhoneNumber))
+                .ForMember(ev => ev.ZipPostalCode, m => m.MapFrom(a => a.ZipPostalCode))
+                //.ForMember(ev => ev.Country, m => m.MapFrom(a => a.Country))
+                //.ForMember(ev => ev.State, m => m.MapFrom(a => a.States))
+                .ForMember(ev => ev.City, m => m.MapFrom(a => a.City));
+
+            return Mapper.Map<Address, Orbio.Core.Domain.Checkout.Address>(entity);
+        }
+
+        public static Orbio.Core.Domain.Checkout.Address ToModelShip(this Address entity)
+        {
+
+            Mapper.CreateMap<Address, Orbio.Core.Domain.Checkout.Address>()
+                 .ForMember(ev => ev.ShippingAddress_Id, m => m.MapFrom(a => a.Id))
+                .ForMember(ev => ev.FirstName, m => m.MapFrom(a => a.FirstName))
+                .ForMember(ev => ev.LastName, m => m.MapFrom(a => a.LastName))
+                .ForMember(ev => ev.Address1, m => m.MapFrom(a => a.Address1 + ", " + a.Address2))
+                .ForMember(ev => ev.PhoneNumber, m => m.MapFrom(a => a.PhoneNumber))
+                .ForMember(ev => ev.ZipPostalCode, m => m.MapFrom(a => a.ZipPostalCode))
+                //.ForMember(ev => ev.Country, m => m.MapFrom(a => a.Country))
+                //.ForMember(ev => ev.State, m => m.MapFrom(a => a.States))
+                .ForMember(ev => ev.City, m => m.MapFrom(a => a.City));
+
+            return Mapper.Map<Address, Orbio.Core.Domain.Checkout.Address>(entity);
+        }
+
         public static AddressModel ToModel(this Address entity)
         {
 

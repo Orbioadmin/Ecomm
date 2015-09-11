@@ -17,15 +17,15 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Attribute
             Id = spec.Id;
             Name = spec.Name;
             DisplayOrder = spec.DisplayOrder;
-
             SpecificationOption = (from s in spec.SpecificationAttributeOptions
                                    select new SpecificationAttributeOptionModel()
                                    {
-                                       Id=s.Id,
-                                       Name=s.Name,
-                                       DisplayOrder=s.DisplayOrder,
-                                       ProductCount=s.Product_SpecificationAttribute_Mapping.Count(),
+                                       Id = s.Id,
+                                       Name = s.Name,
+                                       DisplayOrder = s.DisplayOrder,
+                                       ProductCount = s.Product_SpecificationAttribute_Mapping.Count(),
                                    }).ToList();
+
         }
 
         public int Id { get; set; }

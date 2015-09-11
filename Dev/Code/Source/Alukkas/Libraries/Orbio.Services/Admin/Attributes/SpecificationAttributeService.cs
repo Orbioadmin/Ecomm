@@ -23,7 +23,11 @@ namespace Orbio.Services.Admin.Attributes
             using (var context = new OrbioAdminContext())
             {
                 var spec = context.SpecificationAttributes.Include("SpecificationAttributeOptions.Product_SpecificationAttribute_Mapping").Where(m => m.Id == Id).FirstOrDefault();
-                
+                //if (spec != null)
+                //{
+                //    spec = new SpecificationAttribute();
+                //    spec.SpecificationAttributeOptions = context.SpecificationAttributeOptions;
+                //}
                 return spec;
             }
         }

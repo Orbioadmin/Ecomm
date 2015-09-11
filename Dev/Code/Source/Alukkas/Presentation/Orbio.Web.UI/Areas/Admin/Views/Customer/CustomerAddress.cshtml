@@ -1,0 +1,39 @@
+﻿@model Orbio.Web.UI.Areas.Admin.Models.Customers.CustomerModel
+
+<table style="width:100%">
+    <tr>
+        <td style="width:50%">
+            <div class="billing_address_main">
+                <h3>Billing Address</h3>
+                <div class="left_address_form">
+                    <table>
+                        <tr><td>Full Name </td><td>:  @Model.BillingAddress.FirstName</td></tr>
+                        <tr><td>Phone </td><td>: @Model.BillingAddress.PhoneNumber</td></tr>
+                        <tr><td>Address </td><td>: @Model.BillingAddress.Address1</td></tr>
+                        <tr><td>City </td><td>: @Model.BillingAddress.City</td></tr>
+                        <tr><td>State/province </td><td>: @Model.BillingAddress.States</td></tr>
+                        <tr><td>Zip/Postal code</td><td>: @Model.BillingAddress.ZipPostalCode</td></tr>
+                        <tr><td>Contry</td><td>: @Model.BillingAddress.Country</td></tr>
+                    </table>
+                </div>
+            </div>
+        </td>
+        <td style="width:50%">
+            <div class="billing_address_main">
+                <div class="left_address_form">
+
+                    <h3>Shipping Address</h3>
+                    <table>
+                        <tr><td>Full Name </td><td>:  @Model.ShippingAddress.FirstName</td></tr>
+                        <tr><td>Phone </td><td>: @Model.ShippingAddress.PhoneNumber</td></tr>
+                        <tr><td>Address </td><td>: @Model.ShippingAddress.Address1</td></tr>
+                        <tr><td>City </td><td>: @Model.ShippingAddress.City</td></tr>
+                        <tr><td>State/province </td><td>: @Model.ShippingAddress.States</td></tr>
+                        <tr><td>Zip/Postal code</td><td>: @Model.ShippingAddress.ZipPostalCode</td></tr>
+                        <tr><td>Contry</td><td>: @Model.ShippingAddress.Country</td></tr>
+                    </table>
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>

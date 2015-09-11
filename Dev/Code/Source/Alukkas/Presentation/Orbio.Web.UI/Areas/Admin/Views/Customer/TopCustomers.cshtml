@@ -19,7 +19,7 @@
                 <td class="align_center">@rcr.Email</td>
                 <td class="align_center">@rcr.OrderTotal</td>
                 <td class="align_center">@rcr.OrderCount</td>
-                <td class="align_center"><a href="">View</a></td>
+                <td class="align_center"><a href="@Url.Action("EditCustomer", "Customer", new { Id= rcr.Customers})">View</a></td>
             </tr>
         }
         }

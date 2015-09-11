@@ -68,7 +68,7 @@ namespace Orbio.Services.Customers
         /// <returns>Update Password</returns>
         ChangePasswordResult ChangePassword(int id, string newPassword, int passwordFormat);
 
-        CustomerRegistrationResult RegisterCustomer(CustomerRegistrationRequest request);
+        CustomerRegistrationResult RegisterCustomer(CustomerRegistrationRequest request,List<int> roles);
 
         CustomerRegistrationResult ValidateNewCustomer(string userName);
     }
