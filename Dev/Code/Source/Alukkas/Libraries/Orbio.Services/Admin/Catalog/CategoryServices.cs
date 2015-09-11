@@ -1,6 +1,8 @@
-﻿using Nop.Data;
+﻿using Nop.Core.Domain;
+using Nop.Data;
 using Orbio.Core.Data;
 using Orbio.Core.Domain.Admin.Catalog;
+using Orbio.Core.Utility;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -12,6 +14,17 @@ namespace Orbio.Services.Admin.Catalog
 {
     public class CategoryServices : ICategoryServices
     {
+
+        private readonly IDbContext dbContext;
+
+        /// <summary>
+        /// instantiates Category service type
+        /// </summary>
+        /// <param name="context">db context</param>
+        public CategoryServices(IDbContext dbContext)
+        {
+            this.dbContext = dbContext;
+        }
         /// <summary>
         /// getting category details
         /// </summary>
@@ -29,7 +42,7 @@ namespace Orbio.Services.Admin.Catalog
                                                     {
                                                         Id = c.Id,
                                                         Name = c.Name,
-                                                        ParentCategory = c.ParentCategoryId,
+                                                        ParentCategoryId = c.ParentCategoryId,
                                                     }).ToList();
 
                 categoryModel.CategoryTemplateList = (from t in context.CategoryTemplates.AsQueryable()
@@ -53,70 +66,11 @@ namespace Orbio.Services.Admin.Catalog
         {
             using (var context = new OrbioAdminContext())
             {
-                var model = new CategoryDetails();
-                var categoryModel = new CategoryList();
+               var result = dbContext.ExecuteFunction<XmlResultSet>("usp_Catalog_GetCategoryDetails",
+               new SqlParameter() { ParameterName = "@id", Value = Id, DbType = System.Data.DbType.Int32 }).FirstOrDefault();
 
-                categoryModel = (from c in context.Categories
-                                 join pic in context.Pictures on c.PictureId equals pic.Id into temp
-                                 from j in temp.DefaultIfEmpty()
-                                 join url in context.UrlRecords on c.Id equals url.EntityId into tempurl
-                                 from u in tempurl.DefaultIfEmpty()
-                                 where c.Id == Id && u.EntityName == "Category"
-                                 select new CategoryList()
-                                 {
-                                     Id = c.Id,
-                                     Name = c.Name,
-                                     Description = c.Description,
-                                     MetaKeyWords = c.MetaDescription,
-                                     MetaDescription = c.MetaDescription,
-                                     ParentCategory = c.ParentCategoryId,
-                                     CategoryTemplate = c.CategoryTemplateId,
-                                     MetaTitle = c.MetaTitle,
-                                     Picture = j.RelativeUrl,
-                                     ShowOnHomePage = c.ShowOnHomePage,
-                                     Published = c.Published,
-                                     DisplayOrder = c.DisplayOrder,
-                                     SearchEngine = u.Slug,
-                                 }).FirstOrDefault();
-
-                categoryModel.ParentCategoryList = (from c in context.Categories
-                                                    where c.Deleted == false
-                                                    select new CategoryList()
-                                                    {
-                                                        Id = c.Id,
-                                                        Name = c.Name,
-                                                        ParentCategory = c.ParentCategoryId,
-                                                    }).ToList();
-
-                categoryModel.CategoryTemplateList = (from t in context.CategoryTemplates
-                                                      select new Templates()
-                                                      {
-                                                          Id = t.Id,
-                                                          Name = t.Name,
-                                                      }).ToList();
-
-                model.Categories = categoryModel;
-
-                model.Products = (from p in context.Products
-                                  join pc in context.Product_Category_Mapping.AsQueryable() on p.Id equals pc.ProductId
-                                  where pc.CategoryId == Id && p.Deleted == false
-                                  select new ProductDetails()
-                                  {
-                                      Id = p.Id,
-                                      Name = p.Name,
-                                      IsFeaturedProduct = pc.IsFeaturedProduct,
-                                      DisplayOrder = p.DisplayOrder,
-                                  }).ToList();
-
-                //model.Discount = (from d in context.Discounts.AsQueryable()
-                //                  join dc in context.Discount_AppliedToCategories.AsQueryable() on d.Id equals dc.Discount_Id
-                //                  where dc.Category_Id == Id
-                //                  select new DiscountDetails()
-                //                  {
-                //                      Id = d.Id,
-                //                      Name = d.Name,
-                //                  }).ToList();
-                return model;
+                var categoryDetails = Serializer.GenericDeSerializer<CategoryDetails>(result.XmlResult);
+                return categoryDetails;
             }
         }
 
@@ -138,11 +92,11 @@ namespace Orbio.Services.Admin.Catalog
                         {
                             category.Name = model.Name;
                             category.Description = model.Description;
-                            category.CategoryTemplateId = model.CategoryTemplate;
-                            category.MetaKeywords = model.MetaKeyWords;
+                            category.CategoryTemplateId = model.CategoryTemplateId;
+                            category.MetaKeywords = model.MetaKeywords;
                             category.MetaDescription = model.MetaDescription;
                             category.MetaTitle = model.MetaTitle;
-                            category.ParentCategoryId = model.ParentCategory;
+                            category.ParentCategoryId = model.ParentCategoryId;
                             // category.PictureId=model.Picture;
                             category.ShowOnHomePage = model.ShowOnHomePage;
                             category.SubjectToAcl = model.SubjectToACL;
@@ -154,7 +108,7 @@ namespace Orbio.Services.Admin.Catalog
                             var UrlRecord = context.UrlRecords.Where(m => m.EntityId == model.Id && m.EntityName == "Category").FirstOrDefault();
                             if (UrlRecord != null)
                             {
-                                UrlRecord.Slug = model.SearchEngine;
+                                UrlRecord.Slug = model.Slug;
                                 context.SaveChanges();
                             }
                         }
@@ -164,11 +118,11 @@ namespace Orbio.Services.Admin.Catalog
                         var category = context.Categories.FirstOrDefault();
                         category.Name = model.Name;
                         category.Description = model.Description;
-                        category.CategoryTemplateId = model.CategoryTemplate;
-                        category.MetaKeywords = model.MetaKeyWords;
+                        category.CategoryTemplateId = model.CategoryTemplateId;
+                        category.MetaKeywords = model.MetaKeywords;
                         category.MetaDescription = model.MetaDescription;
                         category.MetaTitle = model.MetaTitle;
-                        category.ParentCategoryId = model.ParentCategory;
+                        category.ParentCategoryId = model.ParentCategoryId;
                         // category.PictureId=model.Picture;
                         category.ShowOnHomePage = model.ShowOnHomePage;
                         category.SubjectToAcl = model.SubjectToACL;
@@ -187,7 +141,7 @@ namespace Orbio.Services.Admin.Catalog
 
                             UrlRecord.EntityId = Id;
                             UrlRecord.EntityName = "Category";
-                            UrlRecord.Slug = model.SearchEngine;
+                            UrlRecord.Slug = model.Slug;
                             UrlRecord.IsActive = true;
                             UrlRecord.LanguageId = 0;
                             context.UrlRecords.Add(UrlRecord);

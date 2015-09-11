@@ -39,20 +39,20 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Catalog
             Published = result.Categories.Published;
             DisplayOrder = result.Categories.DisplayOrder;
             Picture = result.Categories.Picture;
-            MetaKeyWords = result.Categories.MetaKeyWords;
+            MetaKeyWords = result.Categories.MetaKeywords;
             MetaDescription = result.Categories.MetaDescription;
             MetaTitle = result.Categories.MetaTitle;
-            SearchEngine = result.Categories.SearchEngine;
+            SearchEngine = result.Categories.Slug;
             SubjectToACL = result.Categories.SubjectToACL;
-            ParentCategory = result.Categories.ParentCategory;
-            CategoryTemplate = result.Categories.CategoryTemplate;
+            ParentCategory = result.Categories.ParentCategoryId;
+            CategoryTemplate = result.Categories.CategoryTemplateId;
 
             CategoryList = (from c in result.Categories.ParentCategoryList
                                   select new CategoryModel
                                   {
                                       Id = c.Id,
                                       Name = c.Name,
-                                      ParentCategory = c.ParentCategory,
+                                      ParentCategory = c.ParentCategoryId,
                                   }).ToList();
 
             CategoryTemplateList = (from c in result.Categories.CategoryTemplateList
