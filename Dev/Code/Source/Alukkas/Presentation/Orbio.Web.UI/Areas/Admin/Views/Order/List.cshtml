@@ -2,6 +2,11 @@
 @{
     Layout = "~/Areas/Admin/Views/Shared/_Layout1.cshtml";
 }
+<style>
+    span.k-datepicker, span.k-timepicker, span.k-datetimepicker, span.k-colorpicker, span.k-numerictextbox, span.k-combobox, span.k-dropdown, .k-toolbar .k-split-button {
+        width:100px;
+    }
+</style>
 @using (Html.BeginForm())
 {
     <div class="container">
@@ -11,14 +16,14 @@
         </div>
     </div>
     <div class="container">
-        <div class="col-md-12 order_list">
+        <div class="col-md-12 order_list" style="border-radius: 10px;margin-left: 11px;width:98%;height:60px">
             <div class="sart_date">
                 @Html.TextBoxFor(model => model.StartDate, new { @class = "start_order_date_email", placeholder = "From", style = "border-radius:0px:box-shadow:0px" })
             </div>
             <div class=" sart_date">
                 @Html.TextBoxFor(model => model.EndDate, new { @class = "start_order_date_email", placeholder = "To" })
             </div>
-            <div class="billing_address_text">
+            <div class="billing_address_text" style="width:19%">
                 @Html.TextBoxFor(model => model.CustomerEmail, new { @class = "start_order_date_email", placeholder = "Email",type="email" })
             </div>
             <div class="order_status">
@@ -33,7 +38,7 @@
             <div class="billing_address_text">
                 @Html.TextBoxFor(model => model.GoDirectlyToNumber, new { @class = "start_order_date_email", placeholder = "Order No" })
             </div>
-            <div class="billing_address_text">
+            <div class="billing_address_text" style="padding-top: 2px;">
                 <input type="submit" class="search_order_list" value="SEARCH">
             </div>
         </div>
@@ -46,9 +51,9 @@
 
             @*<span class="report_xls">Export to excel <label></label></span>*@
         </div>
-        <div class="col-md-12" style=" margin-bottom: 34px;">
+        <div  class="col-md-12" style=" margin-bottom: 34px;">
 
-            <table class="order_total_main_table" id="tableData">
+            <table class="item_admin_order" id="tableData">
                 <thead>
                 <td>order id</td>
                 <td>order status</td>
@@ -60,13 +65,14 @@
                 @*<td>view</td>*@</thead>
 
 
-                <tbody>
+                <tbody id="gridcontainer">
                     @Html.Action("OrderList", "Order")
                 </tbody>
             </table>
         </div>
-
     </div>
+    
+    
 }
 @section scripts {
 <script>
