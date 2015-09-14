@@ -67,10 +67,10 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             return View(resultModel);
         }
 
-        public List<Orbio.Web.UI.Areas.Admin.Models.Product.ProductModel> GetProductList(ProductListModel model)
+        public List<Orbio.Web.UI.Models.Catalog.ProductOverViewModel> GetProductList(ProductListModel model)
         {
             return (from p in _productService.GetAllProductsSeachOrDefault(model.SearchProductNameOrSku,model.CategoryId,model.ManufactureId)
-                    select new Orbio.Web.UI.Areas.Admin.Models.Product.ProductModel(p)).ToList();
+                    select new Orbio.Web.UI.Models.Catalog.ProductOverViewModel(p)).ToList();
         }
 
         public ActionResult Create()
@@ -86,7 +86,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             var product = model.ToEntity();
             product.CreatedOnUtc = DateTime.UtcNow;
             product.UpdatedOnUtc = DateTime.UtcNow;
-            _productService.AddNewProduct(product);
+            _productService.InsertNewProduct(product,model.SeName);
             return RedirectToAction("List");
             
         }
@@ -128,6 +128,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             if (product != null)
             {
                 model.Name = product.Name;
+                model.SeName = model.SeName;
                 model.CreatedOnUtc = product.CreatedOnUtc;
                 model.UpdatedOnUtc = product.UpdatedOnUtc;
             }

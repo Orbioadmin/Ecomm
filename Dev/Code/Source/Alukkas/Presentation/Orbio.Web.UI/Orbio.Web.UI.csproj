@@ -773,6 +773,7 @@
     <Content Include="Areas\Admin\Views\Product\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Customer\AddCustomerRole.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\_CreateOrUpdateSeo.cshtml" />
     <None Include="Properties\PublishProfiles\ecom.pubxml" />
     <Content Include="Areas\Admin\Views\Customer\ListCustomer.cshtml" />
     <Content Include="Areas\Admin\Views\Customer\CustomerList.cshtml" />

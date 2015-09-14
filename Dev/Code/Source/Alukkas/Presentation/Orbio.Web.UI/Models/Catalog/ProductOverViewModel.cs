@@ -33,6 +33,7 @@ namespace Orbio.Web.UI.Models.Catalog
             // TODO: Complete member initialization
             this.Id = product.Id;
             this.Name = product.Name;
+            this.Sku = product.Sku;
             this.ShortDescription = product.ShortDescription;
             this.FullDescription = product.FullDescription;
             this.SeName = product.SeName;
@@ -41,7 +42,8 @@ namespace Orbio.Web.UI.Models.Catalog
             this.CurrencyCode = product.CurrencyCode;
             this.GoldWeight = product.GoldWeight;
             this.ProductUnit = product.ProductUnit;
-            
+            this.StockQuantity = product.StockQuantity;
+            this.Published = product.Published;
             this.ComponentDetails = product.GetComponentDetails();
             this.Discounts = product.Discounts == null ? new List<Discount>() : product.Discounts;
         
@@ -65,11 +67,13 @@ namespace Orbio.Web.UI.Models.Catalog
         
         public string ShortDescription { get; set; }
         public string FullDescription { get; set; }
-       
+        public string Sku { get; set; }
         public string ImageRelativeUrl { get; set; }
         public string CurrencyCode { get; set; }
         public decimal GoldWeight { get; set; }
         public decimal ProductUnit { get; set; }
+        public int StockQuantity { get; set; }
+        public bool Published { get; set; }
         public Dictionary<string, string> ComponentDetails { get; set; }
         //price
         public ProductPriceModel ProductPrice { get; set; }
