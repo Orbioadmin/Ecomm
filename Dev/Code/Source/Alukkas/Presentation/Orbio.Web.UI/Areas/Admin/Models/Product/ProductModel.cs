@@ -15,15 +15,7 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Product
             AvailableWarehouses = new List<SelectListItem>();
             AvailableTaxCategories = new List<SelectListItem>();
         }
-        public ProductModel(Orbio.Core.Data.Product products)
-        {
-            Id = products.Id;
-            Name = products.Name;
-            ImageUrl = GetImageRelativeUrl(products);
-            Sku = products.Sku;
-            Price = products.Price;
-            StockQuantity = products.StockQuantity;
-        }
+
         public int Id { get; set; }
         public string Name { get; set; }
         public string ShortDescription { get; set; }
@@ -34,6 +26,7 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Product
         public string MetaKeywords { get; set; }
         public string MetaDescription { get; set; }
         public string MetaTitle { get; set; }
+        public string SeName { get; set; }
         public bool AllowCustomerReviews { get; set; }
         public string ProductTags { get; set; }
         public int ApprovedRatingSum { get; set; }
@@ -87,13 +80,5 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Product
         public List<SelectListItem> AvailableDeliveryDates { get; set; }
         public List<SelectListItem> AvailableWarehouses { get; set; }
         public List<SelectListItem> AvailableTaxCategories { get; set; }
-
-        public string GetImageRelativeUrl(Orbio.Core.Data.Product products)
-        {
-            var baseUrl = ConfigurationManager.AppSettings["ImageServerBaseUrl"];
-            string url = (from pic in products.Product_Picture_Mapping.Select(p => p.Picture)
-                          select pic.RelativeUrl).FirstOrDefault();
-            return baseUrl + url;
-        }
     }
 }

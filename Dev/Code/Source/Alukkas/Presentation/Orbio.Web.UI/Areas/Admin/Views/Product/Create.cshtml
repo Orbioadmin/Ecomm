@@ -7,7 +7,7 @@
 <div class="container">
     <div class="main_edit_order">
         <span class="edit_order_details"><span class="edit_order_icon"></span><a href="" class="add_new_check">Create product</a></span>
-        <span class="back_to_order"><u><a href="@Url.Action("List","Product")">Back to order list</a></u></span>
+        <span class="back_to_order"><u><a href="@Url.Action("List","Product")">Back to product list</a></u></span>
     </div>
     @using (Html.BeginForm("Create", "Product", FormMethod.Post, new { Id = "formaddproduct" }))
     {
@@ -110,10 +110,10 @@
             </div>
         </div>
         <div class="tab-content product_add_tab_main" id="myTabContent">
-            @Html.Partial("_CreatOrUpdateInfo", Model);
+            @Html.Partial("_CreatOrUpdateInfo", Model)
 
             <div aria-labelledby="home-tab" id="seo" class="tab-pane fade" role="tabpanel">
-                rfgerghrthfgrtghrth
+                @Html.Partial("_CreateOrUpdateSeo", Model)
             </div>
         </div>
 
@@ -197,5 +197,14 @@
         });
 
     </script>
+
+<script>
+    function GenerateProductSlug() {
+        var key = $("#Name").val().trim();
+        key = key.replace(/ /g, "-");
+        $("#slug").val(key);
+    }
+</script>
+
 }
 

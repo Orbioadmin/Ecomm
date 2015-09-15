@@ -9,16 +9,33 @@ namespace Orbio.Services.Admin.Products
 {
     public partial interface IProductService
     {
-        //Get list of products by search or default
-        List<Product> GetAllProductsSeachOrDefault(string nameOrSku, int? categoryId, int? manufatureId);
+        /// <summary>
+        /// Get list of products by search or default
+        /// </summary>
+        /// <param name="nameOrSku"></param>
+        /// <param name="categoryId"></param>
+        /// <param name="manufatureId"></param>
+        /// <returns></returns>
+        List<Orbio.Core.Domain.Catalog.Product> GetAllProductsSeachOrDefault(string nameOrSku, int? categoryId, int? manufatureId);
 
-        //Get product by id
+        /// <summary>
+        /// Get product details by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         Product GetProductById(int id);
 
-        //Add new product
-        void AddNewProduct(Product product);
+        /// <summary>
+        /// Insert new Product
+        /// </summary>
+        /// <param name="product"></param>
+        /// <param name="slug"></param>
+        void InsertNewProduct(Product product,string slug);
 
-        //Delete selected products
+        /// <summary>
+        /// Delete selected products
+        /// </summary>
+        /// <param name="idList"></param>
         void DeleteSelectedProducts(int[] idList);
     }
 }

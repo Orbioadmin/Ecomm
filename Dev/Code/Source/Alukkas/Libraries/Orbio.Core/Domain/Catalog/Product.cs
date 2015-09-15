@@ -115,5 +115,17 @@ namespace Orbio.Core.Domain.Catalog
         /// </summary>
         public List<Discount> Discounts { get; set; }
 
+        /// <summary>
+        /// gets or sets the StockQuantity
+        /// </summary>
+        [DataMember]
+        public int StockQuantity { get; set; }
+
+        /// <summary>
+        /// gets or sets the Product is publish or not
+        /// </summary>
+        [DataMember]
+        public bool Published { get; set; }
+
     }
 }

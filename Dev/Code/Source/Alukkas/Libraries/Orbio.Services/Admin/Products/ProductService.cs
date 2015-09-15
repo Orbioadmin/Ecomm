@@ -7,49 +7,55 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 using System.Data.Entity.SqlServer;
 using System.Linq.Expressions;
+using Nop.Data;
+using System.Data.SqlClient;
+using Nop.Core.Domain;
+using Orbio.Core.Utility;
 namespace Orbio.Services.Admin.Products
 {
     public partial class ProductService:IProductService
     {
-        #region Methods
+        #region Fields
+        private readonly IDbContext dbContext;
+        #endregion
 
-        //Get list of products by search or default
-        public List<Product> GetAllProductsSeachOrDefault(string nameOrSku,int? categoryId,int? manufatureId)
+        public ProductService(IDbContext dbContext)
         {
-            using (var context = new OrbioAdminContext())
-            {
-                context.Products.Include("Product_Picture_Mapping.Picture").Load();
-                context.Products.Include("Product_PriceComponent_Mapping.PriceComponent").Load();
-                context.Products.Include("Product_ProductComponent_Mapping.ProductComponent").Load();
-                var productList = (from p in context.Products
-                                   where p.Deleted != true
-                                   select p).ToList();
-                if (!string.IsNullOrEmpty(nameOrSku))
-                {
-                    productList = (from p in productList
-                                   where (p.Name==nameOrSku || p.Sku==nameOrSku)
-                                   select p).ToList();
-                }
-                if (categoryId > 0)
-                {
-                    productList = (from p in productList
-                                   join pcm in context.Product_Category_Mapping on p.Id equals pcm.ProductId
-                                   where pcm.CategoryId == categoryId
-                                   select p).ToList();
-                }
-                if (manufatureId > 0)
-                {
-                    productList = (from p in productList
-                                   join pmm in context.Product_Manufacturer_Mapping on p.Id equals pmm.ProductId
-                                   where pmm.ManufacturerId == manufatureId
-                                   select p).ToList();
-                }
-
-                return productList;
-            }
+            this.dbContext = dbContext;
         }
 
-        //Get product by id
+        #region Methods
+
+        /// <summary>
+        /// Get list of products by search or default
+        /// </summary>
+        /// <param name="nameOrSku"></param>
+        /// <param name="categoryId"></param>
+        /// <param name="manufatureId"></param>
+        /// <returns></returns>
+        public List<Orbio.Core.Domain.Catalog.Product> GetAllProductsSeachOrDefault(string nameOrSku, int? categoryId, int? manufatureId)
+        {
+
+            var result = dbContext.ExecuteFunction<XmlResultSet>("usp_OrbioAdmin_GetAllProductList",
+            new SqlParameter() { ParameterName = "@nameOrSku", Value = nameOrSku, DbType = System.Data.DbType.String },
+            new SqlParameter() { ParameterName = "@categoryId", Value = categoryId, DbType = System.Data.DbType.Int32 },
+            new SqlParameter() { ParameterName = "@manufatureId", Value = manufatureId, DbType = System.Data.DbType.Int32 }
+             ).FirstOrDefault();
+
+            if (result != null && result.XmlResult != null)
+            {
+                var products = Serializer.GenericDeSerializer<List<Orbio.Core.Domain.Catalog.Product>>(result.XmlResult);
+                return products;
+            }
+
+            return new List<Orbio.Core.Domain.Catalog.Product>();
+        }
+
+        /// <summary>
+        /// Get product details by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public Product GetProductById(int id)
         {
             using (var context = new OrbioAdminContext())
@@ -64,8 +70,12 @@ namespace Orbio.Services.Admin.Products
             }
         }
 
-        //Add new product
-        public void AddNewProduct(Product product)
+        /// <summary>
+        /// Insert new Product
+        /// </summary>
+        /// <param name="product"></param>
+        /// <param name="slug"></param>
+        public void InsertNewProduct(Product product, string slug)
         {
             using (var context = new OrbioAdminContext())
             {
@@ -73,10 +83,25 @@ namespace Orbio.Services.Admin.Products
                 productData = product;
                 context.Products.Add(productData);
                 context.SaveChanges();
+                int Id = productData.Id;
+                var UrlRecord = context.UrlRecords.Where(m => m.EntityName == "Product").FirstOrDefault();
+                if (UrlRecord != null)
+                {
+                    UrlRecord.EntityId = Id;
+                    UrlRecord.EntityName = "Product";
+                    UrlRecord.Slug = slug;
+                    UrlRecord.IsActive = true;
+                    UrlRecord.LanguageId = 0;
+                    context.UrlRecords.Add(UrlRecord);
+                    context.SaveChanges();
+                }
             }
         }
 
-        //Delete selected products
+        /// <summary>
+        /// Delete selected products
+        /// </summary>
+        /// <param name="idList"></param>
         public void DeleteSelectedProducts(int[] idList)
         {
             using (var context = new OrbioAdminContext())
