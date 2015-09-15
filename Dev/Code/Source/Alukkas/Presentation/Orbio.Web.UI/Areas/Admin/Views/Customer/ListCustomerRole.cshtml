@@ -71,37 +71,39 @@
                                 using (Html.BeginForm("EditCustomerRole", "Customer",new{ Id=@item.Id }, FormMethod.Post, new { Id = "formEditCustomerRole"+item.Id }))
                                 {
                                 @:<tr class="first_row">
-                                    <td class="action_ring"><label name="txtrolename@(item.Id)" id="txtrolename@(item.Id)">@item.Name</label>
-                                        <input type="text" name="txtname@(item.Id)" value="@item.Name" id="txtname@(item.Id)" style="display:none;font-size: small;"></td>
-                                    @*<td class="action_ring">
-                                        <label class="@(item.FreeShipping ? "img_sprite1" : "img_sprite")"></label>
-                                    </td>
-                                    <td class="action_ring">
-                                        <label class="@(item.TaxExempt ? "img_sprite1" : "img_sprite")"></label>
+                <td class="action_ring">
+                    <label name="txtrolename@(item.Id)" id="txtrolename@(item.Id)">@item.Name</label>
+                    <input type="text" name="txtname@(item.Id)" value="@item.Name" id="txtname@(item.Id)" style="display:none;font-size: small;">
+                </td>
+                @*<td class="action_ring">
+                        <label class="@(item.FreeShipping ? "img_sprite1" : "img_sprite")"></label>
+                    </td>
+                    <td class="action_ring">
+                        <label class="@(item.TaxExempt ? "img_sprite1" : "img_sprite")"></label>
 
-                                    </td>*@
-                                    <td class="action_ring">
-                                        <label class="@(item.Active ? "img_sprite1" : "img_sprite")" name="lblactive@(item.Id)" id="lblactive@(item.Id)"></label>
-                                        <select name="drpactive@(item.Id)" id="drpactive@(item.Id)" value="@item.Active" style="display:none;">
-                                            <option value=" true">True</option>
-                                            <option value="false">False</option>
-                                    </select>
-                                    </td>
-                                    <td class="action_ring">
-                                        <label class="@(item.IsSystemRole ? "img_sprite1" : "img_sprite")" name="lblsystemrole@(item.Id)" id="lblsystemrole@(item.Id)"></label>
-                                        <select name="drpsystemrole@(item.Id)" id="drpsystemrole@(item.Id)" value="@item.IsSystemRole" style="display:none;">
-                                            <option value="True">True</option>
-                                            <option value="False">False</option>
-                                        </select>
-                                    </td>
-                                @:<td class="action_ring">
-                                    @:<input type="submit" name="btnSaveOrderItem@(item.Id)" value="" id="btnSaveOrderItem@(item.Id)" class="edit_save" style="display:none;" />
-                                    @:<input type="submit" name="btnCancelOrderItem@(item.Id)" value="" onclick="toggleOrderItemEdit@(item.Id)    (false);return false; " id="btnCancelOrderItem@(item.Id)" class="edit_cancel" style="display:none;" />
-                                    @: <input type="button" name="btnEditOrderItem@(item.Id)" value="" onclick="toggleOrderItemEdit@(item.Id)(true);return false; " id="btnEditOrderItem@(item.Id)" class="edit_ring" />
-                                    @: <a href="@Url.Action("DeleteCustomerRole", "Customer", new { Id = item.Id })"><input type="button" name="btnDeleteOrderItem@(item.Id)" value="" id="btnDeleteOrderItem@(item.Id)" class="delete_ring" onclick=" return confirm('Are You Sure'); " /></a>
-                                    
-                                @:</td>
-                            @:</tr>
+                    </td>*@
+                <td class="action_ring">
+                    <label class="@(item.Active ? "img_sprite1" : "img_sprite")" name="lblactive@(item.Id)" id="lblactive@(item.Id)"></label>
+                    <select name="drpactive@(item.Id)" id="drpactive@(item.Id)" value="@item.Active" style="display:none;">
+                        <option value=" true">True</option>
+                        <option value="false">False</option>
+                    </select>
+                </td>
+                <td class="action_ring">
+                    <label class="@(item.IsSystemRole ? "img_sprite1" : "img_sprite")" name="lblsystemrole@(item.Id)" id="lblsystemrole@(item.Id)"></label>
+                    <select name="drpsystemrole@(item.Id)" id="drpsystemrole@(item.Id)" value="@item.IsSystemRole" style="display:none;">
+                        <option value="True">True</option>
+                        <option value="False">False</option>
+                    </select>
+                </td>
+                @:<td class="action_ring">
+                    @:<input type="submit" name="btnSaveOrderItem@(item.Id)" value="" id="btnSaveOrderItem@(item.Id)" class="edit_save" style="display:none;" />
+                    @:<input type="submit" name="btnCancelOrderItem@(item.Id)" value="" onclick="toggleOrderItemEdit@(item.Id)    (false);return false; " id="btnCancelOrderItem@(item.Id)" class="edit_cancel" style="display:none;" />
+                    @: <input type="button" name="btnEditOrderItem@(item.Id)" value="" onclick="toggleOrderItemEdit@(item.Id)(true);return false; " id="btnEditOrderItem@(item.Id)" class="edit_ring" />
+                    @: <a href="@Url.Action("DeleteCustomerRole", "Customer", new { Id = item.Id })"><input type="button" name="btnDeleteOrderItem@(item.Id)" value="" id="btnDeleteOrderItem@(item.Id)" class="delete_ring" onclick=" return confirm('Are You Sure'); " /></a>
+
+                    @:</td>
+    @:</tr>
                               }
                                 count++;
                             }

@@ -7,26 +7,107 @@
 <div class="container">
     <div class="main_edit_order">
         <span class="edit_order_details"><span class="edit_order_icon"></span><a href="">PRODUCT COMPONENT</a></span>
-        <span class="back_to_order"><a href="@Url.Action("AddProductComponent", "Component")"><input type="button" value="Add New" class="add_cat_button"></a></span>
+        @*<span class="back_to_order"><a href="@Url.Action("AddProductComponent", "Component")"><input type="button" value="Add New" class="add_cat_button"></a></span>*@
     </div>
-    <div class="col-md-12">
-        <table class="product_attr_table">
-            <thead>
-            <td>Name</td>
-            <td>Edit/Delete</td>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>@item.Name</td>
-                        <td>
-                            <a href="@Url.Action("EditProductComponent", "Component", new { Id = item.Id })"><label class="edit_ring"></label></a>
-                            <a href="@Url.Action("DeleteProductComponent", "Component", new { Id = item.Id })"><label class="delete_ring" onclick=" return confirm('Are You Sure'); "></label></a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+    <div class="col-md-12" style=" margin-bottom: 34px;background-color: #fff;margin-top: 10px;">
+        <div class="col-md-9 main_order_table">
+            <table class=" item_admin_order">
+                <thead>
+                <td style="width:40%">Name</td>
+                <td>Is Active</td>
+                <td>Edit/Delete</td>
+                </thead>
+                <tbody>
+                    @if (Model != null)
+                    {
+                        if (Model.Count > 0)
+                        {
+                            int count = 1;
+                            foreach (var item in Model)
+                            {
+                                <script type="text/javascript">
+                                    $(document).ready(function () {
+                                        toggleOrderItemEdit@(item.Id)(false);
+                                    });
+                                </script>
+
+                                <script type="text/javascript">
+                                    function toggleOrderItemEdit@(item.Id)(editMode) {
+                                        if (editMode) {
+                                            $('#drpactive@(item.Id)').show();
+                                            $('#lblactive@(item.Id)').hide();
+                                            $('#lblname@(item.Id)').hide();
+                                            $('#txtname@(item.Id)').show();
+                                            $('#btnDeleteOrderItem@(item.Id)').hide();
+                                            $('#btnEditOrderItem@(item.Id)').hide();
+                                            $('#btnSaveOrderItem@(item.Id)').show();
+                                            $('#btnCancelOrderItem@(item.Id)').show();
+                                        }
+                                        else {
+                                            $('#lblactive@(item.Id)').show();
+                                            $('#drpactive@(item.Id)').hide();
+                                            $('#lblname@(item.Id)').show();
+                                            $('#txtname@(item.Id)').hide();
+                                            $('#btnDeleteOrderItem@(item.Id)').show();
+                                            $('#btnEditOrderItem@(item.Id)').show();
+                                            $('#btnSaveOrderItem@(item.Id)').hide();
+                                            $('#btnCancelOrderItem@(item.Id)').hide();
+                                        }
+                                    }
+                                </script>
+                        
+                        using(Html.BeginForm("EditProductComponent", "Component",new{ Id=@item.Id }, FormMethod.Post, new { Id = "formEditProductComponent"+item.Id })) 
+                            {
+                                if (count == 1)
+                                {
+                                    @:<tr class="first_row">
+                                count++;
+                                }
+                                else
+                                {
+                                    @:<tr class="second_row">
+                                    count = 1;
+                                }
+                                <td class="varient_align" style="text-align:center">
+                                    <label name="lblnam@(item.Id)" id="lblname@(item.Id)">@item.Name</label>
+                                    <input type="text" name="txtname@(item.Id)" value="@item.Name" id="txtname@(item.Id)" style="display:none;font-size: small;">
+                                </td>
+                                <td class="varient_align" style="text-align:center">
+                                    <label class="@(item.IsActive ? "img_sprite1" : "img_sprite")" name="lblactive@(item.Id)" id="lblactive@(item.Id)"></label>
+                                    <select name="drpactive@(item.Id)" id="drpactive@(item.Id)" value="@item.IsActive" style="display:none;">
+                                        <option value=" true">True</option>
+                                        <option value="false">False</option>
+                                    </select>
+                                </td>
+                                @:<td class="varient_align" style="text-align:center">
+                                    @:<input type="submit" name="btnSaveOrderItem@(item.Id)" value="" id="btnSaveOrderItem@(item.Id)" class="edit_save" style="display:none;" />
+                                    @:<input type="submit" name="btnCancelOrderItem@(item.Id)" value="" onclick="toggleOrderItemEdit@(item.Id)    (false);return false; " id="btnCancelOrderItem@(item.Id)" class="edit_cancel" style="display:none;" />
+                                    @: <input type="button" name="btnEditOrderItem@(item.Id)" value="" onclick="toggleOrderItemEdit@(item.Id)(true);return false; " id="btnEditOrderItem@(item.Id)" class="edit_ring" />
+                                    <a href="@Url.Action("DeleteProductComponent", "Component", new { Id = item.Id })"><input type="button" name="btnDeleteOrderItem@(item.Id)" value="" id="btnDeleteOrderItem@(item.Id)" class="delete_ring" onclick=" return confirm('Are You Sure'); " /></a>
+                                @:</td>
+                                @:</tr>
+                    }
+                    }
+                    }
+                    
+                        else
+                        {
+                            <tr>
+                                <td colspan="2">No records to display</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="2">No records to display</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-3 add_new_projects">
+            @Html.Action("AddProductComponent", "Component")
+        </div>
     </div>
 </div>

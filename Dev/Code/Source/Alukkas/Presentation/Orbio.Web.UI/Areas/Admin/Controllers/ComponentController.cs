@@ -40,16 +40,33 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         public ActionResult AddProductComponent()
         {
             var model = new ProductComponentModel();
-            return View("AddOrEditProductComponent", model);
+            return PartialView(model);
         }
 
-        public ActionResult EditProductComponent(int Id)
+        [HttpPost]
+        public ActionResult EditProductComponent(int Id,FormCollection form)
         {
-            var result = productComponentService.GetProductComponentById(Id);
-            var model = new ProductComponentModel(result);
-            return View("AddOrEditProductComponent", model);
+            var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
+            var curCustomer = workContext.CurrentCustomer;
+            if(form!=null)
+            {
+                var name = form["txtname" + Id];
+                var active = form["drpactive" + Id];
+                var productComponent = new ProductComponentModel
+                {
+                    Id = Id,
+                    Name = name,
+                    IsActive = Convert.ToBoolean(active),
+                };
+                int result = productComponentService.AddOrUpdateProductComponent(productComponent.Id, productComponent.Name, productComponent.IsActive, curCustomer.Email);
+            }
+            return RedirectToAction("ProductComponent");
+            //var result = productComponentService.GetProductComponentById(Id);
+            //var model = new ProductComponentModel(result);
+            //return View("AddOrEditProductComponent", model);
         }
 
+        [HttpPost]
         public ActionResult AddOrUpdateProductComponent(ProductComponentModel model)
         {
             var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
@@ -82,7 +99,27 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         public ActionResult AddPriceComponent()
         {
             var model = new PriceComponentModel();
-            return View("AddOrEditPriceComponent", model);
+            return PartialView(model);
+        }
+
+        [HttpPost]
+        public ActionResult EditPriceComponent(int Id, FormCollection form)
+        {
+            var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
+            var curCustomer = workContext.CurrentCustomer;
+            if (form != null)
+            {
+                var name = form["txtname" + Id];
+                var active = form["drpactive" + Id];
+                var productComponent = new ProductComponentModel
+                {
+                    Id = Id,
+                    Name = name,
+                    IsActive = Convert.ToBoolean(active),
+                };
+                int result = priceComponentService.AddOrUpdatePriceComponent(productComponent.Id, productComponent.Name, productComponent.IsActive, curCustomer.Email);
+            }
+            return RedirectToAction("PriceComponent");
         }
 
         public ActionResult EditPriceComponent(int Id)
@@ -92,6 +129,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             return View("AddOrEditPriceComponent", model);
         }
 
+        [HttpPost]
         public ActionResult AddOrUpdatePriceComponent(PriceComponentModel model)
         {
             var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();

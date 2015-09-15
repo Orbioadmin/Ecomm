@@ -773,6 +773,10 @@
     <Content Include="Areas\Admin\Views\Product\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Customer\AddCustomerRole.cshtml" />
+    <Content Include="Areas\Admin\Views\Attribute\AddProductAttribute.cshtml" />
+    <Content Include="Areas\Admin\Views\Attribute\AddSpecificationAttributeOption.cshtml" />
+    <Content Include="Areas\Admin\Views\Component\AddProductComponent.cshtml" />
+    <Content Include="Areas\Admin\Views\Component\AddPriceComponent.cshtml" />
     <None Include="Properties\PublishProfiles\ecom.pubxml" />
     <Content Include="Areas\Admin\Views\Customer\ListCustomer.cshtml" />
     <Content Include="Areas\Admin\Views\Customer\CustomerList.cshtml" />
@@ -990,7 +994,6 @@
     <Content Include="Areas\Admin\Views\ShoppingCart\_CartCustomer.cshtml" />
     <Content Include="Areas\Admin\Views\ShoppingCart\CurrentWishLists.cshtml" />
     <Content Include="Areas\Admin\Views\ShoppingCart\_WishListCustomer.cshtml" />
-    <Content Include="Areas\Admin\Views\Attribute\_AddOrEditProductAttribute.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout1.cshtml" />
     <Content Include="Areas\Admin\Views\Attribute\SpecificationAttribute.cshtml" />
     <Content Include="Areas\Admin\Views\Attribute\ListSpecificationAttribute.cshtml" />
@@ -1000,9 +1003,7 @@
     <Content Include="Areas\Admin\Views\Attribute\ListCheckoutAttribute.cshtml" />
     <Content Include="Areas\Admin\Views\Attribute\AddOrEditCheckoutAttribute.cshtml" />
     <Content Include="Areas\Admin\Views\Component\ListProductComponent.cshtml" />
-    <Content Include="Areas\Admin\Views\Component\AddOrEditProductComponent.cshtml" />
     <Content Include="Areas\Admin\Views\Component\ListPriceComponent.cshtml" />
-    <Content Include="Areas\Admin\Views\Component\AddOrEditPriceComponent.cshtml" />
     <Content Include="Areas\Admin\Views\Attribute\CheckoutAttribute.cshtml" />
     <Content Include="Areas\Admin\Views\Attribute\CheckoutAttributeValue.cshtml" />
     <Content Include="Areas\Admin\Views\Attribute\AddOrEditCheckoutAttributeValue.cshtml" />

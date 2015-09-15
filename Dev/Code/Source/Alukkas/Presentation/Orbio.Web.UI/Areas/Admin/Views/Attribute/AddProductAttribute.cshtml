@@ -1,0 +1,11 @@
+﻿@model Orbio.Web.UI.Areas.Admin.Models.Attribute.ProductAttributeModel
+
+<h3>New Product Attribute</h3>
+@*<form action="" method="">*@
+@using (Html.BeginForm("AddOrUpdateProductAttribute", "Attribute", FormMethod.Post, new { }))
+{
+    @Html.TextBoxFor(m => m.Name, new { @class = "text_sku", required = "required", onkeyup = "javascript:GenerateScript()", id = "rolename", @placeholder = "Name" })
+    @Html.TextBoxFor(m => m.Description, new { @class = "text_sku", id = "rolesysname", @placeholder = "Description" })
+    
+    <input type="submit" value="Add Product Attribute" class="add_product_submit">
+}

@@ -1,7 +1,7 @@
 ﻿@model Orbio.Web.UI.Areas.Admin.Models.Catalog.CategoryDetailModel
 
-
-    <div class="col-md-9 main_order_table" style="width: 100%;">
+<div class="col-md-12" style=" margin-bottom: 34px;background-color: #fff;margin-top: 10px;width:100%">
+    <div class="col-md-9 main_order_table" style="width: 72%;">
         <table class="item_admin_order">
             <thead>
             <td>Product</td>
@@ -13,26 +13,26 @@
                 {
                     if (this.Model.Products.Count > 0)
                     {
-                        int count=1;
+                        int count = 1;
                         foreach (var item in Model.Products)
                         {
-                            if(count==1)
-                            { 
-                            <tr class="first_row">
-                                <td class="varient_align">@item.Name</td>
-                                <td class="varient_align">@item.IsFeaturedProduct</td>
-                                <td class="varient_align">@item.DisplayOrder</td>
-                                <td class="varient_align"><a style="cursor:pointer" href="@Url.Action("DeleteCategoryProduct", "Catalog", new { Id = Model.Categories.Id, cId = item.Id })" onclick=" return confirm('Are You Sure'); "><label class="delete_ring"></label></a></td>
-                            </tr>
+                            if (count == 1)
+                            {
+                                <tr class="first_row">
+                                    <td class="varient_align">@item.Name</td>
+                                    <td class="varient_align" style="text-align:center"><label class="@(item.IsFeaturedProduct?"img_sprite1" : "img_sprite")"></label></td>
+                                    <td class="varient_align" style="text-align:center">@item.DisplayOrder</td>
+                                    <td class="varient_align" style="text-align:center"><a style="cursor:pointer" href="@Url.Action("DeleteCategoryProduct", "Catalog", new { Id = Model.Categories.Id, cId = item.Id })" onclick=" return confirm('Are You Sure'); "><label class="delete_ring"></label></a></td>
+                                </tr>
                                 count++;
                             }
                             else
                             {
                                 <tr class="second_row">
                                     <td class="varient_align">@item.Name</td>
-                                    <td class="varient_align">@item.IsFeaturedProduct</td>
-                                    <td class="varient_align">@item.DisplayOrder</td>
-                                    <td class="varient_align"><a style="cursor:pointer" href="@Url.Action("DeleteCategoryProduct", "Catalog", new { Id = Model.Categories.Id, cId = item.Id })" onclick=" return confirm('Are You Sure'); "><label class="delete_ring"></label></a></td>
+                                    <td class="varient_align" style="text-align:center"><label class="@(item.IsFeaturedProduct?"img_sprite1" : "img_sprite")"></label></td>
+                                    <td class="varient_align" style="text-align:center">@item.DisplayOrder</td>
+                                    <td class="varient_align" style="text-align:center"><a style="cursor:pointer" href="@Url.Action("DeleteCategoryProduct", "Catalog", new { Id = Model.Categories.Id, cId = item.Id })" onclick=" return confirm('Are You Sure'); "><label class="delete_ring"></label></a></td>
                                 </tr>
                                 count = 1;
                             }
@@ -53,9 +53,15 @@
                 }
             </tbody>
         </table>
+        </div>
+        <div class="col-md-3 add_new_projects">
+           @{
+               Html.RenderPartial("DiscountCategory", this.Model);
+           }
+        </div>
     </div>
 
-  
+
     <script>
         function Delete(Id) {
             var r = confirm("Do you want to delete ?");

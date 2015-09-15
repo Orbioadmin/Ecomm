@@ -12,14 +12,16 @@
         </span>
     </div>
 
-    <div class="col-md-12 order_list">
+    <div class="col-md-12 order_list" style="border-radius: 10px;margin-left: 11px;width:98%;height:60px">
         @using (Html.BeginForm("SearchManufacturer", "Catalog", FormMethod.Post))
         {
             <div class="col-md-2 colmd"><label>Manufacturer Name:</label></div>
             <div class="col-md-3">
-                @Html.TextBoxFor(m => m.Search)
-        </div>
-            <div class="col-md-3"><input type="submit" value="Search" class="man_search"></div>
+                @Html.TextBoxFor(m => m.Search, new { @class = "start_order_date_email" })
+            </div>
+    <div class="billing_address_text" style="padding-top: 2px;">
+        <input type="submit" class="search_order_list" value="SEARCH">
+    </div>
         }
     </div>
     <div class="col-md-9 main_order_table" style="width: 100%;">
@@ -40,12 +42,12 @@
                             if(count==1)
                             { 
                             <tr class="first_row">
-                                <td class="varient_align">@item.Name </td>
-                                <td class="varient_align">
+                                <td class="varient_align" style="text-align:center">@item.Name </td>
+                                <td class="varient_align" style="text-align:center">
                                     <label class="@(item.Published ? "img_sprite1" : "img_sprite")"></label>
                                 </td>
-                                <td class="varient_align">@item.DisplayOrder</td>
-                                <td class="varient_align">
+                                <td class="varient_align" style="text-align:center">@item.DisplayOrder</td>
+                                <td class="varient_align" style="text-align:center">
                                     <a href="@Url.Action("EditManufacturers", "Catalog", new { Id = item.Id })"><label class="edit_ring"></label></a>
                                     <a href="@Url.Action("DeleteManufacturer", "Catalog", new { Id = item.Id })"><label class="delete_ring" onclick=" return confirm('Are You Sure'); "></label></a>
                                 </td>
@@ -55,12 +57,12 @@
                             else
                             {
                                 <tr class="second_row">
-                                    <td class="varient_align">@item.Name </td>
-                                    <td class="varient_align">
+                                    <td class="varient_align" style="text-align:center">@item.Name </td>
+                                    <td class="varient_align" style="text-align:center">
                                         <label class="@(item.Published ? "img_sprite1" : "img_sprite")"></label>
                                     </td>
-                                    <td class="varient_align">@item.DisplayOrder</td>
-                                    <td class="varient_align">
+                                    <td class="varient_align" style="text-align:center">@item.DisplayOrder</td>
+                                    <td class="varient_align" style="text-align:center">
                                         <a href="@Url.Action("EditManufacturers", "Catalog", new { Id = item.Id })"><label class="edit_ring"></label></a>
                                         <a href="@Url.Action("DeleteManufacturer", "Catalog", new { Id = item.Id })"><label class="delete_ring" onclick=" return confirm('Are You Sure'); "></label></a>
                                     </td>
