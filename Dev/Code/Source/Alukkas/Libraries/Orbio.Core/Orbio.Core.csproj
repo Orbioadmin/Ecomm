@@ -87,6 +87,9 @@
     <Compile Include="Data\ManufacturerTemplate.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\NewsLetterSubscription.cs">
+      <DependentUpon>OrbioAdmin.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\OrbioAdmin.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

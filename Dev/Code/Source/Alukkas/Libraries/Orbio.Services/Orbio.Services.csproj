@@ -77,7 +77,9 @@
     <Compile Include="Admin\Customers\ICustomerReportService.cs" />
     <Compile Include="Admin\Customers\ICustomerRoleService.cs" />
     <Compile Include="Admin\Customers\ICustomerService.cs" />
+    <Compile Include="Admin\Customers\INewsletterSubscriberService.cs" />
     <Compile Include="Admin\Customers\IOnlineCustomerService.cs" />
+    <Compile Include="Admin\Customers\NewsletterSubscriberService.cs" />
     <Compile Include="Admin\Customers\OnlineCustomerService.cs" />
     <Compile Include="Admin\Orders\IShippingService.cs" />
     <Compile Include="Admin\Components\IProductComponentService.cs" />

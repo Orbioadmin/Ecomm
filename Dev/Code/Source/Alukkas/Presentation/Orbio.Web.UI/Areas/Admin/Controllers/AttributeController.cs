@@ -55,6 +55,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult AddOrUpdateProductAttribute(ProductAttributeModel model)
         {
             productAttributeService.AddOrUpdateProductAttribute(model.Id, model.Name, model.Description);
@@ -62,6 +63,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult UpdateProductAttribute(int Id, FormCollection form)
         {
             if (form != null)

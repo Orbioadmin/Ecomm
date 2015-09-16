@@ -16,6 +16,8 @@ using Orbio.Services.Security;
 using System.Configuration;
 using System.Xml.Linq;
 using Orbio.Services.Messages;
+using System.IO;
+using Orbio.Core.Utility;
 
 namespace Orbio.Web.UI.Areas.Admin.Controllers
 {
@@ -31,14 +33,16 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         private readonly IEncryptionService encryptionService;
         private readonly IMessageService messageService;
         private readonly Orbio.Services.Customers.ICustomerService custService;
-
+        private readonly INewsletterSubscriberService subscriberService;
+        
         #endregion
 
         #region Ctor
 
         public CustomerController(ICustomerReportService customerReportService, ICustomerRoleService customerRoleService,
             ICustomerService customerService, IOnlineCustomerService onlineService, IDateTimeHelper _dateTimeHelper,
-            IEncryptionService encryptionService, IMessageService messageService, Orbio.Services.Customers.ICustomerService custService)
+            IEncryptionService encryptionService, IMessageService messageService, Orbio.Services.Customers.ICustomerService custService,
+            INewsletterSubscriberService subscriberService)
         {
             this._customerReportService = customerReportService;
             this.customerRoleService = customerRoleService;
@@ -48,6 +52,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             this.encryptionService = encryptionService;
             this.messageService = messageService;
             this.custService = custService;
+            this.subscriberService = subscriberService;
         }
 
         #endregion
@@ -55,41 +60,6 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         public ActionResult Index()
         {
             return View();
-        }
-
-        protected IList<RegisteredCustomerReportLineModel> GetReportRegisteredCustomersModel()
-        {
-            var report = new List<RegisteredCustomerReportLineModel>();
-            report.Add(new RegisteredCustomerReportLineModel()
-            {
-                Period = "In the last 7 days",
-                Customers = _customerReportService.GetRegisteredCustomersReport(7)
-            });
-
-            report.Add(new RegisteredCustomerReportLineModel()
-            {
-                Period = "In the last 14 days",
-                Customers = _customerReportService.GetRegisteredCustomersReport(14)
-            });
-            report.Add(new RegisteredCustomerReportLineModel()
-            {
-                Period = "In the last month",
-                Customers = _customerReportService.GetRegisteredCustomersReport(30)
-            });
-            report.Add(new RegisteredCustomerReportLineModel()
-            {
-                Period = "In the last year",
-                Customers = _customerReportService.GetRegisteredCustomersReport(365)
-            });
-
-            return report;
-        }
-
-        [ChildActionOnly]
-        public ActionResult ReportRegisteredCustomers()
-        {
-            var model = GetReportRegisteredCustomersModel();
-            return PartialView(model);
         }
 
         #region CustomerRole
@@ -197,54 +167,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         //    return View("ListOnlineCustomers",model);
         //}
 
-        public ActionResult CustomerReport()
-        {
-            return View();
-        }
-
-        public ActionResult SearchReport()
-        {
-            //order statuses
-            var model = new OrderListModel();
-            model.AvailableOrderStatuses = OrderStatus.Pending.ToSelectList(false).ToList();
-            model.AvailableOrderStatuses.Insert(0, new SelectListItem() { Text = "Order Status", Value = "0" });
-
-            //payment statuses
-            model.AvailablePaymentStatuses = PaymentStatus.Pending.ToSelectList(false).ToList();
-            model.AvailablePaymentStatuses.Insert(0, new SelectListItem() { Text = "Payment Status", Value = "0" });
-
-            //shipping statuses
-            model.AvailableShippingStatuses = ShippingStatus.NotYetShipped.ToSelectList(false).ToList();
-            model.AvailableShippingStatuses.Insert(0, new SelectListItem() { Text = "Shipping Status", Value = "0" });
-            return PartialView("CustomerReportSearch", model);
-        }
-
-        [ChildActionOnly]
-        public ActionResult TopCustomers(OrderListModel model)
-        {
-            DateTime? startDateValue = (model.StartDate == null) ? null
-                          : (DateTime?)_dateTimeHelper.ConvertToUtcTime(model.StartDate.Value, _dateTimeHelper.CurrentTimeZone);
-
-            DateTime? endDateValue = (model.EndDate == null) ? null
-                            : (DateTime?)_dateTimeHelper.ConvertToUtcTime(model.EndDate.Value, _dateTimeHelper.CurrentTimeZone).AddDays(1);
-
-            OrderStatus? orderStatus = model.OrderStatusId > 0 ? (OrderStatus?)(model.OrderStatusId) : null;
-            PaymentStatus? paymentStatus = model.PaymentStatusId > 0 ? (PaymentStatus?)(model.PaymentStatusId) : null;
-            ShippingStatus? shippingStatus = model.ShippingStatusId > 0 ? (ShippingStatus?)(model.ShippingStatusId) : null;
-
-            var result = _customerReportService.SearchCustomerReport(startDateValue, endDateValue, orderStatus,
-                paymentStatus, shippingStatus);
-            var topCustomers = (from cr in result
-                         select new RegisteredCustomerReportLineModel
-                         {
-                             Customers = cr.CustomerId,
-                             Email = cr.Email,
-                             OrderCount = cr.OrderCount,
-                             OrderTotal = cr.OrderTotal,
-                         }).ToList();
-
-            return PartialView(topCustomers);
-        }
+       
 
         public ActionResult AddCustomer()
         {
@@ -298,13 +221,72 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             return View(model);
         }
 
+        public ActionResult DeleteCustomer(int? Id)
+        {
+            var result = customerService.DeleteCustomer(Id.GetValueOrDefault());
+
+            return RedirectToAction("ListCustomer");
+        }
+
+        #endregion
+
+        #region Customer Report
+        public ActionResult CustomerReport()
+        {
+            return View();
+        }
+
+        public ActionResult SearchReport()
+        {
+            //order statuses
+            var model = new OrderListModel();
+            model.AvailableOrderStatuses = OrderStatus.Pending.ToSelectList(false).ToList();
+            model.AvailableOrderStatuses.Insert(0, new SelectListItem() { Text = "Order Status", Value = "0" });
+
+            //payment statuses
+            model.AvailablePaymentStatuses = PaymentStatus.Pending.ToSelectList(false).ToList();
+            model.AvailablePaymentStatuses.Insert(0, new SelectListItem() { Text = "Payment Status", Value = "0" });
+
+            //shipping statuses
+            model.AvailableShippingStatuses = ShippingStatus.NotYetShipped.ToSelectList(false).ToList();
+            model.AvailableShippingStatuses.Insert(0, new SelectListItem() { Text = "Shipping Status", Value = "0" });
+            return PartialView("CustomerReportSearch", model);
+        }
+
+        [ChildActionOnly]
+        public ActionResult TopCustomers(OrderListModel model)
+        {
+            DateTime? startDateValue = (model.StartDate == null) ? null
+                          : (DateTime?)_dateTimeHelper.ConvertToUtcTime(model.StartDate.Value, _dateTimeHelper.CurrentTimeZone);
+
+            DateTime? endDateValue = (model.EndDate == null) ? null
+                            : (DateTime?)_dateTimeHelper.ConvertToUtcTime(model.EndDate.Value, _dateTimeHelper.CurrentTimeZone).AddDays(1);
+
+            OrderStatus? orderStatus = model.OrderStatusId > 0 ? (OrderStatus?)(model.OrderStatusId) : null;
+            PaymentStatus? paymentStatus = model.PaymentStatusId > 0 ? (PaymentStatus?)(model.PaymentStatusId) : null;
+            ShippingStatus? shippingStatus = model.ShippingStatusId > 0 ? (ShippingStatus?)(model.ShippingStatusId) : null;
+
+            var result = _customerReportService.SearchCustomerReport(startDateValue, endDateValue, orderStatus,
+                paymentStatus, shippingStatus);
+            var topCustomers = (from cr in result
+                                select new RegisteredCustomerReportLineModel
+                                {
+                                    Customers = cr.CustomerId,
+                                    Email = cr.Email,
+                                    OrderCount = cr.OrderCount,
+                                    OrderTotal = cr.OrderTotal,
+                                }).ToList();
+
+            return PartialView(topCustomers);
+        }
+
         [ChildActionOnly]
         public ActionResult OrderDetails(int? Id)
         {
             var model = new CustomerModel();
             var result = customerService.GetOrderDetails(Id.GetValueOrDefault());
             model.Id = Id.GetValueOrDefault();
-            model.Order= result.Orders.Select(x =>
+            model.Order = result.Orders.Select(x =>
             {
                 return new OrderModel()
                 {
@@ -330,11 +312,100 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             return PartialView(model);
         }
 
-        public ActionResult DeleteCustomer(int? Id)
-        {
-            var result = customerService.DeleteCustomer(Id.GetValueOrDefault());
 
-            return RedirectToAction("ListCustomer");
+        protected IList<RegisteredCustomerReportLineModel> GetReportRegisteredCustomersModel()
+        {
+            var report = new List<RegisteredCustomerReportLineModel>();
+            report.Add(new RegisteredCustomerReportLineModel()
+            {
+                Period = "In the last 7 days",
+                Customers = _customerReportService.GetRegisteredCustomersReport(7)
+            });
+
+            report.Add(new RegisteredCustomerReportLineModel()
+            {
+                Period = "In the last 14 days",
+                Customers = _customerReportService.GetRegisteredCustomersReport(14)
+            });
+            report.Add(new RegisteredCustomerReportLineModel()
+            {
+                Period = "In the last month",
+                Customers = _customerReportService.GetRegisteredCustomersReport(30)
+            });
+            report.Add(new RegisteredCustomerReportLineModel()
+            {
+                Period = "In the last year",
+                Customers = _customerReportService.GetRegisteredCustomersReport(365)
+            });
+
+            return report;
+        }
+
+        [ChildActionOnly]
+        public ActionResult ReportRegisteredCustomers()
+        {
+            var model = GetReportRegisteredCustomersModel();
+            return PartialView(model);
+        }
+
+
+        #endregion
+
+        #region Newsletter Subscribers
+
+        public ActionResult NewsletterSubscribers(NewletterSubscribersModel model)
+        {
+            var subscribers = subscriberService.GetAllSubscribers(model.Search);
+            model.Subscribers = (from s in subscribers
+                                 select new CustomerModel()
+                                 {
+                                     Id=s.Id,
+                                     Email = s.Email,
+                                     Active = s.Active,
+                                     CreatedOn = s.CreatedOnUtc,
+                                 }).ToList();
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult UpdateSubscribers(int Id,FormCollection form)
+        {
+            if(form!=null)
+            {
+                var email = form["txtemail" + Id];
+                bool active =Convert.ToBoolean(form["drpactive" + Id]);
+
+                int result = subscriberService.UpdateSubscribers(Id,email,active);
+            }
+            return RedirectToAction("NewsletterSubscribers");
+        }
+
+        public ActionResult Exporttocsv()
+        {
+            var email = new StringWriter();
+            var subscribers = subscriberService.GetAllSubscribers(null);
+            foreach(var item in subscribers)
+            {
+                email.WriteLine(string.Format("{0}",
+                                           item.Email));
+            }
+            string result = email.ToString();
+            return File(new System.Text.UTF8Encoding().GetBytes(result), "text/csv", "newsletter_email"+DateTime.Now.ToShortTimeString());
+        }
+
+        public ActionResult ImportFromCSV(HttpPostedFileBase importFile)
+        {
+            var file = Request.Files["importcsvfile"];
+            var reader = new StreamReader(file.InputStream);
+            string email;
+            List<string> Emails = new List<string>();
+            while ((email = reader.ReadLine()) != null)
+            {
+                string[] mail = email.Split(',');
+                Emails.Add(mail[0]);
+            }
+            int result = subscriberService.AddSubscribers(Emails);
+            return RedirectToAction("NewsletterSubscribers");
         }
 
         #endregion

@@ -83,6 +83,8 @@ namespace Orbio.Web.Framework
             builder.RegisterType<OBS.Admin.Customers.CustomerService>().As<OBS.Admin.Customers.ICustomerService>().InstancePerHttpRequest();
             //added by roshni
             builder.RegisterType<OBS.Admin.Customers.OnlineCustomerService>().As<OBS.Admin.Customers.IOnlineCustomerService>().InstancePerHttpRequest();
+            //added by roshni
+            builder.RegisterType<OBS.Admin.Customers.NewsletterSubscriberService>().As<OBS.Admin.Customers.INewsletterSubscriberService>().InstancePerHttpRequest();
         }
 
         public int Order

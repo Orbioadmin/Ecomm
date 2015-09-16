@@ -273,6 +273,7 @@
     <Compile Include="Areas\Admin\Models\Component\ProductComponentModel.cs" />
     <Compile Include="Areas\Admin\Models\Customers\CustomerModel.cs" />
     <Compile Include="Areas\Admin\Models\Customers\CustomerRoleModel.cs" />
+    <Compile Include="Areas\Admin\Models\Customers\NewletterSubscribersModel.cs" />
     <Compile Include="Areas\Admin\Models\Customers\RegisteredCustomerReportLineModel.cs" />
     <Compile Include="Areas\Admin\Models\Orders\OrderAverageReportLineSummaryModel.cs" />
     <Compile Include="Areas\Admin\Models\Orders\OrderIncompleteReportLineModel.cs" />
@@ -778,6 +779,7 @@
     <Content Include="Areas\Admin\Views\Component\AddProductComponent.cshtml" />
     <Content Include="Areas\Admin\Views\Component\AddPriceComponent.cshtml" />
     <Content Include="Areas\Admin\Views\Product\_CreateOrUpdateSeo.cshtml" />
+    <Content Include="Areas\Admin\Views\Customer\NewsletterSubscribers.cshtml" />
     <None Include="Properties\PublishProfiles\ecom.pubxml" />
     <Content Include="Areas\Admin\Views\Customer\ListCustomer.cshtml" />
     <Content Include="Areas\Admin\Views\Customer\CustomerList.cshtml" />
