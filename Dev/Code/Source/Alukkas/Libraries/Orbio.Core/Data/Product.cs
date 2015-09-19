@@ -22,6 +22,8 @@ namespace Orbio.Core.Data
             this.Product_PriceComponent_Mapping = new HashSet<Product_PriceComponent_Mapping>();
             this.Product_ProductComponent_Mapping = new HashSet<Product_ProductComponent_Mapping>();
             this.Product_Picture_Mapping = new HashSet<Product_Picture_Mapping>();
+            this.Product_Category_Mapping = new HashSet<Product_Category_Mapping>();
+            this.Product_Manufacturer_Mapping = new HashSet<Product_Manufacturer_Mapping>();
         }
     
         public int Id { get; set; }
@@ -124,5 +126,7 @@ namespace Orbio.Core.Data
         public virtual ICollection<Product_PriceComponent_Mapping> Product_PriceComponent_Mapping { get; set; }
         public virtual ICollection<Product_ProductComponent_Mapping> Product_ProductComponent_Mapping { get; set; }
         public virtual ICollection<Product_Picture_Mapping> Product_Picture_Mapping { get; set; }
+        public virtual ICollection<Product_Category_Mapping> Product_Category_Mapping { get; set; }
+        public virtual ICollection<Product_Manufacturer_Mapping> Product_Manufacturer_Mapping { get; set; }
     }
 }

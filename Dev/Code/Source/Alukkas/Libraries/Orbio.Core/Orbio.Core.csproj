@@ -194,6 +194,7 @@
     <Compile Include="Domain\Admin\Catalog\Templates.cs" />
     <Compile Include="Domain\Admin\Customers\BestCustomerReportLine.cs" />
     <Compile Include="Domain\Admin\Customers\Customer.cs" />
+    <Compile Include="Domain\Admin\Orders\BestSellers.cs" />
     <Compile Include="Domain\Admin\Orders\OrderAverageReportLine.cs" />
     <Compile Include="Domain\Admin\Orders\OrderAverageReportLineSummary.cs" />
     <Compile Include="Domain\Admin\Orders\ShoppingCart.cs" />

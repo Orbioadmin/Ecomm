@@ -20,6 +20,7 @@ using Orbio.Services.Directory;
 using Orbio.Core.Domain.Directory;
 using Orbio.Services.Messages;
 using System.Configuration;
+using Orbio.Web.UI.Areas.Admin.Models.Catalog;
 
 namespace Orbio.Web.UI.Areas.Admin.Controllers
 {
@@ -35,11 +36,15 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         private readonly IOrderProcessingService _orderProcessingService;
         private readonly IMessageService _messageService;
         private readonly IShippingService _shippingService;
+        private readonly IBestSellerService _sellerService;
+        private readonly INeverPurchasedReportService _neverPurchasedService;
+
         #endregion
 
         #region Ctor
 
-        public OrderController(Orbio.Services.Admin.Orders.IOrderService orderService, IOrderReportService orderReportService, IAddressService addressService, IDateTimeHelper dateTimeHelper, ICountryService CountryService, IStateProvinceService stateProvinceService, IOrderProcessingService orderProcessingService, IMessageService messageService, IShippingService shippingService)
+        public OrderController(Orbio.Services.Admin.Orders.IOrderService orderService, IOrderReportService orderReportService, IAddressService addressService, IDateTimeHelper dateTimeHelper, ICountryService CountryService, IStateProvinceService stateProvinceService, IOrderProcessingService orderProcessingService, IMessageService messageService, IShippingService shippingService,
+            IBestSellerService _sellerService, INeverPurchasedReportService _neverPurchasedService)
         {
             this._orderService = orderService;
             this._addressService = addressService;
@@ -50,6 +55,8 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             this._orderProcessingService = orderProcessingService;
             this._messageService = messageService;
             this._shippingService = shippingService;
+            this._sellerService = _sellerService;
+            this._neverPurchasedService = _neverPurchasedService;
         }
 
         #endregion
@@ -920,5 +927,119 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             decimal orderItemDiscount = (inclTax != true) ? (orderItem.Quantity * orderItem.DiscountAmountExclTax) : (orderItem.Quantity * orderItem.DiscountAmountInclTax);
             return orderItemDiscount;
         }
+
+
+        #region Best Sellers
+
+        public ActionResult BestSellersReport()
+        {
+            return View();
+        }
+
+        public ActionResult SearchSellers()
+        {
+            //order statuses
+            var model = new OrderListModel();
+            model.AvailableOrderStatuses = OrderStatus.Pending.ToSelectList(false).ToList();
+            model.AvailableOrderStatuses.Insert(0, new SelectListItem() { Text = "Order Status", Value = "0" });
+
+            //payment statuses
+            model.AvailablePaymentStatuses = PaymentStatus.Pending.ToSelectList(false).ToList();
+            model.AvailablePaymentStatuses.Insert(0, new SelectListItem() { Text = "Payment Status", Value = "0" });
+
+            //shipping statuses
+            model.AvailableShippingStatuses = ShippingStatus.NotYetShipped.ToSelectList(false).ToList();
+            model.AvailableShippingStatuses.Insert(0, new SelectListItem() { Text = "Shipping Status", Value = "0" });
+
+            var result = _sellerService.GetAllDetailsForSearch();
+            if(result!=null)
+            {
+                model.Categories = (from c in result.Category
+                                    select new CategoryModel()
+                                    {
+                                        Id = c.Id,
+                                        Name = c.Name,
+                                    }).ToList();
+
+                model.Manufacturers = (from c in result.Manufacturers
+                                    select new ManufacturerModel()
+                                    {
+                                        Id = c.Id,
+                                        Name = c.Name,
+                                    }).ToList();
+            }
+            return PartialView(model);
+        }
+
+        [ChildActionOnly]
+        public ActionResult BestSellersList(OrderListModel model)
+        {
+            var sellerModel = new List<BestSellerModel>();
+            DateTime? startDateValue = (model.StartDate == null) ? null
+                          : (DateTime?)_dateTimeHelper.ConvertToUtcTime(model.StartDate.Value, _dateTimeHelper.CurrentTimeZone);
+
+            DateTime? endDateValue = (model.EndDate == null) ? null
+                            : (DateTime?)_dateTimeHelper.ConvertToUtcTime(model.EndDate.Value, _dateTimeHelper.CurrentTimeZone).AddDays(1);
+
+            OrderStatus? orderStatus = model.OrderStatusId > 0 ? (OrderStatus?)(model.OrderStatusId) : null;
+            PaymentStatus? paymentStatus = model.PaymentStatusId > 0 ? (PaymentStatus?)(model.PaymentStatusId) : null;
+
+            var result = _sellerService.GetAllSellerDetails(model.StartDate,model.EndDate,model.OrderStatusId,model.PaymentStatusId,model.Category,model.Manufacturer);
+            if (result != null)
+            {
+                sellerModel = (from r in result
+                               select new BestSellerModel()
+                               {
+                                   Id = r.Id,
+                                   Name = r.Name,
+                                   Quantity = r.Quantity,
+                                   Amount = r.Amount,
+                               }).ToList();
+            }
+            return PartialView(sellerModel);
+        }
+
+        #endregion
+
+        #region Products Never Purchased
+
+        public ActionResult NeverSoldReport()
+        {
+            return View();
+        }
+
+        public ActionResult SearchNeverSold()
+        {
+            var model = new OrderListModel();
+            return PartialView(model);
+        }
+
+        [ChildActionOnly]
+        public ActionResult NeverSoldProducts(OrderListModel model)
+        {
+            var neverSoldReportModel = new List<NeverSoldReportModel>();
+            DateTime? startDateValue = (model.StartDate == null) ? null
+                          : (DateTime?)_dateTimeHelper.ConvertToUtcTime(model.StartDate.Value, _dateTimeHelper.CurrentTimeZone);
+
+            DateTime? endDateValue = (model.EndDate == null) ? null
+                            : (DateTime?)_dateTimeHelper.ConvertToUtcTime(model.EndDate.Value, _dateTimeHelper.CurrentTimeZone).AddDays(1);
+
+            var result = _neverPurchasedService.GetAllNeverPurchasedProductReport(model.StartDate, model.EndDate);
+            if (result != null)
+            {
+                neverSoldReportModel = (from r in result
+                                        select new NeverSoldReportModel()
+                                        {
+                                            Id = r.Id,
+                                            Name = r.Name,
+                                        }).ToList();
+                               
+            }
+            return PartialView(neverSoldReportModel);
+        }
+
+        #endregion
+
     }
 }
+        

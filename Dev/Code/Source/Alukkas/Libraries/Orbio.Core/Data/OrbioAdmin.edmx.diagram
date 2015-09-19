@@ -35,9 +35,7 @@
         <AssociationConnector Association="OrbioAdminModel.FK_Discount_AppliedToCategories_Category" />
         <AssociationConnector Association="OrbioAdminModel.FK_Manufacturer_ManufacturerTemplate" />
         <AssociationConnector Association="OrbioAdminModel.FK_ManufacturerTemplate_ManufacturerTemplate" />
-        <EntityTypeShape EntityType="OrbioAdminModel.Product_Category_Mapping" Width="1.5" PointX="33.875" PointY="5.25" />
         <EntityTypeShape EntityType="OrbioAdminModel.Product_Manufacturer_Mapping" Width="1.5" PointX="24.5" PointY="10.25" />
-        <AssociationConnector Association="OrbioAdminModel.ProductCategory_Category" />
         <AssociationConnector Association="OrbioAdminModel.ProductManufacturer_Manufacturer" />
         <EntityTypeShape EntityType="OrbioAdminModel.Product_ProductAttribute_Mapping" Width="1.5" PointX="11.875" PointY="9.875" />
         <EntityTypeShape EntityType="OrbioAdminModel.ProductAttribute" Width="1.5" PointX="9.625" PointY="23.5" />
@@ -74,6 +72,10 @@
         <EntityTypeShape EntityType="OrbioAdminModel.ProductTag" Width="1.5" PointX="1.5006342034324232" PointY="10.025042866368333" />
         <EntityTypeShape EntityType="OrbioAdminModel.Warehouse" Width="1.5" PointX="4.8720733322538781" PointY="19.380168730104419" />
         <EntityTypeShape EntityType="OrbioAdminModel.NewsLetterSubscription" Width="1.5" PointX="0.21767325336936547" PointY="15.090879968875498" />
+        <EntityTypeShape EntityType="OrbioAdminModel.Product_Category_Mapping" Width="1.5" PointX="7.3038656373060613" PointY="20.338673645788187" />
+        <AssociationConnector Association="OrbioAdminModel.ProductCategory_Category" />
+        <AssociationConnector Association="OrbioAdminModel.ProductCategory_Product" />
+        <AssociationConnector Association="OrbioAdminModel.ProductManufacturer_Product" />
       </Diagram>
         <EntityTypeShape EntityType="OrbioAdminModel.SpecificationAttribute" Width="1.5" PointX="34.75" PointY="9" />
         <EntityTypeShape EntityType="OrbioAdminModel.SpecificationAttributeOption" Width="1.5" PointX="32.5" PointY="9" />
