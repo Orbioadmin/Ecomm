@@ -1,0 +1,45 @@
+﻿@model List<Orbio.Web.UI.Areas.Admin.Models.Shipments.ShipmentItemModel>
+
+@{
+    var tr_id = this.Model.Select(m => m.ShipmentId).First().ToString();
+}
+<div class="accordian-body collapse" id="@tr_id" style="width:100%">
+    <table class="table-striped" style="width:100%">
+        <thead>
+        <td>Product</td>
+        <td>Quantity Shipped</td>
+        <td>Item Weight</td>
+        <td>Item Dimension</td>
+        <tbody>
+            @{
+                var count = 0;
+
+                if (this.Model.Count > 0)
+                {
+                    foreach (var item in this.Model)
+                    {
+                        <tr>
+                            <td>
+                                @item.ProductName
+                            </td>
+                            <td class="qty">
+                                @item.QuantityInThisShipment
+                            </td>
+                            <td class="qty">@item.ItemWeight</td>
+                            <td class="qty">@item.ItemDimensions</td>
+                        </tr>
+                        count++;
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="4" class="cart_empty_msg">No item to display</td>
+                    </tr>
+                }
+            }
+        </tbody>
+
+    </table>
+
+</div>

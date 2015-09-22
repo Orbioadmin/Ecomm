@@ -44,6 +44,10 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\..\packages\EntityFramework.6.0.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="itextsharp, Version=5.1.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -94,8 +98,12 @@
     <Compile Include="Admin\Orders\OrderProcessingService.cs" />
     <Compile Include="Admin\Products\IProductService.cs" />
     <Compile Include="Admin\Products\ProductService.cs" />
+    <Compile Include="Admin\Shipments\IShipmentService.cs" />
+    <Compile Include="Admin\Shipments\ShipmentService.cs" />
     <Compile Include="Admin\Tax\ITaxCategoryService.cs" />
     <Compile Include="Admin\Tax\TaxCategoryService.cs" />
+    <Compile Include="Common\IPdfService.cs" />
+    <Compile Include="Common\PdfService.cs" />
     <Compile Include="Directory\CountryService.cs" />
     <Compile Include="Directory\ICountryService.cs" />
     <Compile Include="Admin\Orders\IOrderReportService.cs" />

@@ -64,6 +64,8 @@ namespace Orbio.Core.Data
         public virtual DbSet<Warehouse> Warehouses { get; set; }
         public virtual DbSet<NewsLetterSubscription> NewsLetterSubscriptions { get; set; }
         public virtual DbSet<Product_Category_Mapping> Product_Category_Mapping { get; set; }
+        public virtual DbSet<Country> Countries { get; set; }
+        public virtual DbSet<StateProvince> StateProvinces { get; set; }
     
         public virtual ObjectResult<Order> usp_Get_AdminOrderDetails(Nullable<int> orderStatusId, Nullable<int> paymentStatusId, Nullable<int> shippingStatusId, Nullable<int> customerId, Nullable<System.DateTime> createdFromUtc, Nullable<System.DateTime> createdToUtc, string billingEmail, Nullable<int> orderNo)
         {

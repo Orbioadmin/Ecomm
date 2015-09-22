@@ -252,6 +252,7 @@
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ShipmentController.cs" />
     <Compile Include="Areas\Admin\Controllers\ShoppingCartController.cs" />
     <Compile Include="Areas\Admin\MappingExtensions.cs" />
     <Compile Include="Areas\Admin\Models\Attribute\CheckoutAttributeModel.cs" />
@@ -284,6 +285,7 @@
     <Compile Include="Areas\Admin\Models\Orders\ShoppingCartModel.cs" />
     <Compile Include="Areas\Admin\Models\Product\ProductListModel.cs" />
     <Compile Include="Areas\Admin\Models\Product\ProductModel.cs" />
+    <Compile Include="Areas\Admin\Models\Shipments\ShipmentItemModel.cs" />
     <Compile Include="Areas\Admin\Models\Shipments\ShipmentListModel.cs" />
     <Compile Include="Areas\Admin\Models\Shipments\ShipmentModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -793,6 +795,7 @@
     <Content Include="Areas\Admin\Views\Shipment\List.cshtml" />
     <Content Include="Areas\Admin\Views\Shipment\Search.cshtml" />
     <Content Include="Areas\Admin\Views\Shipment\ShipmentList.cshtml" />
+    <Content Include="Areas\Admin\Views\Shipment\ShipmentItems.cshtml" />
     <None Include="Properties\PublishProfiles\ecom.pubxml" />
     <Content Include="Areas\Admin\Views\Customer\ListCustomer.cshtml" />
     <Content Include="Areas\Admin\Views\Customer\CustomerList.cshtml" />

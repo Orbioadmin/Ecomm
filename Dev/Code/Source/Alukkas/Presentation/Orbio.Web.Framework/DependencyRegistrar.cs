@@ -89,6 +89,10 @@ namespace Orbio.Web.Framework
             builder.RegisterType<OBS.Admin.Orders.BestSellerService>().As<OBS.Admin.Orders.IBestSellerService>().InstancePerHttpRequest();
              //added by roshni
             builder.RegisterType<OBS.Admin.Orders.NeverPurchasedReportService>().As<OBS.Admin.Orders.INeverPurchasedReportService>().InstancePerHttpRequest();
+             //added by roshni
+            builder.RegisterType<OBS.Admin.Shipments.ShipmentService>().As<OBS.Admin.Shipments.IShipmentService>().InstancePerHttpRequest();
+            //added by roshni
+            builder.RegisterType<OBS.Common.PdfService>().As<OBS.Common.IPdfService>().InstancePerHttpRequest();
             
         }
 

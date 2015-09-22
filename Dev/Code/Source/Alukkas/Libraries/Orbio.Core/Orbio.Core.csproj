@@ -66,6 +66,9 @@
     <Compile Include="Data\CheckoutAttributeValue.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\Country.cs">
+      <DependentUpon>OrbioAdmin.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\Customer.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
@@ -169,6 +172,9 @@
     <Compile Include="Data\SpecificationAttributeOption.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\StateProvince.cs">
+      <DependentUpon>OrbioAdmin.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\TaxCategory.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
@@ -198,6 +204,8 @@
     <Compile Include="Domain\Admin\Orders\OrderAverageReportLine.cs" />
     <Compile Include="Domain\Admin\Orders\OrderAverageReportLineSummary.cs" />
     <Compile Include="Domain\Admin\Orders\ShoppingCart.cs" />
+    <Compile Include="Domain\Admin\Shipment\Shipment.cs" />
+    <Compile Include="Domain\Admin\Shipment\ShipmentItem.cs" />
     <Compile Include="Domain\Catalog\Abstract\ICart.cs" />
     <Compile Include="Domain\Catalog\Abstract\IPriceComponent.cs" />
     <Compile Include="Domain\Catalog\Abstract\IProductAttribute.cs" />
@@ -227,6 +235,7 @@
     <Compile Include="Domain\Catalog\SpecificationFilterModel.cs" />
     <Compile Include="Domain\Checkout\Address.cs" />
     <Compile Include="Domain\Common\GenericAttribute.cs" />
+    <Compile Include="Domain\Common\PdfSetting.cs" />
     <Compile Include="Domain\Common\Setting.cs" />
     <Compile Include="Domain\Customers\ChangePasswordResult.cs" />
     <Compile Include="Domain\Customers\Customer.cs" />

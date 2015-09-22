@@ -29,8 +29,6 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Shipments
        
         public int StateProvinceId { get; set; }
 
-        [AllowHtml]
         public string City { get; set; }
-  
     }
 }

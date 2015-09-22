@@ -76,6 +76,11 @@
         <AssociationConnector Association="OrbioAdminModel.ProductCategory_Category" />
         <AssociationConnector Association="OrbioAdminModel.ProductCategory_Product" />
         <AssociationConnector Association="OrbioAdminModel.ProductManufacturer_Product" />
+        <EntityTypeShape EntityType="OrbioAdminModel.Country" Width="1.5" PointX="9.6839143753442514" PointY="11.783547243002591" />
+        <EntityTypeShape EntityType="OrbioAdminModel.StateProvince" Width="1.5" PointX="10.285159281587768" PointY="12.045792719370589" />
+        <AssociationConnector Association="OrbioAdminModel.Address_Country" />
+        <AssociationConnector Association="OrbioAdminModel.Address_StateProvince" />
+        <AssociationConnector Association="OrbioAdminModel.StateProvince_Country" />
       </Diagram>
         <EntityTypeShape EntityType="OrbioAdminModel.SpecificationAttribute" Width="1.5" PointX="34.75" PointY="9" />
         <EntityTypeShape EntityType="OrbioAdminModel.SpecificationAttributeOption" Width="1.5" PointX="32.5" PointY="9" />

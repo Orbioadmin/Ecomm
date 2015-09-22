@@ -41,5 +41,7 @@ namespace Orbio.Core.Data
         public virtual ICollection<Customer> Customers1 { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
         public virtual ICollection<Order> Orders1 { get; set; }
+        public virtual Country Country { get; set; }
+        public virtual StateProvince StateProvince { get; set; }
     }
 }
