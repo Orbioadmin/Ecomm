@@ -1,44 +1,55 @@
 ﻿@model Orbio.Web.UI.Areas.Admin.Models.Catalog.ManufacturerDetailModel
 
-<div class="col-md-12">
-    <table class="product_add_cart">
+<div class="col-md-9 main_order_table" style="width: 100%;">
+    <table class="item_admin_order">
         <thead>
         <td>Product</td>
-        <td>Is featured product?</td>
-        <td>Display order</td>
-        <td>Delete</td>
-        </thead>
+        <td>is featured product?</td>
+        <td>display order</td>
+        <td>delete</td></thead>
         <tbody>
             @if (this.Model.Products != null)
             {
                 if (this.Model.Products.Count > 0)
                 {
-                    foreach (var item in this.Model.Products)
+                    int count = 1;
+                    foreach (var item in Model.Products)
                     {
-                        <tr>
-                            <td>@item.Name</td>
-                            <td>@item.IsFeaturedProduct</td>
-                            <td>@item.DisplayOrder</td>
-                            <td><a href="@Url.Action("DeleteManufacturerProduct", "Catalog", new { Id = Model.Manufacturer.Id, pId = item.Id })"><label class="delete_ring" onclick=" return confirm('Are You Sure'); "></label></a>
-                            </td>
-                        </tr>
+                        if (count == 1)
+                        {
+                            <tr class="first_row">
+                                <td class="varient_align">@item.Name</td>
+                                <td class="varient_align" style="text-align:center"><label class="@(item.IsFeaturedProduct?"img_sprite1" : "img_sprite")"></label></td>
+                                <td class="varient_align" style="text-align:center">@item.DisplayOrder</td>
+                                <td class="varient_align" style="text-align:center"><a href="@Url.Action("DeleteManufacturerProduct", "Catalog", new { Id = Model.Manufacturer.Id, pId = item.Id })"><label class="delete_ring" onclick=" return confirm('Are You Sure'); "></label></a>
+</tr>
+                            count++;
+                        }
+                        else
+                        {
+                            <tr class="second_row">
+                                <td class="varient_align">@item.Name</td>
+                                <td class="varient_align" style="text-align:center"><label class="@(item.IsFeaturedProduct?"img_sprite1" : "img_sprite")"></label></td>
+                                <td class="varient_align" style="text-align:center">@item.DisplayOrder</td>
+                                <td class="varient_align" style="text-align:center"><a href="@Url.Action("DeleteManufacturerProduct", "Catalog", new { Id = Model.Manufacturer.Id, pId = item.Id })"><label class="delete_ring" onclick=" return confirm('Are You Sure'); "></label></a>
+</tr>
+                            count = 1;
+                        }
                     }
                 }
                 else
                 {
-                    <tr style="display: table-row;">
+                    <tr>
                         <td colspan="4"> No products available</td>
                     </tr>
                 }
             }
             else
             {
-                <tr style="display: table-row;">
+                <tr>
                     <td colspan="4"> No products available</td>
                 </tr>
             }
         </tbody>
     </table>
 </div>
-
-

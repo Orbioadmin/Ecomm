@@ -44,6 +44,10 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\..\packages\EntityFramework.6.0.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="itextsharp, Version=5.1.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\nopCommerceCustom\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -77,23 +81,37 @@
     <Compile Include="Admin\Customers\ICustomerReportService.cs" />
     <Compile Include="Admin\Customers\ICustomerRoleService.cs" />
     <Compile Include="Admin\Customers\ICustomerService.cs" />
+    <Compile Include="Admin\Customers\INewsletterSubscriberService.cs" />
     <Compile Include="Admin\Customers\IOnlineCustomerService.cs" />
+    <Compile Include="Admin\Customers\NewsletterSubscriberService.cs" />
     <Compile Include="Admin\Customers\OnlineCustomerService.cs" />
+    <Compile Include="Admin\MessageTemplates\IMessageTemplateService.cs" />
+    <Compile Include="Admin\MessageTemplates\MessageTemplateService.cs" />
+    <Compile Include="Admin\Orders\BestSellerService.cs" />
+    <Compile Include="Admin\Orders\IBestSellerService.cs" />
+    <Compile Include="Admin\Orders\INeverPurchasedReportService.cs" />
+    <Compile Include="Admin\Orders\IShippingService.cs" />
     <Compile Include="Admin\Components\IProductComponentService.cs" />
     <Compile Include="Admin\Orders\IOrderProcessingService.cs" />
     <Compile Include="Admin\Orders\IOrderReportService.cs" />
     <Compile Include="Admin\Orders\IOrderService.cs" />
-    <Compile Include="Admin\Orders\IShippingService.cs" />
     <Compile Include="Admin\Orders\IShoppingCartService.cs" />
     <Compile Include="Admin\Orders\OrderProcessingService.cs" />
     <Compile Include="Admin\Orders\OrderReportService.cs" />
     <Compile Include="Admin\Orders\OrderService.cs" />
+    <Compile Include="Admin\Orders\NeverPurchasedReportService.cs" />
     <Compile Include="Admin\Orders\ShippingService.cs" />
     <Compile Include="Admin\Orders\ShoppingCartService.cs" />
     <Compile Include="Admin\Products\IProductService.cs" />
     <Compile Include="Admin\Products\ProductService.cs" />
+    <Compile Include="Admin\Sales\GiftCardService.cs" />
+    <Compile Include="Admin\Sales\IGiftCardService.cs" />
+    <Compile Include="Admin\Shipments\IShipmentService.cs" />
+    <Compile Include="Admin\Shipments\ShipmentService.cs" />
     <Compile Include="Admin\Tax\ITaxCategoryService.cs" />
     <Compile Include="Admin\Tax\TaxCategoryService.cs" />
+    <Compile Include="Common\IPdfService.cs" />
+    <Compile Include="Common\PdfService.cs" />
     <Compile Include="Directory\CountryService.cs" />
     <Compile Include="Directory\ICountryService.cs" />
     <Compile Include="Authentication\FormsAuthenticationService.cs" />

@@ -2,9 +2,10 @@
 
 
 <div class="col-md-12">
+    <h3>Discounts</h3>
     <table class="product_add_cart">
         <thead>
-        <td>Discounts</td></thead>
+        <th></th></thead>
         <tbody>
             @if (this.Model.Discount != null)
             {
@@ -12,8 +13,8 @@
                 {
                     foreach (var item in this.Model.Discount)
                     {
-                        <tr style="display: table-row;">
-                            <td>@item.Name</td>
+                        <tr>
+                            <td style="float:left">@item.Name</td>
                             <td></td>
                         </tr>
                     }

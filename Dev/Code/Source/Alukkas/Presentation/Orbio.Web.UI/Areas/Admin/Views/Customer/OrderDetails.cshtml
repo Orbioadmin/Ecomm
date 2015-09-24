@@ -1,43 +1,72 @@
 ﻿@model Orbio.Web.UI.Areas.Admin.Models.Customers.CustomerModel
 
 
-<table class="order_total_main_table" id="tableData">
-    <thead>
-    <td>Order Id</td>
-    <td>Order Total</td>
-    <td>Order Status</td>
-    <td>Payment Status</td>
-    <td>Shipping Status</td>
-    <td>Created On</td>
-    <tbody>
-        @if (Model.Order.Count > 0)
-        {
-            foreach (var items in this.Model.Order)
+<div class="col-md-9 main_order_table" style="width:100%">
+    <table class=" item_admin_order">
+        <thead>
+        <td>Order Id</td>
+        <td>Order Total</td>
+        <td>Order Status</td>
+        <td>Payment Status</td>
+        <td>Shipping Status</td>
+        <td>Created On</td>
+        <tbody>
+            @if (Model.Order.Count > 0)
             {
-                int count = 0;
-                <tr>
-                    @*<td><input type="checkbox"></td>*@
+                int count = 1;
+                var class_name = "";
+                foreach (var items in this.Model.Order)
+                {
+                   if(count==1)
+                   {
+                       @:<tr class="first_row">
+                           count++;
+                   }
+                   else
+                   {
+                    @:<tr class="second_row">
+                         count = 1;
+                   }
+                        @*<td><input type="checkbox"></td>*@
                     <td class="align_center"><a style="cursor:pointer" href="@Url.Action("Edit", "Order", new { id = items.Id })">@items.Id</a></td>
                     <td class="align_center">
-                       @items.OrderTotal
+                        @items.OrderTotal
                     </td>
-                    <td class="align_center">
-                      @items.OrderStatus
-                    </td>
-                    <td class="align_center">
-                        @items.PaymentStatus
-                    </td>
-                    <td class="align_center">@items.ShippingStatus</td>
-                    <!--  <td>Your Store Name</td> -->
-                    <td class="align_center">@items.CreatedOn</td>
+                    if (items.OrderStatus == "Pending")
+                    { class_name = "yellow_dot"; }
+                    else if (items.OrderStatus == "Processing")
+                    { class_name = "orange_dot"; }
+                    else if (items.OrderStatus == "Completed")
+                    { class_name = "green_dot"; }
+                    else if (items.OrderStatus == "Cancelled")
+                    { class_name = "red_dot"; }
+                    @:<td class="align_center"><table><tr><td style="border:0"><div class="@class_name"></div></td><td style="border:0">@items.OrderStatus</td></tr></table></td>
+                    if (items.PaymentStatus == "Pending")
+                    { class_name = "yellow_dot"; }
+                    else if (items.PaymentStatus == "Paid")
+                    { class_name = "green_dot"; }
+                    @:<td class="align_center"><table><tr><td style="border:0"><div class="@class_name"></div></td><td style="border:0">@items.PaymentStatus</td></tr></table></td>
+                     if (items.ShippingStatus == "ShippingNotRequired")
+                     { class_name = "red_dot"; }
+                     else if (items.ShippingStatus == "NotYetShipped")
+                     { class_name = "yellow_dot"; }
+                     else if (items.ShippingStatus == "PartiallyShipped")
+                     { class_name = "orange_dot_partially"; }
+                     else if (items.ShippingStatus == "Shipped")
+                     { class_name = "orange_dot"; }
+                     else if (items.ShippingStatus == "Delivered")
+                     { class_name = "green_dot"; }
+                    @:<td class="align_center"><table><tr><td style="border:0"><div class="@class_name"></div></td><td style="border:0">@items.ShippingStatus</td></tr></table></td>
+                       <td class="align_center">@items.CreatedOn</td>
+                    @:</tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td class="align_center" colspan="6">No records to display</td>
                 </tr>
             }
-        }
-        else
-        {
-            <tr>
-                <td class="align_center" colspan="6">No records to display</td>
-            </tr>
-        }
         </tbody>
     </table>
+    </div>

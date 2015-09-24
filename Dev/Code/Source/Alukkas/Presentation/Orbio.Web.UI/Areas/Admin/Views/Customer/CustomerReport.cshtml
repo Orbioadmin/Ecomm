@@ -10,7 +10,7 @@
         <span class="edit_order_details"><span class="edit_order_icon"></span>Customer Reports</span>
        
     </div>
-        <div class="tab_main_order col-md-12">
+        @*<div class="tab_main_order col-md-12">
             <ul id="myTab" role="tablist" class="tabview_order_ul">
 
                 <li class="active cctv_resp_li" role="presentation"><a aria-expanded="true" aria-controls="based" data-toggle="tab" role="tab" id="home-tab" href="#info">Top 20 Customers</a></li>
@@ -18,21 +18,27 @@
                 <li role="presentation our_value" class="control_resp_li"><a aria-controls="profile" data-toggle="tab" id="profile-tab" role="tab" href="#products">Registered Customers</a></li>
 
             </ul>
-        </div>
+        </div>*@
 
-    <div class="tab_side_solutions col-md-12" style="margin-top: 10px; padding-bottom: 10px;">
+    @*<div class="tab_side_solutions col-md-12" style="margin-top: 10px; padding-bottom: 10px;">*@
         <div class="tab-content tab_content_solutions" id="myTabContent">
             <div aria-labelledby="home-tab" id="info" class="tab-pane fade in active  " role="tabpanel">
                 @Html.Action("SearchReport", "Customer")
-
-                @Html.Action("TopCustomers", "Customer")
             </div>
-            <div aria-labelledby="home-tab" id="products" class="tab-pane fade " role="tabpanel">
-                @Html.Action("ReportRegisteredCustomers", "Customer")
+            <div class="col-md-12" style=" margin-bottom: 34px;background-color: #fff;margin-top: 10px;width:100%">
+                <div class="col-md-3 add_new_projects" style="width:73%;margin-right:7px">
+                    <h3>Top 20 Customers</h3>
+                    @Html.Action("TopCustomers", "Customer")
+                </div>
+                <div class="col-md-3 add_new_projects">
+                    <h3>Registered Customers</h3>
+                    @Html.Action("ReportRegisteredCustomers", "Customer")
+                </div>
+                </div>
+            
             </div>
-        </div>
     </div>
-</div>
+@*</div>*@
 }
 
 @section scripts {

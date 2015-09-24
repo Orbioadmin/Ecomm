@@ -1,0 +1,91 @@
+﻿@model Orbio.Web.UI.Areas.Admin.Models.Sales.GiftCardModel
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="container">
+    @using (@Html.BeginForm("AddOrUpdateGiftCard","Sales",FormMethod.Post))
+    {
+        Html.HiddenFor(m => m.Id, new { Value = Model.Id });
+        <div class="main_edit_order">
+            @if (Model.Id == 0)
+            {
+                <span class="edit_order_details"><span class="edit_order_icon"></span><a href="" class="add_new_check">ADD NEW GIFT CARD</a></span>
+                <span class="back_to_order" style="padding-top:0px">
+                    <input type="submit" value="Save" class="add_cat_button">
+                    <a href="@Url.Action("GiftCards", "Sales")"> <input type="button" value="Cancel" class="delete_cat_button"></a>
+                </span>
+            }
+            else
+            {
+                <span class="edit_order_details"><span class="edit_order_icon"></span><a href="" class="add_new_check">EDIT GIFT CARD - @Model.CouponCode </a> <a href="@Url.Action("GiftCards", "Sales")" class="back_to_checkout" style="text-transform:none;font-size: small;color: #0082c7;">(back to gift cards) </a></span>
+                <span class="back_to_order" style="padding-top:0px">
+                    <input type="submit" value="Save" class="add_cat_button">
+                    <a href="@Url.Action("DeleteGiftCard", "Sales", new { Id = Model.Id })"> <input type="button" value="Delete" class="delete_cat_button" onclick=" return confirm('Are You Sure'); "></a>
+                </span>
+            }
+        </div>
+
+        <div class="tab_main_order col-md-12">
+            <ul id="myTab" role="tablist" class="tabview_order_ul">
+
+                <li class="active cctv_resp_li" role="presentation"><a aria-expanded="true" aria-controls="based" data-toggle="tab" role="tab" id="home-tab" href="#info">GIFT CARD INFO</a></li>
+                @if (Model.Id != 0)
+                {
+                <li role="presentation our_value" class="control_resp_li"><a aria-controls="profile" data-toggle="tab" id="profile-tab" role="tab" href="#products">USAGE HISTORY</a></li>
+                }
+            </ul>
+        </div>
+
+        <div class="tab_side_solutions col-md-12">
+            <div class="tab-content tab_content_solutions" id="myTabContent">
+                <div aria-labelledby="home-tab" id="info" class="tab-pane fade in active  " role="tabpanel">
+                    @{
+                       Html.RenderPartial("GiftCardInfo", this.Model);
+                    }
+                </div>
+
+
+                <div aria-labelledby="home-tab" id="products" class="tab-pane fade " role="tabpanel">
+                    @{
+                    if (Model.Id != 0)
+                    {
+                        Html.RenderPartial("GiftCardUsageHistory", this.Model.GiftCardUsage);
+                    }
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>
+@section scripts{
+
+    <script>
+        $(document).ready(function () {
+            $('#generateCouponCode').click(function () {
+                var randomnum = Math.random().toString(36).substr(5, 13);
+                $('#txtcouponcode').val(randomnum);
+                //document.getElementById("txtcouponcode").innerText = randomnum;
+            });
+        });
+</script>
+
+<script>
+    $("#drpcardtype").change(function () {
+        var type = $('#drpcardtype').val();
+        if (type == 1) {
+            $("#divrecemail").hide();
+            $("#divsenemail").hide();
+        }
+        else {
+            $("#divrecemail").show();
+            $("#divsenemail").show();
+        }
+    });
+</script>
+    }
+
+
+
+
+

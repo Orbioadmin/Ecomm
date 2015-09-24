@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8076e97ea71a457fab33e39b18c4ff34" Name="Diagram1" ZoomLevel="45">
+      <Diagram DiagramId="8076e97ea71a457fab33e39b18c4ff34" Name="Diagram1" ZoomLevel="41">
         <EntityTypeShape EntityType="OrbioAdminModel.Customer" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="OrbioAdminModel.Order" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
         <AssociationConnector Association="OrbioAdminModel.Order_Customer" ManuallyRouted="false" />
@@ -35,9 +35,7 @@
         <AssociationConnector Association="OrbioAdminModel.FK_Discount_AppliedToCategories_Category" />
         <AssociationConnector Association="OrbioAdminModel.FK_Manufacturer_ManufacturerTemplate" />
         <AssociationConnector Association="OrbioAdminModel.FK_ManufacturerTemplate_ManufacturerTemplate" />
-        <EntityTypeShape EntityType="OrbioAdminModel.Product_Category_Mapping" Width="1.5" PointX="33.875" PointY="5.25" />
         <EntityTypeShape EntityType="OrbioAdminModel.Product_Manufacturer_Mapping" Width="1.5" PointX="24.5" PointY="10.25" />
-        <AssociationConnector Association="OrbioAdminModel.ProductCategory_Category" />
         <AssociationConnector Association="OrbioAdminModel.ProductManufacturer_Manufacturer" />
         <EntityTypeShape EntityType="OrbioAdminModel.Product_ProductAttribute_Mapping" Width="1.5" PointX="11.875" PointY="9.875" />
         <EntityTypeShape EntityType="OrbioAdminModel.ProductAttribute" Width="1.5" PointX="9.625" PointY="23.5" />
@@ -74,6 +72,22 @@
         <EntityTypeShape EntityType="OrbioAdminModel.ProductTag" Width="1.5" PointX="1.5006342034324232" PointY="10.025042866368333" />
         <EntityTypeShape EntityType="OrbioAdminModel.Warehouse" Width="1.5" PointX="4.8720733322538781" PointY="19.380168730104419" />
         <AssociationConnector Association="OrbioAdminModel.Product_ProductTag_Mapping" />
+        <EntityTypeShape EntityType="OrbioAdminModel.NewsLetterSubscription" Width="1.5" PointX="0.21767325336936547" PointY="15.090879968875498" />
+        <EntityTypeShape EntityType="OrbioAdminModel.Product_Category_Mapping" Width="1.5" PointX="7.3038656373060613" PointY="20.338673645788187" />
+        <AssociationConnector Association="OrbioAdminModel.ProductCategory_Category" />
+        <AssociationConnector Association="OrbioAdminModel.ProductCategory_Product" />
+        <AssociationConnector Association="OrbioAdminModel.ProductManufacturer_Product" />
+        <EntityTypeShape EntityType="OrbioAdminModel.Country" Width="1.5" PointX="9.6839143753442514" PointY="11.783547243002591" />
+        <EntityTypeShape EntityType="OrbioAdminModel.StateProvince" Width="1.5" PointX="10.285159281587768" PointY="12.045792719370589" />
+        <AssociationConnector Association="OrbioAdminModel.Address_Country" />
+        <AssociationConnector Association="OrbioAdminModel.Address_StateProvince" />
+        <AssociationConnector Association="OrbioAdminModel.StateProvince_Country" />
+        <EntityTypeShape EntityType="OrbioAdminModel.GiftCard" Width="1.5" PointX="9.0360771794971448" PointY="4.7758574657029742" />
+        <EntityTypeShape EntityType="OrbioAdminModel.GiftCardUsageHistory" Width="1.5" PointX="10.667440825452768" PointY="14.216941348378054" />
+        <AssociationConnector Association="OrbioAdminModel.GiftCard_PurchasedWithOrderItem" />
+        <AssociationConnector Association="OrbioAdminModel.GiftCardUsageHistory_GiftCard" />
+        <AssociationConnector Association="OrbioAdminModel.GiftCardUsageHistory_UsedWithOrder" />
+        <EntityTypeShape EntityType="OrbioAdminModel.MessageTemplate" Width="1.5" PointX="4.9032437302652951" PointY="15.8001561685466" />
       </Diagram>
         <EntityTypeShape EntityType="OrbioAdminModel.SpecificationAttribute" Width="1.5" PointX="34.75" PointY="9" />
         <EntityTypeShape EntityType="OrbioAdminModel.SpecificationAttributeOption" Width="1.5" PointX="32.5" PointY="9" />

@@ -31,9 +31,9 @@
 
             <li class="active cctv_resp_li" role="presentation"><a aria-expanded="true" aria-controls="based" data-toggle="tab" role="tab" id="home-tab" href="#info">INFO</a></li>
 
-            <li role="presentation our_value" class="control_resp_li"><a aria-controls="profile" data-toggle="tab" id="profile-tab" role="tab" href="#products">PRODUCTS</a></li>
+            <li role="presentation our_value" class="control_resp_li"><a aria-controls="profile" data-toggle="tab" id="profile-tab" role="tab" href="#products">PRODUCTS & DISCOUNTS</a></li>
 
-            <li role="presentation" class="gate_resp_li"><a aria-controls="wireless" data-toggle="tab" role="tab" href="#discount">DISCOUNT</a></li>
+            @*<li role="presentation" class="gate_resp_li"><a aria-controls="wireless" data-toggle="tab" role="tab" href="#discount">DISCOUNT</a></li>*@
 
         </ul>
     </div>
@@ -51,11 +51,11 @@
                     Html.RenderPartial("CategoryProduct", this.Model);
                 }
             </div>
-            <div aria-labelledby="home-tab" id="discount" class="tab-pane fade " role="tabpanel">
+            @*<div aria-labelledby="home-tab" id="discount" class="tab-pane fade " role="tabpanel">
                 @{
                     Html.RenderPartial("DiscountCategory", this.Model);
                 }
-            </div>
+            </div>*@
         </div>
     </div>
     }

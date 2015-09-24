@@ -1,0 +1,13 @@
+﻿@model Orbio.Web.UI.Areas.Admin.Models.Attribute.SpecificationAttributeOptionModel
+
+<h3 style="font-size:15px">New Specification Attribute Option</h3>
+@*<form action="" method="">*@
+
+    @*@Html.HiddenFor(m => m.SpecificationAttributeId, new { Value = Model.SpecificationAttributeId })
+    @Html.HiddenFor(m => m.Id, new { Value = Model.Id })*@
+<input type="hidden" name="hdnId" value="@Model.Id" />
+<input type="hidden" name="hdnSpecId" value="@Model.SpecificationAttributeId" />
+<input type="text" name="txtname" id="txtname" class="text_sku" placeholder="Name" />
+<input type="number" name="txtdisplayorder" id="txtdisplayorder" class="text_sku" placeholder="Display Order" />
+
+<input type="submit" value="Add Specification Attribute Option" class="add_product_submit" style=" margin-right: 0px;" name="AddorEditOptions">

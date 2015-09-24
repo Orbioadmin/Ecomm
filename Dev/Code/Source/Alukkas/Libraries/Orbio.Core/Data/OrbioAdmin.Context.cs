@@ -42,7 +42,6 @@ namespace Orbio.Core.Data
         public virtual DbSet<ManufacturerTemplate> ManufacturerTemplates { get; set; }
         public virtual DbSet<Picture> Pictures { get; set; }
         public virtual DbSet<UrlRecord> UrlRecords { get; set; }
-        public virtual DbSet<Product_Category_Mapping> Product_Category_Mapping { get; set; }
         public virtual DbSet<Product_Manufacturer_Mapping> Product_Manufacturer_Mapping { get; set; }
         public virtual DbSet<Product_ProductAttribute_Mapping> Product_ProductAttribute_Mapping { get; set; }
         public virtual DbSet<ProductAttribute> ProductAttributes { get; set; }
@@ -63,6 +62,13 @@ namespace Orbio.Core.Data
         public virtual DbSet<DeliveryDate> DeliveryDates { get; set; }
         public virtual DbSet<ProductTag> ProductTags { get; set; }
         public virtual DbSet<Warehouse> Warehouses { get; set; }
+        public virtual DbSet<NewsLetterSubscription> NewsLetterSubscriptions { get; set; }
+        public virtual DbSet<Product_Category_Mapping> Product_Category_Mapping { get; set; }
+        public virtual DbSet<Country> Countries { get; set; }
+        public virtual DbSet<StateProvince> StateProvinces { get; set; }
+        public virtual DbSet<GiftCard> GiftCards { get; set; }
+        public virtual DbSet<GiftCardUsageHistory> GiftCardUsageHistories { get; set; }
+        public virtual DbSet<MessageTemplate> MessageTemplates { get; set; }
     
         public virtual ObjectResult<Order> usp_Get_AdminOrderDetails(Nullable<int> orderStatusId, Nullable<int> paymentStatusId, Nullable<int> shippingStatusId, Nullable<int> customerId, Nullable<System.DateTime> createdFromUtc, Nullable<System.DateTime> createdToUtc, string billingEmail, Nullable<int> orderNo)
         {

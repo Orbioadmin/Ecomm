@@ -5,7 +5,7 @@
 
 
 <div class="container">
-    @using (Html.BeginForm("AddOrUpdateSpecificationAttribute", "Attribute", FormMethod.Post))
+    @using (@Html.BeginForm())
     {
         Html.HiddenFor(m => m.Id, new { Value = Model.Id });
         <div class="main_edit_order">
@@ -13,19 +13,20 @@
             {
                 <span class="edit_order_details"><span class="edit_order_icon"></span><a href="" class="add_new_check">ADD SPECIFICATION ATTRIBUTE DETAILS</a></span>
                 <span class="back_to_order" style="padding-top:0px">
-                    <input type="submit" value="Save" class="add_cat_button">
+                    <input type="submit" value="Save" class="add_cat_button" name="AddOrUpdateSpecificationAttribute">
                     <a href="@Url.Action("ListSpecificationAttribute", "Attribute")"> <input type="button" value="Cancel" class="delete_cat_button"></a>
                 </span>
             }
             else
             {
-                <span class="edit_order_details"><span class="edit_order_icon"></span><a href="" class="add_new_check">EDIT SPECIFICATION ATTRIBUTE DETAILS - @Model.Name </a> <a href="@Url.Action("ListSpecificationAttribute", "Attribute")" class="back_to_checkout" style="top:0px;text-transform:none;font-size: small;color: #0082c7;">(back to specification attribute list) </a></span>
+                <span class="edit_order_details"><span class="edit_order_icon"></span><a href="" class="add_new_check">EDIT SPECIFICATION ATTRIBUTE DETAILS - @Model.Name </a> <a href="@Url.Action("ListSpecificationAttribute", "Attribute")" class="back_to_checkout" style="text-transform:none;font-size: small;color: #0082c7;">(back to specification attribute list) </a></span>
                 <span class="back_to_order" style="padding-top:0px">
-                    <input type="submit" value="Save" class="add_cat_button">
-                    <a href="@Url.Action("DeleteSpecificationAttribute", "Attribute", new { Id = Model.Id })"> <input type="button" value="Delete" class="delete_cat_button"></a>
+                    <input type="submit" value="Save" class="add_cat_button" name="AddOrUpdateSpecificationAttribute">
+                    <a href="@Url.Action("DeleteSpecificationAttribute", "Attribute", new { Id = Model.Id })"> <input type="button" value="Delete" class="delete_cat_button" onclick=" return confirm('Are You Sure'); "></a>
                 </span>
             }
         </div>
+    
         <div class="tab_main_order col-md-12">
             <ul id="myTab" role="tablist" class="tabview_order_ul">
 
@@ -40,13 +41,14 @@
             <div class="tab-content tab_content_solutions" id="myTabContent">
                 <div aria-labelledby="home-tab" id="info" class="tab-pane fade in active  " role="tabpanel">
                     @{
-        Html.RenderPartial("SpecificationAttributeDetails", this.Model);
+                Html.RenderPartial("SpecificationAttributeDetails", this.Model);
                     }
 
                 </div>
-                <div aria-labelledby="home-tab" id="products" class="tab-pane fade " role="tabpanel">
-
-                    @{
+                
+  
+         <div aria-labelledby="home-tab" id="products" class="tab-pane fade " role="tabpanel">
+        @{
         if (Model.Id != 0)
         {
             Html.RenderPartial("SpecificationAttributeOptions", this.Model);
@@ -55,14 +57,17 @@
         {
             <label>You need to save before adding a value</label>
         }
-                    }
-  
-
-
+        }
+                        </div>
+                    </div>
                 </div>
+    }
             </div>
 
-
-        </div>
-    }
-</div>
+@section scripts {
+    <script>
+        function GetOptionId(Id) {
+            $('#hiddenSpecOptionId').val(Id);
+        }
+    </script>
+}

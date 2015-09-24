@@ -14,6 +14,11 @@ namespace Orbio.Core.Data
     
     public partial class OrderItem
     {
+        public OrderItem()
+        {
+            this.GiftCards = new HashSet<GiftCard>();
+        }
+    
         public int Id { get; set; }
         public System.Guid OrderItemGuid { get; set; }
         public int OrderId { get; set; }
@@ -36,5 +41,6 @@ namespace Orbio.Core.Data
     
         public virtual Order Order { get; set; }
         public virtual Product Product { get; set; }
+        public virtual ICollection<GiftCard> GiftCards { get; set; }
     }
 }

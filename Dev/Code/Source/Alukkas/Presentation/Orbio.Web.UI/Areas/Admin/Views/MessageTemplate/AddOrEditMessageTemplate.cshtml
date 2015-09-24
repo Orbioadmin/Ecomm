@@ -1,0 +1,83 @@
+﻿@model Orbio.Web.UI.Areas.Admin.Models.MessageTemplates.MessageTemplateModel
+@{
+    ViewBag.Title = "AddOrEditMessageTemplate";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="container">
+    @using (Html.BeginForm("AddOrUpdate", "MessageTemplate", FormMethod.Post))
+    {
+        <div class="main_edit_order">
+            @if (Model.Id == 0)
+            {
+                <span class="edit_order_details"><span class="edit_order_icon"></span><a href="" class="add_new_check">ADD NEW MESSAGE TEMPLATE</a></span>
+                <span class="back_to_order" style="padding-top:0px">
+                    <input type="submit" value="Save" class="add_cat_button">
+                    <a href="@Url.Action("List", "MessageTemplate")"> <input type="button" value="Cancel" class="delete_cat_button"></a>
+                </span>
+            }
+            else
+            {
+                <span class="edit_order_details"><span class="edit_order_icon"></span><a href="" class="add_new_check">EDIT MESSAGE TEMPLATE - @Model.Name </a> <a href="@Url.Action("List", "MessageTemplate")" class="back_to_checkout" style="top:0px;text-transform:none;font-size: small;color: #0082c7;">(back to message template list) </a></span>
+                <span class="back_to_order" style="padding-top:0px">
+                    <input type="submit" value="Save" class="add_cat_button">
+                    <a href="@Url.Action("DeleteMessageTemplate", "MessageTemplate", new { Id = Model.Id })"> <input type="button" value="Delete" class="delete_cat_button" onclick="return confirm('are you sure');"></a>
+                </span>
+            }
+        </div>
+        <div class="tab_main_order col-md-12">
+            <ul id="myTab" role="tablist" class="tabview_order_ul">
+                <li class="active cctv_resp_li" role="presentation"><a aria-expanded="true" aria-controls="based" data-toggle="tab" role="tab" id="home-tab" href="#info">INFO</a></li>
+
+            </ul>
+        </div>
+
+        <div class="tab_side_solutions col-md-12">
+            <div class="tab-content tab_content_solutions" id="myTabContent">
+                <div aria-labelledby="home-tab" id="info" class="tab-pane fade in active  " role="tabpanel">
+                    @{
+                    Html.RenderPartial("Info", this.Model);
+                    }
+
+                </div>
+                </div>
+            </div>
+    }
+</div>
+
+@section scripts {
+    <script type="text/javascript">
+        tinymce.init({
+            selector: "#MessageBody",
+            plugins: [
+                    "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
+                    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+                    "table contextmenu directionality emoticons template textcolor paste fullpage textcolor colorpicker textpattern"
+            ],
+
+            toolbar1: "newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
+            toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
+            toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft",
+
+            menubar: false,
+            toolbar_items_size: 'small',
+
+            style_formats: [
+                    { title: 'Bold text', inline: 'b' },
+                    { title: 'Red text', inline: 'span', styles: { color: '#ff0000' } },
+                    { title: 'Red header', block: 'h1', styles: { color: '#ff0000' } },
+                    { title: 'Example 1', inline: 'span', classes: 'example1' },
+                    { title: 'Example 2', inline: 'span', classes: 'example2' },
+                    { title: 'Table styles' },
+                    { title: 'Table row 1', selector: 'tr', classes: 'tablerow1' }
+            ],
+
+            templates: [
+                    { title: 'Test template 1', content: 'Test 1' },
+                    { title: 'Test template 2', content: 'Test 2' }
+            ]
+        });</script>
+    }
+
+
+

@@ -11,21 +11,27 @@
     {
         @Html.HiddenFor(m => m.SpecificationAttributeId, new { Value = Model.SpecificationAttributeId })
         @Html.HiddenFor(m => m.Id, new { Value = Model.Id })
-        <div class="main_edit_order">
-            @if (Model.Id == 0)
-            {
-                <span class="back_to_order" style="padding-top:0px">
-                    <input type="submit" value="Save" class="add_cat_button">
-                    <a href="@Url.Action("EditSpecificationAttribute", "Attribute", new { Id = Model.SpecificationAttributeId })"> <input type="button" value="Cancel" class="delete_cat_button"></a>
-                </span>
-            }
-            else
-            {
-                <span class="back_to_order" style="padding-top:0px">
-                    <input type="submit" value="Save" class="add_cat_button">
-                </span>
-            }
-        </div>
+        <div class="preview_main">
+            <ul>
+                @if (Model.Id == 0)
+                {
+                    <li>
+                        <span class="back_to_order" style="padding-top:0px">
+                            <input type="submit" value="Save" class="add_cat_button">
+                            <a href="@Url.Action("EditSpecificationAttribute", "Attribute", new { Id = Model.SpecificationAttributeId })"> <input type="button" value="Cancel" class="delete_cat_button"></a>
+                        </span>
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        <span class="back_to_order" style="padding-top:0px">
+                            <input type="submit" value="Save" class="add_cat_button">
+                        </span>
+                    </li>
+                }
+                </ul>
+</div>
 
 
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Orbio.Web.UI.Areas.Admin.Models.Catalog;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -33,10 +34,16 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Orders
 
         public bool IsLoggedInAsVendor { get; set; }
 
+        public int Category { get; set; }
+
+        public int Manufacturer { get; set; }
 
         public IList<SelectListItem> AvailableOrderStatuses { get; set; }
         public IList<SelectListItem> AvailablePaymentStatuses { get; set; }
         public IList<SelectListItem> AvailableShippingStatuses { get; set; }
+
+        public List<CategoryModel> Categories { get; set; }
+        public List<ManufacturerModel> Manufacturers { get; set; }
 
     }
 }

@@ -1,0 +1,68 @@
+﻿@model Orbio.Web.UI.Areas.Admin.Models.Sales.GiftCardModel
+
+<div class="col-md-12 add_cart_left_side edit_checkout_attr_main">
+    <div class="form-group row" style="margin-top:10px">
+        @Html.HiddenFor(m => m.Id, new { Value = Model.Id })
+        <div class="col-md-2"><label>Gift Card Type : </label></div>
+        <div class="col-md-4">@Html.DropDownList("GiftCardType", Model.GiftCardTypes, new { @class = "edit_text_checkout", @style = "width:30%",@id="drpcardtype" })</div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-2"><label>Initial Value: </label></div>
+        <div class="col-md-4">@Html.TextBoxFor(m => m.InitialValue, new { @class = "edit_text_checkout", @type = "number",@style="width:30%" })<span>  [Rs]</span></div>
+    </div>
+    @if(Model.Id>0)
+    {
+    <div class="form-group row">
+        <div class="col-md-2"><label>Remaining Amount: </label></div>
+        <div class="col-md-4">@("Rs."+ Model.RemainingAmount)</div>
+    </div>
+    }
+    <div class="form-group row">
+        <div class="col-md-2"><label>Is Gift Card Activated: </label></div>
+        <div class="col-md-4">@Html.CheckBoxFor(m => m.IsGiftCardActivated)</div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-2"><label>Coupon Code: </label></div>
+        <div class="col-md-4">@Html.TextBoxFor(m => m.CouponCode, new { @class = "edit_text_checkout",id="txtcouponcode", @style = "width:60%",@required="required" })
+            <input type="button" value="Generate Code" id="generateCouponCode" /></div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-2"><label>Recipient's Name: </label></div>
+        <div class="col-md-4">@Html.TextBoxFor(m => m.RecipientName, new { @class = "edit_text_checkout", @required = "required" })</div>
+    </div>
+    @if (Model.GiftCardType == 0)
+    {
+        <div class="form-group row" id="divrecemail">
+            <div class="col-md-2"><label>Recipient's Email: </label></div>
+            <div class="col-md-4">@Html.TextBoxFor(m => m.RecipientEmail, new { @class = "edit_text_checkout", @type = "email" })</div>
+        </div>
+    }
+    <div class="form-group row">
+        <div class="col-md-2"><label>Sender's Name: </label></div>
+        <div class="col-md-4">@Html.TextBoxFor(m => m.SenderName, new { @class = "edit_text_checkout", @required = "required" })</div>
+    </div>
+    @if (Model.GiftCardType == 0)
+    {
+        <div class="form-group row" id="divsenemail">
+            <div class="col-md-2"><label>Sender's Email: </label></div>
+            <div class="col-md-4">@Html.TextBoxFor(m => m.SenderEmail, new { @class = "edit_text_checkout", @type = "email", @id = "txtsenemail" })</div>
+        </div>
+    }
+    <div class="form-group row">
+        <div class="col-md-2"><label>Message: </label></div>
+        <div class="col-md-4">@Html.TextAreaFor(m => m.Message, new { @class = "edit_text_checkout"})</div>
+    </div>
+    @if(Model.Id>0)
+    {
+    <div class="form-group row">
+        <div class="col-md-2"><label>Is Recipient Notified: </label></div>
+        <div class="col-md-4">@Html.CheckBoxFor(m => m.IsRecipientNotified)</div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-2"><label>Created On: </label></div>
+        <div class="col-md-4">@Model.CreationDate</div>
+    </div>
+    }
+</div>
+
+

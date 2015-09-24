@@ -83,6 +83,21 @@ namespace Orbio.Web.Framework
             builder.RegisterType<OBS.Admin.Customers.CustomerService>().As<OBS.Admin.Customers.ICustomerService>().InstancePerHttpRequest();
             //added by roshni
             builder.RegisterType<OBS.Admin.Customers.OnlineCustomerService>().As<OBS.Admin.Customers.IOnlineCustomerService>().InstancePerHttpRequest();
+            //added by roshni
+            builder.RegisterType<OBS.Admin.Customers.NewsletterSubscriberService>().As<OBS.Admin.Customers.INewsletterSubscriberService>().InstancePerHttpRequest();
+            //added by roshni
+            builder.RegisterType<OBS.Admin.Orders.BestSellerService>().As<OBS.Admin.Orders.IBestSellerService>().InstancePerHttpRequest();
+             //added by roshni
+            builder.RegisterType<OBS.Admin.Orders.NeverPurchasedReportService>().As<OBS.Admin.Orders.INeverPurchasedReportService>().InstancePerHttpRequest();
+             //added by roshni
+            builder.RegisterType<OBS.Admin.Shipments.ShipmentService>().As<OBS.Admin.Shipments.IShipmentService>().InstancePerHttpRequest();
+            //added by roshni
+            builder.RegisterType<OBS.Common.PdfService>().As<OBS.Common.IPdfService>().InstancePerHttpRequest();
+            //added by roshni
+            builder.RegisterType<OBS.Admin.Sales.GiftCardService>().As<OBS.Admin.Sales.IGiftCardService>().InstancePerHttpRequest();
+            //added by roshni
+            builder.RegisterType<OBS.Admin.MessageTemplates.MessageTemplateService>().As<OBS.Admin.MessageTemplates.IMessageTemplateService>().InstancePerHttpRequest();
+            
         }
 
         public int Order

@@ -1,0 +1,37 @@
+﻿@model Orbio.Web.UI.Areas.Admin.Models.MessageTemplates.MessageTemplateModel
+
+<div class="col-md-12 add_cart_left_side edit_checkout_attr_main">
+
+    <div class="form-group row" style="margin-top:10px">
+        @Html.HiddenFor(m => m.Id, new { Value = Model.Id })
+        <div class="col-md-2"><label>Name : </label></div>
+        <div class="col-md-4">@Html.TextBoxFor(m => m.Name, new { @class = "edit_text_checkout", required = "required" })</div>
+    </div>
+
+    <div class="form-group row" style="margin-top:10px">
+        <div class="col-md-2"><label>Is Active : </label></div>
+        <div class="col-md-4">@Html.CheckBoxFor(m => m.IsActive)
+        </div>
+    </div>
+
+    <div class="form-group row" style="margin-top:10px">
+        <div class="col-md-2"><label>BCC : </label></div>
+        <div class="col-md-4">
+            @Html.TextBoxFor(m => m.BCC, new { @class = "edit_text_checkout", @type="email" })
+        </div>
+    </div>
+
+        <div class="form-group row" style="margin-top:10px">
+            <div class="col-md-2"><label>Subject : </label></div>
+            <div class="col-md-4">
+               @Html.TextBoxFor(m => m.Subject, new { @class = "edit_text_checkout"})
+            </div>
+        </div>
+
+        <div class="form-group row" style="margin-top:10px">
+            <div class="col-md-2"><label>Body : </label></div>
+            <div class="col-md-4" style="width:61%">
+                @Html.TextAreaFor(m => m.Body, new { @class = "short_description_txt_area", ength = "0", cols = "50", id = "MessageBody", rows = "2" })
+            </div>
+        </div>
+</div>

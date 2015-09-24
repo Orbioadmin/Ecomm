@@ -70,7 +70,7 @@
 <ul class="dropdown-menu">
 <li><a href="@Url.Action("ProductAttribute", "Attribute")">Product Attributes</a></li>
 <li><a href="@Url.Action("ListSpecificationAttribute", "Attribute")">Specification Attributes</a></li>
-<li><a href="@Url.Action("GetCheckoutAttribute","Attribute")">Checkout Attributes</a></li>
+@*<li><a href="@Url.Action("GetCheckoutAttribute","Attribute")">Checkout Attributes</a></li>*@
 </ul>
 </li>
 <li class="dropdown-submenu">
@@ -92,13 +92,13 @@
 </a>
 <ul class="dropdown-menu" role="menu">
 <li><a href="@Url.Action("List","Order")">Orders</a></li>
-<li><a href="#">Shipments</a></li>
+<li><a href="@Url.Action("List","Shipment")">Shipments</a></li>
 <li><a href="#">Return Requests</a></li>
-<li><a href="#">Gift Cards</a></li>
+<li><a href="@Url.Action("GiftCards","Sales")">Gift Cards</a></li>
 <li><a href="@Url.Action("CurrentCarts", "ShoppingCart")">Current Shopping Carts</a></li>
 <li><a href="@Url.Action("CurrentWishLists", "ShoppingCart")">Current Wishlists</a></li>
-<li><a href="#">Bestsellers</a></li>
-<li><a href="#">Products Never Purchased</a></li>
+<li><a href="@Url.Action("BestSellersReport", "Order")">Bestsellers</a></li>
+<li><a href="@Url.Action("NeverSoldReport", "Order")">Products Never Purchased</a></li>
 </ul>
 <li class="dropdown">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Customers<span class="caret"></span></a>
@@ -108,13 +108,13 @@
 <li><a href="@Url.Action("ListCustomerRole","Customer")">Customer Roles</a></li>
 @*<li><a href="@Url.Action("OnlineCustomers", "Customer")">Online customers</a></li>*@
 <li><a href="@Url.Action("CustomerReport", "Customer")">Customer Reports</a></li>
+<li><a href="@Url.Action("NewsletterSubscribers", "Customer")">Newsletter Subscribers</a></li>
 </ul>
 </li>
 <li>
 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Promotions<span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
 <li><a href="#">Affiliates</a></li>
-<li><a href="#">Newsletter Subscribers</a></li>
 <li><a href="#">Campaigns</a></li>
 <li><a href="#">Discounts</a></li>
 
@@ -123,7 +123,7 @@
 <li>
 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Content Management <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="#">Message Templates</a> </li>
+<li><a href="@Url.Action("List","MessageTemplate")">Message Templates</a> </li>
 </ul>
 </li>
 <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Configuration <span class="caret"></span></a></li>

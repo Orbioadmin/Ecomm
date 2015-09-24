@@ -2,6 +2,7 @@
 using Orbio.Services.Admin.Attributes;
 using Orbio.Web.UI.Areas.Admin.Models.Attribute;
 using Orbio.Web.UI.Areas.Admin.Models.Catalog;
+using Orbio.Web.UI.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,7 +44,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         public ActionResult AddProductAttribute()
         {
             var model = new ProductAttributeModel();
-            return View("CreateOrEditProductAttribute", model);
+            return PartialView(model);
         }
 
         public ActionResult EditProductAttribute(int Id)
@@ -54,10 +55,31 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult AddOrUpdateProductAttribute(ProductAttributeModel model)
         {
             productAttributeService.AddOrUpdateProductAttribute(model.Id, model.Name, model.Description);
-                return RedirectToAction("ProductAttribute");
+            return RedirectToAction("ProductAttribute");
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult UpdateProductAttribute(int Id, FormCollection form)
+        {
+            if (form != null)
+            {
+                var name = form["txtname" + Id];
+                var description = form["txtdescription" + Id];
+                var prodAttribute = new ProductAttributeModel
+                {
+                    Id = Id,
+                    Name = name,
+                    Description = description,
+                };
+
+                productAttributeService.AddOrUpdateProductAttribute(prodAttribute.Id, prodAttribute.Name, prodAttribute.Description);
+            }
+            return RedirectToAction("ProductAttribute");
         }
 
         public ActionResult DeleteProductAttribute(int Id)
@@ -85,7 +107,8 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             return View("SpecificationAttribute", model);
         }
 
-        [HttpPost]
+        [HttpParamAction]
+        [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddOrUpdateSpecificationAttribute(SpecificationAttributeModel model)
         {
             int result = specAttributeService.AddOrUpdate(model.Id, model.Name, model.DisplayOrder);
@@ -113,13 +136,23 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             return RedirectToAction("ListSpecificationAttribute");
         }
 
+        public ActionResult AddSpecificationAttributeOption(int? Id, int? Spec)
+        {
+            var model = new SpecificationAttributeOptionModel();
+            model.SpecificationAttributeId = Spec.GetValueOrDefault();
+            return PartialView(model);
+        }
+
         public ActionResult AddOrEditSpecificationAttributeOption(int? Id,int? Spec)
         {
             var model = new SpecificationAttributeOptionModel();
             if (Id != 0)
             {
                 var result = specAttributeService.GetSpecificationAttributeOptionById(Id.GetValueOrDefault());
-                model = new SpecificationAttributeOptionModel(result);
+                if (result != null)
+                {
+                    model = new SpecificationAttributeOptionModel(result);
+                }
             }
             model.SpecificationAttributeId = Spec.GetValueOrDefault();
             return View(model);
@@ -131,11 +164,54 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             return RedirectToAction("EditSpecificationAttribute", new { Id = Spec });
         }
 
-        [HttpPost]
-        public ActionResult AddorEditOptions(SpecificationAttributeOptionModel model)
+        [HttpParamAction]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AddorEditOptions(FormCollection form)
         {
-            int result = specAttributeService.AddSpecificationOption(model.Id, model.Name, model.DisplayOrder, model.SpecificationAttributeId);
-            return RedirectToAction("EditSpecificationAttribute", new { Id = model.SpecificationAttributeId });
+            var specModel = new SpecificationAttributeOptionModel();
+            if(form!=null)
+            {
+                var name = form["txtname"];
+                var displayorder = form["txtdisplayorder"];
+                var id = form["hdnId"];
+                var specId = form["hdnSpecId"];
+                specModel = new SpecificationAttributeOptionModel
+                {
+                    Id = Convert.ToInt32(id),
+                    Name = name,
+                    DisplayOrder = Convert.ToInt32(displayorder),
+                    SpecificationAttributeId = Convert.ToInt32(specId),
+                };
+                int result = specAttributeService.AddSpecificationOption(specModel.Id, specModel.Name, specModel.DisplayOrder, specModel.SpecificationAttributeId);
+            }
+            return RedirectToAction("EditSpecificationAttribute", new { Id = specModel.SpecificationAttributeId });
+        }
+
+        [HttpParamAction]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult UpdateOptions(FormCollection form)
+        {
+            var specModel = new SpecificationAttributeOptionModel();
+            if(form!=null)
+            {
+                if(string.IsNullOrEmpty(form["hiddenSpecOptionId"]))
+                    return RedirectToAction("ListSpecificationAttribute");
+
+                int optionId = Convert.ToInt32(form["hiddenSpecOptionId"]);
+                var name = form["txtname" + optionId];
+                var displayorder = form["txtdisplayorder" + optionId];
+                var specId = form["hiddenSpecId"];
+                specModel = new SpecificationAttributeOptionModel
+                {
+                    Id = Convert.ToInt32(optionId),
+                    Name = name,
+                    DisplayOrder = Convert.ToInt32(displayorder),
+                    SpecificationAttributeId = Convert.ToInt32(specId),
+                };
+                int result = specAttributeService.AddSpecificationOption(specModel.Id, specModel.Name, specModel.DisplayOrder, specModel.SpecificationAttributeId);
+            }
+
+            return RedirectToAction("EditSpecificationAttribute", new { Id = specModel.SpecificationAttributeId });
         }
 
         #endregion
