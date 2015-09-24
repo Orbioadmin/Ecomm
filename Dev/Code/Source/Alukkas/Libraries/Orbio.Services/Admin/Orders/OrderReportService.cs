@@ -12,6 +12,8 @@ using Orbio.Services.Helpers;
 using Orbio.Core.Data;
 using Orbio.Core.Domain.Admin.Orders;
 using Orbio.Core.Payments;
+using Nop.Data;
+using Nop.Core.Domain;
 
 namespace Orbio.Services.Admin.Orders
 {
@@ -20,17 +22,37 @@ namespace Orbio.Services.Admin.Orders
         #region Fields
         private readonly OrbioAdminContext context = new OrbioAdminContext(); 
         private readonly IDateTimeHelper _dateTimeHelper;
+        private readonly IDbContext dbContext;
         #endregion
         /// instantiates Store service type
         /// </summary>
         /// <param name="context">db context</param>
-        public OrderReportService(IDateTimeHelper dateTimeHelper)
+        public OrderReportService(IDateTimeHelper dateTimeHelper, IDbContext dbContext)
         {
+            this.dbContext = dbContext;
             //this.context = context;
             this._dateTimeHelper = dateTimeHelper;
         }
 
         #region Methods
+
+        /// <summary>
+        /// Get order average reports from last 12 months
+        /// </summary>
+        /// <returns></returns>
+        public List<OrderAverageReport> GetOrderAverageReport()
+        {
+            var sqlParamList = new List<SqlParameter>();
+            var result = dbContext.ExecuteFunction<XmlResultSet>("usp_OrbioAdmin_GetOrderAverageReport", sqlParamList.ToArray()).FirstOrDefault();
+            if (result != null && result.XmlResult != null)
+            {
+                var order = Serializer.GenericDeSerializer<List<OrderAverageReport>>(result.XmlResult);
+                return order;
+            }
+
+            return new List<OrderAverageReport>();
+        }
+
 
         /// <summary>
         /// Get order average report

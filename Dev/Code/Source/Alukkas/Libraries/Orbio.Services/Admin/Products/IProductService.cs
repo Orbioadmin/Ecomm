@@ -28,14 +28,19 @@ namespace Orbio.Services.Admin.Products
         /// <summary>
         /// Insert new Product
         /// </summary>
-        /// <param name="product"></param>
-        /// <param name="slug"></param>
-        void InsertNewProduct(Product product,string slug);
+        /// <param name="productDetail"></param>
+        void InsertNewProduct(Orbio.Core.Domain.Admin.Product.ProductDetail productDetail);
 
         /// <summary>
         /// Delete selected products
         /// </summary>
         /// <param name="idList"></param>
         void DeleteSelectedProducts(int[] idList);
+
+        /// <summary>
+        /// Get all product tags
+        /// </summary>
+        /// <returns></returns>
+        List<ProductTag> GetAllProductTags();
     }
 }

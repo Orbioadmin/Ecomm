@@ -20,6 +20,11 @@ using Orbio.Services.Directory;
 using Orbio.Core.Domain.Directory;
 using Orbio.Services.Messages;
 using System.Configuration;
+using Orbio.Web.UI.Filters;
+using DotNet.Highcharts;
+using DotNet.Highcharts.Options;
+using DotNet.Highcharts.Enums;
+using DotNet.Highcharts.Helpers;
 
 namespace Orbio.Web.UI.Areas.Admin.Controllers
 {
@@ -94,8 +99,51 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             //if (!_permissionService.Authorize(StandardPermissionProvider.ManageOrders))
             //    return Content("");
 
-            var model = GetOrderAverageReportModel();
-            return PartialView(model);
+           // var model = GetOrderAverageReportModel();
+            var model = _orderReportService.GetOrderAverageReport();
+            //create a collection of data
+
+            //modify data type to make it of array type
+            var xDataMonths = model.Select(i => i.monthName).ToArray();
+            var yDataPendingCounts = model.Select(i => new object[] { i.orderPendingCount }).ToArray();
+            var yDataProcessingCounts = model.Select(i => new object[] { i.orderProcessingCount }).ToArray();
+            var yDataCompleteCounts = model.Select(i => new object[] { i.orderCompleteCount }).ToArray();
+            var yDataCancelledCounts = model.Select(i => new object[] { i.orderCancelledCount }).ToArray();
+
+            //instanciate an object of the Highcharts type
+            var chart = new Highcharts("chart")
+                //define the type of chart 
+                        .InitChart(new Chart { DefaultSeriesType = ChartTypes.Line })
+                //overall Title of the chart 
+                        .SetTitle(new Title { Text = "Order Total" })
+                //load the X values
+                        .SetXAxis(new XAxis { Categories = xDataMonths })
+                        .SetTooltip(new Tooltip
+                        {
+                            Enabled = true,
+                            Formatter = @"function() { return '<b>'+ this.series.name +'</b><br/>'+ this.x +': '+ this.y; }"
+                        })
+                        .SetPlotOptions(new PlotOptions
+                        {
+                            Line = new PlotOptionsLine
+                            {
+                                DataLabels = new PlotOptionsLineDataLabels
+                                {
+                                    Enabled = true
+                                },
+                                EnableMouseTracking = false
+                            }
+                        })
+                //load the Y values 
+                        .SetSeries(new[]
+                    {
+                        new Series {Name = "Pending", Data = new Data(yDataPendingCounts)},
+                        new Series { Name = "Processing", Data = new Data(yDataProcessingCounts) },
+                        new Series { Name = "Complete", Data = new Data(yDataCompleteCounts) },
+                         new Series { Name = "Cancelled", Data = new Data(yDataCancelledCounts) }
+                    });
+
+            return PartialView(chart);
        }
 
         protected virtual IList<OrderIncompleteReportLineModel> GetOrderIncompleteReportModel()
@@ -140,6 +188,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
 
         #region OrderList
 
+        [AdminAuthorizeAttribute]
         public ActionResult List()
         {
             //order statuses
@@ -223,6 +272,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             return PartialView(aggregator);
         }
 
+        [AdminAuthorizeAttribute]
         public ActionResult Edit(int id)
         {
             var order = _orderService.GetOrderById(id);

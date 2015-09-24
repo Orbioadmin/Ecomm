@@ -3,7 +3,6 @@
     ViewBag.Title = "Create";
     Layout = "~/Areas/Admin/Views/Shared/_Layout1.cshtml";
 }
-
 <div class="container">
     <div class="main_edit_order">
         <span class="edit_order_details"><span class="edit_order_icon"></span><a href="" class="add_new_check">Create product</a></span>
@@ -204,6 +203,11 @@
         key = key.replace(/ /g, "-");
         $("#slug").val(key);
     }
+</script>
+    <script type="text/javascript">
+        $(".chosen-deselect").chosen({ allow_single_deselect: true });
+        $(".chosen").chosen().change();
+        $(".chosen").trigger('liszt:updated');
 </script>
 
 }

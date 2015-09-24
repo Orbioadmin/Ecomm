@@ -175,6 +175,11 @@ namespace Orbio.Core.Domain.Customers
         public bool IsRegistered { get; set; }
 
         /// <summary>
+        /// Gets or sets is admin
+        /// </summary>
+        public bool IsAdmin { get; set; }
+
+        /// <summary>
         /// Gets or sets is approved
         /// </summary>
         public bool IsApproved { get; set; }

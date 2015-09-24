@@ -70,6 +70,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\..\Ecom_Git\Ecomm\Dev\Code\Source\Alukkas\Presentation\Orbio.Web.UI\bin\dotless.Core.dll</HintPath>
     </Reference>
+    <Reference Include="DotNet.Highcharts">
+      <HintPath>..\..\packages\DotNet.Highcharts.4.0\lib\DotNet.Highcharts.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\..\packages\EntityFramework.6.0.1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -251,6 +254,7 @@
     <Compile Include="Areas\Admin\Controllers\CustomerController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PictureController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\ShoppingCartController.cs" />
     <Compile Include="Areas\Admin\MappingExtensions.cs" />
@@ -279,6 +283,7 @@
     <Compile Include="Areas\Admin\Models\Orders\OrderListModel.cs" />
     <Compile Include="Areas\Admin\Models\Orders\OrderModel.cs" />
     <Compile Include="Areas\Admin\Models\Orders\ShoppingCartModel.cs" />
+    <Compile Include="Areas\Admin\Models\Orders\TransactionCount.cs" />
     <Compile Include="Areas\Admin\Models\Product\ProductListModel.cs" />
     <Compile Include="Areas\Admin\Models\Product\ProductModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -289,6 +294,7 @@
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
+    <Compile Include="Filters\AdminAuthorizeAttribute.cs" />
     <Compile Include="Filters\ContinueShoppingAttribute.cs" />
     <Compile Include="Filters\HttpParamActionAttribute.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -335,6 +341,7 @@
   <ItemGroup>
     <Content Include="App_Data\Settings.txt" />
     <Content Include="Areas\Admin\Content\bootstrap.min.css" />
+    <Content Include="Areas\Admin\Content\chosen.css" />
     <Content Include="Areas\Admin\Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Areas\Admin\Content\fonts\Roboto-Medium.svg" />
     <Content Include="Areas\Admin\Content\fonts\Roboto-Regular.svg" />
@@ -353,6 +360,8 @@
     <Content Include="Areas\Admin\images\back.png" />
     <Content Include="Areas\Admin\images\blue_arrow.png" />
     <Content Include="Areas\Admin\images\chk-box_2.png" />
+    <Content Include="Areas\Admin\images\chosen-sprite%402x.png" />
+    <Content Include="Areas\Admin\images\chosen-sprite.png" />
     <Content Include="Areas\Admin\images\cross.png" />
     <Content Include="Areas\Admin\images\edit.png" />
     <Content Include="Areas\Admin\images\Edit_order_sprite.png" />
@@ -373,6 +382,7 @@
     <Content Include="Areas\Admin\images\white_arrow.png" />
     <Content Include="Areas\Admin\Scripts\bootstrap-multiselect.js" />
     <Content Include="Areas\Admin\Scripts\bootstrap.min.js" />
+    <Content Include="Areas\Admin\Scripts\chosen.jquery.min.js" />
     <Content Include="Areas\Admin\Scripts\highcharts.js" />
     <Content Include="Areas\Admin\Scripts\ie-emulation-modes-warning.js" />
     <Content Include="Areas\Admin\Scripts\ie10-viewport-bug-workaround.js" />
@@ -720,6 +730,39 @@
     <Content Include="Scripts\cloud-zoom.js" />
     <Content Include="Scripts\cloudzoom.js" />
     <Content Include="Scripts\datepicker.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\adapters\standalone-framework.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\adapters\standalone-framework.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\highcharts-3d.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\highcharts-3d.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\highcharts-all.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\highcharts-more.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\highcharts-more.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\highcharts.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\highcharts.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\canvas-tools.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\canvas-tools.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\data.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\data.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\drilldown.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\drilldown.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\exporting.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\exporting.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\funnel.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\funnel.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\heatmap.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\heatmap.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\no-data-to-display.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\no-data-to-display.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\solid-gauge.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\solid-gauge.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\themes\dark-blue.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\themes\dark-green.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\themes\dark-unica.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\themes\gray.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\themes\grid-light.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\themes\grid.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\themes\sand-signika.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\themes\skies.js" />
     <Content Include="Scripts\html5shiv.js" />
     <Content Include="Scripts\ion.rangeSlider.min.js" />
     <Content Include="Scripts\jquery-zoom.js" />
@@ -774,6 +817,8 @@
     <Content Include="Areas\Admin\Views\Product\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Customer\AddCustomerRole.cshtml" />
     <Content Include="Areas\Admin\Views\Product\_CreateOrUpdateSeo.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\_CreateOrUpdatePicture.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\_PictureUpload.cshtml" />
     <None Include="Properties\PublishProfiles\ecom.pubxml" />
     <Content Include="Areas\Admin\Views\Customer\ListCustomer.cshtml" />
     <Content Include="Areas\Admin\Views\Customer\CustomerList.cshtml" />
@@ -788,7 +833,9 @@
     <Content Include="Areas\Admin\Views\Customer\CustomerAddress.cshtml" />
     <None Include="Properties\PublishProfiles\NopCommerce.pubxml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Views\Picture\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>

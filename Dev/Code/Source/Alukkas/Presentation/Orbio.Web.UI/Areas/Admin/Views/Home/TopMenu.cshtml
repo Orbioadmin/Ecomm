@@ -1,4 +1,7 @@
-﻿<div class="top-menu">
+﻿@{
+    var workContext = Nop.Core.Infrastructure.EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
+}
+<div class="top-menu">
 <div class="container">
 <div class="col-md-4 col-sm-4">
 <div class="logo">Francis Alukkas</div>
@@ -14,7 +17,7 @@
 </div>
 <div class="admin-login">
 <button aria-expanded="false" data-toggle="dropdown" type="button" class="btn btn-sm dropdown-toggle">
-                    admin@francisalukkas.com <span class="caret"></span>
+                   @workContext.CurrentCustomer.Email <span class="caret"></span>
 </button>
 <ul role="menu" class="dropdown-menu">
 <li><a href="#">Action</a></li>
@@ -22,6 +25,7 @@
 <li><a href="#">Something else here</a></li>
 <li class="divider"></li>
 <li><a href="#">Separated link</a></li>
+<li><a href="@Url.Action("LogOut", "Account", new { area = string.Empty })">Logout</a></li>
 </ul>
 </div>
 </div>

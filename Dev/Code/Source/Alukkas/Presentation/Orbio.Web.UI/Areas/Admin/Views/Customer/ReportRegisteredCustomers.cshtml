@@ -1,20 +1,29 @@
 ﻿@model List<Orbio.Web.UI.Areas.Admin.Models.Customers.RegisteredCustomerReportLineModel>
 @{
     Layout = null;
+    var count = 1;
 }
-<table class="order_total_main_table" id="tableData">
+<table class="item_admin_order" id="tableData">
     <thead>
-    <td style="background-color: #f1eff0;color: #2e2e2e;font-size: 13px;">PERIOD</td>
-    <td style="background-color: #f1eff0;color: #2e2e2e;font-size: 13px;">COUNT</td>
+    <td>PERIOD</td>
+    <td>COUNT</td>
     </thead>
     <tbody>
         @foreach (var rcr in this.Model)
         {
-            <tr>
-                <td class="align_center">@rcr.Period</td>
-                <td class="align_center">@rcr.Customers</td>
-            </tr>
+           if (count == 1)
+            {
+                @:<tr class="first_row">
+                 count++;
+            }
+            else
+            {
+                @:<tr class="second_row">
+                 count = 1;
+            }
+            @:<td class="align_center">@rcr.Period</td>
+            @:<td class="align_center">@rcr.Customers</td>
+        @:</tr>
         }
-
     </tbody>
 </table>

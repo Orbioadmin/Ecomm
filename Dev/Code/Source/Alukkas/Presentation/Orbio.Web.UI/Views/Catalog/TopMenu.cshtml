@@ -123,7 +123,9 @@
                                 }
                                 count++;
                             }
+
                         }
+                        
                     </ul>
                     }
                    
@@ -136,6 +138,10 @@
                                 @RenderCategoryLine(category, 0)
                             }
                         }
+                    }
+                    @if (workContext.CurrentCustomer.IsAdmin)
+                    {
+                        <li style="position:relative;left:880px"><a href="~/Admin">Administrator</a></li> 
                     }
                 </ul>
 

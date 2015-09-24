@@ -473,6 +473,14 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <Property Name="Weight" Type="decimal" Precision="18" Scale="4" Nullable="false" />
           <Property Name="UnitPrice" Type="decimal" Precision="18" Scale="4" Nullable="false" />
         </EntityType>
+        <EntityType Name="Product_ProductTag_Mapping">
+          <Key>
+            <PropertyRef Name="Product_Id" />
+            <PropertyRef Name="ProductTag_Id" />
+          </Key>
+          <Property Name="Product_Id" Type="int" Nullable="false" />
+          <Property Name="ProductTag_Id" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Product_SpecificationAttribute_Mapping">
           <Key>
             <PropertyRef Name="Id" />
@@ -868,6 +876,34 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="Product_ProductTags_Source">
+          <End Role="Product" Type="Self.Product" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Product_ProductTag_Mapping" Type="Self.Product_ProductTag_Mapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product_ProductTag_Mapping">
+              <PropertyRef Name="Product_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Product_ProductTags_Target">
+          <End Role="ProductTag" Type="Self.ProductTag" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Product_ProductTag_Mapping" Type="Self.Product_ProductTag_Mapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductTag">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product_ProductTag_Mapping">
+              <PropertyRef Name="ProductTag_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="ProductCategory_Category">
           <End Role="Category" Type="Self.Category" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -1068,6 +1104,7 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <EntitySet Name="Product_PriceComponent_Mapping" EntityType="Self.Product_PriceComponent_Mapping" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product_ProductAttribute_Mapping" EntityType="Self.Product_ProductAttribute_Mapping" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product_ProductComponent_Mapping" EntityType="Self.Product_ProductComponent_Mapping" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product_ProductTag_Mapping" EntityType="Self.Product_ProductTag_Mapping" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product_SpecificationAttribute_Mapping" EntityType="Self.Product_SpecificationAttribute_Mapping" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductAttribute" EntityType="Self.ProductAttribute" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductComponent" EntityType="Self.ProductComponent" Schema="dbo" store:Type="Tables" />
@@ -1170,6 +1207,14 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <AssociationSet Name="OrderItem_Product" Association="Self.OrderItem_Product">
             <End Role="Product" EntitySet="Product" />
             <End Role="OrderItem" EntitySet="OrderItem" />
+          </AssociationSet>
+          <AssociationSet Name="Product_ProductTags_Source" Association="Self.Product_ProductTags_Source">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Product_ProductTag_Mapping" EntitySet="Product_ProductTag_Mapping" />
+          </AssociationSet>
+          <AssociationSet Name="Product_ProductTags_Target" Association="Self.Product_ProductTags_Target">
+            <End Role="ProductTag" EntitySet="ProductTag" />
+            <End Role="Product_ProductTag_Mapping" EntitySet="Product_ProductTag_Mapping" />
           </AssociationSet>
           <AssociationSet Name="ProductCategory_Category" Association="Self.ProductCategory_Category">
             <End Role="Category" EntitySet="Category" />
@@ -1515,6 +1560,10 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <EntitySet Name="DeliveryDates" EntityType="OrbioAdminModel.DeliveryDate" />
           <EntitySet Name="ProductTags" EntityType="OrbioAdminModel.ProductTag" />
           <EntitySet Name="Warehouses" EntityType="OrbioAdminModel.Warehouse" />
+          <AssociationSet Name="Product_ProductTag_Mapping" Association="OrbioAdminModel.Product_ProductTag_Mapping">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ProductTag" EntitySet="ProductTags" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="CustomerRole">
           <Key>
@@ -1728,6 +1777,7 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <NavigationProperty Name="Product_PriceComponent_Mapping" Relationship="OrbioAdminModel.FK_Product_PriceComponent_Mapping_Product" FromRole="Product" ToRole="Product_PriceComponent_Mapping" />
           <NavigationProperty Name="Product_ProductComponent_Mapping" Relationship="OrbioAdminModel.FK_Product_ProductComponent_Mapping_Product" FromRole="Product" ToRole="Product_ProductComponent_Mapping" />
           <NavigationProperty Name="Product_Picture_Mapping" Relationship="OrbioAdminModel.ProductPicture_Product" FromRole="Product" ToRole="Product_Picture_Mapping" />
+          <NavigationProperty Name="ProductTags" Relationship="OrbioAdminModel.Product_ProductTag_Mapping" FromRole="Product" ToRole="ProductTag" />
         </EntityType>
         <Association Name="Customer_BillingAddress">
           <End Type="OrbioAdminModel.Address" Role="Address" Multiplicity="0..1" />
@@ -2513,6 +2563,7 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Products" Relationship="OrbioAdminModel.Product_ProductTag_Mapping" FromRole="ProductTag" ToRole="Product" />
         </EntityType>
         <EntityType Name="Warehouse">
           <Key>
@@ -2522,6 +2573,10 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <Property Name="Name" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
           <Property Name="AddressId" Type="Int32" Nullable="false" />
         </EntityType>
+        <Association Name="Product_ProductTag_Mapping">
+          <End Type="OrbioAdminModel.Product" Role="Product" Multiplicity="*" />
+          <End Type="OrbioAdminModel.ProductTag" Role="ProductTag" Multiplicity="*" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3160,6 +3215,14 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <AssociationSetMapping Name="Product_ProductTag_Mapping" TypeName="OrbioAdminModel.Product_ProductTag_Mapping" StoreEntitySet="Product_ProductTag_Mapping">
+            <EndProperty Name="ProductTag">
+              <ScalarProperty Name="Id" ColumnName="ProductTag_Id" />
+            </EndProperty>
+            <EndProperty Name="Product">
+              <ScalarProperty Name="Id" ColumnName="Product_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

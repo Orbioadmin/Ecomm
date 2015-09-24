@@ -73,6 +73,7 @@
         <EntityTypeShape EntityType="OrbioAdminModel.DeliveryDate" Width="1.5" PointX="8.2390354686598464" PointY="10.306619678766756" />
         <EntityTypeShape EntityType="OrbioAdminModel.ProductTag" Width="1.5" PointX="1.5006342034324232" PointY="10.025042866368333" />
         <EntityTypeShape EntityType="OrbioAdminModel.Warehouse" Width="1.5" PointX="4.8720733322538781" PointY="19.380168730104419" />
+        <AssociationConnector Association="OrbioAdminModel.Product_ProductTag_Mapping" />
       </Diagram>
         <EntityTypeShape EntityType="OrbioAdminModel.SpecificationAttribute" Width="1.5" PointX="34.75" PointY="9" />
         <EntityTypeShape EntityType="OrbioAdminModel.SpecificationAttributeOption" Width="1.5" PointX="32.5" PointY="9" />

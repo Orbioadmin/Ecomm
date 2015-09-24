@@ -7,7 +7,7 @@
 <div class="container">
     <div class="main_edit_order">
         <span class="edit_order_details"><span class="edit_order_icon"></span><a href="" class="add_new_check">Edit product detail - @Model.Name</a></span>
-        <span class="back_to_order"><u><a href="@Url.Action("List","Product")">Back to order list</a></u></span>
+        <span class="back_to_order"><u><a href="@Url.Action("List","Product")">Back to product list</a></u></span>
     </div>
     @using (@Html.BeginForm())
     {
@@ -110,10 +110,13 @@
             </div>
         </div>
         <div class="tab-content product_add_tab_main" id="myTabContent">
-            @Html.Partial("_CreatOrUpdateInfo", Model);
+            @Html.Partial("_CreatOrUpdateInfo", Model)
 
             <div aria-labelledby="home-tab" id="seo" class="tab-pane fade" role="tabpanel">
-                rfgerghrthfgrtghrth
+                @Html.Partial("_CreateOrUpdateSeo", Model)
+            </div>
+            <div aria-labelledby="home-tab" id="pictures" class="tab-pane fade" role="tabpanel">
+                @Html.Partial("_CreateOrUpdatePicture")
             </div>
         </div>
 
@@ -180,22 +183,67 @@
                     $("#trackInv").hide();
                 }
             });
+            var SpecialPriceStartDateTimeUtc = $("#SpecialPriceStartDateTimeUtc").val();
+            var SpecialPriceEndDateTimeUtc = $("#SpecialPriceEndDateTimeUtc").val();
+            if (SpecialPriceStartDateTimeUtc != "")
+            {
+                $("#SpecialPriceStartDateTimeUtc").kendoDateTimePicker({
+                    value: SpecialPriceStartDateTimeUtc
+                });
+            }
+            else
+            {
+                $("#SpecialPriceStartDateTimeUtc").kendoDateTimePicker({
+                    value: new Date()
+                });
+            }
+            if (SpecialPriceEndDateTimeUtc != "")
+            {
+                $("#SpecialPriceEndDateTimeUtc").kendoDateTimePicker({
+                    value: SpecialPriceEndDateTimeUtc
+                });
+            }
+            else
+            {
+                $("#SpecialPriceEndDateTimeUtc").kendoDateTimePicker({
+                    value: new Date()
+                });
+            }
 
-            $("#SpecialPriceStartDateTimeUtc").kendoDateTimePicker({
-                value: new Date()
-            });
-            $("#SpecialPriceEndDateTimeUtc").kendoDateTimePicker({
-                value: new Date()
-            });
-            $("#AvailableStartDateTimeUtc").kendoDateTimePicker({
-                value: new Date()
-            });
-            $("#AvailableEndDateTimeUtc").kendoDateTimePicker({
-                value: new Date()
-            });
-
+            var AvailableStartDateTimeUtc = $("#AvailableStartDateTimeUtc").val();
+            var AvailableEndDateTimeUtc = $("#AvailableEndDateTimeUtc").val();
+            if (AvailableStartDateTimeUtc != "")
+            {
+                $("#AvailableStartDateTimeUtc").kendoDateTimePicker({
+                    value: AvailableStartDateTimeUtc
+                });
+            }
+            else
+            {
+                $("#AvailableStartDateTimeUtc").kendoDateTimePicker({
+                    value: new Date()
+                });
+            }
+            if (AvailableEndDateTimeUtc != "")
+            {
+                $("#AvailableEndDateTimeUtc").kendoDateTimePicker({
+                    value: AvailableEndDateTimeUtc
+                });
+            }
+            else
+            {
+                $("#AvailableEndDateTimeUtc").kendoDateTimePicker({
+                    value: new Date()
+                });
+            }
         });
 
     </script>
+<script type="text/javascript">
+    $(".chosen-deselect").chosen({ allow_single_deselect: true });
+    $(".chosen").chosen().change();
+    $(".chosen").trigger('liszt:updated');
+</script>
+
 }
 
