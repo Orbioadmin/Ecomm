@@ -81,6 +81,12 @@
         <AssociationConnector Association="OrbioAdminModel.Address_Country" />
         <AssociationConnector Association="OrbioAdminModel.Address_StateProvince" />
         <AssociationConnector Association="OrbioAdminModel.StateProvince_Country" />
+        <EntityTypeShape EntityType="OrbioAdminModel.GiftCard" Width="1.5" PointX="9.0360771794971448" PointY="4.7758574657029742" />
+        <EntityTypeShape EntityType="OrbioAdminModel.GiftCardUsageHistory" Width="1.5" PointX="10.667440825452768" PointY="14.216941348378054" />
+        <AssociationConnector Association="OrbioAdminModel.GiftCard_PurchasedWithOrderItem" />
+        <AssociationConnector Association="OrbioAdminModel.GiftCardUsageHistory_GiftCard" />
+        <AssociationConnector Association="OrbioAdminModel.GiftCardUsageHistory_UsedWithOrder" />
+        <EntityTypeShape EntityType="OrbioAdminModel.MessageTemplate" Width="1.5" PointX="4.9032437302652951" PointY="15.8001561685466" />
       </Diagram>
         <EntityTypeShape EntityType="OrbioAdminModel.SpecificationAttribute" Width="1.5" PointX="34.75" PointY="9" />
         <EntityTypeShape EntityType="OrbioAdminModel.SpecificationAttributeOption" Width="1.5" PointX="32.5" PointY="9" />

@@ -93,6 +93,10 @@ namespace Orbio.Web.Framework
             builder.RegisterType<OBS.Admin.Shipments.ShipmentService>().As<OBS.Admin.Shipments.IShipmentService>().InstancePerHttpRequest();
             //added by roshni
             builder.RegisterType<OBS.Common.PdfService>().As<OBS.Common.IPdfService>().InstancePerHttpRequest();
+            //added by roshni
+            builder.RegisterType<OBS.Admin.Sales.GiftCardService>().As<OBS.Admin.Sales.IGiftCardService>().InstancePerHttpRequest();
+            //added by roshni
+            builder.RegisterType<OBS.Admin.MessageTemplates.MessageTemplateService>().As<OBS.Admin.MessageTemplates.IMessageTemplateService>().InstancePerHttpRequest();
             
         }
 

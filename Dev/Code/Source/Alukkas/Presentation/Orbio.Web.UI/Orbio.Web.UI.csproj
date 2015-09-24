@@ -250,8 +250,10 @@
     <Compile Include="Areas\Admin\Controllers\ComponentController.cs" />
     <Compile Include="Areas\Admin\Controllers\CustomerController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MessageTemplateController.cs" />
     <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SalesController.cs" />
     <Compile Include="Areas\Admin\Controllers\ShipmentController.cs" />
     <Compile Include="Areas\Admin\Controllers\ShoppingCartController.cs" />
     <Compile Include="Areas\Admin\MappingExtensions.cs" />
@@ -276,6 +278,7 @@
     <Compile Include="Areas\Admin\Models\Customers\CustomerRoleModel.cs" />
     <Compile Include="Areas\Admin\Models\Customers\NewletterSubscribersModel.cs" />
     <Compile Include="Areas\Admin\Models\Customers\RegisteredCustomerReportLineModel.cs" />
+    <Compile Include="Areas\Admin\Models\MessageTemplates\MessageTemplateModel.cs" />
     <Compile Include="Areas\Admin\Models\Orders\BestSellerModel.cs" />
     <Compile Include="Areas\Admin\Models\Orders\NeverSoldReportModel.cs" />
     <Compile Include="Areas\Admin\Models\Orders\OrderAverageReportLineSummaryModel.cs" />
@@ -285,6 +288,9 @@
     <Compile Include="Areas\Admin\Models\Orders\ShoppingCartModel.cs" />
     <Compile Include="Areas\Admin\Models\Product\ProductListModel.cs" />
     <Compile Include="Areas\Admin\Models\Product\ProductModel.cs" />
+    <Compile Include="Areas\Admin\Models\Sales\GiftCardModel.cs" />
+    <Compile Include="Areas\Admin\Models\Sales\GiftCardSearchModel.cs" />
+    <Compile Include="Areas\Admin\Models\Sales\GiftCardUsageHistoryModel.cs" />
     <Compile Include="Areas\Admin\Models\Shipments\ShipmentItemModel.cs" />
     <Compile Include="Areas\Admin\Models\Shipments\ShipmentListModel.cs" />
     <Compile Include="Areas\Admin\Models\Shipments\ShipmentModel.cs" />
@@ -796,6 +802,17 @@
     <Content Include="Areas\Admin\Views\Shipment\Search.cshtml" />
     <Content Include="Areas\Admin\Views\Shipment\ShipmentList.cshtml" />
     <Content Include="Areas\Admin\Views\Shipment\ShipmentItems.cshtml" />
+    <Content Include="Areas\Admin\Views\Sales\ReturnRequest.cshtml" />
+    <Content Include="Areas\Admin\Views\Sales\GiftCards.cshtml" />
+    <Content Include="Areas\Admin\Views\Sales\SearchGiftCards.cshtml" />
+    <Content Include="Areas\Admin\Views\Sales\ListGiftCards.cshtml" />
+    <Content Include="Areas\Admin\Views\Sales\AddOrEditGiftCards.cshtml" />
+    <Content Include="Areas\Admin\Views\Sales\GiftCardInfo.cshtml" />
+    <Content Include="Areas\Admin\Views\Sales\GiftCardUsageHistory.cshtml" />
+    <Content Include="Areas\Admin\Views\MessageTemplate\List.cshtml" />
+    <Content Include="Areas\Admin\Views\MessageTemplate\MessageTemplateList.cshtml" />
+    <Content Include="Areas\Admin\Views\MessageTemplate\AddOrEditMessageTemplate.cshtml" />
+    <Content Include="Areas\Admin\Views\MessageTemplate\Info.cshtml" />
     <None Include="Properties\PublishProfiles\ecom.pubxml" />
     <Content Include="Areas\Admin\Views\Customer\ListCustomer.cshtml" />
     <Content Include="Areas\Admin\Views\Customer\CustomerList.cshtml" />

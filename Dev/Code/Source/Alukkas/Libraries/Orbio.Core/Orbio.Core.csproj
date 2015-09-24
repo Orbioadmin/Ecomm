@@ -81,6 +81,12 @@
     <Compile Include="Data\Discount_AppliedToCategories.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\GiftCard.cs">
+      <DependentUpon>OrbioAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GiftCardUsageHistory.cs">
+      <DependentUpon>OrbioAdmin.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\Log.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
@@ -88,6 +94,9 @@
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\ManufacturerTemplate.cs">
+      <DependentUpon>OrbioAdmin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\MessageTemplate.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\NewsLetterSubscription.cs">

@@ -1,0 +1,50 @@
+﻿@model List<Orbio.Web.UI.Areas.Admin.Models.Sales.GiftCardModel>
+
+<div class="col-md-9 main_order_table" style="width: 100%;">
+    <table class="item_admin_order">
+        <thead>
+        <td>Initial Amount</td>
+        <td>Remaining Amount</td>
+        <td>Coupon Code</td>
+        <td>Is Gift Card Activated</td>
+        <td>Created Date</td>
+        <td>View</td>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                if (Model.Count > 0)
+                {
+                    int count = 1;
+                    foreach (var item in Model)
+                    {
+                        if (count == 1)
+                        {
+                            @:<tr class="first_row">
+                              count++;
+                        }
+                        else
+                        {
+                            @:<tr class="second_row">
+                              count = 1;
+                        }
+                        <td class="varient_align" style="text-align:center">@item.InitialValue </td>
+                        <td class="varient_align" style="text-align:center">@item.RemainingAmount </td>
+                        <td class="varient_align" style="text-align:center">@item.CouponCode </td>
+                        <td class="varient_align" style="text-align:center">
+                            <label class="@(item.IsGiftCardActivated ? "img_sprite1" : "img_sprite")"></label>
+                        </td>
+                        <td class="varient_align" style="text-align:center">@item.CreationDate</td>
+                        <td class="varient_align" style="text-align:center">
+                            <a href="@Url.Action("EditGiftCard", "Sales", new { Id = item.Id })">View</a>
+                        </td>
+                        @:</tr>
+                                }
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+
+

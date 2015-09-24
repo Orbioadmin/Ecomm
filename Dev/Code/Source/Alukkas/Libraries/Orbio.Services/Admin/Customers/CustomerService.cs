@@ -115,8 +115,8 @@ namespace Orbio.Services.Admin.Customers
         {
             using (var context = new OrbioAdminContext())
             {
-                var result = context.Customers.Include("Address").FirstOrDefault();
-            return result;     
+                var result = context.Customers.Include("Address.Country.StateProvinces").FirstOrDefault();
+            return result; 
             }
         }
 

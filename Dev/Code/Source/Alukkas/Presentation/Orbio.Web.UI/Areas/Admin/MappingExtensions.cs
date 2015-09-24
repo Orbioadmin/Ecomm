@@ -23,8 +23,8 @@ namespace Orbio.Web.UI.Areas.Admin
                 .ForMember(ev => ev.Address1, m => m.MapFrom(a => a.Address1 + ", " + a.Address2))
                 .ForMember(ev => ev.PhoneNumber, m => m.MapFrom(a => a.PhoneNumber))
                 .ForMember(ev => ev.ZipPostalCode, m => m.MapFrom(a => a.ZipPostalCode))
-                //.ForMember(ev => ev.Country, m => m.MapFrom(a => a.Country))
-                //.ForMember(ev => ev.State, m => m.MapFrom(a => a.States))
+               .ForMember(ev => ev.Country, m => m.MapFrom(a => a.Country.Name))
+                .ForMember(ev => ev.States, m => m.MapFrom(a => a.StateProvince.Name))
                 .ForMember(ev => ev.City, m => m.MapFrom(a => a.City));
 
             return Mapper.Map<Address, Orbio.Core.Domain.Checkout.Address>(entity);
@@ -40,8 +40,8 @@ namespace Orbio.Web.UI.Areas.Admin
                 .ForMember(ev => ev.Address1, m => m.MapFrom(a => a.Address1 + ", " + a.Address2))
                 .ForMember(ev => ev.PhoneNumber, m => m.MapFrom(a => a.PhoneNumber))
                 .ForMember(ev => ev.ZipPostalCode, m => m.MapFrom(a => a.ZipPostalCode))
-                //.ForMember(ev => ev.Country, m => m.MapFrom(a => a.Country))
-                //.ForMember(ev => ev.State, m => m.MapFrom(a => a.States))
+                .ForMember(ev => ev.Country, m => m.MapFrom(a => a.Country.Name))
+                .ForMember(ev => ev.States, m => m.MapFrom(a => a.StateProvince.Name))
                 .ForMember(ev => ev.City, m => m.MapFrom(a => a.City));
 
             return Mapper.Map<Address, Orbio.Core.Domain.Checkout.Address>(entity);

@@ -85,6 +85,8 @@
     <Compile Include="Admin\Customers\IOnlineCustomerService.cs" />
     <Compile Include="Admin\Customers\NewsletterSubscriberService.cs" />
     <Compile Include="Admin\Customers\OnlineCustomerService.cs" />
+    <Compile Include="Admin\MessageTemplates\IMessageTemplateService.cs" />
+    <Compile Include="Admin\MessageTemplates\MessageTemplateService.cs" />
     <Compile Include="Admin\Orders\BestSellerService.cs" />
     <Compile Include="Admin\Orders\IBestSellerService.cs" />
     <Compile Include="Admin\Orders\INeverPurchasedReportService.cs" />
@@ -98,6 +100,8 @@
     <Compile Include="Admin\Orders\OrderProcessingService.cs" />
     <Compile Include="Admin\Products\IProductService.cs" />
     <Compile Include="Admin\Products\ProductService.cs" />
+    <Compile Include="Admin\Sales\GiftCardService.cs" />
+    <Compile Include="Admin\Sales\IGiftCardService.cs" />
     <Compile Include="Admin\Shipments\IShipmentService.cs" />
     <Compile Include="Admin\Shipments\ShipmentService.cs" />
     <Compile Include="Admin\Tax\ITaxCategoryService.cs" />

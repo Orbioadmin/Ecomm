@@ -173,6 +173,34 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <Property Name="Discount_Id" Type="int" Nullable="false" />
           <Property Name="Category_Id" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="GiftCard">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PurchasedWithOrderItemId" Type="int" />
+          <Property Name="GiftCardTypeId" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="IsGiftCardActivated" Type="bit" Nullable="false" />
+          <Property Name="GiftCardCouponCode" Type="nvarchar(max)" />
+          <Property Name="RecipientName" Type="nvarchar(max)" />
+          <Property Name="RecipientEmail" Type="nvarchar(max)" />
+          <Property Name="SenderName" Type="nvarchar(max)" />
+          <Property Name="SenderEmail" Type="nvarchar(max)" />
+          <Property Name="Message" Type="nvarchar(max)" />
+          <Property Name="IsRecipientNotified" Type="bit" Nullable="false" />
+          <Property Name="CreatedOnUtc" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GiftCardUsageHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GiftCardId" Type="int" Nullable="false" />
+          <Property Name="UsedWithOrderId" Type="int" Nullable="false" />
+          <Property Name="UsedValue" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="CreatedOnUtc" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="Log">
           <Key>
             <PropertyRef Name="Id" />
@@ -219,6 +247,19 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <Property Name="Name" Type="nvarchar" MaxLength="400" Nullable="false" />
           <Property Name="ViewPath" Type="nvarchar" MaxLength="400" Nullable="false" />
           <Property Name="DisplayOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MessageTemplate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="BccEmailAddresses" Type="nvarchar" MaxLength="200" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Body" Type="nvarchar(max)" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="EmailAccountId" Type="int" Nullable="false" />
+          <Property Name="LimitedToStores" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="NewsLetterSubscription">
           <Key>
@@ -848,6 +889,46 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="GiftCard_PurchasedWithOrderItem">
+          <End Role="OrderItem" Type="Self.OrderItem" Multiplicity="0..1" />
+          <End Role="GiftCard" Type="Self.GiftCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderItem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GiftCard">
+              <PropertyRef Name="PurchasedWithOrderItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GiftCardUsageHistory_GiftCard">
+          <End Role="GiftCard" Type="Self.GiftCard" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="GiftCardUsageHistory" Type="Self.GiftCardUsageHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GiftCard">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GiftCardUsageHistory">
+              <PropertyRef Name="GiftCardId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GiftCardUsageHistory_UsedWithOrder">
+          <End Role="Order" Type="Self.Order" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="GiftCardUsageHistory" Type="Self.GiftCardUsageHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GiftCardUsageHistory">
+              <PropertyRef Name="UsedWithOrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="Log_Customer">
           <End Role="Customer" Type="Self.Customer" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -1153,9 +1234,12 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <EntitySet Name="Customer_CustomerRole_Mapping" EntityType="Self.Customer_CustomerRole_Mapping" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CustomerRole" EntityType="Self.CustomerRole" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DeliveryDate" EntityType="Self.DeliveryDate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GiftCard" EntityType="Self.GiftCard" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GiftCardUsageHistory" EntityType="Self.GiftCardUsageHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Log" EntityType="Self.Log" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Manufacturer" EntityType="Self.Manufacturer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ManufacturerTemplate" EntityType="Self.ManufacturerTemplate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MessageTemplate" EntityType="Self.MessageTemplate" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewsLetterSubscription" EntityType="Self.NewsLetterSubscription" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderItem" EntityType="Self.OrderItem" Schema="dbo" store:Type="Tables" />
@@ -1255,6 +1339,18 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <AssociationSet Name="FK_Product_ProductComponent_Mapping_ProductComponents" Association="Self.FK_Product_ProductComponent_Mapping_ProductComponents">
             <End Role="ProductComponent" EntitySet="ProductComponent" />
             <End Role="Product_ProductComponent_Mapping" EntitySet="Product_ProductComponent_Mapping" />
+          </AssociationSet>
+          <AssociationSet Name="GiftCard_PurchasedWithOrderItem" Association="Self.GiftCard_PurchasedWithOrderItem">
+            <End Role="OrderItem" EntitySet="OrderItem" />
+            <End Role="GiftCard" EntitySet="GiftCard" />
+          </AssociationSet>
+          <AssociationSet Name="GiftCardUsageHistory_GiftCard" Association="Self.GiftCardUsageHistory_GiftCard">
+            <End Role="GiftCard" EntitySet="GiftCard" />
+            <End Role="GiftCardUsageHistory" EntitySet="GiftCardUsageHistory" />
+          </AssociationSet>
+          <AssociationSet Name="GiftCardUsageHistory_UsedWithOrder" Association="Self.GiftCardUsageHistory_UsedWithOrder">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="GiftCardUsageHistory" EntitySet="GiftCardUsageHistory" />
           </AssociationSet>
           <AssociationSet Name="Log_Customer" Association="Self.Log_Customer">
             <End Role="Customer" EntitySet="Customer" />
@@ -1446,6 +1542,7 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <NavigationProperty Name="Address1" Relationship="OrbioAdminModel.Order_ShippingAddress" FromRole="Order" ToRole="Address" />
           <NavigationProperty Name="RecurringPayments" Relationship="OrbioAdminModel.RecurringPayment_InitialOrder" FromRole="Order" ToRole="RecurringPayment" />
           <NavigationProperty Name="Shipments" Relationship="OrbioAdminModel.Shipment_Order" FromRole="Order" ToRole="Shipment" />
+          <NavigationProperty Name="GiftCardUsageHistories" Relationship="OrbioAdminModel.GiftCardUsageHistory_UsedWithOrder" FromRole="Order" ToRole="GiftCardUsageHistory" />
         </EntityType>
         <Association Name="Order_Customer">
           <End Role="Customer" Type="Self.Customer" Multiplicity="1">
@@ -1659,6 +1756,21 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
             <End Role="Country" EntitySet="Countries" />
             <End Role="StateProvince" EntitySet="StateProvinces" />
           </AssociationSet>
+          <EntitySet Name="GiftCards" EntityType="OrbioAdminModel.GiftCard" />
+          <EntitySet Name="GiftCardUsageHistories" EntityType="OrbioAdminModel.GiftCardUsageHistory" />
+          <AssociationSet Name="GiftCard_PurchasedWithOrderItem" Association="OrbioAdminModel.GiftCard_PurchasedWithOrderItem">
+            <End Role="OrderItem" EntitySet="OrderItems" />
+            <End Role="GiftCard" EntitySet="GiftCards" />
+          </AssociationSet>
+          <AssociationSet Name="GiftCardUsageHistory_GiftCard" Association="OrbioAdminModel.GiftCardUsageHistory_GiftCard">
+            <End Role="GiftCard" EntitySet="GiftCards" />
+            <End Role="GiftCardUsageHistory" EntitySet="GiftCardUsageHistories" />
+          </AssociationSet>
+          <AssociationSet Name="GiftCardUsageHistory_UsedWithOrder" Association="OrbioAdminModel.GiftCardUsageHistory_UsedWithOrder">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="GiftCardUsageHistory" EntitySet="GiftCardUsageHistories" />
+          </AssociationSet>
+          <EntitySet Name="MessageTemplates" EntityType="OrbioAdminModel.MessageTemplate" />
         </EntityContainer>
         <EntityType Name="CustomerRole">
           <Key>
@@ -1698,6 +1810,7 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <NavigationProperty Name="Order" Relationship="OrbioAdminModel.OrderItem_Order" FromRole="OrderItem" ToRole="Order" />
           <Property Type="String" Name="PriceDetailXml" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Product" Relationship="OrbioAdminModel.OrderItem_Product" FromRole="OrderItem" ToRole="Product" />
+          <NavigationProperty Name="GiftCards" Relationship="OrbioAdminModel.GiftCard_PurchasedWithOrderItem" FromRole="OrderItem" ToRole="GiftCard" />
         </EntityType>
         <Association Name="OrderItem_Order">
           <End Type="OrbioAdminModel.Order" Role="Order" Multiplicity="1">
@@ -2774,6 +2887,91 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="GiftCard">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PurchasedWithOrderItemId" Type="Int32" />
+          <Property Name="GiftCardTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="IsGiftCardActivated" Type="Boolean" Nullable="false" />
+          <Property Name="GiftCardCouponCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RecipientName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RecipientEmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SenderName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SenderEmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsRecipientNotified" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="OrderItem" Relationship="OrbioAdminModel.GiftCard_PurchasedWithOrderItem" FromRole="GiftCard" ToRole="OrderItem" />
+          <NavigationProperty Name="GiftCardUsageHistories" Relationship="OrbioAdminModel.GiftCardUsageHistory_GiftCard" FromRole="GiftCard" ToRole="GiftCardUsageHistory" />
+        </EntityType>
+        <EntityType Name="GiftCardUsageHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GiftCardId" Type="Int32" Nullable="false" />
+          <Property Name="UsedWithOrderId" Type="Int32" Nullable="false" />
+          <Property Name="UsedValue" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="CreatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="GiftCard" Relationship="OrbioAdminModel.GiftCardUsageHistory_GiftCard" FromRole="GiftCardUsageHistory" ToRole="GiftCard" />
+          <NavigationProperty Name="Order" Relationship="OrbioAdminModel.GiftCardUsageHistory_UsedWithOrder" FromRole="GiftCardUsageHistory" ToRole="Order" />
+        </EntityType>
+        <Association Name="GiftCard_PurchasedWithOrderItem">
+          <End Type="OrbioAdminModel.OrderItem" Role="OrderItem" Multiplicity="0..1" />
+          <End Type="OrbioAdminModel.GiftCard" Role="GiftCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderItem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GiftCard">
+              <PropertyRef Name="PurchasedWithOrderItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GiftCardUsageHistory_GiftCard">
+          <End Type="OrbioAdminModel.GiftCard" Role="GiftCard" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="OrbioAdminModel.GiftCardUsageHistory" Role="GiftCardUsageHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GiftCard">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GiftCardUsageHistory">
+              <PropertyRef Name="GiftCardId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GiftCardUsageHistory_UsedWithOrder">
+          <End Type="OrbioAdminModel.Order" Role="Order" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="OrbioAdminModel.GiftCardUsageHistory" Role="GiftCardUsageHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GiftCardUsageHistory">
+              <PropertyRef Name="UsedWithOrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="MessageTemplate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="BccEmailAddresses" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Subject" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="EmailAccountId" Type="Int32" Nullable="false" />
+          <Property Name="LimitedToStores" Type="Boolean" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3447,6 +3645,50 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
                 <ScalarProperty Name="Abbreviation" ColumnName="Abbreviation" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GiftCards">
+            <EntityTypeMapping TypeName="OrbioAdminModel.GiftCard">
+              <MappingFragment StoreEntitySet="GiftCard">
+                <ScalarProperty Name="CreatedOnUtc" ColumnName="CreatedOnUtc" />
+                <ScalarProperty Name="IsRecipientNotified" ColumnName="IsRecipientNotified" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="SenderEmail" ColumnName="SenderEmail" />
+                <ScalarProperty Name="SenderName" ColumnName="SenderName" />
+                <ScalarProperty Name="RecipientEmail" ColumnName="RecipientEmail" />
+                <ScalarProperty Name="RecipientName" ColumnName="RecipientName" />
+                <ScalarProperty Name="GiftCardCouponCode" ColumnName="GiftCardCouponCode" />
+                <ScalarProperty Name="IsGiftCardActivated" ColumnName="IsGiftCardActivated" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="GiftCardTypeId" ColumnName="GiftCardTypeId" />
+                <ScalarProperty Name="PurchasedWithOrderItemId" ColumnName="PurchasedWithOrderItemId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GiftCardUsageHistories">
+            <EntityTypeMapping TypeName="OrbioAdminModel.GiftCardUsageHistory">
+              <MappingFragment StoreEntitySet="GiftCardUsageHistory">
+                <ScalarProperty Name="CreatedOnUtc" ColumnName="CreatedOnUtc" />
+                <ScalarProperty Name="UsedValue" ColumnName="UsedValue" />
+                <ScalarProperty Name="UsedWithOrderId" ColumnName="UsedWithOrderId" />
+                <ScalarProperty Name="GiftCardId" ColumnName="GiftCardId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MessageTemplates">
+            <EntityTypeMapping TypeName="OrbioAdminModel.MessageTemplate">
+              <MappingFragment StoreEntitySet="MessageTemplate">
+                <ScalarProperty Name="LimitedToStores" ColumnName="LimitedToStores" />
+                <ScalarProperty Name="EmailAccountId" ColumnName="EmailAccountId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="BccEmailAddresses" ColumnName="BccEmailAddresses" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
