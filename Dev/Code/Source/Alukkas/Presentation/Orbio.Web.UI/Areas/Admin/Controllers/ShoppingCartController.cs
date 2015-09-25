@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 
 namespace Orbio.Web.UI.Areas.Admin.Controllers
 {
@@ -25,20 +26,32 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             this._storeContext = storeContext;
         }
 
-        public ActionResult CurrentCarts()
+        public ActionResult CurrentCarts(int? page)
+        {
+            return View();
+        }
+
+        public ActionResult CartCustomer(int? page)
         {
             ShoppingCartType cartType = ShoppingCartType.ShoppingCart;
-            var model = new ShoppingCartModel(_shoppingCartService.GetShoppingCartAllCustomer(cartType, _storeContext.CurrentStore.Id));
-
-            return View(model);
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            var model = new ShoppingCartModel(_shoppingCartService.GetShoppingCartAllCustomer(cartType, _storeContext.CurrentStore.Id),pageNumber,pageSize);
+            return PartialView("_CartCustomer",model.customers);
         }
 
         public ActionResult CurrentWishLists()
         {
-            ShoppingCartType cartType = ShoppingCartType.Wishlist;
-            var model = new ShoppingCartModel(_shoppingCartService.GetShoppingCartAllCustomer(cartType, _storeContext.CurrentStore.Id));
+            return View();
+        }
 
-            return View(model);
+        public ActionResult WishlistCustomer(int? page)
+        {
+            ShoppingCartType cartType = ShoppingCartType.Wishlist;
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            var model = new ShoppingCartModel(_shoppingCartService.GetShoppingCartAllCustomer(cartType, _storeContext.CurrentStore.Id), pageNumber, pageSize);
+            return PartialView("_WishListCustomer", model.customers);
         }
     }
 }

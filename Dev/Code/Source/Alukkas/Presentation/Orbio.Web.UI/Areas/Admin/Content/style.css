@@ -519,3 +519,7 @@ td h3:focus{border:0px ;}
 .left_side_text_height{margin-left: -118px;}
 .date_name{margin-left: -96px;margin-top: 12px;}
 .date_text{margin-left: -22px;}
+
+.btn{border-radius: 0px}
+.btn-default{border-color: blue;}
+.btn:hover{background: #fff;border-color: blue;}

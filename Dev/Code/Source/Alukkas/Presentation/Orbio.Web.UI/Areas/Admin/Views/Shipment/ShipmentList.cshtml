@@ -1,79 +1,90 @@
-﻿@model List<Orbio.Web.UI.Areas.Admin.Models.Shipments.ShipmentModel>
+﻿@using PagedList
+@using PagedList.Mvc
+
+@model IPagedList<Orbio.Web.UI.Areas.Admin.Models.Shipments.ShipmentModel>
 @{
     var count = 0;
     var status = "";
 }
-
-<table class="main_table" id="tableData" style="width:100%">
-    <thead class="main_head">
-    <td class="customer_id_cart"><input type="checkbox" name="chkbx" id="chkbx" /></td>
-    <td class="customer_id_cart">Shipment Id</td>
-    <td class="customer_id_cart">Order Id</td>
-    <td class="customer_id_cart">Tracking Number</td>
-    <td class="customer_id_cart">Total Weight</td>
-    <td class="customer_id_cart">Shipment Method</td>
-    <td class="customer_id_cart">Date Shipped</td>
-    <td class="customer_id_cart">Date Delivered</td>
-    <td class="customer_id_cart">Delete</td>
-    </thead>
-    <tbody class="main_tbody">
-        @foreach (var item in this.Model)
-        {
-            var tr_id = item.Id;
-            if (count == 1)
+<div id="shipList">
+    <table class="main_table" id="tableData" style="width:100%">
+        <thead class="main_head">
+        <td class="customer_id_cart"></td>
+        <td class="customer_id_cart">Shipment Id</td>
+        <td class="customer_id_cart">Order Id</td>
+        <td class="customer_id_cart">Tracking Number</td>
+        <td class="customer_id_cart">Total Weight</td>
+        <td class="customer_id_cart">Shipment Method</td>
+        <td class="customer_id_cart">Date Shipped</td>
+        <td class="customer_id_cart">Date Delivered</td>
+        <td class="customer_id_cart">Delete</td>
+        </thead>
+        <tbody class="main_tbody">
+            @foreach (var item in this.Model)
             {
-                @:<tr class="accordion-toggle first_row_cart">
-             count++;
-            }
-            else
-            {
-                @:<tr class="accordion-toggle second_row_cart">
-                    count = 1;
-            }
-            <td class="qty">
-                <input type="checkbox" name="ShipmentIds" id="chkbxshipment" value="@item.Id" />
-            </td>
-    <td class="btn_collapse qty " style="text-align:left;" data-toggle="collapse" data-target="#@tr_id">
+                var tr_id = item.Id;
+                if (count == 1)
+                {
+                    @:<tr class="accordion-toggle first_row_cart">
+                        count++;
+                        }
+                        else
+                        {
+                        @:<tr class="accordion-toggle second_row_cart">
+                        count = 1;
+                        }
+                        <td class="qty">
+                            <input type="checkbox" name="ShipmentIds" id="chkbxshipment" value="@item.Id" />
+                        </td>
+                        <td class="btn_collapse qty " style="text-align:left;" data-toggle="collapse" data-target="#@tr_id">
 
-        <h3 style="outline:0">
-            <span class="panel-icon">+</span>
-            @item.Id
-        </h3>
-    </td>
-            <td class="qty">
-                @{
-           @item.OrderId
-                }
-                @status
-            </td>
-            <td class="qty">
-            @item.TrackingNumber
-            </td>
-    <td class="qty">
-        @(!string.IsNullOrEmpty(item.TotalWeight.ToString()) ? item.TotalWeight + "[lb(s)]" : "")
-    </td>
-    <td class="qty">
-        @item.ShipmentMethod
-    </td>
-    <td class="qty">
-        @(!string.IsNullOrEmpty(item.ShippedDateUtc.ToString())?item.ShippedDateUtc.ToString():"Not Yet")
-    </td>
-    <td class="qty">
-        @(!string.IsNullOrEmpty(item.DeliveryDateUtc.ToString()) ? item.DeliveryDateUtc.ToString() : "Not Yet")
-    </td>
-    <td class="qty">
-        <a href="@Url.Action("DeleteShipment", "Shipment", new { Id=item.Id })"><input type="button" class="delete_ring" onclick=" return confirm('Are You Sure'); " /></a>
-    </td>
-            @:</tr>
-            <tr>
-                <td colspan="9" class="hiddenRow" style="padding:0px">
-                    @{
-            Html.RenderPartial("ShipmentItems", item.ShipmentItems);
+                            <h3 style="outline:0">
+                                <span class="panel-icon">+</span>
+                                @item.Id
+                            </h3>
+                        </td>
+                        <td class="qty">
+                            @{
+                                @item.OrderId
+                            }
+                            @status
+                        </td>
+                        <td class="qty">
+                            @item.TrackingNumber
+                        </td>
+                        <td class="qty">
+                            @(!string.IsNullOrEmpty(item.TotalWeight.ToString()) ? item.TotalWeight + "[lb(s)]" : "")
+                        </td>
+                        <td class="qty">
+                            @item.ShipmentMethod
+                        </td>
+                        <td class="qty">
+                            @(!string.IsNullOrEmpty(item.ShippedDateUtc.ToString()) ? item.ShippedDateUtc.ToString() : "Not Yet")
+                        </td>
+                        <td class="qty">
+                            @(!string.IsNullOrEmpty(item.DeliveryDateUtc.ToString()) ? item.DeliveryDateUtc.ToString() : "Not Yet")
+                        </td>
+                        <td class="qty">
+                            <a href="@Url.Action("DeleteShipment", "Shipment", new { Id=item.Id })"><input type="button" class="delete_ring" onclick=" return confirm('Are You Sure'); " /></a>
+                        </td>
+                        @:</tr>
+                    <tr>
+                        <td colspan="9" class="hiddenRow" style="padding:0px">
+                            @{
+                            Html.RenderPartial("ShipmentItems", item.ShipmentItems);
+                            }
+                        </td>
+                    </tr>
                     }
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+                </tbody>
+            </table>
+       
+                
+    <div id="contentPager">
+        @Html.PagedListPager(Model, page => Url.Action("ShipmentList", new { page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+    </div>
+     </div>
+
+
 
 

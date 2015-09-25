@@ -1,6 +1,10 @@
-﻿@model List<Orbio.Web.UI.Areas.Admin.Models.Sales.GiftCardModel>
+﻿@using PagedList
+@using PagedList.Mvc
 
-<div class="col-md-9 main_order_table" style="width: 100%;">
+@model IPagedList<Orbio.Web.UI.Areas.Admin.Models.Sales.GiftCardModel>
+          
+<div class="col-md-9 main_order_table" style="width: 100%;" id="giftList">
+
     <table class="item_admin_order">
         <thead>
         <td>Initial Amount</td>
@@ -44,6 +48,9 @@
             }
         </tbody>
     </table>
+    <div class="pagedList" id="contentPager">
+        @Html.PagedListPager(Model, page => Url.Action("ListGiftCards", new { page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+    </div>
 </div>
 
 

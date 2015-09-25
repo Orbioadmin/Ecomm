@@ -1,7 +1,10 @@
-﻿@model Orbio.Web.UI.Areas.Admin.Models.Customers.CustomerModel
+﻿@using PagedList
+@using PagedList.Mvc
+
+@model IPagedList<Orbio.Web.UI.Areas.Admin.Models.Orders.OrderModel>
 
 
-<div class="col-md-9 main_order_table" style="width:100%">
+<div class="col-md-9 main_order_table" style="width:100%" id="orderDet">
     <table class=" item_admin_order">
         <thead>
         <td>Order Id</td>
@@ -11,11 +14,11 @@
         <td>Shipping Status</td>
         <td>Created On</td>
         <tbody>
-            @if (Model.Order.Count > 0)
+            @if (Model.Count > 0)
             {
                 int count = 1;
                 var class_name = "";
-                foreach (var items in this.Model.Order)
+                foreach (var items in this.Model)
                 {
                    if(count==1)
                    {
@@ -69,4 +72,7 @@
             }
         </tbody>
     </table>
+    <div class="pagedList" id="contentPager">
+        @Html.PagedListPager(Model, page => Url.Action("OrderDetails", new { page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
+    </div>
     </div>

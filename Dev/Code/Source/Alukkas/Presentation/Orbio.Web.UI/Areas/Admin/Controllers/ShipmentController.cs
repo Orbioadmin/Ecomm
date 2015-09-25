@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 
 namespace Orbio.Web.UI.Areas.Admin.Controllers
 {
@@ -64,7 +65,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             return PartialView(model);
         }
 
-        public ActionResult ShipmentList(ShipmentListModel model)
+        public ActionResult ShipmentList(ShipmentListModel model,int? page)
         {
             var shipmentModel = new List<ShipmentModel>();
             DateTime? startDateValue = (model.StartDate == null) ? null
@@ -95,7 +96,9 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                                                   ShipmentId=s.Id,
                                                   }).ToList(),
                              }).ToList();
-            return PartialView(shipmentModel);
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            return PartialView(shipmentModel.ToPagedList(pageNumber, pageSize));
         }
 
         [HttpParamAction]
@@ -113,6 +116,22 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             return File(bytes, "application/pdf", "packagingslips.pdf");
             //return RedirectToAction("List");
         }
+
+        [HttpParamAction]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult PrintPackagingSlipsAll()
+        {
+            var result = _shipmentService.GetAllShipmentDetails(null, null, null, 0, 0);
+            byte[] bytes = null;
+            using (var stream = new MemoryStream())
+            {
+                _pdfService.PrintPackagingSlipsToPdf(stream, result);
+                bytes = stream.ToArray();
+            }
+            return File(bytes, "application/pdf", "packagingslipsall.pdf");
+            //return RedirectToAction("List");
+        }
+        
 
         public ActionResult DeleteShipment(int? Id)
         {

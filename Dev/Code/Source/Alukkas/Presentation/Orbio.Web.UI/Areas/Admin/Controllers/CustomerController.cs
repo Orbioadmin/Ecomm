@@ -18,6 +18,7 @@ using System.Xml.Linq;
 using Orbio.Services.Messages;
 using System.IO;
 using Orbio.Core.Utility;
+using PagedList;
 
 namespace Orbio.Web.UI.Areas.Admin.Controllers
 {
@@ -66,11 +67,15 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
 
         public ActionResult ListCustomerRole()
         {
+            return View();
+        }
+
+        public ActionResult CustomerRoleList()
+        {
             var result = customerRoleService.GetAllCustomerRole();
             var model = (from CR in result
                          select new CustomerRoleModel(CR)).ToList();
-
-            return View("ListCustomerRole",model);
+            return PartialView(model);
         }
 
         public ActionResult AddCustomerRole()
@@ -143,13 +148,14 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             return View(model);
         }
 
-        [ChildActionOnly]
-        public ActionResult CustomerList(CustomerModel model)
+        public ActionResult CustomerList(CustomerModel model,int? page)
         {
             var result = customerService.GetAllCustomer(model.FirstName, model.LastName, model.Email, model.Roles);
             var customer = (from cust in result
                             select new CustomerModel(cust)).ToList();
-            return PartialView(customer);
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            return PartialView(customer.ToPagedList(pageNumber, pageSize));
         }
 
         //public ActionResult OnlineCustomers()
@@ -280,13 +286,12 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             return PartialView(topCustomers);
         }
 
-        [ChildActionOnly]
-        public ActionResult OrderDetails(int? Id)
+        public ActionResult OrderDetails(int? Id,int? page)
         {
-            var model = new CustomerModel();
+            var model = new List<OrderModel>();
             var result = customerService.GetOrderDetails(Id.GetValueOrDefault());
-            model.Id = Id.GetValueOrDefault();
-            model.Order = result.Orders.Select(x =>
+            //model.Id = Id.GetValueOrDefault();
+            model = result.Orders.Select(x =>
             {
                 return new OrderModel()
                 {
@@ -299,7 +304,9 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                 };
             }).ToList();
 
-            return PartialView(model);
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            return PartialView(model.ToPagedList(pageNumber, pageSize));
         }
 
         [ChildActionOnly]
@@ -355,16 +362,24 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
 
         public ActionResult NewsletterSubscribers(NewletterSubscribersModel model)
         {
+            return View(model);
+        }
+
+        public ActionResult NewsletterSubscribersList(NewletterSubscribersModel model, int? page)
+        {
             var subscribers = subscriberService.GetAllSubscribers(model.Search);
-            model.Subscribers = (from s in subscribers
+
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            var cust = (from s in subscribers
                                  select new CustomerModel()
                                  {
-                                     Id=s.Id,
+                                     Id = s.Id,
                                      Email = s.Email,
                                      Active = s.Active,
                                      CreatedOn = s.CreatedOnUtc,
-                                 }).ToList();
-            return View(model);
+                                 }).ToPagedList(pageNumber, pageSize);
+            return PartialView(cust);
         }
 
         [HttpPost]

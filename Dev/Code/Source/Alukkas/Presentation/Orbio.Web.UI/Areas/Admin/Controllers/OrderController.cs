@@ -21,6 +21,7 @@ using Orbio.Core.Domain.Directory;
 using Orbio.Services.Messages;
 using System.Configuration;
 using Orbio.Web.UI.Areas.Admin.Models.Catalog;
+using PagedList;
 
 namespace Orbio.Web.UI.Areas.Admin.Controllers
 {
@@ -196,11 +197,13 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
 
             return orderModel;
         }
-        [ChildActionOnly]
-        public ActionResult OrderList(OrderListModel model)
+
+        public ActionResult OrderList(OrderListModel model, int? page)
         {
             var resultModel = GetAllOrderDetails(model);
-            return PartialView(resultModel);
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            return PartialView(resultModel.ToPagedList(pageNumber, pageSize));
         }
 
         [ChildActionOnly]
@@ -971,8 +974,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             return PartialView(model);
         }
 
-        [ChildActionOnly]
-        public ActionResult BestSellersList(OrderListModel model)
+        public ActionResult BestSellersList(OrderListModel model,int? page)
         {
             var sellerModel = new List<BestSellerModel>();
             DateTime? startDateValue = (model.StartDate == null) ? null
@@ -996,7 +998,9 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                                    Amount = r.Amount,
                                }).ToList();
             }
-            return PartialView(sellerModel);
+            int pageNumber = (page ?? 1);
+            int pageSize = 10;
+            return PartialView(sellerModel.ToPagedList(pageNumber, pageSize));
         }
 
         #endregion
@@ -1015,7 +1019,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         }
 
         [ChildActionOnly]
-        public ActionResult NeverSoldProducts(OrderListModel model)
+        public ActionResult NeverSoldProducts(OrderListModel model, int? page)
         {
             var neverSoldReportModel = new List<NeverSoldReportModel>();
             DateTime? startDateValue = (model.StartDate == null) ? null
@@ -1032,10 +1036,15 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                                         {
                                             Id = r.Id,
                                             Name = r.Name,
+                                            Description=r.ShortDescription,
+                                            CreatedOn=r.CreatedOnUtc,
                                         }).ToList();
                                
             }
-            return PartialView(neverSoldReportModel);
+
+            int pageNumber = (page ?? 1);
+            int pageSize = 10;
+            return PartialView(neverSoldReportModel.ToPagedList(pageNumber, pageSize));
         }
 
         #endregion

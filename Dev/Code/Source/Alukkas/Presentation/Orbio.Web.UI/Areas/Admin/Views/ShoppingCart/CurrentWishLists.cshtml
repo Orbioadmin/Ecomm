@@ -1,4 +1,4 @@
-﻿@model Orbio.Web.UI.Areas.Admin.Models.Orders.ShoppingCartModel
+﻿
 @{
     ViewBag.Title = "Current WishList";
     Layout = "~/Areas/Admin/Views/Shared/_Layout1.cshtml";
@@ -10,10 +10,7 @@
 
     </div>
     <div class="collapsable_table_main">
-        @{
-            Html.RenderPartial("_WishListCustomer", this.Model.customers);
-        }
-
+        @Html.Action("WishlistCustomer")
     </div>
 </div>
 
@@ -33,4 +30,20 @@
 
 
     </script>
+
+@*<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        $(document).on("click", "#contentPager a[href]", function () {
+            $.ajax({
+                url: $(this).attr("href"),
+                type: 'GET',
+                cache: false,
+                success: function (result) {
+                    $('#curwishlist').html(result);
+                }
+            });
+            return false;
+        });
+    });
+</script>*@
 }

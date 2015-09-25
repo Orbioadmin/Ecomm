@@ -6,16 +6,17 @@
         <div class="container">
             <div class="main_edit_order">
                 <span class="edit_order_details"><span class="edit_order_icon"></span>Shipments</span>
-                <span class="back_to_order"><input type="submit" value="Print packaging slips(selected)" class="add_cat_button" name="PrintPackagingSlips"></span>
+                <span class="back_to_order">
+                <input type="submit" value="Print packaging slips(all)" class="add_cat_button" name="PrintPackagingSlipsAll">
+                <input type="submit" value="Print packaging slips(selected)" class="add_cat_button" name="PrintPackagingSlips"></span>
             </div>
 
           
             <div class="tab-content tab_content_solutions" id="myTabContent">
                 <div aria-labelledby="home-tab" id="info" class="tab-pane fade in active  " role="tabpanel">
                     @Html.Action("Search", "Shipment")
-
-                    @Html.Action("ShipmentList", "Shipment")
-                </div>
+                        @Html.Action("ShipmentList", "Shipment")
+                    </div>
             </div>
         </div>
        
@@ -48,16 +49,33 @@
             $('#chkbx').click(function () {
                 if (this.checked) {
                     // Iterate each checkbox
-                    $(':checkbox').each(function () {
+                    $('#chkbxshipment').each(function () {
                         this.checked = true;
                     });
                 }
                 else {
-                    $(':checkbox').each(function () {
+                    $('#chkbxshipment').each(function () {
                         this.checked = false;
                     });
                 }
             });
 
         </script>
-    }
+
+        <script language="javascript" type="text/javascript">
+            $(document).ready(function () {
+                $(document).on("click", "#contentPager a[href]", function () {
+                    $.ajax({
+                        url: $(this).attr("href"),
+                        type: 'GET',
+                        cache: false,
+                        success: function (result) {
+                            $('#shipList').html(result);
+                        }
+                    });
+                    return false;
+                });
+            });
+    </script>
+}
+    

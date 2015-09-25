@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 
 namespace Orbio.Web.UI.Areas.Admin.Controllers
 {
@@ -39,14 +40,15 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             return PartialView(model);
         }
 
-        public ActionResult ListGiftCards(GiftCardSearchModel model)
+        public ActionResult ListGiftCards(GiftCardSearchModel model,int? page)
         {
             var result = _giftCardService.GetAllGiftCards(model.IsActive,model.GiftCardCode);
             var giftCardModel = new List<GiftCardModel>();
             giftCardModel = (from g in result
                              select new GiftCardModel(g)).ToList();
-
-            return PartialView(giftCardModel);                
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            return PartialView(giftCardModel.ToPagedList(pageNumber, pageSize));                
         }
 
         public ActionResult DeleteGiftCard(int? Id)

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using PagedList;
 
 namespace Orbio.Web.UI.Areas.Admin.Models.Orders
 {
@@ -11,18 +12,17 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Orders
     {
         public ShoppingCartModel()
         {
-            this.customers = new List<CustomerModel>();
         }
 
-        public ShoppingCartModel(ShoppingCart shoppingCart):this()
+        public ShoppingCartModel(ShoppingCart shoppingCart,int pageNumber,int pageSize):this()
         {
             if (shoppingCart.Customers != null && shoppingCart.Customers.Count > 0)
             {
                 this.customers = (from p in shoppingCart.Customers
-                                  select new CustomerModel(p)).ToList();
+                                  select new CustomerModel(p)).ToPagedList(pageNumber,pageSize);
             }
         }
 
-        public List<CustomerModel> customers { get; set; }
+        public IPagedList<CustomerModel> customers { get; set; }
     }
 }

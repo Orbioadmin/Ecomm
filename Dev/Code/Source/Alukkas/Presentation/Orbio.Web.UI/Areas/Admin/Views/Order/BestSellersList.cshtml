@@ -1,7 +1,9 @@
-﻿@model List<Orbio.Web.UI.Areas.Admin.Models.Orders.BestSellerModel>
+﻿@using PagedList
+@using PagedList.Mvc
 
-<div class="col-md-3 add_new_projects" style="width: 100%;background-color:#fff;margin-left: 15px">
-    <div class="col-md-9 main_order_table" style="width:100%">
+@model IPagedList<Orbio.Web.UI.Areas.Admin.Models.Orders.BestSellerModel>
+
+    <div class="col-md-9 main_order_table" style="width:100%" id="bestSellerList">
         <table class="item_admin_order">
             <thead>
             <td>Name</td>
@@ -43,5 +45,9 @@
                 }
             </tbody>
         </table>
+
+        <div class="pagedList" id="contentPager">
+            @Html.PagedListPager(Model, page => Url.Action("BestSellersList", new { page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
+        </div>
+
     </div>
-</div>

@@ -13,10 +13,28 @@
         <div class="tab-content tab_content_solutions" id="myTabContent">
             <div aria-labelledby="home-tab" id="info" class="tab-pane fade in active  " role="tabpanel">
                 @Html.Action("SearchGiftCards", "Sales")
-
                 @Html.Action("ListGiftCards", "Sales")
-            </div>
+           </div>
         </div>
     </div>
 
 }
+
+
+    <script language="javascript" type="text/javascript">
+       $(document).ready(function () {
+           $(document).on("click", "#contentPager a[href]", function () {
+               $.ajax({
+                   url: $(this).attr("href"),
+                   type: 'GET',
+                   cache: false,
+                   success: function (result) {
+                       $('#giftList').html(result);
+                   }
+               });
+               return false;
+           });
+       });
+    </script>
+               
+
