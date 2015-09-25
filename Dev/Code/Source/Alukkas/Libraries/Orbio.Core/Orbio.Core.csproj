@@ -229,6 +229,7 @@
     <Compile Include="Domain\Catalog\BackorderMode.cs" />
     <Compile Include="Domain\Catalog\Category.cs" />
     <Compile Include="Domain\Catalog\CategoryProduct.cs" />
+    <Compile Include="Domain\Catalog\HomePageProducts.cs" />
     <Compile Include="Domain\Catalog\LowStockActivity.cs" />
     <Compile Include="Domain\Catalog\ManageInventoryMethod.cs" />
     <Compile Include="Domain\Catalog\PriceComponent.cs" />

@@ -119,5 +119,23 @@ namespace Orbio.Services.Catalog
              sqlParamList.ToArray());
            return result;
         }
+
+        /// <summary>
+        /// Get list of products by home
+        /// </summary>
+        /// <returns></returns>
+        public HomePageProducts GetAllProductsForHome()
+        {
+
+            var result = context.ExecuteFunction<XmlResultSet>("usp_GetAllHomePageProductList").FirstOrDefault();
+
+            if (result != null && result.XmlResult != null)
+            {
+                var products = Serializer.GenericDeSerializer<HomePageProducts>(result.XmlResult);
+                return products;
+            }
+
+            return new HomePageProducts();
+        }
     }
 }

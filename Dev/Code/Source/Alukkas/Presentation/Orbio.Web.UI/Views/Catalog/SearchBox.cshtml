@@ -1,33 +1,12 @@
 ﻿@model Orbio.Web.UI.Models.Catalog.SearchModel
+
 <ul class="menu_desc">
-
-
-<button id="toggle"  onclick="toggler('myContent');">  </button>     
-          <div id="myContent" class="menu_hide">     
-
-    <li class="select_menu">
-        <a>
-            <!--<select class="menu_select" id="drpcategorysearch">
-                <option value="Search">All Categories</option>
-                @foreach (var category in Model.Categories)
-                {
-                    @*<option value="@category.Id">@category.Name</option>*@
-                    <option value="@category.SeName">@category.Name</option>
-
-                }
-            </select>-->
-            <input type="text" class="select_text" placeholder="Enter Your Keyword..." id="twotabsearchtextbox">
-            <input type="submit" class="search_butt" value="" id="search_button">
-        </a>
-         
-    </li>
-    </div>
-        <i class="cart_icon"></i>
+        <li class="select_menu">
+            <a>
+                <input type="text" class="select_text" placeholder="Enter Your Keyword..." id="twotabsearchtextbox">
+                <input type="submit" class="search_butt" value="" id="search_button">
+            </a>
+        </li>
 </ul>
 
-<script src="http://code.jquery.com/jquery-1.7.1.js"></script>
- <script>
-function toggler(divId) {
-    $("#" + divId).toggle();
-}
-</script>
+

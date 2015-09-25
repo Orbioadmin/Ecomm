@@ -1,229 +1,183 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-<section id="slider">
+<section id="slider" class="slider-section">
     <!--slider-->
     <div class="top_zig"></div>
     <div class="">
 
-        <div id="slider-carousel" class="carousel slide" data-ride="carousel">
+        <!-- bootstrap carousel -->
 
-
-            <div class="carousel-inner">
-                <div class="item active">
-                    <div class="col-sm-12">
-                        <img src="~/Images/Slider/main-banner1.jpg" class="girl img-responsive" alt="" />
+        <div id='carousel-custom' class='carousel slide' data-ride='carousel'>
+            <div class='carousel-outer'>
+                <!-- Wrapper for slides -->
+                <div class='carousel-inner'>
+                    <div class='item active'>
+                        <img src='images/Slider/Main-Banner1.jpg' alt='' />
                     </div>
-                </div>
-                <div class="item">
-                    <div class="col-sm-12">
-                        <img src="~/Images/Slider/main-banner1.jpg" class="girl img-responsive" alt="" />
+                    <div class='item'>
+                        <img src='images/Slider/1.jpg' alt='' />
                     </div>
-                </div>
+                    <div class='item'>
+                        <img src='images/Slider/2.jpg' alt='' />
+                    </div>
 
-                <div class="item">
-                    <div class="col-sm-12">
-                        <img src="~/Images/Slider/main-banner1.jpg" class="girl img-responsive" alt="" />
+                    <div class='item'>
+                        <img src='images/Slider/3.jpg' alt='' />
                     </div>
                 </div>
 
             </div>
 
-            <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
-                <img src="~/Images/Basic_image/prev-arrow.png" />
-            </a>
-            <a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
-                <img src="~/Images/Basic_image/next-arrow.png" />
-            </a>
+            <!-- Indicators -->
+            <ol class='carousel-indicators mCustomScrollbar'>
+                <li data-target='#carousel-custom' data-slide-to='0' class='active'><img src='images/Slider/Main-Banner1.jpg' alt='' /></li>
+                <li data-target='#carousel-custom' data-slide-to='1'><img src='images/Slider/1.jpg' alt='' /></li>
+                <li data-target='#carousel-custom' data-slide-to='2'><img src='images/Slider/2.jpg' alt='' /></li>
+                <li data-target='#carousel-custom' data-slide-to='3'><img src='images/Slider/3.jpg' alt='' /></li>
+            </ol>
         </div>
+
+
 
     </div>
 </section><!--/slider-->
-<div class="thumbnail_slider">
+
+
+
+<div class="thumbnail_slider explore">
     <div class="container">
 
-        <ul class="thumb_ul">
-            <li class="thumb_first">
-                <div class="explore">
-                    <span>EXPLORE OUR</span> CATEGORY
+        <ul class="prod-grid">
+            <li>
+                <div class="prod-inner">
+                    <img src="images/Basic_image/bangles.jpg">
+                    <a href="@Url.RouteUrl("Category", new { SeName = "jewellery" })?p=ct&spec=20" class="prod-prg">BANGLES</a>
+                    @*<div class="prod-prg">BANGLES</div>*@
                 </div>
             </li>
             <li>
-                <div class="ring">
-                    <p>Ring</p>
-                    <a href="@Url.RouteUrl("Category", new { SeName = "jewellery" })?p=ct&spec=23"><img src="~/Images/Basic_image/category-ring.png" /></a>
+                <div class="prod-inner">
+                    <img src="images/Basic_image/earrings.png">
+                    <a href="@Url.RouteUrl("Category", new { SeName = "jewellery" })?p=ct&spec=21" class="prod-prg">EARRING</a>
+                    @*<div class="prod-prg">EARRING</div>*@
                 </div>
             </li>
             <li>
-                <div class="ring">
-                    <p>Earrings</p>
-                    <a href="@Url.RouteUrl("Category", new { SeName = "jewellery" })?p=ct&spec=21"><img src="~/Images/Basic_image/category-earring.png" /></a>
+                <div class="prod-inner">
+                    <img src="images/Basic_image/ring.png">
+                    <a href="@Url.RouteUrl("Category", new { SeName = "jewellery" })?p=ct&spec=23" class="prod-prg">RING</a>
+                    @*<div class="prod-prg">RING</div>*@
                 </div>
             </li>
             <li>
-                <div class="ring">
-                    <p>Bangles</p>
-                    <a href="@Url.RouteUrl("Category", new { SeName = "jewellery" })?p=ct&spec=20"><img src="~/Images/Basic_image/category-bangles.png" /></a>
-                </div>
-            </li>
-            <li>
-                <div class="ring">
-                    <p>Necklace</p>
-                    <a href="@Url.RouteUrl("Category", new { SeName = "jewellery" })?p=ct&spec=22"><img src="~/Images/Basic_image/category-necklace.png" /></a>
+                <div class="prod-inner">
+                    <img src="images/Basic_image/necklace.png">
+                    <a href="@Url.RouteUrl("Category", new { SeName = "jewellery" })?p=ct&spec=22" class="prod-prg">NECKLACE</a>
+                    @*<div class="prod-prg">NECKLACE</div>*@
                 </div>
             </li>
         </ul>
     </div>
 </div>
-<div class="alukas_third">
+<div class="alukas_banner">
     <div class="container">
-        <div class="col-md-3 col-sm-3">
-            <img src="~/Images/Basic_image/banner2.jpg" />
+        <div class="col-md-6 col-sm-6">
+            <div class="">
+                <img src="images/Basic_image/Sub-banner1.jpg" />
+            </div>
+            <div class="sub-ban">
+                <img src="images/Basic_image/Sub-banner2.jpg" />
+            </div>
         </div>
         <div class="col-md-6 col-sm-6">
-            <img src="~/Images/Basic_image/banner1.jpg" />
-        </div>
-        <div class="col-md-3 col-sm-3">
-            <img src="~/Images/Basic_image/banner2.jpg" />
+            <img src="images/Basic_image/Sub-banner3.jpg" />
         </div>
     </div>
 </div>
 
-<div class="alukkas_banner">
-    <img src="~/Images/Basic_image/banner3.jpg" />
+<div class="alukkas_thumbnail">
+
+            @Html.Action("HomePageProducts", "Catalog")
+
 </div>
 
 
 
-<div class="alukkas_last">
+<div class="alukkas_videos">
     <div class="container">
-        <div class="col-md-6 col-sm-6">
-            <img src="~/Images/Basic_image/banner4.jpg" />
+        <div class="col-md-4 col-sm-4">
+            <div class="collect-images">
+                <img src="images/Basic_image/banner1-coll.png">
+                <a href="" class="collect-arrow"><i class="fa fa-caret-right"></i></a>
+            </div>
+            <h1>OUR EXCLUSIVE DIAMOND COLLECTION</h1>
+            <p>Sed pulvinar diam neque. Etiam sagittis elementum iaculis. In interdum gravida nibh quis porta. Fusce massa magna, luctus nec tempor et, pretium at lacus. Cum sociis natoque</p>
         </div>
-        <div class="col-md-6 col-sm-6">
-            <img src="~/Images/Basic_image/banner5.png" />
+        <div class="col-md-4 col-sm-4">
+            <div class="collect-images">
+                <img src="images/Basic_image/banner2-coll.png">
+                <a href="" class="collect-arrow"><i class="fa fa-caret-right"></i></a>
+            </div>
+            <h1>OUR CUSTOMER STORIES</h1>
+            <p>Sed pulvinar diam neque. Etiam sagittis elementum iaculis. In interdum gravida nibh quis porta. Fusce massa magna, luctus nec tempor et, pretium at lacus. Cum sociis natoque</p>
         </div>
+        <div class="col-md-4 col-sm-4">
+            <div class="collect-images">
+                <img src="images/Basic_image/banner3-coll.png">
+                <a href="" class="collect-arrow"><i class="fa fa-caret-right"></i></a>
+            </div>
+            <h1>EXQUISITE BRIDAL COLLECTION</h1>
+            <p>Sed pulvinar diam neque. Etiam sagittis elementum iaculis. In interdum gravida nibh quis porta. Fusce massa magna, luctus nec tempor et, pretium at lacus. Cum sociis natoque</p>
+        </div>
+    </div>
+</div>
+
+<div class="Exc-offer">
+    <div class="container">
+        <p>Exclusive offer! Just for you - <span>Maecenas vel quam id nibh blandit congue</span></p>
+    </div>
+</div>
+<div class="alukkas_newletter">
+    <div class="container">
+        <h2>Subscribe Newsletter</h2>
+        <form class="form-inline">
+            <div class="form-group">
+                <input type="email" placeholder="Your Email" id="" class="form-control email-input">
+            </div>
+            <button class="btn btn-default yellow-butt" type="submit">Subscribe</button>
+        </form>
     </div>
 </div>
 
 @section scripts{
-    <script type="text/javascript">
-
-        //jQuery(document).ready(function () {
-        //    jQuery('ul.sf-menu').superfish();
-        //});
-
-    </script>
-    <script type="text/javascript">
-        //$(function () {
-        //    $('#ei-slider').eislideshow({
-        //        animation: 'center',
-        //        autoplay: true,
-        //        slideshow_interval: 3000,
-        //        titlesFactor: 0
-        //    });
-        //});
-
-
-        // Carousel Auto-Cycle
-        //$(document).ready(function () {
-        //    $('.carousel').carousel({
-        //        interval: 3000
-        //    })
-        //});
-
-
-        //Listview
-
-        // $('.listview button').on('click', function (e) {
-        //     if ($(this).hasClass('three_view')) {
-        //         $('.featured_items ul').removeClass('four_items');
-        //     }
-        //     else if ($(this).hasClass('four_view')) {
-        //         $('.featured_items ul').addClass('four_items');
-        //     }
-        // });
-
-        // $('.listview button').click(function (e) {
-        //     e.preventDefault(); //prevent the link from being followed
-        //     $('.listview button').removeClass('selected');
-        //     $(this).addClass('selected');
-        // });
-
-
-        // /*Price slider */
-
-        // $("[data-slider]")
-        //.each(function () {
-        //    var input = $(this);
-        //    $("<span>")
-        //      .addClass("output")
-        //      .insertAfter($(this));
-        //})
-        //.bind("slider:ready slider:changed", function (event, data) {
-        //    $(this)
-        //      .nextAll(".output:first")
-        //        .html(data.value.toFixed(3));
-        //});
-    </script>
-    <script type="text/javascript">
-        //$(document).ready(function () {
-
-        //    $("#range_1").ionRangeSlider({
-        //        min: 0,
-        //        max: 5000,
-        //        from: 0,
-        //        to: 4000,
-        //        type: 'double',
-        //        step: 1,
-        //        prefix: "",
-        //        prettify: true,
-        //        hasGrid: true
-        //    });
-
-        //});
-
-        //scroll
-
-        //var _gaq = _gaq || [];
-        //_gaq.push(['_setAccount', 'UA-36251023-1']);
-        //_gaq.push(['_setDomainName', 'jqueryscript.net']);
-        //_gaq.push(['_trackPageview']);
-
-        //(function () {
-        //    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        //    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        //    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        //})();
-
-        $(document).ready(function () {
-            // Show or hide the sticky footer button
-            $(window).scroll(function () {
-                if ($(this).scrollTop() > 200) {
-                    $('.to-top').fadeIn(200);
-                } else {
-                    $('.to-top').fadeOut(200);
-                }
-            });
-
-            // Animate the scroll to top
-            $('.to-top').click(function (event) {
-                event.preventDefault();
-
-                $('html, body').animate({ scrollTop: 0 }, 300);
-            })
+<script type="text/javascript">
+    $(document).ready(function() {
+        // Show or hide the sticky footer button
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 200) {
+                $('.scroll_top').fadeIn(200);
+            } else {
+                $('.scroll_top').fadeOut(200);
+            }
         });
 
+        // Animate the scroll to top
+        $('.scroll_top').click(function(event) {
+            event.preventDefault();
 
+            $('html, body').animate({scrollTop: 0}, 300);
+        })
+    });
 
-        $(document).ready(function () {
-
-            $("#toggle").click(function () {
-                $(".target").slideToggle('slow', function () {
-                    $(".log").text('Toggle Transition Complete');
-                });
-            });
-
+    $(document).ready(function() {
+        $('#myCarousel-thumb').carousel({
+            interval: 5000
         });
-    </script>
+        $('.thumbnail').hover(function(){
+            $('.prod-prg').css({"background":"#FFFFFF"});
+        });
+    });
+</script>
+
 }

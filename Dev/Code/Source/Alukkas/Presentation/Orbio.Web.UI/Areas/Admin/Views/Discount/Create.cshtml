@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout1.cshtml";
+}
+
+<h2>Create</h2>
+
+@section scripts{
+
+    <script type="text/javascript">
+        var StartDateUtc = $("#StartDateUtc").val();
+        var EndDateUtc = $("#EndDateUtc").val();
+        if (StartDateUtc != "") {
+            $("#StartDateUtc").kendoDateTimePicker({
+                value: DateShipped
+            });
+        }
+        else {
+            $("#StartDateUtc").kendoDateTimePicker({
+                value: new Date()
+            });
+        }
+        if (EndDateUtc != "") {
+            $("#EndDateUtc").kendoDateTimePicker({
+                value: DateDelivered
+            });
+        }
+        else {
+            $("#EndDateUtc").kendoDateTimePicker({
+                value: new Date()
+            });
+        }
+
+        $(".edit_order_total").click(function () {
+            $(".free_shipping").show();
+        });
+    </script>
+}

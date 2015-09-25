@@ -53,5 +53,11 @@ namespace Orbio.Services.Catalog
         /// <param name="productid"></param>
         /// <returns></returns>
         List<ProductReview> GetCustomerReviews(int productId, string value, int pageNumber, int pageSize);
+
+        /// <summary>
+        /// Get list of products by home
+        /// </summary>
+        /// <returns></returns>
+        HomePageProducts GetAllProductsForHome();
     }
 }

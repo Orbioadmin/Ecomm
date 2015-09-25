@@ -85,6 +85,8 @@
     <Compile Include="Admin\Customers\IOnlineCustomerService.cs" />
     <Compile Include="Admin\Customers\NewsletterSubscriberService.cs" />
     <Compile Include="Admin\Customers\OnlineCustomerService.cs" />
+    <Compile Include="Admin\Discount\DiscountService.cs" />
+    <Compile Include="Admin\Discount\IDiscountService.cs" />
     <Compile Include="Admin\MessageTemplates\IMessageTemplateService.cs" />
     <Compile Include="Admin\MessageTemplates\MessageTemplateService.cs" />
     <Compile Include="Admin\Orders\BestSellerService.cs" />

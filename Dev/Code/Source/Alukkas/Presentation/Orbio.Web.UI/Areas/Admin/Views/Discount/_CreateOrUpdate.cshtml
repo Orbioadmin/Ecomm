@@ -1,0 +1,45 @@
+﻿@model Orbio.Web.UI.Areas.Admin.Models.Discount.DiscountModel
+<div class="col-md-6 add_cart_left_side">
+    <div class="form-group">
+        <label>Name : </label>
+        @Html.TextBoxFor(m => m.Name, new { @class = "category_text_add_cat", id = "discountName", required = "required" })
+    </div>
+    <div class="form-group">
+        <label class="description_cart">Discount type: </label>
+        @Html.DropDownListFor(model => model.DiscountTypeId, from Orbio.Core.Domain.Discounts.DiscountType discountType in Enum.GetValues(typeof(Orbio.Core.Domain.Discounts.DiscountType))
+                                                             select new SelectListItem() { Text = discountType.ToString(), Value = ((int)discountType).ToString() })
+    </div>
+    <div class="form-group">
+        <label>Use percentage: </label>
+        <span>@Html.CheckBoxFor(model => model.UsePercentage, new { @class = "checkbox_shipp" })</span>
+    </div>
+    <div class="form-group" id="discAmt">
+        <label>Discount amount: </label>
+        @Html.TextBoxFor(m => m.DiscountAmount, new { @class = "pending_selectd total_weight" })
+    </div>
+    <div class="form-group" id="discPerc" style="display:none">
+        <label>Discount percentage: </label>
+        @Html.TextBoxFor(m => m.DiscountPercentage, new { @class = "pending_selectd total_weight" })
+    </div>
+    <div class="form-group">
+        <label>Start date: </label>
+        @Html.TextBoxFor(m => m.StartDateUtc, new { @class = "pending_selectd date_shipped" })
+    </div>
+    <div class="form-group">
+        <label>End date: </label>
+        @Html.TextBoxFor(m => m.EndDateUtc, new { @class = "pending_selectd date_shipped" })
+    </div>
+    <div class="form-group">
+        <label>Requires coupon code: </label>
+        <span>@Html.CheckBoxFor(model => model.RequiresCouponCode, new { @class = "checkbox_shipp" })</span>
+    </div>
+    <div class="form-group" id="discCoupon" style="display:none">
+        <label>Coupon code: </label>
+        @Html.TextBoxFor(m => m.CouponCode, new { @class = "pending_selectd total_weight" })
+    </div>
+    <div class="form-group">
+        <label>Discount limitation: </label>
+        @Html.DropDownListFor(model => model.DiscountLimitationId, from Orbio.Core.Domain.Discounts.DiscountLimitationType discountLimitationType in Enum.GetValues(typeof(Orbio.Core.Domain.Discounts.DiscountLimitationType))
+                                                                   select new SelectListItem() { Text = discountLimitationType.ToString(), Value = ((int)discountLimitationType).ToString() })
+    </div>
+</div>

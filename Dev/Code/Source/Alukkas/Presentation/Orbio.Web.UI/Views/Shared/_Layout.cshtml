@@ -30,202 +30,83 @@
             <img src="~/Content/themes/base/images/torus_loader.gif" /></div>
             @RenderBody()
 
-            <footer>
-            <div class="normal_view">
-                <div class="container">
-                    <div class="Footer_top clearfix">
-                        <div class="col-md-3 col-sm-3">
-                            <h1>FRANCIS ALUKKAS</h1>
-                            <ul>
-                                <li><a href="@Url.RouteUrl("Category", new { SeName = "AboutUs" })?p=ft">About Us</a></li>
-                                <li><a href="@Url.RouteUrl("Category", new { SeName = "jewellery" })?p=ct">Jewellery</a></li>
-                                <li><a href="@Url.RouteUrl("Category", new { SeName = "jewellery" })?p=ct">Brands</a></li>
-                                <li><a href="http://www.alukkasonline.com/easygold/">Easy Gold</a></li>
-                                <li><a href="@Url.RouteUrl("Category", new { SeName = "DoubleValue" })?p=ft">Double value</a></li>
-                                <li><a href="@Url.RouteUrl("Category", new { SeName = "GiftVoucher" })?p=ft">Gift Vouchers</a></li>
-                            </ul>
-                        </div>
-
-
-                        <div class="col-md-3 col-sm-3">
-                            <h1>CUSTOMER DELIGHT</h1>
-                            <ul>
-                                <li><a href="@Url.RouteUrl("Category", new { SeName = "FAQ" })?p=ft">FAQ</a></li>
-                                <li><a href="@Url.RouteUrl("Category", new { SeName = "OurBlog" })?p=ft">Our Blog</a></li>
-                                @*<li><a href="@Url.RouteUrl("Category", new { SeName = "ContactUs" })?p=ft">Contact Us</a></li>*@
-                                <li><a href="@Url.Action("ContactUs","Home", new { SeName = "ContactUs" })?p=ft">Contact Us</a></li>
-                                <li><a href="@Url.RouteUrl("Category", new { SeName = "Certification" })?p=ft">Our Certification</a></li>
-                                <li><a href="@Url.RouteUrl("Category", new { SeName = "Career" })?p=ft">Career</a></li>
-                                <li><a href="@Url.RouteUrl("Category", new { SeName = "News" })?p=ft">News</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="col-md-3 col-sm-3">
-                            <h1>OUR POLICIES</h1>
-                            <ul>
-                                <li><a href="@Url.RouteUrl("Category", new { SeName = "ShippingPolicy" })?p=ft">Shipping Policy</a></li>
-                                <li><a href="@Url.RouteUrl("Category", new { SeName = "CancellationPolicy" })?p=ft">Cancellation Policy</a></li>
-                                <li><a href="@Url.RouteUrl("Category", new { SeName = "RefundPolicy" })?p=ft">Refund Policy</a></li>
-                                <li><a href="@Url.RouteUrl("Category", new { SeName = "BuyBackPolicy" })?p=ft">Buyback Policy</a></li>
-                                <li><a href="@Url.RouteUrl("Category", new { SeName = "ExchangePolicy" })?p=ft">Exchange Policy</a></li>
-                                <li><a href="@Url.RouteUrl("Category", new { SeName = "PrivacyPolicy" })?p=ft">Privacy Policy</a></li>
-                            </ul>
-                        </div>
-
-
-                        <div class="col-md-3 col-sm-3">
-                            <h1>OUR ASSURANCE</h1>
-                            <ul>
-                                <li><a href="">Product Detail Pricing</a></li>
-                                <!--<li><a href="">Easy Exchange</a></li>
-                                <li><a href="">Only Certified Jewellery</a></li>
-                                <li><a href="">14 Days Return</a></li>
-                                <li><a href="">Free Product Insurence</a></li>
-                                <li><a href="">Life Time product Service</a></li>-->
-                            </ul>
-                        </div>
-
-                    </div>
-</div>
- </div>
-
-<div class="hidden-md hidden-lg hidden-sm">
-<div class="row footer_responsive">
-                <div class="responsive_footer">
-    
-<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-  <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingOne">
-      <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="collapsed">
-          <i class="plus_icon"></i>FRANCIS ALUKKAS
-        </a>
-      </h4>
-    </div>
-    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-      <div class="panel-body">
-     <ul class="foot_menu_new">
-                                <li><a href="@Url.RouteUrl("Category", new { SeName = "AboutUs" })?p=ft">About Us</a></li>
-                                <li><a href="@Url.RouteUrl("Category", new { SeName = "jewellery" })?p=ct">Jewellery</a></li>
-                                <li><a href="@Url.RouteUrl("Category", new { SeName = "jewellery" })?p=ct">Brands</a></li>
-                                <li><a href="http://www.alukkasonline.com/easygold/">Easy Gold</a></li>
-                                <li><a href="@Url.RouteUrl("Category", new { SeName = "DoubleValue" })?p=ft">Double value</a></li>
-                                <li><a href="@Url.RouteUrl("Category", new { SeName = "GiftVoucher" })?p=ft">Gift Vouchers</a></li>
-     </ul>
-
-      </div>
-    </div>
-  </div>
-  <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingTwo">
-      <h4 class="panel-title">
-        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-         <i class="plus_icon"></i> CUSTOMER DELIGHT
-        </a>
-      </h4>
-    </div>
-    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-      <div class="panel-body">
-        
-     <ul class="foot_menu_new">
-                                <li><a href="@Url.RouteUrl("Category", new { SeName = "FAQ" })?p=ft">FAQ</a></li>
-                                <li><a href="@Url.RouteUrl("Category", new { SeName = "OurBlog" })?p=ft">Our Blog</a></li>
-                                <li><a href="@Url.Action("ContactUs","Home", new { SeName = "ContactUs" })?p=ft">Contact Us</a></li>
-                                <li><a href="@Url.RouteUrl("Category", new { SeName = "Certification" })?p=ft">Our Certification</a></li>
-                                <li><a href="@Url.RouteUrl("Category", new { SeName = "Career" })?p=ft">Career</a></li>
-                                <li><a href="@Url.RouteUrl("Category", new { SeName = "News" })?p=ft">News</a></li>
-     </ul>
-
-      </div>
-    </div>
-  </div>
-  <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingThree">
-      <h4 class="panel-title">
-        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree" class="collapsed">
-         <i class="plus_icon"></i> OUR POLICIES
-        </a>
-      </h4>
-    </div>
-    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-      <div class="panel-body">
-        
-       <ul class="foot_menu_new">
-       <li><a href="@Url.RouteUrl("Category", new { SeName = "ShippingPolicy" })?p=ft">Shipping Policy</a></li>
-                                <li><a href="@Url.RouteUrl("Category", new { SeName = "CancellationPolicy" })?p=ft">Cancellation Policy</a></li>
-                                <li><a href="@Url.RouteUrl("Category", new { SeName = "RefundPolicy" })?p=ft">Refund Policy</a></li>
-                                <li><a href="@Url.RouteUrl("Category", new { SeName = "BuyBackPolicy" })?p=ft">Buyback Policy</a></li>
-                                <li><a href="@Url.RouteUrl("Category", new { SeName = "ExchangePolicy" })?p=ft">Exchange Policy</a></li>
-                                <li><a href="@Url.RouteUrl("Category", new { SeName = "PrivacyPolicy" })?p=ft">Privacy Policy</a></li>
-                                       </ul>
-
-      </div>
-    </div>  
-  </div>
-  
-  <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingfour">
-      <h4 class="panel-title">
-        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapsefour" aria-expanded="false" aria-controls="collapsefour" class="collapsed">
-         <i class="plus_icon"></i> OUR ASSURANCE
-        </a>
-      </h4>
-    </div>
-    <div id="collapsefour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-      <div class="panel-body">
-        
-       <ul class="foot_menu_new">
-                       <li><a href="">Product Detail Pricing</a></li>
-     <!--<li><a href="">Easy Exchange</a></li>
-     <li><a href="">Only Certified Jewellery</a></li>
-     <li><a href="">14 Days Return</a></li>
-     <li><a href="">Free Product Insurence</a></li>
-     <li><a href="">Life Time product Service</a></li> -->
-                    </ul>
-
-      </div>
-    </div>  
-  </div>
-  
-
-</div>
-</div>
-</div>
-    
-</div>
-                <div class="footer_bottom">
-                    <div class="container">
-                        <div class="col-md-4 col-sm-4">
-                            <p class="copyright">2014 &copy Francis Alukkas. All rights reserved.</p>
-                        </div>
-
-                        <div class="col-md-4 col-sm-4">
-
-                            <ul class="foot_menu clearfix">
-                                <li><a href="" class="visa"></a></li>
-                                <li><a href="" class="discover"></a></li>
-                                <li><a href="" class="american"></a></li>
-                                <li><a href="" class="master"></a></li>
-                            </ul>
-
-                        </div>
-
-
-                        <div class="col-md-4 col-sm-4">
-
-                            <ul class="foot_menu_rgt clearfix">
-                                <li><a href="https://www.facebook.com/francisalukkas" target="_blank" class="facebook"></a></li>
-                                <li><a href="https://plus.google.com/107646149283462352621/posts" target="_blank" class="twitter"></a></li>
-                                <li><a href="https://twitter.com/francis_alukkas" target="_blank" class="google"></a></li>
-                                <li><a href="http://www.youtube.com/francisalukkas" target="_blank" class="youtube"></a></li>
-                            </ul>
-
-                        </div>
+        <footer class="footer-alukkas">
+            <div class="container">
+                <div class="Footer_top clearfix">
+                    <div class="col-md-3 col-sm-3">
+                        <h1>FRANCIS ALUKKAS</h1>
+                        <ul>
+                            <li><a href="@Url.RouteUrl("Category", new { SeName = "AboutUs" })?p=ft">About us</a></li>
+                            <li><a href="@Url.RouteUrl("Category", new { SeName = "jewellery" })?p=ct">Jewellery</a></li>
+                            <li><a href="@Url.RouteUrl("Category", new { SeName = "jewellery" })?p=ct">Brands</a></li>
+                            <li><a href="http://www.alukkasonline.com/easygold/">Easy Gold</a></li>
+                            <li><a href="@Url.RouteUrl("Category", new { SeName = "DoubleValue" })?p=ft">Double value</a></li>
+                            <li><a href="@Url.RouteUrl("Category", new { SeName = "GiftVoucher" })?p=ft">Gift Vouchers</a></li>
+                        </ul>
                     </div>
 
+                    <div class="col-md-3 col-sm-3">
+                        <h1>CUSTOMER DELIGHT</h1>
+                        <ul>
+                            <li><a href="@Url.RouteUrl("Category", new { SeName = "FAQ" })?p=ft">FAQ</a></li>
+                            <li><a href="@Url.RouteUrl("Category", new { SeName = "OurBlog" })?p=ft">Our Blog</a></li>
+                            <li><a href="@Url.Action("ContactUs","Home", new { SeName = "ContactUs" })?p=ft">Contact Us</a></li>
+                            <li><a href="@Url.RouteUrl("Category", new { SeName = "Certification" })?p=ft">Our Certification</a></li>
+                            <li><a href="@Url.RouteUrl("Category", new { SeName = "Career" })?p=ft">Career</a></li>
+                            <li><a href="@Url.RouteUrl("Category", new { SeName = "News" })?p=ft">News</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 col-sm-3">
+                        <h1>OUR POLICIES</h1>
+                        <ul>
+                            <li><a href="@Url.RouteUrl("Category", new { SeName = "ShippingPolicy" })?p=ft">Shipping Policy</a></li>
+                            <li><a href="@Url.RouteUrl("Category", new { SeName = "CancellationPolicy" })?p=ft">Cancellation Policy</a></li>
+                            <li><a href="@Url.RouteUrl("Category", new { SeName = "RefundPolicy" })?p=ft">Refund Policy</a></li>
+                            <li><a href="@Url.RouteUrl("Category", new { SeName = "BuyBackPolicy" })?p=ft">Buyback Policy</a></li>
+                            <li><a href="@Url.RouteUrl("Category", new { SeName = "ExchangePolicy" })?p=ft">Exchange Policy</a></li>
+                            <li><a href="@Url.RouteUrl("Category", new { SeName = "PrivacyPolicy" })?p=ft">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-3 col-sm-3">
+                        <h1>OUR ASSURANCE</h1>
+                        <ul>
+                            <li><a href="">Product Detail Pricing</a></li>
+                            <li><a href="">Easy Exchange</a></li>
+                            <li><a href="">Only Certified Jewellery</a></li>
+                            <li><a href="">14 Days Return</a></li>
+                            <li><a href="">Free Product Insurance</a></li>
+                            <li><a href="">Life Time product Service</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <a href="#" class="scroll_top"></a>
-            </footer>
+            </div>
+            <div class="footer_bottom">
+                <div class="container">
+                    <div class="col-md-4 col-sm-4">
+
+                        <ul class="foot_menu clearfix">
+                            <li><a href="" class="visa"></a></li>
+                            <li><a href="" class="discover"></a></li>
+                            <li><a href="" class="american"></a></li>
+                            <li><a href="" class="master"></a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <p class="copyright">2015 &copy <a href="">Francis Alukkas</a>. All rights reserved.</p>
+                    </div>
+
+                    <div class="col-md-4 col-sm-4">
+                        <ul class="foot_menu_rgt clearfix">
+                            <li><a href="https://www.facebook.com/francisalukkas" target="_blank" class="facebook-new"></a></li>
+                            <li><a href="https://plus.google.com/107646149283462352621/posts" target="_blank" class="twitter-new"></a></li>
+                            <li><a href="https://twitter.com/francis_alukkas" target="_blank" class="google-new"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <a href="#" class="scroll_top"></a>
+        </footer>
 
             @Scripts.Render("~/bundles/jquery")
             @Scripts.Render("~/bundles/jqueryui")
