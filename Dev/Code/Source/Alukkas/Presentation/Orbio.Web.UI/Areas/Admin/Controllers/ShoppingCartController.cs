@@ -7,6 +7,7 @@ using Orbio.Services.Common;
 using Orbio.Web.UI.Areas.Admin.Models.Customers;
 using Orbio.Web.UI.Areas.Admin.Models.Orders;
 using Orbio.Web.UI.Controllers;
+using Orbio.Web.UI.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +27,8 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             this._storeContext = storeContext;
         }
 
-        public ActionResult CurrentCarts(int? page)
+        [AdminAuthorizeAttribute]
+        public ActionResult CurrentCarts()
         {
             return View();
         }
@@ -40,6 +42,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             return PartialView("_CartCustomer",model.customers);
         }
 
+        [AdminAuthorizeAttribute]
         public ActionResult CurrentWishLists()
         {
             return View();

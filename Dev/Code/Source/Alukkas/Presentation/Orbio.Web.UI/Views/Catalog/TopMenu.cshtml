@@ -5,66 +5,66 @@
     var genericAttributeService = Nop.Core.Infrastructure.EngineContext.Current.Resolve<Orbio.Services.Common.IGenericAttributeService>();
     var workContext = Nop.Core.Infrastructure.EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
 }
-<div class="top-head clearfix">
+<div class="top-menu-new">
     <div class="container">
-        <ul class="top-menu">
-            <li><a href="@Url.RouteUrl("Category", new { SeName = "AboutUs" })?p=ft">About us</a></li>
-            <li><a href="">News</a></li>
-            <li><a href="">Blog</a></li>
-            <li><a href="@Url.RouteUrl("Category", new { SeName = "ContactUs" })?p=ft">Contact</a></li>
-        </ul>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <p>07 SEP 2015 - 22k Gold/gm | Kerala: 2560.00(15) | TAMILNADU: 2569.00(14)</p>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <ul class="top-rgt pull-right">
+                @if (workContext.CurrentCustomer.IsRegistered)
+                       {
+                            <li class="my-account">
+                                <div class="dropdown">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        <i class="fa fa-user"></i>
+                                        Hi @workContext.CurrentCustomer.Email
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                        <li><a href="@Url.Action("MyAccount", "Customer")">Profile</a></li>
+                                        <li><a href="@Url.Action("LogOut", "Account")">Logout</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                       }
+                else
+                {
+                    <li class="log-in">
+                        <a href="@Url.Action("Register", "Account")"><i class="fa fa-sign-in"></i>Register</a>
+                    </li>
+                        <li class="log-in">
+                            <a href="@Url.Action("Login", "Account")"><i class="fa fa-sign-in"></i>Login</a>
+                        </li>
+                    }
+            </ul>
+        </div>
     </div>
 </div>
-<div class="navbar navbar-default" role="navigation">
+<div class="navbar navbar-default home" role="navigation">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="@Url.Action("Index", "Home")"><img src="~/images/Basic_image/logo.png"></a>
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")"><img src="~/images/Basic_image/Francis-Alukkas-Logo.png"></a>
         </div>
         @Html.Action("SearchBox", "Catalog")
 
         <div class=" collapse head_main in">
             <ul class="nav navbar-nav navbar-right">
-                <li class="cart_item">
-                    @Html.Action("CartItem", "ShoppingCart")
-                </li>
-                <li>
-
-                    <div class="dropdown">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                            <img src="~/images/Basic_image/user.png">
-                             @if (workContext.CurrentCustomer.IsRegistered)
-                               {
-                                <span class="span-title">Hi @workContext.CurrentCustomer.Email</span>
-                               }
-                             else
-                               { 
-                                 <span class="span-title">Hi</span>
-                               }
-                            <span class="caret"></span>
-                         </button>
-                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                            @if (workContext.CurrentCustomer.IsRegistered)
-                             {
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="@Url.Action("MyAccount", "Customer")">My Account</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="@Url.Action("LogOut", "Account")">Logout</a></li>
-                             }
-                            else
-                             {
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="@Url.Action("Login", "Account")">Login</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="@Url.Action("Register", "Account")">Register</a></li>
-                             }
-                        </ul>
-                    </div>
-                </li>
+                @*<li class="icon-cart"><i class="cart-icon"></i><span>5</span></li>*@
+                @Html.Action("CartItem", "ShoppingCart")
+                @*<li class="icon-cart"><i class="cart-wish"></i></li>*@
             </ul>
+
         </div><!--/.nav-collapse -->
     </div>
 </div>
 
 
-<div class="second_menu">
+<div class="second_menu home">
     <div class="container">
+
         <div class="navbar navbar-default" role="navigation">
+
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -72,77 +72,37 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+
             </div>
             <div class="navbar-collapse collapse ">
                 <ul class="nav navbar-nav ">
-                    @helper RenderCategoryLine(CategorySimpleModel category, int level)
-                    {
-
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle arrow_box" data-toggle="dropdown" onclick="location.href = '@Url.RouteUrl("Category", new { SeName = category.SeName })?p=ct'">@category.Name</a>
-                        @if (category.SubCategories.Count > 0)
-                        {
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <div class="row">
-                                        <div class="container">
-                                            @foreach (var subCategory in category.SubCategories)
-                                            {
-                                                <div class="col-sm-2">
-                                                    @RenderSubCategoryLine(subCategory)
-                                                </div>
-                                            }
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        }
-                    </li>
-                    }
-
-                  
-                    @helper RenderSubCategoryLine(CategorySimpleModel category)
-                    {
-                    <h3>
-                        <a href="@Url.RouteUrl("Category", new { SeName = category.SeName })?p=ct" class="dropdown-toggle">@category.Name</a>
-                    </h3>
-                    <ul>
-                        @if (category.SubCategories.Count > 0)
-                        {
-                            int count = 0;
-                            foreach (var subCategory in category.SubCategories)
-                            {
-                                if (count < (int)ViewBag.NumberOfCategory)
-                                {
-                                    <li><a href="@Url.RouteUrl("Category", new { SeName = subCategory.SeName })?p=ct">@subCategory.Name</a></li>
-                                }
-                                else
-                                {
-                                    <li><a href="@Url.RouteUrl("Category", new { SeName = category.SeName })?p=ct"><i>ViewAll</i></a></li>
-                                    break;
-                                }
-                                count++;
-                            }
-                        }
-                    </ul>
-                    }
-                   
-                    @if (Model != null)
-                    {
-                        if (Model.Categories.Count > 0)
-                        {
-                            foreach (var category in Model.Categories)
-                            {
-                                @RenderCategoryLine(category, 0)
-                            }
-                        }
-                    }
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="">Brands</a></li>
+                    <li><a href="">News</a></li>
+                    <li><a href="">Blog</a></li>
+                    <li><a href="">Contact</a></li>
                 </ul>
+                @if (workContext.CurrentCustomer.IsAdmin)
+                {
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="~/Admin">Administrator</a></li>
+                    </ul>
+                }
 
             </div><!--/.nav-collapse -->
+
         </div>
+
     </div>
 </div>
+
+
+
+
+
+
+
+
 
 <script src="~/Scripts/jquery.js"></script>
 <script>

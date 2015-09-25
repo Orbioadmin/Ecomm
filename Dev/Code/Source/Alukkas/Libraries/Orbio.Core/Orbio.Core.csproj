@@ -209,10 +209,13 @@
     <Compile Include="Domain\Admin\Catalog\Templates.cs" />
     <Compile Include="Domain\Admin\Customers\BestCustomerReportLine.cs" />
     <Compile Include="Domain\Admin\Customers\Customer.cs" />
-    <Compile Include="Domain\Admin\Orders\BestSellers.cs" />
+    <Compile Include="Domain\Admin\Orders\OrderAverageReport.cs" />
     <Compile Include="Domain\Admin\Orders\OrderAverageReportLine.cs" />
     <Compile Include="Domain\Admin\Orders\OrderAverageReportLineSummary.cs" />
     <Compile Include="Domain\Admin\Orders\ShoppingCart.cs" />
+    <Compile Include="Domain\Admin\Product\Product.cs" />
+    <Compile Include="Domain\Admin\Product\ProductDetail.cs" />
+    <Compile Include="Domain\Admin\Orders\BestSellers.cs" />
     <Compile Include="Domain\Admin\Shipment\Shipment.cs" />
     <Compile Include="Domain\Admin\Shipment\ShipmentItem.cs" />
     <Compile Include="Domain\Catalog\Abstract\ICart.cs" />
@@ -226,6 +229,7 @@
     <Compile Include="Domain\Catalog\BackorderMode.cs" />
     <Compile Include="Domain\Catalog\Category.cs" />
     <Compile Include="Domain\Catalog\CategoryProduct.cs" />
+    <Compile Include="Domain\Catalog\HomePageProducts.cs" />
     <Compile Include="Domain\Catalog\LowStockActivity.cs" />
     <Compile Include="Domain\Catalog\ManageInventoryMethod.cs" />
     <Compile Include="Domain\Catalog\PriceComponent.cs" />

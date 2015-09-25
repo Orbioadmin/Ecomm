@@ -1,41 +1,53 @@
 ﻿@model List<Orbio.Web.UI.Areas.Admin.Models.Orders.OrderIncompleteReportLineModel>
     @{
         Layout = null;
+        var count = 1;
     }
-<div class="main-table table-responsive">
-    <h2>INCOMPLETE ORDERS</h2><span class="refbutt"></span>
-    <table id="data" class="inner-table paginated" cellpadding="0" cellspacing="0" width="100%">
+<div class="main_edit_order">
+    <span class="edit_order_details"><span class="edit_order_icon"></span><a href="" class="add_new_check">INCOMPLETE ORDERS</a></span>
+    <!-- <span class="back_to_order"><input type="button" value="Save" class="add_cat_button"></span> -->
+</div>
+<div class="col-md-12">
+    @*<h2>INCOMPLETE ORDERS</h2><span class="refbutt"></span>*@
+    <table id="data" class="item_admin_order">
         <thead>
-            <tr>
-                <th>ITEM</th>
-                <th>COUNT</th>
-                <th>TOTAL</th>
-            </tr>
-        </thead>
+                    <td>ITEM</td>
+                    <td>COUNT</td>
+                    <td>TOTAL</td>
+         </thead>
         <tbody>
-           @foreach (var oir in this.Model)
-           {
-            <tr>
-                <td>@oir.Item</td>
-                <td>@oir.Count</td>
-                <td>@oir.Total</td>
-            </tr>
-           }
+            @foreach (var oir in this.Model)
+            {
+                if (count == 1)
+                    { 
+                        @:<tr class="first_row">
+                        count++;
+                    }
+                else
+                    {
+                        @:<tr class="second_row">
+                        count = 1;
+                    }
+                    @:<td class="align_center">@oir.Item</td>
+                    @:<td class="align_center">@oir.Count</td>
+                    @:<td class="align_center">@oir.Total</td>
+                    @:</tr>
+            }
             @*<tr>
-                <td>Total unpaid order (pending payment status)</td>
-                <td></td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <td>Total not yet shipped orders</td>
-                <td></td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <td>Total incomplete orders (pending payment status)</td>
-                <td></td>
-                <td>0</td>
-            </tr>*@
+                    <td>Total unpaid order (pending payment status)</td>
+                    <td></td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>Total not yet shipped orders</td>
+                    <td></td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>Total incomplete orders (pending payment status)</td>
+                    <td></td>
+                    <td>0</td>
+                </tr>*@
 
         </tbody>
     </table>

@@ -65,6 +65,17 @@ BEGIN
 		AND Deleted = 0 AND Customer.Active=1
 		RETURN
 	END	
+	
+	ELSE IF EXISTS(SELECT  1 FROM Customer INNER JOIN Customer_CustomerRole_Mapping CCM ON 
+	Customer.Id = CCM.Customer_Id INNER JOIN CustomerRole ON CCM.CustomerRole_Id = CustomerRole.Id  WHERE Email = @authenticatedCustomerData AND CustomerRole.SystemName ='Administrators'
+		AND Deleted = 0 AND Customer.Active=1)
+	BEGIN
+		SELECT  TOP 1 *, CAST(1 as BIT) as IsRegistered,CAST(1 as BIT) as IsAdmin  FROM Customer INNER JOIN Customer_CustomerRole_Mapping CCM ON 
+		Customer.Id = CCM.Customer_Id INNER JOIN CustomerRole ON CCM.CustomerRole_Id = CustomerRole.Id  WHERE Email = @authenticatedCustomerData AND CustomerRole.SystemName ='Administrators'
+		AND Deleted = 0 AND Customer.Active=1
+		RETURN
+	END
+	
 	ELSE IF EXISTS(SELECT  1 FROM Customer INNER JOIN Customer_CustomerRole_Mapping CCM ON 
 	Customer.Id = CCM.Customer_Id INNER JOIN CustomerRole ON CCM.CustomerRole_Id = CustomerRole.Id  WHERE Email = @authenticatedCustomerData AND CustomerRole.SystemName ='Registered'
 		AND Deleted = 0 AND Customer.Active=1)

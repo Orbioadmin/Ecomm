@@ -16,6 +16,7 @@ using Orbio.Services.Security;
 using System.Configuration;
 using System.Xml.Linq;
 using Orbio.Services.Messages;
+using Orbio.Web.UI.Filters;
 using System.IO;
 using Orbio.Core.Utility;
 using PagedList;
@@ -139,6 +140,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
 
         #region Customers
 
+        [AdminAuthorizeAttribute]
         public ActionResult ListCustomer()
         {
             var result = customerRoleService.GetAllCustomerRole();

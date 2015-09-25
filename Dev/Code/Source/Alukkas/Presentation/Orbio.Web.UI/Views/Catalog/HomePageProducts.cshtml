@@ -1,0 +1,122 @@
+﻿@model List<Orbio.Web.UI.Models.Catalog.ProductDetailModel>
+@{
+    var i = 0;
+    var j = 0;
+    var count = 1;
+    decimal totalCount = (Convert.ToDecimal(this.Model.Count) / Convert.ToDecimal(4));
+    totalCount = Math.Ceiling(totalCount);
+}
+
+<div class="container">
+
+    <div class="col-md-12 col-sm-12">
+        <div id="myCarousel-thumb" class="carousel slide">
+            @if (this.Model.Count > 0)
+            {
+                <ol class="carousel-indicators">
+
+                    @for (int p = 0; p < totalCount; p++)
+                    {
+                        if (p == 0)
+                        {
+                            <li data-target="#myCarousel-thumb" data-slide-to="@p" class="active"></li>
+                        }
+                        else
+                        {
+                            <li data-target="#myCarousel-thumb" data-slide-to="@p"></li>
+                        }
+                    }
+                </ol>
+
+    <!-- Carousel items -->
+                <div class="carousel-inner">
+
+                    @if (this.Model.Count > 0)
+                    {
+                        foreach (var products in this.Model)
+                        {
+                            if ((i % 4) == 0)
+                            {
+                                if (j == 0)
+                                {
+                                    @Html.Raw("<div class='item active'>");
+                        @Html.Raw("<div class='row-fluid'>");
+                                }
+                                j++;
+                            }
+                            <div class="col-md-3 col-sm-3">
+                                <a href="#x" class="thumbnail">
+                                    <img src="@products.DefaultPicture.ImageUrl" alt="Image" style="max-width:100%;" />
+                                    <p>@products.Name</p>
+                                    <p class="rup">@products.CurrencyCode. @products.ProductPrice.Price.ToString("#,##0.00")</p>
+                                    <input value="BUY NOW" type="submit" class="prod-prg" onclick="addItemToCart('@products.Id');" />
+                                </a>
+                            </div>
+                            if (((i + 1) % 4) == 0)
+                            {
+                                @Html.Raw("</div>");
+                        @Html.Raw("</div>");
+                                           if (this.Model.Count != count)
+                                           {
+                                            @Html.Raw("<div class='item'>");
+                        @Html.Raw(" <div class='row-fluid'>");
+                                           }
+                                           i = -1;
+                            }
+
+                            i++;
+                            count++;
+                        }
+                    }
+                    else
+                    {
+                        @Html.Raw("<div class='item active'>");
+                        @Html.Raw("<div class='row-fluid'>");
+                    }
+                    @if (this.Model.Count < count)
+                    {
+                        @Html.Raw("</div>")
+                        @Html.Raw("</div>")
+                    }
+
+                </div><!--/carousel-inner-->
+                <!-- <a class="left carousel-control" href="#myCarousel-thumb" data-slide="prev">‹</a>
+                <a class="right carousel-control" href="#myCarousel-thumb" data-slide="next">›</a> -->
+            }
+        </div><!--/myCarousel-->
+    </div>
+</div>
+
+<script>
+    function addItemToCart(id) {
+        $("#Intro").css("display", "inline");
+        $("#Inner").css("display", "inline");
+        $.ajax({
+            type: "POST",
+            url: '@(Url.Action("AddItemToCart", "ShoppingCart"))?id=' + id,
+            success: function (result) {
+                if (result == "Success") {
+                    setTimeout(function () {
+                        $("#Intro").css("display", "none");
+                        $("#Inner").css("display", "none");
+                    }, 2000)
+                    setTimeout(function () {
+                        ShowSuccessMsg("The item added to your cart.");
+                    }, 1000)
+                    $(".cart_item").load('@(Url.Action("CartItem", "ShoppingCart"))');
+
+                }
+                else {
+                    setTimeout(function () {
+                        $("#Intro").css("display", "none");
+                        $("#Inner").css("display", "none");
+                    }, 2000)
+                    var productUrl = "@Url.RouteUrl("Category", new { SeName = "sename" })";
+                    productUrl = productUrl.replace("sename", result);
+                    window.location.href = productUrl + "?p=pt";
+
+                }
+            }
+        });
+    }
+</script>

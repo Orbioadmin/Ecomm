@@ -12,6 +12,13 @@ namespace Orbio.Services.Admin.Orders
 {
     public partial interface IOrderReportService
     {
+
+        /// <summary>
+        /// Get order average reports from last 12 months
+        /// </summary>
+        /// <returns></returns>
+        List<OrderAverageReport> GetOrderAverageReport();
+
         /// <summary>
         /// Get order average report
         /// </summary>
@@ -51,5 +58,6 @@ namespace Orbio.Services.Admin.Orders
         /// <returns>Result</returns>
         decimal ProfitReport(int storeId, int vendorId, OrderStatus? os, PaymentStatus? ps, ShippingStatus? ss,
             DateTime? startTimeUtc, DateTime? endTimeUtc, string billingEmail);
+
     }
 }

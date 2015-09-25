@@ -14,6 +14,9 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Product
             AvailableDeliveryDates = new List<SelectListItem>();
             AvailableWarehouses = new List<SelectListItem>();
             AvailableTaxCategories = new List<SelectListItem>();
+            AvailableProductTags = new List<SelectListItem>();
+            AvailableCategories = new List<SelectListItem>();
+            AvailableManufatures = new List<SelectListItem>(); 
         }
 
         public int Id { get; set; }
@@ -60,7 +63,7 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Product
         public decimal Price { get; set; }
         public decimal OldPrice { get; set; }
         public decimal ProductCost { get; set; }
-        public Nullable<decimal> SpecialPrice { get; set; }
+        public decimal SpecialPrice { get; set; }
         public Nullable<System.DateTime> SpecialPriceStartDateTimeUtc { get; set; }
         public Nullable<System.DateTime> SpecialPriceEndDateTimeUtc { get; set; }
         public bool HasDiscountsApplied { get; set; }
@@ -74,11 +77,17 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Product
         public bool Published { get; set; }
         public System.DateTime CreatedOnUtc { get; set; }
         public System.DateTime UpdatedOnUtc { get; set; }
-        public Nullable<decimal> ProductUnit { get; set; }
+        public decimal ProductUnit { get; set; }
         public string ImageUrl { get; set; }
 
         public List<SelectListItem> AvailableDeliveryDates { get; set; }
         public List<SelectListItem> AvailableWarehouses { get; set; }
         public List<SelectListItem> AvailableTaxCategories { get; set; }
+        public List<SelectListItem> AvailableProductTags { get; set; }
+        public List<SelectListItem> AvailableCategories { get; set; }
+        public List<SelectListItem> AvailableManufatures { get; set; }
+        public int[] SelectedProductTags { get; set; }
+        public int[] SelectedCategories { get; set; }
+        public int[] SelectedManufature { get; set; }
     }
 }

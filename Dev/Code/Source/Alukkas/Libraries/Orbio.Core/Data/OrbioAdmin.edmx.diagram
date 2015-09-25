@@ -71,6 +71,7 @@
         <EntityTypeShape EntityType="OrbioAdminModel.DeliveryDate" Width="1.5" PointX="8.2390354686598464" PointY="10.306619678766756" />
         <EntityTypeShape EntityType="OrbioAdminModel.ProductTag" Width="1.5" PointX="1.5006342034324232" PointY="10.025042866368333" />
         <EntityTypeShape EntityType="OrbioAdminModel.Warehouse" Width="1.5" PointX="4.8720733322538781" PointY="19.380168730104419" />
+        <AssociationConnector Association="OrbioAdminModel.Product_ProductTag_Mapping" />
         <EntityTypeShape EntityType="OrbioAdminModel.NewsLetterSubscription" Width="1.5" PointX="0.21767325336936547" PointY="15.090879968875498" />
         <EntityTypeShape EntityType="OrbioAdminModel.Product_Category_Mapping" Width="1.5" PointX="7.3038656373060613" PointY="20.338673645788187" />
         <AssociationConnector Association="OrbioAdminModel.ProductCategory_Category" />

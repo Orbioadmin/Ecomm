@@ -592,6 +592,21 @@ namespace Orbio.Web.UI.Controllers
             return PartialView(model.ProductDetail);
         }
 
+        [ChildActionOnly]
+        public ActionResult HomePageProducts()
+        {
+            var resultModel = PrepareHomePageProductdetailsModel();
+
+            return PartialView(resultModel.ProductDetail);
+        }
+
+        private HomePageProductsModel PrepareHomePageProductdetailsModel()
+        {
+            var model = new HomePageProductsModel(productService.GetAllProductsForHome());
+
+            return model;
+        }
+
         private CategoryModel PrepareCategoryProductModel(string seName, string filterIds, string keyWord, int? pageNumber, int? pageSize)
         {
             var specificationAttributeIds = string.IsNullOrWhiteSpace(filterIds) ? new List<string>() : (from f in filterIds.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)

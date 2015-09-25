@@ -11,6 +11,7 @@ using Nop.Data;
 using System.Data.SqlClient;
 using Nop.Core.Domain;
 using Orbio.Core.Utility;
+
 namespace Orbio.Services.Admin.Products
 {
     public partial class ProductService:IProductService
@@ -63,7 +64,9 @@ namespace Orbio.Services.Admin.Products
                 context.Products.Include("Product_Picture_Mapping.Picture").Load();
                 context.Products.Include("Product_PriceComponent_Mapping.PriceComponent").Load();
                 context.Products.Include("Product_ProductComponent_Mapping.ProductComponent").Load();
+                context.Products.Include("ProductTags").Load();
                 var productList = (from p in context.Products
+                                   join u in context.UrlRecords on p.Id equals u.EntityId
                                    where p.Deleted != true && p.Id == id
                                    select p).FirstOrDefault();
                 return productList;
@@ -73,29 +76,12 @@ namespace Orbio.Services.Admin.Products
         /// <summary>
         /// Insert new Product
         /// </summary>
-        /// <param name="product"></param>
-        /// <param name="slug"></param>
-        public void InsertNewProduct(Product product, string slug)
+        /// <param name="productDetail"></param>
+        public void InsertNewProduct(Orbio.Core.Domain.Admin.Product.ProductDetail productDetail)
         {
-            using (var context = new OrbioAdminContext())
-            {
-                var productData = context.Products.FirstOrDefault();
-                productData = product;
-                context.Products.Add(productData);
-                context.SaveChanges();
-                int Id = productData.Id;
-                var UrlRecord = context.UrlRecords.Where(m => m.EntityName == "Product").FirstOrDefault();
-                if (UrlRecord != null)
-                {
-                    UrlRecord.EntityId = Id;
-                    UrlRecord.EntityName = "Product";
-                    UrlRecord.Slug = slug;
-                    UrlRecord.IsActive = true;
-                    UrlRecord.LanguageId = 0;
-                    context.UrlRecords.Add(UrlRecord);
-                    context.SaveChanges();
-                }
-            }
+            var productXml = Serializer.GenericSerializer<Orbio.Core.Domain.Admin.Product.ProductDetail>(productDetail);
+            dbContext.ExecuteFunction<Product>("usp_Product_InsertProduct",
+            new SqlParameter() { ParameterName = "@productXml", Value = productXml, DbType = System.Data.DbType.Xml });
         }
 
         /// <summary>
@@ -109,6 +95,19 @@ namespace Orbio.Services.Admin.Products
                 var product = context.Products.Where(f => idList.Contains(f.Id)).ToList();
                 product.ForEach(a => a.Deleted = true);
                 context.SaveChanges();
+            }
+        }
+
+        /// <summary>
+        /// Get all product tags
+        /// </summary>
+        /// <returns></returns>
+        public List<ProductTag> GetAllProductTags()
+        {
+            using (var context = new OrbioAdminContext())
+            {
+                var result = context.ProductTags.ToList();
+                return result;
             }
         }
         #endregion

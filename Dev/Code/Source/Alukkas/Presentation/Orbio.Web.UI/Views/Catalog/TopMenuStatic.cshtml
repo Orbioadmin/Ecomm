@@ -2,63 +2,61 @@
     var genericAttributeService = Nop.Core.Infrastructure.EngineContext.Current.Resolve<Orbio.Services.Common.IGenericAttributeService>();
     var workContext = Nop.Core.Infrastructure.EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
 }
-<div class="navbar navbar-default" role="navigation">
+<div class="top-menu-new">
     <div class="container">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="@Url.Action("Index", "Home")"><img src="~/images/Basic_image/logo.png"></a>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <p>07 SEP 2015 - 22k Gold/gm | Kerala: 2560.00(15) | TAMILNADU: 2569.00(14)</p>
         </div>
-        @*<ul class="menu_desc">
-                <li class="select_menu">
-                    <a>
-                        <select class="menu_select">
-                            <option>All Categories</option>
-                            <option>2</option>
-                        </select>
-                        <input type="text" class="select_text" placeholder="Enter Your Keyword...">
-                        <input type="submit" class="search_butt" value="">
-                    </a>
-                </li>
-            </ul>*@
-        @Html.Action("SearchBox", "Catalog")
-        <div class=" collapse head_main in">
-            <ul class="nav navbar-nav navbar-right">
-                @*<li class="cart_item"><a href="@Url.RouteUrl("ShoppingCart")"><span>0 ITEMS</span> <i class="mnu_item_icon"></i></a></li>*@
-                <li class="cart_item">
-                    @Html.Action("CartItem", "ShoppingCart")
-                </li>
-                <li class="guest">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <ul class="top-rgt pull-right">
+                <li class="my-account">
                     <div class="dropdown">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                            <img src="~/images/Basic_image/user.png">
-                            @if (workContext.CurrentCustomer.IsRegistered)
-                            {
-                                <span class="span-title">Hi @ViewBag.UserName</span>
-                            }
-                            else
-                            { <span class="span-title">Hi</span>}
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <i class="fa fa-user"></i>
+                            MY Account
                             <span class="caret"></span>
                         </button>
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                            @if (workContext.CurrentCustomer.IsRegistered)
-                            {
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="@Url.Action("MyAccount", "Customer")">My Account</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="@Url.Action("LogOut", "Account")">Logout</a></li>
-                            }
-                            else
-                            {
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="@Url.Action("Login", "Account")">Login</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="@Url.Action("Register", "Account")">Register</a></li>
-                            }
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li><a href="#">Profile</a></li>
+                            <li><a href="#">Logout</a></li>
                         </ul>
                     </div>
                 </li>
+                <li class="log-in">
+                    <a href=""><i class="fa fa-sign-in"></i>Login</a>
+                </li>
             </ul>
+        </div>
+    </div>
+</div>
+<div class="navbar navbar-default home" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="index.html"><img src="images/Basic_image/Francis-Alukkas-Logo.png"></a>
+        </div>
+        <ul class="menu_desc">
+            <li class="select_menu">
+                <a>
+                    <input type="text" class="select_text" placeholder="Enter Your Keyword...">
+                    <input type="submit" class="search_butt" value="">
+                </a>
+            </li>
+        </ul>
+        <div class=" collapse head_main in">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="icon-cart"><i class="cart-icon"></i><span>5</span></li>
+                <li class="icon-cart"><i class="cart-wish"></i></li>
+            </ul>
+
         </div><!--/.nav-collapse -->
     </div>
 </div>
-<div class="second_menu">
+
+<div class="second_menu home">
     <div class="container">
+
         <div class="navbar navbar-default" role="navigation">
+
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -66,21 +64,26 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+
             </div>
             <div class="navbar-collapse collapse ">
                 <ul class="nav navbar-nav ">
-                    <li><a href="@Url.RouteUrl("Category", new { SeName = "AboutUs" })?p=ft">About Us</a></li>
-                    <li><a href="@Url.RouteUrl("Category", new { SeName = "jewellery" })?p=ct">Jewellery</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="">Brands</a></li>
                     <li><a href="">News</a></li>
                     <li><a href="">Blog</a></li>
-                    <li><a href="@Url.RouteUrl("Category", new { SeName = "ContactUs" })?p=ft">Contact</a></li>
+                    <li><a href="">Contact</a></li>
                 </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="">Default</a></li>
+                </ul>
+
             </div><!--/.nav-collapse -->
+
         </div>
+
     </div>
 </div>
-
-
 <script src="~/Scripts/jquery.js"></script>
 <script>
     $(document).ready(function () {

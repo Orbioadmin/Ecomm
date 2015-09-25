@@ -70,6 +70,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\..\Ecom_Git\Ecomm\Dev\Code\Source\Alukkas\Presentation\Orbio.Web.UI\bin\dotless.Core.dll</HintPath>
     </Reference>
+    <Reference Include="DotNet.Highcharts">
+      <HintPath>..\..\packages\DotNet.Highcharts.4.0\lib\DotNet.Highcharts.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\..\packages\EntityFramework.6.0.1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -255,6 +258,7 @@
     <Compile Include="Areas\Admin\Controllers\CatalogController.cs" />
     <Compile Include="Areas\Admin\Controllers\ComponentController.cs" />
     <Compile Include="Areas\Admin\Controllers\CustomerController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DiscountController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\MessageTemplateController.cs" />
     <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
@@ -280,10 +284,12 @@
     <Compile Include="Areas\Admin\Models\CheckOut\AddressModel.cs" />
     <Compile Include="Areas\Admin\Models\Component\PriceComponentModel.cs" />
     <Compile Include="Areas\Admin\Models\Component\ProductComponentModel.cs" />
+    <Compile Include="Areas\Admin\Models\Customers\CustomerListModel.cs" />
     <Compile Include="Areas\Admin\Models\Customers\CustomerModel.cs" />
     <Compile Include="Areas\Admin\Models\Customers\CustomerRoleModel.cs" />
     <Compile Include="Areas\Admin\Models\Customers\NewletterSubscribersModel.cs" />
     <Compile Include="Areas\Admin\Models\Customers\RegisteredCustomerReportLineModel.cs" />
+    <Compile Include="Areas\Admin\Models\Discount\DiscountModel.cs" />
     <Compile Include="Areas\Admin\Models\MessageTemplates\MessageTemplateModel.cs" />
     <Compile Include="Areas\Admin\Models\Orders\BestSellerModel.cs" />
     <Compile Include="Areas\Admin\Models\Orders\NeverSoldReportModel.cs" />
@@ -308,6 +314,7 @@
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
+    <Compile Include="Filters\AdminAuthorizeAttribute.cs" />
     <Compile Include="Filters\ContinueShoppingAttribute.cs" />
     <Compile Include="Filters\HttpParamActionAttribute.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -322,6 +329,7 @@
     <Compile Include="Models\Catalog\BaseCatalogModel.cs" />
     <Compile Include="Models\Catalog\CategoryModel.cs" />
     <Compile Include="Models\Catalog\CategorySimpleModel.cs" />
+    <Compile Include="Models\Catalog\HomePageProductsModel.cs" />
     <Compile Include="Models\Catalog\PictureModel.cs" />
     <Compile Include="Models\Catalog\ProductDetailModel.cs" />
     <Compile Include="Models\Catalog\ProductExtension.cs" />
@@ -354,6 +362,7 @@
   <ItemGroup>
     <Content Include="App_Data\Settings.txt" />
     <Content Include="Areas\Admin\Content\bootstrap.min.css" />
+    <Content Include="Areas\Admin\Content\chosen.css" />
     <Content Include="Areas\Admin\Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Areas\Admin\Content\fonts\Roboto-Medium.svg" />
     <Content Include="Areas\Admin\Content\fonts\Roboto-Regular.svg" />
@@ -372,6 +381,8 @@
     <Content Include="Areas\Admin\images\back.png" />
     <Content Include="Areas\Admin\images\blue_arrow.png" />
     <Content Include="Areas\Admin\images\chk-box_2.png" />
+    <Content Include="Areas\Admin\images\chosen-sprite%402x.png" />
+    <Content Include="Areas\Admin\images\chosen-sprite.png" />
     <Content Include="Areas\Admin\images\cross.png" />
     <Content Include="Areas\Admin\images\edit.png" />
     <Content Include="Areas\Admin\images\Edit_order_sprite.png" />
@@ -392,6 +403,7 @@
     <Content Include="Areas\Admin\images\white_arrow.png" />
     <Content Include="Areas\Admin\Scripts\bootstrap-multiselect.js" />
     <Content Include="Areas\Admin\Scripts\bootstrap.min.js" />
+    <Content Include="Areas\Admin\Scripts\chosen.jquery.min.js" />
     <Content Include="Areas\Admin\Scripts\highcharts.js" />
     <Content Include="Areas\Admin\Scripts\ie-emulation-modes-warning.js" />
     <Content Include="Areas\Admin\Scripts\ie10-viewport-bug-workaround.js" />
@@ -596,8 +608,12 @@
     <Content Include="Images\Basic_image\Alukkas_-_Bangle_Size.png" />
     <Content Include="Images\Basic_image\apple-touch-icon-144-precomposed.png" />
     <Content Include="Images\Basic_image\apple-touch-icon-57-precomposed.png" />
+    <Content Include="Images\Basic_image\bangles.jpg" />
+    <Content Include="Images\Basic_image\banner1-coll.png" />
     <Content Include="Images\Basic_image\banner1.jpg" />
+    <Content Include="Images\Basic_image\banner2-coll.png" />
     <Content Include="Images\Basic_image\banner2.jpg" />
+    <Content Include="Images\Basic_image\banner3-coll.png" />
     <Content Include="Images\Basic_image\banner3.jpg" />
     <Content Include="Images\Basic_image\banner4.jpg" />
     <Content Include="Images\Basic_image\banner5.png" />
@@ -614,6 +630,7 @@
     <Content Include="Images\Basic_image\category-ring.png" />
     <Content Include="Images\Basic_image\customer_title.png" />
     <Content Include="Images\Basic_image\diamond.png" />
+    <Content Include="Images\Basic_image\earrings.png" />
     <Content Include="Images\Basic_image\easy-gold-logo.png" />
     <Content Include="Images\Basic_image\favicon.ico" />
     <Content Include="Images\Basic_image\Francis-alukkas-advance-gold-banner.png" />
@@ -623,12 +640,14 @@
     <Content Include="Images\Basic_image\Francis-alukkas-easygold1.png" />
     <Content Include="Images\Basic_image\Francis-alukkas-gift-diamond.png" />
     <Content Include="Images\Basic_image\Francis-alukkas-gift-vouchers.png" />
+    <Content Include="Images\Basic_image\Francis-Alukkas-Logo.png" />
     <Content Include="Images\Basic_image\gold.png" />
     <Content Include="Images\Basic_image\grey-tab.png" />
     <Content Include="Images\Basic_image\header-bottom.png" />
     <Content Include="Images\Basic_image\header.png" />
     <Content Include="Images\Basic_image\header1.png" />
     <Content Include="Images\Basic_image\Heding-line.png" />
+    <Content Include="Images\Basic_image\Home-Sprite.png" />
     <Content Include="Images\Basic_image\image-sprites.png" />
     <Content Include="Images\Basic_image\imagesprites.png" />
     <Content Include="Images\Basic_image\imagesprites1.png" />
@@ -636,10 +655,16 @@
     <Content Include="Images\Basic_image\list_opc.png" />
     <Content Include="Images\Basic_image\logo.png" />
     <Content Include="Images\Basic_image\minus.png" />
+    <Content Include="Images\Basic_image\necklace.png" />
+    <Content Include="Images\Basic_image\newsletter-bg.jpg" />
     <Content Include="Images\Basic_image\next-arrow.png" />
     <Content Include="Images\Basic_image\overlay.png" />
     <Content Include="Images\Basic_image\plus-white.png" />
     <Content Include="Images\Basic_image\prev-arrow.png" />
+    <Content Include="Images\Basic_image\product1.jpg" />
+    <Content Include="Images\Basic_image\product2.jpg" />
+    <Content Include="Images\Basic_image\product3.jpg" />
+    <Content Include="Images\Basic_image\product4.jpg" />
     <Content Include="Images\Basic_image\product_arrow.png" />
     <Content Include="Images\Basic_image\ratings-1.png" />
     <Content Include="Images\Basic_image\ratings-2.png" />
@@ -650,6 +675,7 @@
     <Content Include="Images\Basic_image\related-products-2.png" />
     <Content Include="Images\Basic_image\related-products-3.png" />
     <Content Include="Images\Basic_image\related-products-4.png" />
+    <Content Include="Images\Basic_image\ring.png" />
     <Content Include="Images\Basic_image\shop-diamond-bg.png" />
     <Content Include="Images\Basic_image\shop-diamond-bg1.png" />
     <Content Include="Images\Basic_image\shop-gold-bg.png" />
@@ -663,6 +689,10 @@
     <Content Include="Images\Basic_image\star-x-inactive.png" />
     <Content Include="Images\Basic_image\starrating.png" />
     <Content Include="Images\Basic_image\Stars_sprite.png" />
+    <Content Include="Images\Basic_image\Sub-banner1.jpg" />
+    <Content Include="Images\Basic_image\Sub-banner2.jpg" />
+    <Content Include="Images\Basic_image\Sub-banner3.jpg" />
+    <Content Include="Images\Basic_image\three-section-bg.jpg" />
     <Content Include="Images\Basic_image\thumb_sliderbg.png" />
     <Content Include="Images\Basic_image\trash-black.png" />
     <Content Include="Images\Basic_image\trash-yellow.png" />
@@ -740,8 +770,42 @@
     <Content Include="Scripts\cloud-zoom.js" />
     <Content Include="Scripts\cloudzoom.js" />
     <Content Include="Scripts\datepicker.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\adapters\standalone-framework.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\adapters\standalone-framework.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\highcharts-3d.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\highcharts-3d.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\highcharts-all.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\highcharts-more.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\highcharts-more.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\highcharts.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\highcharts.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\canvas-tools.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\canvas-tools.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\data.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\data.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\drilldown.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\drilldown.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\exporting.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\exporting.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\funnel.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\funnel.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\heatmap.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\heatmap.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\no-data-to-display.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\no-data-to-display.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\solid-gauge.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\solid-gauge.src.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\themes\dark-blue.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\themes\dark-green.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\themes\dark-unica.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\themes\gray.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\themes\grid-light.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\themes\grid.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\themes\sand-signika.js" />
+    <Content Include="Scripts\Highcharts-4.0.1\js\themes\skies.js" />
     <Content Include="Scripts\html5shiv.js" />
     <Content Include="Scripts\ion.rangeSlider.min.js" />
+    <Content Include="Scripts\jquery-compat.js" />
     <Content Include="Scripts\jquery-zoom.js" />
     <Content Include="Scripts\jquery.eislideshow.js" />
     <Content Include="Scripts\jquery.js" />
@@ -793,15 +857,32 @@
     <Content Include="Areas\Admin\Views\Product\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Customer\AddCustomerRole.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\_CreateOrUpdateSeo.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\_CreateOrUpdatePicture.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\_PictureUpload.cshtml" />
+    <Content Include="Areas\Admin\Views\MessageTemplate\AddOrEditMessageTemplate.cshtml" />
+    <Content Include="Areas\Admin\Views\MessageTemplate\Info.cshtml" />
+    <Content Include="Areas\Admin\Views\MessageTemplate\List.cshtml" />
+    <Content Include="Areas\Admin\Views\MessageTemplate\MessageTemplateList.cshtml" />
+    <Content Include="Areas\Admin\Views\Sales\AddOrEditGiftCards.cshtml" />
+    <Content Include="Areas\Admin\Views\Sales\GiftCardInfo.cshtml" />
+    <Content Include="Areas\Admin\Views\Sales\GiftCards.cshtml" />
+    <Content Include="Areas\Admin\Views\Sales\GiftCardUsageHistory.cshtml" />
+    <Content Include="Areas\Admin\Views\Sales\ListGiftCards.cshtml" />
+    <Content Include="Areas\Admin\Views\Sales\ReturnRequest.cshtml" />
+    <Content Include="Areas\Admin\Views\Sales\SearchGiftCards.cshtml" />
+    <Content Include="Areas\Admin\Views\Shipment\List.cshtml" />
+    <Content Include="Areas\Admin\Views\Shipment\Search.cshtml" />
+    <Content Include="Areas\Admin\Views\Shipment\ShipmentItems.cshtml" />
+    <Content Include="Areas\Admin\Views\Shipment\ShipmentList.cshtml" />
+    <Content Include="Areas\Admin\Views\Customer\NewsletterSubscribers.cshtml" />
     <Content Include="Areas\Admin\Views\Attribute\AddProductAttribute.cshtml" />
     <Content Include="Areas\Admin\Views\Attribute\AddSpecificationAttributeOption.cshtml" />
-    <Content Include="Areas\Admin\Views\Component\AddProductComponent.cshtml" />
     <Content Include="Areas\Admin\Views\Component\AddPriceComponent.cshtml" />
-    <Content Include="Areas\Admin\Views\Product\_CreateOrUpdateSeo.cshtml" />
-    <Content Include="Areas\Admin\Views\Customer\NewsletterSubscribers.cshtml" />
-    <Content Include="Areas\Admin\Views\Order\BestSellersReport.cshtml" />
-    <Content Include="Areas\Admin\Views\Order\SearchSellers.cshtml" />
+    <Content Include="Areas\Admin\Views\Component\AddProductComponent.cshtml" />
     <Content Include="Areas\Admin\Views\Order\BestSellersList.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\BestSellersReport.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\NeverSoldProducts.cshtml" />
     <Content Include="Areas\Admin\Views\Order\NeverSoldReport.cshtml" />
     <Content Include="Areas\Admin\Views\Order\SearchNeverSold.cshtml" />
     <Content Include="Areas\Admin\Views\Order\NeverSoldProducts.cshtml" />
@@ -822,6 +903,10 @@
     <Content Include="Areas\Admin\Views\MessageTemplate\Info.cshtml" />
     <Content Include="Areas\Admin\Views\Customer\CustomerRoleList.cshtml" />
     <Content Include="Areas\Admin\Views\Customer\NewsLetterSubscribersList.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\SearchSellers.cshtml" />
+    <Content Include="Areas\Admin\Views\Discount\List.cshtml" />
+    <Content Include="Areas\Admin\Views\Discount\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Discount\_CreateOrUpdate.cshtml" />
     <None Include="Properties\PublishProfiles\ecom.pubxml" />
     <Content Include="Areas\Admin\Views\Customer\ListCustomer.cshtml" />
     <Content Include="Areas\Admin\Views\Customer\CustomerList.cshtml" />
@@ -835,8 +920,11 @@
     <Content Include="Areas\Admin\Views\Customer\OrderDetails.cshtml" />
     <Content Include="Areas\Admin\Views\Customer\CustomerAddress.cshtml" />
     <None Include="Properties\PublishProfiles\NopCommerce.pubxml" />
+    <Content Include="Views\Catalog\HomePageProducts.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Views\Picture\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
@@ -1038,6 +1126,7 @@
     <Content Include="Areas\Admin\Views\ShoppingCart\_CartCustomer.cshtml" />
     <Content Include="Areas\Admin\Views\ShoppingCart\CurrentWishLists.cshtml" />
     <Content Include="Areas\Admin\Views\ShoppingCart\_WishListCustomer.cshtml" />
+    <Content Include="Areas\Admin\Views\Attribute\_AddOrEditProductAttribute.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout1.cshtml" />
     <Content Include="Areas\Admin\Views\Attribute\SpecificationAttribute.cshtml" />
     <Content Include="Areas\Admin\Views\Attribute\ListSpecificationAttribute.cshtml" />
@@ -1047,7 +1136,9 @@
     <Content Include="Areas\Admin\Views\Attribute\ListCheckoutAttribute.cshtml" />
     <Content Include="Areas\Admin\Views\Attribute\AddOrEditCheckoutAttribute.cshtml" />
     <Content Include="Areas\Admin\Views\Component\ListProductComponent.cshtml" />
+    <Content Include="Areas\Admin\Views\Component\AddOrEditProductComponent.cshtml" />
     <Content Include="Areas\Admin\Views\Component\ListPriceComponent.cshtml" />
+    <Content Include="Areas\Admin\Views\Component\AddOrEditPriceComponent.cshtml" />
     <Content Include="Areas\Admin\Views\Attribute\CheckoutAttribute.cshtml" />
     <Content Include="Areas\Admin\Views\Attribute\CheckoutAttributeValue.cshtml" />
     <Content Include="Areas\Admin\Views\Attribute\AddOrEditCheckoutAttributeValue.cshtml" />
