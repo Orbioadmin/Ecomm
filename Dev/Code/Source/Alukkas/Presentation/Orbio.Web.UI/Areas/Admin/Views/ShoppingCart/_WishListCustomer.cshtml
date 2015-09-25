@@ -1,10 +1,13 @@
-﻿ @model List<Orbio.Web.UI.Areas.Admin.Models.Customers.CustomerModel>
+﻿ @using PagedList
+@using PagedList.Mvc
+
+@model IPagedList<Orbio.Web.UI.Areas.Admin.Models.Customers.CustomerModel>
 @{
     var count = 0;
     var date = "";
     var status = "";
 }
-
+<div id="curwishlist">
 <table class="main_table" id="tableData">
     <thead class="main_head">
     <td class="customer_id_cart">Customer Or Id</td>
@@ -70,3 +73,8 @@
         }
     </tbody>
 </table>
+
+    <div class="pagedList" id="contentPager">
+        @Html.PagedListPager(Model, page => Url.Action("CurrentWishList", new { page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
+    </div>
+</div>

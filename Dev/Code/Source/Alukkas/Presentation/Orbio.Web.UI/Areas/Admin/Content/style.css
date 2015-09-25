@@ -520,5 +520,8 @@ td h3:focus{border:0px ;}
 .date_name{margin-left: -96px;margin-top: 12px;}
 .date_text{margin-left: -22px;}
 
-
+/*for color-profile upload button*/
+.btn{border-radius: 0px}
+.btn-default{border-color: blue;}
+.btn:hover{background: #fff;border-color: blue;}
 

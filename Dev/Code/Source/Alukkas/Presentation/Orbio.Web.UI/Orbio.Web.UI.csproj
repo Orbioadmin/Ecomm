@@ -90,6 +90,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="PagedList">
+      <HintPath>..\..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>..\..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System">
       <Private>True</Private>
     </Reference>
@@ -508,6 +514,7 @@
     <Content Include="Content\fonts\cinzeldecorative-bold.svg" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\main.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\price-range.css" />
     <Content Include="Content\responsive.css" />
     <Content Include="Content\themes\base\images\torus_loader.gif" />
@@ -878,6 +885,24 @@
     <Content Include="Areas\Admin\Views\Order\NeverSoldProducts.cshtml" />
     <Content Include="Areas\Admin\Views\Order\NeverSoldReport.cshtml" />
     <Content Include="Areas\Admin\Views\Order\SearchNeverSold.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\NeverSoldProducts.cshtml" />
+    <Content Include="Areas\Admin\Views\Shipment\List.cshtml" />
+    <Content Include="Areas\Admin\Views\Shipment\Search.cshtml" />
+    <Content Include="Areas\Admin\Views\Shipment\ShipmentList.cshtml" />
+    <Content Include="Areas\Admin\Views\Shipment\ShipmentItems.cshtml" />
+    <Content Include="Areas\Admin\Views\Sales\ReturnRequest.cshtml" />
+    <Content Include="Areas\Admin\Views\Sales\GiftCards.cshtml" />
+    <Content Include="Areas\Admin\Views\Sales\SearchGiftCards.cshtml" />
+    <Content Include="Areas\Admin\Views\Sales\ListGiftCards.cshtml" />
+    <Content Include="Areas\Admin\Views\Sales\AddOrEditGiftCards.cshtml" />
+    <Content Include="Areas\Admin\Views\Sales\GiftCardInfo.cshtml" />
+    <Content Include="Areas\Admin\Views\Sales\GiftCardUsageHistory.cshtml" />
+    <Content Include="Areas\Admin\Views\MessageTemplate\List.cshtml" />
+    <Content Include="Areas\Admin\Views\MessageTemplate\MessageTemplateList.cshtml" />
+    <Content Include="Areas\Admin\Views\MessageTemplate\AddOrEditMessageTemplate.cshtml" />
+    <Content Include="Areas\Admin\Views\MessageTemplate\Info.cshtml" />
+    <Content Include="Areas\Admin\Views\Customer\CustomerRoleList.cshtml" />
+    <Content Include="Areas\Admin\Views\Customer\NewsLetterSubscribersList.cshtml" />
     <Content Include="Areas\Admin\Views\Order\SearchSellers.cshtml" />
     <Content Include="Areas\Admin\Views\Discount\List.cshtml" />
     <Content Include="Areas\Admin\Views\Discount\Create.cshtml" />
@@ -1068,7 +1093,6 @@
     <Content Include="Areas\Admin\Content\less\wells.less" />
     <Content Include="Areas\Admin\Views\Home\TopMenu.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\Error.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Order\OrderAverageReport.cshtml" />

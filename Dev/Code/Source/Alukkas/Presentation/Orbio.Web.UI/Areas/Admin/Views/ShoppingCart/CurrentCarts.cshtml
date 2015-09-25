@@ -1,4 +1,4 @@
-﻿@model Orbio.Web.UI.Areas.Admin.Models.Orders.ShoppingCartModel
+﻿
 @{
     ViewBag.Title = "CurrentCarts";
     Layout = "~/Areas/Admin/Views/Shared/_Layout1.cshtml";
@@ -10,12 +10,7 @@
 
     </div>
     <div class="collapsable_table_main">
-
-        @{
-            Html.RenderPartial("_CartCustomer", this.Model.customers);
-        }
-
-
+        @Html.Action("CartCustomer")
     </div>
 </div>
 
@@ -35,5 +30,23 @@
 
 
     </script>
+
+
+@*<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        $(document).on("click", "#contentPager a[href]", function () {
+            $.ajax({
+                url: $(this).attr("href"),
+                type: 'GET',
+                cache: false,
+                success: function (result) {
+                    $('#curcart').html(result);
+                }
+            });
+            return false;
+        });
+    });
+</script>*@
+
 }
 

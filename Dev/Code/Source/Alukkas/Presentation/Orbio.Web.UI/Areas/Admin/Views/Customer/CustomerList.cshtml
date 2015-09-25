@@ -1,84 +1,76 @@
-﻿@model List<Orbio.Web.UI.Areas.Admin.Models.Customers.CustomerModel>
+﻿@using PagedList
+@using PagedList.Mvc
 
-@if (Model.Count > 0)
-{
-    int rowCount = 1;
-    foreach (var items in this.Model)
-    {
-        int count = 0;
-        if (rowCount == 1)
-        {
-            <tr class="first_row">
-                <td class="varient_align"><a style="cursor:pointer" href="@Url.Action("EditCustomer", "Customer", new { id = items.Id })">@items.Id</a></td>
-                <td class="varient_align">
-                    @(!string.IsNullOrEmpty(items.Email) ? items.Email : "Guest")
-                </td>
-                <td class="varient_align">
-                    @(items.FirstName + " " + items.LastName)
+@model IPagedList<Orbio.Web.UI.Areas.Admin.Models.Customers.CustomerModel>
 
-                </td>
-                <td class="varient_align">
-                    @if (items.CustomerRoles != null)
+
+<div class="col-md-9 main_order_table" style="width: 100%;" id="custList">
+    <table class="item_admin_order">
+        <thead>
+        <td>Id</td>
+        <td>Email</td>
+        <td>Name</td>
+        <td>Customer Roles</td>
+        <td>Active</td>
+        <td>Created On</td>
+        <td>Last Activity</td></thead>
+        <tbody>
+            @if (Model.Count > 0)
+            {
+                int rowCount = 1;
+                foreach (var items in this.Model)
+                {
+                    int count = 0;
+                    if (rowCount == 1)
                     {
-                        foreach (var role in items.CustomerRoles)
-                        {
-                            count++;
-                            @((count > 1) ? ", " : "")@role.Name;
-                        }
-
+                        @:<tr class="first_row">
+                                rowCount++;
                     }
-                               
-                            </td>
+                    else
+                    {
+                        @:<tr class="second_row">
+                         rowCount = 1;
+                    }
+                    <td class="varient_align"><a style="cursor:pointer" href="@Url.Action("EditCustomer", "Customer" , new { id=items.Id })">@items.Id</a></td>
+                    <td class="varient_align">
+                        @(!string.IsNullOrEmpty(items.Email) ? items.Email : "Guest")
+                    </td>
+                    <td class="varient_align">
+                        @(items.FirstName + " " + items.LastName)
 
-                            <td class="varient_align">
-                                <label class="@(items.Active ? "img_sprite1" : "img_sprite")"></label>
-                            </td>
+                    </td>
+                    <td class="varient_align">
+                        @if (items.CustomerRoles != null)
+                        {
+                            foreach (var role in items.CustomerRoles)
+                            {
+                                count++;
+                                @((count > 1) ? ", " : "")@role.Name;
+                            }
+                        }
+                    </td>
+
+                    <td class="varient_align">
+                        <label class="@(items.Active ? "img_sprite1" : "img_sprite")"></label>
+                    </td>
                             <!--  <td>Your Store Name</td> -->
-                            <td class="varient_align">@items.CreatedOn</td>
-                            <td class="varient_align" style="text-align:right;padding-right:5px;">@items.LastActivity</td>
-                        </tr>
-    
-                    rowCount++;
-        }
-        else
-        {
-            <tr class="second_row">
-                <td class="varient_align"><a style="cursor:pointer" href="@Url.Action(" editcustomer", "Customer" , new { id=items.Id })">@items.Id</a></td>
-                <td class="varient_align">
-                    @(!string.IsNullOrEmpty(items.Email) ? items.Email : "Guest")
-                </td>
-                <td class="varient_align">
-                    @(items.FirstName + " " + items.LastName)
-
-                </td>
-                <td class="varient_align">
-                    @if (items.CustomerRoles != null)
-                    {
-                        foreach (var role in items.CustomerRoles)
-                        {
-                            count++;
-                            @((count > 1) ? ", " : "")@role.Name;
-                        }
-                    }
-                </td>
-
-                <td class="varient_align">
-                    <label class="@(items.Active ? "img_sprite1" : "img_sprite")"></label>
-                </td>
-                <!--  <td>Your Store Name</td> -->
-                <td class="varient_align">@items.CreatedOn</td>
-                <td class="varient_align" style="text-align:right;padding-right:5px;">@items.LastActivity</td>
-            </tr>
-                    rowCount = 1;
-        }
-    }
-}
-else
-{
-    <tr>
-        <td class="align_center" colspan="8">No records to display</td>
-    </tr>
-}
+                    <td class="varient_align">@items.CreatedOn</td>
+                    <td class="varient_align" style="text-align:right;padding-right:5px;">@items.LastActivity</td>
+                @:</tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td class="align_center" colspan="8">No records to display</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="pagedList" id="contentPager">
+        @Html.PagedListPager(Model, page => Url.Action("CustomerList", new { page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
+    </div>
+</div>
 
 
-   
+

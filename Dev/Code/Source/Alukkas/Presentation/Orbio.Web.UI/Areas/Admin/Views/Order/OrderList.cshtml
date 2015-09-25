@@ -1,26 +1,44 @@
-﻿@model List<Orbio.Web.UI.Areas.Admin.Models.Orders.OrderModel>
-@{
-    var count = 1;
-    var class_name="";
-}
-                @foreach (var items in this.Model)
+﻿@using PagedList
+@using PagedList.Mvc
+
+@model IPagedList<Orbio.Web.UI.Areas.Admin.Models.Orders.OrderModel>
+
+<div id="orderList">
+    <table class="item_admin_order" id="tableData">
+        <thead>
+        <td>order id</td>
+        <td>order status</td>
+        <td>payment status</td>
+        <td>shipping status</td>
+        <td>email</td>
+        <td>created on</td>
+        <td>order total</td>
+        @*<td>view</td>*@</thead>
+
+
+        <tbody id="gridcontainer">
+            @{
+                var count = 1;
+                var class_name = "";
+            }
+            @foreach (var items in this.Model)
+            {
+                if (count == 1)
                 {
-                    if (count == 1)
-                    { 
-                        @:<tr class="first_row">
-                        count++;
-                    }
-                    else
-                    {
-                        @:<tr class="second_row">
-                        count = 1;
-                    }
+                    @:<tr class="first_row">
+                    count++;
+                }
+                else
+                {
+                    @:<tr class="second_row">
+                    count = 1;
+                }
 
-                    @*<td><input type="checkbox"></td>*@
+                @*<td><input type="checkbox"></td>*@
 
-                    @:<td class="align_center" style="padding-top:17px"><a style="cursor:pointer" href="@Url.Action("Edit", "Order", new { id = items.Id })">@items.Id</a></td>
+                @:<td class="align_center" style="padding-top:17px"><a style="cursor:pointer" href="@Url.Action("Edit", "Order", new { id = items.Id })">@items.Id</a></td>
                     if (items.OrderStatus == "Pending")
-                    { class_name = "yellow_dot";}
+                    { class_name = "yellow_dot"; }
                     else if (items.OrderStatus == "Processing")
                     { class_name = "orange_dot"; }
                     else if (items.OrderStatus == "Completed")
@@ -33,20 +51,28 @@
                     else if (items.PaymentStatus == "Paid")
                     { class_name = "green_dot"; }
                     @:<td class="align_center"><table><tr><td style="border:0"><div class="@class_name"></div></td><td style="border:0">@items.PaymentStatus</td></tr></table></td>
-                     if (items.ShippingStatus == "ShippingNotRequired")
-                     { class_name = "red_dot"; }
-                     else if (items.ShippingStatus == "NotYetShipped")
-                     { class_name = "yellow_dot"; }
-                     else if (items.ShippingStatus == "PartiallyShipped")
-                     { class_name = "orange_dot_partially"; }
-                     else if (items.ShippingStatus == "Shipped")
-                     { class_name = "orange_dot"; }
-                     else if (items.ShippingStatus == "Delivered")
-                     { class_name = "green_dot"; }
-                    @:<td class="align_center"><table><tr><td style ="border:0"><div class="@class_name"></div></td><td style="border:0">@items.ShippingStatus</td></tr></table></td>
+                    if (items.ShippingStatus == "ShippingNotRequired")
+                    { class_name = "red_dot"; }
+                    else if (items.ShippingStatus == "NotYetShipped")
+                    { class_name = "yellow_dot"; }
+                    else if (items.ShippingStatus == "PartiallyShipped")
+                    { class_name = "orange_dot_partially"; }
+                    else if (items.ShippingStatus == "Shipped")
+                    { class_name = "orange_dot"; }
+                    else if (items.ShippingStatus == "Delivered")
+                    { class_name = "green_dot"; }
+                    @:<td class="align_center"><table><tr><td style="border:0"><div class="@class_name"></div></td><td style="border:0">@items.ShippingStatus</td></tr></table></td>
                     @:<td class="align_center" style="padding-top:17px;text-align:left">@items.CustomerEmail</td>
                     @:<!--  <td>Your Store Name</td> -->
                     @:<td class="align_center" style="padding-top:17px">@items.CreatedOn.Date.ToShortDateString()</td>
                     @:<td class="align_center" style="text-align:right;padding-right:5px;padding-top: 17px;">@items.OrderTotal</td>
-                    @: </tr>
+                    @:</tr>
                 }
+            </tbody>
+    </table>
+
+    <div class="pagedList" id="contentPager">
+        @Html.PagedListPager(Model, page => Url.Action("OrderList", new { page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+    </div>
+
+</div>

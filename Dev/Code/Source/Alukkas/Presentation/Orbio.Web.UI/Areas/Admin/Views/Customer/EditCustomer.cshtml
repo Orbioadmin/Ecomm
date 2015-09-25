@@ -55,4 +55,20 @@
             $('#role').multiselect();
         });   </script>
 
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        $(document).on("click", "#contentPager a[href]", function () {
+            $.ajax({
+                url: $(this).attr("href"),
+                type: 'GET',
+                cache: false,
+                success: function (result) {
+                    $('#orderDet').html(result);
+                }
+            });
+            return false;
+        });
+    });
+</script>
+
 }

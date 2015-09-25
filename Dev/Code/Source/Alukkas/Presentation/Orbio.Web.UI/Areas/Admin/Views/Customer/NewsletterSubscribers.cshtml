@@ -1,4 +1,4 @@
-﻿@model Orbio.Web.UI.Areas.Admin.Models.Customers. 
+﻿@model Orbio.Web.UI.Areas.Admin.Models.Customers.NewletterSubscribersModel 
 
 @{
     Layout = "~/Areas/Admin/Views/Shared/_Layout1.cshtml";
@@ -8,16 +8,18 @@
 <div class="container">
     <div class="main_edit_order" style="padding-bottom :15px">
         <span class="edit_order_details"><span class="shipmen_icon"></span><a href="">Newsletter Subscribers</a></span>
-        <span class="back_to_order" style="padding-top:0px">
-            <a href="@Url.Action("Exporttocsv","Customer")"><input type="button" value="Export to CSV" class="add_cat_button"></a>
+        <span class="back_to_order" style="padding-top:0px;width:28%">
+            <a href="@Url.Action("Exporttocsv","Customer")"><input type="button" value="Export to CSV" class="add_cat_button" style="float:left"></a>
+            @*</span>*@
             @using (Html.BeginForm("ImportFromCSV", "Customer", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
-                <input type="file" name="importcsvfile" id="importcsvfile" />
-            <input type="submit" name="Submit" id="Submit" value="Import from CSV" class="add_cat_button" />
+                @*<span class="back_to_order" style="padding-top:0px">*@
+    <input type="submit" name="Submit" id="Submit" value="Import from CSV" class="delete_cat_button" style="float:left;margin-left:10px" />
+            <input type="file" name="importcsvfile" id="add_cat_button" style="float:right" />
+
             }
-            @*<a href=""><input type="button" value="Import from CSV" class="add_cat_button"></a>*@
         </span>
-    </div>
+</div>
     <div class="col-md-12 order_list" style="border-radius: 10px;margin-left: 11px;width:98%;height:60px">
         @using (Html.BeginForm("NewsletterSubscribers", "Customer", FormMethod.Post))
         {
@@ -32,105 +34,7 @@
     </div>
 
     <div class="col-md-12" style=" margin-bottom: 34px;background-color: #fff;margin-top: 10px;width:100%">
-        <div class="col-md-9 main_order_table" style="width:100%">
-            <table class=" item_admin_order">
-                <thead>
-                <td style="width:30%">Email</td>
-                <td>Active</td>
-                <td>Subscribed On</td>
-                <td>Edit/Delete</td>
-                </thead>
-                <tbody>
-                    @if (Model.Subscribers != null)
-                    {
-                        if (Model.Subscribers.Count > 0)
-                        {
-                            int count = 1;
-                            foreach (var item in Model.Subscribers)
-                            {
-                                <script type="text/javascript">
-                                    $(document).ready(function () {
-                                        toggleOrderItemEdit@(item.Id)(false);
-                                    });
-                                </script>
-
-                                <script type="text/javascript">
-                                    function toggleOrderItemEdit@(item.Id)(editMode) {
-                                        if (editMode) {
-                                            $('#drpactive@(item.Id)').show();
-                                            $('#lblactive@(item.Id)').hide();
-                                            $('#lblemail@(item.Id)').hide();
-                                            $('#txtemail@(item.Id)').show();
-                                            $('#btnDeleteOrderItem@(item.Id)').hide();
-                                            $('#btnEditOrderItem@(item.Id)').hide();
-                                            $('#btnSaveOrderItem@(item.Id)').show();
-                                            $('#btnCancelOrderItem@(item.Id)').show();
-                                        }
-                                        else {
-                                            $('#lblactive@(item.Id)').show();
-                                            $('#drpactive@(item.Id)').hide();
-                                            $('#lblemail@(item.Id)').show();
-                                            $('#txtemail@(item.Id)').hide();
-                                            $('#btnDeleteOrderItem@(item.Id)').show();
-                                            $('#btnEditOrderItem@(item.Id)').show();
-                                            $('#btnSaveOrderItem@(item.Id)').hide();
-                                            $('#btnCancelOrderItem@(item.Id)').hide();
-                                        }
-                                    }
-                                </script>
-                                using (Html.BeginForm("UpdateSubscribers", "Customer", new { Id = @item.Id }, FormMethod.Post, new { Id = "formEditNewsletterSubscribers" + item.Id }))
-                                {
-                                    if (count == 1)
-                                    {
-                                        @:<tr class="first_row">
-                                        count++;
-                                    }
-                                    else
-                                    {
-                                        @:<tr class="second_row">
-                                            count = 1;
-                                    }
-                                    <td class="varient_align">
-                                        <label name="lblemail@(item.Id)" id="lblemail@(item.Id)">@item.Email</label>
-                                        <input type="text" name="txtemail@(item.Id)" value="@item.Email" id="txtemail@(item.Id)" style="display:none;font-size: small;">
-                                    </td>
-                                    <td class="action_ring">
-                                        <label class="@(item.Active ? "img_sprite1" : "img_sprite")" name="lblactive@(item.Id)" id="lblactive@(item.Id)"></label>
-                                        <select name="drpactive@(item.Id)" id="drpactive@(item.Id)" value="@item.Active" style="display:none;">
-                                            <option value=" true">True</option>
-                                            <option value="false">False</option>
-                                        </select>
-                                    </td>
-                                    <td class="action_ring">
-                                        @item.CreatedOn
-                                    </td>
-                                    @:<td class="action_ring">
-                                        @:<input type="submit" name="btnSaveOrderItem@(item.Id)" value="" id="btnSaveOrderItem@(item.Id)" class="edit_save" style="display:none;" />
-                                        @:<input type="submit" name="btnCancelOrderItem@(item.Id)" value="" onclick="toggleOrderItemEdit@(item.Id)    (false);return false; " id="btnCancelOrderItem@(item.Id)" class="edit_cancel" style="display:none;" />
-                                        @: <input type="button" name="btnEditOrderItem@(item.Id)" value="" onclick="toggleOrderItemEdit@(item.Id)(true);return false; " id="btnEditOrderItem@(item.Id)" class="edit_ring" />
-                                        @: <a href="@Url.Action("DeleteCustomerRole", "Customer", new { Id = item.Id })"><input type="button" name="btnDeleteOrderItem@(item.Id)" value="" id="btnDeleteOrderItem@(item.Id)" class="delete_ring" onclick=" return confirm('Are You Sure'); " /></a>
-                                        @:</td>
-                                    @:</tr>
-                                        }
-                            }
-                        }
-                        else
-                        {
-                            <tr style="display: table-row;">
-
-                                <td colspan="6">No records to display</td>
-                            </tr>
-                        }
-                    }
-                    else
-                    {
-                        <tr style="display: table-row;">
-
-                            <td colspan="6">No records to display</td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
+       @Html.Action("NewsletterSubscribersList")
     </div>
 </div>
+

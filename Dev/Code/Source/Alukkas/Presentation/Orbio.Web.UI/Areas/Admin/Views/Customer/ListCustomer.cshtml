@@ -33,23 +33,7 @@
         </div>
        
         <div class="col-md-12" style=" margin-bottom: 34px;background-color: #fff;margin-top: 10px;">
-
-            <div class="col-md-9 main_order_table" style="width: 100%;">
-                <table class="item_admin_order">
-                    <thead>
-                    <td>Id</td>
-                    <td>Email</td>
-                    <td>Name</td>
-                    <td>Customer Roles</td>
-                    <td>Active</td>
-                    <td>Created On</td>
-                    <td>Last Activity</td></thead>
-                    <tbody>
-                        @Html.Action("CustomerList", "Customer")
-                    </tbody>
-                </table>
-            </div>
-
+            @Html.Action("CustomerList", "Customer")
         </div>
         </div>
 }
@@ -58,4 +42,20 @@
  $('#role').multiselect();
  $("#StartDate").kendoDatePicker();
     </script>
+
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        $(document).on("click", "#contentPager a[href]", function () {
+            $.ajax({
+                url: $(this).attr("href"),
+                type: 'GET',
+                cache: false,
+                success: function (result) {
+                    $('#custList').html(result);
+                }
+            });
+            return false;
+        });
+    });
+</script>
 }
