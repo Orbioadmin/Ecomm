@@ -75,6 +75,6 @@
 </table>
 
     <div class="pagedList" id="contentPager">
-        @Html.PagedListPager(Model, page => Url.Action("CurrentWishList", new { page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
+        @Html.PagedListPager(Model, page => Url.Action("CurrentWishLists", new { page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
     </div>
 </div>

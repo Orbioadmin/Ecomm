@@ -36,7 +36,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         public ActionResult CartCustomer(int? page)
         {
             ShoppingCartType cartType = ShoppingCartType.ShoppingCart;
-            int pageSize = 10;
+            int pageSize = 8;
             int pageNumber = (page ?? 1);
             var model = new ShoppingCartModel(_shoppingCartService.GetShoppingCartAllCustomer(cartType, _storeContext.CurrentStore.Id),pageNumber,pageSize);
             return PartialView("_CartCustomer",model.customers);
