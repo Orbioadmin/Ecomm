@@ -37,7 +37,7 @@
                     setTimeout(function () {
                         ShowSuccessMsg("The item added to your cart.");
                     }, 1000)
-                    $(".cart_item").load('@(Url.Action("CartItem", "ShoppingCart"))');
+                    $("#cart_item").load('@(Url.Action("CartItem", "ShoppingCart"))');
 
                 }
                 else {

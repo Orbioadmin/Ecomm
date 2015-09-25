@@ -2315,7 +2315,7 @@ font-family: 'PT Sans', sans-serif; font-weight: 700; font-size: 13px;}
 .prod-prg:hover{background: #ffffff; border:1px #F8C301 solid; cursor: pointer;color: #444444;}
 .alukas_banner{padding:30px 0;}.sub-ban{margin-top: 25px;}
 .alukas_banner img{width: 100%;}
-.top-rgt li{float: left;}
+.top-rgt li{float: left;padding: 0 5px;}
 .my-account .btn.btn-default.dropdown-toggle {background: transparent;  border: 0; padding: 0 12px; color: #c1c1c1; font-family: 'PT Sans', sans-serif; font-weight: 400; font-size: 12px;}
 .slider-section .carousel-inner{height: 450px;}
 ol.carousel-indicators.mCustomScrollbar li:hover{border:1px #F8C301 solid;}
