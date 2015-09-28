@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Orbio.Core.Data;
 using Orbio.Web.UI.Area.Admin.Models.CheckOut;
+using Orbio.Web.UI.Areas.Admin.Models.Discount;
 using Orbio.Web.UI.Areas.Admin.Models.Product;
 using System;
 using System.Collections.Generic;
@@ -224,6 +225,48 @@ namespace Orbio.Web.UI.Areas.Admin
             return Mapper.Map<ProductModel, Product>(model);
         }
 
+        #endregion
+
+        #region Discount
+        public static Orbio.Core.Domain.Discounts.Discount ToEntity(this DiscountModel entity)
+        {
+
+            Mapper.CreateMap<DiscountModel, Orbio.Core.Domain.Discounts.Discount>()
+                 .ForMember(ev => ev.Id, m => m.MapFrom(a => a.Id))
+                .ForMember(ev => ev.Name, m => m.MapFrom(a => a.Name))
+                .ForMember(ev => ev.DiscountTypeId, m => m.MapFrom(a => a.DiscountTypeId))
+                .ForMember(ev => ev.UsePercentage, m => m.MapFrom(a => a.UsePercentage))
+                .ForMember(ev => ev.DiscountPercentage, m => m.MapFrom(a => a.DiscountPercentage))
+                .ForMember(ev => ev.DiscountAmount, m => m.MapFrom(a => a.DiscountAmount))
+               .ForMember(ev => ev.StartDateUtc, m => m.MapFrom(a => a.StartDateUtc))
+                .ForMember(ev => ev.EndDateUtc, m => m.MapFrom(a => a.EndDateUtc))
+                .ForMember(ev => ev.RequiresCouponCode, m => m.MapFrom(a => a.RequiresCouponCode))
+                .ForMember(ev => ev.CouponCode, m => m.MapFrom(a => a.CouponCode))
+                .ForMember(ev => ev.DiscountLimitationId, m => m.MapFrom(a => a.DiscountLimitationId))
+                .ForMember(ev => ev.LimitationTimes, m => m.MapFrom(a => a.LimitationTimes));
+
+            return Mapper.Map<DiscountModel, Orbio.Core.Domain.Discounts.Discount>(entity);
+        }
+
+        public static DiscountModel ToModel(this Orbio.Core.Domain.Discounts.Discount entity)
+        {
+
+            Mapper.CreateMap<Orbio.Core.Domain.Discounts.Discount, DiscountModel>()
+                 .ForMember(ev => ev.Id, m => m.MapFrom(a => a.Id))
+                .ForMember(ev => ev.Name, m => m.MapFrom(a => a.Name))
+                .ForMember(ev => ev.DiscountTypeId, m => m.MapFrom(a => a.DiscountTypeId))
+                .ForMember(ev => ev.UsePercentage, m => m.MapFrom(a => a.UsePercentage))
+                .ForMember(ev => ev.DiscountPercentage, m => m.MapFrom(a => a.DiscountPercentage))
+                .ForMember(ev => ev.DiscountAmount, m => m.MapFrom(a => a.DiscountAmount))
+               .ForMember(ev => ev.StartDateUtc, m => m.MapFrom(a => a.StartDateUtc))
+                .ForMember(ev => ev.EndDateUtc, m => m.MapFrom(a => a.EndDateUtc))
+                .ForMember(ev => ev.RequiresCouponCode, m => m.MapFrom(a => a.RequiresCouponCode))
+                .ForMember(ev => ev.CouponCode, m => m.MapFrom(a => a.CouponCode))
+                .ForMember(ev => ev.DiscountLimitationId, m => m.MapFrom(a => a.DiscountLimitationId))
+                .ForMember(ev => ev.LimitationTimes, m => m.MapFrom(a => a.LimitationTimes));
+
+            return Mapper.Map<Orbio.Core.Domain.Discounts.Discount, DiscountModel>(entity);
+        }
         #endregion
     }
 }

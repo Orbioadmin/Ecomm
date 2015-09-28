@@ -14,28 +14,28 @@
             <ul class="top-rgt pull-right">
                 @if (workContext.CurrentCustomer.IsRegistered)
                        {
-                            <li class="my-account">
-                                <div class="dropdown">
-                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                        <i class="fa fa-user"></i>
-                                        Hi @workContext.CurrentCustomer.Email
-                                        <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                        <li><a href="@Url.Action("MyAccount", "Customer")">Profile</a></li>
-                                        <li><a href="@Url.Action("LogOut", "Account")">Logout</a></li>
-                                    </ul>
-                                </div>
-                            </li>
+                <li class="my-account">
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <i class="fa fa-user"></i>
+                            Hi @workContext.CurrentCustomer.Email
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li><a href="@Url.Action("MyAccount", "Customer")">Profile</a></li>
+                            <li><a href="@Url.Action("LogOut", "Account")">Logout</a></li>
+                        </ul>
+                    </div>
+                </li>
                        }
                 else
                 {
-                    <li class="log-in">
-                        <a href="@Url.Action("Register", "Account")"><i class="fa fa-sign-in"></i>Register</a>
-                    </li>
-                        <li class="log-in">
-                            <a href="@Url.Action("Login", "Account")"><i class="fa fa-sign-in"></i>Login</a>
-                        </li>
+                <li class="log-in">
+                    <a href="@Url.Action("Register", "Account")"><i class="fa fa-sign-in"></i>Register</a>
+                </li>
+                <li class="log-in">
+                    <a href="@Url.Action("Login", "Account")"><i class="fa fa-sign-in"></i>Login</a>
+                </li>
                     }
             </ul>
         </div>
@@ -52,13 +52,12 @@
             <ul id="cart_item" class="nav navbar-nav navbar-right">
                 @*<li class="icon-cart"><i class="cart-icon"></i><span>5</span></li>*@
                 @Html.Action("CartItem", "ShoppingCart")
-                @*<li class="icon-cart"><i class="cart-wish"></i></li>*@
+
             </ul>
 
         </div><!--/.nav-collapse -->
     </div>
 </div>
-
 
 <div class="second_menu home">
     <div class="container">
@@ -76,11 +75,70 @@
             </div>
             <div class="navbar-collapse collapse ">
                 <ul class="nav navbar-nav ">
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="">Brands</a></li>
-                    <li><a href="">News</a></li>
-                    <li><a href="">Blog</a></li>
-                    <li><a href="">Contact</a></li>
+                    @helper RenderCategoryLine(CategorySimpleModel category, int level)
+{
+
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle" onclick="location.href = '@Url.RouteUrl("Category", new { SeName = category.SeName })?p=ct'">@category.Name<i class="fa fa-angle-down"></i></a>
+                        @if (category.SubCategories.Count > 0)
+                        {
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <div class="row">
+                                        <div class="container">
+                                            @foreach (var subCategory in category.SubCategories)
+                                            {
+                                                <div class="col-sm-3">
+                                                    @RenderSubCategoryLine(subCategory)
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        }
+                    </li>
+}
+
+
+                    @helper RenderSubCategoryLine(CategorySimpleModel category)
+{
+                    <h3>
+                        <a href="@Url.RouteUrl("Category", new { SeName = category.SeName })?p=ct">@category.Name</a>
+                    </h3>
+                    <ul>
+                        @if (category.SubCategories.Count > 0)
+                        {
+                            int count = 0;
+                            foreach (var subCategory in category.SubCategories)
+                            {
+                                if (count < (int)ViewBag.NumberOfCategory)
+                                {
+                                    <li><a href="@Url.RouteUrl("Category", new { SeName = subCategory.SeName })?p=ct">@subCategory.Name</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="@Url.RouteUrl("Category", new { SeName = category.SeName })?p=ct"><i>ViewAll</i></a></li>
+                                    break;
+                                }
+                                count++;
+                            }
+
+                        }
+
+                    </ul>
+}
+
+                    @if (Model != null)
+                    {
+                        if (Model.Categories.Count > 0)
+                        {
+                            foreach (var category in Model.Categories)
+                            {
+                                @RenderCategoryLine(category, 0)
+                            }
+                        }
+                    }
                 </ul>
                 @if (workContext.CurrentCustomer.IsAdmin)
                 {
@@ -90,15 +148,9 @@
                 }
 
             </div><!--/.nav-collapse -->
-
         </div>
-
     </div>
 </div>
-
-
-
-
 
 
 
@@ -119,7 +171,7 @@
                 // url = 'Search?p=sr&q=' + $('#twotabsearchtextbox').val();
                 window.location.href = url;
             }
-            else { return false;}
+            else { return false; }
 
         });
         $('#twotabsearchtextbox').keydown(function (e) {
@@ -130,7 +182,7 @@
                     //url = 'Search?p=sr&q=' + $('#twotabsearchtextbox').val();
                     window.location.href = url;
                 }
-                else { return false;}
+                else { return false; }
             }
 
         });

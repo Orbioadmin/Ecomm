@@ -20,6 +20,7 @@ namespace Orbio.Core.Data
             this.RecurringPayments = new HashSet<RecurringPayment>();
             this.Shipments = new HashSet<Shipment>();
             this.GiftCardUsageHistories = new HashSet<GiftCardUsageHistory>();
+            this.DiscountUsageHistories = new HashSet<DiscountUsageHistory>();
         }
     
         public int Id { get; set; }
@@ -84,5 +85,6 @@ namespace Orbio.Core.Data
         public virtual ICollection<RecurringPayment> RecurringPayments { get; set; }
         public virtual ICollection<Shipment> Shipments { get; set; }
         public virtual ICollection<GiftCardUsageHistory> GiftCardUsageHistories { get; set; }
+        public virtual ICollection<DiscountUsageHistory> DiscountUsageHistories { get; set; }
     }
 }

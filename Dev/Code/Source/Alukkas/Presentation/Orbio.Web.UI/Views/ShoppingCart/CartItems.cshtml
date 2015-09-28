@@ -1,3 +1,9 @@
 ﻿@model Orbio.Web.UI.Models.Orders.CartHeaderModel
-           
-<a href="@Url.RouteUrl("ShoppingCart")"><li class="icon-cart"><i class="cart-icon"></i><span>@(Model.ItemCount)</span></li></a>
+@{
+       var workContext = Nop.Core.Infrastructure.EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
+}        
+<li class="icon-cart"><a href="@Url.RouteUrl("ShoppingCart")"><i class="cart-icon"></i><span>@(Model.ItemCount)</span></a></li>
+@if (workContext.CurrentCustomer.IsRegistered)
+{
+    <li class="icon-cart"><a href="~/Customer/MyAccount#mywishlist"><i class="cart-wish"></i></a></li>
+}

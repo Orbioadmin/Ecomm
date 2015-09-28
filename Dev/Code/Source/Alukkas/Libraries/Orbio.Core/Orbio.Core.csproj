@@ -78,6 +78,9 @@
     <Compile Include="Data\DeliveryDate.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\DiscountUsageHistory.cs">
+      <DependentUpon>OrbioAdmin.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\Discount_AppliedToCategories.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>

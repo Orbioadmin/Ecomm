@@ -1,39 +1,71 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Create";
     Layout = "~/Areas/Admin/Views/Shared/_Layout1.cshtml";
 }
 
-<h2>Create</h2>
-
-@section scripts{
-
-    <script type="text/javascript">
-        var StartDateUtc = $("#StartDateUtc").val();
-        var EndDateUtc = $("#EndDateUtc").val();
-        if (StartDateUtc != "") {
-            $("#StartDateUtc").kendoDateTimePicker({
-                value: DateShipped
-            });
-        }
-        else {
-            $("#StartDateUtc").kendoDateTimePicker({
-                value: new Date()
-            });
-        }
-        if (EndDateUtc != "") {
-            $("#EndDateUtc").kendoDateTimePicker({
-                value: DateDelivered
-            });
-        }
-        else {
-            $("#EndDateUtc").kendoDateTimePicker({
-                value: new Date()
-            });
-        }
-
-        $(".edit_order_total").click(function () {
-            $(".free_shipping").show();
-        });
-    </script>
+<div class="container">
+    <div class="main_edit_order">
+        <span class="edit_order_details"><span class="edit_order_icon"></span><a href="" class="add_new_check">Create Discount</a></span>
+        <span class="back_to_order"><u><a href="@Url.Action("List","Discount")">Back to Discount list</a></u></span>
+    </div>
+@using (Html.BeginForm("Create", "Discount", FormMethod.Post, new { Id = "formcreatediscount" }))
+    {
+    <div class="preview_main">
+        <ul>
+            <li style="border-bottom:1px solid #0082c7"><input type="submit" class="prev_button" value="Save"></li>
+        </ul>
+    </div>
+    <div class="tab_side_solutions col-md-12">
+        <div class="tab-content tab_content_solutions" id="myTabContent">
+            @Html.Partial("_CreateOrUpdate")
+        </div>
+    </div>
 }
+    </div>
+    @section scripts{
+
+        <script type="text/javascript">
+            var StartDateUtc = $("#StartDateUtc").val();
+            var EndDateUtc = $("#EndDateUtc").val();
+            if (StartDateUtc != "") {
+                $("#StartDateUtc").kendoDateTimePicker({
+                    value: StartDateUtc
+                });
+            }
+            else {
+                $("#StartDateUtc").kendoDateTimePicker({
+                    value: new Date()
+                });
+            }
+            if (EndDateUtc != "") {
+                $("#EndDateUtc").kendoDateTimePicker({
+                    value: EndDateUtc
+                });
+            }
+            else {
+                $("#EndDateUtc").kendoDateTimePicker({
+                    value: new Date()
+                });
+            }
+
+            $("#chkusepercentage").click(function () {
+                var $target = $('#discPerc')
+                var $target1 = $('#discAmt')
+
+                $target.slideToggle(500, function () {
+                    ($target.is(':visible') ? 'Hide' : 'Show');
+                });
+                $target1.slideToggle(500, function () {
+                    ($target1.is(':visible') ? 'Hide' : 'Show');
+                });
+            });
+
+            $("#chkreqcouponcode").click(function () {
+                var $target = $('#discCoupon')
+
+                $target.slideToggle(500, function () {
+                    ($target.is(':visible') ? 'Hide' : 'Show');
+                });
+            });
+        </script>
+    }

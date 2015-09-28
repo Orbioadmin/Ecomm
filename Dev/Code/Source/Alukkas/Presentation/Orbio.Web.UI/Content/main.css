@@ -1938,7 +1938,7 @@ height: 17px; vertical-align: bottom; border:0; float: right;}
 li.cart_item{background: none; border:0; z-index:102;}
 .collapse.head_main.in{float: right;}
 ul.menu_desc{float: left!important; padding: 4px 10px 0 10px;}
-.collapse.head_main.in .nav li{float: left; padding: 0 10px;}
+.collapse.head_main.in .nav li{float: left; padding: 8px 10px;}
 .cart_item span.item_span{display: none;}
 .head_main ul.navbar-nav{margin: 0; padding: 0;}
 ul li.cart_item a{padding: 0!important;}
@@ -2270,7 +2270,6 @@ border-radius: 0 4px 4px 0;
 
 
 
-
 /* new home page */
 .second_menu.home .navbar-default .navbar-nav > li > a{font-size: 15px; font-family: 'PT Sans', sans-serif; font-weight: 400; padding-top: 11px;}
 .top-menu-new{background:#131313; padding:10px 0;}
@@ -2289,8 +2288,8 @@ ul{margin: 0;}
     border: 1px solid #ccc;
     border-radius: 38px;
     padding: 6px 7px;  margin-top: 7px;}
-    .icon-cart span{position: absolute; background:#F8C301; border-radius: 30px;  padding: 1px 6px; top: -10px;
-    right: -7px; font-size: 12px;}
+    .icon-cart span{position: absolute; background:#F8C301; border-radius: 30px;  padding: 0px 6px; top: -10px;
+    right: -13px; font-size: 12px;}
 .prod-inner img {width: 100%;}
 .navbar-default.home .select_text {background: #e7e7e7; border-radius: 20px; height: 30px; padding: 0 38px 0 8px; top: 0;}
 .navbar-default.home input.search_butt{ background: #fff url("../images/Basic_image/image-sprites.png") no-repeat scroll -84px -217px;
@@ -2310,12 +2309,12 @@ ul{margin: 0;}
     border-radius: 5px;
     border: 1px #000 solid;}
 .prod-prg{position: absolute; bottom: -16px; left: 50%; margin-left: -46px; width: 92px;background:#F8C301; 
-  padding:5px 10px; line-height: 20px; border-radius: 3px; border:1px #F8C301 solid; color: #444444;
+  padding:5px 10px; line-height: 20px; border-radius: 3px; border:1px #F8C301 solid; color: 444444;
 font-family: 'PT Sans', sans-serif; font-weight: 700; font-size: 13px;}
-.prod-prg:hover{background: #ffffff; border:1px #F8C301 solid; cursor: pointer;color: #444444;}
+.prod-prg:hover{background: #ffffff; border:1px #F8C301 solid; cursor: pointer;}
 .alukas_banner{padding:30px 0;}.sub-ban{margin-top: 25px;}
 .alukas_banner img{width: 100%;}
-.top-rgt li{float: left;padding: 0 5px;}
+.top-rgt li{float: left;}
 .my-account .btn.btn-default.dropdown-toggle {background: transparent;  border: 0; padding: 0 12px; color: #c1c1c1; font-family: 'PT Sans', sans-serif; font-weight: 400; font-size: 12px;}
 .slider-section .carousel-inner{height: 450px;}
 ol.carousel-indicators.mCustomScrollbar li:hover{border:1px #F8C301 solid;}
@@ -2453,6 +2452,13 @@ font-family: 'PT Sans', sans-serif; font-weight: 700; font-size: 13px;}
 .collect-arrow{background: #F8C301; padding:5px 14px; position: absolute; border-radius: 2px;
     right: 0; bottom: 0;}
 .collect-images img{width: 100%; }
+.second_menu.home .navbar-default .navbar-nav > li > a{margin-bottom: 10px;}
+.second_menu.home .dropdown-menu {top: 45px;}
+.second_menu.home .nav.navbar-nav li.dropdown i.fa.fa-angle-down {margin-left: 5px;}
+.second_menu.home .nav.navbar-nav li h3{ margin: 0; padding: 3px 0; border-bottom: 1px #ccc solid;}
+.second_menu.home .nav.navbar-nav li{padding: 3px 0;}
+.prod-inner a{color: #000000;}
+.navbar-default.home .head_main .navbar-nav > li > a{padding: 3px;}
 @media (min-width: 768px) and (max-width: 768px) {
 .Footer_top .col-md-3{width:25%!important;}
 .slider-section .carousel-inner {height: 312px;}
@@ -2471,15 +2477,15 @@ ul.menu_desc li.select_menu { right: -140px;}}
 .navbar-default.home .select_text{width: 320px;}
 }
 @media (min-width: 768px){
-ul.menu_desc li.select_menu{left:478px;}
+ul.menu_desc li.select_menu{left:330px;}
 }
 @media (max-width: 1199px){
 ul.menu_desc li.select_menu {
-    left: 300px;
+    left: 200px;
 }
 @media (max-width: 767px){
 .second_menu.home .container {padding: 0;}
-.second_menu.home .navbar-collapse{background:#ffffff; z-index: 992; top:43px;}
+.second_menu.home .navbar-collapse{background:#ffffff; z-index: 20; top:43px;}
 .second_menu.home .navbar-collapse .nav.navbar-nav li{border-bottom: 1px #cccccc solid;} 
 .second_menu.home .navbar-default .navbar-toggle:hover, 
 .second_menu.home .navbar-default .navbar-toggle:focus{background-color: #555;}
@@ -2514,6 +2520,7 @@ iframe, object, video, embed{width: 100%;}
 @media (max-width: 320px){.navbar-default.home .collapse.head_main.in{text-align: center; float: inherit;}
 .navbar-default.home ul.menu_desc{width: 100%;}
 .navbar-default.home .navbar-header{width:100%;}
+
 }
 @media (max-width: 420px){.email-input{width: 200px;}
 .navbar-default.home .navbar-header{width: 100%;}

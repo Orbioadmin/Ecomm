@@ -30,7 +30,7 @@ AS
 BEGIN
 DECLARE @XmlResult1 xml
 
-SELECT @XmlResult1 = (SELECT Name,DiscountTypeId,UsePercentage,DiscountPercentage,DiscountAmount,StartDateUtc,
+SELECT @XmlResult1 = (SELECT Id,Name,DiscountTypeId,UsePercentage,DiscountPercentage,DiscountAmount,StartDateUtc,
 EndDateUtc,RequiresCouponCode,CouponCode,DiscountLimitationId,LimitationTimes
 from dbo.Discount
 FOR XML PATH('Discount'),Root('ArrayOfDiscount'))

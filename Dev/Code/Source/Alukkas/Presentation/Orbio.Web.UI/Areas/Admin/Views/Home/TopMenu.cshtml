@@ -44,8 +44,8 @@
 </div>
 <div class="navbar-collapse collapse">
 <ul class="nav navbar-nav">
-<li class="active"><a href="~/Admin">Dashboard</a></li>
-<li class="dropdown">
+<li id="dashboard" class="active"><a href="~/Admin">Dashboard</a></li>
+<li id="catelog" class="dropdown">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Catalog <span class="caret"></span></a>
 <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
     <li class="dropdown-submenu">
@@ -84,7 +84,7 @@
 </ul>
 </li>
 
-<li class="dropdown">
+<li id="sales" class="dropdown">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             Sales <span class="caret">
 
@@ -100,7 +100,9 @@
 <li><a href="@Url.Action("BestSellersReport", "Order")">Bestsellers</a></li>
 <li><a href="@Url.Action("NeverSoldReport", "Order")">Products Never Purchased</a></li>
 </ul>
-<li class="dropdown">
+
+    
+    <li id="customer" class="dropdown">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Customers<span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
 
@@ -111,7 +113,7 @@
 <li><a href="@Url.Action("NewsletterSubscribers", "Customer")">Newsletter Subscribers</a></li>
 </ul>
 </li>
-<li>
+<li id="promotion">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Promotions<span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
 <li><a href="#">Affiliates</a></li>
@@ -120,7 +122,7 @@
 
 </ul>
 </li>
-<li>
+<li id="contentmanagement">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Content Management <span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
 <li><a href="@Url.Action("List","MessageTemplate")">Message Templates</a> </li>

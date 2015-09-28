@@ -173,6 +173,15 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <Property Name="Discount_Id" Type="int" Nullable="false" />
           <Property Name="Category_Id" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="DiscountUsageHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DiscountId" Type="int" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="CreatedOnUtc" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="GiftCard">
           <Key>
             <PropertyRef Name="Id" />
@@ -777,6 +786,20 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="DiscountUsageHistory_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DiscountUsageHistory" Type="Self.DiscountUsageHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DiscountUsageHistory">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Category_CategoryTemplate">
           <End Role="CategoryTemplate" Type="Self.CategoryTemplate" Multiplicity="1" />
           <End Role="Category" Type="Self.Category" Multiplicity="*" />
@@ -1270,6 +1293,7 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <EntitySet Name="Customer_CustomerRole_Mapping" EntityType="Self.Customer_CustomerRole_Mapping" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CustomerRole" EntityType="Self.CustomerRole" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DeliveryDate" EntityType="Self.DeliveryDate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DiscountUsageHistory" EntityType="Self.DiscountUsageHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GiftCard" EntityType="Self.GiftCard" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GiftCardUsageHistory" EntityType="Self.GiftCardUsageHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Log" EntityType="Self.Log" Schema="dbo" store:Type="Tables" />
@@ -1336,6 +1360,10 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <AssociationSet Name="Customer_ShippingAddress" Association="Self.Customer_ShippingAddress">
             <End Role="Address" EntitySet="Address" />
             <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="DiscountUsageHistory_Order" Association="Self.DiscountUsageHistory_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="DiscountUsageHistory" EntitySet="DiscountUsageHistory" />
           </AssociationSet>
           <AssociationSet Name="FK_Category_CategoryTemplate" Association="Self.FK_Category_CategoryTemplate">
             <End Role="CategoryTemplate" EntitySet="CategoryTemplate" />
@@ -1588,6 +1616,7 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <NavigationProperty Name="RecurringPayments" Relationship="OrbioAdminModel.RecurringPayment_InitialOrder" FromRole="Order" ToRole="RecurringPayment" />
           <NavigationProperty Name="Shipments" Relationship="OrbioAdminModel.Shipment_Order" FromRole="Order" ToRole="Shipment" />
           <NavigationProperty Name="GiftCardUsageHistories" Relationship="OrbioAdminModel.GiftCardUsageHistory_UsedWithOrder" FromRole="Order" ToRole="GiftCardUsageHistory" />
+          <NavigationProperty Name="DiscountUsageHistories" Relationship="OrbioAdminModel.DiscountUsageHistory_Order" FromRole="Order" ToRole="DiscountUsageHistory" />
         </EntityType>
         <Association Name="Order_Customer">
           <End Role="Customer" Type="Self.Customer" Multiplicity="1">
@@ -1820,6 +1849,11 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
             <End Role="GiftCardUsageHistory" EntitySet="GiftCardUsageHistories" />
           </AssociationSet>
           <EntitySet Name="MessageTemplates" EntityType="OrbioAdminModel.MessageTemplate" />
+          <EntitySet Name="DiscountUsageHistories" EntityType="OrbioAdminModel.DiscountUsageHistory" />
+          <AssociationSet Name="DiscountUsageHistory_Order" Association="OrbioAdminModel.DiscountUsageHistory_Order">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="DiscountUsageHistory" EntitySet="DiscountUsageHistories" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="CustomerRole">
           <Key>
@@ -3027,6 +3061,30 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <Property Name="EmailAccountId" Type="Int32" Nullable="false" />
           <Property Name="LimitedToStores" Type="Boolean" Nullable="false" />
         </EntityType>
+        <EntityType Name="DiscountUsageHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DiscountId" Type="Int32" Nullable="false" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Order" Relationship="OrbioAdminModel.DiscountUsageHistory_Order" FromRole="DiscountUsageHistory" ToRole="Order" />
+        </EntityType>
+        <Association Name="DiscountUsageHistory_Order">
+          <End Type="OrbioAdminModel.Order" Role="Order" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="OrbioAdminModel.DiscountUsageHistory" Role="DiscountUsageHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DiscountUsageHistory">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3752,6 +3810,16 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
                 <ScalarProperty Name="Subject" ColumnName="Subject" />
                 <ScalarProperty Name="BccEmailAddresses" ColumnName="BccEmailAddresses" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DiscountUsageHistories">
+            <EntityTypeMapping TypeName="OrbioAdminModel.DiscountUsageHistory">
+              <MappingFragment StoreEntitySet="DiscountUsageHistory">
+                <ScalarProperty Name="CreatedOnUtc" ColumnName="CreatedOnUtc" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="DiscountId" ColumnName="DiscountId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

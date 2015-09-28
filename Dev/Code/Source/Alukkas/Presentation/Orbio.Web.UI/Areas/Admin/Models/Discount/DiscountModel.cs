@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Orbio.Web.UI.Areas.Admin.Models.Discount
 {
@@ -13,6 +14,7 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Discount
 
         public DiscountModel(Orbio.Core.Domain.Discounts.Discount discount)
         {
+            Id = discount.Id;
             Name = discount.Name;
             UsePercentage = discount.UsePercentage;
             DiscountPercentage = discount.DiscountPercentage;
@@ -20,6 +22,8 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Discount
             StartDateUtc = discount.StartDateUtc;
             EndDateUtc = discount.EndDateUtc;
         }
+
+        public int Id { get; set; }
 
         public string Name { get; set; }
 

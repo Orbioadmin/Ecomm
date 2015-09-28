@@ -503,6 +503,7 @@
     <Content Include="Areas\Admin\Scripts\tinymce\skins\lightgray\skin.min.css" />
     <Content Include="Areas\Admin\Scripts\tinymce\themes\modern\theme.min.js" />
     <Content Include="Areas\Admin\Scripts\tinymce\tinymce.min.js" />
+    <Content Include="Areas\Admin\Scripts\TopMenu.js" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\datepicker.css" />
     <Content Include="Content\font-awesome.min.css" />
@@ -769,6 +770,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\cloud-zoom.js" />
     <Content Include="Scripts\cloudzoom.js" />
+    <Content Include="Scripts\Customer.js" />
     <Content Include="Scripts\datepicker.js" />
     <Content Include="Scripts\Highcharts-4.0.1\js\adapters\standalone-framework.js" />
     <Content Include="Scripts\Highcharts-4.0.1\js\adapters\standalone-framework.src.js" />
@@ -907,6 +909,8 @@
     <Content Include="Areas\Admin\Views\Discount\List.cshtml" />
     <Content Include="Areas\Admin\Views\Discount\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Discount\_CreateOrUpdate.cshtml" />
+    <Content Include="Areas\Admin\Views\Discount\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Discount\UsageHistoryInfo.cshtml" />
     <None Include="Properties\PublishProfiles\ecom.pubxml" />
     <Content Include="Areas\Admin\Views\Customer\ListCustomer.cshtml" />
     <Content Include="Areas\Admin\Views\Customer\CustomerList.cshtml" />

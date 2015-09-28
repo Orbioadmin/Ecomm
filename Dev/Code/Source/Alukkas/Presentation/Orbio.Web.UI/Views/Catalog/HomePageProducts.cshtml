@@ -45,12 +45,13 @@
                                 j++;
                             }
                             <div class="col-md-3 col-sm-3">
-                                <a href="#x" class="thumbnail">
+                                <a href="@Url.RouteUrl("Category", new { SeName = products.SeName })?p=pt" class="thumbnail">
                                     <img src="@products.DefaultPicture.ImageUrl" alt="Image" style="max-width:100%;" />
                                     <p>@products.Name</p>
                                     <p class="rup">@products.CurrencyCode. @products.ProductPrice.Price.ToString("#,##0.00")</p>
-                                    <input value="BUY NOW" type="submit" class="prod-prg" onclick="addItemToCart('@products.Id');" />
                                 </a>
+                                <input value="BUY NOW" type="submit" class="prod-prg" onclick="addItemToCart('@products.Id');" />
+
                             </div>
                             if (((i + 1) % 4) == 0)
                             {

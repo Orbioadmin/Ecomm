@@ -88,6 +88,8 @@
         <AssociationConnector Association="OrbioAdminModel.GiftCardUsageHistory_GiftCard" />
         <AssociationConnector Association="OrbioAdminModel.GiftCardUsageHistory_UsedWithOrder" />
         <EntityTypeShape EntityType="OrbioAdminModel.MessageTemplate" Width="1.5" PointX="4.9032437302652951" PointY="15.8001561685466" />
+        <EntityTypeShape EntityType="OrbioAdminModel.DiscountUsageHistory" Width="1.5" PointX="3.2826405760285633" PointY="13.69037804645038" />
+        <AssociationConnector Association="OrbioAdminModel.DiscountUsageHistory_Order" />
       </Diagram>
         <EntityTypeShape EntityType="OrbioAdminModel.SpecificationAttribute" Width="1.5" PointX="34.75" PointY="9" />
         <EntityTypeShape EntityType="OrbioAdminModel.SpecificationAttributeOption" Width="1.5" PointX="32.5" PointY="9" />

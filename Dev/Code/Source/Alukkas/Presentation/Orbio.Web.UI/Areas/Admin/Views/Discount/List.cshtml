@@ -6,10 +6,10 @@
 }
 <div class="container">
     <div class="main_edit_order">
-        <span class="edit_order_details"><span class="edit_order_icon"></span><a href="" class="add_new_check">DIscounts</a></span><span class="refresh_button"><a style="cursor:pointer" href="@Url.Action("List","Discount")"><label></label></a></span>
+        <span class="edit_order_details"><span class="edit_order_icon"></span><a href="" class="add_new_check">Discounts</a></span><span class="refresh_button"><a style="cursor:pointer" href="@Url.Action("List","Discount")"><label></label></a></span>
         <div class="preview_main" style="float:none">
             <ul>
-                <li style="border-bottom:1px solid #0082c7"><a href="@Url.Action("Create","Product")">Add new</a></li>
+                <li style="border-bottom:1px solid #0082c7"><a href="@Url.Action("Create","Discount")">Add new</a></li>
             </ul>
         </div>
     </div>
@@ -37,14 +37,14 @@
                     @:<tr class="second_row">
                         count = 1;
                 }
-                @:<td class="align_center">@discount.Name</td>
+                @:<td class="align_center" style="text-align:left"><a style="cursor:pointer" href="@Url.Action("Edit", "Discount", new { id = discount.Id })">@discount.Name</a></td>
                 if (!discount.UsePercentage)
                 {
-                     @:<td class="align_center">Rs. @discount.DiscountAmount</td>
+                     @:<td class="align_center" style="text-align:right">Rs. @discount.DiscountAmount.ToString("#,##0.00")</td>
                 }
                 else
                 {
-                    @:<td class="align_center">@discount.DiscountPercentage %</td>
+                    @:<td class="align_center" style="text-align:right">@discount.DiscountPercentage.ToString("#,##0.00") %</td>
                 }
                 @:<td class="align_center">@discount.StartDateUtc</td>
                 @:<td class="align_center">@discount.EndDateUtc</td>

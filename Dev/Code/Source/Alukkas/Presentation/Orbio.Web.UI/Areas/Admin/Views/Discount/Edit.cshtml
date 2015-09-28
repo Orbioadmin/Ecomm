@@ -1,0 +1,108 @@
+﻿@model Orbio.Web.UI.Areas.Admin.Models.Discount.DiscountModel
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="container">
+    <div class="main_edit_order">
+        <span class="edit_order_details"><span class="edit_order_icon"></span><a href="" class="add_new_check">Edit Discount Detail - @Model.Name</a></span>
+        <span class="back_to_order"><u><a href="@Url.Action("List","Discount")">Back to Discount list</a></u></span>
+    </div>
+@using (@Html.BeginForm())
+{
+        <div class="preview_main">
+            <ul>
+                <li style="border-bottom:1px solid #0082c7"><input type="submit" name="Edit" class="prev_button" value="Save"></li>
+                <li style="border-bottom:1px solid #0082c7"><a href="@Url.Action("Delete", "Discount", new { id=Model.Id})">Delete</a></li>
+            </ul>
+        </div>
+    <div class="moving_menu_main">
+        <div class="srlBx">
+            <div id="HomeMarquee_srlCont">
+                <div id="srlData" style="width:1729px;">
+                    <ul class="itabN1" id="myTab" role="tablist">
+                        <li role="presentation" class="active">
+                            <a href="#discountinfo" class="" aria-expanded="true" aria-controls="based" data-toggle="tab" role="tab" id="home-tab">
+                                <div class="">Info</div>
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#usagehistory" class="" aria-controls="profile" data-toggle="tab" id="profile-tab" role="tab">
+                                <div class="">Usage History</div>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="cB"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+            <div class="tab-content tab_content_solutions" id="myTabContent">
+                @Html.Partial("_CreateOrUpdate")
+
+                <div aria-labelledby="home-tab" id="usagehistory" class="tab-pane fade" role="tabpanel">
+                    @Html.Action("UsageHistoryInfo", "Discount", new { id = Model.Id })
+                </div>
+            </div>
+}
+</div>
+@section scripts{
+
+    <script type="text/javascript">
+            var StartDateUtc = $("#StartDateUtc").val();
+            var EndDateUtc = $("#EndDateUtc").val();
+            if (StartDateUtc != "") {
+                $("#StartDateUtc").kendoDateTimePicker({
+                    value: StartDateUtc
+                });
+            }
+            else {
+                $("#StartDateUtc").kendoDateTimePicker({
+                    value: new Date()
+                });
+            }
+            if (EndDateUtc != "") {
+                $("#EndDateUtc").kendoDateTimePicker({
+                    value: EndDateUtc
+                });
+            }
+            else {
+                $("#EndDateUtc").kendoDateTimePicker({
+                    value: new Date()
+                });
+            }
+
+            $("#chkusepercentage").click(function () {
+                var $target = $('#discPerc')
+                var $target1 = $('#discAmt')
+
+                $target.slideToggle(500, function () {
+                    ($target.is(':visible') ? 'Hide' : 'Show');
+                });
+                $target1.slideToggle(500, function () {
+                    ($target1.is(':visible') ? 'Hide' : 'Show');
+                });
+            });
+
+            $("#chkreqcouponcode").click(function () {
+                var $target = $('#discCoupon')
+
+                $target.slideToggle(500, function () {
+                    ($target.is(':visible') ? 'Hide' : 'Show');
+                });
+            });
+            var usePercentage = "@Model.UsePercentage";
+            if (usePercentage == "True")
+            {
+                $('#discPerc').css("display","block");
+                $('#discAmt').css("display","none");
+            }
+            var requiresCouponCode = "@Model.RequiresCouponCode";
+        if (requiresCouponCode == "True")
+            {
+                $('#discCoupon').css("display","block");
+            }
+      
+    </script>
+}

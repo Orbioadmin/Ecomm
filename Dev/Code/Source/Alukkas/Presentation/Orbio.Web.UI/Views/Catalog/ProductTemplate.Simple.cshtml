@@ -387,7 +387,10 @@
     </script>
 
 <script type="text/javascript">
-    $('.price-button').click(function () {
-        $('.Price_breakup').toggle();
+    var $j = jQuery.noConflict();
+    $j(document).ready(function () {
+        $j('.price-button').click(function () {
+            $j('.Price_breakup').toggle();
+        });
     });
 </script>
