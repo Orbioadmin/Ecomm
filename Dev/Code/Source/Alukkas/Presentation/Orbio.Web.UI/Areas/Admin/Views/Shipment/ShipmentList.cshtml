@@ -6,6 +6,7 @@
     var count = 0;
     var status = "";
 }
+
 <div id="shipList">
     <table class="main_table" id="tableData" style="width:100%">
         <thead class="main_head">
@@ -20,7 +21,9 @@
         <td class="customer_id_cart">Delete</td>
         </thead>
         <tbody class="main_tbody">
-            @foreach (var item in this.Model)
+    @if(Model.Count>0)
+            {
+            foreach (var item in this.Model)
             {
                 var tr_id = item.Id;
                 if (count == 1)
@@ -30,7 +33,7 @@
                         }
                         else
                         {
-                        @:<tr class="accordion-toggle second_row_cart">
+                    @:<tr class="accordion-toggle second_row_cart">
                         count = 1;
                         }
                         <td class="qty">
@@ -67,7 +70,7 @@
                         <td class="qty">
                             <a href="@Url.Action("DeleteShipment", "Shipment", new { Id=item.Id })"><input type="button" class="delete_ring" onclick=" return confirm('Are You Sure'); " /></a>
                         </td>
-                        @:</tr>
+                        @: </tr>
                     <tr>
                         <td colspan="9" class="hiddenRow" style="padding:0px">
                             @{
@@ -76,7 +79,14 @@
                         </td>
                     </tr>
                     }
-                </tbody>
+                    }
+                    else
+                    {
+                    <tr>
+                        <td colspan="9">No result found</td>
+                    </tr>
+                }
+    </tbody>
             </table>
        
                 
@@ -84,6 +94,7 @@
         @Html.PagedListPager(Model, page => Url.Action("ShipmentList", new { page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
     </div>
      </div>
+
 
 
 

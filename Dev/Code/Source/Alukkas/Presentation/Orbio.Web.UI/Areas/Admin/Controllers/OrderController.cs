@@ -197,10 +197,10 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         #region OrderList
 
         [AdminAuthorizeAttribute]
-        public ActionResult List()
+        public ActionResult List(OrderListModel model)
         {
             //order statuses
-            var model = new OrderListModel();
+            //var model = new OrderListModel();
             model.AvailableOrderStatuses = OrderStatus.Pending.ToSelectList(false).ToList();
             model.AvailableOrderStatuses.Insert(0, new SelectListItem() { Text = "Order Status", Value = "0" });
 
@@ -250,7 +250,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         public ActionResult OrderList(OrderListModel model, int? page)
         {
             var resultModel = GetAllOrderDetails(model);
-            int pageSize = 10;
+            int pageSize = Convert.ToInt32(ConfigurationManager.AppSettings["PageSize"]);
             int pageNumber = (page ?? 1);
             return PartialView(resultModel.ToPagedList(pageNumber, pageSize));
         }
@@ -1049,7 +1049,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                                }).ToList();
             }
             int pageNumber = (page ?? 1);
-            int pageSize = 10;
+            int pageSize = Convert.ToInt32(ConfigurationManager.AppSettings["PageSize"]);
             return PartialView(sellerModel.ToPagedList(pageNumber, pageSize));
         }
 
@@ -1093,7 +1093,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             }
 
             int pageNumber = (page ?? 1);
-            int pageSize = 10;
+            int pageSize = Convert.ToInt32(ConfigurationManager.AppSettings["PageSize"]);
             return PartialView(neverSoldReportModel.ToPagedList(pageNumber, pageSize));
         }
 

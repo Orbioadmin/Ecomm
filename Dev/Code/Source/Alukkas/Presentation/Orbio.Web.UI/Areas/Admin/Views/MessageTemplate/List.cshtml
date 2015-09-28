@@ -2,29 +2,16 @@
     ViewBag.Title = "List";
     Layout = "~/Areas/Admin/Views/Shared/_Layout1.cshtml";
 }
+@using PagedList.Mvc
 
 <div class="container">
     <div class="main_edit_order">
-        <span class="edit_order_details"><span class="edit_order_icon"></span><a href="" class="add_new_check">Customers</a></span>
+        <span class="edit_order_details"><span class="edit_order_icon"></span><a href="" class="add_new_check">Message Template</a></span>
         <span class="back_to_order" style="padding-top:0px">
             <a href="@Url.Action("Add","MessageTemplate")"><input type="button" value="Add New" class="add_cat_button" /></a>
-            </span>
-        </div>
-        <div class="col-md-12" style=" margin-bottom: 34px;background-color: #fff;margin-top: 10px;">
-
-            <div class="col-md-9 main_order_table" style="width: 100%;">
-                <table class="item_admin_order">
-                    <thead>
-                    <td class="align_center">Name</td>
-                    <td class="align_center">Subject</td>
-                    <td class="align_center">Is Active</td>
-                    <td class="align_center">Edit/Delete</td>
-                    </thead>
-                    <tbody>
-                        @Html.Action("MessageTemplateList", "MessageTemplate")
-                    </tbody>
-                </table>
-            </div>
-
-        </div>
+        </span>
     </div>
+    <div class="col-md-12" style=" margin-bottom: 34px;background-color: #fff;margin-top: 10px;">
+        @Html.Action("MessageTemplateList", "MessageTemplate")
+    </div>
+</div>

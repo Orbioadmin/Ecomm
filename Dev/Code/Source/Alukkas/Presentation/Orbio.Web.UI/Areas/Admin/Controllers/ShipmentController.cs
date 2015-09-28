@@ -10,6 +10,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
+using System.Configuration;
 
 namespace Orbio.Web.UI.Areas.Admin.Controllers
 {
@@ -42,9 +43,8 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             return View();
         }
 
-        public ActionResult Search()
+        public ActionResult Search(ShipmentListModel model)
         {
-            var model = new ShipmentListModel();
             var result = _shipmentService.GetAllCountries();
             model.AvailableCountries = (from c in result
                                         select new SelectListItem()
@@ -96,7 +96,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                                                   ShipmentId=s.Id,
                                                   }).ToList(),
                              }).ToList();
-            int pageSize = 10;
+            int pageSize = Convert.ToInt32(ConfigurationManager.AppSettings["PageSize"]);
             int pageNumber = (page ?? 1);
             return PartialView(shipmentModel.ToPagedList(pageNumber, pageSize));
         }

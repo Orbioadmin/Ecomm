@@ -8,11 +8,13 @@ using Orbio.Web.UI.Areas.Admin.Models.Product;
 using Orbio.Web.UI.Filters;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 
 namespace Orbio.Web.UI.Areas.Admin.Controllers
 {
@@ -62,12 +64,12 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             return View(model);
         }
 
-        [ChildActionOnly]
-        public ActionResult ProductList(ProductListModel model)
+        public ActionResult ProductList(ProductListModel model,int? page)
         {
             var resultModel = GetProductList(model);
-
-            return View(resultModel);
+            int pageSize = Convert.ToInt32(ConfigurationManager.AppSettings["PageSize"]);
+            int pageNumber = (page ?? 1);
+            return View(resultModel.ToPagedList(pageNumber,pageSize));
         }
 
         public List<Orbio.Web.UI.Models.Catalog.ProductOverViewModel> GetProductList(ProductListModel model)

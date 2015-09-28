@@ -39,8 +39,6 @@
 
         </div>
         <div class="refresh_xl">
-
-
             @*<span class="report_xls">Export to excel <label></label></span>*@
         </div>
         <div class="">
@@ -48,25 +46,27 @@
             @*<span class="report_xls">Export to excel <label></label></span>*@
         </div>
         <div class="col-md-12" style=" margin-bottom: 34px;margin-top:10px">
-
-            <table class="item_admin_order" id="tableData">
-                <thead>
-                <td></td>
-                <td>Picture</td>
-                <td>Product Name</td>
-                <td>SKU</td>
-                <td>Price</td>
-                <td>Stock quantity</td>
-                <td>Published</td>
-                @*<td>view</td>*@</thead>
-
-
-                <tbody>
-                    @Html.Action("ProductList", "Product")
-                </tbody>
-            </table>
+          @Html.Action("ProductList", "Product")
+                
         </div>
 
     </div>
     }
 
+@section scripts{
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        $(document).on("click", "#contentPager a[href]", function () {
+            $.ajax({
+                url: $(this).attr("href"),
+                type: 'GET',
+                cache: false,
+                success: function (result) {
+                    $('#prdtList').html(result);
+                }
+            });
+            return false;
+        });
+    });
+</script>
+}

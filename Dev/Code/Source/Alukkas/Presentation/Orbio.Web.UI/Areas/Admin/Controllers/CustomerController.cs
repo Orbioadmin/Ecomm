@@ -155,7 +155,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             var result = customerService.GetAllCustomer(model.FirstName, model.LastName, model.Email, model.Roles);
             var customer = (from cust in result
                             select new CustomerModel(cust)).ToList();
-            int pageSize = 10;
+            int pageSize = Convert.ToInt32(ConfigurationManager.AppSettings["PageSize"]);
             int pageNumber = (page ?? 1);
             return PartialView(customer.ToPagedList(pageNumber, pageSize));
         }
@@ -306,7 +306,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                 };
             }).ToList();
 
-            int pageSize = 10;
+            int pageSize = Convert.ToInt32(ConfigurationManager.AppSettings["PageSize"]);
             int pageNumber = (page ?? 1);
             return PartialView(model.ToPagedList(pageNumber, pageSize));
         }
@@ -371,7 +371,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         {
             var subscribers = subscriberService.GetAllSubscribers(model.Search);
 
-            int pageSize = 10;
+            int pageSize = Convert.ToInt32(ConfigurationManager.AppSettings["PageSize"]);
             int pageNumber = (page ?? 1);
             var cust = (from s in subscribers
                                  select new CustomerModel()
