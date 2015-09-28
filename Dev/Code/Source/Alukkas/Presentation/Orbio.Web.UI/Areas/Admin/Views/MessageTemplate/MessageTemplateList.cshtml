@@ -1,27 +1,46 @@
-﻿@model List<Orbio.Web.UI.Areas.Admin.Models.MessageTemplates.MessageTemplateModel>
+﻿@using PagedList
+@using PagedList.Mvc
 
-@if(Model.Count>0)
-{
-    int count = 1;
-    foreach(var item in this.Model)
-    {
-        if(count==1)
-        {
-            @:<tr class="first_row">
-            count++;
-        }
-        else
-        {
-            @:<tr class="second_row">
-            count = 1;
-        }
-        <td class="align_center">@item.Name</td>
-    <td class="align_center">@item.Subject</td>
-    <td class="align_center"><label class="@(item.IsActive ? "img_sprite1" : "img_sprite")"></label></td>
-    <td class="align_center">
-        <a href="@Url.Action("Edit", "MessageTemplate", new { Id = item.Id })"><input type="button" class="edit_ring" /></a> 
-        <a href="@Url.Action("DeleteMessageTemplate", "MessageTemplate", new { Id = item.Id })"><input type="button" class="delete_ring" onclick=" return confirm('Are You Sure'); " /></a>
-    </td>
-        @:</tr>
-    }
-}
+@model IPagedList<Orbio.Web.UI.Areas.Admin.Models.MessageTemplates.MessageTemplateModel>
+
+<div class="col-md-9 main_order_table" style="width: 100%;">
+    <table class="item_admin_order">
+        <thead>
+        <td class="align_center">Name</td>
+        <td class="align_center">Subject</td>
+        <td class="align_center">Is Active</td>
+        <td class="align_center">Edit/Delete</td>
+        </thead>
+        <tbody>
+            @if (Model.Count > 0)
+            {
+                int count = 1;
+                foreach (var item in this.Model)
+                {
+                    if (count == 1)
+                    {
+                        @:<tr class="first_row">
+                            count++;
+                    }
+                    else
+                    {
+                        @:<tr class="second_row">
+                            count = 1;
+                    }
+                    <td class="align_center">@item.Name</td>
+                    <td class="align_center">@item.Subject</td>
+                    <td class="align_center"><label class="@(item.IsActive ? "img_sprite1" : "img_sprite")"></label></td>
+                    <td class="align_center">
+                        <a href="@Url.Action("Edit", "MessageTemplate", new { Id = item.Id })"><input type="button" class="edit_ring" /></a>
+                        <a href="@Url.Action("DeleteMessageTemplate", "MessageTemplate", new { Id = item.Id })"><input type="button" class="delete_ring" onclick=" return confirm('Are You Sure'); " /></a>
+                    </td>
+                    @:</tr>
+                        }
+            }
+        </tbody>
+    </table>
+    <div class="pagedList" id="contentPager">
+        @Html.PagedListPager(Model, page => Url.Action("List", new { page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
+    </div>
+</div>
+

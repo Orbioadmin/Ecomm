@@ -67,7 +67,7 @@
                 $(document).on("click", "#contentPager a[href]", function () {
                     $.ajax({
                         url: $(this).attr("href"),
-                        type: 'GET',
+                        type: 'POST',
                         cache: false,
                         success: function (result) {
                             $('#shipList').html(result);

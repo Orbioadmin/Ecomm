@@ -3,9 +3,11 @@ using Orbio.Services.Admin.MessageTemplates;
 using Orbio.Web.UI.Areas.Admin.Models.MessageTemplates;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 
 namespace Orbio.Web.UI.Areas.Admin.Controllers
 {
@@ -29,14 +31,16 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             return View();
         }
 
-        public ActionResult MessageTemplateList()
+        public ActionResult MessageTemplateList(int? page)
         {
             var model = new List<MessageTemplateModel>();
             var result = _messageTemplateService.GetAllMessageTemplate();
             model = (from mt in result
                      select new MessageTemplateModel(mt)
                      ).ToList();
-            return PartialView(model);
+            int pageSize = Convert.ToInt32(ConfigurationManager.AppSettings["PageSize"]);
+            int pageNumber = (page ?? 1);
+            return PartialView(model.ToPagedList(pageNumber,pageSize));
         }
 
         public ActionResult DeleteMessageTemplate(int? Id)

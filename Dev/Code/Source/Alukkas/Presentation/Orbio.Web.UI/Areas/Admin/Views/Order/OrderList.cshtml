@@ -72,7 +72,7 @@
     </table>
 
     <div class="pagedList" id="contentPager">
-        @Html.PagedListPager(Model, page => Url.Action("OrderList", new { page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+        @Html.PagedListPager(Model, page => Url.Action("OrderList", new { page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
     </div>
 
 </div>

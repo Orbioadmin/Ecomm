@@ -1,33 +1,58 @@
-﻿@model List<Orbio.Web.UI.Models.Catalog.ProductOverViewModel>
+﻿
+@using PagedList
+@using PagedList.Mvc
+
+@model IPagedList<Orbio.Web.UI.Models.Catalog.ProductOverViewModel>
 @{
     Layout = null;
     var count = 1;
 }
 
-@foreach (var item in this.Model)
-{
-    var baseImageUrl = System.Configuration.ConfigurationManager.AppSettings["ImageServerBaseUrl"];
-    var imageUrl = baseImageUrl + item.ImageRelativeUrl;
-    var finalPrice = Convert.ToDecimal(item.ProductPrice.Price) - item.DiscountAmount;
-    if (count == 1)
-    {
-        @:<tr class="first_row">
-                        count++;
-    }
-    else
-    {
-        @:<tr class="second_row">
-                        count = 1;
-    }
-    @:<td class="align_center" style="padding-top:28px"><input type="checkbox" name="deleteProductId" value="@item.Id" /></td>
-    @:<td class="align_center"><img src="@imageUrl" alt="ring" width="58" height="53" /></td>
-    @:<td class="align_center" style="text-align:left;padding-top:28px"><a style="cursor:pointer" href="@Url.Action("Edit", "Product", new { id = item.Id })">@item.Name</a></td>
-    @:<td class="align_center" style="padding-top:28px">@item.Sku</td>
-    @:<td class="align_center" style="padding-top:28px;text-align:right">@finalPrice.ToString("#,##0.00")</td>
-    @:<td class="align_center" style="padding-top:28px">@item.StockQuantity</td>
-    @:<td class="align_center" style="padding-top:28px">@item.Published</td>
+<div id="prdtList">
+<table class="item_admin_order" id="tableData">
+    <thead>
+    <td></td>
+    <td>Picture</td>
+    <td>Product Name</td>
+    <td>SKU</td>
+    <td>Price</td>
+    <td>Stock quantity</td>
+    <td>Published</td>
+    @*<td>view</td>*@</thead>
 
-    @:</tr>
-}
 
+    <tbody>
+        @foreach (var item in this.Model)
+        {
+            var baseImageUrl = System.Configuration.ConfigurationManager.AppSettings["ImageServerBaseUrl"];
+            var imageUrl = baseImageUrl + item.ImageRelativeUrl;
+            var finalPrice = Convert.ToDecimal(item.ProductPrice.Price) - item.DiscountAmount;
+            if (count == 1)
+            {
+                @:<tr class="first_row">
+                    count++;
+                    }
+                    else
+                    {
+                    @:<tr class="second_row">
+                    count = 1;
+                    }
+                    @:<td class="align_center" style="padding-top:28px"><input type="checkbox" name="deleteProductId" value="@item.Id" /></td>
+                    @:<td class="align_center"><img src="@imageUrl" alt="ring" width="58" height="53" /></td>
+                    @:<td class="align_center" style="text-align:left;padding-top:28px"><a style="cursor:pointer" href="@Url.Action("Edit", "Product", new { id = item.Id })">@item.Name</a></td>
+                    @: <td class="align_center" style="padding-top:28px">@item.Sku</td>
+                    @:<td class="align_center" style="padding-top:28px;text-align:right">@finalPrice.ToString("#,##0.00")</td>
+                    @:<td class="align_center" style="padding-top:28px">@item.StockQuantity</td>
+                    @:<td class="align_center" style="padding-top:28px">@item.Published</td>
+
+                    @:</tr>
+                }
+            </tbody>
+        </table>
+
+    <div class="pagedList" id="contentPager">
+        @Html.PagedListPager(Model, page => Url.Action("ProductList", new { page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
+    </div>
+
+</div>
 

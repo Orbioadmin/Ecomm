@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
+using System.Configuration;
 
 namespace Orbio.Web.UI.Areas.Admin.Controllers
 {
@@ -46,7 +47,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             var giftCardModel = new List<GiftCardModel>();
             giftCardModel = (from g in result
                              select new GiftCardModel(g)).ToList();
-            int pageSize = 10;
+            int pageSize = Convert.ToInt32(ConfigurationManager.AppSettings["PageSize"]);
             int pageNumber = (page ?? 1);
             return PartialView(giftCardModel.ToPagedList(pageNumber, pageSize));                
         }

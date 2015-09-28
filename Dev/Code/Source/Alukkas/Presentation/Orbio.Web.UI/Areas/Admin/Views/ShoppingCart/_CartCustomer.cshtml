@@ -86,7 +86,7 @@
         </tbody>
     </table>
 
-    <div class="pagedList" id="contentPager">
+    <div class="pagedList" id="contentPager" style="margin-bottom:20px;">
         @Html.PagedListPager(Model, page => Url.Action("CurrentCarts", new { page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
     </div>
 </div>

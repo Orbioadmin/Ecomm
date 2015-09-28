@@ -28,6 +28,7 @@ namespace Orbio.Services.Admin.MessageTemplates
                    if (query != null)
                    {
                        context.MessageTemplates.Remove(query);
+                       context.SaveChanges();
                    }
                    return 1;
                }

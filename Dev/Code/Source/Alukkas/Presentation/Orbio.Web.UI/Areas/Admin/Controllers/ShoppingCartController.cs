@@ -14,6 +14,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
+using System.Configuration;
 
 namespace Orbio.Web.UI.Areas.Admin.Controllers
 {
@@ -36,7 +37,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         public ActionResult CartCustomer(int? page)
         {
             ShoppingCartType cartType = ShoppingCartType.ShoppingCart;
-            int pageSize = 8;
+            int pageSize = Convert.ToInt32(ConfigurationManager.AppSettings["PageSize"]);
             int pageNumber = (page ?? 1);
             var model = new ShoppingCartModel(_shoppingCartService.GetShoppingCartAllCustomer(cartType, _storeContext.CurrentStore.Id),pageNumber,pageSize);
             return PartialView("_CartCustomer",model.customers);
@@ -51,7 +52,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         public ActionResult WishlistCustomer(int? page)
         {
             ShoppingCartType cartType = ShoppingCartType.Wishlist;
-            int pageSize = 10;
+            int pageSize = Convert.ToInt32(ConfigurationManager.AppSettings["PageSize"]);
             int pageNumber = (page ?? 1);
             var model = new ShoppingCartModel(_shoppingCartService.GetShoppingCartAllCustomer(cartType, _storeContext.CurrentStore.Id), pageNumber, pageSize);
             return PartialView("_WishListCustomer", model.customers);
