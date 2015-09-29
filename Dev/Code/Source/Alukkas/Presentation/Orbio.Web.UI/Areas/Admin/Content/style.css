@@ -527,7 +527,6 @@ td h3:focus{border:0px ;}
 
 /*28-09-2015*/
 
-.nav.navbar-nav .dropdown-submenu a::after{margin-top:-15px;}
 input.start_order_date_email, select.start_order_date_email, textarea.start_order_date_email{box-shadow:0 3px 2px -2px #e3e3e3;}
 body{padding-bottom:35px!important;}
 #selectedquantity{margin-top:5px;}

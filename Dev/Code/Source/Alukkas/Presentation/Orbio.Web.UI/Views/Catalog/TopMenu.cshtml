@@ -30,13 +30,13 @@
                        }
                 else
                 {
-                <li class="log-in">
-                    <a href="@Url.Action("Register", "Account")"><i class="fa fa-sign-in"></i>Register</a>
-                </li>
-                <li class="log-in">
-                    <a href="@Url.Action("Login", "Account")"><i class="fa fa-sign-in"></i>Login</a>
-                </li>
-                    }
+                    <li class="log-in">
+                        <a href="@Url.Action("Register", "Account")"><i class="fa fa-user"></i>Register</a>
+                    </li>
+                    <li class="log-in">
+                        <a href="@Url.Action("Login", "Account")" class="mywish"><i class="fa fa-sign-in"></i>Login</a>
+                    </li>
+                }
             </ul>
         </div>
     </div>
@@ -86,7 +86,7 @@
                             <ul class="dropdown-menu">
                                 <li>
                                     <div class="row">
-                                        <div class="container">
+                                        <div class="">
                                             @foreach (var subCategory in category.SubCategories)
                                             {
                                                 <div class="col-sm-3">

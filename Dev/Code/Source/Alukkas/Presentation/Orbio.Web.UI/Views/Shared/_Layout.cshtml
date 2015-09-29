@@ -130,6 +130,23 @@
         }
     });
 </script>
+
+        <script type="text/javascript">
+    var strURL = window.location.href
+    var strTab = strURL.substring(window.location.href.indexOf("#") + 1);
+
+    if (strTab == "mywishlist") {
+        $('.third-account').addClass('active in');
+        $('.second-account').removeClass('active in');
+        $('.first-account').removeClass('active in');
+    }
+
+    $('#cart_item li a.mywish').on('click', function () {
+        $('.third-account').addClass('active in');
+        $('.second-account').removeClass('active in');
+        $('.first-account').removeClass('active in');
+    });
+        </script>
             @section scripts {
 
             }

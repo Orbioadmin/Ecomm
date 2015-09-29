@@ -17,9 +17,9 @@
                 <!-- Navigation Buttons -->
                 <div id="accountTab" class="col-md-2 col-sm-2">
                     <ul class="nav nav-pills nav-stacked" id="myTabs">
-                        <li id="cDetail" class="active"><a href="#detail">MY DETAILS</a></li>
-                        <li id="cAccount"><a href="#myaccount">MY ACCOUNT</a></li>
-                        <li id="cWishlist"><a href="#mywishlist">MY WISHLIST</a></li>
+                        <li id="cDetail" class="first-account active"><a href="#detail">MY DETAILS</a></li>
+                        <li id="cAccount" class="second-account"><a href="#myaccount">MY ACCOUNT</a></li>
+                        <li id="cWishlist" class="third-account"><a href="#mywishlist">MY WISHLIST</a></li>
                     </ul>
                 </div>
 
@@ -27,7 +27,7 @@
                 <div class="col-md-10 col-sm-10">
                     <div class="tab-content">
                         <!-- detail -->
-                        <div class="tab-pane active" id="detail">
+                        <div class="tab-pane active first-account" id="detail">
 
                             <div class="row">
                                 <div class="col-md-9 col-sm-9">
@@ -99,16 +99,16 @@
                                                         @Html.Label("female", "Female")
                                                     </div>
                                                 </div>
-    <div class="form-group mob-no">
-        @Html.LabelFor(m => m.Mobile, new { @class = "col-sm-2 control-label" })
-        <div class="col-sm-1">
-            <input type="text" readonly="" value="+91" name="" id="" class="form-control">
-        </div>
-        <div class="col-sm-9">
-            @Html.TextBoxFor(m => m.Mobile, new { @class = "form-control", placeholder = "Mobile Number" })
-            @Html.ValidationMessageFor(m => m.Mobile)
-        </div>
-    </div>
+                                                <div class="form-group mob-no">
+                                                    @Html.LabelFor(m => m.Mobile, new { @class = "col-sm-2 control-label" })
+                                                    <div class="col-sm-1">
+                                                        <input type="text" readonly="" value="+91" name="" id="" class="form-control">
+                                                    </div>
+                                                    <div class="col-sm-9">
+                                                        @Html.TextBoxFor(m => m.Mobile, new { @class = "form-control", placeholder = "Mobile Number" })
+                                                        @Html.ValidationMessageFor(m => m.Mobile)
+                                                    </div>
+                                                </div>
                                                 <div class="form-group">
                                                     <div class="col-sm-offset-2 col-sm-10">
                                                         <input type="submit" value="UPDATE" class="Buynow">&nbsp;&nbsp; OR &nbsp;&nbsp;
@@ -126,14 +126,14 @@
                                                 <div class="form-group">
                                                     @Html.LabelFor(m => m.OldPassword, new { @for = "OldPassword", @class = "col-sm-3 control-label" })
                                                     <div class="col-sm-9">
-                                                        @Html.TextBoxFor(m => m.OldPassword, new { type = "Password", @class = "form-control", placeholder = "Old Password", maxlength = "20"})
+                                                        @Html.TextBoxFor(m => m.OldPassword, new { type = "Password", @class = "form-control", placeholder = "Old Password", maxlength = "20" })
                                                         <span id="oldvalid" style="display:none" class="field-validation-error" data-valmsg-for="OldPassword" data-valmsg-replace="true">Old Password Required</span>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     @Html.LabelFor(m => m.NewPassword, new { @for = "NewPassword", @class = "col-sm-3 control-label" })
                                                     <div class="col-sm-9">
-                                                        @Html.TextBoxFor(m => m.NewPassword, new { type = "Password", @class = "form-control", placeholder = "New Password", maxlength = "20"})
+                                                        @Html.TextBoxFor(m => m.NewPassword, new { type = "Password", @class = "form-control", placeholder = "New Password", maxlength = "20" })
                                                         <span id="newvalid" style="display:none" class="field-validation-error" data-valmsg-for="NewPassword" data-valmsg-replace="true">New Password Required</span>
                                                         <span id="newvalidreg" style="display:none" class="field-validation-error" data-valmsg-for="NewPassword" data-valmsg-replace="true">Password must contain atleast 1 special character and number</span>
                                                         <span id="newvalidlen" style="display:none" class="field-validation-error" data-valmsg-for="NewPassword" data-valmsg-replace="true">The Password must be at least 6 characters long.</span>
@@ -198,7 +198,8 @@
     <script>
         // Enable the Tabs
 
-        $('#myTabs a').click(function (e) {
+        var $w = jQuery.noConflict();
+        $w('#myTabs a').click(function (e) {
             e.preventDefault()
             $(this).tab('show')
 

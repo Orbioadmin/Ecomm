@@ -104,5 +104,23 @@
                 $('#discCoupon').css("display","block");
             }
       
+
+        $("#DiscountTypeId").change(function () {
+            var discountTypeId = $('#DiscountTypeId').val();
+            if (discountTypeId == "2")
+            {
+                $("#disctypeproducts").css("display", "block")
+                $("#disctypecategory").css("display", "none")
+            }
+            else if (discountTypeId == "5") {
+                $("#disctypecategory").css("display", "block")
+                $("#disctypeproducts").css("display", "none")
+            }
+            else
+            {
+                $("#disctypecategory").css("display", "none")
+                $("#disctypeproducts").css("display", "none")
+            }
+        });
     </script>
 }

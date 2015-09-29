@@ -2112,7 +2112,7 @@ div.second_menu{z-index: inherit;}.top-menu li a:hover{color: #F8C301;}
 background: #F8C301;
 }
 .second_menu .navbar.navbar-default{width: 100%;}
-.second_menu .nav li.dropdown{position: inherit;}
+/*.second_menu .nav li.dropdown{position: inherit;}*/
 .second_menu .dropdown-menu{border: 1px #F8C301 solid;}
 .second_menu .dropdown-menu h3{margin: 0;}
 .second_menu .dropdown-menu li h3 a{color: #2e2e2f; font-size: 14px; font-family: 'Roboto', sans-serif; font-weight: bold;}
@@ -2452,13 +2452,40 @@ font-family: 'PT Sans', sans-serif; font-weight: 700; font-size: 13px;}
 .collect-arrow{background: #F8C301; padding:5px 14px; position: absolute; border-radius: 2px;
     right: 0; bottom: 0;}
 .collect-images img{width: 100%; }
-.second_menu.home .navbar-default .navbar-nav > li > a{margin-bottom: 10px;}
-.second_menu.home .dropdown-menu {top: 45px;}
+.second_menu.home .navbar-default .navbar-nav > li > a{margin-bottom: 5px; padding-top:5px;}
+.second_menu.home .dropdown-menu {top: 35px;}
 .second_menu.home .nav.navbar-nav li.dropdown i.fa.fa-angle-down {margin-left: 5px;}
 .second_menu.home .nav.navbar-nav li h3{ margin: 0; padding: 3px 0; border-bottom: 1px #ccc solid;}
 .second_menu.home .nav.navbar-nav li{padding: 3px 0;}
 .prod-inner a{color: #000000;}
 .navbar-default.home .head_main .navbar-nav > li > a{padding: 3px;}
+#SelectedQuantity {margin-top: 10px;}
+.my-account .dropdown.open .dropdown-menu {left: inherit; right: 0;}
+.my-account .dropdown.open .dropdown-menu li{width: 100%;}
+.log-in {padding: 0 6px;}a, a:hover, a:focus{outline:none;}
+.second_menu.home .navbar.navbar-default{min-height:35px;}
+.second_menu.home .dropdown-menu{}
+.second_menu.home .dropdown-menu:before {
+    content: "";
+    display: block;
+    width: 0; 
+    height: 0; 
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;	
+	border-bottom: 5px solid #ffffff;
+    position: absolute;
+    top: -5px;
+    left: 20px;
+}
+.second_menu.home .nav.navbar-nav li div.col-sm-3 ul {
+    background: #ffffff none repeat scroll 0 0;
+
+    left: 98%;
+    position: absolute;
+    width: 100%; top:0; display: none;
+}
+.second_menu.home .nav.navbar-nav li div.col-sm-3 h3:hover + ul{display:block;}
+.second_menu.home .nav.navbar-nav li div.col-sm-3 ul li{border-bottom:1px #ccc solid;}
 @media (min-width: 768px) and (max-width: 768px) {
 .Footer_top .col-md-3{width:25%!important;}
 .slider-section .carousel-inner {height: 312px;}
@@ -2478,6 +2505,8 @@ ul.menu_desc li.select_menu { right: -140px;}}
 }
 @media (min-width: 768px){
 ul.menu_desc li.select_menu{left:330px;}
+.second_menu.home .nav.navbar-nav li div.col-sm-3{width:230px;}
+.second_menu.home .dropdown-menu li { padding: 3px 10px !important;}
 }
 @media (max-width: 1199px){
 ul.menu_desc li.select_menu {
