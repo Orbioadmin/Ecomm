@@ -102,7 +102,7 @@
             }
         </tbody>
     </table>
-    <div class="pagedList" id="contentPager">
+   <div class="pagedList" id="contentPager" style="float:right">
         @Html.PagedListPager(Model, page => Url.Action("NewsletterSubscribers", new { page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
     </div>
 </div>
