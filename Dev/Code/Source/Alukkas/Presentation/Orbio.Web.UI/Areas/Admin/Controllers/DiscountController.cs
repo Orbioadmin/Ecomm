@@ -111,6 +111,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
 
             if (discount != null)
             {
+                model.Id = discount.Id;
                 model.Name = discount.Name;
                 model.DiscountTypeId = discount.DiscountTypeId;
                 model.UsePercentage = discount.UsePercentage;
