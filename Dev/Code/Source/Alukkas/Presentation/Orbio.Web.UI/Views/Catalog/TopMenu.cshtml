@@ -77,7 +77,8 @@
                 <ul class="nav navbar-nav ">
                     @helper RenderCategoryLine(CategorySimpleModel category, int level)
 {
-
+            if (category.SubCategories.Count > 0)
+                        {
                     <li class="dropdown">
                         <a href="#" data-toggle="dropdown" class="dropdown-toggle" onclick="location.href = '@Url.RouteUrl("Category", new { SeName = category.SeName })?p=ct'">@category.Name<i class="fa fa-angle-down"></i></a>
                         @if (category.SubCategories.Count > 0)
@@ -98,6 +99,11 @@
                             </ul>
                         }
                     </li>
+                        }
+            else
+            {
+                <li><a href="#" onclick="location.href = '@Url.RouteUrl("Category", new { SeName = category.SeName })?p=ct'">@category.Name</a></li>
+            }
 }
 
 
