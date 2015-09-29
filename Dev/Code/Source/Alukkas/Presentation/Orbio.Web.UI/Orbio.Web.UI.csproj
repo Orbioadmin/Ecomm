@@ -515,7 +515,6 @@
     <Content Include="Content\fonts\cinzeldecorative-bold.svg" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\main.css" />
-    <Content Include="Content\PagedList.css" />
     <Content Include="Content\price-range.css" />
     <Content Include="Content\responsive.css" />
     <Content Include="Content\themes\base\images\torus_loader.gif" />
@@ -770,7 +769,6 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\cloud-zoom.js" />
     <Content Include="Scripts\cloudzoom.js" />
-    <Content Include="Scripts\Customer.js" />
     <Content Include="Scripts\datepicker.js" />
     <Content Include="Scripts\Highcharts-4.0.1\js\adapters\standalone-framework.js" />
     <Content Include="Scripts\Highcharts-4.0.1\js\adapters\standalone-framework.src.js" />
