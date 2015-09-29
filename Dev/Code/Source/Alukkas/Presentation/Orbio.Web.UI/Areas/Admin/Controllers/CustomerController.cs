@@ -141,10 +141,9 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         #region Customers
 
         [AdminAuthorizeAttribute]
-        public ActionResult ListCustomer()
+        public ActionResult ListCustomer(CustomerModel model)
         {
             var result = customerRoleService.GetAllCustomerRole();
-            var model = new CustomerModel();
             model.CustomerRoles=  (from CR in result
                                 select new CustomerRoleModel(CR)).ToList();
             return View(model);

@@ -46,9 +46,8 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
 
         //List products
         [AdminAuthorizeAttribute]
-        public ActionResult List()
+        public ActionResult List(ProductListModel model)
         {
-            var model = new ProductListModel();
             //catgory List
             var categoryModel = new CategoryDetailModel(_categoryService.GetCategoryDetails());
             model.AvailableCategories.Add(new SelectListItem() { Text = "All Category", Value = "0" });

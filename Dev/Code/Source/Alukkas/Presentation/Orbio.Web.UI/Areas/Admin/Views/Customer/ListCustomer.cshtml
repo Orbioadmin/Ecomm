@@ -15,6 +15,7 @@
     </div>
     <div class="container">
         <div class="col-md-12 cust_role">
+            <fieldset id="infoForm">
             <div class="order_status">
                 @Html.ListBoxFor(m => m.Roles, new MultiSelectList(Model.CustomerRoles, "Id", "Name"), new { Multiple = "multiple", id = "role", @class = "search_customer", placeholder = "Role" })
             </div>
@@ -30,6 +31,7 @@
             <div class="billing_address_text">
                 <input type="submit" class="search_order_list" value="SEARCH" style="margin-left: 8px;">
             </div>
+                </fieldset>
         </div>
        
         <div class="col-md-12" style=" margin-bottom: 34px;background-color: #fff;margin-top: 10px;">
@@ -45,13 +47,15 @@
 
 <script language="javascript" type="text/javascript">
     $(document).ready(function () {
+        var infoForm = $("#infoForm");
         $(document).on("click", "#contentPager a[href]", function () {
             $.ajax({
+                data: infoForm.serialize(),
                 url: $(this).attr("href"),
-                type: 'GET',
                 cache: false,
-                success: function (result) {
-                    $('#custList').html(result);
+                type: "GET",
+                success: function (data) {
+                    $('#custList').html(data);
                 }
             });
             return false;

@@ -22,21 +22,21 @@
     </div>
     <div class="container">
         <div class="col-md-12 order_list" style="border-radius: 10px;margin-left: 11px;width:98%;height:60px">
+            <fieldset id="infoForm">
+                <div class="billing_address_text" style="width:25%">
+                    @Html.TextBoxFor(model => model.SearchProductNameOrSku, new { @class = "start_order_date_email", placeholder = "Product Name or Sku", type = "text" })
+                </div>
+                <div class="order_status" style="width:25%">
+                    @Html.DropDownList("CategoryId", Model.AvailableCategories, new { @class = "start_order_date_email" })
+                </div>
 
-            <div class="billing_address_text" style="width:25%">
-                @Html.TextBoxFor(model => model.SearchProductNameOrSku, new { @class = "start_order_date_email", placeholder = "Product Name or Sku", type = "text" })
-            </div>
-            <div class="order_status" style="width:25%">
-                @Html.DropDownList("CategoryId", Model.AvailableCategories, new { @class = "start_order_date_email" })
-            </div>
-
-            <div class="order_status" style="width:25%">
-                @Html.DropDownList("ManufactureId", Model.AvailableManufacturers, new { @class = "start_order_date_email" })
-            </div>
-            <div class="billing_address_text" style="padding-top:2px">
-                <input type="submit" class="search_order_list" name="List" value="SEARCH">
-            </div>
-
+                <div class="order_status" style="width:25%">
+                    @Html.DropDownList("ManufactureId", Model.AvailableManufacturers, new { @class = "start_order_date_email" })
+                </div>
+                <div class="billing_address_text" style="padding-top:2px">
+                    <input type="submit" class="search_order_list" name="List" value="SEARCH">
+                </div>
+            </fieldset>
         </div>
         <div class="refresh_xl">
             @*<span class="report_xls">Export to excel <label></label></span>*@
@@ -56,13 +56,15 @@
 @section scripts{
 <script language="javascript" type="text/javascript">
     $(document).ready(function () {
+        var infoForm = $("#infoForm");
         $(document).on("click", "#contentPager a[href]", function () {
             $.ajax({
+                data: infoForm.serialize(),
                 url: $(this).attr("href"),
-                type: 'GET',
                 cache: false,
-                success: function (result) {
-                    $('#prdtList').html(result);
+                type: "GET",
+                success: function (data) {
+                    $('#prdtList').html(data);
                 }
             });
             return false;

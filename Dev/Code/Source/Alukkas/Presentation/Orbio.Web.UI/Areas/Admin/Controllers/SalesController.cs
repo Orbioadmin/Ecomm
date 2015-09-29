@@ -31,9 +31,8 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             return View();
         }
 
-        public ActionResult SearchGiftCards()
+        public ActionResult SearchGiftCards(GiftCardSearchModel model)
         {
-            var model = new GiftCardSearchModel();
             model.Activated.Insert(0, new SelectListItem() { Text = "All", Value = "0" });
             model.Activated.Insert(1, new SelectListItem() { Text = "Activated", Value = "1" });
             model.Activated.Insert(2, new SelectListItem() { Text = "DeActivated", Value = "2" });

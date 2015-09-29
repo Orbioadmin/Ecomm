@@ -29,13 +29,15 @@
 
 <script language="javascript" type="text/javascript">
     $(document).ready(function () {
+        var infoForm = $("#infoForm");
         $(document).on("click", "#contentPager a[href]", function () {
             $.ajax({
+                data: infoForm.serialize(),
                 url: $(this).attr("href"),
-                type: 'GET',
                 cache: false,
-                success: function (result) {
-                    $('#neverSold').html(result);
+                type: "GET",
+                success: function (data) {
+                    $('#neverSold').html(data);
                 }
             });
             return false;

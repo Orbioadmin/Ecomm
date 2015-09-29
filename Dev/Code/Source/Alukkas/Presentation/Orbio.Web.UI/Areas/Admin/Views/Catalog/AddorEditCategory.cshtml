@@ -47,16 +47,48 @@
                 }
             </div>
             <div aria-labelledby="home-tab" id="products" class="tab-pane fade " role="tabpanel">
-                @{
-                    Html.RenderPartial("CategoryProduct", this.Model);
-                }
+                <div class="col-md-12" style=" margin-bottom: 34px;background-color: #fff;margin-top: 10px;width:100%">
+                    <div class="col-md-9 main_order_table" style="width: 72%;">
+                        @Html.Action("CategoryProduct", new { Id = Model.Categories.Id })
+                    </div>
+                    <div class="col-md-3 add_new_projects">
+                        @{
+                        Html.RenderPartial("DiscountCategory", this.Model);
+                        }
+                    </div>
+                </div>
+                @*@{
+                Html.RenderPartial("CategoryProduct", this.Model);
+            }*@
             </div>
-            @*<div aria-labelledby="home-tab" id="discount" class="tab-pane fade " role="tabpanel">
-                @{
-                    Html.RenderPartial("DiscountCategory", this.Model);
-                }
-            </div>*@
-        </div>
-    </div>
+
+                    @*<div aria-labelledby="home-tab" id="discount" class="tab-pane fade " role="tabpanel">
+                    @{
+                        Html.RenderPartial("DiscountCategory", this.Model);
+                    }
+                </div>*@
+                </div>
+            </div>
     }
 </div>
+
+@section scripts {
+   
+    <script language="javascript" type="text/javascript">
+        $(document).ready(function () {
+            var CategoryId = @Html.Raw(Json.Encode(Model.Categories.Id));
+            $(document).on("click", "#contentPager a[href]", function () {
+                $.ajax({
+                    data: {Id : CategoryId},
+                    url: $(this).attr("href"),
+                    cache: false,
+                    type: "GET",
+                    success: function (data) {
+                        $('#catprod').html(data);
+                    }
+                });
+                return false;
+            });
+        });
+    </script>
+}

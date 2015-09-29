@@ -210,5 +210,14 @@ namespace Orbio.Services.Admin.Catalog
                 }
             }
         }
+
+        public List<Product_Category_Mapping> GetCategoryProducts(int Id)
+        {
+            using (var context = new OrbioAdminContext())
+            {
+                var result = context.Product_Category_Mapping.Include("Product").Where(m => m.CategoryId == Id && !m.Product.Deleted).ToList();
+                return result;
+            }
+        }
     }
 }

@@ -292,5 +292,14 @@ namespace Orbio.Services.Admin.Catalog
                 }
             }
         }
+
+        public List<Product_Manufacturer_Mapping> GetManufacturerProducts(int Id)
+        {
+            using (var context = new OrbioAdminContext())
+            {
+                var result = context.Product_Manufacturer_Mapping.Include("Product").Where(m => m.ManufacturerId == Id && !m.Product.Deleted).ToList();
+                return result;
+            }
+        }
     }
 }
