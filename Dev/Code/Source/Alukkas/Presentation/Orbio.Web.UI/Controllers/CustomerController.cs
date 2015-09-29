@@ -388,7 +388,7 @@ namespace Orbio.Web.UI.Controllers
             else
             {
                 shoppingCartService.UpdateWishListItems(value, itemId, ShoppingCartType.Wishlist, 0, 0, 0, 0,ShoppingCartStatus.WishList);
-                return RedirectToAction("MyAccount", "Customer", new { wish = "#wish" });
+                return RedirectToAction("MyAccount", "Customer", new { wish = "#mywishlist" });
             }
         }
 
