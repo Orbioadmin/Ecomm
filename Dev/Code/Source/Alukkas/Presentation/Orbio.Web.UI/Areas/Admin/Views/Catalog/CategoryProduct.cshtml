@@ -1,41 +1,45 @@
-﻿@model Orbio.Web.UI.Areas.Admin.Models.Catalog.CategoryDetailModel
+﻿@using PagedList
+@using PagedList.Mvc
 
-<div class="col-md-12" style=" margin-bottom: 34px;background-color: #fff;margin-top: 10px;width:100%">
-    <div class="col-md-9 main_order_table" style="width: 72%;">
-        <table class="item_admin_order">
-            <thead>
-            <td>Product</td>
-            <td>is featured product?</td>
-            <td>display order</td>
-            <td>delete</td></thead>
-            <tbody>
-                @if (this.Model.Products != null)
-                {
-                    if (this.Model.Products.Count > 0)
+@model IPagedList<Orbio.Web.UI.Areas.Admin.Models.Catalog.ProductModel>
+
+        <div id="catprod">
+            <table class="item_admin_order">
+                <thead>
+                <td>Product</td>
+                <td>is featured product?</td>
+                <td>display order</td>
+                <td>delete</td></thead>
+                <tbody>
+                    @if (this.Model != null)
                     {
-                        int count = 1;
-                        foreach (var item in Model.Products)
+                        if (this.Model.Count > 0)
                         {
-                            if (count == 1)
+                            int count = 1;
+                            foreach (var item in Model)
                             {
-                                <tr class="first_row">
-                                    <td class="varient_align">@item.Name</td>
-                                    <td class="varient_align" style="text-align:center"><label class="@(item.IsFeaturedProduct?"img_sprite1" : "img_sprite")"></label></td>
-                                    <td class="varient_align" style="text-align:center">@item.DisplayOrder</td>
-                                    <td class="varient_align" style="text-align:center"><a style="cursor:pointer" href="@Url.Action("DeleteCategoryProduct", "Catalog", new { Id = Model.Categories.Id, cId = item.Id })" onclick=" return confirm('Are You Sure'); "><label class="delete_ring"></label></a></td>
-                                </tr>
-                                count++;
+                                if (count == 1)
+                                {
+                                    @:<tr class="first_row">
+                                    count++;
+                                }
+                                else
+                                {
+                                @:<tr class="second_row">
+                                    count = 1;
+                                }
+                        <td class="varient_align">@item.Name</td>
+                        <td class="varient_align" style="text-align:center"><label class="@(item.IsFeaturedProduct?"img_sprite1" : "img_sprite")"></label></td>
+                        <td class="varient_align" style="text-align:center">@item.DisplayOrder</td>
+                        <td class="varient_align" style="text-align:center"><a style="cursor:pointer" href="@Url.Action("DeleteCategoryProduct", "Catalog", new { Id = item.CategoryId, cId = item.Id })" onclick=" return confirm('Are You Sure'); "><label class="delete_ring"></label></a></td>
+                        @:</tr>
                             }
-                            else
-                            {
-                                <tr class="second_row">
-                                    <td class="varient_align">@item.Name</td>
-                                    <td class="varient_align" style="text-align:center"><label class="@(item.IsFeaturedProduct?"img_sprite1" : "img_sprite")"></label></td>
-                                    <td class="varient_align" style="text-align:center">@item.DisplayOrder</td>
-                                    <td class="varient_align" style="text-align:center"><a style="cursor:pointer" href="@Url.Action("DeleteCategoryProduct", "Catalog", new { Id = Model.Categories.Id, cId = item.Id })" onclick=" return confirm('Are You Sure'); "><label class="delete_ring"></label></a></td>
-                                </tr>
-                                count = 1;
-                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="4"> No products available</td>
+                            </tr>
                         }
                     }
                     else
@@ -44,29 +48,10 @@
                             <td colspan="4"> No products available</td>
                         </tr>
                     }
-                }
-                else
-                {
-                    <tr>
-                        <td colspan="4"> No products available</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+            <div class="pagedList" id="contentPager" style="float:right">
+                @Html.PagedListPager(Model, page => Url.Action("CategoryProduct", new { page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
+            </div>
         </div>
-        <div class="col-md-3 add_new_projects">
-           @{
-               Html.RenderPartial("DiscountCategory", this.Model);
-           }
-        </div>
-    </div>
-
-
-    <script>
-        function Delete(Id) {
-            var r = confirm("Do you want to delete ?");
-            if (r == true) {
-                window.location.href = '@Url.Action("DeleteCategoryProduct", "Catalog", new { id = Model.Categories.Id })?cId=' + Id
-            }
-        }
-    </script>
+       

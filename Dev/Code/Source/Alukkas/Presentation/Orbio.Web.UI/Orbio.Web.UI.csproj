@@ -769,7 +769,6 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\cloud-zoom.js" />
     <Content Include="Scripts\cloudzoom.js" />
-    <Content Include="Scripts\Customer.js" />
     <Content Include="Scripts\datepicker.js" />
     <Content Include="Scripts\Highcharts-4.0.1\js\adapters\standalone-framework.js" />
     <Content Include="Scripts\Highcharts-4.0.1\js\adapters\standalone-framework.src.js" />
@@ -861,7 +860,6 @@
     <Content Include="Areas\Admin\Views\Product\_CreateOrUpdateSeo.cshtml" />
     <Content Include="Areas\Admin\Views\Product\_CreateOrUpdatePicture.cshtml" />
     <Content Include="Areas\Admin\Views\Product\_PictureUpload.cshtml" />
-    <Content Include="Areas\Admin\Views\MessageTemplate\AddOrEditMessageTemplate.cshtml" />
     <Content Include="Areas\Admin\Views\MessageTemplate\Info.cshtml" />
     <Content Include="Areas\Admin\Views\MessageTemplate\List.cshtml" />
     <Content Include="Areas\Admin\Views\MessageTemplate\MessageTemplateList.cshtml" />
@@ -870,7 +868,6 @@
     <Content Include="Areas\Admin\Views\Sales\GiftCards.cshtml" />
     <Content Include="Areas\Admin\Views\Sales\GiftCardUsageHistory.cshtml" />
     <Content Include="Areas\Admin\Views\Sales\ListGiftCards.cshtml" />
-    <Content Include="Areas\Admin\Views\Sales\ReturnRequest.cshtml" />
     <Content Include="Areas\Admin\Views\Sales\SearchGiftCards.cshtml" />
     <Content Include="Areas\Admin\Views\Shipment\List.cshtml" />
     <Content Include="Areas\Admin\Views\Shipment\Search.cshtml" />
@@ -891,7 +888,6 @@
     <Content Include="Areas\Admin\Views\Shipment\Search.cshtml" />
     <Content Include="Areas\Admin\Views\Shipment\ShipmentList.cshtml" />
     <Content Include="Areas\Admin\Views\Shipment\ShipmentItems.cshtml" />
-    <Content Include="Areas\Admin\Views\Sales\ReturnRequest.cshtml" />
     <Content Include="Areas\Admin\Views\Sales\GiftCards.cshtml" />
     <Content Include="Areas\Admin\Views\Sales\SearchGiftCards.cshtml" />
     <Content Include="Areas\Admin\Views\Sales\ListGiftCards.cshtml" />
@@ -900,7 +896,6 @@
     <Content Include="Areas\Admin\Views\Sales\GiftCardUsageHistory.cshtml" />
     <Content Include="Areas\Admin\Views\MessageTemplate\List.cshtml" />
     <Content Include="Areas\Admin\Views\MessageTemplate\MessageTemplateList.cshtml" />
-    <Content Include="Areas\Admin\Views\MessageTemplate\AddOrEditMessageTemplate.cshtml" />
     <Content Include="Areas\Admin\Views\MessageTemplate\Info.cshtml" />
     <Content Include="Areas\Admin\Views\Customer\CustomerRoleList.cshtml" />
     <Content Include="Areas\Admin\Views\Customer\NewsLetterSubscribersList.cshtml" />
@@ -910,6 +905,7 @@
     <Content Include="Areas\Admin\Views\Discount\_CreateOrUpdate.cshtml" />
     <Content Include="Areas\Admin\Views\Discount\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Discount\UsageHistoryInfo.cshtml" />
+    <Content Include="Areas\Admin\Views\MessageTemplate\AddOrEditMessageTemplate.cshtml" />
     <None Include="Properties\PublishProfiles\ecom.pubxml" />
     <Content Include="Areas\Admin\Views\Customer\ListCustomer.cshtml" />
     <Content Include="Areas\Admin\Views\Customer\CustomerList.cshtml" />
@@ -1129,13 +1125,11 @@
     <Content Include="Areas\Admin\Views\ShoppingCart\_CartCustomer.cshtml" />
     <Content Include="Areas\Admin\Views\ShoppingCart\CurrentWishLists.cshtml" />
     <Content Include="Areas\Admin\Views\ShoppingCart\_WishListCustomer.cshtml" />
-    <Content Include="Areas\Admin\Views\Attribute\_AddOrEditProductAttribute.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout1.cshtml" />
     <Content Include="Areas\Admin\Views\Attribute\SpecificationAttribute.cshtml" />
     <Content Include="Areas\Admin\Views\Attribute\ListSpecificationAttribute.cshtml" />
     <Content Include="Areas\Admin\Views\Attribute\SpecificationAttributeOptions.cshtml" />
     <Content Include="Areas\Admin\Views\Attribute\SpecificationAttributeDetails.cshtml" />
-    <Content Include="Areas\Admin\Views\Attribute\AddOrEditSpecificationAttributeOption.cshtml" />
     <Content Include="Areas\Admin\Views\Attribute\ListCheckoutAttribute.cshtml" />
     <Content Include="Areas\Admin\Views\Attribute\AddOrEditCheckoutAttribute.cshtml" />
     <Content Include="Areas\Admin\Views\Component\ListProductComponent.cshtml" />

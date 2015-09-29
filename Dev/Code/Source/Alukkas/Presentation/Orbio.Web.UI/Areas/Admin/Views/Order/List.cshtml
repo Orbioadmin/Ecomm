@@ -15,40 +15,41 @@
             <!-- <span class="back_to_order"><input type="button" value="Save" class="add_cat_button"></span> -->
         </div>
     </div>
+   
     <div class="container">
         <div class="col-md-12 order_list" style="border-radius: 10px;margin-left: 11px;width:98%;height:60px">
-            <div class="sart_date">
-                @Html.TextBoxFor(model => model.StartDate, new { @class = "start_order_date_email", placeholder = "From", style = "border-radius:0px:box-shadow:0px" })
-            </div>
-            <div class=" sart_date">
-                @Html.TextBoxFor(model => model.EndDate, new { @class = "start_order_date_email", placeholder = "To" })
-            </div>
-            <div class="billing_address_text" style="width:19%">
-                @Html.TextBoxFor(model => model.CustomerEmail, new { @class = "start_order_date_email", placeholder = "Email", type = "email" })
-            </div>
-            <div class="order_status">
-                @Html.DropDownList("OrderStatusId", Model.AvailableOrderStatuses, new { @class = "start_order_date_email" })
-            </div>
-            <div class="order_status">
-                @Html.DropDownList("PaymentStatusId", Model.AvailablePaymentStatuses, new { @class = "start_order_date_email" })
-            </div>
-            <div class="order_status">
-                @Html.DropDownList("ShippingStatusId", Model.AvailableShippingStatuses, new { @class = "start_order_date_email" })
-            </div>
-            <div class="billing_address_text">
-                @Html.TextBoxFor(model => model.GoDirectlyToNumber, new { @class = "start_order_date_email", placeholder = "Order No" })
-            </div>
-            <div class="billing_address_text" style="padding-top: 2px;">
-                <input type="submit" class="search_order_list" value="SEARCH">
-            </div>
-        </div>
-        <div class="refresh_xl">
-           
+            <fieldset id="infoForm">
+                <div class="sart_date">
+                    @Html.TextBoxFor(model => model.StartDate, new { @class = "start_order_date_email", placeholder = "From", style = "border-radius:0px:box-shadow:0px" })
+                </div>
+                <div class=" sart_date">
+                    @Html.TextBoxFor(model => model.EndDate, new { @class = "start_order_date_email", placeholder = "To" })
+                </div>
+                <div class="billing_address_text" style="width:19%">
+                    @Html.TextBoxFor(model => model.CustomerEmail, new { @class = "start_order_date_email", placeholder = "Email", type = "email" })
+                </div>
+                <div class="order_status">
+                    @Html.DropDownList("OrderStatusId", Model.AvailableOrderStatuses, new { @class = "start_order_date_email" })
+                </div>
+                <div class="order_status">
+                    @Html.DropDownList("PaymentStatusId", Model.AvailablePaymentStatuses, new { @class = "start_order_date_email" })
+                </div>
+                <div class="order_status">
+                    @Html.DropDownList("ShippingStatusId", Model.AvailableShippingStatuses, new { @class = "start_order_date_email" })
+                </div>
+                <div class="billing_address_text">
+                    @Html.TextBoxFor(model => model.GoDirectlyToNumber, new { @class = "start_order_date_email", placeholder = "Order No" })
+                </div>
 
-            @*<span class="report_xls">Export to excel <label></label></span>*@
+                <div class="billing_address_text" style="padding-top: 2px;">
+                    <input type="submit" class="search_order_list" value="SEARCH">
+                </div>
+            </fieldset>
+</div> 
+        <div class="refresh_xl">
+           @*<span class="report_xls">Export to excel <label></label></span>*@
         </div>
         <div class="">
-
             @*<span class="report_xls">Export to excel <label></label></span>*@
         </div>
         <div  class="col-md-12" style=" margin-bottom: 34px;">
@@ -68,13 +69,15 @@
 
 <script language="javascript" type="text/javascript">
     $(document).ready(function () {
+        var infoForm = $("#infoForm");
         $(document).on("click", "#contentPager a[href]", function () {
             $.ajax({
+                data: infoForm.serialize(),
                 url: $(this).attr("href"),
-                type: 'POST',
                 cache: false,
-                success: function (result) {
-                    $('#orderList').html(result);
+                type: "GET",
+                success: function (data) {
+                    $('#orderList').html(data);
                 }
             });
             return false;

@@ -1,4 +1,5 @@
-﻿using Orbio.Core.Domain.Admin.Catalog;
+﻿using Orbio.Core.Data;
+using Orbio.Core.Domain.Admin.Catalog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,5 +28,7 @@ namespace Orbio.Services.Admin.Catalog
         /// <param name="manufacturerId">Manufacturer Id</param>
         /// <param name="productId">Product Id</param>
         void DeleteManufacturerProduct(int manufacturerId, int productId);
+
+        List<Product_Manufacturer_Mapping> GetManufacturerProducts(int Id);
     }
 }

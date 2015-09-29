@@ -27,6 +27,7 @@ using DotNet.Highcharts.Enums;
 using DotNet.Highcharts.Helpers;
 using Orbio.Web.UI.Areas.Admin.Models.Catalog;
 using PagedList;
+using Newtonsoft.Json;
 
 namespace Orbio.Web.UI.Areas.Admin.Controllers
 {
@@ -989,10 +990,9 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             return View();
         }
 
-        public ActionResult SearchSellers()
+        public ActionResult SearchSellers(OrderListModel model)
         {
             //order statuses
-            var model = new OrderListModel();
             model.AvailableOrderStatuses = OrderStatus.Pending.ToSelectList(false).ToList();
             model.AvailableOrderStatuses.Insert(0, new SelectListItem() { Text = "Order Status", Value = "0" });
 
@@ -1062,9 +1062,8 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             return View();
         }
 
-        public ActionResult SearchNeverSold()
+        public ActionResult SearchNeverSold(OrderListModel model)
         {
-            var model = new OrderListModel();
             return PartialView(model);
         }
 

@@ -10,6 +10,7 @@ using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 
 namespace Orbio.Web.UI.Areas.Admin.Controllers
 {
@@ -74,6 +75,17 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             var model = new CategoryDetailModel(result);
             model.Categories.CategoryList = model.Categories.CategoryList.GetFormattedBreadCrumb();
             return View("AddorEditCategory", model);
+        }
+
+        public ActionResult CategoryProduct(int? Id,int? page)
+        {
+            var result = categoryServices.GetCategoryProducts(Id.GetValueOrDefault());
+            var model = (from pcm in result
+                         select new ProductModel(pcm)).ToList();
+            int pageNumber = (page ?? 1);
+            //int pageSize = Convert.ToInt32(ConfigurationManager.AppSettings["PageSize"]);
+            int pageSize = 6;
+            return PartialView(model.ToPagedList(pageNumber,pageSize));
         }
 
         /// <summary>
@@ -157,6 +169,17 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             var result = manufacturerService.GetManufacturerDetailsById(Id);
             var model = new ManufacturerDetailModel(result);
             return View("AddOrEditManufacturer", model);
+        }
+
+        public ActionResult ManufacturerProduct(int? Id, int? page)
+        {
+            var result = manufacturerService.GetManufacturerProducts(Id.GetValueOrDefault());
+            var model = (from pcm in result
+                         select new ProductModel(pcm)).ToList();
+            int pageNumber = (page ?? 1);
+            //int pageSize = Convert.ToInt32(ConfigurationManager.AppSettings["PageSize"]);
+            int pageSize = 6;
+            return PartialView(model.ToPagedList(pageNumber, pageSize));
         }
 
         /// <summary>
@@ -294,7 +317,5 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             };
             return manufacturerModel;
         }
-
-
     }
 }

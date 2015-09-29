@@ -1,6 +1,10 @@
-﻿@model Orbio.Web.UI.Areas.Admin.Models.Catalog.ManufacturerDetailModel
+﻿@using PagedList
+@using PagedList.Mvc
+
+@model IPagedList<Orbio.Web.UI.Areas.Admin.Models.Catalog.ProductModel>
 
 <div class="col-md-9 main_order_table" style="width: 100%;">
+    <div id="manprod">
     <table class="item_admin_order">
         <thead>
         <td>Product</td>
@@ -8,33 +12,28 @@
         <td>display order</td>
         <td>delete</td></thead>
         <tbody>
-            @if (this.Model.Products != null)
+            @if (this.Model != null)
             {
-                if (this.Model.Products.Count > 0)
+                if (this.Model.Count > 0)
                 {
                     int count = 1;
-                    foreach (var item in Model.Products)
+                    foreach (var item in Model)
                     {
                         if (count == 1)
                         {
-                            <tr class="first_row">
-                                <td class="varient_align">@item.Name</td>
-                                <td class="varient_align" style="text-align:center"><label class="@(item.IsFeaturedProduct?"img_sprite1" : "img_sprite")"></label></td>
-                                <td class="varient_align" style="text-align:center">@item.DisplayOrder</td>
-                                <td class="varient_align" style="text-align:center"><a href="@Url.Action("DeleteManufacturerProduct", "Catalog", new { Id = Model.Manufacturer.Id, pId = item.Id })"><label class="delete_ring" onclick=" return confirm('Are You Sure'); "></label></a>
-</tr>
+                            @:<tr class="first_row">
                             count++;
                         }
                         else
                         {
-                            <tr class="second_row">
-                                <td class="varient_align">@item.Name</td>
-                                <td class="varient_align" style="text-align:center"><label class="@(item.IsFeaturedProduct?"img_sprite1" : "img_sprite")"></label></td>
-                                <td class="varient_align" style="text-align:center">@item.DisplayOrder</td>
-                                <td class="varient_align" style="text-align:center"><a href="@Url.Action("DeleteManufacturerProduct", "Catalog", new { Id = Model.Manufacturer.Id, pId = item.Id })"><label class="delete_ring" onclick=" return confirm('Are You Sure'); "></label></a>
-</tr>
+                             @:<tr class="second_row">
                             count = 1;
                         }
+                <td class="varient_align">@item.Name</td>
+                <td class="varient_align" style="text-align:center"><label class="@(item.IsFeaturedProduct?"img_sprite1" : "img_sprite")"></label></td>
+                <td class="varient_align" style="text-align:center">@item.DisplayOrder</td>
+                <td class="varient_align" style="text-align:center"><a href="@Url.Action("DeleteManufacturerProduct", "Catalog", new { Id = item.ManufacturerId, pId = item.Id })"><label class="delete_ring" onclick=" return confirm('Are You Sure'); "></label></a></td>
+                @:</tr>
                     }
                 }
                 else
@@ -52,4 +51,8 @@
             }
         </tbody>
     </table>
+        <div class="pagedList" id="contentPager" style="float:right">
+            @Html.PagedListPager(Model, page => Url.Action("ManufacturerProduct", new { page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
+        </div>
+        </div>
 </div>

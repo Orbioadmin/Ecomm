@@ -1,15 +1,16 @@
 ﻿@model Orbio.Web.UI.Areas.Admin.Models.Sales.GiftCardSearchModel
 
 <div class="col-md-12 order_list" style="border-radius: 10px;margin-left: 11px;width:98%;height:60px;margin-top:5px;margin-bottom:10px">
-    
-    <div class="order_status" style="width:26%">
-        @Html.DropDownList("IsActive", Model.Activated, new { @class = "start_order_date_email" })
-    </div>
-    <div class=" order_status" style="width:26%">
-        @Html.TextBoxFor(model => model.GiftCardCode, new { @class = "start_order_date_email", placeholder = "Gift card coupon code" })
-    </div>
+    <fieldset id="infoForm">
+        <div class="order_status" style="width:26%">
+            @Html.DropDownList("IsActive", Model.Activated, new { @class = "start_order_date_email" })
+        </div>
+        <div class=" order_status" style="width:26%">
+            @Html.TextBoxFor(model => model.GiftCardCode, new { @class = "start_order_date_email", placeholder = "Gift card coupon code" })
+        </div>
 
-    <div class="billing_address_text" style="padding-top: 2px;">
-        <input type="submit" class="search_order_list" value="SEARCH">
-    </div>
+        <div class="billing_address_text" style="padding-top: 2px;">
+            <input type="submit" class="search_order_list" value="SEARCH">
+        </div>
+        </fieldset>
 </div>
