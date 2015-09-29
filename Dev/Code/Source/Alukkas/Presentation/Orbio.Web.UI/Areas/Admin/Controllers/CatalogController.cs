@@ -83,8 +83,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             var model = (from pcm in result
                          select new ProductModel(pcm)).ToList();
             int pageNumber = (page ?? 1);
-            //int pageSize = Convert.ToInt32(ConfigurationManager.AppSettings["PageSize"]);
-            int pageSize = 6;
+            int pageSize = Convert.ToInt32(ConfigurationManager.AppSettings["PageSize"]);
             return PartialView(model.ToPagedList(pageNumber,pageSize));
         }
 
@@ -177,8 +176,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             var model = (from pcm in result
                          select new ProductModel(pcm)).ToList();
             int pageNumber = (page ?? 1);
-            //int pageSize = Convert.ToInt32(ConfigurationManager.AppSettings["PageSize"]);
-            int pageSize = 6;
+            int pageSize = Convert.ToInt32(ConfigurationManager.AppSettings["PageSize"]);
             return PartialView(model.ToPagedList(pageNumber, pageSize));
         }
 
