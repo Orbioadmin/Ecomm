@@ -10,6 +10,28 @@
                                                                  select new SelectListItem() { Text = discountType.ToString(), Value = ((int)discountType).ToString() }, new { @class = "prdct_name_txt" })
             </div>
         </div>
+        @if (Model.Categories.Count > 0)
+        { 
+            <div class="row" id="disctypecategory" style="margin-bottom:10px">
+                <div class="col-md-3 prdct_name">Categories :</div><div class="col-md-2" style="margin-top:10px;width: 64%">
+                @foreach (var categories in Model.Categories)
+                {
+                    <a href="@Url.Action("EditCategory", "Catalog", new { id = categories.Id })">@categories.Name</a> <span>,</span>
+                }
+                </div>
+            </div>
+        }
+        @if (Model.Products.Count > 0)
+        {
+            <div class="row" id="disctypeproducts" style="margin-bottom:10px">
+                <div class="col-md-3 prdct_name">Products :</div><div class="col-md-2" style="margin-top:10px;width: 64%">
+                    @foreach (var products in Model.Products)
+                    {
+                        <a href="@Url.Action("Edit", "Product", new { id = products.Id })">@products.Name</a> <span>,</span>
+                    }
+                </div>
+            </div>
+        }
         <div class="row" style="margin-bottom: 12px;">
             <div class="col-md-3 prdct_name">Use Percentage :</div><div class="col-md-2">
                 @Html.CheckBoxFor(model => model.UsePercentage, new { @class = "checkbox_shipp", id = "chkusepercentage" })

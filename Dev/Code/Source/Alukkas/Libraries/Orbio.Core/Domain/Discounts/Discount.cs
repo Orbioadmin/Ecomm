@@ -135,5 +135,15 @@ namespace Orbio.Core.Domain.Discounts
             get;
             set;
         }
+
+        /// <summary>
+        /// Gets or sets the products
+        /// </summary>
+        public List<Product> Products { get; set; }
+
+        /// <summary>
+        /// Gets or sets the categories
+        /// </summary>
+        public List<Category> Categories { get; set; }
     }
 }

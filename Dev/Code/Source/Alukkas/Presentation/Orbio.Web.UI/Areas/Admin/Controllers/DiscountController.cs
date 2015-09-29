@@ -1,6 +1,7 @@
 ﻿using Orbio.Services.Admin.Discount;
 using Orbio.Web.UI.Areas.Admin.Models.Discount;
 using Orbio.Web.UI.Filters;
+using Orbio.Web.UI.Models.Catalog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -72,7 +73,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             if (discountDetail == null)
                 //No product found with the specified id
                 return RedirectToAction("List");
-            var model = discountDetail.ToModel();
+            var model = new DiscountModel();
             PrepareDiscounttModel(model, discountDetail);
             return View(model);
         }
@@ -121,6 +122,16 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                 model.LimitationTimes = discount.LimitationTimes;
                 model.StartDateUtc = discount.StartDateUtc;
                 model.EndDateUtc = discount.EndDateUtc;
+                if (discount.Categories != null && discount.Categories.Count > 0)
+                {
+                    model.Categories = (from c in discount.Categories
+                                       select new CategorySimpleModel(c)).ToList();
+                }
+                if (discount.Products != null && discount.Products.Count > 0)
+                {
+                    model.Products = (from p in discount.Products
+                                     select new ProductOverViewModel(p)).ToList();
+                }
             }
         }
 

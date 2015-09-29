@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Orbio.Web.UI.Models.Catalog;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,7 +10,9 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Discount
     public class DiscountModel
     {
         public DiscountModel()
-        { 
+        {
+            this.Products = new List<ProductOverViewModel>();
+            this.Categories = new List<CategorySimpleModel>();
         }
 
         public DiscountModel(Orbio.Core.Domain.Discounts.Discount discount)
@@ -47,5 +50,8 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Discount
 
         public int LimitationTimes { get; set; }
 
+        public List<ProductOverViewModel> Products { get; set; }
+
+        public List<CategorySimpleModel> Categories { get; set; }
     }
 }

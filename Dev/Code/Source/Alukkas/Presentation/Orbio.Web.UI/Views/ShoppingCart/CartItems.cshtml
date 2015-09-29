@@ -5,5 +5,5 @@
 <li class="icon-cart"><a href="@Url.RouteUrl("ShoppingCart")"><i class="cart-icon"></i><span>@(Model.ItemCount)</span></a></li>
 @if (workContext.CurrentCustomer.IsRegistered)
 {
-    <li class="icon-cart"><a href="~/Customer/MyAccount#mywishlist"><i class="cart-wish"></i></a></li>
+    <li class="icon-cart"><a href="~/Customer/MyAccount#mywishlist" class="mywish"><i class="cart-wish"></i></a></li>
 }

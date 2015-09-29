@@ -4,7 +4,7 @@
     Layout = null;
 }
 
-<div class="tab-pane" id="mywishlist">
+<div class="tab-pane third-account" id="mywishlist">
     @*<div class="table-responsive">
         <table cellspacing="0" cellpadding="0" width="100%" class="Order_table table">
             <tbody>
@@ -15,41 +15,43 @@
                     <th>Remove</th>
                     <th>Add To Cart</th>
                 </tr>*@
-                @*<tr>
-                    <td data-title="Item"><img src="images/Thumbnail/Listing-product1.jpg" class="wishlist_img"></td>
-                    <td data-title="Title" class="p_wish">
-                        <p>Diamond Chain</p>
-                    </td>
-                    <td>
-                        <select>
-                            <option>1</option>
-                            <option>2</option>
-                        </select>
-                    </td>
-                    <td data-title="Price">Rs.12,300.00</td>
-                    <td data-title="Remove"><input type="checkbox"></td>
-                    <td><input type="checkbox"></td>
-                </tr>
-                <tr>
-                    <td data-title="Item"><img src="images/Thumbnail/Listing-product1.jpg" class="wishlist_img"></td>
-                    <td data-title="Title" class="p_wish">
-                        <p>Diamond Chain</p>
-                    </td>
-                    <td>
-                        <select>
-                            <option>1</option>
-                            <option>2</option>
-                        </select>
-                    </td>
-                    <td data-title="Price">Rs.12,300.00</td>
-                    <td data-title="Remove"><input type="checkbox"></td>
-                    <td><input type="checkbox"></td>
-                </tr>*@
-                @{
-                    Html.RenderPartial("WishListSummary", this.Model.ShoppingCartItems);
-                }
-            @*</tbody>
-        </table>
-    </div>*@
+    @*<tr>
+            <td data-title="Item"><img src="images/Thumbnail/Listing-product1.jpg" class="wishlist_img"></td>
+            <td data-title="Title" class="p_wish">
+                <p>Diamond Chain</p>
+            </td>
+            <td>
+                <select>
+                    <option>1</option>
+                    <option>2</option>
+                </select>
+            </td>
+            <td data-title="Price">Rs.12,300.00</td>
+            <td data-title="Remove"><input type="checkbox"></td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td data-title="Item"><img src="images/Thumbnail/Listing-product1.jpg" class="wishlist_img"></td>
+            <td data-title="Title" class="p_wish">
+                <p>Diamond Chain</p>
+            </td>
+            <td>
+                <select>
+                    <option>1</option>
+                    <option>2</option>
+                </select>
+            </td>
+            <td data-title="Price">Rs.12,300.00</td>
+            <td data-title="Remove"><input type="checkbox"></td>
+            <td><input type="checkbox"></td>
+        </tr>*@
+    @{
+        Html.RenderPartial("WishListSummary", this.Model.ShoppingCartItems);
+    }
+    @*</tbody>
+            </table>
+        </div>*@
 </div>
+
+
 

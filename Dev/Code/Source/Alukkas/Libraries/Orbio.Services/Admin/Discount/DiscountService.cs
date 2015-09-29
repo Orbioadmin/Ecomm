@@ -63,8 +63,8 @@ namespace Orbio.Services.Admin.Discount
             
             if (result != null)
             {
-                var productdetails = Serializer.GenericDeSerializer<Orbio.Core.Domain.Discounts.Discount>(result.XmlResult);
-                return productdetails;
+                var discountDetails = Serializer.GenericDeSerializer<Orbio.Core.Domain.Discounts.Discount>(result.XmlResult);
+                return discountDetails;
             }
 
             return new Orbio.Core.Domain.Discounts.Discount();

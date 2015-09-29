@@ -49,8 +49,10 @@ if(@action = 'selectById')
 	DECLARE @XmlResult1 xml
 
 SELECT @XmlResult1 = (SELECT Id, Name,DiscountTypeId,UsePercentage,DiscountPercentage,DiscountAmount,StartDateUtc,
-EndDateUtc,RequiresCouponCode,CouponCode,DiscountLimitationId,LimitationTimes
-from dbo.Discount where Id=@id order by Id desc
+EndDateUtc,RequiresCouponCode,CouponCode,DiscountLimitationId,LimitationTimes,dbo.ufn_GetproductdetailsByDiscountId(Id),
+dbo.ufn_GetCategories(Id)
+from dbo.Discount 
+where Id=@id order by Id desc
 FOR XML PATH('Discount'))
 
 SELECT @XmlResult1 as XmlResult
