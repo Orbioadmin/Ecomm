@@ -515,7 +515,6 @@
     <Content Include="Content\fonts\cinzeldecorative-bold.svg" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\main.css" />
-    <Content Include="Content\PagedList.css" />
     <Content Include="Content\price-range.css" />
     <Content Include="Content\responsive.css" />
     <Content Include="Content\themes\base\images\torus_loader.gif" />

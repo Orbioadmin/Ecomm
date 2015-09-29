@@ -90,7 +90,7 @@
             </table>
        
                 
-    <div id="contentPager">
+    <div class="pagedList" id="contentPager" style="float:right">
         @Html.PagedListPager(Model, page => Url.Action("ShipmentList", new { page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
     </div>
      </div>
