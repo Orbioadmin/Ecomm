@@ -10,8 +10,10 @@
                                                                  select new SelectListItem() { Text = discountType.ToString(), Value = ((int)discountType).ToString() }, new { @class = "prdct_name_txt" })
             </div>
         </div>
-        @if (Model.Categories.Count > 0)
+        @if (Model != null)
         { 
+            if (Model.Categories != null && Model.Categories.Count > 0)
+            {
             <div class="row" id="disctypecategory" style="margin-bottom:10px">
                 <div class="col-md-3 prdct_name">Categories :</div><div class="col-md-2" style="margin-top:10px;width: 64%">
                 @foreach (var categories in Model.Categories)
@@ -20,9 +22,12 @@
                 }
                 </div>
             </div>
+            }
         }
-        @if (Model.Products.Count > 0)
+        @if (Model != null)
         {
+            if (Model.Products != null && Model.Products.Count > 0)
+            {
             <div class="row" id="disctypeproducts" style="margin-bottom:10px">
                 <div class="col-md-3 prdct_name">Products :</div><div class="col-md-2" style="margin-top:10px;width: 64%">
                     @foreach (var products in Model.Products)
@@ -31,6 +36,7 @@
                     }
                 </div>
             </div>
+            }
         }
         <div class="row" style="margin-bottom: 12px;">
             <div class="col-md-3 prdct_name">Use Percentage :</div><div class="col-md-2">
