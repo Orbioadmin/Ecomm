@@ -2445,7 +2445,7 @@ footer.footer-alukkas a:hover{color: #F8C301;}
     padding-bottom: 15px;}
 .btn.btn-default.yellow-butt{background:#F8C301; 
   padding:5px 10px; line-height: 20px; border-radius: 3px; border:1px #F8C301 solid; color: 444444;
-font-family: 'PT Sans', sans-serif; font-weight: 700; font-size: 13px;}
+font-family: 'PT Sans', sans-serif; font-weight: 700; font-size: 13px;width:70px}
 .email-input{width: 300px; font-family: 'PT Sans', sans-serif; font-weight: 400; font-size: 13px; color: #000;}
 .slider-section .carousel-indicators.mCustomScrollbar li img{width:100px; height: 50px;}
 .collect-images{position: relative;}.collect-arrow i{color: #ffffff;}
