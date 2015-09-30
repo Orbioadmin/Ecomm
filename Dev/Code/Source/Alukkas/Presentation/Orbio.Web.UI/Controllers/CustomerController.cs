@@ -19,6 +19,8 @@ using Orbio.Web.UI.Models.Orders;
 using Orbio.Services.Orders;
 using System.Threading.Tasks;
 using Orbio.Core;
+using PagedList;
+using System.Configuration;
 
 namespace Orbio.Web.UI.Controllers
 {
@@ -351,12 +353,20 @@ namespace Orbio.Web.UI.Controllers
 
         public ActionResult WishList()
         {
+            return View("WishList");
+        }
+
+        public ActionResult WishListSummary(int? page)
+        {
             var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
             var curCustomer = workContext.CurrentCustomer;
             ShoppingCartType cartType = ShoppingCartType.Wishlist;
             var model = PrepareShoppingCartItemModel(curCustomer.Id, cartType);
-            return View("WishList", model);
+            int pageNumber = (page ?? 1);
+            int pageSize = Convert.ToInt32(ConfigurationManager.AppSettings["CatelogProductsPageSize"]);
+            return PartialView(model.ShoppingCartItems.ToPagedList(pageNumber,pageSize));
         }
+
         private CartModel PrepareShoppingCartItemModel(int customerId, ShoppingCartType cartType)
         {
             var model = new CartModel(shoppingCartService.GetCartItems("select", 0, cartType, 0, customerId, 0, 0, storeContext.CurrentStore.Id));
@@ -365,10 +375,17 @@ namespace Orbio.Web.UI.Controllers
 
         public ActionResult Order()
         {
+            return View("Order");
+        }
+
+        public ActionResult OrderDetails(int? page)
+        {
             var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
             var curCustomer = workContext.CurrentCustomer;
-            var model =new OrderDetailsModel(orderService.GetOrderDetails(curCustomer.Id));
-            return View("Order", model);
+            var model = new OrderDetailsModel(orderService.GetOrderDetails(curCustomer.Id));
+            int pageNumber = (page ?? 1);
+            int pageSize = Convert.ToInt32(ConfigurationManager.AppSettings["CatelogProductsPageSize"]);
+            return PartialView(model.OrderedProductDetail.ToPagedList(pageNumber, pageSize));
         }
         
         [HttpGet]

@@ -343,6 +343,39 @@
 
 </script>
 
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        $(document).on("click", "#orderContentPager a[href]", function () {
+            $.ajax({
+                url: $(this).attr("href"),
+                cache: false,
+                type: "GET",
+                success: function (data) {
+                    $('#orderSum').html(data);
+                }
+            });
+            return false;
+        });
+    });
+</script>
+
+
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        $(document).on("click", "#wishlistContentPager a[href]", function () {
+            $.ajax({
+                url: $(this).attr("href"),
+                cache: false,
+                type: "GET",
+                success: function (data) {
+                    $('#wishlistSum').html(data);
+                }
+            });
+            return false;
+        });
+    });
+</script>
+
     <script>
         $(function () {
             $("#DOB").datepicker({
@@ -353,6 +386,7 @@
         });
 
     </script>
+
 
 
 }

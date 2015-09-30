@@ -45,9 +45,11 @@
             <td data-title="Remove"><input type="checkbox"></td>
             <td><input type="checkbox"></td>
         </tr>*@
-    @{
+             @Html.Action("WishListSummary")
+
+    @*@{
         Html.RenderPartial("WishListSummary", this.Model.ShoppingCartItems);
-    }
+    }*@
     @*</tbody>
             </table>
         </div>*@
