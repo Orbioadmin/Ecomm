@@ -2,8 +2,20 @@
 @{
        var workContext = Nop.Core.Infrastructure.EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
 }        
-<li class="icon-cart"><a href="@Url.RouteUrl("ShoppingCart")"><i class="cart-icon"></i><span>@(Model.ItemCount)</span></a></li>
 @if (workContext.CurrentCustomer.IsRegistered)
 {
+    if (workContext.CurrentCustomer.Gender == "M")
+    { 
+        <li class="icon-cart"><a href="@Url.Action("MyAccount", "Customer")"><i class="men_icon"></i></a></li>
+    }
+    else
+    {
+        <li class="icon-cart"><a href="@Url.Action("MyAccount", "Customer")"><i class="women_icon"></i></a></li>
+    }
+    <li class="icon-cart"><a href="@Url.RouteUrl("ShoppingCart")"><i class="cart-icon"></i><span>@(Model.ItemCount)</span></a></li>
     <li class="icon-cart"><a href="~/Customer/MyAccount#mywishlist" class="mywish"><i class="cart-wish"></i></a></li>
+}
+else
+{
+    <li class="icon-cart before-login"><a href="@Url.RouteUrl("ShoppingCart")"><i class="cart-icon"></i><span>@(Model.ItemCount)</span></a></li>
 }
