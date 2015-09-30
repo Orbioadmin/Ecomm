@@ -3,20 +3,25 @@
 @if (Model.Id != 0)
 {
     @Html.HiddenFor(m => m.Id, new { Value = Model.Id })
-<div class="main_edit_order">
-    <span class="edit_order_details"><span class="edit_order_icon"></span>EDIT MANUFACTURER DETAILS - @Model.Name <a href="@Url.Action("ManageManufacturer", "Catalog")" style="top:0px;text-transform:none;font-size: small;color: #0082c7;"> (back to manufacturer list) </a></span>
-    <span class="back_to_order" style="padding-top:0px">
-        <input type="submit" value="Save" class="add_cat_button">
-        <a href="@Url.Action("DeleteManufacturer", "Catalog", new { Id = Model.Id })"><input type="button" value="Delete" class="delete_cat_button" onclick=" return confirm('Are You Sure'); "></a>
-    </span>
-</div>
-        }
-        else
-        {
+    <div class="main_edit_order">
+        <span class="edit_order_details">
+            <span class="edit_order_icon"></span><a href="" class="add_new_check">EDIT MANUFACTURER DETAILS - @Model.Name</a>
+        </span>
+        <span class="back_to_order"><u><a href="@Url.Action("ManageManufacturer", "Catalog")">back to manufacturer list</a></u></span>
+    </div>
+    <div class="preview_main">
+        <ul>
+            <li><input type="submit" class="prev_button" value="Save"></li>
+            <li><a href="@Url.Action("DeleteManufacturer", "Catalog", new { Id = Model.Id })"><input type="button" value="Delete" class="prev_button" onclick="return confirm('are you sure');"></a></li>
+        </ul>
+    </div>
+}
+else
+{
 <div class="main_edit_order">
     <span class="edit_order_details"><span class="edit_order_icon"></span>ADD NEW MANUFACTURER</span>
     <span class="back_to_order" style="padding-top:0px">
-        <input type="submit" value="Save and continue edit" class="add_cat_button">
+        <input type="submit" value="Save" class="add_cat_button">
         <a href="@Url.Action("ManageManufacturer", "Catalog")"><input type="button" value="Cancel" class="delete_cat_button"></a>
     </span>
 </div>

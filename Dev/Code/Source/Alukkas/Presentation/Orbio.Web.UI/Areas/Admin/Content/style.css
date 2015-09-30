@@ -425,7 +425,7 @@ td h3:focus{border:0px ;}
 /*product details*/
 .preview_main{width:100%;float:left;}
 .preview_main ul{float:right;}
-.preview_main ul li{display: inline-block;padding: 7px 0px;border: 1px solid #0082c7;margin: 5px 0px 5px 5px;background-color: #fff;border-bottom: 0px}
+.preview_main ul li{display: inline-block;padding: 7px 0px;border: 1px solid #0082c7;margin: 5px 0px 0px 5px;background-color: #fff;border-bottom: 0px}
 .preview_main ul li a{color: #3e3e3e;text-decoration: none;font-size: 13px;font-family: 'Roboto-Regular';padding: 0px 12px;}
 .moving_menu_main{width:100%;float:left;margin-top:-5px;}
 .product_add_tab_main{margin-top: -43px;width:100%;float:left;margin-bottom: 20px}

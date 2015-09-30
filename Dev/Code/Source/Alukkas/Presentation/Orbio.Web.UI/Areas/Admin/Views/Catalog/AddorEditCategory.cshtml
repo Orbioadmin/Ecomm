@@ -12,10 +12,16 @@
      {
       @Html.HiddenFor(m => m.Categories.Id, new { Value = Model.Categories.Id })
     <div class="main_edit_order">
-        <span class="edit_order_details"><span class="edit_order_icon"></span>EDIT CATEGORY DETAILS - @Model.Categories.Name<a href="@Url.Action("ManageCategories", "Catalog")" style="top:0px;text-transform:none;font-size: small;color: #0082c7;"> (back to category list)</a></span>
-        <span class="back_to_order" style="padding-top:0px">
-        <input type="submit" value="Save" class="add_cat_button"> 
-            <a href="@Url.Action("DeleteCategory", "Catalog", new { Id = Model.Categories.Id })"><input type="button" value="Delete" class="delete_cat_button" onclick=" return confirm('Are You Sure'); "></a></span>
+        <span class="edit_order_details">
+            <span class="edit_order_icon"></span><a href="" class="add_new_check">EDIT CATEGORY DETAILS - @Model.Categories.Name</a>
+        </span>
+        <span class="back_to_order"><u><a href="@Url.Action("ManageCategories", "Catalog")">back to category list</a></u></span>
+    </div>
+    <div class="preview_main">
+        <ul>
+            <li><input type="submit" class="prev_button" value="Save"></li>
+            <li><a href="@Url.Action("DeleteCategory", "Catalog", new { Id = Model.Categories.Id })"><input type="button" value="Delete" class="prev_button" onclick="return confirm('are you sure');"></a></li>
+        </ul>
     </div>
      }
      else
@@ -24,7 +30,9 @@
             <span class="edit_order_details"><span class="edit_order_icon"></span>ADD NEW CATEGORY</span>
             <span class="back_to_order" style="padding-top:0px">
             <input type="submit" value="Save and continue edit" class="add_cat_button"> 
-                <a href="@Url.Action("ManageCategories", "Catalog")"><input type="button" value="Cancel" class="delete_cat_button"></a></div>
+                <a href="@Url.Action("ManageCategories", "Catalog")"><input type="button" value="Cancel" class="delete_cat_button"></a>
+        </div>
+        
      }
     <div class="tab_main_order col-md-12">
         <ul id="myTab" role="tablist" class="tabview_order_ul">
