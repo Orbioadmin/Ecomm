@@ -7,24 +7,35 @@
 <div class="container">
     @using (Html.BeginForm("AddOrUpdate", "MessageTemplate", FormMethod.Post))
     {
-        <div class="main_edit_order">
-            @if (Model.Id == 0)
+            if (Model.Id == 0)
             {
-                <span class="edit_order_details"><span class="edit_order_icon"></span><a href="" class="add_new_check">ADD NEW MESSAGE TEMPLATE</a></span>
-                <span class="back_to_order" style="padding-top:0px">
-                    <input type="submit" value="Save" class="add_cat_button">
-                    <a href="@Url.Action("List", "MessageTemplate")"> <input type="button" value="Cancel" class="delete_cat_button"></a>
-                </span>
-            }
-            else
-            {
-                <span class="edit_order_details"><span class="edit_order_icon"></span><a href="" class="add_new_check">EDIT MESSAGE TEMPLATE - @Model.Name </a> <a href="@Url.Action("List", "MessageTemplate")" class="back_to_checkout" style="top:0px;text-transform:none;font-size: small;color: #0082c7;">(back to message template list) </a></span>
-                <span class="back_to_order" style="padding-top:0px">
-                    <input type="submit" value="Save" class="add_cat_button">
-                    <a href="@Url.Action("DeleteMessageTemplate", "MessageTemplate", new { Id = Model.Id })"> <input type="button" value="Delete" class="delete_cat_button" onclick="return confirm('are you sure');"></a>
-                </span>
-            }
-        </div>
+                <div class="main_edit_order">
+                    <span class="edit_order_details">
+                        <span class="edit_order_icon"></span>
+                        <a href="" class="add_new_check">ADD NEW MESSAGE TEMPLATE</a>
+                    </span>
+                    <span class="back_to_order">
+                        <input type="submit" value="Save" class="add_cat_button">
+                        <a href="@Url.Action("List", "MessageTemplate")"> <input type="button" value="Cancel" class="delete_cat_button"></a>
+                    </span>
+                    </div>
+                    }
+                    else
+                    {
+                <div class="main_edit_order">
+                    <span class="edit_order_details">
+                        <span class="edit_order_icon"></span><a href="" class="add_new_check">EDIT MESSAGE TEMPLATE - @Model.Name </a>
+                    </span>
+                    <span class="back_to_order"><u><a href="@Url.Action("List", "MessageTemplate")">back to message template list</a></u></span>
+                    </div>
+                    <div class="preview_main">
+                        <ul>
+                            <li><input type="submit" class="prev_button" value="Save"></li>
+                            <li><a href="@Url.Action("DeleteMessageTemplate", "MessageTemplate", new { Id = Model.Id })"><input type="button" value="Delete" class="prev_button" onclick="return confirm('are you sure');"></a></li>
+                        </ul>
+                    </div>
+                    }
+
         <div class="tab_main_order col-md-12">
             <ul id="myTab" role="tablist" class="tabview_order_ul">
                 <li class="active cctv_resp_li" role="presentation"><a aria-expanded="true" aria-controls="based" data-toggle="tab" role="tab" id="home-tab" href="#info">INFO</a></li>
@@ -36,7 +47,7 @@
             <div class="tab-content tab_content_solutions" id="myTabContent">
                 <div aria-labelledby="home-tab" id="info" class="tab-pane fade in active  " role="tabpanel">
                     @{
-        Html.RenderPartial("Info", this.Model);
+                    Html.RenderPartial("Info", this.Model);
                     }
 
                 </div>
@@ -44,7 +55,7 @@
         </div>
     }
 </div>
-
+<script src="~/Areas/Admin/Scripts/tinymce/tinymce.min.js"></script>
 @section scripts {
     <script type="text/javascript">
         tinymce.init({

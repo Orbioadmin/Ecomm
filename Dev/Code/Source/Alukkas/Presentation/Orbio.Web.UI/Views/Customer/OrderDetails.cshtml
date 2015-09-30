@@ -1,9 +1,46 @@
-﻿@model List<Orbio.Web.UI.Models.Orders.OrderSummaryModel>
+﻿@using PagedList
+@using PagedList.Mvc
+
+@model IPagedList<Orbio.Web.UI.Models.Orders.OrderSummaryModel>
 
 @{
     int count = 0;
 }
-<div class="table-responsive">
+@if (this.Model.Count > 0)
+{
+    <div class="table-responsive" id="orderSum">
+        <table cellspacing="0" cellpadding="0" width="100%" class="Order_table table">
+            <tbody>
+                <tr>
+                    <th>S.No.</th>
+                    <th>Order No.</th>
+                    <th>No. Of Products</th>
+                    <th>Order Value</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                </tr>
+
+                @foreach (var item in this.Model)
+                {
+                    count++;
+                    <tr>
+                        <td data-title="S.No">@count</td>
+                        <td data-title="Order No">@item.OrderNumber</td>
+                        <td data-title="No. Of Products">@item.Quantity</td>
+                        <td data-title="Order Value">@item.TotalPrice.ToString("#,##0.00")</td>
+                        <td data-title="Date">@item.OrderDate.ToShortDateString()</td>
+                        <td data-title="Status"><p class="deliver">@item.OrderStatus</p></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="pagedList" id="orderContentPager" style="float:right">
+            @Html.PagedListPager(Model, page => Url.Action("OrderDetails", new { page }), PagedListRenderOptions.MinimalWithPageCountText)
+        </div>
+    </div>
+}
+else
+{
     <table cellspacing="0" cellpadding="0" width="100%" class="Order_table table">
         <tbody>
             <tr>
@@ -14,27 +51,10 @@
                 <th>Date</th>
                 <th>Status</th>
             </tr>
-            @if(this.Model.Count > 0)
-            {
-                foreach (var item in this.Model)
-                {
-                    count++;
-                <tr>
-                    <td data-title="S.No">@count</td>
-                    <td data-title="Order No">@item.OrderNumber</td>
-                    <td data-title="No. Of Products">@item.Quantity</td>
-                    <td data-title="Order Value">@item.TotalPrice.ToString("#,##0.00")</td>
-                    <td data-title="Date">@item.OrderDate.ToShortDateString()</td>
-                    <td data-title="Status"><p class="deliver">@item.OrderStatus</p></td>
-                </tr>
-                }
+            <tr>
+                <td colspan="6" class="cart_empty_msg">No Orders Placed!</td>
+            </tr>
+            </tbody>
+        </table>
             }
-            else
-            {
-                <tr>
-                    <td colspan="6" class="cart_empty_msg">No Orders Placed!</td>
-                </tr>
-            }
-      </tbody>
-    </table>
-</div>
+

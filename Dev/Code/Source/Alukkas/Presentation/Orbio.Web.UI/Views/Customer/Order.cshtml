@@ -6,8 +6,15 @@
  }
 
 <div class="tab-pane second-account" id="myaccount">
-    @{
+    @Html.Action("OrderDetails")
+    @*@{
         Html.RenderPartial("OrderDetails", this.Model.OrderedProductDetail);
-    }
+    }*@
 </div>
+
+
+
+
+
+
 

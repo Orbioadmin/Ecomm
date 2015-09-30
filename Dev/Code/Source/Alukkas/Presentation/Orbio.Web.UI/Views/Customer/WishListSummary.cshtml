@@ -1,55 +1,73 @@
-﻿@model List<Orbio.Web.UI.Models.Orders.ShoppingCartItemModel>
+﻿@using PagedList
+@using PagedList.Mvc
 
-<div class="table-responsive">
+@model IPagedList<Orbio.Web.UI.Models.Orders.ShoppingCartItemModel>
+
+<div class="table-responsive" id="wishlistSum">
     <input type="hidden" id="result" value="" />
-    <table cellspacing="0" cellpadding="0" width="100%" class="Order_table table">
-        <tbody>
-            <tr>
-                <th width="10%">Item</th>
-                <th></th>
-                <th>Price</th>
-                <th>Remove</th>
-                <th>Add To Cart</th>
-            </tr>
-            @if(this.Model.Count > 0)
+    @if(this.Model.Count > 0)
             {
-            foreach (var wishlist in this.Model)
-            {
+        <table cellspacing="0" cellpadding="0" width="100%" class="Order_table table">
+            <tbody>
                 <tr>
-                    <td data-title="Item">
-                       
-                        <a class="cartitem" href="@Url.RouteUrl("Category", new { SeName = wishlist.SeName })?p=pt"><img src="@wishlist.DefaultPicture.ImageUrl" width="120px" height="65px"></a>
-                    </td>
-                    <td data-title="Title" class="p_wish" style="text-align:left;padding-top:20px">
-                        <a class="cartitem" href="@Url.RouteUrl("Category", new { SeName = wishlist.SeName })?p=pt">
-                            @wishlist.Name
-                        </a>
-                        <br />
-                   
-                      
-                        @foreach (var attribute in wishlist.ProductVariantAttributes)
-                        {                       
-                           @attribute.TextPrompt<span>:</span>@attribute.Values[0].Name
-                          @((attribute != wishlist.ProductVariantAttributes.Last()) ? ", " : "")
+                    <th width="10%">Item</th>
+                    <th></th>
+                    <th>Price</th>
+                    <th>Remove</th>
+                    <th>Add To Cart</th>
+                </tr>
+
+                @foreach (var wishlist in this.Model)
+            {
+                    <tr>
+                        <td data-title="Item">
+
+                            <a class="cartitem" href="@Url.RouteUrl("Category", new { SeName = wishlist.SeName })?p=pt"><img src="@wishlist.DefaultPicture.ImageUrl" width="120px" height="65px"></a>
+                        </td>
+                        <td data-title="Title" class="p_wish" style="text-align:left;padding-top:20px">
+                            <a class="cartitem" href="@Url.RouteUrl("Category", new { SeName = wishlist.SeName })?p=pt">
+                                @wishlist.Name
+                            </a>
+                            <br />
+
+
+                            @foreach (var attribute in wishlist.ProductVariantAttributes)
+                        {
+                                @attribute.TextPrompt<span>:</span>@attribute.Values[0].Name
+                                @((attribute != wishlist.ProductVariantAttributes.Last()) ? ", " : "")
                         }
 
-    
-                    </td>
-                    <td data-title="Price">@wishlist.CurrencyCode.@wishlist.ProductPrice.Price.ToString("#,##0.00")</td>
-                    <td data-title="Remove"><a href="@Url.Action("UpdateWishList", "Customer", new { itemId = wishlist.CartId, value = "delete" })"><img src="~/Images/Basic_image/trash-black.png" id="delete" /></a></td>
-                    <td data-title="Add to cart"><a href="@Url.Action("updatewishlist", "Customer", new { itemId = wishlist.CartId, value = "addtocart" })"><img src="~/Images/Basic_image/cart-yellow.png" /></a></td>
+
+                        </td>
+                        <td data-title="Price">@wishlist.CurrencyCode.@wishlist.ProductPrice.Price.ToString("#,##0.00")</td>
+                        <td data-title="Remove"><a href="@Url.Action("UpdateWishList", "Customer", new { itemId = wishlist.CartId, value = "delete" })"><img src="~/Images/Basic_image/trash-black.png" id="delete" /></a></td>
+                        <td data-title="Add to cart"><a href="@Url.Action("updatewishlist", "Customer", new { itemId = wishlist.CartId, value = "addtocart" })"><img src="~/Images/Basic_image/cart-yellow.png" /></a></td>
 
 
+                    </tr>
+            }
+            </tbody>
+        </table>
+        <div class="pagedList" id="wishlistContentPager" style="float:right">
+            @Html.PagedListPager(Model, page => Url.Action("WishListSummary", new { page }), PagedListRenderOptions.MinimalWithPageCountText)
+        </div>
+    }
+    else
+    {
+        <table cellspacing="0" cellpadding="0" width="100%" class="Order_table table">
+            <tbody>
+                <tr>
+                    <th width="10%">Item</th>
+                    <th></th>
+                    <th>Price</th>
+                    <th>Remove</th>
+                    <th>Add To Cart</th>
                 </tr>
-            }
-            }
-            else
-            { 
                 <tr>
                     <td colspan="5" class="cart_empty_msg">Your Wishlist is empty!</td>
                 </tr>
-            }
-        </tbody>
-    </table>
-</div>
+                </tbody>
+            </table>
+     }
+    </div>
 
