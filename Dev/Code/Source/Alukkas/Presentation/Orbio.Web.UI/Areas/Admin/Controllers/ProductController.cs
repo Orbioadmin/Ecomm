@@ -156,6 +156,11 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                 //Webkit, Mozilla
                 stream = Request.InputStream;
                 fileName = Request["qqfile"];
+                HttpPostedFileBase file = Request.Files["qqfile"];
+                string path = System.IO.Path.Combine(
+                       Server.MapPath("~/Areas/Admin/images/"), fileName);
+
+                file.SaveAs(path);
             }
 
             var fileBinary = new byte[stream.Length];
@@ -197,11 +202,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                 }
             }
 
-            string path = System.IO.Path.Combine(
-                                   Server.MapPath("~/Areas/Admin/images/"), fileName);
-            // file is uploaded
-            HttpPostedFileBase file = Request.Files["qqfile"];
-            file.SaveAs(path);
+
             return RedirectToAction("List");
         }
 

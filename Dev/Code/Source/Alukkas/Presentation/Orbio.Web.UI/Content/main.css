@@ -2459,7 +2459,7 @@ font-family: 'PT Sans', sans-serif; font-weight: 700; font-size: 13px;}
 .second_menu.home .nav.navbar-nav li{padding: 3px 0;}
 .prod-inner a{color: #000000;}
 .navbar-default.home .head_main .navbar-nav > li > a{padding: 3px;}
-#SelectedQuantity {margin-top: 10px;}
+#SelectedQuantity {margin-left: 10px;}
 .my-account .dropdown.open .dropdown-menu {left: inherit; right: 0;}
 .my-account .dropdown.open .dropdown-menu li{width: 100%;}
 .log-in {padding: 0 6px;}a, a:hover, a:focus{outline:none;}
@@ -2486,6 +2486,22 @@ font-family: 'PT Sans', sans-serif; font-weight: 700; font-size: 13px;}
 }
 .second_menu.home .nav.navbar-nav li div.col-sm-3 h3:hover + ul{display:block;}
 .second_menu.home .nav.navbar-nav li div.col-sm-3 ul li{border-bottom:1px #ccc solid;}
+.quan_expect .col-sm-3 span { float: left; vertical-align: middle; padding-right: 10px; padding-top: 2px; font-style: normal; font-weight: bold;}
+.quan_expect .col-sm-3, .quan_expect .col-sm-9{padding-top: 10px;}
+.Price_breakup{margin-bottom:10px;}
+.Price_break {background: #ebebeb;  border: 1px solid #ebebeb;
+    color: #363636;
+    font-family: "Calibri Light";
+    font-size: 14px;
+    padding: 3px 0;
+    text-align: center;
+    text-transform: uppercase;
+}
+.ship_icon{background: url('../images/Basic_image/imagesprites.png') -238px -71px no-repeat;
+margin-right: 8px; display: inline-block; width:25px; height: 15px; vertical-align: middle;}
+.men_icon{background: url('../images/Basic_image/user-men.png') 1px -1px no-repeat; display: inline-block; width:16px; height: 14px; vertical-align: middle;}
+.women_icon{background: url('../images/Basic_image/user-women.png') 1px -1px no-repeat; display: inline-block; width:16px; height: 14px; vertical-align: middle;}
+
 @media (min-width: 768px) and (max-width: 768px) {
 .Footer_top .col-md-3{width:25%!important;}
 .slider-section .carousel-inner {height: 312px;}
@@ -2507,11 +2523,13 @@ ul.menu_desc li.select_menu { right: -140px;}}
 ul.menu_desc li.select_menu{left:330px;}
 .second_menu.home .nav.navbar-nav li div.col-sm-3{width:230px;}
 .second_menu.home .dropdown-menu li { padding: 3px 10px !important;}
+.before-login { margin-right: 120px!important;}
 }
 @media (max-width: 1199px){
 ul.menu_desc li.select_menu {
     left: 200px;
 }
+.before-login { margin-right: 0px;}
 @media (max-width: 767px){
 .second_menu.home .container {padding: 0;}
 .second_menu.home .navbar-collapse{background:#ffffff; z-index: 20; top:43px;}

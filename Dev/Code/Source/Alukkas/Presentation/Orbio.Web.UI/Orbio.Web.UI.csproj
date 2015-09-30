@@ -702,6 +702,8 @@
     <Content Include="Images\Basic_image\updates-image1.png" />
     <Content Include="Images\Basic_image\updates-image2.png" />
     <Content Include="Images\Basic_image\updates-image3.png" />
+    <Content Include="Images\Basic_image\user-men.png" />
+    <Content Include="Images\Basic_image\user-women.png" />
     <Content Include="Images\Basic_image\user.png" />
     <Content Include="Images\Basic_image\white-bg.png" />
     <Content Include="Images\Basic_image\white-line.png" />
