@@ -23,6 +23,7 @@ namespace Orbio.Core.Data
         public string ComponentName { get; set; }
         public bool IsActive { get; set; }
         public bool Deleted { get; set; }
+        public bool IsVariablePrice { get; set; }
         public string CreatedBy { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public string ModifiedBy { get; set; }

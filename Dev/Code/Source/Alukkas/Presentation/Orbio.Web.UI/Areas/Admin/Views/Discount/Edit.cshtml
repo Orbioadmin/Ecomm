@@ -42,11 +42,16 @@
                 @Html.Partial("_CreateOrUpdate")
 
                 <div aria-labelledby="home-tab" id="usagehistory" class="tab-pane fade" role="tabpanel">
-                    @Html.Action("UsageHistoryInfo", "Discount", new { id = Model.Id })
+                    <div class="container">
+                        <div class="col-md-12" style=" margin-bottom: 34px;margin-top:10px">
+                            @Html.Action("UsageHistoryInfo", "Discount", new { id = Model.Id })
+                        </div>
+                    </div>
+
                 </div>
-            </div>
-}
-</div>
+                    </div>
+                    }
+                </div>
 @section scripts{
 
     <script type="text/javascript">
@@ -123,4 +128,23 @@
             }
         });
     </script>
+
+
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        var infoForm = @Html.Raw(Json.Encode(Model.Id));
+        $(document).on("click", "#contentPager a[href]", function () {
+            $.ajax({
+                data: {Id : infoForm },
+                url: $(this).attr("href"),
+                cache: false,
+                type: "GET",
+                success: function (data) {
+                    $('#usagehstry').html(data);
+                }
+            });
+            return false;
+        });
+    });
+</script>
 }

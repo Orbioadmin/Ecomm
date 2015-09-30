@@ -15,6 +15,7 @@
                 <thead>
                 <td style="width:40%">Name</td>
                 <td>Is Active</td>
+                <td>Is Variable Price</td>
                 <td>Edit/Delete</td>
                 </thead>
                 <tbody>
@@ -36,6 +37,8 @@
                                         if (editMode) {
                                             $('#drpactive@(item.Id)').show();
                                             $('#lblactive@(item.Id)').hide();
+                                            $('#drpvarprice@(item.Id)').show();
+                                            $('#lblvarprice@(item.Id)').hide();
                                             $('#lblname@(item.Id)').hide();
                                             $('#txtname@(item.Id)').show();
                                             $('#btnDeleteOrderItem@(item.Id)').hide();
@@ -46,6 +49,8 @@
                                         else {
                                             $('#lblactive@(item.Id)').show();
                                             $('#drpactive@(item.Id)').hide();
+                                            $('#lblvarprice@(item.Id)').show();
+                                            $('#drpvarprice@(item.Id)').hide();
                                             $('#lblname@(item.Id)').show();
                                             $('#txtname@(item.Id)').hide();
                                             $('#btnDeleteOrderItem@(item.Id)').show();
@@ -75,6 +80,13 @@
                                 <td class="varient_align" style="text-align:center">
                                     <label class="@(item.IsActive ? "img_sprite1" : "img_sprite")" name="lblactive@(item.Id)" id="lblactive@(item.Id)"></label>
                                     <select name="drpactive@(item.Id)" id="drpactive@(item.Id)" value="@item.IsActive" style="display:none;">
+                                        <option value=" true">True</option>
+                                        <option value="false">False</option>
+                                    </select>
+                                </td>
+                                <td class="varient_align" style="text-align:center">
+                                    <label class="@(item.IsVariablePrice ? "img_sprite1" : "img_sprite")" name="lblvarprice@(item.Id)" id="lblvarprice@(item.Id)"></label>
+                                    <select name="drpvarprice@(item.Id)" id="drpvarprice@(item.Id)" value="@item.IsVariablePrice" style="display:none;">
                                         <option value=" true">True</option>
                                         <option value="false">False</option>
                                     </select>

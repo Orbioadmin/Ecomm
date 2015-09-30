@@ -52,7 +52,6 @@ namespace Orbio.Core.Data
         public virtual DbSet<CheckoutAttributeValue> CheckoutAttributeValues { get; set; }
         public virtual DbSet<PriceComponent> PriceComponents { get; set; }
         public virtual DbSet<Product_SpecificationAttribute_Mapping> Product_SpecificationAttribute_Mapping { get; set; }
-        public virtual DbSet<ProductComponent> ProductComponents { get; set; }
         public virtual DbSet<SpecificationAttribute> SpecificationAttributes { get; set; }
         public virtual DbSet<SpecificationAttributeOption> SpecificationAttributeOptions { get; set; }
         public virtual DbSet<TaxCategory> TaxCategories { get; set; }
@@ -70,6 +69,7 @@ namespace Orbio.Core.Data
         public virtual DbSet<GiftCardUsageHistory> GiftCardUsageHistories { get; set; }
         public virtual DbSet<MessageTemplate> MessageTemplates { get; set; }
         public virtual DbSet<DiscountUsageHistory> DiscountUsageHistories { get; set; }
+        public virtual DbSet<ProductComponent> ProductComponents { get; set; }
     
         public virtual ObjectResult<Order> usp_Get_AdminOrderDetails(Nullable<int> orderStatusId, Nullable<int> paymentStatusId, Nullable<int> shippingStatusId, Nullable<int> customerId, Nullable<System.DateTime> createdFromUtc, Nullable<System.DateTime> createdToUtc, string billingEmail, Nullable<int> orderNo)
         {

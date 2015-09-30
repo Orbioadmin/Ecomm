@@ -16,6 +16,7 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Component
             Id = prod.Id;
             Name = prod.ComponentName;
             IsActive = prod.IsActive;
+            IsVariablePrice = prod.IsVariablePrice;
         }
 
         public int Id { get; set; }
@@ -23,6 +24,8 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Component
         public string Name { get; set; }
 
         public bool IsActive { get; set; }
+
+        public bool IsVariablePrice { get; set; }
 
         //public DateTime ModifiedDate { get; set; }
     }

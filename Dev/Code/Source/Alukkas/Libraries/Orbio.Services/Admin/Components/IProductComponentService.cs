@@ -15,6 +15,6 @@ namespace Orbio.Services.Admin.Components
 
         int DeleteProductComponent(int Id, string Email);
 
-        int AddOrUpdateProductComponent(int Id, string Name, bool IsActive, string Email);
+        int AddOrUpdateProductComponent(int Id, string Name, bool IsActive, bool IsVariablePrice, string Email);
     }
 }

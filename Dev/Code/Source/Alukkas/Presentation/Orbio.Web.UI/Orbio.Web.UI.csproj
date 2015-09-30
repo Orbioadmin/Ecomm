@@ -1133,9 +1133,7 @@
     <Content Include="Areas\Admin\Views\Attribute\ListCheckoutAttribute.cshtml" />
     <Content Include="Areas\Admin\Views\Attribute\AddOrEditCheckoutAttribute.cshtml" />
     <Content Include="Areas\Admin\Views\Component\ListProductComponent.cshtml" />
-    <Content Include="Areas\Admin\Views\Component\AddOrEditProductComponent.cshtml" />
     <Content Include="Areas\Admin\Views\Component\ListPriceComponent.cshtml" />
-    <Content Include="Areas\Admin\Views\Component\AddOrEditPriceComponent.cshtml" />
     <Content Include="Areas\Admin\Views\Attribute\CheckoutAttribute.cshtml" />
     <Content Include="Areas\Admin\Views\Attribute\CheckoutAttributeValue.cshtml" />
     <Content Include="Areas\Admin\Views\Attribute\AddOrEditCheckoutAttributeValue.cshtml" />
