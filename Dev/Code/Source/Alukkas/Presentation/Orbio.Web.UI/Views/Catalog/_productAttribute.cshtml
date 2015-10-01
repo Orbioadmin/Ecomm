@@ -58,10 +58,13 @@
                             </script>
                 }
                          }
+                    @if (!string.IsNullOrEmpty(pva.SizeGuideUrl))
+                       {
                         <li class="pull-right no_brd no_bg">
                             <a href="" class="size_guide">SIZE GUIDE</a>
                             <div class="Popup_img"><img src="@imageUrl"></div>
                         </li>
+                        }
                     </ul>
                 </div>
                 break;
@@ -107,12 +110,14 @@
                             </script>
                 }
                          }
-                       
+                       @if (!string.IsNullOrEmpty(pva.SizeGuideUrl))
+                       {
                         <li class="pull-right no_brd no_bg">
                             <a href="" class="size_guide">SIZE GUIDE</a>
                             
                             <div class="Popup_img"><img src="@imageUrl"></div>
                         </li>
+                       }
                     </ul>
                 </div>
                                         break;

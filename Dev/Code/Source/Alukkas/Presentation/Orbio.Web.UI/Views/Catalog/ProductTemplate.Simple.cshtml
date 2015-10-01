@@ -207,57 +207,58 @@
                     if (Model.ComponentDetails.Count > 0)
                     {
                         <div class="price-main">
-                            <div class="price-button">View Price break up</div>
-                            <div class="Price_break">Price Breakup</div>
-                            <table cellpadding="0" cellspacing="0" class="Price_breakup" width="100%" align="center">
+                            <div class="Price_break">Price Breakup <i class="up-arrow"></i></div>
+                            <div class="Price_breakup">
+                                <table cellpadding="0" cellspacing="0" class="Price_breakup" width="100%" align="center">
 
-                                <tr>
-                                    @foreach (var priceBreakUp in Model.ComponentDetails)
+                                    <tr>
+                                        @foreach (var priceBreakUp in Model.ComponentDetails)
                                     {
-                                        <td>
-                                            @priceBreakUp.Key
-                                            <p>@this.Model.CurrencyCode.@priceBreakUp.Value</p>
-                                        </td>
-
-                                        @*<td>
-                                                Other St.
-                                                <p>@this.Model.CurrencyCode.@this.Model.Stones</p>
+                                            <td>
+                                                @priceBreakUp.Key
+                                                <p>@this.Model.CurrencyCode.@priceBreakUp.Value</p>
                                             </td>
 
-                                            <td>
-                                                Making
-                                                <p>@this.Model.CurrencyCode.@this.Model.Making</p>
-                                            </td>*@
+                                            @*<td>
+                            Other St.
+                            <p>@this.Model.CurrencyCode.@this.Model.Stones</p>
+                        </td>
+
+                        <td>
+                            Making
+                            <p>@this.Model.CurrencyCode.@this.Model.Making</p>
+                        </td>*@
 
 
                                     }
-                                    @*<td>
-                                            Tax
-                                            <p>@this.Model.CurrencyCode.@this.Model.ProductPrice.TaxAmount</p>
-                                        </td>*@
-                                </tr>
-                                @*<tr>
-                                        <td>
-                                            GOLD
-                                            <p>@this.Model.CurrencyCode.@this.Model.Gold</p>
-                                        </td>
+                                        @*<td>
+                        Tax
+                        <p>@this.Model.CurrencyCode.@this.Model.ProductPrice.TaxAmount</p>
+                    </td>*@
+                                    </tr>
+                                    @*<tr>
+                    <td>
+                        GOLD
+                        <p>@this.Model.CurrencyCode.@this.Model.Gold</p>
+                    </td>
 
-                                        <td>
-                                            Other St.
-                                            <p>@this.Model.CurrencyCode.@this.Model.Stones</p>
-                                        </td>
+                    <td>
+                        Other St.
+                        <p>@this.Model.CurrencyCode.@this.Model.Stones</p>
+                    </td>
 
-                                        <td>
-                                            Making
-                                            <p>@this.Model.CurrencyCode.@this.Model.Making</p>
-                                        </td>
+                    <td>
+                        Making
+                        <p>@this.Model.CurrencyCode.@this.Model.Making</p>
+                    </td>
 
-                                        <td>
-                                            Tax
-                                            <p>Rs.0.00</p>
-                                        </td>
-                                    </tr>*@
-                            </table>
+                    <td>
+                        Tax
+                        <p>Rs.0.00</p>
+                    </td>
+                </tr>*@
+                                </table>
+                            </div>
                         </div>
                     }
                 }
@@ -386,11 +387,11 @@
         });
     </script>
 
-    <script type="text/javascript">
-        var $j = jQuery.noConflict();
-        $j(document).ready(function () {
-            $j('.price-button').click(function () {
-                $j('.Price_breakup').toggle();
-            });
+<script type="text/javascript">
+    var $j = jQuery.noConflict();
+    $j(document).ready(function () {
+        $j('.Price_break').click(function () {
+            $j('.Price_breakup').slideToggle('slow');
         });
-    </script>
+    });
+</script>

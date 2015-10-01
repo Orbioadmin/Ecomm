@@ -30,7 +30,7 @@
                         }
                         <div class="col-md-4">
                             <a href="@Url.RouteUrl("Category", new { SeName = products.SeName })?p=pt" class="thumbnail">
-                                <img src="@products.DefaultPicture.ImageUrl" alt="Image" style="max-width:100%;" />
+                                <img src="@products.DefaultPicture.FullSizeImageUrl" alt="Image" style="max-width:100%;" />
                                 <p class="thumb_title">@products.Name</p>
                                 <p class="thumb_date">@products.CurrencyCode. @products.ProductPrice.Price.ToString("#,##0.00")</p>
                             </a>
@@ -56,7 +56,7 @@
                     @Html.Raw("<div class='item active'>");
                     @Html.Raw("<div class='row'>");
                 }
-                @if (this.Model.Count > count)
+                @if (this.Model.Count < count)
                 {
                 @Html.Raw("</div>")
                 @Html.Raw("</div>")

@@ -615,13 +615,13 @@ margin-bottom: 0;
 #myCarousel4 ul.similar .thumbnail{border: 0;}
 .desc_butt li{float: right; margin-bottom: 5px;}
 .desc_butt li a{font-family: "Calibri"; font-size: 14px; line-height: 15px; background:  url('../images/Basic_image/wishlist-button-bg.png') repeat-x; display: inline-block; color: #272727; padding: 5px 10px; width: 180px; text-align: center; font-size: 14px;}
-.avab_size{ background:#bebebe; position: relative;}
+.avab_size{ background:#bebebe; position: relative; margin-bottom:10px;}
 .detail_descrip h1{ font-family: "Calibri Light"; font-size: 26px; margin: 0; padding-bottom:6px;}
 .detail_descrip p{ font-family: "Calibri"; font-size: 13px; margin: 0; color: #272727; padding-bottom: 3px;}
 .detail_descrip p span{color: #479e0d;}.detail_descrip .star_rt{margin-bottom: 20px;}p.price_rate{ line-height:
   20px; font-size: 26px; color: #272727; padding-top:6px;}
 .detail_descrip s { font-family: "Calibri"; font-size: 13px; color: #272727; margin-bottom: 15px; display: inline-block;}
-.size_li li{float: left; padding:18px 10px; border-right: 1px #999 solid; color: #272727; font-family: "Calibri"; font-size: 14px; }
+.size_li li{float: left; padding:6px 10px; border-right: 1px #999 solid; color: #272727; font-family: "Calibri"; font-size: 14px; }
 .size_li li a{ color: #272727; font-family: "Calibri"; font-size: 14px;}
 .Buynow{ color: #ffffff; background: #f8c301; border-radius: 3px; border: 0; padding: 3px 22px; font-size: 16px; margin:10px 8px;
   border-bottom: 4px #ddae00 solid; font-family: "Calibri";}
@@ -671,7 +671,11 @@ padding-top: 35px; width: 100%; height: 100%; -webkit-background-size: cover;  -
 #myCarousel4 .list_thumb_offer{font-family: "Calibri_bold"; font-size: 14px;}
 .review_news{ border-bottom: 1px #080000 solid; color: #080000; font-size: 24px;font-family: "Calibri Light"; padding-bottom: 10px; margin: 10px 0;}
 .related{ font-size:22px; text-align: center; margin: 10px 0;font-family: "Calibri";}
-.size_guide{ background: #fff; padding:7px 15px; border-radius: 3px; border-bottom: 2px #d7d7d7 solid; }
+.size_guide{ background: #fff; padding:6px 15px; border-radius: 0px; border-bottom: 1px #999999 solid; border-top: 1px #999999 solid; height: 32px;
+    display: inline-block;}
+.size_guide:hover{ background: #fff; border-bottom: 1px #999999 solid; border-top: 1px #999999 solid; }
+.size_li li.pull-right.no_brd.no_bg:hover{ border-bottom: 0px #999999 solid; border-top: 0px #999999 solid; }
+.size_li li.pull-right.no_brd.no_bg{padding:0 15px;}
 .size_guide:hover + div.Popup_img{display: block; position: absolute; top:45px; right: 15px; z-index: 99; border:1px #ccc solid;}
 .Popup_img{display: none;}
 .no_brd{border-right: 0!important;}
@@ -1746,7 +1750,7 @@ display: inline-block; line-height: 24px; right: -15px;}
 .certification li img{vertical-align: middle;}
 .face_api{width: 65px; padding-top: 15px;}
 .size_li li.no_bg:hover, .size_li li.no_bg.select{background:none;}
-.size_li li:hover, .size_li li.select{padding: 17px 10px;}
+.size_li li:hover, .size_li li.select{padding: 5px 10px;}
 .cartitem {
 color:#000;}
     .cartitem:hover {
@@ -2271,7 +2275,7 @@ border-radius: 0 4px 4px 0;
 
 
 /* new home page */
-.second_menu.home .navbar-default .navbar-nav > li > a{font-size: 15px; font-family: 'PT Sans', sans-serif; font-weight: 400; padding-top: 11px;}
+.second_menu.home .navbar-default .navbar-nav > li > a{font-size: 15px; font-family: "Calibri"; font-weight: 400; padding-top: 11px;}
 .top-menu-new{background:#131313; padding:10px 0;}
 .navbar.navbar-default.home{background:#ffffff;}
 .second_menu.home{background:#F8C301 url(blank.png); height: inherit; position: inherit;}
@@ -2462,7 +2466,7 @@ font-family: 'PT Sans', sans-serif; font-weight: 700; font-size: 13px;width:70px
 #SelectedQuantity {margin-left: 10px;}
 .my-account .dropdown.open .dropdown-menu {left: inherit; right: 0;}
 .my-account .dropdown.open .dropdown-menu li{width: 100%;}
-.log-in {padding: 0 6px;}a, a:hover, a:focus{outline:none;}
+.log-in {padding: 0 6px;}a, a:hover, a:focus{outline:0;}
 .second_menu.home .navbar.navbar-default{min-height:35px;}
 .second_menu.home .dropdown-menu{}
 .second_menu.home .dropdown-menu:before {
@@ -2488,12 +2492,12 @@ font-family: 'PT Sans', sans-serif; font-weight: 700; font-size: 13px;width:70px
 .second_menu.home .nav.navbar-nav li div.col-sm-3 ul li{border-bottom:1px #ccc solid;}
 .quan_expect .col-sm-3 span { float: left; vertical-align: middle; padding-right: 10px; padding-top: 2px; font-style: normal; font-weight: bold;}
 .quan_expect .col-sm-3, .quan_expect .col-sm-9{padding-top: 10px;}
-.Price_breakup{margin-bottom:10px;}
-.Price_break {background: #ebebeb;  border: 1px solid #ebebeb;
+.Price_breakup{margin-bottom:0px;}
+.Price_break {background: #ebebeb  url('../images/Basic_image/wishlist-button-bg.png') repeat-x; border: 0px solid #ebebeb;
     color: #363636;
-    font-family: "Calibri Light";
+    font-family: "Calibri";
     font-size: 14px;
-    padding: 3px 0;
+    padding: 3px 0; cursor:pointer;
     text-align: center;
     text-transform: uppercase;
 }
@@ -2501,7 +2505,27 @@ font-family: 'PT Sans', sans-serif; font-weight: 700; font-size: 13px;width:70px
 margin-right: 8px; display: inline-block; width:25px; height: 15px; vertical-align: middle;}
 .men_icon{background: url('../images/Basic_image/user-men.png') 1px -1px no-repeat; display: inline-block; width:16px; height: 14px; vertical-align: middle;}
 .women_icon{background: url('../images/Basic_image/user-women.png') 1px -1px no-repeat; display: inline-block; width:16px; height: 14px; vertical-align: middle;}
-
+.up-arrow{background:url('../images/Basic_image/Home-Sprite.png') -203px -10px no-repeat; width: 10px; height: 10px; display: inline-block; float:right; margin-right: 5px;
+    margin-top: 4px;}.quan_expect .Buynow{margin-left:0;}
+span.icon-span{display:none; background: #555; border-radius: 2px; color: #fff; display: none; right: -20px; top: 37px; z-index: 9; width: 70px; text-align:center;}
+span.icon-span:before{content: "";
+    display: block;
+    width: 0; 
+    height: 0; 
+	border-left: 4px solid transparent;
+	border-right: 4px solid transparent;	
+	border-bottom: 4px solid #555;
+    position: absolute;
+    top: -4px;
+    left: 35px;}
+.icon-cart:hover .icon-span{display:block;}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+.size_li li:hover, .size_li li.select {
+    padding: 4px 10px;
+}
+.size_li li {
+    padding: 5px 10px;}
+}
 @media (min-width: 768px) and (max-width: 768px) {
 .Footer_top .col-md-3{width:25%!important;}
 .slider-section .carousel-inner {height: 312px;}
