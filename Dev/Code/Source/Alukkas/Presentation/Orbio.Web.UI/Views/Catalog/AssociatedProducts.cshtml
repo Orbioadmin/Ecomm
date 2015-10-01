@@ -19,7 +19,7 @@
             <div class="carousel-inner">
                 @if (this.Model.Count > 0)
                 {
-                    foreach (var products in this.Model)
+                    foreach (var products in this.Model.GroupBy(x => x.Id).Select(y => y.First()))
                     {
                         if ((i % 4) == 0)
                         {
@@ -33,7 +33,7 @@
                         <li class="col-sm-3">
                             <div class="main_thumb">
                                 <div class="thumbnail">
-                                    <a href="@Url.RouteUrl("Category", new { SeName = products.SeName })?p=pt"><img alt="" src="@products.DefaultPicture.ImageUrl"></a>
+                                    <a href="@Url.RouteUrl("Category", new { SeName = products.SeName })?p=pt"><img alt="" src="@products.DefaultPicture.FullSizeImageUrl"></a>
                                 </div>
                                 <div class="caption">
                                     <div class="list_light_dark">@products.Name</div>
@@ -61,7 +61,7 @@
                                    if (this.Model.Count != count)
                                    {
                                     @Html.Raw("<div class='item'>");
-                                    @Html.Raw("<div class='row'>");
+                                    @Html.Raw("<ul class='similar'>");
                                    }
                                    i = -1;
                         }
@@ -74,7 +74,7 @@
                     @Html.Raw("<div class='item active'>");
                     @Html.Raw("<ul class='similar'>");
                 }
-                @if (this.Model.Count > count)
+                @if (this.Model.Count < count)
                 {
                 @Html.Raw("</ul>")
                 @Html.Raw("</div>")
