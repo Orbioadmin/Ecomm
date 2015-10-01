@@ -11,9 +11,18 @@
         <span class="back_to_order" style="padding-top:0px;width:28%">
             <a href="@Url.Action("Exporttocsv","Customer")"><input type="button" value="Export to CSV" class="add_cat_button" style="float:left"></a>
             @*</span>*@
-            @using (Html.BeginForm("ImportFromCSV", "Customer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            @using (Html.BeginForm("ImportFromCSV", "Customer", FormMethod.Post, new {@id="fileupload", enctype = "multipart/form-data" }))
             {
                 @*<span class="back_to_order" style="padding-top:0px">*@
+    @*<input type="file" class="filestyle" data-input="false" id="filestyleupload" name="importcsvfile" tabindex="-1" style="position: absolute; clip: rect(0px 0px 0px 0px);" />
+    <div class="bootstrap-filestyle input-group">
+        <span class="group-span-filestyle " tabindex="0">
+            <label for="filestyleupload">
+                <span class="delete_cat_button" style="float:right;margin-left:10px;">Import for csv</span>
+            </label>
+        </span>
+            </div>*@
+
     <input type="submit" name="Submit" id="Submit" value="Import from CSV" class="delete_cat_button" style="float:left;margin-left:10px" />
             <input type="file" name="importcsvfile" id="add_cat_button" style="float:right" />
 
@@ -37,4 +46,24 @@
        @Html.Action("NewsletterSubscribersList")
     </div>
 </div>
+
+
+@section scripts{
+    @*<script>
+        $("document").ready(function(){
+            $("#filestyleupload").change(function (e) {
+                var file = document.getElementById("filestyleupload").value;
+            $.ajax({
+                data: { importedFile: file },
+                url: '@Url.Action("ImportFromCSV", "Customer")',
+                cache: false,
+                type: "POST",
+                success: function (data) {
+                    location.reload();
+                }
+            });
+    });
+    });
+    </script>*@
+}
 

@@ -585,11 +585,27 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <Property Name="ComponentName" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="Deleted" Type="bit" Nullable="false" />
-          <Property Name="IsVariablePrice" Type="bit" Nullable="false" />
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="150" />
           <Property Name="CreatedDate" Type="datetime" Nullable="false" />
           <Property Name="ModifiedBy" Type="nvarchar" MaxLength="150" />
           <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="IsVariablePrice" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductReview">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="IsApproved" Type="bit" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="ReviewText" Type="nvarchar(max)" />
+          <Property Name="Rating" Type="int" Nullable="false" />
+          <Property Name="HelpfulYesTotal" Type="int" Nullable="false" />
+          <Property Name="HelpfulNoTotal" Type="int" Nullable="false" />
+          <Property Name="CreatedOnUtc" Type="datetime" Nullable="false" />
+          <Property Name="CustomerName" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="ProductTag">
           <Key>
@@ -1149,6 +1165,34 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="ProductReview_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProductReview" Type="Self.ProductReview" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductReview">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProductReview_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProductReview" Type="Self.ProductReview" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductReview">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="ProductSpecificationAttribute_Product">
           <End Role="Product" Type="Self.Product" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -1317,6 +1361,7 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <EntitySet Name="Product_SpecificationAttribute_Mapping" EntityType="Self.Product_SpecificationAttribute_Mapping" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductAttribute" EntityType="Self.ProductAttribute" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductComponent" EntityType="Self.ProductComponent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductReview" EntityType="Self.ProductReview" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductTag" EntityType="Self.ProductTag" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RecurringPayment" EntityType="Self.RecurringPayment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Shipment" EntityType="Self.Shipment" Schema="dbo" store:Type="Tables" />
@@ -1474,6 +1519,14 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
             <End Role="Product" EntitySet="Product" />
             <End Role="Product_Picture_Mapping" EntitySet="Product_Picture_Mapping" />
           </AssociationSet>
+          <AssociationSet Name="ProductReview_Customer" Association="Self.ProductReview_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="ProductReview" EntitySet="ProductReview" />
+          </AssociationSet>
+          <AssociationSet Name="ProductReview_Product" Association="Self.ProductReview_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductReview" EntitySet="ProductReview" />
+          </AssociationSet>
           <AssociationSet Name="ProductSpecificationAttribute_Product" Association="Self.ProductSpecificationAttribute_Product">
             <End Role="Product" EntitySet="Product" />
             <End Role="Product_SpecificationAttribute_Mapping" EntitySet="Product_SpecificationAttribute_Mapping" />
@@ -1551,6 +1604,7 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <NavigationProperty Name="Logs" Relationship="OrbioAdminModel.Log_Customer" FromRole="Customer" ToRole="Log" />
           <NavigationProperty Name="Address" Relationship="OrbioAdminModel.Customer_BillingAddress" FromRole="Customer" ToRole="Address" />
           <NavigationProperty Name="Address1" Relationship="OrbioAdminModel.Customer_ShippingAddress" FromRole="Customer" ToRole="Address" />
+          <NavigationProperty Name="ProductReviews" Relationship="OrbioAdminModel.ProductReview_Customer" FromRole="Customer" ToRole="ProductReview" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -1855,6 +1909,15 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
             <End Role="ProductComponent" EntitySet="ProductComponents" />
             <End Role="Product_ProductComponent_Mapping" EntitySet="Product_ProductComponent_Mapping" />
           </AssociationSet>
+          <EntitySet Name="ProductReviews" EntityType="OrbioAdminModel.ProductReview" />
+          <AssociationSet Name="ProductReview_Customer" Association="OrbioAdminModel.ProductReview_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="ProductReview" EntitySet="ProductReviews" />
+          </AssociationSet>
+          <AssociationSet Name="ProductReview_Product" Association="OrbioAdminModel.ProductReview_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ProductReview" EntitySet="ProductReviews" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="CustomerRole">
           <Key>
@@ -2074,6 +2137,7 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <NavigationProperty Name="ProductTags" Relationship="OrbioAdminModel.Product_ProductTag_Mapping" FromRole="Product" ToRole="ProductTag" />
           <NavigationProperty Name="Product_Category_Mapping" Relationship="OrbioAdminModel.ProductCategory_Product" FromRole="Product" ToRole="Product_Category_Mapping" />
           <NavigationProperty Name="Product_Manufacturer_Mapping" Relationship="OrbioAdminModel.ProductManufacturer_Product" FromRole="Product" ToRole="Product_Manufacturer_Mapping" />
+          <NavigationProperty Name="ProductReviews" Relationship="OrbioAdminModel.ProductReview_Product" FromRole="Product" ToRole="ProductReview" />
         </EntityType>
         <Association Name="Customer_BillingAddress">
           <End Type="OrbioAdminModel.Address" Role="Address" Multiplicity="0..1" />
@@ -3087,6 +3151,52 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="ProductReview">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ReviewText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Rating" Type="Int32" Nullable="false" />
+          <Property Name="HelpfulYesTotal" Type="Int32" Nullable="false" />
+          <Property Name="HelpfulNoTotal" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Customer" Relationship="OrbioAdminModel.ProductReview_Customer" FromRole="ProductReview" ToRole="Customer" />
+          <NavigationProperty Name="Product" Relationship="OrbioAdminModel.ProductReview_Product" FromRole="ProductReview" ToRole="Product" />
+        </EntityType>
+        <Association Name="ProductReview_Customer">
+          <End Type="OrbioAdminModel.Customer" Role="Customer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="OrbioAdminModel.ProductReview" Role="ProductReview" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductReview">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProductReview_Product">
+          <End Type="OrbioAdminModel.Product" Role="Product" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="OrbioAdminModel.ProductReview" Role="ProductReview" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductReview">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3823,6 +3933,23 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
                 <ScalarProperty Name="Deleted" ColumnName="Deleted" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="ComponentName" ColumnName="ComponentName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductReviews">
+            <EntityTypeMapping TypeName="OrbioAdminModel.ProductReview">
+              <MappingFragment StoreEntitySet="ProductReview">
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="CreatedOnUtc" ColumnName="CreatedOnUtc" />
+                <ScalarProperty Name="HelpfulNoTotal" ColumnName="HelpfulNoTotal" />
+                <ScalarProperty Name="HelpfulYesTotal" ColumnName="HelpfulYesTotal" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="ReviewText" ColumnName="ReviewText" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

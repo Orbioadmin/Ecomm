@@ -99,6 +99,9 @@ namespace Orbio.Web.Framework
             builder.RegisterType<OBS.Admin.MessageTemplates.MessageTemplateService>().As<OBS.Admin.MessageTemplates.IMessageTemplateService>().InstancePerHttpRequest();
             //added by sankar
             builder.RegisterType<OBS.Admin.Discount.DiscountService>().As<OBS.Admin.Discount.IDiscountService>().InstancePerHttpRequest();
+             //added by sankar
+            builder.RegisterType<OBS.Admin.Products.ProductReviewService>().As<OBS.Admin.Products.IProductReviewService>().InstancePerHttpRequest();
+            
         }
 
         public int Order

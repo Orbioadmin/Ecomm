@@ -141,6 +141,9 @@
     <Compile Include="Data\ProductComponent.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\ProductReview.cs">
+      <DependentUpon>OrbioAdmin.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\ProductTag.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>

@@ -409,9 +409,12 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             return File(new System.Text.UTF8Encoding().GetBytes(result), "text/csv", "newsletter_email"+DateTime.Now.ToShortTimeString());
         }
 
-        public ActionResult ImportFromCSV(HttpPostedFileBase importFile)
+        public ActionResult ImportFromCSV(HttpPostedFileBase importFile, string importedFile)
         {
             var file = Request.Files["importcsvfile"];
+            if(file==null)
+                return RedirectToAction("NewsletterSubscribers");
+
             var reader = new StreamReader(file.InputStream);
             string email;
             List<string> Emails = new List<string>();

@@ -104,7 +104,9 @@
     <Compile Include="Admin\Orders\NeverPurchasedReportService.cs" />
     <Compile Include="Admin\Orders\ShippingService.cs" />
     <Compile Include="Admin\Orders\ShoppingCartService.cs" />
+    <Compile Include="Admin\Products\IProductReviewService.cs" />
     <Compile Include="Admin\Products\IProductService.cs" />
+    <Compile Include="Admin\Products\ProductReviewService.cs" />
     <Compile Include="Admin\Products\ProductService.cs" />
     <Compile Include="Admin\Sales\GiftCardService.cs" />
     <Compile Include="Admin\Sales\IGiftCardService.cs" />

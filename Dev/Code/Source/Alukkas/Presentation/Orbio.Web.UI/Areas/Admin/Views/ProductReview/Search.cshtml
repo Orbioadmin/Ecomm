@@ -1,0 +1,18 @@
+﻿@model Orbio.Web.UI.Areas.Admin.Models.Product.ProductReviewSearchModel
+
+<div class="col-md-12 order_list" style="border-radius: 10px;margin-left: 11px;width:98%;height:60px;margin-top:5px;margin-bottom:10px">
+    <fieldset id="infoForm">
+        <div class="sart_date" style="width: 169px;">
+            @Html.TextBoxFor(model => model.StartDate, new { @class = "start_order_date_email", placeholder = "Created From", style = "border-radius:0px:box-shadow:0px" })
+        </div>
+        <div class=" sart_date" style="width: 169px;">
+            @Html.TextBoxFor(model => model.EndDate, new { @class = "start_order_date_email", placeholder = "Created To" })
+        </div>
+        <div class=" order_status" style="width:25%">
+            @Html.TextBoxFor(model => model.Message, new { @class = "start_order_date_email", placeholder = "Message" })
+        </div>
+        <div class="billing_address_text" style="padding-top: 2px;">
+            <input type="submit" class="search_order_list" value="SEARCH">
+        </div>
+    </fieldset>
+</div>

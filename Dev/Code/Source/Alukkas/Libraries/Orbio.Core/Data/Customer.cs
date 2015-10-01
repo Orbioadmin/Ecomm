@@ -19,6 +19,7 @@ namespace Orbio.Core.Data
             this.Orders = new HashSet<Order>();
             this.CustomerRoles = new HashSet<CustomerRole>();
             this.Logs = new HashSet<Log>();
+            this.ProductReviews = new HashSet<ProductReview>();
         }
     
         public int Id { get; set; }
@@ -54,5 +55,6 @@ namespace Orbio.Core.Data
         public virtual ICollection<Log> Logs { get; set; }
         public virtual Address Address { get; set; }
         public virtual Address Address1 { get; set; }
+        public virtual ICollection<ProductReview> ProductReviews { get; set; }
     }
 }

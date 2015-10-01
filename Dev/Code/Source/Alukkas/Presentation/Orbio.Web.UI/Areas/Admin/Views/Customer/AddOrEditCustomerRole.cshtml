@@ -9,25 +9,33 @@
     @using (Html.BeginForm("AddOrEditCustomerRole", "Customer", FormMethod.Post, new { }))
     {
         @Html.HiddenFor(m => m.Id, new { Value = Model.Id })
-        <div class="main_edit_order">
-            @if (Model.Id == 0)
+        
+            if (Model.Id == 0)
             {
-                <span class="edit_order_details"><span class="edit_order_icon"></span>ADD NEW CUSTOMER ROLE</span>
-                <span class="back_to_order">
-                    <input type="submit" value="Save" class="add_cat_button">
-                    <a href="@Url.Action("ListCustomerRole", "Customer")"><input type="button" value="Cancel" class="delete_cat_button"></a>
-                </span>
+                <div class="main_edit_order">
+                    <span class="edit_order_details"><span class="edit_order_icon"></span>ADD NEW CUSTOMER ROLE</span>
+                    <span class="back_to_order">
+                        <input type="submit" value="Save" class="add_cat_button">
+                        <a href="@Url.Action("ListCustomerRole", "Customer")"><input type="button" value="Cancel" class="delete_cat_button"></a>
+                    </span>
+                    </div>
             }
             else
             {
-                <span class="edit_order_details"><span class="edit_order_icon"></span>EDIT CUSTOMER ROLE - @Model.Name<a href="@Url.Action("ListCustomerRole", "Customer")" style="top:0px;text-transform:none;"> (back to customer role list)</a></span>
-                <span class="back_to_order">
-                    <input type="submit" value="Save" class="add_cat_button">
-                    <a href="@Url.Action("DeleteCustomerRole", "Customer", new { Id = Model.Id })"><input type="button" value="Delete" class="delete_cat_button" onclick=" return confirm('Are You Sure'); "></a>
-                </span>
-            }
-        </div>
-
+                <div class="main_edit_order">
+                    <span class="edit_order_details">
+                        <span class="edit_order_icon"></span><a href="" class="add_new_check">EDIT CUSTOMER ROLE - @Model.Name</a>
+                    </span>
+                    <span class="back_to_order"><u><a href="@Url.Action("ListCustomerRole", "Customer")">back to customer role list</a></u></span>
+                </div>
+                <div class="preview_main">
+                    <ul>
+                        <li><input type="submit" class="prev_button" value="Save"></li>
+                        <li><a href="@Url.Action("DeleteCustomerRole", "Customer", new { Id = Model.Id })"><input type="button" value="Delete" class="prev_button" onclick="return confirm('are you sure');">
+                    </a></li>
+                    </ul>
+                </div>
+                    }
         <div class="new_product_attribute_div">
                 <div class="form-group">
                     <label>Name : </label>

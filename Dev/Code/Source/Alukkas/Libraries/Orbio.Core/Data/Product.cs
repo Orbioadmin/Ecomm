@@ -25,6 +25,7 @@ namespace Orbio.Core.Data
             this.ProductTags = new HashSet<ProductTag>();
             this.Product_Category_Mapping = new HashSet<Product_Category_Mapping>();
             this.Product_Manufacturer_Mapping = new HashSet<Product_Manufacturer_Mapping>();
+            this.ProductReviews = new HashSet<ProductReview>();
         }
     
         public int Id { get; set; }
@@ -130,5 +131,6 @@ namespace Orbio.Core.Data
         public virtual ICollection<ProductTag> ProductTags { get; set; }
         public virtual ICollection<Product_Category_Mapping> Product_Category_Mapping { get; set; }
         public virtual ICollection<Product_Manufacturer_Mapping> Product_Manufacturer_Mapping { get; set; }
+        public virtual ICollection<ProductReview> ProductReviews { get; set; }
     }
 }

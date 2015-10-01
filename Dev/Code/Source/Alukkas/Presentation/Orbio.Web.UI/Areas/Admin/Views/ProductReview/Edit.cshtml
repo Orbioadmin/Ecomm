@@ -1,0 +1,81 @@
+﻿@model Orbio.Web.UI.Areas.Admin.Models.Product.ProductReviewModel
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="container">
+    @using (Html.BeginForm("Update", "ProductReview", FormMethod.Post, new { }))
+    {
+        @Html.HiddenFor(m => m.Id, new { Value = Model.Id })
+
+        <div class="main_edit_order">
+            <span class="edit_order_details">
+                <span class="edit_order_icon"></span><a href="" class="add_new_check">EDIT Product Review Details</a>
+            </span>
+            <span class="back_to_order"><u><a href="@Url.Action("List", "ProductReview")">back to product review list</a></u></span>
+        </div>
+        <div class="preview_main">
+            <ul>
+                <li><input type="submit" class="prev_button" value="Save"></li>
+                <li>
+                    <a href="@Url.Action("DeleteProductReview", "ProductReview", new { Id = Model.Id })">
+                        <input type="button" value="Delete" class="prev_button" onclick="return confirm('are you sure');">
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="tab_main_order col-md-12">
+            <ul id="myTab" role="tablist" class="tabview_order_ul">
+
+                <li class="active cctv_resp_li" role="presentation"><a aria-expanded="true" aria-controls="based" data-toggle="tab" role="tab" id="home-tab" href="#info"></a></li>
+
+                @*<li role="presentation" class="gate_resp_li"><a aria-controls="wireless" data-toggle="tab" role="tab" href="#discount">DISCOUNT</a></li>*@
+
+            </ul>
+        </div>
+
+        <div class="tab_side_solutions col-md-12">
+            <div class="tab-content tab_content_solutions" id="myTabContent">
+                <div aria-labelledby="home-tab" id="info" class="tab-pane fade in active  " role="tabpanel">
+                    <div class="col-md-6 add_cart_left_side" style="margin-top:10px">
+                        <div class="form-group">
+                            <label>Product : </label>
+                            <label style="margin-left:16%"><a href="@Url.Action("Edit", "Product", new { id=Model.ProductId })">@Model.ProductName</a></label>
+                        </div>
+                        <div class="form-group">
+                            <label> Customer : </label>
+                            <label style="margin-left:14%"><a href="@Url.Action("EditCustomer", "Customer", new { Id = Model.CustomerId })">@Model.CustomerId</a></label>
+                           </div>
+                        <div class="form-group">
+                            <label> Title : </label>
+                            @Html.TextBoxFor(m => m.Title, new { @class = "category_text_add_cat", required = "required" })
+                        </div>
+                        <div class="form-group">
+                            <label> Review Text : </label>
+                            @Html.TextAreaFor(m => m.ReviewText, new { @class = "category_text_add_cat", style = "margin-left:11.5%", required = "required" })
+                        </div>
+                        <div class="form-group">
+                            <label> Rating : </label>
+                            <label style="margin-left:18%">@Model.Rating</label>
+</div>
+                        <div class="form-group">
+                            <label> Is Approved : </label>
+                            @Html.CheckBoxFor(m => m.IsApproved, new { @style = "margin-left: 11.5%;" })
+                        </div>
+                        <div class="form-group">
+                            <label> Created On : </label>
+                            <label style="margin-left:12%">@Model.CreatedOn</label>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+</div>
+
+
+
+

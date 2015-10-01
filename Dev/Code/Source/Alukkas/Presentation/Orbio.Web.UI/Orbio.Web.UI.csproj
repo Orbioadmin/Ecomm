@@ -263,6 +263,7 @@
     <Compile Include="Areas\Admin\Controllers\MessageTemplateController.cs" />
     <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductReviewController.cs" />
     <Compile Include="Areas\Admin\Controllers\SalesController.cs" />
     <Compile Include="Areas\Admin\Controllers\ShipmentController.cs" />
     <Compile Include="Areas\Admin\Controllers\ShoppingCartController.cs" />
@@ -300,6 +301,8 @@
     <Compile Include="Areas\Admin\Models\Orders\ShoppingCartModel.cs" />
     <Compile Include="Areas\Admin\Models\Product\ProductListModel.cs" />
     <Compile Include="Areas\Admin\Models\Product\ProductModel.cs" />
+    <Compile Include="Areas\Admin\Models\Product\ProductReviewModel.cs" />
+    <Compile Include="Areas\Admin\Models\Product\ProductReviewSearchModel.cs" />
     <Compile Include="Areas\Admin\Models\Sales\GiftCardModel.cs" />
     <Compile Include="Areas\Admin\Models\Sales\GiftCardSearchModel.cs" />
     <Compile Include="Areas\Admin\Models\Sales\GiftCardUsageHistoryModel.cs" />
@@ -702,8 +705,6 @@
     <Content Include="Images\Basic_image\updates-image1.png" />
     <Content Include="Images\Basic_image\updates-image2.png" />
     <Content Include="Images\Basic_image\updates-image3.png" />
-    <Content Include="Images\Basic_image\user-men.png" />
-    <Content Include="Images\Basic_image\user-women.png" />
     <Content Include="Images\Basic_image\user.png" />
     <Content Include="Images\Basic_image\white-bg.png" />
     <Content Include="Images\Basic_image\white-line.png" />
@@ -908,6 +909,10 @@
     <Content Include="Areas\Admin\Views\Discount\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Discount\UsageHistoryInfo.cshtml" />
     <Content Include="Areas\Admin\Views\MessageTemplate\AddOrEditMessageTemplate.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductReview\List.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductReview\Search.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductReview\ProductReviewList.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductReview\Edit.cshtml" />
     <None Include="Properties\PublishProfiles\ecom.pubxml" />
     <Content Include="Areas\Admin\Views\Customer\ListCustomer.cshtml" />
     <Content Include="Areas\Admin\Views\Customer\CustomerList.cshtml" />

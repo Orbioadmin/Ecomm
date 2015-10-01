@@ -90,6 +90,9 @@
         <AssociationConnector Association="OrbioAdminModel.DiscountUsageHistory_Order" />
         <EntityTypeShape EntityType="OrbioAdminModel.ProductComponent" Width="1.5" PointX="6.7212923926866113" PointY="14.495818487599408" />
         <AssociationConnector Association="OrbioAdminModel.FK_Product_ProductComponent_Mapping_ProductComponents" />
+        <EntityTypeShape EntityType="OrbioAdminModel.ProductReview" Width="1.5" PointX="3.7813397924328873" PointY="10.441855271552623" />
+        <AssociationConnector Association="OrbioAdminModel.ProductReview_Customer" />
+        <AssociationConnector Association="OrbioAdminModel.ProductReview_Product" />
       </Diagram>
         <EntityTypeShape EntityType="OrbioAdminModel.SpecificationAttribute" Width="1.5" PointX="34.75" PointY="9" />
         <EntityTypeShape EntityType="OrbioAdminModel.SpecificationAttributeOption" Width="1.5" PointX="32.5" PointY="9" />
