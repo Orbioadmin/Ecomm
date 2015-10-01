@@ -28,7 +28,7 @@ namespace Orbio.Services.Admin.Components
             }
         }
 
-        public int AddOrUpdateProductComponent(int Id, string Name, bool IsActive, string Email)
+        public int AddOrUpdateProductComponent(int Id, string Name, bool IsActive, bool IsVariablePrice, string Email)
         {
             using (var context = new OrbioAdminContext())
             {
@@ -39,6 +39,7 @@ namespace Orbio.Services.Admin.Components
                     {
                         result.ComponentName = Name;
                         result.IsActive = IsActive;
+                        result.IsVariablePrice = IsVariablePrice;
                         result.Deleted = false;
                         result.ModifiedBy = Email;
                         result.ModifiedDate = DateTime.Now;
@@ -49,6 +50,7 @@ namespace Orbio.Services.Admin.Components
                         var prodComp = context.ProductComponents.FirstOrDefault();
                         prodComp.ComponentName = Name;
                         prodComp.IsActive = IsActive;
+                        prodComp.IsVariablePrice = IsVariablePrice;
                         prodComp.Deleted = false;
                         prodComp.CreatedBy = Email;
                         prodComp.CreatedDate = DateTime.Now;

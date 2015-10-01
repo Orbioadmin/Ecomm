@@ -52,13 +52,15 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             {
                 var name = form["txtname" + Id];
                 var active = form["drpactive" + Id];
+                var variablePrice = form["drpvarprice" + Id];
                 var productComponent = new ProductComponentModel
                 {
                     Id = Id,
                     Name = name,
                     IsActive = Convert.ToBoolean(active),
+                    IsVariablePrice = Convert.ToBoolean(variablePrice),
                 };
-                int result = productComponentService.AddOrUpdateProductComponent(productComponent.Id, productComponent.Name, productComponent.IsActive, curCustomer.Email);
+                int result = productComponentService.AddOrUpdateProductComponent(productComponent.Id, productComponent.Name, productComponent.IsActive,productComponent.IsVariablePrice, curCustomer.Email);
             }
             return RedirectToAction("ProductComponent");
             //var result = productComponentService.GetProductComponentById(Id);
@@ -71,7 +73,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         {
             var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
             var curCustomer = workContext.CurrentCustomer;
-            int result = productComponentService.AddOrUpdateProductComponent(model.Id,model.Name,model.IsActive,curCustomer.Email);
+            int result = productComponentService.AddOrUpdateProductComponent(model.Id,model.Name,model.IsActive,model.IsVariablePrice,curCustomer.Email);
             return RedirectToAction("ProductComponent");
         }
 

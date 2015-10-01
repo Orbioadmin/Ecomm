@@ -4,9 +4,11 @@ using Orbio.Web.UI.Filters;
 using Orbio.Web.UI.Models.Catalog;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 
 namespace Orbio.Web.UI.Areas.Admin.Controllers
 {
@@ -97,12 +99,12 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
              return RedirectToAction("List");
         }
 
-        [ChildActionOnly]
-        public ActionResult UsageHistoryInfo(int id)
+        public ActionResult UsageHistoryInfo(int id,int? page)
         {
             var resultModel = _discountService.GetAllUsageHistoryByDiscountId(id);
-
-            return PartialView(resultModel);
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+            return PartialView(resultModel.ToPagedList(pageNumber,pageSize));
         }
         protected void PrepareDiscounttModel(DiscountModel model, Orbio.Core.Domain.Discounts.Discount discount)
         {
