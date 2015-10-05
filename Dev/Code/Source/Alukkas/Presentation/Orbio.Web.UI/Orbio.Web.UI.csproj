@@ -264,6 +264,7 @@
     <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductReviewController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductTagController.cs" />
     <Compile Include="Areas\Admin\Controllers\SalesController.cs" />
     <Compile Include="Areas\Admin\Controllers\ShipmentController.cs" />
     <Compile Include="Areas\Admin\Controllers\ShoppingCartController.cs" />
@@ -303,6 +304,7 @@
     <Compile Include="Areas\Admin\Models\Product\ProductModel.cs" />
     <Compile Include="Areas\Admin\Models\Product\ProductReviewModel.cs" />
     <Compile Include="Areas\Admin\Models\Product\ProductReviewSearchModel.cs" />
+    <Compile Include="Areas\Admin\Models\Product\ProductTagModel.cs" />
     <Compile Include="Areas\Admin\Models\Sales\GiftCardModel.cs" />
     <Compile Include="Areas\Admin\Models\Sales\GiftCardSearchModel.cs" />
     <Compile Include="Areas\Admin\Models\Sales\GiftCardUsageHistoryModel.cs" />
@@ -913,6 +915,9 @@
     <Content Include="Areas\Admin\Views\ProductReview\Search.cshtml" />
     <Content Include="Areas\Admin\Views\ProductReview\ProductReviewList.cshtml" />
     <Content Include="Areas\Admin\Views\ProductReview\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductTag\List.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductTag\ListProductTags.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductTag\Add.cshtml" />
     <None Include="Properties\PublishProfiles\ecom.pubxml" />
     <Content Include="Areas\Admin\Views\Customer\ListCustomer.cshtml" />
     <Content Include="Areas\Admin\Views\Customer\CustomerList.cshtml" />

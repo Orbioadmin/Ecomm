@@ -61,7 +61,7 @@
 <li><a href="@Url.Action("List", "Product")">Manage Products</a></li>
 <li><a href="#">Bulk Edit Products</a></li>
 <li><a href="@Url.Action("List","ProductReview")">Product Reviews</a></li>
-<li><a href="#">Product Tags</a></li>
+<li><a href="@Url.Action("List","ProductTag")">Product Tags</a></li>
 <li><a href="#">Low Stock Report</a></li>
 </ul>
 </li>
@@ -116,8 +116,8 @@
 <li id="promotion">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Promotions<span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="#">Affiliates</a></li>
-<li><a href="#">Campaigns</a></li>
+@*<li><a href="#">Affiliates</a></li>
+<li><a href="#">Campaigns</a></li>*@
 <li><a href="@Url.Action("List", "Discount")">Discounts</a></li>
 
 </ul>

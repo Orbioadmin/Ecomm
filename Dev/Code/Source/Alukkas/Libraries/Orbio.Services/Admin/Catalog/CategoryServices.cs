@@ -25,6 +25,67 @@ namespace Orbio.Services.Admin.Catalog
         {
             this.dbContext = dbContext;
         }
+
+        /// <summary>
+        /// get all top menu categories
+        /// </summary>
+        /// <returns></returns>
+        public List<Orbio.Core.Domain.Catalog.Category> GetTopMenuCategories()
+        {
+            using (var context = new OrbioAdminContext())
+            {
+                //var category = new List<Orbio.Core.Domain.Catalog.Category>
+                var category = (from c in context.Categories
+                                join url in context.UrlRecords on c.Id equals url.EntityId
+                                where url.EntityName == "Category" && !c.Deleted
+                                && c.ParentCategoryId == 0 && url.LanguageId==0 && url.IsActive
+                                select new Orbio.Core.Domain.Catalog.Category()
+                                {
+                                    Id=c.Id,
+                                    Name=c.Name,
+                                    Description=c.Description,
+                                    ParentCategoryId=c.ParentCategoryId,
+                                    SeName=url.Slug,
+                                }).ToList();
+                if (category != null && category.Count > 0)
+                {
+                    foreach (var item in category)
+                    {
+                        item.SubCategories = SubCategories(item.Id);
+                    }
+                }
+                return category;
+            }
+        }
+
+        public List<Orbio.Core.Domain.Catalog.Category> SubCategories(int id)
+        {
+            using (var context = new OrbioAdminContext())
+            {
+                var category = (from c in context.Categories
+                                join url in context.UrlRecords on c.Id equals url.EntityId
+                                where url.EntityName == "Category" && !c.Deleted
+                                && c.ParentCategoryId == id
+                                && c.ParentCategoryId == 0 && url.LanguageId == 0 && url.IsActive
+                                select new Orbio.Core.Domain.Catalog.Category()
+                                {
+                                    Id = c.Id,
+                                    Name = c.Name,
+                                    Description = c.Description,
+                                    ParentCategoryId = c.ParentCategoryId,
+                                    SeName = url.Slug,
+                                }).ToList();
+                if (category != null && category.Count > 0)
+                {
+                    foreach (var item in category)
+                    {
+                        item.SubCategories = SubCategories(item.Id);
+                    }
+                }
+                return category;
+            }
+        }
+
         /// <summary>
         /// getting category details
         /// </summary>
@@ -99,6 +160,7 @@ namespace Orbio.Services.Admin.Catalog
                             category.ParentCategoryId = model.ParentCategoryId;
                             // category.PictureId=model.Picture;
                             category.ShowOnHomePage = model.ShowOnHomePage;
+                            category.IncludeInTopMenu = model.ShowOnHomePage;
                             category.SubjectToAcl = model.SubjectToACL;
                             category.Published = model.Published;
                             category.Deleted = false;
@@ -125,6 +187,7 @@ namespace Orbio.Services.Admin.Catalog
                         category.ParentCategoryId = model.ParentCategoryId;
                         // category.PictureId=model.Picture;
                         category.ShowOnHomePage = model.ShowOnHomePage;
+                        category.IncludeInTopMenu = model.ShowOnHomePage;
                         category.SubjectToAcl = model.SubjectToACL;
                         category.Published = model.Published;
                         category.Deleted = false;

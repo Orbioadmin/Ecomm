@@ -1,0 +1,10 @@
+﻿@model Orbio.Web.UI.Areas.Admin.Models.Product.ProductTagModel
+
+<h3>Add New Product Tag</h3>
+
+@using (Html.BeginForm("AddProductTag", "ProductTag", FormMethod.Post, new { }))
+{
+    @Html.TextBoxFor(m => m.Name, new { @class = "text_sku", required = "required", id = "rolename", @placeholder = "Name" })
+    
+    <input type="submit" value="Add Product Tag" class="add_product_submit">
+}

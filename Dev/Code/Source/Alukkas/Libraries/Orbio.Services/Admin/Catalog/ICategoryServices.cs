@@ -10,6 +10,8 @@ namespace Orbio.Services.Admin.Catalog
 {
    public interface ICategoryServices
     {
+       List<Orbio.Core.Domain.Catalog.Category> GetTopMenuCategories();
+
        CategoryDetails GetCategoryDetailsById(int Id);
 
        CategoryDetails GetCategoryDetails();

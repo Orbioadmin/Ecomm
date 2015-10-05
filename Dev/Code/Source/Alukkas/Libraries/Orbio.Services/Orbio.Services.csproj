@@ -106,8 +106,10 @@
     <Compile Include="Admin\Orders\ShoppingCartService.cs" />
     <Compile Include="Admin\Products\IProductReviewService.cs" />
     <Compile Include="Admin\Products\IProductService.cs" />
+    <Compile Include="Admin\Products\IProductTagService.cs" />
     <Compile Include="Admin\Products\ProductReviewService.cs" />
     <Compile Include="Admin\Products\ProductService.cs" />
+    <Compile Include="Admin\Products\ProductTagService.cs" />
     <Compile Include="Admin\Sales\GiftCardService.cs" />
     <Compile Include="Admin\Sales\IGiftCardService.cs" />
     <Compile Include="Admin\Shipments\IShipmentService.cs" />
