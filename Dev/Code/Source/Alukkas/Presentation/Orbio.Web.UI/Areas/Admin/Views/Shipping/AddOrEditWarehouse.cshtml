@@ -1,0 +1,85 @@
+﻿@model Orbio.Web.UI.Areas.Admin.Models.Configuration.ShippingModel
+@{
+    ViewBag.Title = "AddWarehouse";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="container">
+    @using (@Html.BeginForm("AddOrUpdateWarehouse","Shipping",FormMethod.Post))
+    {
+        if (Model.Id == 0)
+        {
+            <div class="main_edit_order">
+                <span class="edit_order_details"><span class="edit_order_icon"></span><a href="" class="add_new_check">Add Warehouse</a></span>
+                <span class="back_to_order" style="padding-top:0px">
+                    <input type="submit" value="Save" class="add_cat_button">
+                    <a href="@Url.Action("Warehouses", "Shipping")"> <input type="button" value="Cancel" class="delete_cat_button"></a>
+                </span>
+            </div>
+        }
+        else
+        {
+            <div class="main_edit_order">
+                <span class="edit_order_details">
+                    <span class="edit_order_icon"></span><a href="" class="add_new_check">Edit Warehouse - @Model.Name</a>
+                </span>
+                <span class="back_to_order"><u><a href="@Url.Action("Warehouses", "Shipping")">back to warehouse list</a></u></span>
+            </div>
+            <div class="preview_main">
+                <ul>
+                    <li><input type="submit" class="prev_button" value="Save"></li>
+                    <li><a href="@Url.Action("DeleteWarehouse", "Shipping", new { Id = Model.Id })"><input type="button" value="Delete" class="prev_button" onclick="return confirm('are you sure');"></a></li>
+                </ul>
+            </div>
+
+        }
+
+
+        <div class="tab_main_order col-md-12">
+            <ul id="myTab" role="tablist" class="tabview_order_ul">
+
+                <li class="active cctv_resp_li" role="presentation"><a aria-expanded="true" aria-controls="based" data-toggle="tab" role="tab" id="home-tab" href="#info"></a></li>
+            </ul>
+        </div>
+
+        <div class="tab_side_solutions col-md-12">
+            @Html.HiddenFor(m => m.Id, new { Value = Model.Id });
+            @Html.HiddenFor(m => m.AddressId, new { Value = Model.AddressId });
+            <div class="tab-content tab_content_solutions" id="myTabContent">
+                <div aria-labelledby="home-tab" id="info" class="tab-pane fade in active  " role="tabpanel">
+                    <div class="col-md-12 add_cart_left_side edit_checkout_attr_main">
+                        <div class="form-group row" style="margin-top:10px">
+                            <div class="col-md-2"><label>Name : </label></div>
+                            <div class="col-md-4">@Html.TextBoxFor(m => m.Name, new { @class = "edit_text_checkout", required = "required" })</div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-2"><label>Country : </label></div>
+                            <div class="col-md-4">@Html.DropDownListFor(m=>m.WarehouseDetails.CountryId, Model.WarehouseDetails.AvailableCountries, new { @class = "edit_text_checkout", @type = "required" })</div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-2"><label>State : </label></div>
+                            <div class="col-md-4">@Html.DropDownListFor(m => m.WarehouseDetails.StateProvinceId, Model.WarehouseDetails.AvailableStates, new { @class = "edit_text_checkout", @type = "required" })</div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-2"><label>City : </label></div>
+                            <div class="col-md-4">@Html.TextBoxFor(m => m.WarehouseDetails.City, new { @class = "edit_text_checkout", @type = "required" })</div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-2"><label>Address : </label></div>
+                            <div class="col-md-4">@Html.TextBoxFor(m => m.WarehouseDetails.Address, new { @class = "edit_text_checkout", @type = "required" })</div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-2"><label>Zip / postal code : </label></div>
+                            <div class="col-md-4">@Html.TextBoxFor(m => m.WarehouseDetails.Pincode, new { @class = "edit_text_checkout", @type = "required" })</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+
+

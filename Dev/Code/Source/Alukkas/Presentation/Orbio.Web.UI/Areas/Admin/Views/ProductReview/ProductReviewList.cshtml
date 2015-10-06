@@ -43,7 +43,32 @@
                             </td>
                             <td class="align_center">@item.Title</td>
                             <td class="align_center">@item.ReviewText</td>
-                            <td class="align_center">@item.Rating</td>
+                            <td class="align_center">
+                                @if (item.Rating == 0)
+                                {
+                                    <div class="star_rt0"></div>
+                                }
+                                else if (item.Rating == 1)
+                                {
+                                    <div class="star_rt1"></div>
+                                }
+                                else if (item.Rating == 2)
+                                {
+                                    <div class="star_rt2"></div>
+                                }
+                                else if (item.Rating == 3)
+                                {
+                                    <div class="star_rt3"></div>
+                                }
+                                else if (item.Rating == 4)
+                                {
+                                    <div class="star_rt4"></div>
+                                }
+                                else
+                                {
+                                    <div class="star_rt5"></div>
+                                }
+                                </td>
                             <td class="align_center">
                                 <label class="@(item.IsApproved ? "img_sprite1" : "img_sprite")"></label>
                             </td>

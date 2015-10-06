@@ -16,6 +16,18 @@ namespace Orbio.Web.UI.Area.Admin.Models.CheckOut
             AvailableStates = new List<SelectListItem>();
         }
 
+        public AddressModel(Orbio.Core.Data.Address address)
+        {
+            Id = address.Id;
+            Country = (address.Country != null) ? address.Country.Name : null;
+            State = (address.StateProvince != null) ? address.StateProvince.Name : null;
+            City = address.City;
+            Address = address.Address1 + address.Address2;
+            Pincode = address.ZipPostalCode;
+            CountryId = address.CountryId.GetValueOrDefault();
+            StateProvinceId = address.StateProvinceId.GetValueOrDefault();
+        }
+
         //Get address id
         public int Id { get; set; }
 

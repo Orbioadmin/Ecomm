@@ -103,6 +103,10 @@ namespace Orbio.Web.Framework
             builder.RegisterType<OBS.Admin.Products.ProductReviewService>().As<OBS.Admin.Products.IProductReviewService>().InstancePerHttpRequest();
             //added by roshni
             builder.RegisterType<OBS.Admin.Products.ProductTagService>().As<OBS.Admin.Products.IProductTagService>().InstancePerHttpRequest();
+            //added by roshni
+            builder.RegisterType<OBS.Admin.Shipping.WarehouseService>().As<OBS.Admin.Shipping.IWarehouseService>().InstancePerHttpRequest();
+            //added by roshni
+            builder.RegisterType<OBS.Admin.Shipping.DeliveryDateService>().As<OBS.Admin.Shipping.IDeliveryDateService>().InstancePerHttpRequest();
             
         }
 

@@ -1,0 +1,11 @@
+﻿@model Orbio.Web.UI.Areas.Admin.Models.Configuration.DeliveryDateModel
+
+<h3>Add New Delivery Date</h3>
+@*<form action="" method="">*@
+@using (Html.BeginForm("AddDeliveryDate", "Shipping", FormMethod.Post, new { }))
+{
+    @Html.TextBoxFor(m => m.Name, new { @class = "text_sku", required = "required", @placeholder = "Name" })
+    @Html.TextBoxFor(m => m.DisplayOrder, new { @class = "text_sku", @placeholder = "Display Order", type = "number" })
+    
+    <input type="submit" value="Add Delivery Date" class="add_product_submit">
+}

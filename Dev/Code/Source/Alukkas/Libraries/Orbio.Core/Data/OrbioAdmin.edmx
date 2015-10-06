@@ -937,6 +937,18 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Warehouse_Address">
+          <End Role="Address" Type="Self.Address" Multiplicity="1" />
+          <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Warehouse">
+              <PropertyRef Name="AddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="GiftCard_PurchasedWithOrderItem">
           <End Role="OrderItem" Type="Self.OrderItem" Multiplicity="0..1" />
           <End Role="GiftCard" Type="Self.GiftCard" Multiplicity="*" />
@@ -1451,6 +1463,10 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
             <End Role="ProductComponent" EntitySet="ProductComponent" />
             <End Role="Product_ProductComponent_Mapping" EntitySet="Product_ProductComponent_Mapping" />
           </AssociationSet>
+          <AssociationSet Name="FK_Warehouse_Address" Association="Self.FK_Warehouse_Address">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Warehouse" EntitySet="Warehouse" />
+          </AssociationSet>
           <AssociationSet Name="GiftCard_PurchasedWithOrderItem" Association="Self.GiftCard_PurchasedWithOrderItem">
             <End Role="OrderItem" EntitySet="OrderItem" />
             <End Role="GiftCard" EntitySet="GiftCard" />
@@ -1851,7 +1867,6 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           </AssociationSet>
           <EntitySet Name="DeliveryDates" EntityType="OrbioAdminModel.DeliveryDate" />
           <EntitySet Name="ProductTags" EntityType="OrbioAdminModel.ProductTag" />
-          <EntitySet Name="Warehouses" EntityType="OrbioAdminModel.Warehouse" />
           <AssociationSet Name="Product_ProductTag_Mapping" Association="OrbioAdminModel.Product_ProductTag_Mapping">
             <End Role="Product" EntitySet="Products" />
             <End Role="ProductTag" EntitySet="ProductTags" />
@@ -1917,6 +1932,11 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <AssociationSet Name="ProductReview_Product" Association="OrbioAdminModel.ProductReview_Product">
             <End Role="Product" EntitySet="Products" />
             <End Role="ProductReview" EntitySet="ProductReviews" />
+          </AssociationSet>
+          <EntitySet Name="Warehouses" EntityType="OrbioAdminModel.Warehouse" />
+          <AssociationSet Name="FK_Warehouse_Address" Association="OrbioAdminModel.FK_Warehouse_Address">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="Warehouse" EntitySet="Warehouses" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="CustomerRole">
@@ -2030,6 +2050,7 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <NavigationProperty Name="Orders1" Relationship="OrbioAdminModel.Order_ShippingAddress" FromRole="Address" ToRole="Order" />
           <NavigationProperty Name="Country" Relationship="OrbioAdminModel.Address_Country" FromRole="Address" ToRole="Country" />
           <NavigationProperty Name="StateProvince" Relationship="OrbioAdminModel.Address_StateProvince" FromRole="Address" ToRole="StateProvince" />
+          <NavigationProperty Name="Warehouses" Relationship="OrbioAdminModel.FK_Warehouse_Address" FromRole="Address" ToRole="Warehouse" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -2875,14 +2896,6 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <Property Name="Name" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Products" Relationship="OrbioAdminModel.Product_ProductTag_Mapping" FromRole="ProductTag" ToRole="Product" />
         </EntityType>
-        <EntityType Name="Warehouse">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
-          <Property Name="AddressId" Type="Int32" Nullable="false" />
-        </EntityType>
         <Association Name="Product_ProductTag_Mapping">
           <End Type="OrbioAdminModel.Product" Role="Product" Multiplicity="*" />
           <End Type="OrbioAdminModel.ProductTag" Role="ProductTag" Multiplicity="*" />
@@ -3194,6 +3207,27 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
             </Principal>
             <Dependent Role="ProductReview">
               <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Warehouse">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="AddressId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Address" Relationship="OrbioAdminModel.FK_Warehouse_Address" FromRole="Warehouse" ToRole="Address" />
+        </EntityType>
+        <Association Name="FK_Warehouse_Address">
+          <End Type="OrbioAdminModel.Address" Role="Address" Multiplicity="1" />
+          <End Type="OrbioAdminModel.Warehouse" Role="Warehouse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Warehouse">
+              <PropertyRef Name="AddressId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3801,15 +3835,6 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Warehouses">
-            <EntityTypeMapping TypeName="OrbioAdminModel.Warehouse">
-              <MappingFragment StoreEntitySet="Warehouse">
-                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <AssociationSetMapping Name="Product_ProductTag_Mapping" TypeName="OrbioAdminModel.Product_ProductTag_Mapping" StoreEntitySet="Product_ProductTag_Mapping">
             <EndProperty Name="ProductTag">
               <ScalarProperty Name="Id" ColumnName="ProductTag_Id" />
@@ -3950,6 +3975,15 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
                 <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Warehouses">
+            <EntityTypeMapping TypeName="OrbioAdminModel.Warehouse">
+              <MappingFragment StoreEntitySet="Warehouse">
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

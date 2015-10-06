@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Warehouses";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="container">
+    <div class="main_edit_order">
+        <span class="edit_order_details"><span class="shipmen_icon"></span><a href="">Warehouses</a></span>
+        <span class="back_to_order" style="padding-top:0px">
+            <a href="@Url.Action("AddWarehouse","Shipping")"><input type="button" value="Add New" class="add_cat_button"></a>
+            @*<input type="button" value="Export to XML" class="delete_cat_button">*@
+        </span>
+    </div>
+    <div class="col-md-9 main_order_table" style="width: 100%;">
+        @Html.Action("ListWarehouse","Shipping")
+    </div>
+</div>
+

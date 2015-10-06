@@ -20,6 +20,7 @@ namespace Orbio.Core.Data
             this.Customers1 = new HashSet<Customer>();
             this.Orders = new HashSet<Order>();
             this.Orders1 = new HashSet<Order>();
+            this.Warehouses = new HashSet<Warehouse>();
         }
     
         public int Id { get; set; }
@@ -43,5 +44,6 @@ namespace Orbio.Core.Data
         public virtual ICollection<Order> Orders1 { get; set; }
         public virtual Country Country { get; set; }
         public virtual StateProvince StateProvince { get; set; }
+        public virtual ICollection<Warehouse> Warehouses { get; set; }
     }
 }

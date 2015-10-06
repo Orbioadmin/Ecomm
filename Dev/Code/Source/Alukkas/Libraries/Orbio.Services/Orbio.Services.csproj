@@ -114,6 +114,10 @@
     <Compile Include="Admin\Sales\IGiftCardService.cs" />
     <Compile Include="Admin\Shipments\IShipmentService.cs" />
     <Compile Include="Admin\Shipments\ShipmentService.cs" />
+    <Compile Include="Admin\Shipping\DeliveryDateService.cs" />
+    <Compile Include="Admin\Shipping\IDeliveryDateService.cs" />
+    <Compile Include="Admin\Shipping\IWarehouseService.cs" />
+    <Compile Include="Admin\Shipping\WarehouseService.cs" />
     <Compile Include="Admin\Tax\ITaxCategoryService.cs" />
     <Compile Include="Admin\Tax\TaxCategoryService.cs" />
     <Compile Include="Common\IPdfService.cs" />
