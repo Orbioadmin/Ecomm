@@ -13,7 +13,7 @@ namespace Orbio.Services.Admin.Shipping
         {
             using(var context = new OrbioAdminContext())
             {
-                var result = context.Warehouses.Include("Address.Country").Include("Address.StateProvince").ToList();
+                var result = context.Warehouses.Include("Address.Country.StateProvinces").Include("Address.StateProvince").ToList();
                 return result;
             }
         }
@@ -22,7 +22,7 @@ namespace Orbio.Services.Admin.Shipping
         {
             using (var context = new OrbioAdminContext())
             {
-                var result = context.Warehouses.Include("Address.Country").Include("Address.StateProvince").Where(m => m.Id == id).FirstOrDefault();
+                var result = context.Warehouses.Include("Address.Country.StateProvinces").Include("Address.StateProvince").Where(m => m.Id == id).FirstOrDefault();
                 return result;
             }
         }

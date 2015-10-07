@@ -60,15 +60,13 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         {
             var country = _shipmentService.GetAllCountries();
             model.WarehouseDetails.AvailableCountries = (from c in country
-                                                         where c.Name.ToLower() == "india"
                                                          select new SelectListItem()
                                                          {
                                                              Text = c.Name,
                                                              Value = c.Id.ToString(),
-                                                         }).Distinct().ToList();
+                                                         }).ToList();
             model.WarehouseDetails.AvailableStates = (from c in country
                                                       from s in c.StateProvinces
-                                                      where c.Name.ToLower() == "india"
                                                       select new SelectListItem()
                                                       {
                                                           Text = s.Name,

@@ -66,7 +66,7 @@ namespace Orbio.Services.Admin.Catalog
                                 join url in context.UrlRecords on c.Id equals url.EntityId
                                 where url.EntityName == "Category" && !c.Deleted
                                 && c.ParentCategoryId == id
-                                && c.ParentCategoryId == 0 && url.LanguageId == 0 && url.IsActive
+                                && url.LanguageId == 0 && url.IsActive
                                 select new Orbio.Core.Domain.Catalog.Category()
                                 {
                                     Id = c.Id,
@@ -239,6 +239,16 @@ namespace Orbio.Services.Admin.Catalog
                     {
                         category.Deleted = true;
                         context.SaveChanges();
+
+                        var categoryMap = context.Product_Category_Mapping.Where(m => m.CategoryId == Id).ToList();
+                        if(categoryMap!=null && categoryMap.Count>0)
+                        {
+                            foreach(var prod in categoryMap)
+                            {
+                                context.Product_Category_Mapping.Remove(prod);
+                                context.SaveChanges();
+                            }
+                        }
                     }
                     return 1;
                 }

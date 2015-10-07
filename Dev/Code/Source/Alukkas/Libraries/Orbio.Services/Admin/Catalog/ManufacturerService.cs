@@ -177,6 +177,16 @@ namespace Orbio.Services.Admin.Catalog
                     {
                         manufacturer.Deleted = true;
                         context.SaveChanges();
+
+                        var manuMap = context.Product_Manufacturer_Mapping.Where(m => m.ManufacturerId == Id).ToList();
+                        if (manuMap != null && manuMap.Count > 0)
+                        {
+                            foreach (var prod in manuMap)
+                            {
+                                context.Product_Manufacturer_Mapping.Remove(prod);
+                                context.SaveChanges();
+                            }
+                        }
                     }
                     return 1;
                 }
