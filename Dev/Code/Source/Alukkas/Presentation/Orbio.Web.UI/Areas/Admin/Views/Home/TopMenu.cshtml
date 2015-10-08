@@ -49,10 +49,10 @@
 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Catalog <span class="caret"></span></a>
 <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
     <li class="dropdown-submenu">
-        <a href="@Url.Action("ManageCategories","Catalog")" tabindex="-1">Categories</a>
-        <ul class="dropdown-menu">
+        <a href="@Url.Action("ManageCategories","Catalog")">Categories</a>
+        @*<ul class="dropdown-menu">
             <li><a tabindex="-1" href="@Url.Action("ManageCategories","Catalog")">Tree View</a></li>
-        </ul>
+        </ul>*@
     </li>
     <li><a href="@Url.Action("ManageManufacturer", "Catalog")">Manufacturers</a></li>
 <li class="dropdown-submenu">
@@ -134,15 +134,15 @@
             <li class="dropdown-submenu">
                 <a href="#" tabindex="-1">Tax</a>
                 <ul class="dropdown-menu">
-                    <li><a href="#">Tax Providers</a></li>
-                    <li><a href="#">Tax Categories</a></li>
+                    @*<li><a href="#">Tax Providers</a></li>*@
+                    <li><a href="@Url.Action("TaxCategory","Tax")">Tax Categories</a></li>
                 </ul>
             </li>
 
             <li class="dropdown-submenu">
                 <a href="#" tabindex="-1">Shipping</a>
                 <ul class="dropdown-menu">
-                    <li><a href="#">Shipping Methods</a></li>
+                    <li><a href="@Url.Action("ShippingMethods", "Shipping")">Shipping Methods</a></li>
                     <li><a href="#">Shipping Method Restrictions</a></li>
                     <li><a href="#">Shipping Rate Computation Methods</a></li>
                     <li><a href="@Url.Action("DeliveryDate","Shipping")">Delivery Dates</a></li>

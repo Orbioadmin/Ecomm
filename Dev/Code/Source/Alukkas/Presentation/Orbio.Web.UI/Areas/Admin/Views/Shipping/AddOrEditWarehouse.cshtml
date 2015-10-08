@@ -1,4 +1,4 @@
-﻿@model Orbio.Web.UI.Areas.Admin.Models.Configuration.ShippingModel
+﻿@model Orbio.Web.UI.Areas.Admin.Models.Configuration.WarehouseModel
 @{
     ViewBag.Title = "AddWarehouse";
     Layout = "~/Areas/Admin/Views/Shared/_Layout1.cshtml";
@@ -43,8 +43,8 @@
         </div>
 
         <div class="tab_side_solutions col-md-12">
-            @Html.HiddenFor(m => m.Id, new { Value = Model.Id });
-            @Html.HiddenFor(m => m.AddressId, new { Value = Model.AddressId });
+            @Html.HiddenFor(m => m.Id, new { Value = Model.Id })
+            @Html.HiddenFor(m => m.AddressId, new { Value = Model.AddressId })
             <div class="tab-content tab_content_solutions" id="myTabContent">
                 <div aria-labelledby="home-tab" id="info" class="tab-pane fade in active  " role="tabpanel">
                     <div class="col-md-12 add_cart_left_side edit_checkout_attr_main">

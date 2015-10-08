@@ -12,19 +12,16 @@ namespace Orbio.Core.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class TaxCategory
+    public partial class TaxRate
     {
-        public TaxCategory()
-        {
-            this.CheckoutAttributes = new HashSet<CheckoutAttribute>();
-            this.TaxRates = new HashSet<TaxRate>();
-        }
-    
         public int Id { get; set; }
-        public string Name { get; set; }
-        public int DisplayOrder { get; set; }
+        public int StoreId { get; set; }
+        public int TaxCategoryId { get; set; }
+        public int CountryId { get; set; }
+        public int StateProvinceId { get; set; }
+        public string Zip { get; set; }
+        public decimal Percentage { get; set; }
     
-        public virtual ICollection<CheckoutAttribute> CheckoutAttributes { get; set; }
-        public virtual ICollection<TaxRate> TaxRates { get; set; }
+        public virtual TaxCategory TaxCategory { get; set; }
     }
 }

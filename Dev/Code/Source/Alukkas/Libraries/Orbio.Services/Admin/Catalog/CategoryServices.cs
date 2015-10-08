@@ -98,7 +98,9 @@ namespace Orbio.Services.Admin.Catalog
                 var categoryModel = new CategoryList();
 
                 categoryModel.ParentCategoryList = (from c in context.Categories.AsQueryable()
-                                                    where c.Deleted == false
+                                                    join url in context.UrlRecords on c.Id equals url.EntityId
+                                                    where url.EntityName == "Category" && !c.Deleted
+                                                    && url.LanguageId == 0 && url.IsActive
                                                     select new CategoryList()
                                                     {
                                                         Id = c.Id,
@@ -240,15 +242,13 @@ namespace Orbio.Services.Admin.Catalog
                         category.Deleted = true;
                         context.SaveChanges();
 
-                        var categoryMap = context.Product_Category_Mapping.Where(m => m.CategoryId == Id).ToList();
-                        if(categoryMap!=null && categoryMap.Count>0)
+                        var subCategories = SubCategories(Id);
+                        if(subCategories!=null && subCategories.Count>0)
                         {
-                            foreach(var prod in categoryMap)
-                            {
-                                context.Product_Category_Mapping.Remove(prod);
-                                context.SaveChanges();
-                            }
+                           DeleteSubCategories(subCategories);
                         }
+
+                        DeleteCategoryMapping(Id);
                     }
                     return 1;
                 }
@@ -258,7 +258,6 @@ namespace Orbio.Services.Admin.Catalog
                 }
             }
         }
-
 
         /// <summary>
         /// Delete Category Product From Category Product Mapping Table
@@ -292,5 +291,48 @@ namespace Orbio.Services.Admin.Catalog
                 return result;
             }
         }
+
+        /// <summary>
+        /// deleting mapping products to category
+        /// </summary>
+        /// <param name="Id"></param>
+        public void DeleteCategoryMapping(int Id)
+        {
+            using (var context = new OrbioAdminContext())
+            {
+                var categoryMap = context.Product_Category_Mapping.Where(m => m.CategoryId == Id).ToList();
+                if (categoryMap != null && categoryMap.Count > 0)
+                {
+                    foreach (var prod in categoryMap)
+                    {
+                        context.Product_Category_Mapping.Remove(prod);
+                        context.SaveChanges();
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// deleting subcategories
+        /// </summary>
+        /// <param name="subCategories"></param>
+        public void DeleteSubCategories(List<Orbio.Core.Domain.Catalog.Category> subCategories)
+        {
+            using (var context = new OrbioAdminContext())
+            {
+                foreach (var item in subCategories)
+                {
+                    var category = context.Categories.Where(m => m.Id == item.Id).FirstOrDefault();
+                    if (category != null)
+                    {
+                        category.Deleted = true;
+                        context.SaveChanges();
+
+                        DeleteCategoryMapping(item.Id);
+                    }
+                }
+            }
+        }
+
     }
 }

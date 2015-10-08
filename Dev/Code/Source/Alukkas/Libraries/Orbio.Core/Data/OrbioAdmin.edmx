@@ -694,6 +694,18 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <Property Name="Name" Type="nvarchar" MaxLength="400" Nullable="false" />
           <Property Name="DisplayOrder" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="TaxRate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StoreId" Type="int" Nullable="false" />
+          <Property Name="TaxCategoryId" Type="int" Nullable="false" />
+          <Property Name="CountryId" Type="int" Nullable="false" />
+          <Property Name="StateProvinceId" Type="int" Nullable="false" />
+          <Property Name="Zip" Type="nvarchar(max)" />
+          <Property Name="Percentage" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+        </EntityType>
         <EntityType Name="UrlRecord">
           <Key>
             <PropertyRef Name="Id" />
@@ -934,6 +946,18 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
             </Principal>
             <Dependent Role="Product_ProductComponent_Mapping">
               <PropertyRef Name="ComponentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TaxRate_TaxCategory">
+          <End Role="TaxCategory" Type="Self.TaxCategory" Multiplicity="1" />
+          <End Role="TaxRate" Type="Self.TaxRate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaxCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TaxRate">
+              <PropertyRef Name="TaxCategoryId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1383,6 +1407,7 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <EntitySet Name="SpecificationAttributeOption" EntityType="Self.SpecificationAttributeOption" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StateProvince" EntityType="Self.StateProvince" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TaxCategory" EntityType="Self.TaxCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TaxRate" EntityType="Self.TaxRate" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UrlRecord" EntityType="Self.UrlRecord" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Warehouse" EntityType="Self.Warehouse" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Discount_AppliedToCategories" EntityType="Self.Discount_AppliedToCategories" store:Type="Tables" store:Schema="dbo">
@@ -1462,6 +1487,10 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <AssociationSet Name="FK_Product_ProductComponent_Mapping_ProductComponents" Association="Self.FK_Product_ProductComponent_Mapping_ProductComponents">
             <End Role="ProductComponent" EntitySet="ProductComponent" />
             <End Role="Product_ProductComponent_Mapping" EntitySet="Product_ProductComponent_Mapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TaxRate_TaxCategory" Association="Self.FK_TaxRate_TaxCategory">
+            <End Role="TaxCategory" EntitySet="TaxCategory" />
+            <End Role="TaxRate" EntitySet="TaxRate" />
           </AssociationSet>
           <AssociationSet Name="FK_Warehouse_Address" Association="Self.FK_Warehouse_Address">
             <End Role="Address" EntitySet="Address" />
@@ -1937,6 +1966,11 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <AssociationSet Name="FK_Warehouse_Address" Association="OrbioAdminModel.FK_Warehouse_Address">
             <End Role="Address" EntitySet="Addresses" />
             <End Role="Warehouse" EntitySet="Warehouses" />
+          </AssociationSet>
+          <EntitySet Name="TaxRates" EntityType="OrbioAdminModel.TaxRate" />
+          <AssociationSet Name="FK_TaxRate_TaxCategory" Association="OrbioAdminModel.FK_TaxRate_TaxCategory">
+            <End Role="TaxCategory" EntitySet="TaxCategories" />
+            <End Role="TaxRate" EntitySet="TaxRates" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="CustomerRole">
@@ -2767,6 +2801,7 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <Property Name="Name" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
           <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
           <NavigationProperty Name="CheckoutAttributes" Relationship="OrbioAdminModel.FK_CheckoutAttribute_TaxCategory" FromRole="TaxCategory" ToRole="CheckoutAttribute" />
+          <NavigationProperty Name="TaxRates" Relationship="OrbioAdminModel.FK_TaxRate_TaxCategory" FromRole="TaxCategory" ToRole="TaxRate" />
         </EntityType>
         <Association Name="FK_CheckoutAttribute_TaxCategory">
           <End Type="OrbioAdminModel.TaxCategory" Role="TaxCategory" Multiplicity="1" />
@@ -3228,6 +3263,31 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
             </Principal>
             <Dependent Role="Warehouse">
               <PropertyRef Name="AddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TaxRate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StoreId" Type="Int32" Nullable="false" />
+          <Property Name="TaxCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="CountryId" Type="Int32" Nullable="false" />
+          <Property Name="StateProvinceId" Type="Int32" Nullable="false" />
+          <Property Name="Zip" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Percentage" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <NavigationProperty Name="TaxCategory" Relationship="OrbioAdminModel.FK_TaxRate_TaxCategory" FromRole="TaxRate" ToRole="TaxCategory" />
+        </EntityType>
+        <Association Name="FK_TaxRate_TaxCategory">
+          <End Type="OrbioAdminModel.TaxCategory" Role="TaxCategory" Multiplicity="1" />
+          <End Type="OrbioAdminModel.TaxRate" Role="TaxRate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaxCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TaxRate">
+              <PropertyRef Name="TaxCategoryId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3984,6 +4044,19 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
               <MappingFragment StoreEntitySet="Warehouse">
                 <ScalarProperty Name="AddressId" ColumnName="AddressId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaxRates">
+            <EntityTypeMapping TypeName="OrbioAdminModel.TaxRate">
+              <MappingFragment StoreEntitySet="TaxRate">
+                <ScalarProperty Name="Percentage" ColumnName="Percentage" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="StateProvinceId" ColumnName="StateProvinceId" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="TaxCategoryId" ColumnName="TaxCategoryId" />
+                <ScalarProperty Name="StoreId" ColumnName="StoreId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

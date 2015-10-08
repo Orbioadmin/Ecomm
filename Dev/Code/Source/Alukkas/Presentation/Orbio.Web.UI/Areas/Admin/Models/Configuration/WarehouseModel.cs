@@ -7,14 +7,14 @@ using System.Web;
 
 namespace Orbio.Web.UI.Areas.Admin.Models.Configuration
 {
-    public class ShippingModel
+    public class WarehouseModel
     {
-        public ShippingModel()
+        public WarehouseModel()
         {
             this.WarehouseDetails = new AddressModel();
         }
 
-        public ShippingModel(Warehouse result)
+        public WarehouseModel(Warehouse result)
         {
             Id = result.Id;
             Name = result.Name;

@@ -257,9 +257,6 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
            return RedirectToAction("EditManufacturers", new { id});
         }
 
-
-
-
         #endregion
 
         /// <summary>

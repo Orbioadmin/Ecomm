@@ -14,5 +14,7 @@ namespace Orbio.Services.Admin.Customers
         int UpdateSubscribers(int id, string email, bool active);
 
         int AddSubscribers(List<string> Emails);
+
+        void Delete(int id);
     }
 }

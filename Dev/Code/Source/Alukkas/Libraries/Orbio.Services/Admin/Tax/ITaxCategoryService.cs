@@ -11,5 +11,9 @@ namespace Orbio.Services.Admin.Tax
     {
         //Get all tax categories
         List<TaxCategory> GetAllTaxCategories();
+
+        void AddOrUpdate(int id, string name, int displayOrder, decimal taxRate);
+
+        void Delete(int id);
     }
 }

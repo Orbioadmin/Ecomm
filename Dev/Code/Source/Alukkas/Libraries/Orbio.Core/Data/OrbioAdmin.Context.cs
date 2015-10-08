@@ -71,6 +71,7 @@ namespace Orbio.Core.Data
         public virtual DbSet<ProductComponent> ProductComponents { get; set; }
         public virtual DbSet<ProductReview> ProductReviews { get; set; }
         public virtual DbSet<Warehouse> Warehouses { get; set; }
+        public virtual DbSet<TaxRate> TaxRates { get; set; }
     
         public virtual ObjectResult<Order> usp_Get_AdminOrderDetails(Nullable<int> orderStatusId, Nullable<int> paymentStatusId, Nullable<int> shippingStatusId, Nullable<int> customerId, Nullable<System.DateTime> createdFromUtc, Nullable<System.DateTime> createdToUtc, string billingEmail, Nullable<int> orderNo)
         {

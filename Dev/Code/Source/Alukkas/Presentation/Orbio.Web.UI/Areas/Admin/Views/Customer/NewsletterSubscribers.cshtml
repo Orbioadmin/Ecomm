@@ -8,24 +8,19 @@
 <div class="container">
     <div class="main_edit_order" style="padding-bottom :15px">
         <span class="edit_order_details"><span class="shipmen_icon"></span><a href="">Newsletter Subscribers</a></span>
-        <span class="back_to_order" style="padding-top:0px;width:28%">
+        <span class="back_to_order" style="padding-top:0px;width:22%">
             <a href="@Url.Action("Exporttocsv","Customer")"><input type="button" value="Export to CSV" class="add_cat_button" style="float:left"></a>
             @*</span>*@
             @using (Html.BeginForm("ImportFromCSV", "Customer", FormMethod.Post, new {@id="fileupload", enctype = "multipart/form-data" }))
             {
-                @*<span class="back_to_order" style="padding-top:0px">*@
-    @*<input type="file" class="filestyle" data-input="false" id="filestyleupload" name="importcsvfile" tabindex="-1" style="position: absolute; clip: rect(0px 0px 0px 0px);" />
+    <input type="file" class="filestyle" data-input="false" id="filestyleupload" name="importcsvfile" tabindex="-1" style="position: absolute; clip: rect(0px 0px 0px 0px);" />
     <div class="bootstrap-filestyle input-group">
         <span class="group-span-filestyle " tabindex="0">
             <label for="filestyleupload">
-                <span class="delete_cat_button" style="float:right;margin-left:10px;">Import for csv</span>
+                <span class="delete_cat_button" style="float:right;margin-left:10px;">Import from CSV</span>
             </label>
         </span>
-            </div>*@
-
-    <input type="submit" name="Submit" id="Submit" value="Import from CSV" class="delete_cat_button" style="float:left;margin-left:10px" />
-            <input type="file" name="importcsvfile" id="add_cat_button" style="float:right" />
-
+            </div>
             }
         </span>
 </div>
@@ -49,21 +44,28 @@
 
 
 @section scripts{
-    @*<script>
-        $("document").ready(function(){
-            $("#filestyleupload").change(function (e) {
-                var file = document.getElementById("filestyleupload").value;
+
+<script>
+        $("#filestyleupload").change(function (e) {
+            var data = new FormData();
+            var files = $("#filestyleupload").get(0).files;
+            if (files.length > 0) {
+                data.append("UploadedFile", files[0]);
+            }
             $.ajax({
-                data: { importedFile: file },
-                url: '@Url.Action("ImportFromCSV", "Customer")',
-                cache: false,
                 type: "POST",
+                url: '@Url.Action("ImportFromCSV", "Customer")',
+                data: data,
+                cache: false,
+                contentType: false,
+                processData: false,
                 success: function (data) {
                     location.reload();
                 }
             });
-    });
-    });
-    </script>*@
+        });
+
+</script>
+
 }
 
