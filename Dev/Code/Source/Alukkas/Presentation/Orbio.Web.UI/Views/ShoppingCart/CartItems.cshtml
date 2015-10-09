@@ -6,16 +6,18 @@
 {
     if (workContext.CurrentCustomer.Gender == "M")
     {
-        <li class="icon-cart"><a href="@Url.Action("MyAccount", "Customer")"><span class="icon-span">My account</span><i class="men_icon"></i></a></li>
+        <li class="icon-cart after-login"><a href="@Url.Action("MyAccount", "Customer")"><span class="icon-span">My account</span><i class="men_icon"></i></a></li>
     }
     else
     {
-        <li class="icon-cart"><a href="@Url.Action("MyAccount", "Customer")"><span class="icon-span">My account</span><i class="women_icon"></i></a></li>
+        <li class="icon-cart after-login"><a href="@Url.Action("MyAccount", "Customer")"><span class="icon-span">My account</span><i class="women_icon"></i></a></li>
     }
-    <li class="icon-cart"><a href="@Url.RouteUrl("ShoppingCart")"><span class="icon-span">My Cart</span><i class="cart-icon"></i><span>@(Model.ItemCount)</span></a></li>
-    <li class="icon-cart"><a href="~/Customer/MyAccount#mywishlist" class="mywish"><span class="icon-span">My Wishlist</span><i class="cart-wish"></i></a></li>
+    <li class="icon-cart hidden-desk search-set"><a><span class="icon-span">Search</span><i class="search-icon"></i></a></li>
+    <li class="icon-cart after-login"><a href="@Url.RouteUrl("ShoppingCart")"><span class="icon-span">My Cart</span><i class="cart-icon"></i><span>@(Model.ItemCount)</span></a></li>
+    <li class="icon-cart after-login"><a href="~/Customer/MyAccount#mywishlist" class="mywish"><span class="icon-span">My Wishlist</span><i class="cart-wish"></i></a></li>
 }
 else
 {
+    <li class="icon-cart hidden-desk search-set"><a><span class="icon-span">Search</span><i class="search-icon"></i></a></li>
     <li class="icon-cart before-login"><a href="@Url.RouteUrl("ShoppingCart")"><span class="icon-span">Cart</span><i class="cart-icon"></i><span>@(Model.ItemCount)</span></a></li>
 }

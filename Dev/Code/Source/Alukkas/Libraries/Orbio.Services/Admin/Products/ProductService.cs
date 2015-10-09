@@ -53,6 +53,18 @@ namespace Orbio.Services.Admin.Products
         }
 
         /// <summary>
+        /// Get all Product List
+        /// </summary>
+        /// <returns></returns>
+        public List<Product> GetAllProducts()
+        {
+            using (var context = new OrbioAdminContext())
+            {
+                var result = context.Products.Where(p=>p.Deleted != true).ToList();
+                return result;
+            }
+        }
+        /// <summary>
         /// Get product details by id
         /// </summary>
         /// <param name="id"></param>
@@ -108,6 +120,57 @@ namespace Orbio.Services.Admin.Products
             {
                 var result = context.ProductTags.ToList();
                 return result;
+            }
+        }
+
+        /// <summary>
+        /// Insert to product picture mapping
+        /// </summary>
+        /// <param name="productPicture"></param>
+        public void InsertToProductPictureMapping(Product_Picture_Mapping productPicture)
+        {
+            using (var context = new OrbioAdminContext())
+            {
+                context.Product_Picture_Mapping.Add(productPicture);
+                context.SaveChanges();
+            }
+        }
+        /// <summary>
+        /// Update product picture display order
+        /// </summary>
+        /// <param name="pictureIds"></param>
+        public void UpdatePictureDisplayOrder(int[] pictureIds)
+        {
+            var pictureIdsXml = Serializer.GenericSerializer(pictureIds);
+            dbContext.ExecuteFunction<Product_Picture_Mapping>("usp_UpdateProductPicture", new SqlParameter() { ParameterName = "@pictureIdsXml", Value = pictureIdsXml, DbType = System.Data.DbType.Xml });
+        }
+
+        /// <summary>
+        /// Delete produc picture
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        public int DeleteProductPicture(int Id)
+        {
+            using (var context = new OrbioAdminContext())
+            {
+                try
+                {
+                    var query = context.Product_Picture_Mapping.Where(m => m.Id == Id).FirstOrDefault();
+                    if (query != null)
+                    {
+                        context.Product_Picture_Mapping.Remove(query);
+                        context.SaveChanges();
+                        var productPicture = context.Product_Picture_Mapping.Where(p => p.Id > Id).ToList();
+                        productPicture.ForEach(a => a.DisplayOrder = (a.DisplayOrder - 1));
+                        context.SaveChanges();
+                    }
+                    return 1;
+                }
+                catch (Exception)
+                {
+                    return 0;
+                }
             }
         }
         #endregion

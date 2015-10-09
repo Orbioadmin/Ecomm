@@ -1,0 +1,88 @@
+﻿
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+
+        $("#fileUpload").change(function () {
+            uploadImage();
+        });
+
+        $("#RemoveImage").click(function () {
+            var id = $("#PictureModel_PictureId").val();
+            $.ajax({
+                type: "POST",
+                url: '@(Url.Action("RemoveImage", "Picture"))?id=' + id,
+                success: function (result) {
+                    $("#fileUpload").val("");
+                    $('#uploadImg').attr("src", "../../../Areas/Admin/images/thumbs/default-image.gif");
+                    $("#pictureUpload").css("display", "");
+                },
+                error: function (xhr) {
+                    alert("Error has occurred..");
+                }
+            });
+        });
+
+        function uploadImage() {
+
+            var data = new FormData();
+
+            var files = $("#fileUpload").get(0).files;
+
+            // Add the uploaded image content to the form data collection
+            if (files.length > 0) {
+                data.append("UploadedImage", files[0]);
+            }
+
+            // Make Ajax request with the contentType = false, and procesDate = false
+             $.ajax({
+                type: "POST",
+                url: "/Picture/uploadImg",
+                contentType: false,
+                processData: false,
+                data: data,
+                success: function (result) {
+                    var json = JSON.parse(result);
+                    $("#PictureModel_PictureId").val(json.pictureId)
+                    $('#uploadImg').attr("src", json.imageUrl);
+                    $('#RemoveImage').prop("disabled", false);
+                    $("#fileUpload").val("");
+                    $("#pictureUpload").css("display", "none");
+             },
+             error: function (xhr) {
+                 alert("Error has occurred..");
+             }
+            });
+        }
+        });
+</script>
+<style>
+    .product_add_cart tbody td {
+        padding: 14px 0px;
+    }
+</style>
+<div class="col-md-12">
+    <h3>Upload New Picture</h3>
+    <table class="product_add_cart uploadFile">
+        <tr>
+            <td id="pictureUpload">
+                <img src="~/Areas/Admin/images/upload.png" alt="" />
+                <input type="file" id="fileUpload" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <img id="uploadImg" src="~/Areas/Admin/images/thumbs/default-image.gif">
+            </td>
+        </tr>
+        <tr>
+            <td style="float:left;position:relative;left:65px">
+                <input type="submit" value="Upload" id="UploadProductImage" name="UploadProductImage" class="add_product_submit" />
+            </td>
+            <td id="removeImage" style="float:left;position: relative;left: 104px;">
+                <input type="button" value="Cancel" id="RemoveImage" name="RemoveImage" class="add_product_submit" disabled="disabled" />
+            </td>
+        </tr>
+    </table>
+</div>

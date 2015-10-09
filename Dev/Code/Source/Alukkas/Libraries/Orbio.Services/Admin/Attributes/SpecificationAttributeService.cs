@@ -114,6 +114,16 @@ namespace Orbio.Services.Admin.Attributes
             }
         }
 
+
+        public List<SpecificationAttributeOption> GetSpecificationAttributeOptionBySpecId(int Id)
+        {
+            using (var context = new OrbioAdminContext())
+            {
+                var result = context.SpecificationAttributeOptions.Where(m => m.SpecificationAttributeId == Id).ToList();
+                return result;
+            }
+        }
+
         public  int AddSpecificationOption(int Id,string Name,int DisplayOrder,int SpecificationAttributeId)
         {
             using (var context = new OrbioAdminContext())

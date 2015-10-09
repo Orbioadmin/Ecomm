@@ -72,25 +72,25 @@ namespace Orbio.Services.Catalog
 
 
         /// <summary>
-        /// gets all associated products by product id
+        /// gets all similar products by product id
         /// </summary>
         /// <param name="productid">the product id</param>
         /// <returns>list of products</returns>
-        public AssociatedProduct GetAssociatedProductsById(int productId)
+        public SimilarProduct GetSimilarProductsById(int productId)
         {
             var sqlParamList = new List<SqlParameter>();
             sqlParamList.Add(new SqlParameter() { ParameterName = "@productid", Value = productId, DbType = System.Data.DbType.Int32 });
 
-            var result = context.ExecuteFunction<XmlResultSet>("usp_Catalog_AssociatedProducts",
+            var result = context.ExecuteFunction<XmlResultSet>("usp_Catalog_SimilarProducts",
                 sqlParamList.ToArray()
                 ).FirstOrDefault();
             if (result != null)
             {
-                var associatedProduct = Serializer.GenericDeSerializer<AssociatedProduct>(result.XmlResult);
+                var associatedProduct = Serializer.GenericDeSerializer<SimilarProduct>(result.XmlResult);
                 return associatedProduct;
             }
 
-            return new AssociatedProduct();
+            return new SimilarProduct();
         }
 
         public int InsertReviews(int id, int productId, bool isApproved, string reviewTitle, string reviewText, int rating, string customerName)

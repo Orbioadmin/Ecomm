@@ -117,7 +117,7 @@ ul, li{list-style: none; margin: 0; padding: 0;}
 .varient_align{text-align: left;}
 .first_row td{background-color:#f3f8fa;}
 .second_row td{background-color:#f4fbfd;}
-.add_new_projects{background-color:#f4fbfd;padding-bottom: 22px;border:1px solid #9fd2eb;margin-top: 10px}
+.add_new_projects{background-color:#f4fbfd;padding-bottom: 22px;border:2px solid #9fd2eb;margin-top: 10px;border-radius: 10px !important;}
 .add_new_projects h3{font-size: 18px ;text-transform:uppercase;color:#0082c7;font-family: 'Roboto-Bold';}
 .text_sku{width:223px;height: 37px;    margin: 7px 0px 16px 0px;border:1px solid #d8d8d8;font-size: 13px;font-family: 'Roboto-Regular';}
 .choose-varient{width:223px ;height:37px;margin: 10px 0px 16px 0px;border:1px solid #d8d8d8;font-size: 13px;font-family: 'Roboto-Regular';}
@@ -604,3 +604,22 @@ body{padding-bottom:35px!important;}
     background: #fff;}
 
 .panel.panel-default .panel-body .panel-body{background:#ffffff; padding:5px;}
+
+.uploadFile {
+  position: relative;
+  overflow: hidden;
+  float: left;
+  clear: left;
+}
+.uploadFile input[type="file"] {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0;
+  font-size: 100px;
+  filter: alpha(opacity=0);
+  cursor: pointer;
+}
+.product_add_tab_main.new { margin-top: 0px;}.itabN1 a{padding:7px 0;}
+

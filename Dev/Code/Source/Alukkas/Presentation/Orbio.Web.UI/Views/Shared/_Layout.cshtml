@@ -146,7 +146,20 @@
         $('.second-account').removeClass('active in');
         $('.first-account').removeClass('active in');
     });
-        </script>
+
+    if($(window).width() < 767){
+        var all = $('.Footer_top .col-md-3.col-sm-3 ul').hide();
+        $('.Footer_top .col-md-3.col-sm-3 h1').click(function(){
+            $(this).parent().toggleClass('active').siblings().removeClass('active');
+            var n = $(this).next('ul');
+            $(n).slideToggle('slow');
+            $('.Footer_top .col-md-3.col-sm-3 ul').not(n).slideUp('slow');
+            return false;
+        });
+    }
+
+    </script>
+
             @section scripts {
 
             }

@@ -15,6 +15,9 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
+using Orbio.Services.Admin.Media;
+using System.Web.Script.Serialization;
+using Orbio.Services.Admin.Attributes;
 
 namespace Orbio.Web.UI.Areas.Admin.Controllers
 {
@@ -27,16 +30,21 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         public readonly IProductService _productService;
         public readonly IShippingService _shippingService;
         public readonly ITaxCategoryService _taxCategoryService;
+        public readonly IPictureService _pictureService;
+        public readonly ISpecificationAttributeService _specificationAttributeService;
         #endregion
 
         #region Constructors
-        public ProductController(ICategoryServices categoryService, IManufacturerService manufatureService, IProductService productService, IShippingService shippingService, ITaxCategoryService taxCategoryService)
+        public ProductController(ICategoryServices categoryService, IManufacturerService manufatureService, IProductService productService, IShippingService shippingService, ITaxCategoryService taxCategoryService,
+            IPictureService pictureService, ISpecificationAttributeService specificationAttributeService)
         {
             this._categoryService = categoryService;
             this._manufatureService = manufatureService;
             this._productService = productService;
             this._shippingService = shippingService;
             this._taxCategoryService = taxCategoryService;
+            this._pictureService = pictureService;
+            this._specificationAttributeService = specificationAttributeService;
         }
         #endregion
 
@@ -97,7 +105,9 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                 seName = model.SeName,
                 productTags = model.SelectedProductTags,
                 catgoryIds = model.SelectedCategories,
-                manufactureIds = model.SelectedManufature
+                manufactureIds = model.SelectedManufature,
+                relatedProductIds = model.SelectedRelatedProducts,
+                similarProductIds = model.SelectedSimilarProducts,
             };
             _productService.InsertNewProduct(productDetails);
             return RedirectToAction("List");
@@ -113,6 +123,9 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                 //No product found with the specified id
                 return RedirectToAction("List");
             var model = product.ToModel();
+            model.Pictures = (from p in product.Product_Picture_Mapping
+                              orderby p.DisplayOrder ascending
+                           select p).ToList();
             PrepareProductModel(model, product);
             return View(model);
         }
@@ -132,78 +145,6 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
 
             return RedirectToAction("List");
 
-        }
-
-        [HttpParamAction]
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult uploadImg()
-        {
-            Stream stream = null;
-            var fileName = "";
-            var contentType = "";
-            if (String.IsNullOrEmpty(Request["qqfile"]))
-            {
-                // IE
-                HttpPostedFileBase httpPostedFile = Request.Files[0];
-                if (httpPostedFile == null)
-                    throw new ArgumentException("No file uploaded");
-                stream = httpPostedFile.InputStream;
-                fileName = Path.GetFileName(httpPostedFile.FileName);
-                contentType = httpPostedFile.ContentType;
-            }
-            else
-            {
-                //Webkit, Mozilla
-                stream = Request.InputStream;
-                fileName = Request["qqfile"];
-                HttpPostedFileBase file = Request.Files["qqfile"];
-                string path = System.IO.Path.Combine(
-                       Server.MapPath("~/Areas/Admin/images/"), fileName);
-
-                file.SaveAs(path);
-            }
-
-            var fileBinary = new byte[stream.Length];
-            stream.Read(fileBinary, 0, fileBinary.Length);
-
-            var fileExtension = Path.GetExtension(fileName);
-            if (!String.IsNullOrEmpty(fileExtension))
-                fileExtension = fileExtension.ToLowerInvariant();
-            //contentType is not always available 
-            //that's why we manually update it here
-            //http://www.sfsu.edu/training/mimetype.htm
-            if (String.IsNullOrEmpty(contentType))
-            {
-                switch (fileExtension)
-                {
-                    case ".bmp":
-                        contentType = "image/bmp";
-                        break;
-                    case ".gif":
-                        contentType = "image/gif";
-                        break;
-                    case ".jpeg":
-                    case ".jpg":
-                    case ".jpe":
-                    case ".jfif":
-                    case ".pjpeg":
-                    case ".pjp":
-                        contentType = "image/jpeg";
-                        break;
-                    case ".png":
-                        contentType = "image/png";
-                        break;
-                    case ".tiff":
-                    case ".tif":
-                        contentType = "image/tiff";
-                        break;
-                    default:
-                        break;
-                }
-            }
-
-
-            return RedirectToAction("List");
         }
 
         protected void PrepareProductModel(Orbio.Web.UI.Areas.Admin.Models.Product.ProductModel model, Product product)
@@ -297,12 +238,47 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                 });
             }
 
+            //Related Products
+            var relatedProducts = _productService.GetAllProducts();
+            foreach (var relatedProduct in relatedProducts)
+            {
+                model.AvailableRelatedProducts.Add(new SelectListItem()
+                {
+                    Text = relatedProduct.Name,
+                    Value = relatedProduct.Id.ToString()
+                });
+            }
+
+            //Similar Products
+            var similarProducts = _productService.GetAllProducts();
+            foreach (var similarProduct in similarProducts)
+            {
+                model.AvailableSimilarProducts.Add(new SelectListItem()
+                {
+                    Text = similarProduct.Name,
+                    Value = similarProduct.Id.ToString()
+                });
+            }
+
             //tax categories
             var taxCategories = _taxCategoryService.GetAllTaxCategories();
             model.AvailableTaxCategories.Add(new SelectListItem() { Text = "---", Value = "0" });
             foreach (var tc in taxCategories)
                 model.AvailableTaxCategories.Add(new SelectListItem() { Text = tc.Name, Value = tc.Id.ToString() });
 
+            //specification attributes
+            var specificationAttributes = _specificationAttributeService.GetSpecificationAttributes();
+            for (int i = 0; i < specificationAttributes.Count; i++)
+            {
+                var sa = specificationAttributes[i];
+                model.AddSpecificationAttributeModel.AvailableAttributes.Add(new SelectListItem() { Text = sa.Name, Value = sa.Id.ToString() });
+                if (i == 0)
+                {
+                    //attribute options
+                    foreach(var sao in _specificationAttributeService.GetSpecificationAttributeOptionBySpecId(sa.Id))
+                        model.AddSpecificationAttributeModel.AvailableOptions.Add(new SelectListItem() { Text = sao.Name, Value = sao.Id.ToString() });
+                }
+            }
 
             //default values
                 model.StockQuantity = 10000;
@@ -312,6 +288,43 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                 model.IsShipEnabled = false;
                 model.AllowCustomerReviews = true;
                 model.Published = true;
+        }
+
+        #endregion
+
+        #region Product Image
+        [HttpParamAction]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult UploadProductImage(Orbio.Web.UI.Areas.Admin.Models.Product.ProductModel model)
+        {
+            var product = _productService.GetProductById(model.Id);
+            var pictureCount = (from p in product.Product_Picture_Mapping
+                                select p).LastOrDefault();
+            int displayOrder = (pictureCount != null) ? pictureCount.DisplayOrder : 0;
+            var productPicture = new Product_Picture_Mapping
+            {
+                ProductId = model.Id,
+                PictureId = model.PictureModel.PictureId,
+                DisplayOrder = displayOrder + 1
+            };
+            _productService.InsertToProductPictureMapping(productPicture);
+            return RedirectToAction("Edit", "Product", new { id = model.Id });
+        }
+
+        [HttpPost]
+        public ActionResult UpdatePicture(FormCollection formCollection)
+        {
+            var value = formCollection["Ids"];
+            object[] ids = System.Web.Helpers.Json.Decode(value);
+            int[] pictureIds = ids.Select(n => Convert.ToInt32(n)).ToArray();
+            _productService.UpdatePictureDisplayOrder(pictureIds);
+            return RedirectToAction("List");
+        }
+
+        public ActionResult DeleteProductPicture(int id, int productId)
+        {
+            _productService.DeleteProductPicture(id);
+            return RedirectToAction("Edit", "Product", new { id = productId });
         }
 
         #endregion

@@ -22,5 +22,7 @@ namespace Orbio.Services.Admin.Attributes
         SpecificationAttributeOption GetSpecificationAttributeOptionById(int Id);
 
         int AddSpecificationOption(int Id,string Name,int DisplayOrder,int SpecificationAttributeId);
+
+        List<SpecificationAttributeOption> GetSpecificationAttributeOptionBySpecId(int Id);
     }
 }

@@ -17,5 +17,9 @@ namespace Orbio.Core.Domain.Admin.Product
         public int[] catgoryIds { get; set; }
 
         public int[] manufactureIds { get; set; }
+
+        public int[] relatedProductIds { get; set; }
+
+        public int[] similarProductIds { get; set; }
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Orbio.Core.Domain.Catalog
 {
     [DataContract]
-    public class AssociatedProduct
+    public class SimilarProduct
     {
         /// <summary>
         /// Gets or sets products

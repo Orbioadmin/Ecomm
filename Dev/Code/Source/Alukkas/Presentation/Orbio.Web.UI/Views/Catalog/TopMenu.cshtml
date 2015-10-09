@@ -8,7 +8,7 @@
 <div class="top-menu-new">
     <div class="container">
         <div class="col-md-6 col-sm-6 col-xs-12">
-            <p>07 SEP 2015 - 22k Gold/gm | Kerala: 2560.00(15) | TAMILNADU: 2569.00(14)</p>
+            <p>07 SEP 2015 - 22k Gold/gm | Rs.2400.00</p>
         </div>
         <div class="col-md-6 col-sm-6 col-xs-12">
             <ul class="top-rgt pull-right">
@@ -22,7 +22,6 @@
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                            @*<li><a href="@Url.Action("MyAccount", "Customer")">Profile</a></li>*@
                             <li><a href="@Url.Action("LogOut", "Account")">Logout</a></li>
                         </ul>
                     </div>
@@ -30,13 +29,13 @@
                        }
                 else
                 {
-                    <li class="log-in">
-                        <a href="@Url.Action("Register", "Account")"><i class="fa fa-user"></i>Register</a>
-                    </li>
-                    <li class="log-in">
-                        <a href="@Url.Action("Login", "Account")" class="mywish"><i class="fa fa-sign-in"></i>Login</a>
-                    </li>
-                }
+                <li class="log-in">
+                    <a href="@Url.Action("Register", "Account")"><i class="fa fa-user"></i>Register</a>
+                </li>
+                <li class="log-in">
+                    <a href="@Url.Action("Login", "Account")" class="mywish"><i class="fa fa-sign-in"></i>Login</a>
+                </li>
+                    }
             </ul>
         </div>
     </div>
@@ -48,7 +47,7 @@
         </div>
         @Html.Action("SearchBox", "Catalog")
 
-        <div class=" collapse head_main in">
+        <div class=" collapse head_main in ">
             <ul id="cart_item" class="nav navbar-nav navbar-right">
                 @*<li class="icon-cart"><i class="cart-icon"></i><span>5</span></li>*@
                 @Html.Action("CartItem", "ShoppingCart")
@@ -89,10 +88,18 @@
                                         <div class="">
                                             @foreach (var subCategory in category.SubCategories)
                                             {
-                                                <div class="col-sm-3">
+                                                <div class="col-sm-2">
                                                     @RenderSubCategoryLine(subCategory)
                                                 </div>
+												
                                             }
+											    <div class="test">
+
+                                                <a href="#">
+                                                    <img class="menu-img" src="~/images/Basic_image/Sub-banner1.jpg">
+                                                </a>
+
+                                            </div>
                                         </div>
                                     </div>
                                 </li>
@@ -146,14 +153,15 @@
                         }
                     }
                 </ul>
-                @if (workContext.CurrentCustomer.IsAdmin)
+                
+
+            </div><!--/.nav-collapse -->
+            @if (workContext.CurrentCustomer.IsAdmin)
                 {
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul class="nav navbar-nav navbar-right admin-link">
                         <li><a href="~/Admin">Administrator</a></li>
                     </ul>
                 }
-
-            </div><!--/.nav-collapse -->
         </div>
     </div>
 </div>
@@ -200,4 +208,11 @@
     $('ul.unstyled').each(function () {
         $(this).children('li').slice(7).hide();
     });
+
+    if($(window).width() < 767 ){
+     $('.select_menu').hide();
+    $('.search-set').click(function(){
+      $('.select_menu').slideToggle();
+    });
+    }
 </script>

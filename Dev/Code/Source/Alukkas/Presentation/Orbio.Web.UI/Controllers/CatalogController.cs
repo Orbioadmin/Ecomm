@@ -585,9 +585,9 @@ namespace Orbio.Web.UI.Controllers
         }
 
         [ChildActionOnly]
-        public ActionResult AssociatedProducts(int productId)
+        public ActionResult SimilarProducts(int productId)
         {
-            var model = PrepareAssociatedProductdetailsModel(productId);
+            var model = PrepareSimilarProductdetailsModel(productId);
 
             return PartialView(model.ProductDetail);
         }
@@ -765,9 +765,9 @@ namespace Orbio.Web.UI.Controllers
 
             return model;
         }
-        private AssociatedProductsModel PrepareAssociatedProductdetailsModel(int productId)
+        private SimilarProductsModel PrepareSimilarProductdetailsModel(int productId)
         {
-            var model = new AssociatedProductsModel(productService.GetAssociatedProductsById(productId));
+            var model = new SimilarProductsModel(productService.GetSimilarProductsById(productId));
 
             return model;
         }

@@ -17,108 +17,94 @@
                 <li><input type="submit" class="prev_button" value="Save"></li>
                 @*<li><input type="button" class="prev_button" value="Save & Continue Edit"></li>*@
                 @*<li><input type="button" class="prev_button" value="Copy Product"></li>*@
-                 <li><input type="button" class="prev_button" value="Delete"></li>
+                <li><input type="button" class="prev_button" value="Delete"></li>
             </ul>
         </div>
         <div class="moving_menu_main">
             <div class="srlBx">
-                <a href="#null" onmouseover="scrollDivRight('HomeMarquee_srlCont')" onmouseout="stopMe()" class="srlLt"></a>
+                
                 <div id="HomeMarquee_srlCont" class="srlContHome">
-                    <div id="srlData" style="width:1729px;">
-                        <ul class="itabN1" id="myTab" role="tablist">
+                    <div id="srlData">
+                        <ul class="itabN1 clearfix" id="myTab" role="tablist">
                             <li role="presentation" class="active">
-                                <a href="#productinfo" class="" aria-expanded="true" aria-controls="based" data-toggle="tab" role="tab" id="home-tab">
-                                    <div class="">Product info</div>
+                                <a href="#productinfo" class="" aria-expanded="true" data-toggle="tab" role="tab">
+                                    Product info
                                 </a>
                             </li>
                             <li role="presentation">
-                                <a href="#seo" class="" aria-controls="profile" data-toggle="tab" id="profile-tab" role="tab">
-                                    <div class="">SEO</div>
+                                <a href="#seo" class="" data-toggle="tab" role="tab" aria-expanded="true">
+                                    SEO
                                 </a>
                             </li>
                             <li role="presentation">
-                                <a href="#pictures" class="" aria-controls="profile" data-toggle="tab" id="profile-tab" role="tab">
-                                    <div class="">Pictures</div>
+                                <a href="#pictures" class="" data-toggle="tab" role="tab" aria-expanded="false">
+                                    Pictures
                                 </a>
                             </li>
                             <li role="presentation">
-                                <a href="#categorey" class="" aria-controls="profile" data-toggle="tab" id="profile-tab" role="tab">
-                                    <div class="">Category Mappings</div>
+                                <a href="#specification" class="" data-toggle="tab" role="tab" aria-expanded="false">
+                                    Specification Attributes
                                 </a>
                             </li>
                             <li role="presentation">
-                                <a href="#mapping" class="" aria-controls="profile" data-toggle="tab" id="profile-tab" role="tab">
-                                    <div class="">Manufacturer Mappings</div>
+                                <a href="#attribute" class="" data-toggle="tab" role="tab" aria-expanded="false">
+                                    Products Attributes
                                 </a>
                             </li>
                             <li role="presentation">
-                                <a href="#specification" class="" aria-controls="profile" data-toggle="tab" id="profile-tab" role="tab">
-                                    <div class="">Specification Attributes</div>
+                                <a href="#productcomponent" class="" data-toggle="tab" role="tab" aria-expanded="false">
+                                    Product Component
                                 </a>
                             </li>
                             <li role="presentation">
-                                <a href="#attribute" class="" aria-controls="profile" data-toggle="tab" id="profile-tab" role="tab">
-                                    <div class="">Products Attributes</div>
+                                <a href="#pricecomponent" class="" data-toggle="tab" role="tab" aria-expanded="false">
+                                    Price Component
                                 </a>
                             </li>
                             <li role="presentation">
-                                <a href="#productcomponent" class="" aria-controls="profile" data-toggle="tab" id="profile-tab" role="tab">
-                                    <div class="">Product Component</div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#pricecomponent" class="" aria-controls="profile" data-toggle="tab" id="profile-tab" role="tab">
-                                    <div class="">Price Component</div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#acl" class="" aria-controls="profile" data-toggle="tab" id="profile-tab" role="tab">
-                                    <div class="">Access Control List</div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#stores" class="" aria-controls="profile" data-toggle="tab" id="profile-tab" role="tab">
-                                    <div class="">Stores</div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#related" class="" aria-controls="profile" data-toggle="tab" id="profile-tab" role="tab">
-                                    <div class="">Related Products</div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#crosssells" class="" aria-controls="profile" data-toggle="tab" id="profile-tab" role="tab">
-                                    <div class="">Cross-Sells</div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#assctedprdct" class="" aria-controls="profile" data-toggle="tab" id="profile-tab" role="tab">
-                                    <div class="">Associated Products</div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#purchasedwithorder" class="" aria-controls="profile" data-toggle="tab" id="profile-tab" role="tab">
-                                    <div class="">Purchased with Orders</div>
+                                <a href="#acl" class="" data-toggle="tab" role="tab" aria-expanded="false">
+                                    Access Control List
                                 </a>
                             </li>
                         </ul>
+                        <div class="tab-content product_add_tab_main new" id="myTabContent">
+                            @Html.Partial("_CreatOrUpdateInfo", Model)
+
+                            <div id="seo" class="tab-pane fade" role="tabpanel">
+                                @Html.Partial("_CreateOrUpdateSeo", Model)
+                            </div>
+                            <div id="pictures" class="tab-pane fade" role="tabpanel">
+                                @Html.Partial("_CreateOrUpdatePicture")
+                            </div>
+
+                            <div id="specification" class="tab-pane fade" role="tabpanel">
+                                @Html.Partial("_CreateOrUpdateSpecificationAttribute",Model)
+                            </div>
+
+                            <div id="attribute" class="tab-pane fade" role="tabpanel">
+
+                            </div>
+
+                            <div id="productcomponent" class="tab-pane fade" role="tabpanel">
+
+                            </div>
+
+                            <div id="pricecomponent" class="tab-pane fade" role="tabpanel">
+
+                            </div>
+
+                            <div id="acl" class="tab-pane fade" role="tabpanel">
+ 
+                            </div>
+                        </div>
                         <div class="cB"></div>
                     </div>
                 </div>
-                <a href="#null" onmouseover="scrollDivLeft('HomeMarquee_srlCont')" onmouseout="stopMe()" class="srlRt"></a>
+                
                 <div class="cB"></div>
             </div>
         </div>
-        <div class="tab-content product_add_tab_main" id="myTabContent">
-            @Html.Partial("_CreatOrUpdateInfo", Model)
 
-            <div aria-labelledby="home-tab" id="seo" class="tab-pane fade" role="tabpanel">
-                @Html.Partial("_CreateOrUpdateSeo", Model)
-            </div>
-            <div aria-labelledby="home-tab" id="pictures" class="tab-pane fade" role="tabpanel">
-                @Html.Partial("_CreateOrUpdatePicture")
-            </div>
-        </div>
 
     }
 </div>
@@ -185,26 +171,22 @@
             });
             var SpecialPriceStartDateTimeUtc = $("#SpecialPriceStartDateTimeUtc").val();
             var SpecialPriceEndDateTimeUtc = $("#SpecialPriceEndDateTimeUtc").val();
-            if (SpecialPriceStartDateTimeUtc != "")
-            {
+            if (SpecialPriceStartDateTimeUtc != "") {
                 $("#SpecialPriceStartDateTimeUtc").kendoDateTimePicker({
                     value: SpecialPriceStartDateTimeUtc
                 });
             }
-            else
-            {
+            else {
                 $("#SpecialPriceStartDateTimeUtc").kendoDateTimePicker({
                     value: new Date()
                 });
             }
-            if (SpecialPriceEndDateTimeUtc != "")
-            {
+            if (SpecialPriceEndDateTimeUtc != "") {
                 $("#SpecialPriceEndDateTimeUtc").kendoDateTimePicker({
                     value: SpecialPriceEndDateTimeUtc
                 });
             }
-            else
-            {
+            else {
                 $("#SpecialPriceEndDateTimeUtc").kendoDateTimePicker({
                     value: new Date()
                 });
@@ -212,26 +194,22 @@
 
             var AvailableStartDateTimeUtc = $("#AvailableStartDateTimeUtc").val();
             var AvailableEndDateTimeUtc = $("#AvailableEndDateTimeUtc").val();
-            if (AvailableStartDateTimeUtc != "")
-            {
+            if (AvailableStartDateTimeUtc != "") {
                 $("#AvailableStartDateTimeUtc").kendoDateTimePicker({
                     value: AvailableStartDateTimeUtc
                 });
             }
-            else
-            {
+            else {
                 $("#AvailableStartDateTimeUtc").kendoDateTimePicker({
                     value: new Date()
                 });
             }
-            if (AvailableEndDateTimeUtc != "")
-            {
+            if (AvailableEndDateTimeUtc != "") {
                 $("#AvailableEndDateTimeUtc").kendoDateTimePicker({
                     value: AvailableEndDateTimeUtc
                 });
             }
-            else
-            {
+            else {
                 $("#AvailableEndDateTimeUtc").kendoDateTimePicker({
                     value: new Date()
                 });
@@ -239,11 +217,24 @@
         });
 
     </script>
-<script type="text/javascript">
-    $(".chosen-deselect").chosen({ allow_single_deselect: true });
-    $(".chosen").chosen().change();
-    $(".chosen").trigger('liszt:updated');
-</script>
+    <script type="text/javascript">
+        $(".chosen-deselect").chosen({ allow_single_deselect: true });
+        $(".chosen").chosen().change();
+        $(".chosen").trigger('liszt:updated');
+    </script>
+
+@*<script type="text/javascript">
+    var $j = jQuery.noConflict();
+    $j(document).ready(function () {
+        $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+            localStorage.setItem('activeTab', $(e.target).attr('href'));
+        });
+        var activeTab = localStorage.getItem('activeTab');
+        if (activeTab) {
+            $('#myTab a[href="' + activeTab + '"]').tab('show');
+        }
+    });
+</script>*@
 
 }
 

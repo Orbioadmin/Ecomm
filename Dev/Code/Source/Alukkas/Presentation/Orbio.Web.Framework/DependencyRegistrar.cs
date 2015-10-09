@@ -101,7 +101,8 @@ namespace Orbio.Web.Framework
             builder.RegisterType<OBS.Admin.Discount.DiscountService>().As<OBS.Admin.Discount.IDiscountService>().InstancePerHttpRequest();
              //added by sankar
             builder.RegisterType<OBS.Admin.Products.ProductReviewService>().As<OBS.Admin.Products.IProductReviewService>().InstancePerHttpRequest();
-            
+            //added by sankar
+            builder.RegisterType<OBS.Admin.Media.PictureService>().As<OBS.Admin.Media.IPictureService>().InstancePerHttpRequest();
         }
 
         public int Order

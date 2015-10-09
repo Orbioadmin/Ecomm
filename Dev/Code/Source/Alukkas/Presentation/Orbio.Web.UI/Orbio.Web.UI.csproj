@@ -262,11 +262,13 @@
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\MessageTemplateController.cs" />
     <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PictureController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductReviewController.cs" />
     <Compile Include="Areas\Admin\Controllers\SalesController.cs" />
     <Compile Include="Areas\Admin\Controllers\ShipmentController.cs" />
     <Compile Include="Areas\Admin\Controllers\ShoppingCartController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SpecificationAttributeController.cs" />
     <Compile Include="Areas\Admin\MappingExtensions.cs" />
     <Compile Include="Areas\Admin\Models\Attribute\CheckoutAttributeModel.cs" />
     <Compile Include="Areas\Admin\Models\Attribute\CheckoutAttributeValueModel.cs" />
@@ -328,7 +330,6 @@
     <Compile Include="Infrastructure\Cache\ModelCacheEventConsumer.cs" />
     <Compile Include="Infrastructure\GenericUrlRouteProvider.cs" />
     <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Models\Catalog\AssociatedProductsModel.cs" />
     <Compile Include="Models\Catalog\BaseCatalogModel.cs" />
     <Compile Include="Models\Catalog\CategoryModel.cs" />
     <Compile Include="Models\Catalog\CategorySimpleModel.cs" />
@@ -343,6 +344,7 @@
     <Compile Include="Models\Catalog\RelatedProductsModel.cs" />
     <Compile Include="Models\Catalog\ReviewModel.cs" />
     <Compile Include="Models\Catalog\SearchModel.cs" />
+    <Compile Include="Models\Catalog\SimilarProductsModel.cs" />
     <Compile Include="Models\Catalog\SpecificationAttribute.cs" />
     <Compile Include="Models\Catalog\SpecificationAttributeOption.cs" />
     <Compile Include="Models\Catalog\TopMenuModel.cs" />
@@ -400,9 +402,11 @@
     <Content Include="Areas\Admin\images\sprite.png" />
     <Content Include="Areas\Admin\images\thumbs\0000140_jewellery_tb.jpeg" />
     <Content Include="Areas\Admin\images\thumbs\0000198_bracelet.jpeg" />
+    <Content Include="Areas\Admin\images\thumbs\default-image.gif" />
     <Content Include="Areas\Admin\images\thumbs\sprite.png" />
     <Content Include="Areas\Admin\images\tick.png" />
     <Content Include="Areas\Admin\images\trash-black.png" />
+    <Content Include="Areas\Admin\images\upload.png" />
     <Content Include="Areas\Admin\images\white_arrow.png" />
     <Content Include="Areas\Admin\Scripts\bootstrap-multiselect.js" />
     <Content Include="Areas\Admin\Scripts\bootstrap.min.js" />
@@ -862,7 +866,7 @@
     <Content Include="Areas\Admin\Views\Customer\AddCustomerRole.cshtml" />
     <Content Include="Areas\Admin\Views\Product\_CreateOrUpdateSeo.cshtml" />
     <Content Include="Areas\Admin\Views\Product\_CreateOrUpdatePicture.cshtml" />
-    <Content Include="Areas\Admin\Views\Product\_PictureUpload.cshtml" />
+    <Content Include="Areas\Admin\Views\Picture\_PictureUpload.cshtml" />
     <Content Include="Areas\Admin\Views\MessageTemplate\Info.cshtml" />
     <Content Include="Areas\Admin\Views\MessageTemplate\List.cshtml" />
     <Content Include="Areas\Admin\Views\MessageTemplate\MessageTemplateList.cshtml" />
@@ -913,6 +917,7 @@
     <Content Include="Areas\Admin\Views\ProductReview\Search.cshtml" />
     <Content Include="Areas\Admin\Views\ProductReview\ProductReviewList.cshtml" />
     <Content Include="Areas\Admin\Views\ProductReview\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\_CreateOrUpdateSpecificationAttribute.cshtml" />
     <None Include="Properties\PublishProfiles\ecom.pubxml" />
     <Content Include="Areas\Admin\Views\Customer\ListCustomer.cshtml" />
     <Content Include="Areas\Admin\Views\Customer\CustomerList.cshtml" />
@@ -927,9 +932,10 @@
     <Content Include="Areas\Admin\Views\Customer\CustomerAddress.cshtml" />
     <None Include="Properties\PublishProfiles\NopCommerce.pubxml" />
     <Content Include="Views\Catalog\HomePageProducts.cshtml" />
+    <Content Include="Views\Catalog\SimilarProducts.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\Admin\Views\Picture\" />
+    <Folder Include="Areas\Admin\Views\SpecificationAttribute\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -1174,7 +1180,6 @@
     <Content Include="Views\Customer\EmailFriend.cshtml" />
     <Content Include="Views\Customer\WishList.cshtml" />
     <Content Include="Views\Customer\WishListSummary.cshtml" />
-    <Content Include="Views\Catalog\AssociatedProducts.cshtml" />
     <Content Include="Views\Customer\EmailFriend.cshtml" />
     <Content Include="Views\ShoppingCart\Summary.cshtml" />
     <Content Include="Views\ShoppingCart\CartSummary.cshtml" />

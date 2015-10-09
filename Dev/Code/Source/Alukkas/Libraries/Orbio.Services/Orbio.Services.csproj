@@ -51,6 +51,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
@@ -87,6 +88,8 @@
     <Compile Include="Admin\Customers\OnlineCustomerService.cs" />
     <Compile Include="Admin\Discount\DiscountService.cs" />
     <Compile Include="Admin\Discount\IDiscountService.cs" />
+    <Compile Include="Admin\Media\IPictureService.cs" />
+    <Compile Include="Admin\Media\PictureService.cs" />
     <Compile Include="Admin\MessageTemplates\IMessageTemplateService.cs" />
     <Compile Include="Admin\MessageTemplates\MessageTemplateService.cs" />
     <Compile Include="Admin\Orders\BestSellerService.cs" />

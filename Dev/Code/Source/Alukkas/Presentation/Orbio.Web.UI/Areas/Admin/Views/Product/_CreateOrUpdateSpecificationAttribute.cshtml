@@ -1,0 +1,32 @@
+﻿@model Orbio.Web.UI.Areas.Admin.Models.Product.ProductModel
+<div class="admin_comment">
+    <div class="row"><div class="col-md-3 prdct_name">Attribute :</div><div class="col-md-4">@Html.DropDownListFor(model => model.AddSpecificationAttributeModel.SpecificationAttributeId, Model.AddSpecificationAttributeModel.AvailableAttributes, new { @class = "virtual_select_class" })</div></div>
+    <div class="row"><div class="col-md-3 prdct_name">Attribute option :</div><div class="col-md-4">@Html.DropDownListFor(model => model.AddSpecificationAttributeModel.SpecificationAttributeOptionId, Model.AddSpecificationAttributeModel.AvailableOptions, new { @class = "virtual_select_class" })</div></div>
+    <div class="row"><div class="col-md-3 prdct_name">Sub Title :</div><div class="col-md-4">@Html.TextBoxFor(model => model.AdminComment, new { @class = "prdct_name_txt" })</div></div>
+    <div class="row"><div class="col-md-3 prdct_name">Allow filtering :</div><div class="col-md-4">@Html.TextBoxFor(model => model.AdminComment, new { @class = "prdct_name_txt" })</div></div>
+    <div class="row"><div class="col-md-3 prdct_name">Show on product page :</div><div class="col-md-4">@Html.TextBoxFor(model => model.AdminComment, new { @class = "prdct_name_txt" })</div></div>
+</div>
+<script type="text/javascript">
+
+    $("#AddSpecificationAttributeModel_SpecificationAttributeId").change(function () {
+        var id = $("#AddSpecificationAttributeModel_SpecificationAttributeId").val();
+        $.ajax({
+            url: '@(Url.Action("AttributeOptions", "SpecificationAttribute"))',
+        type: 'POST',
+        async: false,
+        data: "{'id': " + id + "}",
+        dataType: 'json',
+        contentType: 'application/json; charset=utf-8',
+        error: function () {
+            alert("Server access failure!");
+        },
+        success: function (result) {
+            $("#AddSpecificationAttributeModel_SpecificationAttributeOptionId").html("");
+            $.each(result, function (key, value) {
+                $("#AddSpecificationAttributeModel_SpecificationAttributeOptionId").append($("<option></option>").val(value.Id).html(value.Name));
+            });
+        }
+    });
+
+    });
+</script>

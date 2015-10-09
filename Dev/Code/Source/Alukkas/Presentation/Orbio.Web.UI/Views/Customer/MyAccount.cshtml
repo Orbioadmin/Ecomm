@@ -165,7 +165,8 @@
                                         <button id="chpwd" type="submit" class="btn btn-yellow">CHANGE PASSWORD</button>
                                     </div>
                                 </div>
-                            </div>
+                            </div>                           
+                            
 
                         </div>
                         <!-- detail -->
@@ -178,11 +179,13 @@
                     </div>
                 </div>
 
+
+
             </div>
         </div>
     </div>
 </section>
-@section scripts{
+@section scripts{    
     <script>
         var strURL = decodeURIComponent(window.location.href)
         var strTab = strURL.substring(strURL.indexOf("#") + 1);
@@ -377,13 +380,14 @@
 </script>
 
     <script>
-        $(function () {
+     ;(function ($) {
             $("#DOB").datepicker({
                 yearRange: "-70:-10",
                 changeMonth: true,
                 changeYear: true
             });
-        });
+
+        })(jQuery);	
 
     </script>
 

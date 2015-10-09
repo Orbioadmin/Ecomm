@@ -1,23 +1,23 @@
-﻿using Orbio.Core.Domain.Catalog;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Orbio.Core.Domain.Catalog;
 
 namespace Orbio.Web.UI.Models.Catalog
 {
-    public class AssociatedProductsModel
+    public class SimilarProductsModel
     {
-        public AssociatedProductsModel()
+        public SimilarProductsModel()
         {
             this.ProductDetail = new List<ProductDetailModel>();
         }
-        public AssociatedProductsModel(AssociatedProduct associatedProduct)
+        public SimilarProductsModel(SimilarProduct similarProduct)
             : this()
         {
-            if (associatedProduct.ProductDetails != null && associatedProduct.ProductDetails.Count > 0)
+            if (similarProduct.ProductDetails != null && similarProduct.ProductDetails.Count > 0)
             {
-                this.ProductDetail = (from p in associatedProduct.ProductDetails
+                this.ProductDetail = (from p in similarProduct.ProductDetails
                                       select new ProductDetailModel(p)).ToList();
             }
         }

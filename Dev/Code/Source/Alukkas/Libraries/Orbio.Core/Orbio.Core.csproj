@@ -229,7 +229,6 @@
     <Compile Include="Domain\Catalog\Abstract\IProductAttribute.cs" />
     <Compile Include="Domain\Catalog\Abstract\IProductAttributeValue.cs" />
     <Compile Include="Domain\Catalog\Abstract\IShoppingCartItem.cs" />
-    <Compile Include="Domain\Catalog\AssociatedProduct.cs" />
     <Compile Include="Domain\Catalog\AttributeControlType.cs" />
     <Compile Include="Domain\Catalog\AttributeValueType.cs" />
     <Compile Include="Domain\Catalog\BackorderMode.cs" />
@@ -251,6 +250,7 @@
     <Compile Include="Domain\Catalog\ProductVarientAttributeValue.cs" />
     <Compile Include="Domain\Catalog\RelatedProduct.cs" />
     <Compile Include="Domain\Catalog\Search.cs" />
+    <Compile Include="Domain\Catalog\SimilarProduct.cs" />
     <Compile Include="Domain\Catalog\SpecificationFilterModel.cs" />
     <Compile Include="Domain\Checkout\Address.cs" />
     <Compile Include="Domain\Common\GenericAttribute.cs" />

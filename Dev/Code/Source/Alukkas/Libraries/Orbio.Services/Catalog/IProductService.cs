@@ -28,11 +28,11 @@ namespace Orbio.Services.Catalog
         RelatedProduct GetRelatedProductsById(int productId);
 
          /// <summary>
-        /// gets all associated products by product id
+        /// gets all similar products by product id
         /// </summary>
         /// <param name="productid">the product id</param>
         /// <returns>list of products</returns>
-        AssociatedProduct GetAssociatedProductsById(int productId);
+        SimilarProduct GetSimilarProductsById(int productId);
 
         /// <summary>
         /// insert customer reviews

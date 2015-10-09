@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Orbio.Core.Data;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -16,7 +17,11 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Product
             AvailableTaxCategories = new List<SelectListItem>();
             AvailableProductTags = new List<SelectListItem>();
             AvailableCategories = new List<SelectListItem>();
-            AvailableManufatures = new List<SelectListItem>(); 
+            AvailableManufatures = new List<SelectListItem>();
+            AvailableRelatedProducts = new List<SelectListItem>();
+            AvailableSimilarProducts = new List<SelectListItem>();
+            Pictures = new List<Product_Picture_Mapping>();
+            AddSpecificationAttributeModel = new AddProductSpecificationAttributeModel();
         }
 
         public int Id { get; set; }
@@ -86,8 +91,55 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Product
         public List<SelectListItem> AvailableProductTags { get; set; }
         public List<SelectListItem> AvailableCategories { get; set; }
         public List<SelectListItem> AvailableManufatures { get; set; }
+        public List<SelectListItem> AvailableRelatedProducts { get; set; }
+        public List<SelectListItem> AvailableSimilarProducts { get; set; }
+        public List<Product_Picture_Mapping> Pictures { get; set; }
         public int[] SelectedProductTags { get; set; }
         public int[] SelectedCategories { get; set; }
         public int[] SelectedManufature { get; set; }
+        public int[] SelectedRelatedProducts { get; set; }
+        public int[] SelectedSimilarProducts { get; set; }
+        public ProductPictureModel PictureModel { get; set; }
+        //add specification attribute model
+        public AddProductSpecificationAttributeModel AddSpecificationAttributeModel { get; set; }
+
+        #region Nested classes
+        public partial class ProductPictureModel 
+        {
+            public int ProductId { get; set; }
+
+            public int PictureId { get; set; }
+
+            public string PictureUrl { get; set; }
+
+            public string ProductSizeGuideUrl { get; set; }
+
+            public int DisplayOrder { get; set; }
+        }
+        public partial class AddProductSpecificationAttributeModel
+        {
+            public AddProductSpecificationAttributeModel()
+            {
+                AvailableAttributes = new List<SelectListItem>();
+                AvailableOptions = new List<SelectListItem>();
+            }
+            public int SpecificationAttributeId { get; set; }
+
+            public int SpecificationAttributeOptionId { get; set; }
+
+            public string SubTitle { get; set; }
+
+            public string CustomValue { get; set; }
+
+            public bool AllowFiltering { get; set; }
+
+            public bool ShowOnProductPage { get; set; }
+
+            public int DisplayOrder { get; set; }
+
+            public IList<SelectListItem> AvailableAttributes { get; set; }
+            public IList<SelectListItem> AvailableOptions { get; set; }
+        }
+        #endregion
     }
 }
