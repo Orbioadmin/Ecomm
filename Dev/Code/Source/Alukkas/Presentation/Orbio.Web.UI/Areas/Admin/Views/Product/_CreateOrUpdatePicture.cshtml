@@ -39,7 +39,7 @@
         </div>
     <div class="row">
         <div class="col-md-9" style="padding-top: 10px;">
-            <span>Note: Please drag the picture for changing display order</span>
+            <span>Note: Please drag and drop the picture for changing display order</span>
         </div>
         <div class="col-md-3" style="padding: 10px;float:right">
             <button class="add_product_submit">Save</button>
@@ -62,10 +62,10 @@
                 var id = $(value).prop('id');
                 ids.push(id);
             });
-            $.post("/Product/UpdatePicture",
+            $.post('@(Url.Action("UpdatePicture", "Product"))',
                 { Ids: JSON.stringify(ids) },
                 function (response) {
-                    
+
                 }
             );
         })

@@ -214,6 +214,18 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             return RedirectToAction("EditSpecificationAttribute", new { Id = specModel.SpecificationAttributeId });
         }
 
+        [HttpPost]
+        public JsonResult AttributeOptions(int id)
+        {
+            var attributeOptions = (from sao in specAttributeService.GetSpecificationAttributeOptionBySpecId(id)
+                                    select new SpecificationAttributeOptionModel
+                                    {
+                                        Name = sao.Name,
+                                        Id = sao.Id
+                                    }).ToList();
+            return Json(attributeOptions);
+        }
+
         #endregion
 
         #region Checkout Attribute

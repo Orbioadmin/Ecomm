@@ -14,7 +14,7 @@
         <div class="preview_main">
             <ul>
                 @*<li><input type="button" class="prev_button" value="Preview"></li>*@
-                <li><input type="submit" class="prev_button" value="Save"></li>
+                <li><input type="submit" name="EditProduct" id="EditProduct" class="prev_button" value="Save"></li>
                 @*<li><input type="button" class="prev_button" value="Save & Continue Edit"></li>*@
                 @*<li><input type="button" class="prev_button" value="Copy Product"></li>*@
                 <li><input type="button" class="prev_button" value="Delete"></li>
@@ -236,5 +236,23 @@
     });
 </script>*@
 
+<script>
+    $(function () {
+        $('#trSpecData').sortable();
+        $('#saveSpecDisplay').on('click', function () {
+            var ids = [];
+            $('.rowItemsSpec').each(function (index, value) {
+                var id = $(value).prop('id');
+                ids.push(id);
+            });
+            $.post('@(Url.Action("UpdateSpecificationDisplayOrder", "Product"))',
+                { SpecIds: JSON.stringify(ids) },
+                function (response) {
+
+                }
+            );
+        })
+    });
+</script>
 }
 

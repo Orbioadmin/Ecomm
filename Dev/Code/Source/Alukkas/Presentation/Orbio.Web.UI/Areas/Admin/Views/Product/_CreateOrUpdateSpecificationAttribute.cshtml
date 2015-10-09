@@ -1,17 +1,126 @@
 ﻿@model Orbio.Web.UI.Areas.Admin.Models.Product.ProductModel
+@{
+        var count = 1;       
+}
 <div class="admin_comment">
     <div class="row"><div class="col-md-3 prdct_name">Attribute :</div><div class="col-md-4">@Html.DropDownListFor(model => model.AddSpecificationAttributeModel.SpecificationAttributeId, Model.AddSpecificationAttributeModel.AvailableAttributes, new { @class = "virtual_select_class" })</div></div>
     <div class="row"><div class="col-md-3 prdct_name">Attribute option :</div><div class="col-md-4">@Html.DropDownListFor(model => model.AddSpecificationAttributeModel.SpecificationAttributeOptionId, Model.AddSpecificationAttributeModel.AvailableOptions, new { @class = "virtual_select_class" })</div></div>
-    <div class="row"><div class="col-md-3 prdct_name">Sub Title :</div><div class="col-md-4">@Html.TextBoxFor(model => model.AdminComment, new { @class = "prdct_name_txt" })</div></div>
-    <div class="row"><div class="col-md-3 prdct_name">Allow filtering :</div><div class="col-md-4">@Html.TextBoxFor(model => model.AdminComment, new { @class = "prdct_name_txt" })</div></div>
-    <div class="row"><div class="col-md-3 prdct_name">Show on product page :</div><div class="col-md-4">@Html.TextBoxFor(model => model.AdminComment, new { @class = "prdct_name_txt" })</div></div>
+    <div class="row"><div class="col-md-3 prdct_name">Sub Title :</div><div class="col-md-4">
+        @Html.DropDownListFor(model => model.AddSpecificationAttributeModel.SubTitle, new List<SelectListItem>{ new SelectListItem { Text = "Basic Information", Value = "Basic Information", Selected=true}, 
+       new SelectListItem { Text = "Certification Details", Value = "Certification Details"}, new SelectListItem { Text = "Stone Information", Value = "Stone Information"} }, new { @class = "virtual_select_class" })
+        </div></div>
+    <div class="row"><div class="col-md-3 prdct_name">Allow filtering :</div><div class="col-md-4">@Html.CheckBoxFor(model => model.AddSpecificationAttributeModel.AllowFiltering, new { @class = "show_on_homepage_check" })</div></div>
+    <div class="row"><div class="col-md-3 prdct_name">Show on product page :</div><div class="col-md-4">@Html.CheckBoxFor(model => model.AddSpecificationAttributeModel.ShowOnProductPage, new { @class = "show_on_homepage_check" })</div></div>
+    <div class="row">
+        <div class="col-md-3" style="padding: 10px;float:right">
+            <input type="submit" id="AddNewProductSpecificationAttribute" name="AddNewProductSpecificationAttribute" value="Save" />
+        </div>
+    </div>
 </div>
+
+<div class="col-md-12" style=" margin-bottom: 34px;background-color: #fff;margin-top: 10px;width:100%">
+    <div class="col-md-9 main_order_table">
+        <div id="catprod">
+            <table class="item_admin_order" id="tableData">
+                <thead>
+                <td>Attribute</td>
+                <td>Attribute option</td>
+                <td>Sub title</td>
+                <td>Allow filtering</td>
+                <td>Show on product page</td>
+                <td></td>
+                </thead>
+                <tbody id="trSpecData">
+                    @foreach (var item in this.Model.ProductSpecification)
+                    {
+                        <script type="text/javascript">
+                            $(document).ready(function () {
+                                toggleOrderItemEdit@(item.Id)(false);
+                            });
+                        </script>
+
+                        <script type="text/javascript">
+                            function toggleOrderItemEdit@(item.Id)(editMode) {
+                                if (editMode) {
+                                    $('#lblfilter@(item.Id)').hide();
+                                    $('#AddSpecificationAttributeModel_AllowFiltering@(item.Id)').show();
+                                    $('#lblshopp@(item.Id)').hide();
+                                    $('#AddSpecificationAttributeModel_ShowOnProductPage@(item.Id)').show();
+                                    $('#btnDeleteOrderItem@(item.Id)').hide();
+                                    $('#btnEditOrderItem@(item.Id)').hide();
+                                    $('#btnSaveSpecItem@(item.Id)').show();
+                                    $('#btnCancelOrderItem@(item.Id)').show();
+                                }
+                                else {
+                                    $('#lblfilter@(item.Id)').show();
+                                    $('#AddSpecificationAttributeModel_AllowFiltering@(item.Id)').hide();
+                                    $('#lblshopp@(item.Id)').show();
+                                    $('#AddSpecificationAttributeModel_ShowOnProductPage@(item.Id)').hide();
+                                    $('#btnDeleteOrderItem@(item.Id)').show();
+                                    $('#btnEditOrderItem@(item.Id)').show();
+                                    $('#btnSaveSpecItem@(item.Id)').hide();
+                                    $('#btnCancelOrderItem@(item.Id)').hide();
+                                }
+                            }
+                        </script>
+                        if (count == 1)
+                        {
+                            @:<tr class="first_row rowItemsSpec" id="@item.Id">
+                            count++;
+                        }
+                        else
+                        {
+                            @:<tr class="second_row rowItemsSpec" id="@item.Id">
+                            count = 1;
+                        }
+                     using (Html.BeginForm("EditProductSpecification", "Product", new { Id = @item.Id }, FormMethod.Post, new { Id = "formEditCustomerRole" + item.Id }))
+                      {
+                        @:<td class="align_center" style="cursor: move;">@item.SpecificationAttributeOption.SpecificationAttribute.Name</td>
+                        @:<td class="align_center" style="cursor: move;">@item.SpecificationAttributeOption.Name</td>
+                        @:<td class="align_center" style="cursor: move;">@item.SubTitle</td>
+                        @:<td class="align_center" style="cursor: move;">
+                        @:<label class="@(item.AllowFiltering ? "img_sprite1" : "img_sprite")" name="lblfilter@(item.Id)" id="lblfilter@(item.Id)"></label>
+                        @:<select name="AddSpecificationAttributeModel_AllowFiltering@(item.Id)" id="AddSpecificationAttributeModel_AllowFiltering@(item.Id)" value="@item.AllowFiltering" style="display:none;">
+                        @:<option value="True">True</option>
+                        @:<option value="False">False</option>
+                        @:</select>
+                        @:</td>
+                        @:<td class="align_center" style="cursor: move;">
+                        @:<label class="@(item.ShowOnProductPage ? "img_sprite1" : "img_sprite")" name="lblshopp@(item.Id)" id="lblshopp@(item.Id)"></label>
+                        @:<select name="AddSpecificationAttributeModel_ShowOnProductPage@(item.Id)" id="AddSpecificationAttributeModel_ShowOnProductPage@(item.Id)" value="@item.ShowOnProductPage" style="display:none;">
+                        @:<option value="True">True</option>
+                        @:<option value="False">False</option>
+                        @:</select>
+                        @:</td>
+                        @:<td class="action_ring">
+                        @:<input type="submit" name="btnSaveSpecItem@(item.Id)" value="" id="btnSaveSpecItem@(item.Id)" class="edit_save" style="display:none;" />
+                        @:<input type="submit" name="btnCancelOrderItem@(item.Id)" value="" onclick="toggleOrderItemEdit@(item.Id)(false);return false; " id="btnCancelOrderItem@(item.Id)" class="edit_cancel" style="display:none;" />
+                        @: <input type="button" name="btnEditOrderItem@(item.Id)" value="" onclick="toggleOrderItemEdit@(item.Id)(true);return false; " id="btnEditOrderItem@(item.Id)" class="edit_ring" />
+                        @: <a href="@Url.Action("DeleteSpecificationAttribute", "Product", new { id = item.Id,productId=item.ProductId })"><input type="button" name="btnDeleteOrderItem@(item.Id)" value="" id="btnDeleteOrderItem@(item.Id)" class="delete_ring" onclick=" return confirm('Are You Sure'); " /></a>
+                        @:</td>
+                    }
+                    @:</tr>
+                }
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <div class="col-md-9" style="padding-top: 10px;">
+                <span>Note: Please drag and drop the attribute for changing display order</span>
+            </div>
+            <div class="col-md-3" style="padding: 10px;float:right">
+                <button id="saveSpecDisplay" class="add_product_submit">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script type="text/javascript">
 
     $("#AddSpecificationAttributeModel_SpecificationAttributeId").change(function () {
         var id = $("#AddSpecificationAttributeModel_SpecificationAttributeId").val();
         $.ajax({
-            url: '@(Url.Action("AttributeOptions", "SpecificationAttribute"))',
+            url: '@(Url.Action("AttributeOptions", "Attribute"))',
         type: 'POST',
         async: false,
         data: "{'id': " + id + "}",
@@ -30,3 +139,4 @@
 
     });
 </script>
+

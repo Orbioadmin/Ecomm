@@ -38,6 +38,12 @@ namespace Orbio.Services.Admin.Products
         void InsertNewProduct(Orbio.Core.Domain.Admin.Product.ProductDetail productDetail);
 
         /// <summary>
+        /// Update Product
+        /// </summary>
+        /// <param name="productDetail"></param>
+        void UpdateProduct(Orbio.Core.Domain.Admin.Product.ProductDetail productDetail);
+
+        /// <summary>
         /// Delete selected products
         /// </summary>
         /// <param name="idList"></param>
@@ -67,5 +73,31 @@ namespace Orbio.Services.Admin.Products
         /// <param name="Id"></param>
         /// <returns></returns>
         int DeleteProductPicture(int Id);
+
+        /// <summary>
+        /// Insert value to product specification mapping
+        /// </summary>
+        /// <param name="specification"></param>
+        void InsertProductSpecificationAttribute(Product_SpecificationAttribute_Mapping specification);
+
+        /// <summary>
+        /// Update product specification attribute
+        /// </summary>
+        /// <param name="specification"></param>
+        /// <returns></returns>
+        int UpdateProductSpecificationAttribute(Product_SpecificationAttribute_Mapping specification);
+
+        /// <summary>
+        /// Update product specification display order
+        /// </summary>
+        /// <param name="pictureIds"></param>
+        void UpdateSpecificationDisplayOrder(int[] specificationIds);
+
+        /// <summary>
+        /// Delete produc specification attribute
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        void DeleteProductSpecificationAttribute(int Id);
     }
 }

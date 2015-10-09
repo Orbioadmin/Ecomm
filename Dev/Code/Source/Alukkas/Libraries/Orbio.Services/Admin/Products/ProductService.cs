@@ -11,6 +11,7 @@ using Nop.Data;
 using System.Data.SqlClient;
 using Nop.Core.Domain;
 using Orbio.Core.Utility;
+using Orbio.Core.Domain.Admin.Catalog;
 
 namespace Orbio.Services.Admin.Products
 {
@@ -76,6 +77,7 @@ namespace Orbio.Services.Admin.Products
                 context.Products.Include("Product_Picture_Mapping.Picture").Load();
                 context.Products.Include("Product_PriceComponent_Mapping.PriceComponent").Load();
                 context.Products.Include("Product_ProductComponent_Mapping.ProductComponent").Load();
+                context.Products.Include("Product_SpecificationAttribute_Mapping.SpecificationAttributeOption.SpecificationAttribute").Load();
                 context.Products.Include("ProductTags").Load();
                 var productList = (from p in context.Products
                                    join u in context.UrlRecords on p.Id equals u.EntityId
@@ -93,6 +95,17 @@ namespace Orbio.Services.Admin.Products
         {
             var productXml = Serializer.GenericSerializer<Orbio.Core.Domain.Admin.Product.ProductDetail>(productDetail);
             dbContext.ExecuteFunction<Product>("usp_Product_InsertProduct",
+            new SqlParameter() { ParameterName = "@productXml", Value = productXml, DbType = System.Data.DbType.Xml });
+        }
+
+        /// <summary>
+        /// Update Product
+        /// </summary>
+        /// <param name="productDetail"></param>
+        public void UpdateProduct(Orbio.Core.Domain.Admin.Product.ProductDetail productDetail)
+        {
+            var productXml = Serializer.GenericSerializer<Orbio.Core.Domain.Admin.Product.ProductDetail>(productDetail);
+            dbContext.ExecuteFunction<Product>("usp_Product_UpdateProduct",
             new SqlParameter() { ParameterName = "@productXml", Value = productXml, DbType = System.Data.DbType.Xml });
         }
 
@@ -173,6 +186,69 @@ namespace Orbio.Services.Admin.Products
                 }
             }
         }
+
+        /// <summary>
+        /// Insert value to product specification mapping
+        /// </summary>
+        /// <param name="specification"></param>
+        public void InsertProductSpecificationAttribute(Product_SpecificationAttribute_Mapping specification)
+        {
+            using (var context = new OrbioAdminContext())
+            {
+                var query = context.Product_SpecificationAttribute_Mapping.OrderByDescending(m => m.ProductId == specification.ProductId).First();
+                int displayOrder = (query != null) ? query.DisplayOrder : 0;
+                specification.DisplayOrder = displayOrder + 1;
+                context.Product_SpecificationAttribute_Mapping.Add(specification);
+                context.SaveChanges();
+            }
+        }
+
+        /// <summary>
+        /// Update product specification attribute
+        /// </summary>
+        /// <param name="specification"></param>
+        /// <returns></returns>
+        public int UpdateProductSpecificationAttribute(Product_SpecificationAttribute_Mapping specification)
+        {
+            using (var context = new OrbioAdminContext())
+            {
+                var result = context.Product_SpecificationAttribute_Mapping.Where(m => m.Id == specification.Id).FirstOrDefault();
+                result.AllowFiltering = specification.AllowFiltering;
+                result.ShowOnProductPage = specification.ShowOnProductPage;
+                context.SaveChanges();
+                return result.ProductId;
+            }
+        }
+
+        /// <summary>
+        /// Update product specification display order
+        /// </summary>
+        /// <param name="pictureIds"></param>
+        public void UpdateSpecificationDisplayOrder(int[] specificationIds)
+        {
+            var specificationIdsXml = Serializer.GenericSerializer(specificationIds);
+            dbContext.ExecuteFunction<Product_Picture_Mapping>("usp_UpdateProductSpecificationAttribute", new SqlParameter() { ParameterName = "@specificationIdsXml", Value = specificationIdsXml, DbType = System.Data.DbType.Xml });
+        }
+
+        /// <summary>
+        /// Delete produc specification attribute
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        public void DeleteProductSpecificationAttribute(int Id)
+        {
+            using (var context = new OrbioAdminContext())
+            {
+
+                 var query = context.Product_SpecificationAttribute_Mapping.Where(m => m.Id == Id).FirstOrDefault();
+                    if (query != null)
+                    {
+                        context.Product_SpecificationAttribute_Mapping.Remove(query);
+                        context.SaveChanges();
+                    }
+            }
+        }
+
         #endregion
 
     }

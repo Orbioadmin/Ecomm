@@ -94,6 +94,7 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Product
         public List<SelectListItem> AvailableRelatedProducts { get; set; }
         public List<SelectListItem> AvailableSimilarProducts { get; set; }
         public List<Product_Picture_Mapping> Pictures { get; set; }
+        public List<Product_SpecificationAttribute_Mapping> ProductSpecification { get; set; }
         public int[] SelectedProductTags { get; set; }
         public int[] SelectedCategories { get; set; }
         public int[] SelectedManufature { get; set; }

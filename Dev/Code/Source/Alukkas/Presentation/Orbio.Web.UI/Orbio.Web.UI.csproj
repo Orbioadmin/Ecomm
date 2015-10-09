@@ -270,7 +270,6 @@
     <Compile Include="Areas\Admin\Controllers\ShipmentController.cs" />
     <Compile Include="Areas\Admin\Controllers\ShippingController.cs" />
     <Compile Include="Areas\Admin\Controllers\ShoppingCartController.cs" />
-    <Compile Include="Areas\Admin\Controllers\SpecificationAttributeController.cs" />
     <Compile Include="Areas\Admin\Controllers\TaxController.cs" />
     <Compile Include="Areas\Admin\MappingExtensions.cs" />
     <Compile Include="Areas\Admin\Models\Attribute\CheckoutAttributeModel.cs" />
@@ -958,9 +957,7 @@
     <Content Include="Views\Catalog\HomePageProducts.cshtml" />
     <Content Include="Views\Catalog\SimilarProducts.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Areas\Admin\Views\SpecificationAttribute\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>

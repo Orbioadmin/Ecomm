@@ -96,19 +96,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Create(Orbio.Web.UI.Areas.Admin.Models.Product.ProductModel model)
         {
-            var product = model.ToEntity();
-            product.CreatedOnUtc = DateTime.UtcNow;
-            product.UpdatedOnUtc = DateTime.UtcNow;
-            var productDetails = new Orbio.Core.Domain.Admin.Product.ProductDetail
-            {
-                product = product.ToDomainModel(),
-                seName = model.SeName,
-                productTags = model.SelectedProductTags,
-                catgoryIds = model.SelectedCategories,
-                manufactureIds = model.SelectedManufature,
-                relatedProductIds = model.SelectedRelatedProducts,
-                similarProductIds = model.SelectedSimilarProducts,
-            };
+            var productDetails = CreateOrUpdateProduct(model);
             _productService.InsertNewProduct(productDetails);
             return RedirectToAction("List");
             
@@ -126,8 +114,39 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             model.Pictures = (from p in product.Product_Picture_Mapping
                               orderby p.DisplayOrder ascending
                            select p).ToList();
+            model.ProductSpecification = (from p in product.Product_SpecificationAttribute_Mapping
+                                          orderby p.DisplayOrder ascending
+                                          select p).ToList();
             PrepareProductModel(model, product);
             return View(model);
+        }
+
+        [HttpParamAction]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult EditProduct(Orbio.Web.UI.Areas.Admin.Models.Product.ProductModel model)
+        {
+            var productDetails = CreateOrUpdateProduct(model);
+            _productService.UpdateProduct(productDetails);
+            return RedirectToAction("Edit", "Product", new { id = model.Id });
+
+        }
+
+        public Orbio.Core.Domain.Admin.Product.ProductDetail CreateOrUpdateProduct(Orbio.Web.UI.Areas.Admin.Models.Product.ProductModel model)
+        {
+            var product = model.ToEntity();
+            product.CreatedOnUtc = DateTime.UtcNow;
+            product.UpdatedOnUtc = DateTime.UtcNow;
+            var productDetails = new Orbio.Core.Domain.Admin.Product.ProductDetail
+            {
+                product = product.ToDomainModel(),
+                seName = model.SeName,
+                productTags = model.SelectedProductTags,
+                catgoryIds = model.SelectedCategories,
+                manufactureIds = model.SelectedManufature,
+                relatedProductIds = model.SelectedRelatedProducts,
+                similarProductIds = model.SelectedSimilarProducts,
+            };
+            return productDetails;
         }
 
         //delete products
@@ -227,6 +246,17 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                 });
             }
 
+            //if (product != null)
+            //{
+            //    int[] productCategory = new int[10];
+            //    for (int i = 0; i < product.Product_Category_Mapping.Count; i++)
+            //    {
+            //        var pt = product.Product_Category_Mapping.ToList()[i];
+            //        productCategory[i] = pt.CategoryId;
+            //    }
+            //    model.SelectedCategories = productCategory;
+            //}
+
             //Manufature mapping
             var manufatures = _manufatureService.GetAllManufacturers();
             foreach (var manufature in manufatures.ManufacturerList)
@@ -237,6 +267,17 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                     Value = manufature.Id.ToString()
                 });
             }
+
+            //if (product != null)
+            //{
+            //    int[] productManufacture = new int[10];
+            //    for (int i = 0; i < product.Product_Manufacturer_Mapping.Count; i++)
+            //    {
+            //        var pt = product.Product_Manufacturer_Mapping.ToList()[i];
+            //        productManufacture[i] = pt.ManufacturerId;
+            //    }
+            //    model.SelectedManufature = productManufacture;
+            //}
 
             //Related Products
             var relatedProducts = _productService.GetAllProducts();
@@ -324,6 +365,57 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         public ActionResult DeleteProductPicture(int id, int productId)
         {
             _productService.DeleteProductPicture(id);
+            return RedirectToAction("Edit", "Product", new { id = productId });
+        }
+
+        #endregion
+
+        #region Product Specification Mapping
+
+        [HttpParamAction]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AddNewProductSpecificationAttribute(Orbio.Web.UI.Areas.Admin.Models.Product.ProductModel model)
+        {
+            var productSpecification = new Product_SpecificationAttribute_Mapping { 
+            ProductId = model.Id,
+            SpecificationAttributeOptionId = model.AddSpecificationAttributeModel.SpecificationAttributeOptionId,
+            AllowFiltering = model.AddSpecificationAttributeModel.AllowFiltering,
+            ShowOnProductPage = model.AddSpecificationAttributeModel.ShowOnProductPage,
+            SubTitle = model.AddSpecificationAttributeModel.SubTitle
+            };
+            _productService.InsertProductSpecificationAttribute(productSpecification);
+            return RedirectToAction("Edit", "Product", new { id = model.Id });
+        }
+
+        [HttpPost]
+        public ActionResult EditProductSpecification(int Id, FormCollection form)
+        {
+                var allowFilter = form["AddSpecificationAttributeModel_AllowFiltering" + Id];
+                var showOnHome = form["AddSpecificationAttributeModel_ShowOnProductPage" + Id];
+                var productSpecification = new Product_SpecificationAttribute_Mapping
+                {
+                    Id = Id,
+                    AllowFiltering = Convert.ToBoolean(allowFilter),
+                    ShowOnProductPage = Convert.ToBoolean(showOnHome),
+                };
+                int productId = _productService.UpdateProductSpecificationAttribute(productSpecification);
+                return RedirectToAction("Edit", "Product", new { id = productId });
+        }
+
+
+        [HttpPost]
+        public ActionResult UpdateSpecificationDisplayOrder(FormCollection formCollection)
+        {
+            var value = formCollection["SpecIds"];
+            object[] ids = System.Web.Helpers.Json.Decode(value);
+            int[] specificationIds = ids.Select(n => Convert.ToInt32(n)).ToArray();
+            _productService.UpdateSpecificationDisplayOrder(specificationIds);
+            return RedirectToAction("List");
+        }
+
+        public ActionResult DeleteSpecificationAttribute(int id, int productId)
+        {
+            _productService.DeleteProductSpecificationAttribute(id);
             return RedirectToAction("Edit", "Product", new { id = productId });
         }
 
