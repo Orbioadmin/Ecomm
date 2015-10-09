@@ -113,7 +113,7 @@
         // Make Ajax request with the contentType = false, and procesDate = false
         $.ajax({
             type: "POST",
-            url: "/Picture/uploadImg",
+            url:'@Url.Action("uploadImg", "Picture")',
             contentType: false,
             processData: false,
             data: data,
