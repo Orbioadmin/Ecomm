@@ -20,7 +20,7 @@
 
 
     <div class="panel-group" id="accordion">
-        @helper RenderCategoryLine(CategoryModel category, int level)
+        @helper RenderCategoryLine(CategoryModel category, string level)
 {
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -29,29 +29,29 @@
                         @category.Name
                     </a>
                 </h4>
+                <label class="catedit" onclick="EditCategory(@category.Id)"></label>
                 <label class="jewdelete" onclick="DeleteCategory(@category.Id)"></label>
-                <label class="jewedit" onclick="EditCategory(@category.Id)"></label>
+
             </div><!--/.panel-heading -->
 
             <div id=@level class="panel-collapse collapse">
                 @if (category.CategoryList.Count > 0)
                 {
                     int count = 0;
-                    string id = "cat" + count;
+                    string id = "cat" + level + count;
 
                     <div class="panel-body">
-                            <!-- nested -->
-                    <div class="panel-group" id="nested">
-                        @foreach (var subCategory in category.CategoryList)
-                        {
-                            @RenderSubCategoryLine(subCategory, id)
-                            count++;
-                            id = "cat" + count;
-                        }
+                        <!-- nested -->
+                        <div class="panel-group" id="nested">
+                            @foreach (var subCategory in category.CategoryList)
+                            {
+                                @RenderSubCategoryLine(subCategory, id)
+                                count++;
+                                id = "cat" + level + count;
+                            }
 
+                        </div>
                     </div>
-                    </div>
-
                 }
             </div>
         </div>
@@ -66,8 +66,9 @@
                         @category.Name
                     </a>
                 </h4>
+                <label class="catedit" onclick="EditCategory(@category.Id)"></label>
                 <label class="jewdelete" onclick="DeleteCategory(@category.Id)"></label>
-                <label class="jewedit" onclick="EditCategory(@category.Id)"></label>
+
             </div>
             <div id=@count class="panel-collapse collapse ">
                 @if (category.CategoryList.Count > 0)
@@ -77,17 +78,18 @@
                         @foreach (var subCategories in category.CategoryList)
                         {
                             <div class="panel-body">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <a class="collapsed" data-toggle="collapse" data-parent="#nested" href="#@count">
-                                            @subCategories.Name
-                                        </a>
-                                    </h4>
-                                    <label class="jewdelete" onclick="DeleteCategory(@subCategories.Id)"></label>
-                                    <label class="jewedit" onclick="EditCategory(@subCategories.Id)"></label>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" data-toggle="collapse" data-parent="#nested" href="#@count">
+                                                @subCategories.Name
+                                            </a>
+                                        </h4>
+                                        <label class="catedit" onclick="EditCategory(@subCategories.Id)"></label>
+                                        <label class="jewdelete" onclick="DeleteCategory(@subCategories.Id)"></label>
+
+                                    </div>
                                 </div>
-                            </div>
                             </div>
                         }
                     </div>
@@ -104,10 +106,12 @@
             if (Model.ParentCategories.Count > 0)
             {
                 int level = 0;
+                string mainid = "main" + level;
                 foreach (var category in Model.ParentCategories)
                 {
-                    @RenderCategoryLine(category, level)
+                    @RenderCategoryLine(category, mainid)
                     level++;
+                    mainid = "main" + level;
                 }
             }
         }

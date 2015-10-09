@@ -17,6 +17,7 @@ namespace Orbio.Core.Data
         public TaxCategory()
         {
             this.CheckoutAttributes = new HashSet<CheckoutAttribute>();
+            this.TaxRates = new HashSet<TaxRate>();
         }
     
         public int Id { get; set; }
@@ -24,5 +25,6 @@ namespace Orbio.Core.Data
         public int DisplayOrder { get; set; }
     
         public virtual ICollection<CheckoutAttribute> CheckoutAttributes { get; set; }
+        public virtual ICollection<TaxRate> TaxRates { get; set; }
     }
 }

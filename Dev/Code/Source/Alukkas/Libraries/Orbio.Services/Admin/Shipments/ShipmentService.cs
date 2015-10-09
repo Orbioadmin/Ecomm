@@ -13,7 +13,7 @@ namespace Orbio.Services.Admin.Shipments
         {
             using (var context = new OrbioAdminContext())
             {
-                var result = context.Countries.Include("StateProvinces").Where(m => m.Published).OrderBy(m => m.Name).ToList();
+                var result = context.Countries.Include("StateProvinces").Where(m => m.Published && m.Name.ToLower()=="india").OrderBy(m => m.Name).ToList();
                 return result;
             }
         }

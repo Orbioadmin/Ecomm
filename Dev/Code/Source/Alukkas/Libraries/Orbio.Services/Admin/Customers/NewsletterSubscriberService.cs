@@ -71,6 +71,19 @@ namespace Orbio.Services.Admin.Customers
                 }
             }
         }
+
+        public void Delete(int id)
+        {
+            using (var context = new OrbioAdminContext())
+            {
+                  var result = context.NewsLetterSubscriptions.Where(m => m.Id == id).FirstOrDefault();
+                  if (result != null)
+                  {
+                      context.NewsLetterSubscriptions.Remove(result);
+                      context.SaveChanges();
+                  }
+            }
+        }
     }
 }
 

@@ -1,0 +1,100 @@
+﻿@model List<Orbio.Web.UI.Areas.Admin.Models.Configuration.DeliveryDateModel>
+
+<table class="item_admin_order">
+    <thead>
+    <td>Name</td>
+    <td>Display Order</td>
+    <td>Edit/Delete</td>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            if (Model.Count > 0)
+            {
+                int count = 1;
+                foreach (var item in Model)
+                {
+                    <script type="text/javascript">
+                                $(document).ready(function () {
+                                    toggleOrderItemEdit@(item.Id)(false);
+                                });
+                    </script>
+
+                    <script type="text/javascript">
+                                function toggleOrderItemEdit@(item.Id)(editMode) {
+                                    if (editMode) {
+                                        $('#txtdisplayorder@(item.Id)').show();
+                                        $('#lbldisplayorder@(item.Id)').hide();
+                                        $('#lblname@(item.Id)').hide();
+                                        $('#txtname@(item.Id)').show();
+                                        $('#btnDeleteOrderItem@(item.Id)').hide();
+                                        $('#btnEditOrderItem@(item.Id)').hide();
+                                        $('#btnSaveOrderItem@(item.Id)').show();
+                                        $('#btnCancelOrderItem@(item.Id)').show();
+                                    }
+                                    else {
+                                        $('#lbldisplayorder@(item.Id)').show();
+                                        $('#txtdisplayorder@(item.Id)').hide();
+                                        $('#lblname@(item.Id)').show();
+                                        $('#txtname@(item.Id)').hide();
+                                        $('#btnDeleteOrderItem@(item.Id)').show();
+                                        $('#btnEditOrderItem@(item.Id)').show();
+                                        $('#btnSaveOrderItem@(item.Id)').hide();
+                                        $('#btnCancelOrderItem@(item.Id)').hide();
+                                    }
+                                }
+                    </script>
+
+                    if (count == 1)
+                    {
+                        @:<tr class="first_row">
+                            count++;
+                    }
+                    else
+                    {
+
+                        @:<tr class="second_row">
+                           count = 1;
+                    }
+                    using (Html.BeginForm("UpdateDeliveryDate", "Shipping", new { Id = @item.Id }, FormMethod.Post, new { Id = "formEditCustomerRole" + item.Id }))
+                    {
+                        <td class="action_ring">
+                            <label name="lblname@(item.Id)" id="lblname@(item.Id)">@item.Name</label>
+                            <input type="text" name="txtname@(item.Id)" value="@item.Name" id="txtname@(item.Id)" style="display:none;font-size: small;">
+                        </td>
+                        <td class="action_ring">
+                            <label name="lbldisplayorder@(item.Id)" id="lbldisplayorder@(item.Id)">@item.DisplayOrder</label>
+                            <input type="number" name="txtdisplayorder@(item.Id)" value="@item.DisplayOrder" id="txtdisplayorder@(item.Id)" style="display:none;font-size: small;">
+                        </td>
+                        
+                        @:<td class="action_ring">
+                            @:<input type="submit" name="btnSaveOrderItem@(item.Id)" value="" id="btnSaveOrderItem@(item.Id)" class="edit_save" style="display:none;" />
+                            @:<input type="submit" name="btnCancelOrderItem@(item.Id)" value="" onclick="toggleOrderItemEdit@(item.Id)(false);return false; " id="btnCancelOrderItem@(item.Id)" class="edit_cancel" style="display:none;" />
+                            @: <input type="button" name="btnEditOrderItem@(item.Id)" value="" onclick="toggleOrderItemEdit@(item.Id)(true);return false; " id="btnEditOrderItem@(item.Id)" class="edit_ring" />
+                            @: <a href="@Url.Action("DeleteDeliveryDate", "Shipping", new { Id = item.Id })"><input type="button" name="btnDeleteOrderItem@(item.Id)" value="" id="btnDeleteOrderItem@(item.Id)" class="delete_ring" onclick=" return confirm('Are You Sure'); " /></a>
+
+                            @:</td>
+                            }
+                            @:</tr>
+
+
+                }
+            }
+            else
+            {
+                <tr style="display: table-row;">
+
+                    <td colspan="6">No records to display</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr style="display: table-row;">
+
+                <td colspan="6">No records to display</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

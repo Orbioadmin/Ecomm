@@ -112,7 +112,7 @@ ul, li{list-style: none; margin: 0; padding: 0;}
 .item_admin_order{width:100%;margin-top:10px;border:2px solid #9fd2eb;border-radius: 10px !important;border-collapse: separate;border-spacing: 0;}
 .item_admin_order thead {background-color:#e0eef5;border-bottom: 2px solid #9fd2eb}
 .item_admin_order thead td{text-align: center;padding: 8px 0px;font-size: 12px;font-family: 'Roboto-Bold';color:#676666;text-transform: uppercase;}
-.item_admin_order tbody td{padding: 10px 5px;border:1px solid #EBF1F5;}
+.item_admin_order tbody td{padding: 10px 5px;border:1px solid #EBF1F5;max-width: 150px;word-break: break-word;}
 .item_admin_order tbody td img{vertical-align: text-bottom;border: 1px solid #e2e9ed}
 .varient_align{text-align: left;}
 .first_row td{background-color:#f3f8fa;}
@@ -594,6 +594,7 @@ body{padding-bottom:35px!important;}
 .panel-group .panel-body ul:last-child,
 .panel-group .panel-body ol:last-child {margin-bottom: 0;}
 .img_spri{cursor:pointer;position:absolute;top:15px;}
+.catedit{background:url('../images/edit.png') no-repeat;width: 6%;height:20px;margin-bottom:0px;cursor:pointer;/*right:50px;.img_spri*/float:right;position:absolute;top: 12px; right:0; display:inline-block;}
 .jewedit{background:url('../images/edit.png') no-repeat;width:22px;height:26px;margin-bottom:0px;cursor:pointer;/*right:50px;.img_spri*/float:right;position:absolute;top: 12px; right:0; display:inline-block;}
 .jewdelete{background:url('../images/trash-black.png') no-repeat;width:22px;height:29px;cursor:pointer;/*right:10px;.img_spri*/float:right;position:absolute;top: 12px; right:20px; display:inline-block;}
 .refbutt{cursor:pointer;}
@@ -622,4 +623,43 @@ body{padding-bottom:35px!important;}
   cursor: pointer;
 }
 .product_add_tab_main.new { margin-top: 0px;}.itabN1 a{padding:7px 0;}
+
+/* Zoom Slider */
+
+.star_rt0 {
+  background: url('../images/Stars_sprite.png') 0 -2px no-repeat;
+  height: 12px;
+  width: 65px;
+  margin-left: 10px;
+}
+.star_rt1 {
+  background: url('../images/Stars_sprite.png') 0 -30px no-repeat;
+  height: 12px;
+  width: 65px;
+  margin-left: 10px;
+}
+.star_rt2 {
+  background: url('../images/Stars_sprite.png') 0 -58px no-repeat;
+  height: 12px;
+  width: 65px;
+  margin-left: 10px;
+}
+.star_rt3 {
+    background: url('../images/Stars_sprite.png') 0 -85px no-repeat;
+    height: 12px;
+    width: 65px;
+    margin-left: 10px;
+}
+.star_rt4 {
+    background: url('../images/Stars_sprite.png') 0 -113px no-repeat;
+    height: 12px;
+    width: 65px;
+    margin-left: 10px;
+}
+ .star_rt5 {
+  background: url('../images/Stars_sprite.png') 0 -140px no-repeat;
+  height: 12px;
+  width: 65px;
+  margin-left: 10px;
+}
 

@@ -43,11 +43,11 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         /// <returns></returns>
         public ActionResult ManageCategories()
         {
-            var cachedModel = cacheManager.Get(string.Format(ModelCacheEventConsumer.CATEGORY_MENU_MODEL_KEY, 1, 4, 1),
-                      () => PrepareCategoryModels());
+            var result = categoryServices.GetTopMenuCategories();
             var model = new CategoryDetailModel()
             {
-                ParentCategories = cachedModel,
+                ParentCategories = (from c in result
+                    select new CategoryModel(c)).ToList(),
             };
             return View(model);
         }
@@ -256,9 +256,6 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
            manufacturerService.DeleteManufacturerProduct(id, pId);
            return RedirectToAction("EditManufacturers", new { id});
         }
-
-
-
 
         #endregion
 

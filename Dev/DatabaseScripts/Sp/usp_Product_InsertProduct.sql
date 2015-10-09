@@ -175,6 +175,18 @@ BEGIN TRY
 	,row_number() over (order by @productId)		 
 	from @productXml.nodes('/ProductDetail/manufactureIds/int') O(D)
 	
+		-- insert to Related Products
+	insert into dbo.RelatedProduct(ProductId1,ProductId2,DisplayOrder)
+	select @productId, O.D.value('.','int' )
+	,row_number() over (order by @productId)		 
+	from @productXml.nodes('/ProductDetail/relatedProductIds/int') O(D)
+	
+	--insert to similar Products
+	  insert into [dbo].[SimilarProduct](ProductId1,ProductId2,DisplayOrder)
+	select @productId, O.D.value('.','int' )
+	,row_number() over (order by @productId)		 
+	from @productXml.nodes('/ProductDetail/similarProductIds/int') O(D)
+	
    COMMIT TRAN
 	 
  END TRY

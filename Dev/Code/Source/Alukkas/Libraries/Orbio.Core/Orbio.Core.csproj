@@ -193,6 +193,9 @@
     <Compile Include="Data\TaxCategory.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\TaxRate.cs">
+      <DependentUpon>OrbioAdmin.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\UrlRecord.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>

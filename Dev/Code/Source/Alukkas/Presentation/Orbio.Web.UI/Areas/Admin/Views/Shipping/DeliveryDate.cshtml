@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "DeliveryDate";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="container">
+    <div class="main_edit_order" style="padding-bottom :15px">
+        <span class="edit_order_details"><span class="shipmen_icon"></span><a href="">Delivery Dates</a></span>
+        @*<span class="back_to_order" style="padding-top:0px">
+                <a href="@Url.Action("AddCustomerRole", "Customer")"><input type="button" value="Add New" class="add_cat_button"></a>
+            </span>*@
+    </div>
+
+    <div class="col-md-12" style=" margin-bottom: 34px;background-color: #fff;margin-top: 10px;width:100%">
+        <div class="col-md-9 main_order_table">
+            @Html.Action("ListDeliveryDate")
+        </div>
+        <div class="col-md-3 add_new_projects">
+            @Html.Action("AddDeliveryDate")
+        </div>
+    </div>
+</div>

@@ -396,6 +396,12 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             return RedirectToAction("NewsletterSubscribers");
         }
 
+        public ActionResult DeleteSubscribers(int Id)
+        {
+            subscriberService.Delete(Id);
+            return RedirectToAction("NewsletterSubscribers");
+        }
+
         public ActionResult Exporttocsv()
         {
             var email = new StringWriter();
@@ -409,9 +415,9 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             return File(new System.Text.UTF8Encoding().GetBytes(result), "text/csv", "newsletter_email"+DateTime.Now.ToShortTimeString());
         }
 
-        public ActionResult ImportFromCSV(HttpPostedFileBase importFile, string importedFile)
+        public ActionResult ImportFromCSV()
         {
-            var file = Request.Files["importcsvfile"];
+            HttpPostedFileBase file = Request.Files["UploadedFile"];
             if(file==null)
                 return RedirectToAction("NewsletterSubscribers");
 
