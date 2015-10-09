@@ -38,7 +38,8 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Catalog
             ShowOnHomePage = result.Categories.ShowOnHomePage;
             Published = result.Categories.Published;
             DisplayOrder = result.Categories.DisplayOrder;
-            Picture = result.Categories.Picture;
+            PictureId = result.Categories.PictureId;
+            PictureUrl = result.Categories.PictureUrl;
             MetaKeyWords = result.Categories.MetaKeywords;
             MetaDescription = result.Categories.MetaDescription;
             MetaTitle = result.Categories.MetaTitle;
@@ -75,7 +76,9 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Catalog
 
         public string ParentCategoryName { get; set; }
 
-        public string Picture { get; set; }
+        public int PictureId { get; set; }
+
+        public string PictureUrl { get; set; }
 
         public bool ShowOnHomePage { get; set; }
 

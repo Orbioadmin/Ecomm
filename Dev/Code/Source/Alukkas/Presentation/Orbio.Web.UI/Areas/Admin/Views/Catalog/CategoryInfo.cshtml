@@ -1,5 +1,6 @@
 ﻿@model Orbio.Web.UI.Areas.Admin.Models.Catalog.CategoryDetailModel
 
+@Html.HiddenFor(m => m.Categories.PictureId, new { value=Model.Categories.PictureId, @id="hdnPicture"})
 <div class="col-md-6 add_cart_left_side">
     <h3>Category information</h3>
         <div class="form-group">
@@ -14,42 +15,40 @@
             <label>Category template : </label>
                 @Html.DropDownListFor(m => m.Categories.CategoryTemplate, new SelectList(Model.Categories.CategoryTemplateList, "Id", "Name"), new { @class = "category_select_add_cat" })
         </div>
-    @*<div class="form-group">
+    <div class="form-group">
         <label>Picture : </label>
-        <table class="product_add_cart uploadFile" style="width: 28%; margin-top: -4%; margin-left: 27%;">
-            <tr>
-            @if(Model.Categories.Picture==null)
-                {
-                <td>
-                        <img id="uploadImg" width="100" height="100" src="~/Areas/Admin/images/thumbs/default-image.gif">
-                   
-                </td>
-                }
-                else
-                {
-                <td>
-                    <img width="100" height="100" src="@Model.Categories.Picture"></td>
-                }
-            </tr>
-            <tr>
-                @if (Model.Categories.Picture == null)
-                {
-                    <td style="position:relative">
-                        <input type="file" id="fileUpload" data-input="false" tabindex="-1" style="position: absolute; clip: rect(0px 0px 0px 0px);" />
-                                <label for="fileUpload">
-                                    <span class="add_product_submit" style="float:right;margin-left:10px;">Upload a file</span>
-                                </label> 
+        <table class="product_add_cart uploadFile" style="/* width: 92%; */ margin-top: -4%;margin-left: 29%;">
+            <tbody>
+                <tr>
+                    <td>
+                        @if (Model.Categories.PictureUrl == null)
+                        { 
+                        <img id="uploadImg" width="100" height="100" src="/Areas/Admin/images/thumbs/default-image.gif" style="margin-left: 12%;float: left;">
+                        }
+                        else
+                        {
+                            var baseImageUrl = System.Configuration.ConfigurationManager.AppSettings["ImageServerBaseUrl"];
+                            var imageUrl = baseImageUrl + Model.Categories.PictureUrl;
+                            <img id="uploadImg" width="100" height="100" src="@imageUrl" style="margin-left: 12%;float: left;">
+                        }
                     </td>
-                }
-                else
-                {
-                <td id="removeImage" style="position: relative">
-                    <input type="button" value="Cancel" id="RemoveImage" name="RemoveImage" class="add_product_submit" disabled="disabled" />
-                </td>
-                }
-            </tr>
+                </tr>
+                <tr>
+                    <td style="position:inherit;float: left;" id="uploadImage">
+                        <input type="file" id="fileUpload" data-input="false" tabindex="-1" style="position: absolute; clip: rect(0px 0px 0px 0px);">
+                        <label for="fileUpload">
+                            <span class="add_product_submit" style="float:right;margin-left:10px;">Upload</span>
+                        </label>
+                    </td>
+
+                    <td id="removeImage" style="position: inherit;float: left;">
+                        <input type="button" value="Cancel" id="RemoveImage" name="RemoveImage" class="add_product_submit" @((Model.Categories.PictureId == 0) ? "disabled" : "")>
+                    </td>
+
+                </tr>
+            </tbody>
         </table>
-    </div>*@
+    </div>
         <div class="form-group">
             <label>Parent category : </label>
                 @Html.DropDownListFor(m => m.Categories.ParentCategory, new SelectList(Model.Categories.CategoryList, "Id", "Name"), "[none]", new { @class = "none_select_add_cat" })
@@ -60,8 +59,7 @@
         </div>
     <div class="form-group">
         <label>Add To Menu : </label>
-        @Html.CheckBoxFor(m => m.Categories.ShowOnHomePage, new { @*@class = "show_on_home_page_check"*@  style = "top:0px;margin: 0"
-   })
+        @Html.CheckBoxFor(m => m.Categories.ShowOnHomePage, new { @*@class = "show_on_home_page_check"*@  style = "top:0px;margin: 0"})
 
         <label class="published_add_cart">Published : </label>
         @Html.CheckBoxFor(m => m.Categories.Published, new { style = "top:0px;margin: 0" })
@@ -92,141 +90,6 @@
         </div>
     
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@*<div role="tabpanel" class="tab-pane active">
-    <div class="col-md-12 standerd">
-        <div class="col-md-12 ">
-            @Html.HiddenFor(m => m.Categories.CategoryList, new { Value = Model.Categories.CategoryList })
-            @Html.HiddenFor(m => m.Categories.CategoryTemplateList, new { Value = Model.Categories.CategoryTemplateList })
-
-            <div class="col-md-2"><label>Category Name:</label></div>
-            <div class="col-md-4">@Html.TextBoxFor(m => m.Categories.Name, new { @class = "creatext", onkeyup = "javascript:GenerateScript()", id = "catgname" })
-            @Html.ValidationMessageFor(m => m.Categories.Name)</div>
-        </div>
-        <div class="col-md-12">
-            <div class="col-md-2"><label>Description:</label></div>
-            <div class="col-md-4">
-                @Html.TextAreaFor(m => m.Categories.Description, new { @class = "metainput" })
-            </div>
-            </div>
-        </div>
-     <div class="col-md-12 admin-content" style="margin-top:10px;">
-        <div class="col-md-12 rproduct">
-            <div class="col-md-12">
-                <div class="col-md-3 colmd"><label>Meta title:</label></div>
-                <div class="col-md-4">@Html.TextBoxFor(m => m.Categories.MetaTitle, new { @class = "creatext" })</div>
-            </div>
-
-            <div class="col-md-12">
-                <div class="col-md-3 colmd"><label>Meta description:</label></div>
-                <div class="col-md-4">
-                    @Html.TextAreaFor(m => m.Categories.MetaDescription, new { @class = "creatext" })
-                </div>
-            </div>
-            <div class="col-md-12">
-                <div class="col-md-3 colmd"><label>Meta keywords:</label></div>
-                <div class="col-md-4">
-                    @Html.TextBoxFor(m => m.Categories.MetaKeyWords, new { @class = "creatext" })
-                </div>
-            </div>
-            <div class="col-md-12">
-                <div class="col-md-3 colmd"><label>Search engine friendly page name:</label></div>
-                <div class="col-md-4">
-                    @Html.TextBoxFor(m => m.Categories.SearchEngine, new { @class = "creatext", id = "slug" })
-                </div>
-            </div>
-
-            <div class="col-md-12">
-                <div class="col-md-3 colmd"><label>Category template</label></div>
-                <div class="col-md-4">
-                    @Html.DropDownListFor(m => m.Categories.CategoryTemplate, new SelectList(Model.Categories.CategoryTemplateList, "Id", "Name"), new { @class = "creatext jewellery" })
-                </div>
-               </div>
-                <div class="col-md-12">
-                    <div class="col-md-3 colmd"><label>Parent Category</label></div>
-                    <div class="col-md-4">
-                        @Html.DropDownListFor(m => m.Categories.ParentCategory, new SelectList(Model.Categories.CategoryList, "Id", "Name"), "[none]", new { @class = "creatext jewellery" })
-                    </div>
-                </div>
-               
-                <div class="col-md-12">
-                    <div class="col-md-3 colmd"><label>Show on home page:</label></div>
-                    <div class="col-md-4 ">
-                        @Html.CheckBoxFor(m => m.Categories.ShowOnHomePage, new { @class = "show-page2" })
-                        <span></span>
-                       
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="col-md-3 colmd"><label>Published</label></div>
-                    <div class="col-md-4">
-                        @Html.CheckBoxFor(m => m.Categories.Published, new { @class = "show-page2" })
-                        <span></span>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="col-md-3 colmd"><label>Display order</label></div>
-                    <div class="col-md-4">
-                        @Html.TextBoxFor(m => m.Categories.DisplayOrder, new { @type = "number", @class = "creatext" })
-                    </div>
-                </div>
-
-                @*<div class="col-md-12">
-            <div class="col-md-3 colmd"><label>Price Range</label></div>
-            <div class="col-md-4">@Html.TextBoxFor(m => m.Categories.PriceRange, new { @class = "creatext" })</div>
-            </div>*@
-                @*<div class="col-md-12 ">
-                <div class="col-md-3 colmd"><label>Include in top menu</label></div>
-                <div class="col-md-4">
-                        @Html.CheckBoxFor(m => m.Categories.IncludeInTopMenu, new { @class = "show-page2" })
-                        <span></span>
-                </div>
-            </div>*@
-
-                @*<div class="col-md-12">
-                    <div class="col-md-3 colmd"><label>Picture</label></div>
-                    <div class="col-md-4">
-                        <div id="picture2134714071image">
-                            <img src="~/Areas/Admin/images/thumbs/0000140_jewellery_tb.jpeg">
-                        </div>
-                        <span id="picture2134714071remove" class="t-button">Remove picture</span><br />
-                        <div class="upload fupload">
-                            Upload a file
-                            <input multiple="multiple" type="file" name="file" class="filtext" style="">
-                        </div>
-                    </div>
-                </div>*@
-            @*</div>
-        </div>
-    </div>*@
 <script>
     function GenerateScript()
     {

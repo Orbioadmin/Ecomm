@@ -2,19 +2,22 @@
  <div class="left-sidebar">
                     
                     <div class="filter_by">FILTER BY</div>    
-                    
-                        @foreach (var attr in this.Model)
-                        {
-                            if (attr.SpecificationAttributeOptions.Count > 0)
-                            {
-                                Html.RenderPartial(attr.Type + "Filter", attr);
-                            }
-                        }
-                        
-                      
-                                              
-                        
-                    </div>
+     <div class="inner-filter">
+         @foreach (var attr in this.Model)
+         {
+             if (attr.SpecificationAttributeOptions.Count > 0)
+             {
+                 Html.RenderPartial(attr.Type + "Filter", attr);
+             }
+         }
+         </div>
+
+
+
+     </div>
+
+
+
 
 
 <script type="text/javascript">
@@ -23,15 +26,24 @@
 
 
 
-  (function($) {
-    
-  var allPanels = $('.brands-name').hide();
-    
-  $('.list_products .modern a').click(function() {
-    allPanels.slideUp();
-    $(this).parent().next().slideDown();
-    return false;
-  });
+    (function ($) {
 
-})(jQuery);
+        var allPanels = $('.brands-name').hide();
+
+        $('.list_products .modern a').click(function () {
+            $(this).toggleClass('arrows');
+            //allPanels.slideUp();
+            $(this).parent().next().slideToggle();
+            return false;
+        });
+
+        if ($(window).width() < 767) {
+            $('.inner-filter').hide();
+            $('.filter_by').click(function () {
+                $(this).toggleClass('arrow');
+                $('.inner-filter').slideToggle();
+            });
+        }
+
+    })(jQuery);
 </script>

@@ -202,8 +202,8 @@ namespace Orbio.Services.Admin.Media
                                 g.CompositingQuality = CompositingQuality.HighQuality;
                                 g.PixelOffsetMode = PixelOffsetMode.HighQuality;
                                 g.DrawImage(b, 0, 0, newSize.Width, newSize.Height);
-                                var ep = new EncoderParameters();
-                                ep.Param[0] = new EncoderParameter(Encoder.Quality, 80);
+                                var ep = new EncoderParameters(1);
+                                ep.Param[0] = new EncoderParameter(Encoder.Quality, 80L);
                                 ImageCodecInfo ici = GetImageCodecInfoFromExtension(fileExtension);
                                 if (ici == null)
                                     ici = GetImageCodecInfoFromMimeType("image/jpeg");

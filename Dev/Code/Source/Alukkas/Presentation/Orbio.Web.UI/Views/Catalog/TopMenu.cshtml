@@ -209,10 +209,20 @@
         $(this).children('li').slice(7).hide();
     });
 
-    if($(window).width() < 767 ){
-     $('.select_menu').hide();
-    $('.search-set').click(function(){
-      $('.select_menu').slideToggle();
-    });
+    if ($(window).width() < 767) {
+        $('.select_menu').hide();
+        $('.search-set').click(function () {
+            $('.select_menu').slideToggle();
+        });
+
+        $('.dropdown-toggle').prop("onclick", null);
+        $('li.dropdown').hover(function () {
+            $('.dropdown-menu').hide();
+        });
+
+        $('.second_menu.home .navbar-nav li a.dropdown-toggle').click(function () {
+            $('ul.dropdown-menu').slideToggle('slow');
+        });
+
     }
 </script>

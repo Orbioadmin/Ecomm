@@ -275,7 +275,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                                           ShowOnHomePage = model.Categories.ShowOnHomePage,
                                           Published = model.Categories.Published,
                                           DisplayOrder = model.Categories.DisplayOrder,
-                                          Picture = model.Categories.Picture,
+                                          PictureId = model.Categories.PictureId,
                                           MetaKeywords = model.Categories.MetaKeyWords,
                                           MetaDescription = model.Categories.MetaDescription,
                                           MetaTitle = model.Categories.MetaTitle,

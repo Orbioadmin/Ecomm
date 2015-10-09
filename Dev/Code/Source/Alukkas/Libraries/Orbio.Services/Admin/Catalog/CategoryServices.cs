@@ -160,7 +160,7 @@ namespace Orbio.Services.Admin.Catalog
                             category.MetaDescription = model.MetaDescription;
                             category.MetaTitle = model.MetaTitle;
                             category.ParentCategoryId = model.ParentCategoryId;
-                            // category.PictureId=model.Picture;
+                            category.PictureId = (model.PictureId != null) ? Convert.ToInt32(model.PictureId) : 0;
                             category.ShowOnHomePage = model.ShowOnHomePage;
                             category.IncludeInTopMenu = model.ShowOnHomePage;
                             category.SubjectToAcl = model.SubjectToACL;
@@ -187,7 +187,7 @@ namespace Orbio.Services.Admin.Catalog
                         category.MetaDescription = model.MetaDescription;
                         category.MetaTitle = model.MetaTitle;
                         category.ParentCategoryId = model.ParentCategoryId;
-                        // category.PictureId=model.Picture;
+                        category.PictureId = (model.PictureId != null) ? Convert.ToInt32(model.PictureId) : 0;
                         category.ShowOnHomePage = model.ShowOnHomePage;
                         category.IncludeInTopMenu = model.ShowOnHomePage;
                         category.SubjectToAcl = model.SubjectToACL;
