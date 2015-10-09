@@ -645,6 +645,7 @@
     <Content Include="Images\Basic_image\category-ring.png" />
     <Content Include="Images\Basic_image\customer_title.png" />
     <Content Include="Images\Basic_image\diamond.png" />
+    <Content Include="Images\Basic_image\down-arrow-filter.png" />
     <Content Include="Images\Basic_image\earrings.png" />
     <Content Include="Images\Basic_image\easy-gold-logo.png" />
     <Content Include="Images\Basic_image\favicon.ico" />
@@ -681,6 +682,7 @@
     <Content Include="Images\Basic_image\product3.jpg" />
     <Content Include="Images\Basic_image\product4.jpg" />
     <Content Include="Images\Basic_image\product_arrow.png" />
+    <Content Include="Images\Basic_image\product_arrow_up.png" />
     <Content Include="Images\Basic_image\ratings-1.png" />
     <Content Include="Images\Basic_image\ratings-2.png" />
     <Content Include="Images\Basic_image\ratings-3.png" />
@@ -713,6 +715,7 @@
     <Content Include="Images\Basic_image\trash-yellow.png" />
     <Content Include="Images\Basic_image\triangle-left.png" />
     <Content Include="Images\Basic_image\triangle-right.png" />
+    <Content Include="Images\Basic_image\up-arrow-filter.png" />
     <Content Include="Images\Basic_image\up-arrow.png" />
     <Content Include="Images\Basic_image\updates-image1.png" />
     <Content Include="Images\Basic_image\updates-image2.png" />
