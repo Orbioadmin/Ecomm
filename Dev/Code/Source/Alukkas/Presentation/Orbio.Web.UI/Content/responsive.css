@@ -533,7 +533,7 @@ ul.sub-menu{
 .product-information span span{
 	float: none;
 }
-.feature_li.four_items li{width: 46%;}
+.feature_li.four_items li{width: 46%; margin:0 2%;}
 .menu_desc li{ padding: 8px 6px 7px;}
 .thumb_ul li{width: 100%; margin-bottom: 5px;}
 .grid.main_thumb{width: 100%;}
@@ -641,13 +641,12 @@ input.search_butt {left: 248px;}
 @media (max-width: 260px) {
 	.menu_select{width: 100%;}li .select_text {  left: 10px !important;  top: 44px!important;}
 li input.search_butt { left: 132px; top: 44px!important;}
-ul.menu_desc{height: 82px;}li input.search_butt {left: 150px !important;}
+li input.search_butt {left: 150px !important;}
 .navbar-brand > img{width: 100%;}
 }
 
 
 @media (max-width: 380px) {
-.feature_li.four_items li{width: 96%;}
 .Shipping_address.payment_set dl.dl-horizontal dd{margin-left: 0;}
 .foot_menu li {  width: 44px;}
 
