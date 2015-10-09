@@ -1,5 +1,6 @@
 ﻿@model Orbio.Web.UI.Areas.Admin.Models.Catalog.CategoryDetailModel
 
+@Html.HiddenFor(m => m.Categories.PictureId, new { value=Model.Categories.PictureId, @id="hdnPicture"})
 <div class="col-md-6 add_cart_left_side">
     <h3>Category information</h3>
         <div class="form-group">
@@ -14,42 +15,40 @@
             <label>Category template : </label>
                 @Html.DropDownListFor(m => m.Categories.CategoryTemplate, new SelectList(Model.Categories.CategoryTemplateList, "Id", "Name"), new { @class = "category_select_add_cat" })
         </div>
-    @*<div class="form-group">
+    <div class="form-group">
         <label>Picture : </label>
-        <table class="product_add_cart uploadFile" style="width: 28%; margin-top: -4%; margin-left: 27%;">
-            <tr>
-            @if(Model.Categories.Picture==null)
-                {
-                <td>
-                        <img id="uploadImg" width="100" height="100" src="~/Areas/Admin/images/thumbs/default-image.gif">
-                   
-                </td>
-                }
-                else
-                {
-                <td>
-                    <img width="100" height="100" src="@Model.Categories.Picture"></td>
-                }
-            </tr>
-            <tr>
-                @if (Model.Categories.Picture == null)
-                {
-                    <td style="position:relative">
-                        <input type="file" id="fileUpload" data-input="false" tabindex="-1" style="position: absolute; clip: rect(0px 0px 0px 0px);" />
-                                <label for="fileUpload">
-                                    <span class="add_product_submit" style="float:right;margin-left:10px;">Upload a file</span>
-                                </label> 
+        <table class="product_add_cart uploadFile" style="/* width: 92%; */ margin-top: -4%;margin-left: 29%;">
+            <tbody>
+                <tr>
+                    <td>
+                        @if (Model.Categories.PictureUrl == null)
+                        { 
+                        <img id="uploadImg" width="100" height="100" src="/Areas/Admin/images/thumbs/default-image.gif" style="margin-left: 12%;float: left;">
+                        }
+                        else
+                        {
+                            var baseImageUrl = System.Configuration.ConfigurationManager.AppSettings["ImageServerBaseUrl"];
+                            var imageUrl = baseImageUrl + Model.Categories.PictureUrl;
+                            <img id="uploadImg" width="100" height="100" src="@imageUrl" style="margin-left: 12%;float: left;">
+                        }
                     </td>
-                }
-                else
-                {
-                <td id="removeImage" style="position: relative">
-                    <input type="button" value="Cancel" id="RemoveImage" name="RemoveImage" class="add_product_submit" disabled="disabled" />
-                </td>
-                }
-            </tr>
+                </tr>
+                <tr>
+                    <td style="position:inherit;float: left;" id="uploadImage">
+                        <input type="file" id="fileUpload" data-input="false" tabindex="-1" style="position: absolute; clip: rect(0px 0px 0px 0px);">
+                        <label for="fileUpload">
+                            <span class="add_product_submit" style="float:right;margin-left:10px;">Upload</span>
+                        </label>
+                    </td>
+
+                    <td id="removeImage" style="position: inherit;float: left;">
+                        <input type="button" value="Cancel" id="RemoveImage" name="RemoveImage" class="add_product_submit" @((Model.Categories.PictureId == 0) ? "disabled" : "")>
+                    </td>
+
+                </tr>
+            </tbody>
         </table>
-    </div>*@
+    </div>
         <div class="form-group">
             <label>Parent category : </label>
                 @Html.DropDownListFor(m => m.Categories.ParentCategory, new SelectList(Model.Categories.CategoryList, "Id", "Name"), "[none]", new { @class = "none_select_add_cat" })
@@ -60,8 +59,7 @@
         </div>
     <div class="form-group">
         <label>Add To Menu : </label>
-        @Html.CheckBoxFor(m => m.Categories.ShowOnHomePage, new { @*@class = "show_on_home_page_check"*@  style = "top:0px;margin: 0"
-   })
+        @Html.CheckBoxFor(m => m.Categories.ShowOnHomePage, new { @*@class = "show_on_home_page_check"*@  style = "top:0px;margin: 0"})
 
         <label class="published_add_cart">Published : </label>
         @Html.CheckBoxFor(m => m.Categories.Published, new { style = "top:0px;margin: 0" })

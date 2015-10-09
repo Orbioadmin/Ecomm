@@ -65,16 +65,8 @@
                         }
                     </div>
                 </div>
-                @*@{
-                Html.RenderPartial("CategoryProduct", this.Model);
-            }*@
+               
             </div>
-
-                    @*<div aria-labelledby="home-tab" id="discount" class="tab-pane fade " role="tabpanel">
-                    @{
-                        Html.RenderPartial("DiscountCategory", this.Model);
-                    }
-                </div>*@
                 </div>
             </div>
     }
@@ -99,4 +91,62 @@
             });
         });
     </script>
+
+<script>
+
+    $("#fileUpload").change(function () {
+        uploadImage();
+    });
+
+
+    function uploadImage() {
+
+        var data = new FormData();
+
+        var files = $("#fileUpload").get(0).files;
+
+        // Add the uploaded image content to the form data collection
+        if (files.length > 0) {
+            data.append("UploadedImage", files[0]);
+        }
+
+        // Make Ajax request with the contentType = false, and procesDate = false
+        $.ajax({
+            type: "POST",
+            url: "/Picture/uploadImg",
+            contentType: false,
+            processData: false,
+            data: data,
+            success: function (result) {
+                var json = JSON.parse(result);
+                $("#hdnPicture").val(json.pictureId);
+                $('#uploadImg').attr("src", json.imageUrl);
+                $('#RemoveImage').prop("disabled", false);
+            },
+            error: function (xhr) {
+                alert("Error has occurred..");
+            }
+        });
+    }
+
+
+
+    $("#RemoveImage").click(function () {
+        var id = $("#hdnPicture").val();
+        $.ajax({
+            type: "POST",
+            url: '@(Url.Action("RemoveImage", "Picture"))?id=' + id,
+            success: function (result) {
+                $('#uploadImg').attr("src", "../../../Areas/Admin/images/thumbs/default-image.gif");
+                $("#hdnPicture").val(1);
+            },
+            error: function (xhr) {
+                alert("Error has occurred..");
+            }
+        });
+    });
+
+</script>
+
 }
+   

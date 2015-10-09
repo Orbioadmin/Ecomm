@@ -22,7 +22,9 @@ namespace Orbio.Core.Domain.Admin.Catalog
 
         public string ParentCategoryName { get; set; }
 
-        public string Picture { get; set; }
+        public int PictureId { get; set; }
+
+        public string PictureUrl { get; set; }
 
         public bool ShowOnHomePage { get; set; }
 
