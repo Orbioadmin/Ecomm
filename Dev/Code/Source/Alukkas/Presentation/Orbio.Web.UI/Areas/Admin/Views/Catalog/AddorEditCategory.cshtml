@@ -130,14 +130,14 @@
     }
 
 
-
     $("#RemoveImage").click(function () {
         var id = $("#hdnPicture").val();
         $.ajax({
             type: "POST",
             url: '@(Url.Action("RemoveImage", "Picture"))?id=' + id,
             success: function (result) {
-                $('#uploadImg').attr("src", "../../../Areas/Admin/images/thumbs/default-image.gif");
+                $('#uploadImg').attr("src","");
+                $('#uploadImg').toggleClass("class", "defaultimg");
                 $("#hdnPicture").val(1);
             },
             error: function (xhr) {
@@ -145,7 +145,6 @@
             }
         });
     });
-
 </script>
 
 }
