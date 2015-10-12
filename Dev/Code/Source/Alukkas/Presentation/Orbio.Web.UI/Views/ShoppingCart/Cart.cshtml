@@ -52,11 +52,17 @@
             <div class="shop_status">
                 <div class="row">
                     <div class="col-sm-8">
-                        
+                        <div class="check_deliver" id="checkPin">
+                            <p>Check Delivery Information</p>
+                            <input type="text" autocomplete="off" maxlength="6" placeholder="Enter your pincode" class="pincode" required="required" id="pincode">
+                            <input type="button" value="Check" class="blue_butt" onclick="btnSubmit_Click()">
+                        </div>
+                        <div class="check_deliver" style="display:none" id="displayResult">
+                            <label id="lbldisplayresult"> Available at </label><span><a onclick="Change()"> change</a></span>
+                        </div>
 
                         <div class="shop_payment">
                             <p>Payment Methods</p>
-
                             <ul class="foot_menu clearfix">
                                 <li><a href="" class="visa_met" style="cursor:default"></a></li>
                                 <li><a href="" class="discover_met" style="cursor:default"></a></li>
@@ -66,11 +72,11 @@
 
                         </div>
 
-                        <div class="check_deliver">
+                        @*<div class="check_deliver">*@
                           <!--  <p>Check Delivery Information</p>
                             <input type="text" placeholder="Enter your pincode" class="pincode">
                             <input type="submit" value="Check" class="blue_butt">-->
-                        </div>
+                        @*</div>*@
                     </div>
                     <div class="col-sm-4">
                         @{
@@ -116,3 +122,68 @@
         </div>
     </div>
 </section>
+
+<script language="javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
+<script>
+    function btnSubmit_Click() {
+        var pincode = $('#pincode').val();
+        getAddressInfoByZip(pincode);
+    }
+
+    function getAddressInfoByZip(zip) {
+        if (zip.length >= 5 && typeof google != 'undefined') {
+            var addr = {};
+            var geocoder = new google.maps.Geocoder();
+            geocoder.geocode({ 'address': zip }, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    if (results.length >= 1) {
+                        var state = "";
+                        for (var j = 0; j < results.length; j++) {
+                            for (var i = 0; i < results[j].address_components.length; i++) {
+                                var base = results[j].address_components[i].types[0];
+                                if (base == "administrative_area_level_1") {
+                                    state = results[j].address_components[i].long_name;
+                                }
+                            }
+                        }
+                        CheckPincodeAvailability(state, zip);
+                    }
+                }
+            })
+        }
+    }
+
+    function CheckPincodeAvailability(state, pincode) {
+        if (state != null) {
+            $.ajax({
+                data: { state: state },
+                url: '@Url.Action("CheckPincodeAvailability","ShoppingCart")',
+                type: "POST",
+                success: function (data) {
+                    if (data == "Available") {
+                        $('#lbldisplayresult').text("Available at " + pincode);
+                        $('#displayResult').css("display", "block");
+                        $('#checkPin').css("display", "none");
+                    }
+                    else {
+                        $('#lbldisplayresult').text("Not available at " + pincode);
+                        $('#displayResult').css("display", "block");
+                        $('#checkPin').css("display", "none");
+                    }
+                }
+            });
+        }
+        else {
+            $('#lbldisplayresult').text("Not available at " + pincode);
+            $('#displayResult').css("display", "block");
+            $('#checkPin').css("display", "none");
+        }
+    }
+
+    function Change()
+    {
+        $('#displayResult').css("display", "none");
+        $('#checkPin').css("display", "block");
+    }
+
+</script>

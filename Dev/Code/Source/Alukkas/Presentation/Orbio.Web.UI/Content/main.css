@@ -1294,7 +1294,8 @@ clear: both; overflow: hidden;}
 .shop_promation ul li{ float: left;padding: 0 5px; color: #545353; font-family: "Calibri_bold";}
 .shop_status .row{margin: 0;}.pincode{ color: #bababa; font-size: 12px;}
 .shop_status .col-sm-8{border-right:1px #f8c301 solid; background:#f5f5f5; padding: 0;}
-.check_deliver{/*border-bottom:1px #f8c301 solid;*/ padding: 32px 15px;}.shop_payment{padding: 15px;}
+.check_deliver{border-bottom:1px #f8c301 solid; padding:15px;/*padding: 32px 15px;*/}
+.shop_payment{padding: 15px;}
 .check_deliver p, .shop_payment p{color: #272727; font-family: "Calibri_bold"; font-size: 14px;}
 .cart_total .dl-horizontal dt{font-weight: normal; text-align: left;}
 .cart_total .dl-horizontal dd.cart_total, .cart_total .dl-horizontal dt.cart_total{font-family: "Calibri_bold";}

@@ -137,5 +137,18 @@ namespace Orbio.Services.Orders
             context.ExecuteFunction<ShoppingCartItem>("usp_Shoppingcart_Items_Updates",
                    new SqlParameter() { ParameterName = "@list", Value = cartItemsXml, DbType = DbType.Xml });
         }
+
+        /// <summary>
+        /// check if the delivery is available to this state
+        /// </summary>
+        /// <returns></returns>
+        public string CheckPincodeAvailability(string state)
+        {
+            var sqlParamList = new List<SqlParameter>();
+            sqlParamList.Add(new SqlParameter { ParameterName = "@state", Value = state, DbType = System.Data.DbType.String });
+            var result = context.ExecuteFunction<String>("usp_CheckPincodeAvailability", sqlParamList.ToArray()).FirstOrDefault();
+            return result;
+        }
+
     }
 }

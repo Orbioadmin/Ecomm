@@ -16,16 +16,16 @@ namespace Orbio.Web.UI.Controllers
     public class ShoppingCartController : CartBaseController
     {
 
-   
-       
+
+
         private readonly IPriceCalculationService priceCalculationService;
-       
+
 
         public ShoppingCartController(IShoppingCartService shoppingCartService, IStoreContext storeContext,
             IPriceCalculationService priceCalculationService, IGenericAttributeService genericAttributeService, IWorkContext workContext)
             : base(shoppingCartService, workContext, storeContext, genericAttributeService)
         {
-                        
+
             this.priceCalculationService = priceCalculationService;
         }
 
@@ -54,17 +54,20 @@ namespace Orbio.Web.UI.Controllers
                             detailModel.AppliedCouponCode, storeContext.CurrentStore.Id);
                 }
                 cartUpdateItems = (from r in detailModel.ShoppingCartItems.AsEnumerable()
-                                   select new ShoppingCartItem { CartId = r.CartId, Quantity = Convert.ToInt32(r.SelectedQuantity), IsRemove = r.IsRemove,ShoppingCartStatus = r.ShoppingCartStatus }).ToList();
+                                   select new ShoppingCartItem { CartId = r.CartId, Quantity = Convert.ToInt32(r.SelectedQuantity), IsRemove = r.IsRemove, ShoppingCartStatus = r.ShoppingCartStatus }).ToList();
                 shoppingCartService.ModifyCartItem(cartUpdateItems);
             }
-            
+
             return RedirectToRoute("ShoppingCart");
         }
         public ActionResult CartItem()
         {
-            var model = new CartHeaderModel{ItemCount=shoppingCartService.GetCartItems("select", 0, ShoppingCartType.ShoppingCart,
-                0, workContext.CurrentCustomer.Id, 0, 0, storeContext.CurrentStore.Id).ShoppingCartItems.Count};
-            return PartialView("CartItems",model);
+            var model = new CartHeaderModel
+            {
+                ItemCount = shoppingCartService.GetCartItems("select", 0, ShoppingCartType.ShoppingCart,
+                    0, workContext.CurrentCustomer.Id, 0, 0, storeContext.CurrentStore.Id).ShoppingCartItems.Count
+            };
+            return PartialView("CartItems", model);
         }
 
         public ActionResult Continueshopping()
@@ -82,7 +85,7 @@ namespace Orbio.Web.UI.Controllers
         //    var model = new CartModel(shoppingCartService.GetCartItems("select", 0, cartType, 0, curCustomer.Id, 0, 0));
 
         //   // decimal subtotal = priceCalculationService.GetCartSubTotal(model,false);
-           
+
         //    //foreach (var totalprice in model.ShoppingCartItems)
         //    //{
         //    //    subtotal = subtotal + Convert.ToDouble(totalprice.TotalPrice);
@@ -93,7 +96,7 @@ namespace Orbio.Web.UI.Controllers
         //    var currency = (from r in model.ShoppingCartItems.AsEnumerable()
         //                    select r.CurrencyCode).Take(1).ToList();
         //    ViewBag.Currencycode = (currency.Count > 0) ? currency[0] : "Rs";
-            
+
         //    return model;
         //}
 
@@ -128,14 +131,24 @@ namespace Orbio.Web.UI.Controllers
         {
             var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();
             var curCustomer = workContext.CurrentCustomer;
-            string result = shoppingCartService.UpdateWishListItems("addCartItem",0, ShoppingCartType.ShoppingCart, 0, curCustomer.Id, id, 1,ShoppingCartStatus.Cart);
+            string result = shoppingCartService.UpdateWishListItems("addCartItem", 0, ShoppingCartType.ShoppingCart, 0, curCustomer.Id, id, 1, ShoppingCartStatus.Cart);
             if (result == "Updated" || result == "Inserted")
-                {
-                    return Json("Success");
-                }
-                else
-                    return Json(result);
+            {
+                return Json("Success");
             }
+            else
+                return Json(result);
         }
 
+        /// <summary>
+        /// check pincode availability for delivery
+        /// </summary>
+        /// <param name="state"></param>
+        /// <returns></returns>
+        public JsonResult CheckPincodeAvailability(string state)
+        {
+            var result = shoppingCartService.CheckPincodeAvailability(state);
+            return Json(result);
+        }
+    }
 }

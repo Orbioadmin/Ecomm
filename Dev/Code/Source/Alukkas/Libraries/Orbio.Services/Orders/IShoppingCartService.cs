@@ -49,5 +49,11 @@ namespace Orbio.Services.Orders
         /// </summary>
         /// <param name="action">Action</param>
         string UpdateWishListItems(string action, int id, ShoppingCartType shoppingCartType, int curCustomerId, int customerId, int productId, int quantity, ShoppingCartStatus shoppingCartStatus);
+
+        /// <summary>
+        /// Checking pincode availability
+        /// </summary>
+        /// <param name="action">state</param>
+        string CheckPincodeAvailability(string state);
     }
 }
