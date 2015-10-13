@@ -137,6 +137,7 @@
             url: '@(Url.Action("RemoveImage", "Picture"))?id=' + id,
             success: function (result) {
                 $('#uploadImg').attr("src","");
+                $('#uploadImg').addClass("defaultimg");
                 $('#uploadImg').toggleClass("class", "defaultimg");
                 $("#hdnPicture").val(1);
             },

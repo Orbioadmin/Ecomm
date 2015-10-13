@@ -620,6 +620,7 @@
     <Content Include="Content\fonts\fontawesome-webfont.ttf" />
     <Content Include="Content\fonts\fontawesome-webfont.woff" />
     <Content Include="Content\fonts\FontAwesome.otf" />
+    <Content Include="Images\available.png" />
     <Content Include="Images\Basic_image\Alukkas_-_Bangle_Size.png" />
     <Content Include="Images\Basic_image\apple-touch-icon-144-precomposed.png" />
     <Content Include="Images\Basic_image\apple-touch-icon-57-precomposed.png" />
@@ -737,6 +738,7 @@
     <Content Include="Images\cancellation-image.png" />
     <Content Include="Images\cart.png" />
     <Content Include="Images\certified.png" />
+    <Content Include="Images\checkavail.png" />
     <Content Include="Images\collection1.png" />
     <Content Include="Images\collection2.png" />
     <Content Include="Images\collection3.png" />
@@ -783,6 +785,7 @@
     <Content Include="Images\Thumbnail\Listing-product1.jpg" />
     <Content Include="Images\Thumbnail\Listing-product2.jpg" />
     <Content Include="Images\Thumbnail\Listing-product3.jpg" />
+    <Content Include="Images\unavail.png" />
     <Content Include="Images\updates-bg-pattern.png" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\cloud-zoom.js" />
@@ -878,9 +881,7 @@
     <Content Include="Areas\Admin\Views\Product\_CreateOrUpdateSeo.cshtml" />
     <Content Include="Areas\Admin\Views\Product\_CreateOrUpdatePicture.cshtml" />
     <Content Include="Areas\Admin\Views\Picture\_PictureUpload.cshtml" />
-    <Content Include="Areas\Admin\Views\MessageTemplate\Info.cshtml" />
-    <Content Include="Areas\Admin\Views\MessageTemplate\List.cshtml" />
-    <Content Include="Areas\Admin\Views\MessageTemplate\MessageTemplateList.cshtml" />
+   
     <Content Include="Areas\Admin\Views\Sales\AddOrEditGiftCards.cshtml" />
     <Content Include="Areas\Admin\Views\Sales\GiftCardInfo.cshtml" />
     <Content Include="Areas\Admin\Views\Sales\GiftCards.cshtml" />
@@ -902,16 +903,8 @@
     <Content Include="Areas\Admin\Views\Order\NeverSoldReport.cshtml" />
     <Content Include="Areas\Admin\Views\Order\SearchNeverSold.cshtml" />
     <Content Include="Areas\Admin\Views\Order\NeverSoldProducts.cshtml" />
-    <Content Include="Areas\Admin\Views\Shipment\List.cshtml" />
-    <Content Include="Areas\Admin\Views\Shipment\Search.cshtml" />
-    <Content Include="Areas\Admin\Views\Shipment\ShipmentList.cshtml" />
-    <Content Include="Areas\Admin\Views\Shipment\ShipmentItems.cshtml" />
-    <Content Include="Areas\Admin\Views\Sales\GiftCards.cshtml" />
-    <Content Include="Areas\Admin\Views\Sales\SearchGiftCards.cshtml" />
-    <Content Include="Areas\Admin\Views\Sales\ListGiftCards.cshtml" />
-    <Content Include="Areas\Admin\Views\Sales\AddOrEditGiftCards.cshtml" />
-    <Content Include="Areas\Admin\Views\Sales\GiftCardInfo.cshtml" />
-    <Content Include="Areas\Admin\Views\Sales\GiftCardUsageHistory.cshtml" />
+    
+    
     <Content Include="Areas\Admin\Views\MessageTemplate\List.cshtml" />
     <Content Include="Areas\Admin\Views\MessageTemplate\MessageTemplateList.cshtml" />
     <Content Include="Areas\Admin\Views\MessageTemplate\Info.cshtml" />

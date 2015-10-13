@@ -56,7 +56,7 @@
                             <div class="check_deliver" id="checkPin">
                                 <ul>
                                     <li class="checkdel">
-                                    <img src="~/Images/checkavail.png" />
+                                        <img src="~/Images/checkavail.png" class="locationimg" />
                                     Check Availability at</li>
                                     <li>
                                         <input type="text" autocomplete="off" minlength="6" maxlength="6" placeholder="Enter your pincode" class="pincode" id="pincode" required="required">
@@ -66,9 +66,9 @@
                             </div>
                             <div class="check_deliver" style="display:none" id="displayResult">
                                 <ul>
-                                    <li class="checkdel">
-                                        <img src="" id="imgavailability"/>
-                                        <label id="lbldisplayresult"> Available at </label><span><a onclick="Change()"> change</a></span>
+                                    <li class="delresult">
+                                        <img src="" id="imgavailability" class="locationimg" />
+                                        <span id="lbldisplayresult" class="spanavail"> Available at </span><span style="cursor:pointer"><a onclick="Change()" style="text-decoration:underline;">change</a></span>
                                     </li>
                                     </ul>
                             </div>
@@ -172,13 +172,13 @@
                 type: "POST",
                 success: function (data) {
                     if (data == "Available") {
-                        $('#lbldisplayresult').text("Available at " + pincode);
+                        $('#lbldisplayresult').text("Available at pincode : " + pincode);
                         $('#displayResult').css("display", "block");
                         $('#checkPin').css("display", "none");
                         $('#imgavailability').attr("src","../images/available.png");
                     }
                     else {
-                        $('#lbldisplayresult').text("Not available at " + pincode);
+                        $('#lbldisplayresult').text("Not available at pincode : " + pincode);
                         $('#displayResult').css("display", "block");
                         $('#checkPin').css("display", "none");
                         $('#imgavailability').attr("src", "../images/unavail.png");

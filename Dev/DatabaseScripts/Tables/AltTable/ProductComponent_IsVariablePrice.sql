@@ -6,7 +6,7 @@ BEGIN
 	IF  NOT EXISTS (SELECT 1 FROM sys.columns WHERE object_id = OBJECT_ID(N'[dbo].[ProductComponent]') AND name='IsVariablePrice')
 	Begin
 		ALTER TABLE [dbo].[ProductComponent]
-		[IsVariablePrice] [bit] NOT NULL DEFAULT 0,
+		ADD [IsVariablePrice] [bit] NOT NULL DEFAULT 0
 		PRINT 'Added column IsVariablePrice for the table ProductComponent'	
 	End
 	Else

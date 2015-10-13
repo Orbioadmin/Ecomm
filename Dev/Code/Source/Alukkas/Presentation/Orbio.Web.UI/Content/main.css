@@ -1296,9 +1296,10 @@ clear: both; overflow: hidden;}
 .shop_status .row{margin: 0;}
 .pincode{ margin-left: 5px;color: #5D5B5B; font-size: 12px;font-family: Calibri;}
 .shop_status .col-sm-8{border-right:1px #f8c301 solid; background:#f5f5f5; padding: 0;}
-
-
 .check_deliver ul li.checkdel{padding-top:3px;}
+.check_deliver ul li.delresult{padding-top:3px;font-family: "Calibri";}
+.check_deliver .locationimg {margin-top: -11px;}
+.check_deliver .spanavail{margin-right:10px;}
 .check_deliver{border-bottom: 1px #f8c301 solid; border-top: 1px #f8c301 solid; padding: 10px 0;
 clear: both; overflow: hidden;}
 .check_deliver ul{margin: 10px; float: left; }
