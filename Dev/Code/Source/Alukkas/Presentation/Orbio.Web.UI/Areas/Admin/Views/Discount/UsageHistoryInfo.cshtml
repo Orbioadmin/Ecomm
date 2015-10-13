@@ -26,9 +26,9 @@
                                 @:<tr class="second_row">
                         count = 1;
                             }
-                            @:<td class="align_center"><a style="cursor:pointer" href="@Url.Action("Edit", "Order", new { id = usageHistory.OrderId })"># @usageHistory.OrderId - View</a></td>
-                            @:<td class="align_center">@usageHistory.CreatedOnUtc</td>
-                            @:<td class="align_center"><a style="cursor:pointer" href="@Url.Action("DeleteUsageHistory", "Discount", new { id = usageHistory.Id, discountId=usageHistory.DiscountId })">Delete</a></td>
+                            <td class="align_center"><a style="cursor:pointer" href="@Url.Action("Edit", "Order", new { id = usageHistory.OrderId })"># @usageHistory.OrderId - View</a></td>
+                            <td class="align_center">@usageHistory.CreatedOnUtc</td>
+                            <td class="align_center"><a style="cursor:pointer" href="@Url.Action("DeleteUsageHistory", "Discount", new { id = usageHistory.Id, discountId=usageHistory.DiscountId })">Delete</a></td>
                             @:</tr>
                     }
                     </tbody>

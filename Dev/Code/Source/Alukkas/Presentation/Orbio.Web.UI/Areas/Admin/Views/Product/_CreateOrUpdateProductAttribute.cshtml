@@ -1,0 +1,150 @@
+﻿@model Orbio.Web.UI.Areas.Admin.Models.Product.ProductModel
+@{
+    var count = 1;
+}
+<div class="admin_comment">
+    <div class="row">
+    
+        <div class="col-md-2 prdct_name">Attribute :</div><div class="col-md-3">@Html.DropDownListFor(model => model.AddVariantAttributeModel.ProductAttributeId, Model.AddVariantAttributeModel.AvailableProductAttributes, new { @class = "virtual_select_class" })</div>
+        <div class="col-md-2 prdct_name">Text prompt :</div><div class="col-md-3">
+            @Html.TextBoxFor(model => model.AddVariantAttributeModel.TextPrompt)
+        </div>
+    </div>
+    <div class="row">
+    
+        <div class="col-md-2 prdct_name">Is Required :</div><div class="col-md-3">@Html.CheckBoxFor(model => model.AddVariantAttributeModel.IsRequired, new { @class = "show_on_homepage_check" })</div>
+        <div class="col-md-2 prdct_name">Attribute Control Type :</div><div class="col-md-3">
+            @Html.DropDownListFor(model => model.AddVariantAttributeModel.AttributeControlTypeId, from Orbio.Core.Domain.Catalog.AttributeControlType attributeControlType in Enum.GetValues(typeof(Orbio.Core.Domain.Catalog.AttributeControlType))                                                                                                                                                                                 select new SelectListItem() { Text = attributeControlType.ToString(), Value = ((int)attributeControlType).ToString() }, new { @class = "virtual_select_class enablingInv" })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-11" style="padding: 10px;">
+            <input type="submit" id="AddNewProductVariantAttribute" name="AddNewProductVariantAttribute" value="Save" class="add_product_submit pull-right" />
+        </div>
+    </div>
+</div>
+<div class="col-md-12" style=" margin-bottom: 34px;background-color: #fff;margin-top: 10px;width:100%">
+    <div class="col-md-12 main_order_table">
+        <div id="catprod">
+            <table class="item_admin_order" id="tableData">
+                <thead>
+                <td>Attribute</td>
+                <td>Text prompt</td>
+                <td>Is Required</td>
+                <td>Attribute Control Type</td>
+                <td>Size Guide</td>
+                <td>Values</td>
+                <td></td>
+                </thead>
+                <tbody id="trPvaData">
+                    @foreach (var item in this.Model.ProductVariantAttribute)
+                    {
+                        Orbio.Core.Domain.Catalog.AttributeControlType controlType = (Orbio.Core.Domain.Catalog.AttributeControlType)item.AttributeControlTypeId;
+                        var attribueControlType = controlType.ToString();
+                        var attConTypeId = string.Format("AddVariantAttributeModel_AttributeControlTypeId{0}", item.Id);
+                        Model.AddVariantAttributeModel.AttributeControlTypeId = item.AttributeControlTypeId;
+                        var productAttributeId = string.Format("AddVariantAttributeModel_ProductAttributeId{0}", item.Id);
+                        Model.AddVariantAttributeModel.ProductAttributeId = item.ProductAttributeId;
+                        <script type="text/javascript">
+                            $(document).ready(function () {
+                                toggleOrderItemEdit@(item.Id)(false);
+                            });
+                        </script>
+
+                        <script type="text/javascript">
+                            function toggleOrderItemEdit@(item.Id)(editMode) {
+                                if (editMode) {
+                                    $('#lblProductAttributeName@(item.Id)').hide();
+                                    $('#AddVariantAttributeModel_ProductAttributeId@(item.Id)').show();
+                                    $('#lblTextPrompt@(item.Id)').hide();
+                                    $('#AddVariantAttributeModel_TextPrompt@(item.Id)').show();
+                                    $('#lblIsRequired@(item.Id)').hide();
+                                    $('#AddVariantAttributeModel_IsRequired@(item.Id)').show();
+                                    $('#lblAttribueControlType@(item.Id)').hide();
+                                    $('#AddVariantAttributeModel_AttributeControlTypeId@(item.Id)').show();
+                                    $('#btnDeletePvaItem@(item.Id)').hide();
+                                    $('#btnEditPvaItem@(item.Id)').hide();
+                                    $('#btnSavePvaItem@(item.Id)').show();
+                                    $('#btnCancelPvaItem@(item.Id)').show();
+                                }
+                                else {
+                                    $('#lblProductAttributeName@(item.Id)').show();
+                                    $('#AddVariantAttributeModel_ProductAttributeId@(item.Id)').hide();
+                                    $('#lblTextPrompt@(item.Id)').show();
+                                    $('#AddVariantAttributeModel_TextPrompt@(item.Id)').hide();
+                                    $('#lblIsRequired@(item.Id)').show();
+                                    $('#AddVariantAttributeModel_IsRequired@(item.Id)').hide();
+                                    $('#lblAttribueControlType@(item.Id)').show();
+                                    $('#AddVariantAttributeModel_AttributeControlTypeId@(item.Id)').hide();
+                                    $('#btnDeletePvaItem@(item.Id)').show();
+                                    $('#btnEditPvaItem@(item.Id)').show();
+                                    $('#btnSavePvaItem@(item.Id)').hide();
+                                    $('#btnCancelPvaItem@(item.Id)').hide();
+                                }
+                            }
+                        </script>
+                        if (count == 1)
+                        {
+                            @:<tr class="first_row rowItemsPva" id="@item.Id">
+                            count++;
+                        }
+                        else
+                        {
+                            @:<tr class="second_row rowItemsPva" id="@item.Id">
+                            count = 1;
+                        }
+                        using (Html.BeginForm("EditProductVariantAttribute", "Product", new { Id = item.Id }, FormMethod.Post, new { Id = "formEditCustomerRole" + item.Id }))
+                        {
+                            <td class="align_center" style="cursor: move;">
+                            <label name="lblProductAttributeName@(item.Id)" id="lblProductAttributeName@(item.Id)">@item.ProductAttribute.Name</label>
+                            @Html.DropDownListFor(model => model.AddVariantAttributeModel.ProductAttributeId, Model.AddVariantAttributeModel.AvailableProductAttributes, new { @class = "virtual_select_class", id = productAttributeId, @Name = productAttributeId })
+                            </td>
+                            <td class="align_center" style="cursor: move;">
+                            <label name="lblTextPrompt@(item.Id)" id="lblTextPrompt@(item.Id)">@item.TextPrompt</label>
+                            <input type="text" id="AddVariantAttributeModel_TextPrompt@(item.Id)" name="AddVariantAttributeModel_TextPrompt@(item.Id)" value="@item.TextPrompt" />
+                            </td>
+                            <td class="align_center" style="cursor: move;">
+                                <label class="@(item.IsRequired ? "img_sprite1" : "img_sprite")" name="lblIsRequired@(item.Id)" id="lblIsRequired@(item.Id)"></label>
+                                <select name="AddVariantAttributeModel_IsRequired@(item.Id)" id="AddVariantAttributeModel_IsRequired@(item.Id)" value="@item.IsRequired">
+                                    <option value="True">True</option>
+                                    <option value="False">False</option>
+                                </select>
+                            </td>
+                            <td class="align_center" style="cursor: move;">
+                            <label name="lblAttribueControlType@(item.Id)" id="lblAttribueControlType@(item.Id)">@attribueControlType</label>
+                            @Html.DropDownListFor(model => model.AddVariantAttributeModel.AttributeControlTypeId, from Orbio.Core.Domain.Catalog.AttributeControlType attributeControlType in Enum.GetValues(typeof(Orbio.Core.Domain.Catalog.AttributeControlType))
+                                                                                                                  select new SelectListItem() { Text = attributeControlType.ToString(), Value = ((int)attributeControlType).ToString() }, new { @class = "virtual_select_class enablingInv", id = attConTypeId, @Name = attConTypeId })
+                            </td>
+                            <td class="align_center" style="cursor: move;">
+                                @if (item.ProductAttribute.Name.ToUpper() == "SIZE")
+                                {
+                                    <a href="@Url.Action("AddProductVariantSizeGuide", "Product", new { id = item.ProductId, productVariantAttributeId = item.Id})">View/Edit (@(string.IsNullOrEmpty(item.SizeGuideUrl)?0:1))</a> 
+                                }
+                           </td>
+                            <td class="align_center">
+                                <a href="@Url.Action("AddOrUpdateProductAttributeValue", "Product", new { productVariantAttributeId = item.Id })">View/Edit (Total @((item.ProductVariantAttributeValues.Count > 0) ? item.ProductVariantAttributeValues.Count : 0))</a>
+                            </td>
+                            <td class="action_ring">
+                                <input type="submit" name="btnSavePvaItem@(item.Id)" value="" id="btnSavePvaItem@(item.Id)" class="edit_save" style="display:none;" />
+                                <input type="submit" name="btnCancelPvaItem@(item.Id)" value="" onclick="toggleOrderItemEdit@(item.Id)(false);return false; " id="btnCancelPvaItem@(item.Id)" class="edit_cancel" style="display:none;" />
+                                <input type="button" name="btnEditPvaItem@(item.Id)" value="" onclick="toggleOrderItemEdit@(item.Id)(true);return false; " id="btnEditPvaItem@(item.Id)" class="edit_ring" />
+                                <a href="@Url.Action("DeleteProductVariantAttribute", "Product", new { id = item.Id,productId=item.ProductId })"><input type="button" name="btnDeletePvaItem@(item.Id)" value="" id="btnDeletePvaItem@(item.Id)" class="delete_ring" onclick=" return confirm('Are You Sure'); " /></a>
+                                </td>
+                    }
+                    @:</tr>
+                }
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <div class="col-md-9" style="padding-top: 10px;">
+                <span>Note: Please drag and drop the attribute for changing display order</span>
+            </div>
+            <div class="col-md-3" style="padding: 10px;float:right">
+                <button id="savePvaDisplay" class="add_product_submit">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+

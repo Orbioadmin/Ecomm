@@ -22,6 +22,8 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Product
             AvailableSimilarProducts = new List<SelectListItem>();
             Pictures = new List<Product_Picture_Mapping>();
             AddSpecificationAttributeModel = new AddProductSpecificationAttributeModel();
+            AddVariantAttributeModel = new AddProductVariantAttributeModel();
+            AddVariantAttributeValueModel = new AddProductVariantAttributeValueModel();
         }
 
         public int Id { get; set; }
@@ -80,8 +82,8 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Product
         public Nullable<System.DateTime> AvailableEndDateTimeUtc { get; set; }
         public int DisplayOrder { get; set; }
         public bool Published { get; set; }
-        public System.DateTime CreatedOnUtc { get; set; }
-        public System.DateTime UpdatedOnUtc { get; set; }
+        public System.DateTime? CreatedOnUtc { get; set; }
+        public System.DateTime? UpdatedOnUtc { get; set; }
         public decimal ProductUnit { get; set; }
         public string ImageUrl { get; set; }
 
@@ -95,6 +97,7 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Product
         public List<SelectListItem> AvailableSimilarProducts { get; set; }
         public List<Product_Picture_Mapping> Pictures { get; set; }
         public List<Product_SpecificationAttribute_Mapping> ProductSpecification { get; set; }
+        public List<Product_ProductAttribute_Mapping> ProductVariantAttribute { get; set; }
         public int[] SelectedProductTags { get; set; }
         public int[] SelectedCategories { get; set; }
         public int[] SelectedManufature { get; set; }
@@ -103,6 +106,11 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Product
         public ProductPictureModel PictureModel { get; set; }
         //add specification attribute model
         public AddProductSpecificationAttributeModel AddSpecificationAttributeModel { get; set; }
+        //add product variant attribute model
+        public AddProductVariantAttributeModel AddVariantAttributeModel { get; set; }
+        //add product variant attribute value model
+        public AddProductVariantAttributeValueModel AddVariantAttributeValueModel { get; set; }
+        public List<ProductVariantAttributeValue> ProductVariantAttributeValue { get; set; }
 
         #region Nested classes
         public partial class ProductPictureModel 
@@ -141,6 +149,54 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Product
             public IList<SelectListItem> AvailableAttributes { get; set; }
             public IList<SelectListItem> AvailableOptions { get; set; }
         }
+        public partial class AddProductVariantAttributeModel
+        {
+            public AddProductVariantAttributeModel()
+            {
+                AvailableProductAttributes = new List<SelectListItem>();
+            }
+
+            public int ProductAttributeId { get; set; }
+
+            [AllowHtml]
+            public string TextPrompt { get; set; }
+
+            public string SizeGuideUrl { get; set; }
+
+            public bool IsRequired { get; set; }
+
+            public int AttributeControlTypeId { get; set; }
+
+            public string AttributeControlType { get; set; }
+
+            public IList<SelectListItem> AvailableProductAttributes { get; set; }
+
+            public string ViewEditUrl { get; set; }
+            public string ViewEditText { get; set; }
+            public string ViewEditSizeGuide { get; set; }
+
+        }
+        public partial class AddProductVariantAttributeValueModel 
+        {
+            public int ProductVariantAttributeId { get; set; }
+
+            public int AttributeValueTypeId { get; set; }
+
+            public string Name { get; set; }
+
+            public bool DisplayColorSquaresRgb { get; set; }
+
+            public decimal PriceAdjustment { get; set; }
+
+            public decimal WeightAdjustment { get; set; }
+
+            public decimal Cost { get; set; }
+
+            public bool IsPreSelected { get; set; }
+
+            public int DisplayOrder { get; set; }
+        }
+
         #endregion
     }
 }

@@ -147,10 +147,14 @@
             </div>
 
             <div class="row"><div class="col-md-3 prdct_name">Published :</div><div class="col-md-1">@Html.CheckBoxFor(model => model.Published, new { @class = "show_on_homepage_check" })</div></div>
-
-            <p class="created_on_para">Created on: Wednesday, March 18, 2015 5:14:56 AM</p>
-            <p class="created_on_para">Updated on: Wednesday, March 18, 2015 5:14:56 AM</p>
-
+        @if (Model.CreatedOnUtc.HasValue)
+        { 
+            <p class="created_on_para">Created on: @Model.CreatedOnUtc</p>
+        }
+        @if (Model.UpdatedOnUtc.HasValue)
+        { 
+            <p class="created_on_para">Updated on: @Model.UpdatedOnUtc</p>
+        }
         </div>
 
 

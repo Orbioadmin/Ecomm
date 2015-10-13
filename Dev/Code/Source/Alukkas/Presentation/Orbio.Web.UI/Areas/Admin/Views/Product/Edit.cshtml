@@ -82,7 +82,7 @@
                             </div>
 
                             <div id="attribute" class="tab-pane fade" role="tabpanel">
-
+                                @Html.Partial("_CreateOrUpdateProductAttribute", Model)
                             </div>
 
                             <div id="productcomponent" class="tab-pane fade" role="tabpanel">
@@ -247,6 +247,25 @@
             });
             $.post('@(Url.Action("UpdateSpecificationDisplayOrder", "Product"))',
                 { SpecIds: JSON.stringify(ids) },
+                function (response) {
+
+                }
+            );
+        })
+    });
+</script>
+
+<script>
+    $(function () {
+        $('#trPvaData').sortable();
+        $('#savePvaDisplay').on('click', function () {
+            var ids = [];
+            $('.rowItemsPva').each(function (index, value) {
+                var id = $(value).prop('id');
+                ids.push(id);
+            });
+            $.post('@(Url.Action("UpdateProductVariantAttributeDisplayOrder", "Product"))',
+                { PvaIds: JSON.stringify(ids) },
                 function (response) {
 
                 }

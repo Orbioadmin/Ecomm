@@ -19,10 +19,16 @@ namespace Orbio.Services.Admin.Products
         List<Orbio.Core.Domain.Catalog.Product> GetAllProductsSeachOrDefault(string nameOrSku, int? categoryId, int? manufatureId);
 
         /// <summary>
-        /// Get all Product List
+        /// Get all related Product List
         /// </summary>
         /// <returns></returns>
-        List<Product> GetAllProducts();
+        List<Product> GetAllRelatedProductsById(int ProductId);
+
+        /// <summary>
+        /// Get all similar Product List
+        /// </summary>
+        /// <returns></returns>
+        List<Product> GetAllSimilarProductsById(int ProductId);
 
         /// <summary>
         /// Get product details by id
@@ -99,5 +105,37 @@ namespace Orbio.Services.Admin.Products
         /// <param name="Id"></param>
         /// <returns></returns>
         void DeleteProductSpecificationAttribute(int Id);
+
+        /// <summary>
+        /// Insert value to product variant attribute mapping
+        /// </summary>
+        /// <param name="productVariantAttribute"></param>
+        void InsertProductVariantAttribute(Product_ProductAttribute_Mapping productVariantAttribute);
+
+        /// <summary>
+        /// Update product variant attribute
+        /// </summary>
+        /// <param name="productVariantAttribute"></param>
+        /// <returns></returns>
+        int UpdateProductVariantAttribute(Product_ProductAttribute_Mapping productVariantAttribute);
+
+        /// <summary>
+        /// Add or update product variant attribute size guide url
+        /// </summary>
+        /// <param name="productVariantAttribute"></param>
+        void AddOrUpdateProductVariantAttributeSizeGuide(Product_ProductAttribute_Mapping productVariantAttribute);
+
+        /// <summary>
+        /// Delete product variant attribute
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        void DeleteProductVariantAttribute(int Id);
+
+        /// <summary>
+        /// Update product variant attribute display order
+        /// </summary>
+        /// <param name="pvaIds"></param>
+        void UpdateProductVariantAttributeDisplayOrder(int[] pvaIds);
     }
 }

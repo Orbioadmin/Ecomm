@@ -614,6 +614,24 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="400" Nullable="false" />
         </EntityType>
+        <EntityType Name="ProductVariantAttributeValue">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductVariantAttributeId" Type="int" Nullable="false" />
+          <Property Name="AttributeValueTypeId" Type="int" Nullable="false" />
+          <Property Name="AssociatedProductId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="400" Nullable="false" />
+          <Property Name="ColorSquaresRgb" Type="nvarchar" MaxLength="100" />
+          <Property Name="PriceAdjustment" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="WeightAdjustment" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="Cost" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="IsPreSelected" Type="bit" Nullable="false" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
+          <Property Name="PictureId" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="RecurringPayment">
           <Key>
             <PropertyRef Name="Id" />
@@ -627,6 +645,15 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <Property Name="Deleted" Type="bit" Nullable="false" />
           <Property Name="InitialOrderId" Type="int" Nullable="false" />
           <Property Name="CreatedOnUtc" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RelatedProduct">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId1" Type="int" Nullable="false" />
+          <Property Name="ProductId2" Type="int" Nullable="false" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Shipment">
           <Key>
@@ -656,6 +683,15 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="400" Nullable="false" />
           <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SimilarProduct">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId1" Type="int" Nullable="false" />
+          <Property Name="ProductId2" Type="int" Nullable="false" />
           <Property Name="DisplayOrder" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="SpecificationAttribute">
@@ -1285,6 +1321,20 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="ProductVariantAttributeValue_ProductVariantAttribute">
+          <End Role="Product_ProductAttribute_Mapping" Type="Self.Product_ProductAttribute_Mapping" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProductVariantAttributeValue" Type="Self.ProductVariantAttributeValue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_ProductAttribute_Mapping">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductVariantAttributeValue">
+              <PropertyRef Name="ProductVariantAttributeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="RecurringPayment_InitialOrder">
           <End Role="Order" Type="Self.Order" Multiplicity="1" />
           <End Role="RecurringPayment" Type="Self.RecurringPayment" Multiplicity="*" />
@@ -1399,10 +1449,13 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <EntitySet Name="ProductComponent" EntityType="Self.ProductComponent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductReview" EntityType="Self.ProductReview" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductTag" EntityType="Self.ProductTag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductVariantAttributeValue" EntityType="Self.ProductVariantAttributeValue" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RecurringPayment" EntityType="Self.RecurringPayment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RelatedProduct" EntityType="Self.RelatedProduct" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Shipment" EntityType="Self.Shipment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ShipmentItem" EntityType="Self.ShipmentItem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ShippingMethod" EntityType="Self.ShippingMethod" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SimilarProduct" EntityType="Self.SimilarProduct" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SpecificationAttribute" EntityType="Self.SpecificationAttribute" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SpecificationAttributeOption" EntityType="Self.SpecificationAttributeOption" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StateProvince" EntityType="Self.StateProvince" Schema="dbo" store:Type="Tables" />
@@ -1587,6 +1640,10 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <AssociationSet Name="ProductVariantAttribute_ProductAttribute" Association="Self.ProductVariantAttribute_ProductAttribute">
             <End Role="ProductAttribute" EntitySet="ProductAttribute" />
             <End Role="Product_ProductAttribute_Mapping" EntitySet="Product_ProductAttribute_Mapping" />
+          </AssociationSet>
+          <AssociationSet Name="ProductVariantAttributeValue_ProductVariantAttribute" Association="Self.ProductVariantAttributeValue_ProductVariantAttribute">
+            <End Role="Product_ProductAttribute_Mapping" EntitySet="Product_ProductAttribute_Mapping" />
+            <End Role="ProductVariantAttributeValue" EntitySet="ProductVariantAttributeValue" />
           </AssociationSet>
           <AssociationSet Name="RecurringPayment_InitialOrder" Association="Self.RecurringPayment_InitialOrder">
             <End Role="Order" EntitySet="Order" />
@@ -1972,6 +2029,13 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
             <End Role="TaxCategory" EntitySet="TaxCategories" />
             <End Role="TaxRate" EntitySet="TaxRates" />
           </AssociationSet>
+          <EntitySet Name="ProductVariantAttributeValues" EntityType="OrbioAdminModel.ProductVariantAttributeValue" />
+          <AssociationSet Name="ProductVariantAttributeValue_ProductVariantAttribute" Association="OrbioAdminModel.ProductVariantAttributeValue_ProductVariantAttribute">
+            <End Role="Product_ProductAttribute_Mapping" EntitySet="Product_ProductAttribute_Mapping" />
+            <End Role="ProductVariantAttributeValue" EntitySet="ProductVariantAttributeValues" />
+          </AssociationSet>
+          <EntitySet Name="RelatedProducts" EntityType="OrbioAdminModel.RelatedProduct" />
+          <EntitySet Name="SimilarProducts" EntityType="OrbioAdminModel.SimilarProduct" />
         </EntityContainer>
         <EntityType Name="CustomerRole">
           <Key>
@@ -2559,6 +2623,7 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <Property Name="SizeGuideUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Product" Relationship="OrbioAdminModel.ProductVariantAttribute_Product" FromRole="Product_ProductAttribute_Mapping" ToRole="Product" />
           <NavigationProperty Name="ProductAttribute" Relationship="OrbioAdminModel.ProductVariantAttribute_ProductAttribute" FromRole="Product_ProductAttribute_Mapping" ToRole="ProductAttribute" />
+          <NavigationProperty Name="ProductVariantAttributeValues" Relationship="OrbioAdminModel.ProductVariantAttributeValue_ProductVariantAttribute" FromRole="Product_ProductAttribute_Mapping" ToRole="ProductVariantAttributeValue" />
         </EntityType>
         <EntityType Name="ProductAttribute">
           <Key>
@@ -3291,6 +3356,57 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="ProductVariantAttributeValue">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductVariantAttributeId" Type="Int32" Nullable="false" />
+          <Property Name="AttributeValueTypeId" Type="Int32" Nullable="false" />
+          <Property Name="AssociatedProductId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="ColorSquaresRgb" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PriceAdjustment" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="WeightAdjustment" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="Cost" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="IsPreSelected" Type="Boolean" Nullable="false" />
+          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+          <Property Name="PictureId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Product_ProductAttribute_Mapping" Relationship="OrbioAdminModel.ProductVariantAttributeValue_ProductVariantAttribute" FromRole="ProductVariantAttributeValue" ToRole="Product_ProductAttribute_Mapping" />
+        </EntityType>
+        <Association Name="ProductVariantAttributeValue_ProductVariantAttribute">
+          <End Type="OrbioAdminModel.Product_ProductAttribute_Mapping" Role="Product_ProductAttribute_Mapping" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="OrbioAdminModel.ProductVariantAttributeValue" Role="ProductVariantAttributeValue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_ProductAttribute_Mapping">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductVariantAttributeValue">
+              <PropertyRef Name="ProductVariantAttributeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="RelatedProduct">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId1" Type="Int32" Nullable="false" />
+          <Property Name="ProductId2" Type="Int32" Nullable="false" />
+          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SimilarProduct">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId1" Type="Int32" Nullable="false" />
+          <Property Name="ProductId2" Type="Int32" Nullable="false" />
+          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4057,6 +4173,45 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
                 <ScalarProperty Name="CountryId" ColumnName="CountryId" />
                 <ScalarProperty Name="TaxCategoryId" ColumnName="TaxCategoryId" />
                 <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductVariantAttributeValues">
+            <EntityTypeMapping TypeName="OrbioAdminModel.ProductVariantAttributeValue">
+              <MappingFragment StoreEntitySet="ProductVariantAttributeValue">
+                <ScalarProperty Name="PictureId" ColumnName="PictureId" />
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="IsPreSelected" ColumnName="IsPreSelected" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="WeightAdjustment" ColumnName="WeightAdjustment" />
+                <ScalarProperty Name="PriceAdjustment" ColumnName="PriceAdjustment" />
+                <ScalarProperty Name="ColorSquaresRgb" ColumnName="ColorSquaresRgb" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AssociatedProductId" ColumnName="AssociatedProductId" />
+                <ScalarProperty Name="AttributeValueTypeId" ColumnName="AttributeValueTypeId" />
+                <ScalarProperty Name="ProductVariantAttributeId" ColumnName="ProductVariantAttributeId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RelatedProducts">
+            <EntityTypeMapping TypeName="OrbioAdminModel.RelatedProduct">
+              <MappingFragment StoreEntitySet="RelatedProduct">
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="ProductId2" ColumnName="ProductId2" />
+                <ScalarProperty Name="ProductId1" ColumnName="ProductId1" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SimilarProducts">
+            <EntityTypeMapping TypeName="OrbioAdminModel.SimilarProduct">
+              <MappingFragment StoreEntitySet="SimilarProduct">
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="ProductId2" ColumnName="ProductId2" />
+                <ScalarProperty Name="ProductId1" ColumnName="ProductId1" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
