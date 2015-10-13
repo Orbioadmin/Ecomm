@@ -1,6 +1,6 @@
 ﻿@model Orbio.Web.UI.Areas.Admin.Models.Product.ProductModel
 @{
-        var count = 1;       
+    var count = 1;
 }
 <div class="admin_comment">
     <div class="row">
@@ -114,8 +114,8 @@
             <div class="col-md-9" style="padding-top: 10px;">
                 <span>Note: Please drag and drop the attribute for changing display order</span>
             </div>
-            <div class="col-md-3" style="padding: 10px;float:right">
-                <button id="saveSpecDisplay" class="add_product_submit">Save</button>
+            <div class="col-md-11" style="padding: 10px">
+                <button id="savespecdisplay" class="add_product_submit pull-right">Save</button>
             </div>
         </div>
     </div>
@@ -127,22 +127,21 @@
         var id = $("#AddSpecificationAttributeModel_SpecificationAttributeId").val();
         $.ajax({
             url: '@(Url.Action("AttributeOptions", "Attribute"))',
-        type: 'POST',
-        async: false,
-        data: "{'id': " + id + "}",
-        dataType: 'json',
-        contentType: 'application/json; charset=utf-8',
-        error: function () {
-            alert("Server access failure!");
-        },
-        success: function (result) {
-            $("#AddSpecificationAttributeModel_SpecificationAttributeOptionId").html("");
-            $.each(result, function (key, value) {
-                $("#AddSpecificationAttributeModel_SpecificationAttributeOptionId").append($("<option></option>").val(value.Id).html(value.Name));
-            });
-        }
-    });
+            type: 'POST',
+            async: false,
+            data: "{'id': " + id + "}",
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
+            error: function () {
+                alert("Server access failure!");
+            },
+            success: function (result) {
+                $("#AddSpecificationAttributeModel_SpecificationAttributeOptionId").html("");
+                $.each(result, function (key, value) {
+                    $("#AddSpecificationAttributeModel_SpecificationAttributeOptionId").append($("<option></option>").val(value.Id).html(value.Name));
+                });
+            }
+        });
 
     });
 </script>
-

@@ -22,14 +22,14 @@
                 <tr>
                     <td>
                         @if (Model.Categories.PictureUrl == null)
-                        { 
-                        <img id="uploadImg" width="100" height="100" src="/Areas/Admin/images/thumbs/default-image.gif" style="margin-left: 12%;float: left;">
+                        {
+                            <img id="uploadImg" class="defaultimg" style="margin-left: 12%;float: left;">
                         }
                         else
                         {
                             var baseImageUrl = System.Configuration.ConfigurationManager.AppSettings["ImageServerBaseUrl"];
                             var imageUrl = baseImageUrl + Model.Categories.PictureUrl;
-                            <img id="uploadImg" width="100" height="100" src="@imageUrl" style="margin-left: 12%;float: left;">
+                            <img id="uploadImg" width="100" height="100" src="@imageUrl" style="margin-left: 12%;float: left;" class="">
                         }
                     </td>
                 </tr>
@@ -42,7 +42,7 @@
                     </td>
 
                     <td id="removeImage" style="position: inherit;float: left;">
-                        <input type="button" value="Cancel" id="RemoveImage" name="RemoveImage" class="add_product_submit" @((Model.Categories.PictureId == 0) ? "disabled" : "")>
+                        <input type="button" value="Cancel" id="RemoveImage" name="RemoveImage" class="add_product_submit" @((Model.Categories.PictureUrl == null) ? "disabled" : "")>
                     </td>
 
                 </tr>
@@ -98,3 +98,4 @@
         $("#slug").val(key);
     }
 </script>
+

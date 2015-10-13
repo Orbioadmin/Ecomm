@@ -8,7 +8,7 @@
 
 
 <div class="col-md-12" style=" margin-bottom: 34px;background-color: #fff;margin-top: 10px;width:100%">
-    <div class="col-md-9 main_order_table" style="width: 40%;margin-left: 8%;">
+    <div class="col-md-6 main_order_table">
         <div id="catprod">
             <table class="item_admin_order" id="tableData">
                 <thead>
@@ -37,14 +37,14 @@
                 </tbody>
             </table>
         </div>
-    <div class="row">
-        <div class="col-md-9" style="padding-top: 10px;">
-            <span>Note: Please drag and drop the picture for changing display order</span>
+        <div class="row">
+            <div class="col-md-9" style="padding-top: 10px;">
+                <span>Note: Please drag and drop the picture for changing display order</span>
+            </div>
+            <div class="col-md-3" style="padding: 10px;float:right">
+                <button class="add_product_submit">Save</button>
+            </div>
         </div>
-        <div class="col-md-3" style="padding: 10px;float:right">
-            <button class="add_product_submit">Save</button>
-        </div>
-    </div>
     </div>
     <div class="col-md-3 add_new_projects" style="width:40%">
         <div class="col-md-12">
@@ -67,9 +67,10 @@
     </div>
 
 <script>
+
     $(function () {
         $('#trData').sortable();
-        $('button').on('click', function(){
+        $('button').on('click', function () {
             var ids = [];
             $('.rowItems').each(function (index, value) {
                 var id = $(value).prop('id');
@@ -84,4 +85,3 @@
         })
     });
 </script>
-

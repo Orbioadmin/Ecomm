@@ -2,8 +2,8 @@
 <div id="productinfo" class="tab-pane fade in active  " role="tabpanel">
     <div class="description_area">
         <div class="row">
-            <div class="col-md-2 prdct_name">Product Name :</div><div class="col-md-3">@Html.TextBoxFor(model => model.Name, new { @class = "prdct_name_txt", onkeyup = "javascript:GenerateProductSlug()", required = "required" })</div>
-            <div class="col-md-1 prdct_name left_side_text_name"> SKU :</div><div class="col-md-2">@Html.TextBoxFor(model => model.Sku, new { @class = "prdct_name_txt", required = "required" })</div>
+            <div class="col-md-2 prdct_name">Product Name :</div><div class="col-md-4">@Html.TextBoxFor(model => model.Name, new { @class = "prdct_name_txt", onkeyup = "javascript:GenerateProductSlug()", required = "required" })</div>
+            <div class="col-md-1 prdct_name left_side_text_name"> SKU :</div><div class="col-md-3">@Html.TextBoxFor(model => model.Sku, new { @class = "prdct_name_txt", required = "required" })</div>
 
         </div>
         <div class="row"><div class="col-md-2 prdct_name">Short Description :</div><div class="col-md-4">@Html.TextAreaFor(model => model.ShortDescription, new { @class = "short_description_txt_area", required = "required" })</div></div>
@@ -23,10 +23,10 @@
         </div>
         <div class="row">
             <div class="col-md-3 prdct_name">Product tags :</div>
-        <div class="col-md-4">
-            @Html.ListBoxFor(m => m.SelectedProductTags, Model.AvailableProductTags,
+            <div class="col-md-4">
+                @Html.ListBoxFor(m => m.SelectedProductTags, Model.AvailableProductTags,
             new { @class = "chosen", multiple = "multiple", style = "width: 350px;" })
-            @*@Html.TextBoxFor(model => model.ProductTags, new { @class = "prdct_name_txt" })*@
+                @*@Html.TextBoxFor(model => model.ProductTags, new { @class = "prdct_name_txt" })*@
             </div>
         </div>
 
@@ -42,8 +42,8 @@
         </div>
         <div class="row">
             <div class="col-md-3 prdct_name">Special price start date:</div>
-            <div class="col-md-3">@Html.TextBoxFor(model => model.SpecialPriceStartDateTimeUtc, new { @class = "prdct_name_txt" })</div>
-            <div class="col-md-2 prdct_name date_name">Special price end date:</div><div class="col-md-3 date_text">@Html.TextBoxFor(model => model.SpecialPriceEndDateTimeUtc, new { @class = "prdct_name_txt" })</span></div>
+            <div class="col-md-2">@Html.TextBoxFor(model => model.SpecialPriceStartDateTimeUtc, new { @class = "prdct_name_txt" })</div>
+            <div class="col-md-2 prdct_name date_name">Special price end date:</div><div class="col-md-2 date_text">@Html.TextBoxFor(model => model.SpecialPriceEndDateTimeUtc, new { @class = "prdct_name_txt" })</span></div>
         </div>
 
         <div class="row"><div class="col-md-3 prdct_name">Product Unit:</div><div class="col-md-2">@Html.TextBoxFor(model => model.ProductUnit, new { @class = "prdct_name_txt", type = "number" })</div></div>
@@ -77,74 +77,74 @@
             new { @class = "chosen", multiple = "multiple", style = "width: 350px;" })
             </div>
         </div>
-            <div class="break_border"></div>
-            <div class="row"><div class="col-md-3 prdct_name">Shipping enabled :</div><div class="col-md-1 less_width">@Html.CheckBoxFor(model => model.IsShipEnabled, new { @class = "show_on_homepage_check enabling" })</div></div>
+        <div class="break_border"></div>
+        <div class="row"><div class="col-md-3 prdct_name">Shipping enabled :</div><div class="col-md-1 less_width">@Html.CheckBoxFor(model => model.IsShipEnabled, new { @class = "show_on_homepage_check enabling" })</div></div>
 
-            <div class="show_div_check_true" style="display:none">
-                <div class="row"><div class="col-md-3 prdct_name">Free Shipping :</div><div class="col-md-4">@Html.CheckBoxFor(model => model.IsFreeShipping, new { @class = "show_on_homepage_check" })</div></div>
-                <div class="row">
-                    <div class="col-md-3 prdct_name">Additional shipping charge :</div><div class="col-md-3">@Html.TextBoxFor(model => model.AdditionalShippingCharge, new { @class = "prdct_name_txt", type = "number" })</div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3 prdct_name">Net Weight :</div><div class="col-md-1">@Html.TextBoxFor(model => model.Weight, new { @class = "prdct_name_txt", type = "number" })</div>
-                    <div class="col-md-2 prdct_name left_side_text_name">Width :</div><div class="col-md-1 left_side_text_height">@Html.TextBoxFor(model => model.Width, new { @class = "prdct_name_txt", type = "number" })</div>
-                    <div class="col-md-2 prdct_name left_side_text_name">Height :</div><div class="col-md-1 left_side_text_height">@Html.TextBoxFor(model => model.Height, new { @class = "prdct_name_txt", type = "number" })</div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3 prdct_name">Delivery date :</div><div class="col-md-2">@Html.DropDownList("DeliveryDateId", Model.AvailableDeliveryDates, new { @class = "virtual_select_class" })</div>
-                    <div class="col-md-2 prdct_name  left_side_text_name">Ware house :</div><div class="col-md-2 left_side_text">@Html.DropDownList("WarehouseId", Model.AvailableWarehouses, new { @class = "virtual_select_class" })</div>
+        <div class="show_div_check_true" style="display:none">
+            <div class="row"><div class="col-md-3 prdct_name">Free Shipping :</div><div class="col-md-4">@Html.CheckBoxFor(model => model.IsFreeShipping, new { @class = "show_on_homepage_check" })</div></div>
+            <div class="row">
+                <div class="col-md-3 prdct_name">Additional shipping charge :</div><div class="col-md-3">@Html.TextBoxFor(model => model.AdditionalShippingCharge, new { @class = "prdct_name_txt", type = "number" })</div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 prdct_name">Net Weight :</div><div class="col-md-1">@Html.TextBoxFor(model => model.Weight, new { @class = "prdct_name_txt", type = "number" })</div>
+                <div class="col-md-2 prdct_name left_side_text_name">Width :</div><div class="col-md-1 left_side_text_height">@Html.TextBoxFor(model => model.Width, new { @class = "prdct_name_txt", type = "number" })</div>
+                <div class="col-md-2 prdct_name left_side_text_name">Height :</div><div class="col-md-1 left_side_text_height">@Html.TextBoxFor(model => model.Height, new { @class = "prdct_name_txt", type = "number" })</div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 prdct_name">Delivery date :</div><div class="col-md-2">@Html.DropDownList("DeliveryDateId", Model.AvailableDeliveryDates, new { @class = "virtual_select_class" })</div>
+                <div class="col-md-2 prdct_name  left_side_text_name">Ware house :</div><div class="col-md-2 left_side_text">@Html.DropDownList("WarehouseId", Model.AvailableWarehouses, new { @class = "virtual_select_class" })</div>
+            </div>
+        </div>
+
+        <div class="break_border"></div>
+
+        <div class="row"><div class="col-md-3 prdct_name">Text exempt :</div><div class="col-md-1">@Html.CheckBoxFor(model => model.IsTaxExempt, new { @class = "show_on_homepage_check enablingTax" })</div></div>
+        <div id="taxcat" class="row" style="display:none">
+            <div class="col-md-3 prdct_name">Product Type :</div>
+            <div class="col-md-3">
+                @Html.DropDownList("TaxCategoryId", Model.AvailableTaxCategories, new { @class = "virtual_select_class" })
+            </div>
+        </div>
+        <div class="break_border"></div>
+
+        <div class="row">
+            <div class="col-md-3 prdct_name">Manage inventry method :</div>
+            <div class="col-md-4">
+                @Html.DropDownListFor(model => model.ManageInventoryMethodId, from Orbio.Core.Domain.Catalog.ManageInventoryMethod manageInventoryMethod in Enum.GetValues(typeof(Orbio.Core.Domain.Catalog.ManageInventoryMethod))
+                                                                                  select new SelectListItem() { Text = manageInventoryMethod.ToString(), Value = ((int)manageInventoryMethod).ToString() }, new { @class = "virtual_select_class enablingInv" })
+            </div>
+        </div>
+        <div id="trackInv" class="row" style="display:none;margin-left: 22px;">
+            <div class="row"><div class="col-md-3 prdct_name" style="padding-top:6px">Stock quantity:</div><div class="col-md-4">@Html.TextBoxFor(model => model.StockQuantity, new { @class = "prdct_name_txt", type = "number" })</div></div>
+            <div class="row"><div class="col-md-3 prdct_name">Display stock availability:</div><div class="col-md-4">@Html.CheckBoxFor(model => model.DisplayStockAvailability, new { @class = "show_on_homepage_check" })</div></div>
+            <div class="row"><div class="col-md-3 prdct_name" style="padding-top:6px">Minimum stock quantity:</div><div class="col-md-4">@Html.TextBoxFor(model => model.MinStockQuantity, new { @class = "prdct_name_txt" })</div></div>
+            <div class="row">
+                <div class="col-md-3 prdct_name">Low stock activity:</div><div class="col-md-4">
+                    @Html.DropDownListFor(model => model.LowStockActivityId, from Orbio.Core.Domain.Catalog.LowStockActivity lowStockActivity in Enum.GetValues(typeof(Orbio.Core.Domain.Catalog.LowStockActivity))
+                                                                                 select new SelectListItem() { Text = lowStockActivity.ToString(), Value = ((int)lowStockActivity).ToString() }, new { @class = "virtual_select_class" })
                 </div>
             </div>
-
-            <div class="break_border"></div>
-
-            <div class="row"><div class="col-md-3 prdct_name">Text exempt :</div><div class="col-md-1">@Html.CheckBoxFor(model => model.IsTaxExempt, new { @class = "show_on_homepage_check enablingTax" })</div></div>
-            <div id="taxcat" class="row" style="display:none">
-                <div class="col-md-3 prdct_name">Product Type :</div>
-                <div class="col-md-3">
-                    @Html.DropDownList("TaxCategoryId", Model.AvailableTaxCategories, new { @class = "virtual_select_class" })
-                </div>
-            </div>
-            <div class="break_border"></div>
+            <div class="row"><div class="col-md-3 prdct_name" style="padding-top:6px">Notify admin for quantity below:</div><div class="col-md-4">@Html.TextBoxFor(model => model.NotifyAdminForQuantityBelow, new { @class = "prdct_name_txt", type = "number" })</div></div>
 
             <div class="row">
-                <div class="col-md-3 prdct_name">Manage inventry method :</div>
-                <div class="col-md-4">
-                    @Html.DropDownListFor(model => model.ManageInventoryMethodId, from Orbio.Core.Domain.Catalog.ManageInventoryMethod manageInventoryMethod in Enum.GetValues(typeof(Orbio.Core.Domain.Catalog.ManageInventoryMethod))
-                                                                              select new SelectListItem() { Text = manageInventoryMethod.ToString(), Value = ((int)manageInventoryMethod).ToString() }, new { @class = "virtual_select_class enablingInv" })
+                <div class="col-md-3 prdct_name">Backorders:</div><div class="col-md-4">
+                    @Html.DropDownListFor(model => model.BackorderModeId, from Orbio.Core.Domain.Catalog.BackorderModel backorderModel in Enum.GetValues(typeof(Orbio.Core.Domain.Catalog.BackorderModel))
+                                                                              select new SelectListItem() { Text = backorderModel.ToString(), Value = ((int)backorderModel).ToString() }, new { @class = "virtual_select_class" })
+
                 </div>
             </div>
-            <div id="trackInv" class="row" style="display:none;margin-left: 22px;">
-                <div class="row"><div class="col-md-3 prdct_name" style="padding-top:6px">Stock quantity:</div><div class="col-md-4">@Html.TextBoxFor(model => model.StockQuantity, new { @class = "prdct_name_txt", type = "number" })</div></div>
-                <div class="row"><div class="col-md-3 prdct_name">Display stock availability:</div><div class="col-md-4">@Html.CheckBoxFor(model => model.DisplayStockAvailability, new { @class = "show_on_homepage_check" })</div></div>
-                <div class="row"><div class="col-md-3 prdct_name" style="padding-top:6px">Minimum stock quantity:</div><div class="col-md-4">@Html.TextBoxFor(model => model.MinStockQuantity, new { @class = "prdct_name_txt" })</div></div>
-                <div class="row">
-                    <div class="col-md-3 prdct_name">Low stock activity:</div><div class="col-md-4">
-                        @Html.DropDownListFor(model => model.LowStockActivityId, from Orbio.Core.Domain.Catalog.LowStockActivity lowStockActivity in Enum.GetValues(typeof(Orbio.Core.Domain.Catalog.LowStockActivity))
-                                                                             select new SelectListItem() { Text = lowStockActivity.ToString(), Value = ((int)lowStockActivity).ToString() }, new { @class = "virtual_select_class" })
-                    </div>
-                </div>
-                <div class="row"><div class="col-md-3 prdct_name" style="padding-top:6px">Notify admin for quantity below:</div><div class="col-md-4">@Html.TextBoxFor(model => model.NotifyAdminForQuantityBelow, new { @class = "prdct_name_txt", type = "number" })</div></div>
+        </div>
+        <div class="row"><div class="col-md-3 prdct_name">Minimum cart quantity:</div><div class="col-md-4">@Html.TextBoxFor(model => model.OrderMinimumQuantity, new { @class = "prdct_name_txt", type = "number" })</div></div>
+        <div class="row"><div class="col-md-3 prdct_name">Minimum cart quantity:</div><div class="col-md-4">@Html.TextBoxFor(model => model.OrderMaximumQuantity, new { @class = "prdct_name_txt", type = "number" })</div></div>
+        <div class="row"><div class="col-md-3 prdct_name">Allowed quantities:</div><div class="col-md-4">@Html.TextBoxFor(model => model.AllowedQuantities, new { @class = "prdct_name_txt" })</div></div>
 
-                <div class="row">
-                    <div class="col-md-3 prdct_name">Backorders:</div><div class="col-md-4">
-                        @Html.DropDownListFor(model => model.BackorderModeId, from Orbio.Core.Domain.Catalog.BackorderModel backorderModel in Enum.GetValues(typeof(Orbio.Core.Domain.Catalog.BackorderModel))
-                                                                          select new SelectListItem() { Text = backorderModel.ToString(), Value = ((int)backorderModel).ToString() }, new { @class = "virtual_select_class" })
+        <div class="break_border"></div>
 
-                    </div>
-                </div>
-            </div>
-            <div class="row"><div class="col-md-3 prdct_name">Minimum cart quantity:</div><div class="col-md-4">@Html.TextBoxFor(model => model.OrderMinimumQuantity, new { @class = "prdct_name_txt", type = "number" })</div></div>
-            <div class="row"><div class="col-md-3 prdct_name">Minimum cart quantity:</div><div class="col-md-4">@Html.TextBoxFor(model => model.OrderMaximumQuantity, new { @class = "prdct_name_txt", type = "number" })</div></div>
-            <div class="row"><div class="col-md-3 prdct_name">Allowed quantities:</div><div class="col-md-2">@Html.TextBoxFor(model => model.AllowedQuantities, new { @class = "prdct_name_txt" })</div></div>
-
-            <div class="break_border"></div>
-
-            <div class="row">
-                <div class="col-md-3 prdct_name">Available start date :</div>
-                <div class="col-md-3">@Html.TextBoxFor(model => model.AvailableStartDateTimeUtc, new { @class = "prdct_name_txt" })</div>
-                <div class="col-md-2 prdct_name date_name">Available  end date:</div><div class="col-md-3 date_text">@Html.TextBoxFor(model => model.AvailableEndDateTimeUtc, new { @class = "prdct_name_txt" })</div>
-            </div>
+        <div class="row">
+            <div class="col-md-3 prdct_name">Available start date :</div>
+            <div class="col-md-3">@Html.TextBoxFor(model => model.AvailableStartDateTimeUtc, new { @class = "prdct_name_txt" })</div>
+            <div class="col-md-2 prdct_name date_name">Available  end date:</div><div class="col-md-3 date_text">@Html.TextBoxFor(model => model.AvailableEndDateTimeUtc, new { @class = "prdct_name_txt" })</div>
+        </div>
 
             <div class="row"><div class="col-md-3 prdct_name">Published :</div><div class="col-md-1">@Html.CheckBoxFor(model => model.Published, new { @class = "show_on_homepage_check" })</div></div>
         @if (Model.CreatedOnUtc.HasValue)
@@ -156,7 +156,4 @@
             <p class="created_on_para">Updated on: @Model.UpdatedOnUtc</p>
         }
         </div>
-
-
-
 </div>

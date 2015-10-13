@@ -22,7 +22,7 @@
         </div>
         <div class="moving_menu_main">
             <div class="srlBx">
-                
+
                 <div id="HomeMarquee_srlCont" class="srlContHome">
                     <div id="srlData">
                         <ul class="itabN1 clearfix" id="myTab" role="tablist">
@@ -78,7 +78,7 @@
                             </div>
 
                             <div id="specification" class="tab-pane fade" role="tabpanel">
-                                @Html.Partial("_CreateOrUpdateSpecificationAttribute",Model)
+                                @Html.Partial("_CreateOrUpdateSpecificationAttribute", Model)
                             </div>
 
                             <div id="attribute" class="tab-pane fade" role="tabpanel">
@@ -94,18 +94,16 @@
                             </div>
 
                             <div id="acl" class="tab-pane fade" role="tabpanel">
- 
+
                             </div>
                         </div>
                         <div class="cB"></div>
                     </div>
                 </div>
-                
+
                 <div class="cB"></div>
             </div>
         </div>
-
-
     }
 </div>
 <script src="~/Areas/Admin/Scripts/tinymce/tinymce.min.js"></script>
@@ -222,32 +220,18 @@
         $(".chosen").chosen().change();
         $(".chosen").trigger('liszt:updated');
     </script>
-
-@*<script type="text/javascript">
-    var $j = jQuery.noConflict();
-    $j(document).ready(function () {
-        $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
-            localStorage.setItem('activeTab', $(e.target).attr('href'));
-        });
-        var activeTab = localStorage.getItem('activeTab');
-        if (activeTab) {
-            $('#myTab a[href="' + activeTab + '"]').tab('show');
-        }
-    });
-</script>*@
-
-<script>
-    $(function () {
-        $('#trSpecData').sortable();
-        $('#saveSpecDisplay').on('click', function () {
-            var ids = [];
-            $('.rowItemsSpec').each(function (index, value) {
-                var id = $(value).prop('id');
-                ids.push(id);
-            });
-            $.post('@(Url.Action("UpdateSpecificationDisplayOrder", "Product"))',
-                { SpecIds: JSON.stringify(ids) },
-                function (response) {
+    <script>
+        $(function () {
+            $('#trSpecData').sortable();
+            $('#saveSpecDisplay').on('click', function () {
+                var ids = [];
+                $('.rowItemsSpec').each(function (index, value) {
+                    var id = $(value).prop('id');
+                    ids.push(id);
+                });
+                $.post('@(Url.Action("UpdateSpecificationDisplayOrder", "Product"))',
+                    { SpecIds: JSON.stringify(ids) },
+                    function (response) {
 
                 }
             );
@@ -273,5 +257,6 @@
         })
     });
 </script>
+
 }
 
