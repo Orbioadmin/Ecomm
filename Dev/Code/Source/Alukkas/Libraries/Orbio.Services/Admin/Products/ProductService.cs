@@ -91,7 +91,7 @@ namespace Orbio.Services.Admin.Products
 
             var sqlParams = new SqlParameter[] {new SqlParameter{ ParameterName="@productXml", 
             Value=productXml, DbType= System.Data.DbType.Xml}, new SqlParameter{ ParameterName="@productId", 
-            Value=0, DbType= System.Data.DbType.Boolean, Direction= System.Data.ParameterDirection.Output} };
+            Value=0, DbType= System.Data.DbType.Int32, Direction= System.Data.ParameterDirection.Output} };
             var result = dbContext.ExecuteSqlCommand("EXEC [usp_Product_InsertProduct] @productXml, @productId OUTPUT", false, null, sqlParams);
             return Convert.ToInt32(sqlParams[1].Value);
         }

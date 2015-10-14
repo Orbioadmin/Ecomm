@@ -13,7 +13,7 @@
         <div class="preview_main">
             <ul>
                 @*<li><input type="button" class="prev_button" value="Preview"></li>*@
-                <li><input type="submit" class="prev_button" value="Save"></li>
+                <li id="lisave"><input type="submit" class="prev_button" value="Save"></li>
                 @*<li><input type="button" class="prev_button" value="Save & Continue Edit"></li>*@
                 @*<li><input type="button" class="prev_button" value="Copy Product"></li>
                     <li><input type="button" class="prev_button" value="Delete"></li>*@
@@ -72,25 +72,31 @@
                             @Html.Partial("_CreateOrUpdateSeo", Model)
                         </div>
                         <div id="pictures" class="tab-pane fade" role="tabpanel">
-                            You need to save the product before you can upload pictures for this product page.
+                            <div class="admin_comment">
+                                You need to save the product before you can upload pictures for this product page
+                            </div>
                         </div>
 
                         <div id="specification" class="tab-pane fade" role="tabpanel">
-                            You need to save the product before you can add product specification attributes for this product page.
+                            <div class="admin_comment">
+                                You need to save the product before you can add product specification attributes for this product page.
+                            </div>
                         </div>
-
                         <div id="attribute" class="tab-pane fade" role="tabpanel">
-                            You need to save the product before you can add attributes for this page.
+                            <div class="admin_comment">
+                                You need to save the product before you can add attributes for this page.
+                            </div>
                         </div>
-
                         <div id="productcomponent" class="tab-pane fade" role="tabpanel">
-                            You need to save the product before you can add product component for this product page.
+                            <div class="admin_comment">
+                                You need to save the product before you can add product component for this product page.
+                            </div>
                         </div>
-
                         <div id="pricecomponent" class="tab-pane fade" role="tabpanel">
-                            You need to save the product before you can add price component for this product page.
+                            <div class="admin_comment">
+                                You need to save the product before you can add price component for this product page.
+                            </div>
                         </div>
-
                         <div id="acl" class="tab-pane fade" role="tabpanel">
                             
                         </div>
@@ -106,6 +112,12 @@
 </div>
 <script src="~/Areas/Admin/Scripts/tinymce/tinymce.min.js"></script>
 @section scripts {
+<script>
+    $('#lisave').click(function () {
+        localStorage.setItem('activeTab', '');
+    });
+</script>
+
     <script type="text/javascript">
         tinymce.init({
             selector: "#FullDescription",
