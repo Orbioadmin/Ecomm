@@ -115,6 +115,9 @@
     <Compile Include="Admin\Products\ProductTagService.cs" />
     <Compile Include="Admin\Sales\GiftCardService.cs" />
     <Compile Include="Admin\Sales\IGiftCardService.cs" />
+    <Compile Include="Admin\Seo\IUrlRecordService.cs" />
+    <Compile Include="Admin\Seo\SeoExtensions.cs" />
+    <Compile Include="Admin\Seo\UrlRecordService.cs" />
     <Compile Include="Admin\Shipments\IShipmentService.cs" />
     <Compile Include="Admin\Shipments\ShipmentService.cs" />
     <Compile Include="Admin\Shipping\DeliveryDateService.cs" />

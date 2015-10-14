@@ -30,8 +30,8 @@
                             @:<tr class="second_row rowItems" id="@item.Id">
                             count = 1;
                         }
-                        @:<td class="align_center" style="cursor: move;"><img src="@imageUrl" alt="ring" width="100" height="80" /></td>
-                        @:<td class="align_center" style="text-align:left;padding-top:28px;width:10px"><a href="@Url.Action("DeleteProductPicture", "Product", new { id = item.Id,productId = item.ProductId })"><input type="button" name="btnDeleteOrderItem@(item.Id)" value="" id="btnDeleteOrderItem@(item.Id)" class="delete_ring" onclick=" return confirm('Are You Sure'); " /></a></td>
+                        <td class="align_center" style="cursor: move;"><img src="@imageUrl" alt="ring" width="100" height="80" /></td>
+                        <td class="align_center" style="text-align:left;padding-top:28px;width:10px"><a href="@Url.Action("DeleteProductPicture", "Product", new { id = item.Id,productId = item.ProductId })"><input type="button" name="btnDeleteOrderItem@(item.Id)" value="" id="btnDeleteOrderItem@(item.Id)" class="delete_ring" onclick=" return confirm('Are You Sure'); " /></a></td>
                         @:</tr>
                 }
                 </tbody>
@@ -46,12 +46,25 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6 add_new_projects">
-        @Html.Action("PictureUpload", "Picture")
+    <div class="col-md-3 add_new_projects" style="width:40%">
+        <div class="col-md-12">
+            <h3>Upload New Picture</h3>
+            <table class="product_add_cart uploadFile">
+                @Html.Action("PictureUpload", "Picture")
+                <tr>
+                    <td style="float:left;position:relative;left:65px">
+                        <input type="submit" value="Upload" id="UploadProductImage" name="UploadProductImage" class="add_product_submit" />
+                    </td>
+                    <td id="removeImage" style="float:left;position: relative;left: 104px;">
+                        <input type="button" value="Cancel" id="RemoveImage" name="RemoveImage" class="add_product_submit" disabled="disabled" />
+                    </td>
+                </tr>
+            </table>
+        </div>
         @Html.HiddenFor(m => m.PictureModel.PictureId)
         @Html.HiddenFor(m => m.Id)
     </div>
-</div>
+    </div>
 
 <script>
 

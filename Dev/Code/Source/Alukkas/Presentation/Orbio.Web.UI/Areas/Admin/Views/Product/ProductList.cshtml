@@ -37,13 +37,13 @@
                     @:<tr class="second_row">
                     count = 1;
                     }
-                    @:<td class="align_center" style="padding-top:28px"><input type="checkbox" name="deleteProductId" value="@item.Id" /></td>
-                    @:<td class="align_center"><img src="@imageUrl" alt="ring" width="58" height="53" /></td>
-                    @:<td class="align_center" style="text-align:left;padding-top:28px"><a style="cursor:pointer" href="@Url.Action("Edit", "Product", new { id = item.Id })">@item.Name</a></td>
-                    @: <td class="align_center" style="padding-top:28px">@item.Sku</td>
-                    @:<td class="align_center" style="padding-top:28px;text-align:right">@finalPrice.ToString("#,##0.00")</td>
-                    @:<td class="align_center" style="padding-top:28px">@item.StockQuantity</td>
-                    @:<td class="align_center" style="padding-top:28px">@item.Published</td>
+                    <td class="align_center" style="padding-top:28px"><input type="checkbox" name="deleteProductId" value="@item.Id" /></td>
+                    <td class="align_center"><img src="@imageUrl" alt="ring" width="58" height="53" /></td>
+                    <td class="align_center" style="text-align:left;padding-top:28px"><a style="cursor:pointer" href="@Url.Action("Edit", "Product", new { id = item.Id })">@item.Name</a></td>
+                    <td class="align_center" style="padding-top:28px">@item.Sku</td>
+                    <td class="align_center" style="padding-top:28px;text-align:right">@finalPrice.ToString("#,##0.00")</td>
+                    <td class="align_center" style="padding-top:28px">@item.StockQuantity</td>
+                    <td class="align_center" style="padding-top:28px">@item.Published</td>
 
                     @:</tr>
                 }

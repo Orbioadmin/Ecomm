@@ -19,102 +19,88 @@
                     <li><input type="button" class="prev_button" value="Delete"></li>*@
             </ul>
         </div>
-        <div class="moving_menu_main">
-            <div class="srlBx">
-                <a href="#null" onmouseover="scrollDivRight('HomeMarquee_srlCont')" onmouseout="stopMe()" class="srlLt"></a>
-                <div id="HomeMarquee_srlCont" class="srlContHome">
-                    <div id="srlData" style="width:1729px;">
-                        <ul class="itabN1" id="myTab" role="tablist">
-                            <li role="presentation" class="active">
-                                <a href="#productinfo" class="" aria-expanded="true" aria-controls="based" data-toggle="tab" role="tab" id="home-tab">
-                                    <div class="">Product info</div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#seo" class="" aria-controls="profile" data-toggle="tab" id="profile-tab" role="tab">
-                                    <div class="">SEO</div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#pictures" class="" aria-controls="profile" data-toggle="tab" id="profile-tab" role="tab">
-                                    <div class="">Pictures</div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#categorey" class="" aria-controls="profile" data-toggle="tab" id="profile-tab" role="tab">
-                                    <div class="">Category Mappings</div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#mapping" class="" aria-controls="profile" data-toggle="tab" id="profile-tab" role="tab">
-                                    <div class="">Manufacturer Mappings</div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#specification" class="" aria-controls="profile" data-toggle="tab" id="profile-tab" role="tab">
-                                    <div class="">Specification Attributes</div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#attribute" class="" aria-controls="profile" data-toggle="tab" id="profile-tab" role="tab">
-                                    <div class="">Products Attributes</div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#productcomponent" class="" aria-controls="profile" data-toggle="tab" id="profile-tab" role="tab">
-                                    <div class="">Product Component</div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#pricecomponent" class="" aria-controls="profile" data-toggle="tab" id="profile-tab" role="tab">
-                                    <div class="">Price Component</div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#acl" class="" aria-controls="profile" data-toggle="tab" id="profile-tab" role="tab">
-                                    <div class="">Access Control List</div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#stores" class="" aria-controls="profile" data-toggle="tab" id="profile-tab" role="tab">
-                                    <div class="">Stores</div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#related" class="" aria-controls="profile" data-toggle="tab" id="profile-tab" role="tab">
-                                    <div class="">Related Products</div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#crosssells" class="" aria-controls="profile" data-toggle="tab" id="profile-tab" role="tab">
-                                    <div class="">Cross-Sells</div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#assctedprdct" class="" aria-controls="profile" data-toggle="tab" id="profile-tab" role="tab">
-                                    <div class="">Associated Products</div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#purchasedwithorder" class="" aria-controls="profile" data-toggle="tab" id="profile-tab" role="tab">
-                                    <div class="">Purchased with Orders</div>
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="cB"></div>
-                    </div>
-                </div>
-                <a href="#null" onmouseover="scrollDivLeft('HomeMarquee_srlCont')" onmouseout="stopMe()" class="srlRt"></a>
-                <div class="cB"></div>
-            </div>
-        </div>
-        <div class="tab-content product_add_tab_main" id="myTabContent">
-            @Html.Partial("_CreatOrUpdateInfo", Model)
+    <div class="moving_menu_main">
+        <div class="srlBx">
+            <div id="HomeMarquee_srlCont" class="srlContHome">
+                <div id="srlData">
+                    <ul class="itabN1 clearfix" id="myTab" role="tablist">
+                        <li role="presentation" class="active">
+                            <a href="#productinfo" class="" aria-expanded="true" data-toggle="tab" role="tab">
+                                Product info
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#seo" class="" data-toggle="tab" role="tab" aria-expanded="true">
+                                SEO
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#pictures" class="" data-toggle="tab" role="tab" aria-expanded="false">
+                                Pictures
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#specification" class="" data-toggle="tab" role="tab" aria-expanded="false">
+                                Specification Attributes
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#attribute" class="" data-toggle="tab" role="tab" aria-expanded="false">
+                                Products Attributes
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#productcomponent" class="" data-toggle="tab" role="tab" aria-expanded="false">
+                                Product Component
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#pricecomponent" class="" data-toggle="tab" role="tab" aria-expanded="false">
+                                Price Component
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#acl" class="" data-toggle="tab" role="tab" aria-expanded="false">
+                                Access Control List
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content product_add_tab_main new" id="myTabContent">
+                        @Html.Partial("_CreatOrUpdateInfo", Model)
 
-            <div aria-labelledby="home-tab" id="seo" class="tab-pane fade" role="tabpanel">
-                @Html.Partial("_CreateOrUpdateSeo", Model)
+                        <div id="seo" class="tab-pane fade" role="tabpanel">
+                            @Html.Partial("_CreateOrUpdateSeo", Model)
+                        </div>
+                        <div id="pictures" class="tab-pane fade" role="tabpanel">
+                            You need to save the product before you can upload pictures for this product page.
+                        </div>
+
+                        <div id="specification" class="tab-pane fade" role="tabpanel">
+                            You need to save the product before you can add product specification attributes for this product page.
+                        </div>
+
+                        <div id="attribute" class="tab-pane fade" role="tabpanel">
+                            You need to save the product before you can add attributes for this page.
+                        </div>
+
+                        <div id="productcomponent" class="tab-pane fade" role="tabpanel">
+                            You need to save the product before you can add product component for this product page.
+                        </div>
+
+                        <div id="pricecomponent" class="tab-pane fade" role="tabpanel">
+                            You need to save the product before you can add price component for this product page.
+                        </div>
+
+                        <div id="acl" class="tab-pane fade" role="tabpanel">
+                            
+                        </div>
+                    </div>
+                    <div class="cB"></div>
+                </div>
             </div>
+            <div class="cB"></div>
         </div>
+    </div>
 
     }
 </div>

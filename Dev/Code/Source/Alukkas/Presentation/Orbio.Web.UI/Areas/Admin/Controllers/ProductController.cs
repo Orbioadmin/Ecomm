@@ -18,6 +18,7 @@ using PagedList;
 using Orbio.Services.Admin.Media;
 using System.Web.Script.Serialization;
 using Orbio.Services.Admin.Attributes;
+using Orbio.Services.Admin.Seo;
 
 namespace Orbio.Web.UI.Areas.Admin.Controllers
 {
@@ -32,11 +33,12 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         public readonly ITaxCategoryService _taxCategoryService;
         public readonly IPictureService _pictureService;
         public readonly ISpecificationAttributeService _specificationAttributeService;
+        public readonly IProductAttributeService _productAttributeService;
         #endregion
 
         #region Constructors
         public ProductController(ICategoryServices categoryService, IManufacturerService manufatureService, IProductService productService, IShippingService shippingService, ITaxCategoryService taxCategoryService,
-            IPictureService pictureService, ISpecificationAttributeService specificationAttributeService)
+            IPictureService pictureService, ISpecificationAttributeService specificationAttributeService, IProductAttributeService productAttributeService)
         {
             this._categoryService = categoryService;
             this._manufatureService = manufatureService;
@@ -45,6 +47,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             this._taxCategoryService = taxCategoryService;
             this._pictureService = pictureService;
             this._specificationAttributeService = specificationAttributeService;
+            this._productAttributeService = productAttributeService;
         }
         #endregion
 
@@ -111,12 +114,16 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                 //No product found with the specified id
                 return RedirectToAction("List");
             var model = product.ToModel();
+            model.SeName = product.GetSeName();
             model.Pictures = (from p in product.Product_Picture_Mapping
                               orderby p.DisplayOrder ascending
-                           select p).ToList();
+                              select p).ToList();
             model.ProductSpecification = (from p in product.Product_SpecificationAttribute_Mapping
                                           orderby p.DisplayOrder ascending
                                           select p).ToList();
+            model.ProductVariantAttribute = (from p in product.Product_ProductAttribute_Mapping
+                                             orderby p.DisplayOrder ascending
+                                             select p).ToList();
             PrepareProductModel(model, product);
             return View(model);
         }
@@ -139,7 +146,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             var productDetails = new Orbio.Core.Domain.Admin.Product.ProductDetail
             {
                 product = product.ToDomainModel(),
-                seName = model.SeName,
+                seName =product.ValidateSeName(model.SeName, product.Name),
                 productTags = model.SelectedProductTags,
                 catgoryIds = model.SelectedCategories,
                 manufactureIds = model.SelectedManufature,
@@ -174,9 +181,56 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             if (product != null)
             {
                 model.Name = product.Name;
-                model.SeName = model.SeName;
                 model.CreatedOnUtc = product.CreatedOnUtc;
                 model.UpdatedOnUtc = product.UpdatedOnUtc;
+
+                #region Mapping Product Tags
+                int[] productTags = new int[10];
+                for (int i = 0; i < product.ProductTags.Count; i++)
+                {
+                    var pt = product.ProductTags.ToList()[i];
+                    productTags[i] = pt.Id;
+                }
+                model.SelectedProductTags = productTags;
+                #endregion
+                #region Mapping Categories
+                int[] productCategory = new int[10];
+                for (int i = 0; i < product.Product_Category_Mapping.Count; i++)
+                {
+                    var pt = product.Product_Category_Mapping.ToList()[i];
+                    productCategory[i] = pt.CategoryId;
+                }
+                model.SelectedCategories = productCategory;
+                #endregion
+                #region Mapping Manufatures
+                int[] productManufacture = new int[10];
+                for (int i = 0; i < product.Product_Manufacturer_Mapping.Count; i++)
+                {
+                    var pt = product.Product_Manufacturer_Mapping.ToList()[i];
+                    productManufacture[i] = pt.ManufacturerId;
+                }
+                model.SelectedManufature = productManufacture;
+                #endregion
+                #region Mapping Related Products
+                var relatedProductsMapping = _productService.GetAllRelatedProductsById(product.Id);
+                int[] productRelatedProducts = new int[10];
+                for (int i = 0; i < relatedProductsMapping.Count; i++)
+                {
+                    var pt = relatedProductsMapping.ToList()[i];
+                    productRelatedProducts[i] = pt.Id;
+                }
+                model.SelectedRelatedProducts = productRelatedProducts;
+                #endregion
+                #region Mapping Similar Products
+                var similarProductsMapping = _productService.GetAllRelatedProductsById(product.Id);
+                int[] productSimilarProducts = new int[10];
+                for (int i = 0; i < similarProductsMapping.Count; i++)
+                {
+                    var pt = similarProductsMapping.ToList()[i];
+                    productSimilarProducts[i] = pt.Id;
+                }
+                model.SelectedSimilarProducts = productSimilarProducts;
+                #endregion
             }
 
             //delivery dates
@@ -222,16 +276,6 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                     Value = tag.Id.ToString()
                 });
             }
-            if (product != null)
-            {
-                int[] productTags = new int[10];
-                for (int i = 0; i < product.ProductTags.Count; i++)
-                {
-                    var pt = product.ProductTags.ToList()[i];
-                    productTags[i] = pt.Id;
-                }
-                model.SelectedProductTags = productTags;
-            }
 
             //Category Mapping
 
@@ -246,17 +290,6 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                 });
             }
 
-            //if (product != null)
-            //{
-            //    int[] productCategory = new int[10];
-            //    for (int i = 0; i < product.Product_Category_Mapping.Count; i++)
-            //    {
-            //        var pt = product.Product_Category_Mapping.ToList()[i];
-            //        productCategory[i] = pt.CategoryId;
-            //    }
-            //    model.SelectedCategories = productCategory;
-            //}
-
             //Manufature mapping
             var manufatures = _manufatureService.GetAllManufacturers();
             foreach (var manufature in manufatures.ManufacturerList)
@@ -268,19 +301,8 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                 });
             }
 
-            //if (product != null)
-            //{
-            //    int[] productManufacture = new int[10];
-            //    for (int i = 0; i < product.Product_Manufacturer_Mapping.Count; i++)
-            //    {
-            //        var pt = product.Product_Manufacturer_Mapping.ToList()[i];
-            //        productManufacture[i] = pt.ManufacturerId;
-            //    }
-            //    model.SelectedManufature = productManufacture;
-            //}
-
             //Related Products
-            var relatedProducts = _productService.GetAllProducts();
+            var relatedProducts = _productService.GetAllProductsSeachOrDefault("",0,0);
             foreach (var relatedProduct in relatedProducts)
             {
                 model.AvailableRelatedProducts.Add(new SelectListItem()
@@ -291,7 +313,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             }
 
             //Similar Products
-            var similarProducts = _productService.GetAllProducts();
+            var similarProducts = _productService.GetAllProductsSeachOrDefault("",0,0);
             foreach (var similarProduct in similarProducts)
             {
                 model.AvailableSimilarProducts.Add(new SelectListItem()
@@ -319,6 +341,17 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                     foreach(var sao in _specificationAttributeService.GetSpecificationAttributeOptionBySpecId(sa.Id))
                         model.AddSpecificationAttributeModel.AvailableOptions.Add(new SelectListItem() { Text = sao.Name, Value = sao.Id.ToString() });
                 }
+            }
+
+            //product attributes
+            var productAttributes = _productAttributeService.GetProductAttributes();
+            foreach (var productAttribute in productAttributes)
+            {
+                model.AddVariantAttributeModel.AvailableProductAttributes.Add(new SelectListItem()
+                {
+                    Text = productAttribute.Name,
+                    Value = productAttribute.Id.ToString()
+                });
             }
 
             //default values
@@ -359,7 +392,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             object[] ids = System.Web.Helpers.Json.Decode(value);
             int[] pictureIds = ids.Select(n => Convert.ToInt32(n)).ToArray();
             _productService.UpdatePictureDisplayOrder(pictureIds);
-            return RedirectToAction("List");
+            return Json(new { success = true });
         }
 
         public ActionResult DeleteProductPicture(int id, int productId)
@@ -370,7 +403,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
 
         #endregion
 
-        #region Product Specification Mapping
+        #region Product Specification Attribute
 
         [HttpParamAction]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -410,13 +443,158 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             object[] ids = System.Web.Helpers.Json.Decode(value);
             int[] specificationIds = ids.Select(n => Convert.ToInt32(n)).ToArray();
             _productService.UpdateSpecificationDisplayOrder(specificationIds);
-            return RedirectToAction("List");
+            return Json(new { success = true });
         }
 
         public ActionResult DeleteSpecificationAttribute(int id, int productId)
         {
             _productService.DeleteProductSpecificationAttribute(id);
             return RedirectToAction("Edit", "Product", new { id = productId });
+        }
+
+        #endregion
+
+        #region Product Variant Attribute
+
+        [HttpParamAction]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AddNewProductVariantAttribute(Orbio.Web.UI.Areas.Admin.Models.Product.ProductModel model)
+        {
+            var productVariantAttribute = new Product_ProductAttribute_Mapping
+            {
+                ProductId = model.Id,
+                ProductAttributeId = model.AddVariantAttributeModel.ProductAttributeId,
+                IsRequired = model.AddVariantAttributeModel.IsRequired,
+                AttributeControlTypeId = model.AddVariantAttributeModel.AttributeControlTypeId,
+                TextPrompt = model.AddVariantAttributeModel.TextPrompt,
+            };
+            _productService.InsertProductVariantAttribute(productVariantAttribute);
+            return RedirectToAction("Edit", "Product", new { id = model.Id });
+        }
+
+        [HttpPost]
+        public ActionResult AddSizeGuideUrl(int productVariantAttributeId,Orbio.Web.UI.Areas.Admin.Models.Product.ProductModel model)
+        {
+            var picture = _pictureService.GetPictureById(model.PictureModel.PictureId);
+            var productAttribute = new Product_ProductAttribute_Mapping
+            {
+                Id = productVariantAttributeId,
+                SizeGuideUrl = picture.RelativeUrl
+            };
+            _productService.AddOrUpdateProductVariantAttributeSizeGuide(productAttribute);
+            return RedirectToAction("AddProductVariantSizeGuide", "Product", new { id = model.Id, productVariantAttributeId = productVariantAttributeId });
+        }
+
+        public ActionResult AddProductVariantSizeGuide(int id, int productVariantAttributeId)
+        {
+            var product = _productService.GetProductById(id);
+            if (product == null || product.Deleted)
+                return RedirectToAction("List");
+            var model = product.ToModel();
+            model.ProductVariantAttribute = (from p in product.Product_ProductAttribute_Mapping
+                                             orderby p.DisplayOrder ascending
+                                             select p).ToList();
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult EditProductVariantAttribute(int Id, FormCollection form)
+        {
+            var productAttributeId = form["AddVariantAttributeModel_ProductAttributeId" + Id];
+            var textPrompt = form["AddVariantAttributeModel_TextPrompt" + Id];
+            var isRequired = form["AddVariantAttributeModel_IsRequired" + Id];
+            var attributeControlTypeId = form["AddVariantAttributeModel_AttributeControlTypeId" + Id];
+            var productVariantAttribute = new Product_ProductAttribute_Mapping
+            {
+                Id=Id,
+                ProductAttributeId = Convert.ToInt32(productAttributeId),
+                IsRequired = Convert.ToBoolean(isRequired),
+                AttributeControlTypeId = Convert.ToInt32(attributeControlTypeId),
+                TextPrompt = textPrompt,
+            };
+            int productId = _productService.UpdateProductVariantAttribute(productVariantAttribute);
+            return RedirectToAction("Edit", "Product", new { id = productId });
+        }
+
+        public ActionResult DeleteProductVariantAttribute(int id, int productId)
+        {
+            _productService.DeleteProductVariantAttribute(id);
+            return RedirectToAction("Edit", "Product", new { id = productId });
+        }
+
+        [HttpPost]
+        public ActionResult UpdateProductVariantAttributeDisplayOrder(FormCollection formCollection)
+        {
+            var value = formCollection["PvaIds"];
+            object[] ids = System.Web.Helpers.Json.Decode(value);
+            int[] PvaIds = ids.Select(n => Convert.ToInt32(n)).ToArray();
+            _productService.UpdateProductVariantAttributeDisplayOrder(PvaIds);
+            return Json(new { success = true });
+        }
+
+        #endregion
+
+        #region Product Variant Attribute Value
+
+        public ActionResult AddOrUpdateProductAttributeValue(int productVariantAttributeId)
+        {
+            var productVariantAttributeValue = _productAttributeService.GetProductVariantAttributeValueByProductVariantAttributeId(productVariantAttributeId);
+            var model = new Orbio.Web.UI.Areas.Admin.Models.Product.ProductModel {
+                Id = productVariantAttributeValue.Select(p=>p.Product_ProductAttribute_Mapping.Product.Id).FirstOrDefault(),
+                Name = productVariantAttributeValue.Select(p=>p.Product_ProductAttribute_Mapping.Product.Name).FirstOrDefault(),
+                ProductVariantAttributeValue = productVariantAttributeValue
+            };
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult AddNewProductVariantAttributeValue(int productVariantAttributeId,Orbio.Web.UI.Areas.Admin.Models.Product.ProductModel model)
+        {
+            var productVariantAttributeValue = new ProductVariantAttributeValue
+            {
+                ProductVariantAttributeId = productVariantAttributeId,
+                Name = model.AddVariantAttributeValueModel.Name,
+                PriceAdjustment = model.AddVariantAttributeValueModel.PriceAdjustment,
+                WeightAdjustment = model.AddVariantAttributeValueModel.WeightAdjustment,
+                IsPreSelected = model.AddVariantAttributeValueModel.IsPreSelected,
+            };
+            _productAttributeService.InsertProductVariantAttributeValue(productVariantAttributeValue);
+            return RedirectToAction("AddOrUpdateProductAttributeValue", "Product", new { productVariantAttributeId = productVariantAttributeId });
+        }
+
+        [HttpPost]
+        public ActionResult EditProductVariantAttributeValue(int Id,FormCollection form)
+        {
+            var name = form["AddVariantAttributeValueModel_Name" + Id];
+            var priceAdjustment = form["AddVariantAttributeValueModel_PriceAdjustment" + Id];
+            var weightAdjustment = form["AddVariantAttributeValueModel_WeightAdjustment" + Id];
+            var isPreSelected = form["AddSpecificationAttributeModel_IsPreSelected" + Id];
+            var productVariantAttributeValue = new ProductVariantAttributeValue
+            {
+                Id=Id,
+                Name = name,
+                PriceAdjustment = Convert.ToDecimal(priceAdjustment),
+                WeightAdjustment = Convert.ToDecimal(weightAdjustment),
+                IsPreSelected = Convert.ToBoolean(isPreSelected),
+            };
+            int productVariantAttributeId = _productAttributeService.UpdateProductVariantAttributeValue(productVariantAttributeValue);
+            return RedirectToAction("AddOrUpdateProductAttributeValue", "Product", new { productVariantAttributeId = productVariantAttributeId });
+        }
+
+        public ActionResult DeleteProductVariantAttributeValue(int id, int productVariantAttributeId)
+        {
+            _productAttributeService.DeleteProductVariantAttributeValue(id);
+            return RedirectToAction("AddOrUpdateProductAttributeValue", "Product", new { productVariantAttributeId = productVariantAttributeId });
+        }
+
+        [HttpPost]
+        public ActionResult UpdateProductVariantAttributeValueDisplayOrder(FormCollection formCollection)
+        {
+            var value = formCollection["PvavIds"];
+            object[] ids = System.Web.Helpers.Json.Decode(value);
+            int[] PvavIds = ids.Select(n => Convert.ToInt32(n)).ToArray();
+            _productAttributeService.UpdateProductVariantAttributeValueDisplayOrder(PvavIds);
+            return Json(new { success = true });
         }
 
         #endregion

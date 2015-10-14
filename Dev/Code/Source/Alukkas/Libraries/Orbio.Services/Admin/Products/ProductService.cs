@@ -54,17 +54,37 @@ namespace Orbio.Services.Admin.Products
         }
 
         /// <summary>
-        /// Get all Product List
+        /// Get all related Product List
         /// </summary>
         /// <returns></returns>
-        public List<Product> GetAllProducts()
+        public List<Product> GetAllRelatedProductsById(int ProductId)
         {
             using (var context = new OrbioAdminContext())
             {
-                var result = context.Products.Where(p=>p.Deleted != true).ToList();
+                var result = (from p in context.Products
+                              join re in context.RelatedProducts on p.Id equals re.ProductId2
+                              where p.Id == ProductId
+                              select p).ToList();
                 return result;
             }
         }
+         
+        /// <summary>
+        /// Get all similar Product List
+        /// </summary>
+        /// <returns></returns>
+        public List<Product> GetAllSimilarProductsById(int ProductId)
+        {
+            using (var context = new OrbioAdminContext())
+            {
+                var result = (from p in context.Products
+                              join re in context.SimilarProducts on p.Id equals re.ProductId2
+                              where p.Id == ProductId
+                              select p).ToList();
+                return result;
+            }
+        }
+
         /// <summary>
         /// Get product details by id
         /// </summary>
@@ -75,9 +95,13 @@ namespace Orbio.Services.Admin.Products
             using (var context = new OrbioAdminContext())
             {
                 context.Products.Include("Product_Picture_Mapping.Picture").Load();
+                context.Products.Include("Product_Category_Mapping.Category").Load();
+                context.Products.Include("Product_Manufacturer_Mapping.Manufacturer").Load();
                 context.Products.Include("Product_PriceComponent_Mapping.PriceComponent").Load();
                 context.Products.Include("Product_ProductComponent_Mapping.ProductComponent").Load();
                 context.Products.Include("Product_SpecificationAttribute_Mapping.SpecificationAttributeOption.SpecificationAttribute").Load();
+                context.Products.Include("Product_ProductAttribute_Mapping.ProductAttribute").Load();
+                context.Products.Include("Product_ProductAttribute_Mapping.ProductVariantAttributeValues").Load();
                 context.Products.Include("ProductTags").Load();
                 var productList = (from p in context.Products
                                    join u in context.UrlRecords on p.Id equals u.EntityId
@@ -136,6 +160,7 @@ namespace Orbio.Services.Admin.Products
             }
         }
 
+        #region Product Picture Mapping
         /// <summary>
         /// Insert to product picture mapping
         /// </summary>
@@ -186,7 +211,9 @@ namespace Orbio.Services.Admin.Products
                 }
             }
         }
+        #endregion
 
+        #region Mapping Product specification attribute
         /// <summary>
         /// Insert value to product specification mapping
         /// </summary>
@@ -223,11 +250,11 @@ namespace Orbio.Services.Admin.Products
         /// <summary>
         /// Update product specification display order
         /// </summary>
-        /// <param name="pictureIds"></param>
+        /// <param name="specificationIds"></param>
         public void UpdateSpecificationDisplayOrder(int[] specificationIds)
         {
             var specificationIdsXml = Serializer.GenericSerializer(specificationIds);
-            dbContext.ExecuteFunction<Product_Picture_Mapping>("usp_UpdateProductSpecificationAttribute", new SqlParameter() { ParameterName = "@specificationIdsXml", Value = specificationIdsXml, DbType = System.Data.DbType.Xml });
+            dbContext.ExecuteFunction<Product_SpecificationAttribute_Mapping>("usp_UpdateProductSpecificationAttribute", new SqlParameter() { ParameterName = "@specificationIdsXml", Value = specificationIdsXml, DbType = System.Data.DbType.Xml });
         }
 
         /// <summary>
@@ -245,9 +272,96 @@ namespace Orbio.Services.Admin.Products
                     {
                         context.Product_SpecificationAttribute_Mapping.Remove(query);
                         context.SaveChanges();
+                        var productSpecification = context.Product_SpecificationAttribute_Mapping.Where(p => p.Id > Id).ToList();
+                        productSpecification.ForEach(a => a.DisplayOrder = (a.DisplayOrder - 1));
+                        context.SaveChanges();
                     }
             }
         }
+        #endregion
+
+        #region Mapping Product variant attribute
+        /// <summary>
+        /// Insert value to product variant attribute mapping
+        /// </summary>
+        /// <param name="productVariantAttribute"></param>
+        public void InsertProductVariantAttribute(Product_ProductAttribute_Mapping productVariantAttribute)
+        {
+            using (var context = new OrbioAdminContext())
+            {
+                var query = context.Product_ProductAttribute_Mapping.OrderByDescending(m => m.ProductId == productVariantAttribute.ProductId).First();
+                int displayOrder = (query != null) ? query.DisplayOrder : 0;
+                productVariantAttribute.DisplayOrder = displayOrder + 1;
+                context.Product_ProductAttribute_Mapping.Add(productVariantAttribute);
+                context.SaveChanges();
+            }
+        }
+
+        /// <summary>
+        /// Update product variant attribute
+        /// </summary>
+        /// <param name="productVariantAttribute"></param>
+        /// <returns></returns>
+        public int UpdateProductVariantAttribute(Product_ProductAttribute_Mapping productVariantAttribute)
+        {
+            using (var context = new OrbioAdminContext())
+            {
+                var result = context.Product_ProductAttribute_Mapping.Where(m => m.Id == productVariantAttribute.Id).FirstOrDefault();
+                result.ProductAttributeId = productVariantAttribute.ProductAttributeId;
+                result.IsRequired = productVariantAttribute.IsRequired;
+                result.TextPrompt = productVariantAttribute.TextPrompt;
+                result.AttributeControlTypeId = productVariantAttribute.AttributeControlTypeId;
+                context.SaveChanges();
+                return result.ProductId;
+            }
+        }
+
+        /// <summary>
+        /// Add or update product variant attribute size guide url
+        /// </summary>
+        /// <param name="productVariantAttribute"></param>
+        public void AddOrUpdateProductVariantAttributeSizeGuide(Product_ProductAttribute_Mapping productVariantAttribute)
+        {
+            using (var context = new OrbioAdminContext())
+            {
+                var result = context.Product_ProductAttribute_Mapping.Where(m => m.Id == productVariantAttribute.Id).FirstOrDefault();
+                result.SizeGuideUrl = productVariantAttribute.SizeGuideUrl;
+                context.SaveChanges();
+            }
+        }
+
+        /// <summary>
+        /// Delete product variant attribute
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        public void DeleteProductVariantAttribute(int Id)
+        {
+            using (var context = new OrbioAdminContext())
+            {
+
+                var query = context.Product_ProductAttribute_Mapping.Where(m => m.Id == Id).FirstOrDefault();
+                if (query != null)
+                {
+                    context.Product_ProductAttribute_Mapping.Remove(query);
+                    context.SaveChanges();
+                    var productVariantAttribute = context.Product_ProductAttribute_Mapping.Where(p => p.Id > Id).ToList();
+                    productVariantAttribute.ForEach(a => a.DisplayOrder = (a.DisplayOrder - 1));
+                    context.SaveChanges();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Update product variant attribute display order
+        /// </summary>
+        /// <param name="pvaIds"></param>
+        public void UpdateProductVariantAttributeDisplayOrder(int[] pvaIds)
+        {
+            var pvaIdsXml = Serializer.GenericSerializer(pvaIds);
+            dbContext.ExecuteFunction<Product_ProductAttribute_Mapping>("usp_UpdateProductVariantAttributeDisplayOrder", new SqlParameter() { ParameterName = "@pvaIdsXml", Value = pvaIdsXml, DbType = System.Data.DbType.Xml });
+        }
+        #endregion
 
         #endregion
 

@@ -147,6 +147,9 @@
     <Compile Include="Data\ProductTag.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\ProductVariantAttributeValue.cs">
+      <DependentUpon>OrbioAdmin.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\Product_Category_Mapping.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
@@ -171,6 +174,9 @@
     <Compile Include="Data\RecurringPayment.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\RelatedProduct.cs">
+      <DependentUpon>OrbioAdmin.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\Shipment.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
@@ -181,6 +187,9 @@
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\ShoppingCartItem.cs" />
+    <Compile Include="Data\SimilarProduct.cs">
+      <DependentUpon>OrbioAdmin.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\SpecificationAttribute.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>

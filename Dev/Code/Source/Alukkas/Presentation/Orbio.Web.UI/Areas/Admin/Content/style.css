@@ -23,10 +23,10 @@
 }
 @font-face {
   font-family: 'Roboto-Bold';
-  src: url('../Content/fonts/Roboto-Bold.eot');
-  src: url('../Content/fonts/Roboto-Bold.eot?#iefix') format('embedded-opentype'),
-       url('../Content/fonts/Roboto-Bold.woff') format('woff'),
-       url('../Content/fonts/Roboto-Bold.ttf') format('truetype');
+  src: url('fonts/Roboto-Bold.eot');
+  src: url('fonts/Roboto-Bold.eot?#iefix') format('embedded-opentype'),
+       url('fonts/Roboto-Bold.woff') format('woff'),
+       url('fonts/Roboto-Bold.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }

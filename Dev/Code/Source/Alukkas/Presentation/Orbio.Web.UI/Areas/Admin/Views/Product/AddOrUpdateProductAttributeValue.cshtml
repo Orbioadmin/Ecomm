@@ -1,0 +1,162 @@
+﻿@model Orbio.Web.UI.Areas.Admin.Models.Product.ProductModel
+@{
+    var count = 1;
+    var pvaId = Model.ProductVariantAttributeValue.Select(m => m.ProductVariantAttributeId).FirstOrDefault();
+    Layout = "~/Areas/Admin/Views/Shared/_Layout1.cshtml";
+}
+<script src="~/Areas/Admin/Scripts/jquery.js"></script>
+<div class="container">
+    <div class="main_edit_order">
+        <span class="edit_order_details"><span class="edit_order_icon"></span><a href="" class="add_new_check"> Add/Edit Values For [@Model.ProductVariantAttributeValue.Select(m => m.Product_ProductAttribute_Mapping.ProductAttribute.Name).FirstOrDefault()] Attribute. Product - @Model.Name</a></span>
+        <span class="back_to_order"><u><a href="@Url.Action("Edit", "Product", new { id=Model.Id})">Back to product details</a></u></span>
+    </div>
+</div>
+    <div class="container">
+        @using (Html.BeginForm("AddNewProductVariantAttributeValue", "Product", new { productVariantAttributeId = pvaId }, FormMethod.Post, new { Id = "formvariantattributevalue" }))
+        {
+            <div class="admin_comment">
+                <div class="row">
+                    <div class="col-md-2 prdct_name">Name :</div><div class="col-md-3">@Html.TextBoxFor(model => model.AddVariantAttributeValueModel.Name)</div>
+                    <div class="col-md-2 prdct_name">Price adjustment :</div><div class="col-md-3">
+                        @Html.TextBoxFor(model => model.AddVariantAttributeValueModel.PriceAdjustment)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 prdct_name">Weight adjustment :</div><div class="col-md-3">
+                        @Html.TextBoxFor(model => model.AddVariantAttributeValueModel.WeightAdjustment)
+                    </div>
+                    <div class="col-md-2 prdct_name">Is pre-selected :</div><div class="col-md-3">@Html.CheckBoxFor(model => model.AddVariantAttributeValueModel.IsPreSelected, new { @class = "show_on_homepage_check" })</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-11" style="padding: 10px;">
+                        <input type="submit" id="AddNewProductVariantAttributeValue" name="AddNewProductVariantAttributeValue" value="Save" class="add_product_submit pull-right" />
+                    </div>
+                </div>
+            </div>
+            @Html.HiddenFor(m => m.Id)
+        }
+        <div class="col-md-12" style=" margin-bottom: 34px;background-color: #fff;margin-top: 10px;width:100%">
+            <div class="col-md-12 main_order_table">
+                <div id="catprod">
+                    <table class="item_admin_order" id="tableData">
+                        <thead>
+                        <td>Name</td>
+                        <td>Price adjustment</td>
+                        <td>Weight adjustment</td>
+                        <td>Is pre-selected</td>
+                        <td></td>
+                        </thead>
+                        <tbody id="trPvavData">
+                            @foreach (var item in Model.ProductVariantAttributeValue)
+                    {
+
+                        <script type="text/javascript">
+                            $(document).ready(function () {
+                                togglePvavItemEdit@(item.Id)(false);
+                            });
+                        </script>
+
+                        <script type="text/javascript">
+                            function togglePvavItemEdit@(item.Id)(editMode) {
+                                if (editMode) {
+                                    $('#lblName@(item.Id)').hide();
+                                    $('#AddVariantAttributeValueModel_Name@(item.Id)').show();
+                                    $('#lblPriceAdjustment@(item.Id)').hide();
+                                    $('#AddVariantAttributeValueModel_PriceAdjustment@(item.Id)').show();
+                                    $('#lblWeightAdjustment@(item.Id)').hide();
+                                    $('#AddVariantAttributeValueModel_WeightAdjustment@(item.Id)').show();
+                                    $('#lblIsPreSelected@(item.Id)').hide();
+                                    $('#AddSpecificationAttributeModel_IsPreSelected@(item.Id)').show();
+                                    $('#btnDeletePvavItem@(item.Id)').hide();
+                                    $('#btnEditPvavItem@(item.Id)').hide();
+                                    $('#btnSavePvavItem@(item.Id)').show();
+                                    $('#btnCancelPvavItem@(item.Id)').show();
+                                }
+                                else {
+                                    $('#lblName@(item.Id)').show();
+                                    $('#AddVariantAttributeValueModel_Name@(item.Id)').hide();
+                                    $('#lblPriceAdjustment@(item.Id)').show();
+                                    $('#AddVariantAttributeValueModel_PriceAdjustment@(item.Id)').hide();
+                                    $('#lblWeightAdjustment@(item.Id)').show();
+                                    $('#AddVariantAttributeValueModel_WeightAdjustment@(item.Id)').hide();
+                                    $('#lblIsPreSelected@(item.Id)').show();
+                                    $('#AddSpecificationAttributeModel_IsPreSelected@(item.Id)').hide();
+                                    $('#btnDeletePvavItem@(item.Id)').show();
+                                    $('#btnEditPvavItem@(item.Id)').show();
+                                    $('#btnSavePvavItem@(item.Id)').hide();
+                                    $('#btnCancelPvavItem@(item.Id)').hide();
+                                }
+                            }
+                        </script>
+                        if (count == 1)
+                        {
+                            @:<tr class="first_row rowItemsPvav" id="@item.Id">
+                            count++;
+                        }
+                        else
+                        {
+                            @:<tr class="second_row rowItemsPvav" id="@item.Id">
+                            count = 1;
+                        }
+                        using (Html.BeginForm("EditProductVariantAttributeValue", "Product", new { Id = item.Id}, FormMethod.Post, new { Id = "formEditCustomerRole" + item.Id }))
+                        {
+                    <td class="align_center" style="cursor: move;">
+                        <label name="lblName@(item.Id)" id="lblName@(item.Id)">@item.Name</label>
+                        <input type="text" id="AddVariantAttributeValueModel_Name@(item.Id)" name="AddVariantAttributeValueModel_Name@(item.Id)" value="@item.Name" />
+                    </td>
+                    <td class="align_center" style="cursor: move;">
+                        <label name="lblPriceAdjustment@(item.Id)" id="lblPriceAdjustment@(item.Id)">@item.PriceAdjustment.ToString("#,##0.00")</label>
+                        <input type="text" id="AddVariantAttributeValueModel_PriceAdjustment@(item.Id)" name="AddVariantAttributeValueModel_PriceAdjustment@(item.Id)" value="@item.PriceAdjustment.ToString("#,##0.00")" />
+                    </td>
+                    <td class="align_center" style="cursor: move;">
+                        <label name="lblWeightAdjustment@(item.Id)" id="lblWeightAdjustment@(item.Id)">@item.WeightAdjustment.ToString("#,##0.00")</label>
+                        <input type="text" id="AddVariantAttributeValueModel_WeightAdjustment@(item.Id)" name="AddVariantAttributeValueModel_WeightAdjustment@(item.Id)" value="@item.WeightAdjustment.ToString("#,##0.00")" />
+                    </td>
+                    <td class="align_center" style="cursor: move;">
+                        <label class="@(item.IsPreSelected ? "img_sprite1" : "img_sprite")" name="lblIsPreSelected@(item.Id)" id="lblIsPreSelected@(item.Id)"></label>
+                        <select name="AddSpecificationAttributeModel_IsPreSelected@(item.Id)" id="AddSpecificationAttributeModel_IsPreSelected@(item.Id)" value="@item.IsPreSelected">
+                            <option value="True">True</option>
+                            <option value="False">False</option>
+                        </select>
+                    </td>
+                    <td class="action_ring">
+                        <input type="submit" name="btnSavePvavItem@(item.Id)" value="" id="btnSavePvavItem@(item.Id)" class="edit_save" style="display:none;" />
+                        <input type="submit" name="btnCancelPvavItem@(item.Id)" value="" onclick="togglePvavItemEdit@(item.Id)(false);return false; " id="btnCancelPvavItem@(item.Id)" class="edit_cancel" style="display:none;" />
+                        <input type="button" name="btnEditPvavItem@(item.Id)" value="" onclick="togglePvavItemEdit@(item.Id)(true);return false; " id="btnEditPvavItem@(item.Id)" class="edit_ring" />
+                        <a href="@Url.Action("DeleteProductVariantAttributeValue", "Product", new { id = item.Id, productVariantAttributeId = item.ProductVariantAttributeId })"><input type="button" name="btnDeletePvavItem@(item.Id)" value="" id="btnDeletePvavItem@(item.Id)" class="delete_ring" onclick=" return confirm('Are You Sure'); " /></a>
+                    </td>
+                    }
+                    @:</tr>
+                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-9" style="padding-top: 10px;">
+                            <span>Note: Please drag and drop the attribute for changing display order</span>
+                        </div>
+                        <div class="col-md-3" style="padding: 10px;float:right">
+                            <button id="savePvavDisplay" class="add_product_submit">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $(function () {
+                $('#trPvavData').sortable();
+                $('#savePvavDisplay').on('click', function () {
+                    var ids = [];
+                    $('.rowItemsPvav').each(function (index, value) {
+                        var id = $(value).prop('id');
+                        ids.push(id);
+                    });
+                    $.post('@(Url.Action("UpdateProductVariantAttributeValueDisplayOrder", "Product"))',
+                        { PvavIds: JSON.stringify(ids) },
+                        function (response) {
+
+                        }
+                    );
+                })
+            });
+        </script>

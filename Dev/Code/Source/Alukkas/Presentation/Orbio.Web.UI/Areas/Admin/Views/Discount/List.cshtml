@@ -37,17 +37,18 @@
                     @:<tr class="second_row">
                         count = 1;
                 }
-                @:<td class="align_center" style="text-align:left"><a style="cursor:pointer" href="@Url.Action("Edit", "Discount", new { id = discount.Id })">@discount.Name</a></td>
+                <td class="align_center" style="text-align:left"><a style="cursor:pointer" href="@Url.Action("Edit", "Discount", new { id = discount.Id })">@discount.Name</a></td>
                 if (!discount.UsePercentage)
                 {
-                     @:<td class="align_center" style="text-align:right">Rs. @discount.DiscountAmount.ToString("#,##0.00")</td>
+                     <td class="align_center" style="text-align:right">Rs. @discount.DiscountAmount.ToString("#,##0.00")</td>
                 }
                 else
                 {
-                    @:<td class="align_center" style="text-align:right">@discount.DiscountPercentage.ToString("#,##0.00") %</td>
+                    <td class="align_center" style="text-align:right">@discount.DiscountPercentage.ToString("#,##0.00") %</td>
                 }
-                @:<td class="align_center">@discount.StartDateUtc</td>
-                @:<td class="align_center">@discount.EndDateUtc</td>
+                <td class="align_center">@discount.StartDateUtc</td>
+                <td class="align_center">@discount.EndDateUtc</td>
+                @:</tr>
             }
             </tbody>
         </table>
