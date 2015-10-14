@@ -39,6 +39,50 @@
         </div>
         </div>
 }
+
+<!--popup -->
+
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="emailPopup">
+    <div class="modal-dialog modal-lg pop-ups">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="gridSystemModalLabel">Send Email</h4>
+            </div>
+
+            <div class="modal-body news">
+                <div class="row">
+                    <form class="form-horizontal" method="get" action="" onsubmit="return false">
+                        <div class="form-group clearfix">
+                            <label class="col-sm-2 control-label">Email</label>
+                            <div class="col-sm-10">
+                                <input type="text" placeholder="Email" required="required" id="emailInput" class="form-control" disabled="disabled" />
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label class="col-sm-2 control-label">Subject</label>
+                            <div class="col-sm-10">
+                                <input type="text" placeholder="Subject" required="required" id="subject" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label class="col-sm-2 control-label">Text</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" rows="6" required="required" id="body"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <input type="submit" class="btn btn-primary" id="emailSubmit" value="Send Email" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 @section scripts {
 <script>
  $('#role').multiselect();
@@ -62,4 +106,38 @@
         });
     });
 </script>
+
+<script>
+    function SentMail(email) {
+        document.getElementById("emailInput").value = email;
+        $($(this).attr("href")).show();
+    }
+</script>
+
+    <script>
+        $("#emailSubmit").click(function () {
+            var email = $("#emailInput").val();
+            var subject = $("#subject").val();
+            var body = $("#body").val();
+            if (email.trim() != "" && subject.trim() != "" && body.trim() != "")
+            {
+                $.ajax({
+                    data: { email: email, subject:subject, body:body },
+                    url:'@Url.Action("SendEmail","Customer")',
+                    type: "POST",
+                    success: function (result) {
+                        if (result == "Success") {
+                            alert("Your mail has been sent successfully");
+                            location.reload();
+                        }
+                        else {
+                            alert("Some error occured!! Please try after sometime");
+                        }
+                    }
+                })
+            }
+        });
+           
+        
+    </script>
 }

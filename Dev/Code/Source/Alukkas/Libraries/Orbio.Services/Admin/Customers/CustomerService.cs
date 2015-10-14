@@ -140,5 +140,21 @@ namespace Orbio.Services.Admin.Customers
                 return 0;
             }
         }
+
+        public string GetCustomerName(string email)
+        {
+           using (var context = new OrbioAdminContext())
+           {
+             var result = context.Customers.Where(c => c.Email == email).FirstOrDefault();
+             if (result != null)
+                  return result.FirstName;
+              else
+                 return null;
+           }
+        }
     }
 }
+           
+
+                
+                

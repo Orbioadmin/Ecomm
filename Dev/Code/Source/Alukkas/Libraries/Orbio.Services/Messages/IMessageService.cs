@@ -22,5 +22,6 @@ namespace Orbio.Services.Messages
         int SendOrderCustomerNotification(Order order, int languageId, string attachmentFilePath = null, string attachmentFileName = null, int orderStatusId = 0);
         int SendNewOrderNoteAddedCustomerNotification(Order order,OrderNote orderNote, int languageId);
         int SendShipmentSentCustomerNotification(Orbio.Core.Data.Shipment shipment, Order order, int languageId);
+        int SendCustomerNotification(string email, string subject, string body,string name);
     }
 }

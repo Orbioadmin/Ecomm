@@ -190,7 +190,7 @@ namespace Orbio.Services.Messages
              context.ExecuteFunction<EmailDetail>("usp_EmailSending",
                  new SqlParameter() { ParameterName = "@profilename", Value = "Emailsending", DbType = System.Data.DbType.String },
                  new SqlParameter() { ParameterName = "@toaddress", Value = toEmailAddress, DbType = System.Data.DbType.String },
-                 new SqlParameter() { ParameterName = "@todisplayname", Value = toName, DbType = System.Data.DbType.String },
+                 new SqlParameter() { ParameterName = "@todisplayname", Value = (string.IsNullOrEmpty(toName)) ? toEmailAddress : toName, DbType = System.Data.DbType.String },
                  new SqlParameter() { ParameterName = "@fromaddress", Value = ConfigurationManager.AppSettings["EmailFromAddress"], DbType = System.Data.DbType.String },
                  new SqlParameter() { ParameterName = "@fromname", Value = ConfigurationManager.AppSettings["EmailFromName"], DbType = System.Data.DbType.String },
                  new SqlParameter() { ParameterName = "@subject", Value = subjectReplaced, DbType = System.Data.DbType.String },
@@ -373,6 +373,16 @@ namespace Orbio.Services.Messages
             var toName = "";
 
             EmailDetail Sent = SendNotification(messageTemplate, tokens, toEmail, toName);
+            return emailService.SentEmail(Sent);
+        }
+
+        public int SendCustomerNotification(string email, string subject, string body, string name)
+        {
+            var messageTemplate = new MessageTemplate();
+            messageTemplate.Body = body;
+            messageTemplate.Subject = subject;
+            var tokens = new List<Token>();
+            EmailDetail Sent = SendNotification(messageTemplate, tokens, email, name);
             return emailService.SentEmail(Sent);
         }
     }

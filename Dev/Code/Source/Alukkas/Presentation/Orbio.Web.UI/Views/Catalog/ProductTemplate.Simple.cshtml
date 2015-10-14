@@ -262,6 +262,9 @@
                         </div>
                     }
                 }
+                
+                }
+            <form method="get" action="" onsubmit="return false">
                 <div class="certification">
                     <ul class="clearfix">
                         <li><img src="images/bis.png"></li>
@@ -270,9 +273,30 @@
 
                     </ul><div class="clear"></div>
                 </div>
-            }
-        </div>
 
+
+                <div class="check-avail" id="checkPin">
+                    <ul>
+                        <li>
+                            <span><img src="~/Images/checkavail.png" class="locationimg" /></span> <span>Check Availability at</span>
+                        </li>
+                        <li>
+                            <input type="text" autocomplete="off" minlength="6" maxlength="6" placeholder="Enter your pincode" id="pincode" required="required">
+                            <input type="submit" value="Check" class="check-butt" onclick="btnSubmit_Click()">
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="check-avail" style="display:none" id="displayResult">
+                    <ul>
+                        <li>
+                            <img src="" id="imgavailability" class="locationimg" />
+                            <span id="lbldisplayresult" class="spanavail"> Available at </span><span style="cursor:pointer"><a onclick="Change()" style="text-decoration:underline;">change</a></span>
+                        </li>
+                    </ul>
+                </div>
+            </form> 
+        </div>
     </div>
 </div>
 
@@ -323,8 +347,6 @@
                 </div>
 
             </div>
-
-
             @Html.Action("RelatedProducts", "Catalog", new { productId = this.Model.Id })
 
         </div>
@@ -378,8 +400,6 @@
                 }
             });
 
-
-
             $('.dropdownlist').change(function () {
                 etalage_show($(this).find('option:selected').attr('class'));
             });
@@ -395,3 +415,73 @@
         });
     });
 </script>
+
+<script language="javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
+<script>
+    function btnSubmit_Click(e) {
+        var pincode = $('#pincode').val();
+        getAddressInfoByZip(pincode);
+    }
+
+    function getAddressInfoByZip(zip) {
+        if (zip.length >= 5 && typeof google != 'undefined') {
+            var state = "";
+            var addr = {};
+            var geocoder = new google.maps.Geocoder();
+            geocoder.geocode({ 'address': zip }, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    if (results.length >= 1) {
+                        for (var j = 0; j < results.length; j++) {
+                            for (var i = 0; i < results[j].address_components.length; i++) {
+                                var base = results[j].address_components[i].types[0];
+                                if (base == "administrative_area_level_1") {
+                                    state = results[j].address_components[i].long_name;
+                                }
+                            }
+                        }
+                    }
+                }
+                CheckPincodeAvailability(state, zip);
+            })
+        }
+        else {
+            $("#pincode").prop("required", true);
+        }
+    }
+
+    function CheckPincodeAvailability(state, pincode) {
+        if (state != null) {
+            $.ajax({
+                data: { state: state },
+                url: '@Url.Action("CheckPincodeAvailability","ShoppingCart")',
+                type: "POST",
+                success: function (data) {
+                    if (data == "Available") {
+                        $('#lbldisplayresult').text("Available at pincode : " + pincode);
+                        $('#displayResult').css("display", "inline-block");
+                        $('#checkPin').css("display", "none");
+                        $('#imgavailability').attr("src", "../images/available.png");
+                    }
+                    else {
+                        $('#lbldisplayresult').text("Not available at pincode : " + pincode);
+                        $('#displayResult').css("display", "inline-block");
+                        $('#checkPin').css("display", "none");
+                        $('#imgavailability').attr("src", "../images/unavail.png");
+                    }
+                }
+            });
+        }
+        else {
+            $('#lbldisplayresult').text("Not available at " + pincode);
+            $('#displayResult').css("display", "inline-block");
+            $('#checkPin').css("display", "none");
+        }
+    }
+
+    function Change() {
+        $('#displayResult').css("display", "none");
+        $('#checkPin').css("display", "inline-block");
+    }
+
+</script>
+

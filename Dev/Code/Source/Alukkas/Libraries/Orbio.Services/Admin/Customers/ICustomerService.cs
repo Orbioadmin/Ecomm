@@ -20,5 +20,7 @@ namespace Orbio.Services.Admin.Customers
         int AddOrUpdateCustomerInfo(Customer customer, List<int> Roles);
 
         int DeleteCustomer(int Id);
+
+        string GetCustomerName(string email);
     }
 }
