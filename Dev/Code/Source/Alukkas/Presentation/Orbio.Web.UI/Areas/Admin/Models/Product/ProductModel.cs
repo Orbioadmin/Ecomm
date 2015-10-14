@@ -20,6 +20,7 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Product
             AvailableManufatures = new List<SelectListItem>();
             AvailableRelatedProducts = new List<SelectListItem>();
             AvailableSimilarProducts = new List<SelectListItem>();
+            AvailableDiscounts = new List<SelectListItem>();
             Pictures = new List<Product_Picture_Mapping>();
             AddSpecificationAttributeModel = new AddProductSpecificationAttributeModel();
             AddVariantAttributeModel = new AddProductVariantAttributeModel();
@@ -95,6 +96,7 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Product
         public List<SelectListItem> AvailableManufatures { get; set; }
         public List<SelectListItem> AvailableRelatedProducts { get; set; }
         public List<SelectListItem> AvailableSimilarProducts { get; set; }
+        public List<SelectListItem> AvailableDiscounts { get; set; }
         public List<Product_Picture_Mapping> Pictures { get; set; }
         public List<Product_SpecificationAttribute_Mapping> ProductSpecification { get; set; }
         public List<Product_ProductAttribute_Mapping> ProductVariantAttribute { get; set; }
@@ -103,6 +105,7 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Product
         public int[] SelectedManufature { get; set; }
         public int[] SelectedRelatedProducts { get; set; }
         public int[] SelectedSimilarProducts { get; set; }
+        public int[] SelectedDiscounts { get; set; }
         public ProductPictureModel PictureModel { get; set; }
         //add specification attribute model
         public AddProductSpecificationAttributeModel AddSpecificationAttributeModel { get; set; }

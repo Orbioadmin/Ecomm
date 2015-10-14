@@ -76,11 +76,11 @@ namespace Orbio.Services.Admin.Seo
             var sb = new StringBuilder();
 
             string name2 = sb.ToString();
-            name2 = name2.Replace(" ", "-");
-            while (name2.Contains("--"))
-                name2 = name2.Replace("--", "-");
-            while (name2.Contains("__"))
-                name2 = name2.Replace("__", "_");
+            name2 = name.Replace(" ", "-");
+            while (name.Contains("--"))
+                name2 = name.Replace("--", "-");
+            while (name.Contains("__"))
+                name2 = name.Replace("__", "_");
             return name2;
         }
 

@@ -119,7 +119,7 @@
                             <td class="align_center" style="cursor: move;">
                                 @if (item.ProductAttribute.Name.ToUpper() == "SIZE")
                                 {
-                                    <a href="@Url.Action("AddProductVariantSizeGuide", "Product", new { id = item.ProductId, productVariantAttributeId = item.Id})">View/Edit (@(string.IsNullOrEmpty(item.SizeGuideUrl)?0:1))</a> 
+                                    <a href="@Url.Action("AddProductVariantSizeGuide", "Product", new { productVariantAttributeId = item.Id})">View/Edit (@(string.IsNullOrEmpty(item.SizeGuideUrl)?0:1))</a> 
                                 }
                            </td>
                             <td class="align_center">

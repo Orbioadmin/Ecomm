@@ -66,22 +66,3 @@
     </div>
     </div>
 
-<script>
-
-    $(function () {
-        $('#trData').sortable();
-        $('button').on('click', function () {
-            var ids = [];
-            $('.rowItems').each(function (index, value) {
-                var id = $(value).prop('id');
-                ids.push(id);
-            });
-            $.post('@(Url.Action("UpdatePicture", "Product"))',
-                { Ids: JSON.stringify(ids) },
-                function (response) {
-
-                }
-            );
-        })
-    });
-</script>

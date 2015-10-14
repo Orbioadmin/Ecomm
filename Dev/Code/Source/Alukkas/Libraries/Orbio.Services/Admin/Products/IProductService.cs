@@ -19,18 +19,6 @@ namespace Orbio.Services.Admin.Products
         List<Orbio.Core.Domain.Catalog.Product> GetAllProductsSeachOrDefault(string nameOrSku, int? categoryId, int? manufatureId);
 
         /// <summary>
-        /// Get all related Product List
-        /// </summary>
-        /// <returns></returns>
-        List<Product> GetAllRelatedProductsById(int ProductId);
-
-        /// <summary>
-        /// Get all similar Product List
-        /// </summary>
-        /// <returns></returns>
-        List<Product> GetAllSimilarProductsById(int ProductId);
-
-        /// <summary>
         /// Get product details by id
         /// </summary>
         /// <param name="id"></param>
@@ -41,7 +29,7 @@ namespace Orbio.Services.Admin.Products
         /// Insert new Product
         /// </summary>
         /// <param name="productDetail"></param>
-        void InsertNewProduct(Orbio.Core.Domain.Admin.Product.ProductDetail productDetail);
+        int InsertNewProduct(Orbio.Core.Domain.Admin.Product.ProductDetail productDetail);
 
         /// <summary>
         /// Update Product
@@ -126,6 +114,13 @@ namespace Orbio.Services.Admin.Products
         void AddOrUpdateProductVariantAttributeSizeGuide(Product_ProductAttribute_Mapping productVariantAttribute);
 
         /// <summary>
+        /// Delete SizeGuideUrl
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        int DeleteSizeGuideUrl(int Id);
+
+        /// <summary>
         /// Delete product variant attribute
         /// </summary>
         /// <param name="Id"></param>
@@ -137,5 +132,17 @@ namespace Orbio.Services.Admin.Products
         /// </summary>
         /// <param name="pvaIds"></param>
         void UpdateProductVariantAttributeDisplayOrder(int[] pvaIds);
+
+        /// <summary>
+        /// Get all discounts for products by Id
+        /// </summary>
+        List<Orbio.Core.Domain.Discounts.Discount> GetAllDiscountsForProductsById(int id);
+
+        /// <summary>
+        /// GetProductVariantAttributeByProductVariantAttributeId
+        /// </summary>
+        /// <param name="productVariantAttributeId"></param>
+        /// <returns></returns>
+        List<Product_ProductAttribute_Mapping> GetProductVariantAttributeProductVariantAttributeId(int productVariantAttributeId);
     }
 }

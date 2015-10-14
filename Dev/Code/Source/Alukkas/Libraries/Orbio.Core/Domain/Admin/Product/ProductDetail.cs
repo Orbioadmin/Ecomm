@@ -21,5 +21,7 @@ namespace Orbio.Core.Domain.Admin.Product
         public int[] relatedProductIds { get; set; }
 
         public int[] similarProductIds { get; set; }
+
+        public int[] discountIds { get; set; }
     }
 }

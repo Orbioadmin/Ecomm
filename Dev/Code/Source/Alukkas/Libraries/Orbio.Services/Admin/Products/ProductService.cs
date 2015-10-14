@@ -54,38 +54,6 @@ namespace Orbio.Services.Admin.Products
         }
 
         /// <summary>
-        /// Get all related Product List
-        /// </summary>
-        /// <returns></returns>
-        public List<Product> GetAllRelatedProductsById(int ProductId)
-        {
-            using (var context = new OrbioAdminContext())
-            {
-                var result = (from p in context.Products
-                              join re in context.RelatedProducts on p.Id equals re.ProductId2
-                              where p.Id == ProductId
-                              select p).ToList();
-                return result;
-            }
-        }
-         
-        /// <summary>
-        /// Get all similar Product List
-        /// </summary>
-        /// <returns></returns>
-        public List<Product> GetAllSimilarProductsById(int ProductId)
-        {
-            using (var context = new OrbioAdminContext())
-            {
-                var result = (from p in context.Products
-                              join re in context.SimilarProducts on p.Id equals re.ProductId2
-                              where p.Id == ProductId
-                              select p).ToList();
-                return result;
-            }
-        }
-
-        /// <summary>
         /// Get product details by id
         /// </summary>
         /// <param name="id"></param>
@@ -115,11 +83,17 @@ namespace Orbio.Services.Admin.Products
         /// Insert new Product
         /// </summary>
         /// <param name="productDetail"></param>
-        public void InsertNewProduct(Orbio.Core.Domain.Admin.Product.ProductDetail productDetail)
+        public int InsertNewProduct(Orbio.Core.Domain.Admin.Product.ProductDetail productDetail)
         {
             var productXml = Serializer.GenericSerializer<Orbio.Core.Domain.Admin.Product.ProductDetail>(productDetail);
-            dbContext.ExecuteFunction<Product>("usp_Product_InsertProduct",
-            new SqlParameter() { ParameterName = "@productXml", Value = productXml, DbType = System.Data.DbType.Xml });
+            //dbContext.ExecuteFunction<Product>("usp_Product_InsertProduct",
+            //new SqlParameter() { ParameterName = "@productXml", Value = productXml, DbType = System.Data.DbType.Xml });
+
+            var sqlParams = new SqlParameter[] {new SqlParameter{ ParameterName="@productXml", 
+            Value=productXml, DbType= System.Data.DbType.Xml}, new SqlParameter{ ParameterName="@productId", 
+            Value=0, DbType= System.Data.DbType.Boolean, Direction= System.Data.ParameterDirection.Output} };
+            var result = dbContext.ExecuteSqlCommand("EXEC [usp_Product_InsertProduct] @productXml, @productId OUTPUT", false, null, sqlParams);
+            return Convert.ToInt32(sqlParams[1].Value);
         }
 
         /// <summary>
@@ -331,6 +305,32 @@ namespace Orbio.Services.Admin.Products
         }
 
         /// <summary>
+        /// Delete SizeGuideUrl
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        public int DeleteSizeGuideUrl(int Id)
+        {
+            using (var context = new OrbioAdminContext())
+            {
+                try
+                {
+                    var result = context.Product_ProductAttribute_Mapping.Where(m => m.Id == Id).FirstOrDefault();
+                    if (result != null)
+                    {
+                        result.SizeGuideUrl = null;
+                        context.SaveChanges();
+                    }
+                    return 1;
+                }
+                catch (Exception)
+                {
+                    return 0;
+                }
+            }
+        }
+
+        /// <summary>
         /// Delete product variant attribute
         /// </summary>
         /// <param name="Id"></param>
@@ -361,6 +361,42 @@ namespace Orbio.Services.Admin.Products
             var pvaIdsXml = Serializer.GenericSerializer(pvaIds);
             dbContext.ExecuteFunction<Product_ProductAttribute_Mapping>("usp_UpdateProductVariantAttributeDisplayOrder", new SqlParameter() { ParameterName = "@pvaIdsXml", Value = pvaIdsXml, DbType = System.Data.DbType.Xml });
         }
+
+        /// <summary>
+        /// GetProductVariantAttributeByProductVariantAttributeId
+        /// </summary>
+        /// <param name="productVariantAttributeId"></param>
+        /// <returns></returns>
+        public List<Product_ProductAttribute_Mapping> GetProductVariantAttributeProductVariantAttributeId(int productVariantAttributeId)
+        {
+            using (var context = new OrbioAdminContext())
+            {
+                context.Product_ProductAttribute_Mapping.Include("Product").Load();
+                return context.Product_ProductAttribute_Mapping.Where(pvav => pvav.Id == productVariantAttributeId).ToList();
+            }
+        }
+
+
+        #endregion
+
+        #region Discounts
+
+        /// <summary>
+        /// Get all discounts for products by Id
+        /// </summary>
+        public List<Orbio.Core.Domain.Discounts.Discount> GetAllDiscountsForProductsById(int id)
+        {
+            var sqlParamList = new List<SqlParameter>();
+            var result = dbContext.ExecuteFunction<XmlResultSet>("usp_GetAllProductDiscounts", new SqlParameter() { ParameterName = "@productid", Value = id, DbType = System.Data.DbType.Int32 }).FirstOrDefault();
+            if (result != null && result.XmlResult != null)
+            {
+                var order = Serializer.GenericDeSerializer<List<Orbio.Core.Domain.Discounts.Discount>>(result.XmlResult);
+                return order;
+            }
+
+            return new List<Orbio.Core.Domain.Discounts.Discount>();
+        }
+
         #endregion
 
         #endregion

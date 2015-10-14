@@ -2,6 +2,7 @@
 @{
     var count = 1;
     var pvaId = Model.ProductVariantAttributeValue.Select(m => m.ProductVariantAttributeId).FirstOrDefault();
+    pvaId = (pvaId != 0) ? pvaId : Convert.ToInt32(Request["productVariantAttributeId"].ToString());
     Layout = "~/Areas/Admin/Views/Shared/_Layout1.cshtml";
 }
 <script src="~/Areas/Admin/Scripts/jquery.js"></script>

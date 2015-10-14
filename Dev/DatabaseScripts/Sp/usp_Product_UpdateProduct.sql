@@ -48,7 +48,6 @@ BEGIN TRY
 	   d.value('(ShortDescription)[1]','nvarchar(max)' ) as ShortDescription, 
 	   d.value('(FullDescription)[1]','nvarchar(max)' ) as FullDescription,
 		d.value('(AdminComment)[1]','nvarchar(max)' ) as AdminComment,
-		 d.value('(ProductTemplateId)[1]','int' ) as ProductTemplateId,
 		  d.value('(VendorId)[1]','int' ) as VendorId,
 		  d.value('(ShowOnHomePage)[1]','bit' ) as ShowOnHomePage,
 		   d.value('(MetaKeywords)[1]','nvarchar(400)' ) as MetaKeywords,
@@ -107,7 +106,7 @@ BEGIN TRY
 	
 		
 		Update p set p.[ProductTypeId] = toproduct.ProductTypeId,p.[ParentGroupedProductId] = toproduct.ParentGroupedProductId,p.[VisibleIndividually] = toproduct.VisibleIndividually
-,p.[Name] = toproduct.Name,p.[ShortDescription]=toproduct.ShortDescription,p.[FullDescription]=toproduct.FullDescription,p.[AdminComment]=toproduct.AdminComment,p.[ProductTemplateId]=toproduct.ProductTemplateId,p.[VendorId]=toproduct.VendorId
+,p.[Name] = toproduct.Name,p.[ShortDescription]=toproduct.ShortDescription,p.[FullDescription]=toproduct.FullDescription,p.[AdminComment]=toproduct.AdminComment,p.[VendorId]=toproduct.VendorId
 ,p.[ShowOnHomePage] = toproduct.ShowOnHomePage,p.[MetaKeywords] = toproduct.MetaKeywords
 ,p.[MetaDescription]=toproduct.MetaDescription,p.[MetaTitle]=toproduct.MetaTitle,p.[AllowCustomerReviews]=toproduct.AllowCustomerReviews
 ,p.[ApprovedRatingSum]=toproduct.ApprovedRatingSum,p.[NotApprovedRatingSum]=toproduct.NotApprovedRatingSum,p.[ApprovedTotalReviews]=toproduct.ApprovedTotalReviews
@@ -163,11 +162,17 @@ BEGIN TRY
 	from @productXml.nodes('/ProductDetail/relatedProductIds/int') O(D)
 	
 	--insert to similar Products
-	delete from dbo.RelatedProduct where ProductId1 = @productId
+	delete from dbo.SimilarProduct where ProductId1 = @productId
 	  insert into [dbo].[SimilarProduct](ProductId1,ProductId2,DisplayOrder)
 	select @productId, O.D.value('.','int' )
 	,row_number() over (order by @productId)		 
 	from @productXml.nodes('/ProductDetail/similarProductIds/int') O(D)
+	
+	--insert to Product discount
+	delete from dbo.Discount_AppliedToProducts where Product_Id = @productId
+	 insert into [dbo].[Discount_AppliedToProducts](Product_Id,Discount_Id)
+	select @productId, O.D.value('.','int' )		 
+	from @productXml.nodes('/ProductDetail/discountIds/int') O(D)
 	
 	
    COMMIT TRAN

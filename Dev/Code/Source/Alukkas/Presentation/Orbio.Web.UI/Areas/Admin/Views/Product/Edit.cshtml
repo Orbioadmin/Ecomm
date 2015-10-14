@@ -100,7 +100,6 @@
                         <div class="cB"></div>
                     </div>
                 </div>
-
                 <div class="cB"></div>
             </div>
         </div>
@@ -108,6 +107,20 @@
 </div>
 <script src="~/Areas/Admin/Scripts/tinymce/tinymce.min.js"></script>
 @section scripts {
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+            if ($(e.target).attr('href') != '#productinfo') {
+                localStorage.setItem('activeTab', $(e.target).attr('href'));
+            }
+        });
+        var activeTab = localStorage.getItem('activeTab');
+        if (activeTab) {
+            $('#myTab a[href="' + activeTab + '"]').tab('show');
+        }
+    });
+
+</script>
     <script type="text/javascript">
         tinymce.init({
             selector: "#FullDescription",
@@ -141,7 +154,7 @@
         });</script>
 
     <script type="text/javascript">
-        $().ready(function () {
+        $(document).ready(function () {
 
             $('.enabling').on('click', function () {
                 if ($('.enabling').is(':checked')) {
@@ -167,6 +180,26 @@
                     $("#trackInv").hide();
                 }
             });
+
+            if ($('.enabling').is(':checked')) {
+                $(".show_div_check_true").show();
+            } else {
+                $(".show_div_check_true").hide();
+            }
+
+            if ($('.enablingTax').is(':checked')) {
+                $("#taxcat").show();
+            } else {
+                $("#taxcat").hide();
+            }
+            var invValue = $("#ManageInventoryMethodId").val();
+            if (invValue == 1) {
+                $("#trackInv").show();
+            }
+            else {
+                $("#trackInv").hide();
+            }
+
             var SpecialPriceStartDateTimeUtc = $("#SpecialPriceStartDateTimeUtc").val();
             var SpecialPriceEndDateTimeUtc = $("#SpecialPriceEndDateTimeUtc").val();
             if (SpecialPriceStartDateTimeUtc != "") {
@@ -220,10 +253,29 @@
         $(".chosen").chosen().change();
         $(".chosen").trigger('liszt:updated');
     </script>
-    <script>
+<script>
+
+    $(function () {
+        $('#trData').sortable();
+        $('button').on('click', function () {
+            var ids = [];
+            $('.rowItems').each(function (index, value) {
+                var id = $(value).prop('id');
+                ids.push(id);
+            });
+            $.post('@(Url.Action("UpdatePicture", "Product"))',
+                { Ids: JSON.stringify(ids) },
+                function (response) {
+
+                }
+            );
+        })
+    });
+</script>
+<script>
         $(function () {
             $('#trSpecData').sortable();
-            $('#saveSpecDisplay').on('click', function () {
+            $('#savespecdisplay').on('click', function () {
                 var ids = [];
                 $('.rowItemsSpec').each(function (index, value) {
                     var id = $(value).prop('id');
@@ -232,13 +284,11 @@
                 $.post('@(Url.Action("UpdateSpecificationDisplayOrder", "Product"))',
                     { SpecIds: JSON.stringify(ids) },
                     function (response) {
-
                 }
             );
         })
     });
 </script>
-
 <script>
     $(function () {
         $('#trPvaData').sortable();
@@ -257,6 +307,8 @@
         })
     });
 </script>
+
+
 
 }
 

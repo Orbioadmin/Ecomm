@@ -746,6 +746,7 @@
     <Content Include="Images\doublevalue_banner.jpg" />
     <Content Include="Images\edit.png" />
     <Content Include="Images\footer-divider.png" />
+    <Content Include="Images\francis alukkas.png" />
     <Content Include="Images\header5.jpg" />
     <Content Include="Images\icon1.png" />
     <Content Include="Images\icon2.png" />
@@ -881,7 +882,6 @@
     <Content Include="Areas\Admin\Views\Product\_CreateOrUpdateSeo.cshtml" />
     <Content Include="Areas\Admin\Views\Product\_CreateOrUpdatePicture.cshtml" />
     <Content Include="Areas\Admin\Views\Picture\_PictureUpload.cshtml" />
-   
     <Content Include="Areas\Admin\Views\Sales\AddOrEditGiftCards.cshtml" />
     <Content Include="Areas\Admin\Views\Sales\GiftCardInfo.cshtml" />
     <Content Include="Areas\Admin\Views\Sales\GiftCards.cshtml" />
@@ -903,8 +903,6 @@
     <Content Include="Areas\Admin\Views\Order\NeverSoldReport.cshtml" />
     <Content Include="Areas\Admin\Views\Order\SearchNeverSold.cshtml" />
     <Content Include="Areas\Admin\Views\Order\NeverSoldProducts.cshtml" />
-    
-    
     <Content Include="Areas\Admin\Views\MessageTemplate\List.cshtml" />
     <Content Include="Areas\Admin\Views\MessageTemplate\MessageTemplateList.cshtml" />
     <Content Include="Areas\Admin\Views\MessageTemplate\Info.cshtml" />

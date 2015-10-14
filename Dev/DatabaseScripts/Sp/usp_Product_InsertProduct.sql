@@ -26,10 +26,9 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE PROCEDURE [dbo].[usp_Product_InsertProduct] (
-@productXml xml)
+@productXml xml,@productId INT OUTPUT)
 AS    
 BEGIN
-DECLARE @productId INT
 BEGIN TRY
 	BEGIN TRANSACTION
 	
@@ -58,7 +57,7 @@ BEGIN TRY
 	   d.value('(ShortDescription)[1]','nvarchar(max)' ), 
 	   d.value('(FullDescription)[1]','nvarchar(max)' ),
 		d.value('(AdminComment)[1]','nvarchar(max)' ),
-		 d.value('(ProductTemplateId)[1]','int' ),
+		 1,--ProductTemplateId
 		  d.value('(VendorId)[1]','int' ),
 		  d.value('(ShowOnHomePage)[1]','bit' ) ,
 		   d.value('(MetaKeywords)[1]','nvarchar(400)' ),
@@ -175,7 +174,7 @@ BEGIN TRY
 	,row_number() over (order by @productId)		 
 	from @productXml.nodes('/ProductDetail/manufactureIds/int') O(D)
 	
-		-- insert to Related Products
+	-- insert to Related Products
 	insert into dbo.RelatedProduct(ProductId1,ProductId2,DisplayOrder)
 	select @productId, O.D.value('.','int' )
 	,row_number() over (order by @productId)		 
@@ -187,8 +186,13 @@ BEGIN TRY
 	,row_number() over (order by @productId)		 
 	from @productXml.nodes('/ProductDetail/similarProductIds/int') O(D)
 	
+	--insert to Product discount
+	  insert into [dbo].[Discount_AppliedToProducts](Product_Id,Discount_Id)
+	select @productId, O.D.value('.','int' )		 
+	from @productXml.nodes('/ProductDetail/discountIds/int') O(D)
+	
    COMMIT TRAN
-	 
+	 RETURN @productId
  END TRY
 
  BEGIN CATCH

@@ -14,6 +14,11 @@ namespace Orbio.Services.Admin.Discount
         /// </summary>
         List<Orbio.Core.Domain.Discounts.Discount> GetAllDiscounts();
 
+        /// <summary>
+        /// Get all discounts for products 
+        /// </summary>
+        List<Orbio.Core.Domain.Discounts.Discount> GetAllDiscountsForProducts(Orbio.Core.Domain.Discounts.DiscountType discountType);
+
          /// <summary>
         /// Create or update discount
         /// </summary>

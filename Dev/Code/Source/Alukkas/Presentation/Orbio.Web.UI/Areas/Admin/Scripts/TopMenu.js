@@ -5,7 +5,7 @@ var pageName = (function () {
     return a.substr(b + 1);
 }());
 $(".nav li").removeClass("active");
- if (pageName == "Admin/Catalog/ManageCategories" || pageName == "Admin/Catalog/ManageManufacturer" || pageName == "Admin/Product/List" || pageName == "Admin/Product/List" || pageName == "Admin/Product/Create" || pageName == "Admin/Attribute/ProductAttribute" || pageName == "Admin/Attribute/ListSpecificationAttribute")
+if (pageName == "Admin/Catalog/ManageCategories" || pageName == "Admin/Catalog/ManageManufacturer" || pageName == "Admin/Product/List" || pageName == "Admin/Product/Create" || pageName.indexOf("Product") > 0 || pageName == "Admin/Attribute/ProductAttribute" || pageName == "Admin/Attribute/ListSpecificationAttribute")
 {
     $("#catelog").addClass("active");
 }

@@ -41,6 +41,22 @@ namespace Orbio.Services.Admin.Discount
         }
 
         /// <summary>
+        /// Get all discounts for products 
+        /// </summary>
+        public List<Orbio.Core.Domain.Discounts.Discount> GetAllDiscountsForProducts(Orbio.Core.Domain.Discounts.DiscountType discountType)
+        {
+            var sqlParamList = new List<SqlParameter>();
+            var result = dbContext.ExecuteFunction<XmlResultSet>("usp_OrbioAdmin_GetAllDiscountsForProduct", new SqlParameter() { ParameterName = "@discountTypeId", Value = discountType, DbType = System.Data.DbType.Int32 }).FirstOrDefault();
+            if (result != null && result.XmlResult != null)
+            {
+                var order = Serializer.GenericDeSerializer<List<Orbio.Core.Domain.Discounts.Discount>>(result.XmlResult);
+                return order;
+            }
+
+            return new List<Orbio.Core.Domain.Discounts.Discount>();
+        }
+
+        /// <summary>
         /// Get discount by Id
         /// </summary>
         public Orbio.Core.Domain.Discounts.Discount GetDiscountById(string action, Orbio.Core.Domain.Discounts.Discount discount)

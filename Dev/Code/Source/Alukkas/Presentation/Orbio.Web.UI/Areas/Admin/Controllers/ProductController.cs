@@ -19,6 +19,8 @@ using Orbio.Services.Admin.Media;
 using System.Web.Script.Serialization;
 using Orbio.Services.Admin.Attributes;
 using Orbio.Services.Admin.Seo;
+using Orbio.Services.Admin.Discount;
+using Orbio.Core.Domain.Discounts;
 
 namespace Orbio.Web.UI.Areas.Admin.Controllers
 {
@@ -29,16 +31,19 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         public readonly ICategoryServices _categoryService;
         public readonly IManufacturerService _manufatureService;
         public readonly IProductService _productService;
+        public readonly Orbio.Services.Catalog.IProductService _productServices;
         public readonly IShippingService _shippingService;
         public readonly ITaxCategoryService _taxCategoryService;
         public readonly IPictureService _pictureService;
         public readonly ISpecificationAttributeService _specificationAttributeService;
         public readonly IProductAttributeService _productAttributeService;
+        public readonly IDiscountService _discountService;
         #endregion
 
         #region Constructors
         public ProductController(ICategoryServices categoryService, IManufacturerService manufatureService, IProductService productService, IShippingService shippingService, ITaxCategoryService taxCategoryService,
-            IPictureService pictureService, ISpecificationAttributeService specificationAttributeService, IProductAttributeService productAttributeService)
+            IPictureService pictureService, ISpecificationAttributeService specificationAttributeService, IProductAttributeService productAttributeService, Orbio.Services.Catalog.IProductService productServices,
+            IDiscountService discountService)
         {
             this._categoryService = categoryService;
             this._manufatureService = manufatureService;
@@ -48,6 +53,8 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             this._pictureService = pictureService;
             this._specificationAttributeService = specificationAttributeService;
             this._productAttributeService = productAttributeService;
+            this._productServices = productServices;
+            this._discountService = discountService;
         }
         #endregion
 
@@ -100,8 +107,8 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         public ActionResult Create(Orbio.Web.UI.Areas.Admin.Models.Product.ProductModel model)
         {
             var productDetails = CreateOrUpdateProduct(model);
-            _productService.InsertNewProduct(productDetails);
-            return RedirectToAction("List");
+            int productId = _productService.InsertNewProduct(productDetails);
+            return RedirectToAction("Edit", "Product", new { id = productId });
             
         }
 
@@ -152,6 +159,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                 manufactureIds = model.SelectedManufature,
                 relatedProductIds = model.SelectedRelatedProducts,
                 similarProductIds = model.SelectedSimilarProducts,
+                discountIds = model.SelectedDiscounts,
             };
             return productDetails;
         }
@@ -185,7 +193,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                 model.UpdatedOnUtc = product.UpdatedOnUtc;
 
                 #region Mapping Product Tags
-                int[] productTags = new int[10];
+                int[] productTags = new int[product.ProductTags.Count];
                 for (int i = 0; i < product.ProductTags.Count; i++)
                 {
                     var pt = product.ProductTags.ToList()[i];
@@ -194,7 +202,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                 model.SelectedProductTags = productTags;
                 #endregion
                 #region Mapping Categories
-                int[] productCategory = new int[10];
+                int[] productCategory = new int[product.Product_Category_Mapping.Count];
                 for (int i = 0; i < product.Product_Category_Mapping.Count; i++)
                 {
                     var pt = product.Product_Category_Mapping.ToList()[i];
@@ -203,7 +211,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                 model.SelectedCategories = productCategory;
                 #endregion
                 #region Mapping Manufatures
-                int[] productManufacture = new int[10];
+                int[] productManufacture = new int[product.Product_Manufacturer_Mapping.Count];
                 for (int i = 0; i < product.Product_Manufacturer_Mapping.Count; i++)
                 {
                     var pt = product.Product_Manufacturer_Mapping.ToList()[i];
@@ -212,24 +220,34 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                 model.SelectedManufature = productManufacture;
                 #endregion
                 #region Mapping Related Products
-                var relatedProductsMapping = _productService.GetAllRelatedProductsById(product.Id);
-                int[] productRelatedProducts = new int[10];
-                for (int i = 0; i < relatedProductsMapping.Count; i++)
+                var relatedProductsMapping = _productServices.GetRelatedProductsById(product.Id);
+                int[] productRelatedProducts = new int[relatedProductsMapping.ProductDetails.Count];
+                for (int i = 0; i < relatedProductsMapping.ProductDetails.Count; i++)
                 {
-                    var pt = relatedProductsMapping.ToList()[i];
+                    var pt = relatedProductsMapping.ProductDetails.ToList()[i];
                     productRelatedProducts[i] = pt.Id;
                 }
                 model.SelectedRelatedProducts = productRelatedProducts;
                 #endregion
                 #region Mapping Similar Products
-                var similarProductsMapping = _productService.GetAllRelatedProductsById(product.Id);
-                int[] productSimilarProducts = new int[10];
-                for (int i = 0; i < similarProductsMapping.Count; i++)
+                var similarProductsMapping = _productServices.GetSimilarProductsById(product.Id);
+                int[] productSimilarProducts = new int[similarProductsMapping.ProductDetails.Count];
+                for (int i = 0; i < similarProductsMapping.ProductDetails.Count; i++)
                 {
-                    var pt = similarProductsMapping.ToList()[i];
+                    var pt = similarProductsMapping.ProductDetails.ToList()[i];
                     productSimilarProducts[i] = pt.Id;
                 }
                 model.SelectedSimilarProducts = productSimilarProducts;
+                #endregion
+                #region Mapping Product Discounts
+                var productsDiscounts = _productService.GetAllDiscountsForProductsById(product.Id);
+                int[] productDiscount = new int[productsDiscounts.Count];
+                for (int i = 0; i < productsDiscounts.Count; i++)
+                {
+                    var pt = productsDiscounts.ToList()[i];
+                    productDiscount[i] = pt.Id;
+                }
+                model.SelectedDiscounts = productDiscount;
                 #endregion
             }
 
@@ -323,6 +341,17 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                 });
             }
 
+            //Discounts for Products
+            var discounts = _discountService.GetAllDiscountsForProducts(DiscountType.AssignedToSkus);
+            foreach (var discount in discounts)
+            {
+                model.AvailableDiscounts.Add(new SelectListItem()
+                {
+                    Text = discount.Name,
+                    Value = discount.Id.ToString()
+                });
+            }
+
             //tax categories
             var taxCategories = _taxCategoryService.GetAllTaxCategories();
             model.AvailableTaxCategories.Add(new SelectListItem() { Text = "---", Value = "0" });
@@ -358,8 +387,6 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                 model.StockQuantity = 10000;
                 model.OrderMinimumQuantity = 1;
                 model.OrderMaximumQuantity = 10000;
-
-                model.IsShipEnabled = false;
                 model.AllowCustomerReviews = true;
                 model.Published = true;
         }
@@ -482,18 +509,25 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                 SizeGuideUrl = picture.RelativeUrl
             };
             _productService.AddOrUpdateProductVariantAttributeSizeGuide(productAttribute);
-            return RedirectToAction("AddProductVariantSizeGuide", "Product", new { id = model.Id, productVariantAttributeId = productVariantAttributeId });
+            return RedirectToAction("AddProductVariantSizeGuide", "Product", new { productVariantAttributeId = productVariantAttributeId });
         }
 
-        public ActionResult AddProductVariantSizeGuide(int id, int productVariantAttributeId)
+        public ActionResult DeleteSizeGuideUrl(int id)
         {
-            var product = _productService.GetProductById(id);
-            if (product == null || product.Deleted)
-                return RedirectToAction("List");
-            var model = product.ToModel();
-            model.ProductVariantAttribute = (from p in product.Product_ProductAttribute_Mapping
-                                             orderby p.DisplayOrder ascending
-                                             select p).ToList();
+            _productService.DeleteSizeGuideUrl(id);
+            return RedirectToAction("AddProductVariantSizeGuide", "Product", new { productVariantAttributeId = id });
+        }
+
+        public ActionResult AddProductVariantSizeGuide(int productVariantAttributeId)
+        {
+
+            var productVariantAttribute = _productService.GetProductVariantAttributeProductVariantAttributeId(productVariantAttributeId);
+            var model = new Orbio.Web.UI.Areas.Admin.Models.Product.ProductModel
+            {
+                Id = productVariantAttribute.Select(p => p.Product.Id).FirstOrDefault(),
+                Name = productVariantAttribute.Select(p => p.Product.Name).FirstOrDefault(),
+                ProductVariantAttribute = productVariantAttribute
+            };
             return View(model);
         }
 
