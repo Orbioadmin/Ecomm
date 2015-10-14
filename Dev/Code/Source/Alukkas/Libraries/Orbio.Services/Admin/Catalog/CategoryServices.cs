@@ -160,7 +160,7 @@ namespace Orbio.Services.Admin.Catalog
                             category.MetaDescription = model.MetaDescription;
                             category.MetaTitle = model.MetaTitle;
                             category.ParentCategoryId = model.ParentCategoryId;
-                            category.PictureId = (model.PictureId != null) ? Convert.ToInt32(model.PictureId) : 0;
+                            category.PictureId = (model.PictureId != null) ? Convert.ToInt32(model.PictureId) : 1;
                             category.ShowOnHomePage = model.ShowOnHomePage;
                             category.IncludeInTopMenu = model.ShowOnHomePage;
                             category.SubjectToAcl = model.SubjectToACL;
@@ -187,12 +187,13 @@ namespace Orbio.Services.Admin.Catalog
                         category.MetaDescription = model.MetaDescription;
                         category.MetaTitle = model.MetaTitle;
                         category.ParentCategoryId = model.ParentCategoryId;
-                        category.PictureId = (model.PictureId != null) ? Convert.ToInt32(model.PictureId) : 0;
+                        category.PictureId = (model.PictureId != 0) ? Convert.ToInt32(model.PictureId) : 0;
                         category.ShowOnHomePage = model.ShowOnHomePage;
                         category.IncludeInTopMenu = model.ShowOnHomePage;
                         category.SubjectToAcl = model.SubjectToACL;
                         category.Published = model.Published;
                         category.Deleted = false;
+                        category.AllowCustomersToSelectPageSize = true;
                         category.DisplayOrder = model.DisplayOrder;
                         category.CreatedOnUtc = DateTime.Now;
                         category.UpdatedOnUtc = DateTime.Now;
@@ -200,7 +201,7 @@ namespace Orbio.Services.Admin.Catalog
                         context.Categories.Add(category);
                         context.SaveChanges();
                         int Id = category.Id;
-                        var UrlRecord = context.UrlRecords.Where(m => m.EntityName == "Category").FirstOrDefault();
+                        var UrlRecord = new UrlRecord();
                         if (UrlRecord != null)
                         {
 

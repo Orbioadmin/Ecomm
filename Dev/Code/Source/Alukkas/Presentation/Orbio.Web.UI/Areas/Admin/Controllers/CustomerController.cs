@@ -235,6 +235,17 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             return RedirectToAction("ListCustomer");
         }
 
+        [HttpPost]
+        public ActionResult SendEmail(string email, string subject,string body)
+        {
+            var customerName = customerService.GetCustomerName(email);
+            var result = messageService.SendCustomerNotification(email, subject, body, customerName);
+            if (result==1)
+                return Json("Success");
+            else
+                return Json("Failed");
+        }
+        
         #endregion
 
         #region Customer Report
