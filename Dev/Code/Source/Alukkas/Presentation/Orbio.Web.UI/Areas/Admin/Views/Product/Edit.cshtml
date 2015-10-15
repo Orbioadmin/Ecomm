@@ -109,14 +109,22 @@
 @section scripts {
 <script type="text/javascript">
     $(document).ready(function () {
+        var referrer = "";
+        if (document.referrer.indexOf(window.location.hostname) != -1) {
+            referrer = document.referrer;
+        }
         $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
-            if ($(e.target).attr('href') != '#productinfo') {
-                localStorage.setItem('activeTab', $(e.target).attr('href'));
-            }
+             localStorage.setItem('activeTab', $(e.target).attr('href'));
         });
-        var activeTab = localStorage.getItem('activeTab');
-        if (activeTab) {
-            $('#myTab a[href="' + activeTab + '"]').tab('show');
+        if (referrer != "") {
+            localStorage.setItem('activeTab', '');
+        }
+        else
+        {
+            var activeTab = localStorage.getItem('activeTab');
+            if (activeTab) {
+                $('#myTab a[href="' + activeTab + '"]').tab('show');
+            }
         }
     });
 
