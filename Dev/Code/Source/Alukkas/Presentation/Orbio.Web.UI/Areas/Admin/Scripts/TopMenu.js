@@ -5,26 +5,23 @@ var pageName = (function () {
     return a.substr(b + 1);
 }());
 $(".nav li").removeClass("active");
-if (pageName == "Admin/Catalog/ManageCategories" || pageName == "Admin/Catalog/ManageManufacturer" || pageName == "Admin/Product/List" || pageName == "Admin/Product/Create" || pageName.indexOf("Product") > 0 || pageName == "Admin/Attribute/ProductAttribute" || pageName == "Admin/Attribute/ListSpecificationAttribute")
+if (pageName.indexOf("Catalog") > 0 || pageName.indexOf("Product") > 0 || pageName.indexOf("Attribute") > 0 || pageName.indexOf("Component") > 0)
 {
     $("#catelog").addClass("active");
 }
-else if (pageName == "Admin/Component/ProductComponent" || pageName == "Admin/Component/PriceComponent") {
-    $("#catelog").addClass("active");
-}
-else if (pageName == "Admin/Order/List" || pageName == "Admin/Shipment/List" || pageName == "Admin/Sales/GiftCards" || pageName == "Admin/ShoppingCart/CurrentCarts" || pageName == "Admin/ShoppingCart/CurrentWishLists" || pageName == "Admin/Order/BestSellersReport" || pageName == "Admin/Order/NeverSoldReport")
+else if (pageName.indexOf("Order") > 0 || pageName.indexOf("Shipment") > 0 || pageName.indexOf("Sales") > 0 || pageName.indexOf("ShoppingCart") > 0 )
 {
     $("#sales").addClass("active");
 }
-else if (pageName == "Admin/Customer/ListCustomer" || pageName == "Admin/Customer/AddCustomer" || pageName == "Admin/Customer/ListCustomerRole" || pageName == "Admin/Customer/CustomerReport" || pageName == "Admin/Customer/NewsletterSubscribers")
+else if (pageName.indexOf("Customer") > 0)
 {
     $("#customer").addClass("active");
 }
-else if (pageName == "Admin/Discount/List" || pageName == "Admin/Discount/Create")
+else if (pageName.indexOf("Discount") > 0)
 {
     $("#promotion").addClass("active");
 }
-else if (pageName == "Admin/MessageTemplate/List" || pageName == "Admin/MessageTemplate/Add") {
+else if (pageName.indexOf("MessageTemplate") > 0) {
     $("#contentmanagement").addClass("active");
 }
 else

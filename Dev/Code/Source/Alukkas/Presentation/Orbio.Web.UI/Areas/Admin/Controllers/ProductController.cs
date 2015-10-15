@@ -38,12 +38,13 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         public readonly ISpecificationAttributeService _specificationAttributeService;
         public readonly IProductAttributeService _productAttributeService;
         public readonly IDiscountService _discountService;
+        public readonly IUrlRecordService _urlRecordService;
         #endregion
 
         #region Constructors
         public ProductController(ICategoryServices categoryService, IManufacturerService manufatureService, IProductService productService, IShippingService shippingService, ITaxCategoryService taxCategoryService,
             IPictureService pictureService, ISpecificationAttributeService specificationAttributeService, IProductAttributeService productAttributeService, Orbio.Services.Catalog.IProductService productServices,
-            IDiscountService discountService)
+            IDiscountService discountService, IUrlRecordService urlRecordService)
         {
             this._categoryService = categoryService;
             this._manufatureService = manufatureService;
@@ -55,6 +56,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             this._productAttributeService = productAttributeService;
             this._productServices = productServices;
             this._discountService = discountService;
+            this._urlRecordService = urlRecordService;
         }
         #endregion
 
@@ -121,7 +123,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                 //No product found with the specified id
                 return RedirectToAction("List");
             var model = product.ToModel();
-            model.SeName = product.GetSeName();
+            model.SeName = _urlRecordService.GetSeName(product.Id, "Product");
             model.Pictures = (from p in product.Product_Picture_Mapping
                               orderby p.DisplayOrder ascending
                               select p).ToList();
@@ -153,7 +155,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             var productDetails = new Orbio.Core.Domain.Admin.Product.ProductDetail
             {
                 product = product.ToDomainModel(),
-                seName =product.ValidateSeName(model.SeName, product.Name),
+                seName = _urlRecordService.ValidateSeName(product.Id,model.SeName,product.Name,"Product"),
                 productTags = model.SelectedProductTags,
                 catgoryIds = model.SelectedCategories,
                 manufactureIds = model.SelectedManufature,

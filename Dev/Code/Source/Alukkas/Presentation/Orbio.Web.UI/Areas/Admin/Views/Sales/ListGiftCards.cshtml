@@ -32,8 +32,8 @@
                             @:<tr class="second_row">
                               count = 1;
                         }
-                        <td class="varient_align" style="text-align:center">@item.InitialValue </td>
-                        <td class="varient_align" style="text-align:center">@item.RemainingAmount </td>
+                        <td class="varient_align" style="text-align:center">@item.InitialValue.ToString("#,##0.00") </td>
+                        <td class="varient_align" style="text-align:center">@item.RemainingAmount.ToString("#,##0.00") </td>
                         <td class="varient_align" style="text-align:center">@item.CouponCode </td>
                         <td class="varient_align" style="text-align:center">
                             <label class="@(item.IsGiftCardActivated ? "img_sprite1" : "img_sprite")"></label>

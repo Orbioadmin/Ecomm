@@ -112,10 +112,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         public ActionResult AddOrUpdateSpecificationAttribute(SpecificationAttributeModel model)
         {
             int result = specAttributeService.AddOrUpdate(model.Id, model.Name, model.DisplayOrder);
-            if(model.Id==0)
-            {
-                return RedirectToAction("EditSpecificationAttribute", new { Id=result });
-            }
+            
             return RedirectToAction("ListSpecificationAttribute");
         }
 

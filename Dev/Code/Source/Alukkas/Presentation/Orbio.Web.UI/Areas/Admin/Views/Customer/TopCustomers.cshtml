@@ -20,29 +20,20 @@
                     {
                         if (count == 1)
                         {
-                            <tr class="first_row">
-                                <td class="align_center">@rcr.Email</td>
-
-                                <td class="align_center">@rcr.OrderTotal</td>
-
-                                <td class="align_center">@rcr.OrderCount</td>
-
-                                <td class="align_center"><a href="@Url.Action("EditCustomer", "Customer", new { Id= rcr.Customers})">View</a></td>
-                            </tr>
+                            @:<tr class="first_row">
                         }
                         else
                         {
-                            <tr class="second_row">
-                                <td class="align_center">@rcr.Email</td>
-
-                                <td class="align_center">@rcr.OrderTotal</td>
-
-                                <td class="align_center">@rcr.OrderCount</td>
-
-                                <td class="align_center"><a href="@Url.Action("EditCustomer", "Customer", new { Id= rcr.Customers})">View</a></td>
-                            </tr>
+                            @:<tr class="second_row">
                         }
+                        <td class="align_center">@rcr.Email</td>
 
+                        <td class="align_center">@rcr.OrderTotal.ToString("#,##0.00")</td>
+
+                        <td class="align_center">@rcr.OrderCount</td>
+
+                        <td class="align_center"><a href="@Url.Action("EditCustomer", "Customer", new { Id= rcr.Customers})">View</a></td>
+                    @:</tr>
 
                     }
                 }

@@ -110,6 +110,8 @@
 <script>
     function SentMail(email) {
         document.getElementById("emailInput").value = email;
+        document.getElementById("subject").value = "";
+        document.getElementById("body").value = "";
         $($(this).attr("href")).show();
     }
 </script>

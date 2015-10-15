@@ -11,7 +11,7 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Shipments
       
         public int OrderId { get; set; }
        
-        public decimal? TotalWeight { get; set; }
+        public decimal TotalWeight { get; set; }
        
         public string TrackingNumber { get; set; }
 

@@ -30,7 +30,7 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Catalog
                 MetaTitle = result.Manufacturer.MetaTitle;
                 SubjectToACL = result.Manufacturer.SubjectToACL;
                 ManufacturerTemplate = result.Manufacturer.ManufacturerTemplate;
-                SearchEngine = result.Manufacturer.SearchEngine;
+                SeName = result.Manufacturer.SeName;
 
 
                 ManufacturerTemplates = (from c in result.Manufacturer.ManufacturerTemplates
@@ -60,7 +60,7 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Catalog
 
         public string Picture { get; set; }
 
-        public string SearchEngine { get; set; }
+        public string SeName { get; set; }
 
         public bool SubjectToACL { get; set; }
 

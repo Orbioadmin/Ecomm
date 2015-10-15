@@ -72,8 +72,8 @@
                             <input type="number" name="txtdisplayorder@(item.Id)" value="@item.DisplayOrder" id="txtdisplayorder@(item.Id)" style="display:none;font-size: small;">
                         </td>
                         <td class="action_ring">
-                            <label name="lbltaxrate@(item.Id)" id="lbltaxrate@(item.Id)">@item.TaxRate</label>
-                            <input name="txttaxrate@(item.Id)" value="@item.TaxRate" id="txttaxrate@(item.Id)" style="display:none;font-size: small;">
+                            <label name="lbltaxrate@(item.Id)" id="lbltaxrate@(item.Id)">@item.TaxRate.ToString("#,##0.00")</label>
+                            <input name="txttaxrate@(item.Id)" value="@item.TaxRate.ToString("#,##0.00")" id="txttaxrate@(item.Id)" style="display:none;font-size: small;">
                         </td>
 
                         @:<td class="action_ring">

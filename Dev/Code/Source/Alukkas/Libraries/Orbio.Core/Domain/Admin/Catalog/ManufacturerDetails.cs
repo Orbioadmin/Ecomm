@@ -30,7 +30,7 @@ namespace Orbio.Core.Domain.Admin.Catalog
 
         public int DisplayOrder { get; set; }
 
-        public string SearchEngine { get; set; }
+        public string SeName { get; set; }
 
         public List<string> SelectedProducts { get; set; }
 

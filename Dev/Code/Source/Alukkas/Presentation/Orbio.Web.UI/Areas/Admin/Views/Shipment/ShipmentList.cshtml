@@ -56,7 +56,7 @@
                             @item.TrackingNumber
                         </td>
                         <td class="qty">
-                            @(!string.IsNullOrEmpty(item.TotalWeight.ToString()) ? item.TotalWeight + "[lb(s)]" : "")
+                            @(!string.IsNullOrEmpty(item.TotalWeight.ToString()) ? item.TotalWeight.ToString("#,##0.00") + "[lb(s)]" : "")
                         </td>
                         <td class="qty">
                             @item.ShipmentMethod

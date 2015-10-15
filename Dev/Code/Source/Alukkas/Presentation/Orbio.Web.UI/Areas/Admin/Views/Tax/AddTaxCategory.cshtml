@@ -4,7 +4,12 @@
 @*<form action="" method="">*@
 @using (Html.BeginForm("AddTaxCategory", "Tax", FormMethod.Post, new { }))
 {
-    @Html.TextBoxFor(m => m.Name, new { @class = "text_sku", required = "required", @placeholder = "Name" })
+    <div class="form-group" style="margin-bottom:0px;">
+        <label style="font-size: small;padding-left: 5px;"> Name : </label>
+        @*@Html.CheckBoxFor(m => m.IsActive, new { @class = "show_on_home_page_check", @style = "top:0px;" })*@
+      @Html.TextBoxFor(m => m.Name, new { @class = "text_sku", required = "required", @placeholder = "Name",style="width:130px;margin-left:42px;" })
+    </div>
+    
     <div class="form-group" style="margin-bottom:0px;">
         <label style="font-size: small;padding-left: 5px;"> Tax Rate (%) : </label>
         @*@Html.CheckBoxFor(m => m.IsActive, new { @class = "show_on_home_page_check", @style = "top:0px;" })*@

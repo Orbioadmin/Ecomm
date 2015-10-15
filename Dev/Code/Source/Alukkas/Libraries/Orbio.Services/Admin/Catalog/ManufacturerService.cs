@@ -95,7 +95,7 @@ namespace Orbio.Services.Admin.Catalog
                             var UrlRecord = context.UrlRecords.Where(m => m.EntityId == model.Id && m.EntityName == "Manufacturer").FirstOrDefault();
                             if (UrlRecord != null)
                             {
-                                UrlRecord.Slug = model.SearchEngine;
+                                UrlRecord.Slug = model.SeName;
                                 context.SaveChanges();
                             }
                         }
@@ -127,7 +127,7 @@ namespace Orbio.Services.Admin.Catalog
 
                             UrlRecord.EntityId = Id;
                             UrlRecord.EntityName = "Manufacturer";
-                            UrlRecord.Slug = model.SearchEngine;
+                            UrlRecord.Slug = model.SeName;
                             UrlRecord.IsActive = true;
                             UrlRecord.LanguageId = 0;
                             context.UrlRecords.Add(UrlRecord);
@@ -228,7 +228,7 @@ namespace Orbio.Services.Admin.Catalog
                                          Published = m.Published,
                                          DisplayOrder = m.DisplayOrder,
                                          SubjectToACL = m.SubjectToAcl,
-                                         SearchEngine = u.Slug,
+                                         SeName = u.Slug,
                                      }).FirstOrDefault();
 
                 manufacturerModel.ManufacturerTemplates = (from t in context.ManufacturerTemplates.AsQueryable()
