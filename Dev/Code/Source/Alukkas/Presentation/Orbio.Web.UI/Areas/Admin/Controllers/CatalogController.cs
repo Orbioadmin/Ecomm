@@ -11,6 +11,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
+using Orbio.Services.Admin.Seo;
 
 namespace Orbio.Web.UI.Areas.Admin.Controllers
 {
@@ -20,14 +21,16 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         private readonly ICategoryService categoryService;
         private readonly ICategoryServices categoryServices;
         private readonly IManufacturerService manufacturerService;
+        public readonly IUrlRecordService _urlRecordService;
         
         public CatalogController(ICacheManager cacheManager, ICategoryService categoryService, ICategoryServices categoryServices,
-            IManufacturerService manufacturerService)
+            IManufacturerService manufacturerService, IUrlRecordService _urlRecordService)
         {
             this.cacheManager = cacheManager;
             this.categoryService = categoryService;
             this.categoryServices = categoryServices;
             this.manufacturerService = manufacturerService;
+            this._urlRecordService = _urlRecordService;
         }
 
         // GET: Admin/Catalog
@@ -98,6 +101,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             if (model.Categories.Name!=null)
             {
                 var categoryDetail = GetCategory(model);
+                categoryDetail.Categories.Slug = _urlRecordService.ValidateSeName(categoryDetail.Categories.Id, categoryDetail.Categories.Slug, categoryDetail.Categories.Name, "Category");
                 var result = categoryServices.AddOrUpdateCategory(categoryDetail.Categories);
                 return RedirectToAction("ManageCategories");
             }
@@ -219,15 +223,9 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         public ActionResult UpdateManufacturer(ManufacturerDetailModel model)
         {
                 var manufacturerDetail = GetManufacturer(model);
+                manufacturerDetail.Manufacturer.SeName = _urlRecordService.ValidateSeName(manufacturerDetail.Manufacturer.Id, manufacturerDetail.Manufacturer.SeName, manufacturerDetail.Manufacturer.Name, "Manufacturer");
                 var result = manufacturerService.AddOrUpdateManufacturer(manufacturerDetail.Manufacturer);
-                if (model.Manufacturer.Id != 0)
-                {
-                    return RedirectToAction("ManageManufacturer");
-                }
-                else
-                {
-                    return RedirectToAction("EditManufacturers", new { Id = result });
-                }
+                return RedirectToAction("ManageManufacturer");
             
         }
 
@@ -308,7 +306,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                 MetaTitle = model.Manufacturer.MetaTitle,
                 SubjectToACL = model.Manufacturer.SubjectToACL,
                 ManufacturerTemplate = model.Manufacturer.ManufacturerTemplate,
-                SearchEngine=model.Manufacturer.SearchEngine,
+                SeName = model.Manufacturer.SeName,
             };
             return manufacturerModel;
         }

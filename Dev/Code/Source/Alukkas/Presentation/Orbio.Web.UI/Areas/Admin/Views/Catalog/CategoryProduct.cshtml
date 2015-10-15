@@ -4,54 +4,62 @@
 @model IPagedList<Orbio.Web.UI.Areas.Admin.Models.Catalog.ProductModel>
 
         <div id="catprod">
-            <table class="item_admin_order">
-                <thead>
-                <td>Product</td>
-                <td>is featured product?</td>
-                <td>display order</td>
-                <td>delete</td></thead>
-                <tbody>
-                    @if (this.Model != null)
+    <table class="item_admin_order">
+        <thead>
+        <td>Product</td>
+        <td>is featured product?</td>
+        <td>display order</td>
+        <td>delete</td></thead>
+        <tbody>
+            @if (this.Model != null)
+            {
+                if (this.Model.Count > 0)
+                {
+                    int count = 1;
+                    foreach (var item in Model)
                     {
-                        if (this.Model.Count > 0)
+                        if (count == 1)
                         {
-                            int count = 1;
-                            foreach (var item in Model)
-                            {
-                                if (count == 1)
-                                {
-                                    @:<tr class="first_row">
+                            @:<tr class="first_row">
                                     count++;
-                                }
-                                else
-                                {
-                                @:<tr class="second_row">
+                        }
+                        else
+                        {
+                            @:<tr class="second_row">
                                     count = 1;
-                                }
+                        }
                         <td class="varient_align">@item.Name</td>
                         <td class="varient_align" style="text-align:center"><label class="@(item.IsFeaturedProduct?"img_sprite1" : "img_sprite")"></label></td>
                         <td class="varient_align" style="text-align:center">@item.DisplayOrder</td>
                         <td class="varient_align" style="text-align:center"><a style="cursor:pointer" href="@Url.Action("DeleteCategoryProduct", "Catalog", new { Id = item.CategoryId, cId = item.Id })" onclick=" return confirm('Are You Sure'); "><label class="delete_ring"></label></a></td>
                         @:</tr>
                             }
-                        }
-                        else
-                        {
-                            <tr>
-                                <td colspan="4"> No products available</td>
-                            </tr>
-                        }
-                    }
-                    else
-                    {
-                        <tr>
-                            <td colspan="4"> No products available</td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="4"> No products available</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="4"> No products available</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @if (this.Model != null)
+    {
+        if (this.Model.Count > 0)
+        {
             <div class="pagedList" id="contentPager" style="float:right">
                 @Html.PagedListPager(Model, page => Url.Action("CategoryProduct", new { page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
             </div>
-        </div>
-       
+        }
+    }
+</div>
+
+
+

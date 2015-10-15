@@ -902,7 +902,6 @@
     <Content Include="Areas\Admin\Views\Order\NeverSoldProducts.cshtml" />
     <Content Include="Areas\Admin\Views\Order\NeverSoldReport.cshtml" />
     <Content Include="Areas\Admin\Views\Order\SearchNeverSold.cshtml" />
-    <Content Include="Areas\Admin\Views\Order\NeverSoldProducts.cshtml" />
     <Content Include="Areas\Admin\Views\MessageTemplate\List.cshtml" />
     <Content Include="Areas\Admin\Views\MessageTemplate\MessageTemplateList.cshtml" />
     <Content Include="Areas\Admin\Views\MessageTemplate\Info.cshtml" />

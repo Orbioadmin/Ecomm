@@ -7,24 +7,33 @@
     @using (@Html.BeginForm("AddOrUpdateGiftCard","Sales",FormMethod.Post))
     {
         Html.HiddenFor(m => m.Id, new { Value = Model.Id });
-        <div class="main_edit_order">
-            @if (Model.Id == 0)
+        
+            if (Model.Id == 0)
             {
-                <span class="edit_order_details"><span class="edit_order_icon"></span><a href="" class="add_new_check">ADD NEW GIFT CARD</a></span>
-                <span class="back_to_order" style="padding-top:0px">
-                    <input type="submit" value="Save" class="add_cat_button">
-                    <a href="@Url.Action("GiftCards", "Sales")"> <input type="button" value="Cancel" class="delete_cat_button"></a>
-                </span>
+                <div class="main_edit_order">
+                    <span class="edit_order_details"><span class="edit_order_icon"></span><a href="" class="add_new_check">ADD NEW GIFT CARD</a></span>
+                    <span class="back_to_order" style="padding-top:0px">
+                        <input type="submit" value="Save" class="add_cat_button">
+                        <a href="@Url.Action("GiftCards", "Sales")"> <input type="button" value="Cancel" class="delete_cat_button"></a>
+                    </span>
+                </div>
             }
             else
             {
-                <span class="edit_order_details"><span class="edit_order_icon"></span><a href="" class="add_new_check">EDIT GIFT CARD - @Model.CouponCode </a> <a href="@Url.Action("GiftCards", "Sales")" class="back_to_checkout" style="text-transform:none;font-size: small;color: #0082c7;">(back to gift cards) </a></span>
-                <span class="back_to_order" style="padding-top:0px">
-                    <input type="submit" value="Save" class="add_cat_button">
-                    <a href="@Url.Action("DeleteGiftCard", "Sales", new { Id = Model.Id })"> <input type="button" value="Delete" class="delete_cat_button" onclick=" return confirm('Are You Sure'); "></a>
-                </span>
+                <div class="main_edit_order">
+                    <span class="edit_order_details">
+                        <span class="edit_order_icon"></span><a href="" class="add_new_check">EDIT GIFT CARD - @Model.CouponCode</a>
+                    </span>
+                    <span class="back_to_order"><u><a href="@Url.Action("GiftCards", "Sales")">back to gift cards</a></u></span>
+                </div>
+                <div class="preview_main">
+                    <ul>
+                        <li><input type="submit" class="prev_button" value="Save"></li>
+                        <li><a href="@Url.Action("DeleteGiftCard", "Sales", new { Id = Model.Id })"><input type="button" value="Delete" class="prev_button" onclick="return confirm('are you sure');"></a></li>
+                    </ul>
+                </div>
             }
-        </div>
+        
 
         <div class="tab_main_order col-md-12">
             <ul id="myTab" role="tablist" class="tabview_order_ul">

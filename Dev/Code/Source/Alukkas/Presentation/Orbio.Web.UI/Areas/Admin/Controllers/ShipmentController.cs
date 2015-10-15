@@ -81,7 +81,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                                  Id = s.Id,
                                  OrderId = s.OrderId,
                                  TrackingNumber = s.TrackingNumber,
-                                 TotalWeight = s.TotalWeight,
+                                 TotalWeight = s.TotalWeight.GetValueOrDefault(),
                                  ShippedDateUtc = s.ShippedDateUtc,
                                  DeliveryDateUtc = s.DeliveryDateUtc,
                                  ShipmentMethod=s.Order.ShippingMethod,

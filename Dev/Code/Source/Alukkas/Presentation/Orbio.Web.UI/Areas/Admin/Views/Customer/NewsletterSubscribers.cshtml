@@ -7,23 +7,24 @@
 
 <div class="container">
     <div class="main_edit_order" style="padding-bottom :15px">
-        <span class="edit_order_details"><span class="shipmen_icon"></span><a href="">Newsletter Subscribers</a></span>
+        <span class="edit_order_details"><span class="edit_order_icon"></span><a href="" class="add_new_check">Newsletter Subscribers</a></span>
+        <span class="refresh_button"><a style="cursor:pointer" href="@Url.Action("NewsletterSubscribers", "Customer")"><label></label></a></span>
         <span class="back_to_order" style="padding-top:0px;width:22%">
             <a href="@Url.Action("Exporttocsv","Customer")"><input type="button" value="Export to CSV" class="add_cat_button" style="float:left"></a>
             @*</span>*@
-            @using (Html.BeginForm("ImportFromCSV", "Customer", FormMethod.Post, new {@id="fileupload", enctype = "multipart/form-data" }))
+            @using (Html.BeginForm("ImportFromCSV", "Customer", FormMethod.Post, new { @id = "fileupload", enctype = "multipart/form-data" }))
             {
-    <input type="file" class="filestyle" data-input="false" id="filestyleupload" name="importcsvfile" tabindex="-1" style="position: absolute; clip: rect(0px 0px 0px 0px);" />
-    <div class="bootstrap-filestyle input-group">
-        <span class="group-span-filestyle " tabindex="0">
-            <label for="filestyleupload">
-                <span class="delete_cat_button" style="float:right;margin-left:10px;">Import from CSV</span>
-            </label>
-        </span>
-            </div>
+                <input type="file" class="filestyle" data-input="false" id="filestyleupload" name="importcsvfile" tabindex="-1" style="position: absolute; clip: rect(0px 0px 0px 0px);" />
+                <div class="bootstrap-filestyle input-group">
+                    <span class="group-span-filestyle " tabindex="0">
+                        <label for="filestyleupload">
+                            <span class="delete_cat_button" style="float:right;margin-left:10px;">Import from CSV</span>
+                        </label>
+                    </span>
+                </div>
             }
         </span>
-</div>
+    </div>
     <div class="col-md-12 order_list" style="border-radius: 10px;margin-left: 11px;width:98%;height:60px">
         @using (Html.BeginForm("NewsletterSubscribers", "Customer", FormMethod.Post))
         {
