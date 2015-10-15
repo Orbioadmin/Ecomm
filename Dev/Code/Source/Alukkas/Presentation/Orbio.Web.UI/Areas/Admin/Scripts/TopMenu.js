@@ -27,6 +27,10 @@ else if (pageName == "Admin/Discount/List" || pageName == "Admin/Discount/Create
 else if (pageName == "Admin/MessageTemplate/List" || pageName == "Admin/MessageTemplate/Add") {
     $("#contentmanagement").addClass("active");
 }
+else if (pageName.indexOf("Tax") > 0 || pageName.indexOf("Shipping/ShippingMethods") > 0 || pageName.indexOf("Shipping/DeliveryDate") > 0 || pageName.indexOf("Shipping/Warehouses") > 0 || pageName.indexOf("Shipping/AddWarehouse") > 0 || pageName.indexOf("Shipping/EditWarehouse") > 0)
+{
+    $("#configuration").addClass("active");
+}
 else
 {
     $("#dashboard").addClass("active");
