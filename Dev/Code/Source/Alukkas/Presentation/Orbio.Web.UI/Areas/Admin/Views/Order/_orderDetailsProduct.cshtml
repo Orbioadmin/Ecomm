@@ -11,7 +11,11 @@
         <td>Item Price</td>
         <td>Discounted Rate</td>
         <td>Total</td>
-        <td>Action</td></thead>
+        @if (Model.OrderStatus != "Complete" || Model.PaymentStatus!="Paid" || Model.ShippingStatus!="Delivered")
+        {
+        <td>Action</td>
+        }
+        </thead>
         <tbody>
         @foreach (var item in Model.Items)
             {
@@ -52,6 +56,8 @@
                    @:<td class="quantity" style="padding-top: 22px;"><input name="pvQuantity@(item.ProductId)" type="number" value="@item.Quantity" id="pvQuantity@(item.ProductId)" class="adminInput" style="width: 40px;height: 23px;padding: 0 4px;border-radius: 2px;border: 1px solid #ccc;" /></td>
                    @:<td class="number" style="padding-top: 22px;">@item.UnitPriceExclTaxValue.ToString("#,##0.00")</td><td class="number" style="padding-top: 22px;">@item.DiscountExclTaxValue.ToString("#,##0.00")</td>
                    @: <td class="number" style="padding-top: 22px;">@item.SubTotalExclTaxValue.ToString("#,##0.00")</td>
+                   if (Model.OrderStatus != "Complete" || Model.PaymentStatus!="Paid" || Model.ShippingStatus!="Delivered")
+                   {
                    @: <td class="action_ring">
                    @:<input type="submit" name="btnSaveOrderItem@(item.ProductId)" value="" id="btnSaveOrderItem@(item.ProductId)" class="edit_save" style="display:none;" onclick=" return confirm('Are You Sure'); " />
                    @:<input type="submit" name="btnCancelOrderItem@(item.ProductId)" value="" onclick="toggleOrderItemEdit@(item.ProductId)    (false);return false; " id="btnCancelOrderItem@(item.ProductId)" class="edit_cancel" style="display:none;" />
@@ -61,6 +67,7 @@
                         @: <input type="submit" name="btnDeleteOrderItem@(item.ProductId)" value="" id="btnDeleteOrderItem@(item.ProductId)" class="delete_ring" onclick=" return confirm('Are You Sure'); " />
                     }
                    @:</td>
+                }
                    @:</tr>
             }
                    count++;
@@ -70,7 +77,8 @@
                 using (Html.BeginForm("EditOrderItem", "Order", new { id = this.Model.Id }, FormMethod.Post, new { Id = "formEditOrderItem" + item.ProductId }))
                  {
                     @:<tr class="second_row"><td class="varient_align"><img src="@item.ImageUrl" alt="ring" width="58" height="53"><label style="vertical-align: top;"><label class="diamond">@item.ProductName </label></br><label class="varient">@(new HtmlString(item.AttributeInfo))</label></label></td><td class="quantity" style="padding-top: 22px;"><input name="pvQuantity@(item.ProductId)" type="number" value="@item.Quantity" id="pvQuantity@(item.ProductId)" class="adminInput" style="width: 40px;height: 23px;padding: 0 4px;border-radius: 2px;border: 1px solid #ccc;" /></td><td class="number" style="padding-top: 22px;">@item.UnitPriceExclTaxValue.ToString("#,##0.00")</td><td class="number" style="padding-top: 22px;">@item.DiscountExclTaxValue.ToString("#,##0.00")</td><td class="number" style="padding-top: 22px;">@item.SubTotalExclTaxValue.ToString("#,##0.00")</td>
-
+                   if (Model.OrderStatus != "Complete" || Model.PaymentStatus!="Paid" || Model.ShippingStatus!="Delivered")
+                   {
                     @:<td class="action_ring">
                     @:<input type="submit" name="btnSaveOrderItem@(item.ProductId)" value="" id="btnSaveOrderItem@(item.ProductId)" class="edit_save" style="display:none;" onclick=" return confirm('Are You Sure'); " />
                     @:<input type="submit" name="btnCancelOrderItem@(item.ProductId)" value="" onclick="toggleOrderItemEdit@(item.ProductId)    (false);return false; " id="btnCancelOrderItem@(item.ProductId)" class="edit_cancel" style="display:none;" />
@@ -81,6 +89,7 @@
                             @: <input type="submit" name="btnDeleteOrderItem@(item.ProductId)" value="" id="btnDeleteOrderItem@(item.ProductId)" class="delete_ring" onclick=" return confirm('Are You Sure'); " />
                         }
                     @:</td>
+                    }
                     @:</tr>
                 }
                       count = 1;

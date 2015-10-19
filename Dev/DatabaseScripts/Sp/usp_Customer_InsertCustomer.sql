@@ -101,10 +101,10 @@ BEGIN
 			ELSE IF(@Action='Update')
 				BEGIN
 					UPDATE  dbo.Customer SET Username=@email,Email=@email,Password=@password,PasswordFormatId=@passwordformatid,
-					PasswordSalt=@PasswordSalt,AdminComment=@AdminComment,IsTaxExempt=(select top 1 TaxExempt from dbo.CustomerRole where SystemName='Registered')
-					,AffiliateId=@affiliateid,VendorId=@vendorid,Active=@active,Deleted=@deleted,IsSystemAccount=@issystemaccount,
-					 SystemName=@systemname,LastIpAddress=@lastipaddress,LastLoginDateUtc=@lastlogindateutc,
-					 LastActivityDateUtc=@lastactivitydateutc,Gender=@gender,MobileNo=@mobileno
+					PasswordSalt=@PasswordSalt,AdminComment=@AdminComment,IsTaxExempt=@istaxexempt,VendorId=@vendorid,
+					AffiliateId=@affiliateid,Active=@active,Deleted=@deleted,IsSystemAccount=@issystemaccount,
+					SystemName=@systemname,LastIpAddress=@lastipaddress,LastLoginDateUtc=@lastlogindateutc,Gender=@gender,
+					LastActivityDateUtc=@lastactivitydateutc,MobileNo=@mobileno,FirstName=@firstname,LastName=@lastname, DOB=@dob
 					where Id=@id
 					
 					IF(@customerroles is not null)

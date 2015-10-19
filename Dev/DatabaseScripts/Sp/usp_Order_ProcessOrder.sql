@@ -127,6 +127,10 @@ BEGIN TRY
    COMMIT TRAN
    EXEC usp_Cart_Reset  @customerId, @storeId, @orderItemXml
 	 --RETURN @orderId
+	 
+	  --for stock updation 
+   EXEC usp_StockQuantity_Reset @storeId, @orderXml
+   
 	 	  DECLARE @XmlResult xml;
 
 --WITH XMLNAMESPACES ('http://schemas.datacontract.org/2004/07/Orbio.Core.Domain.order' AS ns)

@@ -75,6 +75,9 @@ BEGIN TRY
 		 inner join #tempOrderDetail torder on
 				ord.Id = torder.OrderId
 				
+				--stock updation from admin 
+		 EXEC usp_StockQuantity_Reset @storeId, @orderXml	
+				
 		SELECT O.D.value('(OrderItemGuid)[1]','nvarchar(100)') as OrderItemGuid,
 		 (select ProductId from dbo.ufn_GetOrderProductId(@orderXml,O.D.value('(OrderItemGuid)[1]','nvarchar(100)'))) as ProductId,
 		  O.D.value('(Quantity)[1]','INT') as Quantity,
