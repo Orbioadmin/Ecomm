@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Orbio.Core.Domain.Admin.Customers
 {
     [DataContract]
-    public partial class Customer 
+    public partial class AdminCustomer 
     {
         /// <summary>
         /// Gets or sets the Id

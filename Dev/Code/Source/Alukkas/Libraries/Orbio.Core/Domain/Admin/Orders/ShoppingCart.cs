@@ -9,6 +9,6 @@ namespace Orbio.Core.Domain.Admin.Orders
 {
     public class ShoppingCart
     {
-        public List<Customer> Customers { get; set; }
+        public List<AdminCustomer> Customers { get; set; }
     }
 }

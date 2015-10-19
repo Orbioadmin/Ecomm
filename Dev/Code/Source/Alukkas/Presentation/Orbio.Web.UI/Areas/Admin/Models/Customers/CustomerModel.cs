@@ -18,7 +18,7 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Customers
             // TODO: Complete member initialization
         }
 
-        public CustomerModel(Customer customer)
+        public CustomerModel(AdminCustomer customer)
             : this()
         {
             this.Id = customer.Id;

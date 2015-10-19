@@ -37,7 +37,7 @@ DECLARE @XmlResult xml
 	(select * from Discount where DiscountTypeId=50 and EndDateUtc>=GETDATE() FOR XML PATH('Discount'), ROOT('Discounts'),Type),
 	(select D.* from Discount D inner join Discount_AppliedToCustomers DC on D.Id=DC.Discount_Id where DC.Customer_Id=@id and D.EndDateUtc>=GETDATE()
 	 FOR XML PATH('Discount'), ROOT('SelectedDiscount'),Type)
-	 FOR XML PATH('Customer'))
+	 FOR XML PATH('AdminCustomer'))
 	 
 	 SELECT @XmlResult as XmlResult
 END

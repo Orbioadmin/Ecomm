@@ -226,7 +226,7 @@
     <Compile Include="Domain\Admin\Catalog\ProductDetails.cs" />
     <Compile Include="Domain\Admin\Catalog\Templates.cs" />
     <Compile Include="Domain\Admin\Customers\BestCustomerReportLine.cs" />
-    <Compile Include="Domain\Admin\Customers\Customer.cs" />
+    <Compile Include="Domain\Admin\Customers\AdminCustomer.cs" />
     <Compile Include="Domain\Admin\Customers\CustomerRole.cs" />
     <Compile Include="Domain\Admin\Orders\OrderAverageReport.cs" />
     <Compile Include="Domain\Admin\Orders\OrderAverageReportLine.cs" />

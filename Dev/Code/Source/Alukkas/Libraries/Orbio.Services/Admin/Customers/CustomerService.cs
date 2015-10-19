@@ -80,14 +80,14 @@ namespace Orbio.Services.Admin.Customers
             }
         }
 
-        public Orbio.Core.Domain.Admin.Customers.Customer GetDiscountAndRoles(int Id)
+        public Orbio.Core.Domain.Admin.Customers.AdminCustomer GetDiscountAndRoles(int Id)
         {
-             var customer = new Orbio.Core.Domain.Admin.Customers.Customer();
+             var customer = new Orbio.Core.Domain.Admin.Customers.AdminCustomer();
              var result = dbContext.ExecuteFunction<XmlResultSet>("usp_Admin_Customer_GetRolesandDiscounts",
               new SqlParameter() { ParameterName = "@id", Value = Id, DbType = System.Data.DbType.Int32 }).FirstOrDefault();
                 if (result != null)
                 {
-                    customer = Serializer.GenericDeSerializer<Orbio.Core.Domain.Admin.Customers.Customer>(result.XmlResult);
+                    customer = Serializer.GenericDeSerializer<Orbio.Core.Domain.Admin.Customers.AdminCustomer>(result.XmlResult);
                 }
                 return customer;
         }
