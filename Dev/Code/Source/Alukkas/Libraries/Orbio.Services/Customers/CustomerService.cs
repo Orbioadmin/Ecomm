@@ -251,7 +251,7 @@ namespace Orbio.Services.Customers
         /// </summary>
         /// <param name="request">Request</param>
         /// <returns>Result</returns>
-        public virtual CustomerRegistrationResult RegisterCustomer(CustomerRegistrationRequest request,List<int> roles)
+        public virtual CustomerRegistrationResult RegisterCustomer(CustomerRegistrationRequest request,List<int> roles,List<int> discounts)
         {
 
             //if (request == null)
@@ -359,7 +359,7 @@ namespace Orbio.Services.Customers
             //    _rewardPointsSettings.PointsForRegistration > 0)
             //    request.Customer.AddRewardPointsHistoryEntry(_rewardPointsSettings.PointsForRegistration, _localizationService.GetResource("RewardPoints.Message.EarnedForRegistration"));
 
-            var updatedresult = UpdateCustomer(request.customer,roles);
+            var updatedresult = UpdateCustomer(request.customer,roles,discounts);
 
             return (CustomerRegistrationResult)updatedresult;
 
@@ -376,7 +376,7 @@ namespace Orbio.Services.Customers
             return customerRole;
         }
 
-        public virtual CustomerRegistrationResult UpdateCustomer(Customer customer,List<int> roles)
+        public virtual CustomerRegistrationResult UpdateCustomer(Customer customer,List<int> roles,List<int> discounts)
         {
             //if (String.IsNullOrWhiteSpace(customer.ToString()))
             //    return CustomerRegistrationResult.;
@@ -391,6 +391,7 @@ namespace Orbio.Services.Customers
             }
 
             var roleXml = (roles != null) ? Serializer.GenericSerializer(roles) : null;
+            var discountXml = (discounts != null) ? Serializer.GenericSerializer(discounts) : null;
 
             var outputSqlParam = new SqlParameter() { ParameterName = "@insertresult", Direction = System.Data.ParameterDirection.Output, DbType = System.Data.DbType.Int32 }; 
             var result = context.ExecuteFunction<Customer>("usp_Customer_InsertCustomer",
@@ -422,6 +423,7 @@ namespace Orbio.Services.Customers
                  new SqlParameter() { ParameterName = "@companyname", Value = customer.CompanyName, DbType = System.Data.DbType.String },
                  new SqlParameter() { ParameterName = "@mobileno", Value = customer.MobileNo, DbType = System.Data.DbType.String },
                  new SqlParameter() { ParameterName = "@customerroles", Value = roleXml, DbType = System.Data.DbType.Xml },
+                  new SqlParameter() { ParameterName = "@customerdiscounts", Value = discountXml, DbType = System.Data.DbType.Xml },
                 outputSqlParam);
 
             //var updateresult = result.FirstOrDefault();

@@ -1,4 +1,5 @@
-﻿using Orbio.Core.Domain.Orders;
+﻿using Orbio.Core.Domain.Discounts;
+using Orbio.Core.Domain.Orders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,5 +28,11 @@ namespace Orbio.Core.Domain.Admin.Customers
         /// </summary>
         [DataMember]
         public Cart Cart { get; set; }
+
+        public List<CustomerRole> CustomerRoles { get; set; }
+
+        public List<Discount> Discounts { get; set; }
+
+        public List<Discount> SelectedDiscount { get; set; }
     }
 }

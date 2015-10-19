@@ -56,6 +56,7 @@ CREATE PROCEDURE [dbo].[usp_Customer_InsertCustomer]
 	@companyname varchar(50)=NULL,
 	@mobileno varchar(15)=null,
 	@customerroles xml=null,
+	@customerdiscounts xml=null,
 	@insertresult INT OUTPUT
 AS
 BEGIN
@@ -88,6 +89,12 @@ BEGIN
 							SELECT @id, i.value('.','int') from @customerroles.nodes('/ArrayOfInt/int') x(i)	
 						END
 						
+						IF(@customerdiscounts is not null)
+						BEGIN
+							insert into dbo.Discount_AppliedToCustomers(Discount_Id,Customer_Id) 
+							SELECT i.value('.','int'),@id from @customerdiscounts.nodes('/ArrayOfInt/int') x(i)	
+						END
+						
 						ELSE
 						BEGIN
 							insert into dbo.Customer_CustomerRole_Mapping (Customer_Id,CustomerRole_Id) 
@@ -113,6 +120,12 @@ BEGIN
 						
 							insert into dbo.Customer_CustomerRole_Mapping (Customer_Id,CustomerRole_Id) 
 							SELECT @id, i.value('.','int') from @customerroles.nodes('/ArrayOfInt/int') x(i)						
+						END
+						
+						IF(@customerdiscounts is not null)
+						BEGIN
+							insert into dbo.Discount_AppliedToCustomers(Discount_Id,Customer_Id) 
+							SELECT i.value('.','int'),@id from @customerdiscounts.nodes('/ArrayOfInt/int') x(i)	
 						END
 						
 						ELSE

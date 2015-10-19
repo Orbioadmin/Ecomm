@@ -1,6 +1,7 @@
 ﻿
 using Orbio.Core.Domain.Admin.Customers;
 using Orbio.Core.Domain.Checkout;
+using Orbio.Web.UI.Areas.Admin.Models.Discount;
 using Orbio.Web.UI.Areas.Admin.Models.Orders;
 using Orbio.Web.UI.Models.Orders;
 using System;
@@ -71,6 +72,10 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Customers
         public DateTime LastActivity { get; set; }
 
         public List<int> Roles { get; set; }
+
+        public List<int> Discounts { get; set; }
+
+        public List<DiscountModel> DiscountList { get; set; }
 
         public List<CustomerRoleModel> CustomerRoles { get; set; }
 

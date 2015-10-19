@@ -1,4 +1,5 @@
-﻿using Nop.Data;
+﻿using Nop.Core.Domain;
+using Nop.Data;
 using Orbio.Core.Data;
 using Orbio.Core.Utility;
 using Orbio.Services.Security;
@@ -49,19 +50,46 @@ namespace Orbio.Services.Admin.Customers
             }
         }
 
+        //public Customer GetCustomerById(int Id)
+        //{
+        //    using (var context = new OrbioAdminContext())
+        //    {
+        //        var result = context.Customers.Include("CustomerRoles").Where(m => m.Id == Id).FirstOrDefault();
+
+        //        if(result==null)
+        //        {
+        //            result = new Customer();
+        //            result.CustomerRoles = context.CustomerRoles.Where(cr => cr.Active).ToList();
+        //        }
+        //        return result;
+        //    }
+        //}
+
         public Customer GetCustomerById(int Id)
         {
             using (var context = new OrbioAdminContext())
             {
                 var result = context.Customers.Include("CustomerRoles").Where(m => m.Id == Id).FirstOrDefault();
 
-                if(result==null)
+                if (result == null)
                 {
                     result = new Customer();
                     result.CustomerRoles = context.CustomerRoles.Where(cr => cr.Active).ToList();
                 }
                 return result;
             }
+        }
+
+        public Orbio.Core.Domain.Admin.Customers.Customer GetDiscountAndRoles(int Id)
+        {
+             var customer = new Orbio.Core.Domain.Admin.Customers.Customer();
+             var result = dbContext.ExecuteFunction<XmlResultSet>("usp_Admin_Customer_GetRolesandDiscounts",
+              new SqlParameter() { ParameterName = "@id", Value = Id, DbType = System.Data.DbType.Int32 }).FirstOrDefault();
+                if (result != null)
+                {
+                    customer = Serializer.GenericDeSerializer<Orbio.Core.Domain.Admin.Customers.Customer>(result.XmlResult);
+                }
+                return customer;
         }
 
         public Customer GetOrderDetails(int Id)

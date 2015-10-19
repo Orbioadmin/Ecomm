@@ -13,6 +13,8 @@ namespace Orbio.Services.Admin.Customers
 
         Customer GetCustomerById(int Id);
 
+        Orbio.Core.Domain.Admin.Customers.Customer GetDiscountAndRoles(int Id);
+
         Customer GetOrderDetails(int Id);
 
         Customer GetCustomerAddressDetails(int Id);

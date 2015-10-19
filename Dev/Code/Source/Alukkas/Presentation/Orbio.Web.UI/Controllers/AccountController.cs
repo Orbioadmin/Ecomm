@@ -170,7 +170,7 @@ namespace Orbio.Web.UI.Controllers
                 //case CustomerRegistrationResult.NewUser:
                 //        {
                 var registrationRequest = new CustomerRegistrationRequest(customer, model.UserName, model.Gender, model.MobileNo, model.Password, PasswordFormat.Hashed, true);
-                var registrationResult = customerService.RegisterCustomer(registrationRequest,null);
+                var registrationResult = customerService.RegisterCustomer(registrationRequest,null,null);
 
                 switch (registrationResult)
                 {

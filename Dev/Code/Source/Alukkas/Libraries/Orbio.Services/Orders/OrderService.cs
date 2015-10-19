@@ -367,8 +367,7 @@ namespace Orbio.Services.Orders
          }
 
          private Order GetOrderResult(Customer customer, ProcessOrderResult processOrderResult, Order order)
-        {
-
+         {
             order.OrderId = processOrderResult.OrderId;
             order.BillingAddress = processOrderResult.BillingAddress;
             order.ShippingAddress = processOrderResult.ShippingAddress;

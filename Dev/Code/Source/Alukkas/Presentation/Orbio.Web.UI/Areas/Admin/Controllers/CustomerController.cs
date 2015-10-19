@@ -20,6 +20,7 @@ using Orbio.Web.UI.Filters;
 using System.IO;
 using Orbio.Core.Utility;
 using PagedList;
+using Orbio.Web.UI.Areas.Admin.Models.Discount;
 
 namespace Orbio.Web.UI.Areas.Admin.Controllers
 {
@@ -189,9 +190,30 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             if(model.Id!=0)
             {
                 model.Roles = model.CustomerRoles.Select(cr => cr.Id).ToList();
-                var result = customerRoleService.GetAllCustomerRole();
-                model.CustomerRoles = (from CR in result
-                             select new CustomerRoleModel(CR)).ToList();
+            }
+            var result = customerService.GetDiscountAndRoles(Id.GetValueOrDefault());
+            if(result!=null)
+            {
+                if (result.CustomerRoles != null && result.CustomerRoles.Count>0)
+                {
+                    model.CustomerRoles = (from C in result.CustomerRoles
+                                           select new CustomerRoleModel(C)).ToList();
+                }
+
+                if (result.Discounts != null && result.Discounts.Count > 0)
+                {
+                    model.DiscountList = (from C in result.Discounts
+                                          select new DiscountModel()
+                                          {
+                                              Id = C.Id,
+                                              Name = C.Name,
+                                          }).ToList();
+                }
+
+                if (result.SelectedDiscount != null && result.SelectedDiscount.Count > 0) 
+                {
+                    model.Discounts = result.SelectedDiscount.Select(cr => cr.Id).ToList();
+                }
             }
             return PartialView(model);
         }
@@ -217,7 +239,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                 IsRegistered = (model.Id != 0) ? true : false,
             };
             var registrationRequest = new Orbio.Services.Customers.CustomerRegistrationRequest(customer, model.Email, model.Gender, null, model.FirstName, Orbio.Core.Domain.Customers.PasswordFormat.Hashed, true);
-            var registrationResult = custService.RegisterCustomer(registrationRequest, model.Roles);
+            var registrationResult = custService.RegisterCustomer(registrationRequest, model.Roles,model.Discounts);
             return RedirectToAction("ListCustomer");
         }
 

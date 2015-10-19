@@ -13,6 +13,16 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Customers
         public CustomerRoleModel()
         {
         }
+        public CustomerRoleModel(Orbio.Core.Domain.Admin.Customers.CustomerRole cust)
+        {
+            Id = cust.Id;
+            Name = cust.Name;
+            SystemName = cust.SystemName;
+            FreeShipping = cust.FreeShipping;
+            TaxExempt = cust.TaxExempt;
+            Active = cust.Active;
+            IsSystemRole = cust.IsSystemRole;
+        }
 
         public CustomerRoleModel(CustomerRole cust)
         {
