@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Orbio.Core.Domain.Catalog;
+using Orbio.Core.Domain.Customers;
 
 namespace Orbio.Core.Domain.Discounts
 {
@@ -145,5 +146,10 @@ namespace Orbio.Core.Domain.Discounts
         /// Gets or sets the categories
         /// </summary>
         public List<Category> Categories { get; set; }
+
+        /// <summary>
+        /// Gets or sets Customers
+        /// </summary>
+        public List<Customer> Customers { get; set; }
     }
 }

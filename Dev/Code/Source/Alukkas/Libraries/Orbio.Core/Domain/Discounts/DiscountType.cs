@@ -26,5 +26,9 @@ namespace Orbio.Core.Domain.Discounts
         /// Assigned to order subtotal
         /// </summary>
         AssignedToOrderSubTotal = 20,
+        /// <summary>
+        /// Assigned to customer
+        /// </summary>
+        AssignedToCustomer = 50,
     }
 }

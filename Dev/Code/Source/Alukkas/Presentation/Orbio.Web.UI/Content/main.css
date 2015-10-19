@@ -1287,7 +1287,8 @@ li.etalage_zoom_area{left:462px!important;}
 .shopping_table tr:last-child{border-bottom: 0px #f8c301 solid; }
 .shopping_table td{color: #272727;}
 .shopping_table td img{width: 120px;}
-.shop_promation ul li.promat{padding-top:3px;}
+.shop_promation ul li.promat{padding-top:3px; padding-right: 4px;}
+input#AppliedCouponCode {margin-right: 4px;}
 .shop_promation{background:#d7d7d7;border-bottom: 1px #f8c301 solid; border-top: 1px #f8c301 solid; padding: 10px 0;
 clear: both; overflow: hidden;}
 .shop_promation ul{margin: 10px; float: right; }
@@ -1892,7 +1893,7 @@ ul.comment li{padding:10px 10px 20px!important;}
 ul.thumb_ul li:last-child{margin-right: 0!important;}
 }
 
-@media(max-width:1000px){	
+@media(max-width:1000px){ 
 .similar_prod .new_carsol .carousel-control.right{right:5px;}
 .similar_prod .new_carsol .carousel-control.left{left:5px;}
 }
@@ -1912,7 +1913,7 @@ button#toggle{display:block;} .menu_desc div#myContent{display:none;}
 @media(min-width:1024px) and (max-width:1024px){
 .payment_detail { position: relative;}
 #activate-step-2 { bottom: 86px; left: 0; z-index:9; position: absolute;}
-	#step-1 .col-md-8.col-sm-8, #step-1 .col-md-4.col-sm-4{width:100%;}	
+  #step-1 .col-md-8.col-sm-8, #step-1 .col-md-4.col-sm-4{width:100%;} 
 #step-1 .col-md-8.col-sm-8 {position: inherit; padding-bottom:20px;}
 .payment_gate {    margin-top: 35px;}
 }
@@ -2047,9 +2048,9 @@ div.brands-name {display: block!important;}#etalage .etalage_small_thumbs li{wid
 /*li.select_menu{z-index: 2;}*/
 
 @media(min-width:481px) and (max-width:768px){
-	ul.thumb_ul li.thumb_first{display:none;}
-	ul.thumb_ul li{width:25%; padding-left: 10px; padding-right: 10px;}
-	/*.ring img{width:100%;}*/
+  ul.thumb_ul li.thumb_first{display:none;}
+  ul.thumb_ul li{width:25%; padding-left: 10px; padding-right: 10px;}
+  /*.ring img{width:100%;}*/
 }
 @media(min-width:481px) and (max-width:568px){.ring img{width:100%;}}
 
@@ -2058,27 +2059,27 @@ div.brands-name {display: block!important;}#etalage .etalage_small_thumbs li{wid
 
 @media(max-width:600px){
 .shopping_table table, .shopping_table thead, .shopping_table tbody, .shopping_table th, 
-	.shopping_table td, .shopping_table tr { display: block;}
-	.shopping_table thead tr {position: absolute; top: -9999px; left: -9999px;}
-	.shopping_table tr { border: 1px solid #ccc; } 
-	.shopping_table td { 
-		border: none;
-		border-bottom: 1px solid #eee; 
-		position: relative;
-		padding-left: 50%; 
-		white-space: normal;
-		text-align:left;
-	} 
-	.shopping_table td:before { 
-		position: absolute;
-		top: 6px;
-		left: 6px;
-		width: 45%; 
-		padding-right: 10px; 
-		white-space: nowrap;
-		text-align:left;
-		font-weight: bold;
-	}
+  .shopping_table td, .shopping_table tr { display: block;}
+  .shopping_table thead tr {position: absolute; top: -9999px; left: -9999px;}
+  .shopping_table tr { border: 1px solid #ccc; } 
+  .shopping_table td { 
+    border: none;
+    border-bottom: 1px solid #eee; 
+    position: relative;
+    padding-left: 50%; 
+    white-space: normal;
+    text-align:left;
+  } 
+  .shopping_table td:before { 
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 45%; 
+    padding-right: 10px; 
+    white-space: nowrap;
+    text-align:left;
+    font-weight: bold;
+  }
  .shopping_table td:before { content: attr(data-title); }
  .shopping_table tr:first-child{display:none;}
 .shopping_table th{ display:none;}
@@ -2086,27 +2087,27 @@ div.brands-name {display: block!important;}#etalage .etalage_small_thumbs li{wid
 
 
 .Order_table.table, .Order_table.table thead, .Order_table.table tbody, .Order_table.table th, 
-	.Order_table.table td, .Order_table.table tr { display: block;}
-	.Order_table.table thead tr {position: absolute; top: -9999px; left: -9999px;}
-	.Order_table.table tr { border: 1px solid #ccc; } 
-	.Order_table.table td { 
-		border: none;
-		border-bottom: 1px solid #eee; 
-		position: relative;
-		padding-left: 50%; 
-		white-space: normal;
-		text-align:left;
-	} 
-	.Order_table.table td:before { 
-		position: absolute;
-		top: 6px;
-		left: 6px;
-		width: 45%; 
-		padding-right: 10px; 
-		white-space: nowrap;
-		text-align:left;
-		font-weight: bold;
-	}
+  .Order_table.table td, .Order_table.table tr { display: block;}
+  .Order_table.table thead tr {position: absolute; top: -9999px; left: -9999px;}
+  .Order_table.table tr { border: 1px solid #ccc; } 
+  .Order_table.table td { 
+    border: none;
+    border-bottom: 1px solid #eee; 
+    position: relative;
+    padding-left: 50%; 
+    white-space: normal;
+    text-align:left;
+  } 
+  .Order_table.table td:before { 
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 45%; 
+    padding-right: 10px; 
+    white-space: nowrap;
+    text-align:left;
+    font-weight: bold;
+  }
  .Order_table.table td:before { content: attr(data-title); }
  .Order_table.table tr:first-child{display:none;}
 .Order_table.table th{ display:none;}
@@ -2505,9 +2506,9 @@ font-family: 'PT Sans', sans-serif; font-weight: 700; font-size: 13px;width:70px
     display: block;
     width: 0; 
     height: 0; 
-	border-left: 10px solid transparent;
-	border-right: 10px solid transparent;	
-	border-top: 10px solid #f8c301;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent; 
+  border-top: 10px solid #f8c301;
     position: absolute;
     bottom: -17px;
     left: 40%; z-index: 1002;
@@ -2543,9 +2544,9 @@ span.icon-span:before{content: "";
     display: block;
     width: 0; 
     height: 0; 
-	border-left: 4px solid transparent;
-	border-right: 4px solid transparent;	
-	border-bottom: 4px solid #555;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;  
+  border-bottom: 4px solid #555;
     position: absolute;
     top: -4px;
     left: 35px;}
@@ -2576,7 +2577,7 @@ ul.menu_desc li.select_menu {left: 298px!important;}.menu-img{display: none;}
 ul.menu_desc li.select_menu { right: -140px;}
 }
 @media (max-width: 899px) and (min-width: 860px){
-	ul.menu_desc li.select_menu { right: -63px;}
+  ul.menu_desc li.select_menu { right: -63px;}
 }
 @media (max-width: 859px) and (min-width: 800px){
 ul.menu_desc li.select_menu { right: -63px;}
