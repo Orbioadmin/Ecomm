@@ -131,10 +131,20 @@
 
 <script language="javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
 <script>
+    $(document).ready(function () {
+        var pincode = "";
+        $.ajax({
+            url: '@Url.Action("GetPincodeFromCookie", "ShoppingCart")',
+            type: "POST",
+            success: function (data) {
+                pincode = data;
+                getAddressInfoByZip(pincode);
+            }
+        });
+    });
     function btnSubmit_Click(e) {
         var pincode = $('#pincode').val();
         getAddressInfoByZip(pincode);
-        e.preventDefault();
     }
 
     function getAddressInfoByZip(zip) {
@@ -167,7 +177,7 @@
     function CheckPincodeAvailability(state, pincode) {
         if (state != null) {
             $.ajax({
-                data: { state: state },
+                data: { state: state,pincode : pincode },
                 url: '@Url.Action("CheckPincodeAvailability","ShoppingCart")',
                 type: "POST",
                 success: function (data) {

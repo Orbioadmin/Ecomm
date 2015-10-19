@@ -413,11 +413,21 @@
         $j('.Price_break').click(function () {
             $j('.Price_breakup').slideToggle('slow');
         });
+        var pincode = "";
+        $.ajax({
+            url: '@Url.Action("GetPincodeFromCookie", "ShoppingCart")',
+            type: "POST",
+            success: function (data) {
+                pincode = data;
+                getAddressInfoByZip(pincode);
+            }
+        });
     });
 </script>
 
 <script language="javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
 <script>
+
     function btnSubmit_Click(e) {
         var pincode = $('#pincode').val();
         getAddressInfoByZip(pincode);
@@ -452,7 +462,7 @@
     function CheckPincodeAvailability(state, pincode) {
         if (state != null) {
             $.ajax({
-                data: { state: state },
+                data: { state: state, pincode: pincode },
                 url: '@Url.Action("CheckPincodeAvailability","ShoppingCart")',
                 type: "POST",
                 success: function (data) {

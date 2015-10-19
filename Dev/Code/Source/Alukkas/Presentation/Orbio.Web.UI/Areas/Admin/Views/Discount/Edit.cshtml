@@ -104,9 +104,15 @@
                 $('#discAmt').css("display","none");
             }
             var requiresCouponCode = "@Model.RequiresCouponCode";
+            var discountTypeId = "@Model.DiscountTypeId";
         if (requiresCouponCode == "True")
             {
                 $('#discCoupon').css("display","block");
+                if(discountTypeId == "50")
+                {
+                    $("#chkreqcouponcode").prop('checked', true)
+                    $("#chkreqcouponcode").attr("disabled", true);
+                }
             }
       
 
@@ -116,15 +122,35 @@
             {
                 $("#disctypeproducts").css("display", "block")
                 $("#disctypecategory").css("display", "none")
+                $("#disctypecustomer").css("display", "none")
+                $("#RequiresCouponCode").prop('checked', false)
+                $("#RequiresCouponCode").attr("disabled", false)
+                $('#discCoupon').css("display","none");
             }
             else if (discountTypeId == "5") {
                 $("#disctypecategory").css("display", "block")
                 $("#disctypeproducts").css("display", "none")
+                $("#disctypecustomer").css("display", "none")
+                $("#RequiresCouponCode").prop('checked', false)
+                $("#RequiresCouponCode").attr("disabled", false)
+                $('#discCoupon').css("display","none");
+            }
+            else if (discountTypeId == "50") {
+                $("#disctypecategory").css("display", "none")
+                $("#disctypeproducts").css("display", "none")
+                $("#disctypecustomer").css("display", "block")
+                $("#chkreqcouponcode").prop('checked', true)
+                $("#chkreqcouponcode").attr("disabled", true);
+                $('#discCoupon').css("display","block");
             }
             else
             {
                 $("#disctypecategory").css("display", "none")
                 $("#disctypeproducts").css("display", "none")
+                $("#disctypecustomer").css("display", "none")
+                $("#chkreqcouponcode").prop('checked', false)
+                $("#chkreqcouponcode").attr("disabled", false)
+                $('#discCoupon').css("display","none");
             }
         });
     </script>

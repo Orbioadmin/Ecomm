@@ -200,6 +200,10 @@
             }
 
         });
+        $('.dropdown').hover(function () {
+            var n = $('.dropdown-menu').height() - 6;
+            $('.test').css({ 'height': n, 'line-height': n + 'px' });
+        });
     });
 
 </script>

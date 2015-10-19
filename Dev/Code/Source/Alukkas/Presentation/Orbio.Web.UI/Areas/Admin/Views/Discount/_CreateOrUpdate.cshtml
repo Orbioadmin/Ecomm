@@ -38,6 +38,20 @@
             </div>
             }
         }
+        @if (Model != null)
+        {
+            if (Model.Customers != null && Model.Customers.Count > 0)
+            {
+                <div class="row" id="disctypecustomer" style="margin-bottom:10px">
+                    <div class="col-md-3 prdct_name">Customers :</div><div class="col-md-2" style="margin-top:10px;width: 64%">
+                        @foreach (var customer in Model.Customers)
+                        {
+                            <a href="javascript://">@customer.FirstName</a> <span>,</span>
+                        }
+                    </div>
+                </div>
+            }
+        }
         <div class="row" style="margin-bottom: 12px;">
             <div class="col-md-3 prdct_name">Use Percentage :</div><div class="col-md-2">
                 @Html.CheckBoxFor(model => model.UsePercentage, new { @class = "checkbox_shipp", id = "chkusepercentage" })

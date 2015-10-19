@@ -50,7 +50,7 @@ if(@action = 'selectById')
 
 SELECT @XmlResult1 = (SELECT Id, Name,DiscountTypeId,UsePercentage,DiscountPercentage,DiscountAmount,StartDateUtc,
 EndDateUtc,RequiresCouponCode,CouponCode,DiscountLimitationId,LimitationTimes,dbo.ufn_GetproductdetailsByDiscountId(Id),
-dbo.ufn_GetCategories(Id)
+dbo.ufn_GetCategories(Id),dbo.ufn_GetCustomerDetailsByDiscountId(Id)
 from dbo.Discount 
 where Id=@id order by Id desc
 FOR XML PATH('Discount'))
@@ -70,6 +70,27 @@ else if(@action = 'insert')
 else if(@action = 'update')
 	begin
 		
+		if exists(select DiscountTypeId from dbo.Discount d inner join dbo.Discount_AppliedToCategories dac on d.Id = dac.Discount_Id where d.Id = @id)
+			begin
+				if(@discountTypeId <> 5)
+					begin
+						delete from dbo.Discount_AppliedToCategories where Discount_Id = @id
+					end
+			end
+		if exists(select DiscountTypeId from dbo.Discount d inner join dbo.Discount_AppliedToProducts dap on d.Id = dap.Discount_Id where d.Id = @id)
+			begin
+				if(@discountTypeId <> 2)
+					begin
+						delete from dbo.Discount_AppliedToCategories where Discount_Id = @id
+					end
+			end
+		if exists(select DiscountTypeId from dbo.Discount d inner join dbo.Discount_AppliedToCustomers dac on d.Id = dac.Discount_Id where d.Id = @id)
+			begin
+				if(@discountTypeId <> 50)
+					begin
+						delete from dbo.Discount_AppliedToCategories where Discount_Id = @id
+					end
+			end
 		update dbo.Discount set Name = @name,DiscountTypeId=@discountTypeId,UsePercentage=@usePercentage,
 		DiscountPercentage = @discountPercentage,DiscountAmount = @discountAmount,StartDateUtc = @startDateUtc,EndDateUtc=@endDateUtc,
 		RequiresCouponCode=@requiresCouponCode,CouponCode = @couponCode,DiscountLimitationId=@discountLimitationId,LimitationTimes=@limitationTime
@@ -85,7 +106,6 @@ else if(@action = 'delete')
 	end
 	
 END
-
 
 
 GO

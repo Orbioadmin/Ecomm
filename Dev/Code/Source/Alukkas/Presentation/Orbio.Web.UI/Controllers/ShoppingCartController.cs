@@ -10,24 +10,64 @@ using Orbio.Services.Common;
 using Orbio.Services.Orders;
 using Orbio.Web.UI.Filters;
 using Orbio.Web.UI.Models.Orders;
+using System.Web;
+using System.Configuration;
 
 namespace Orbio.Web.UI.Controllers
 {
     public class ShoppingCartController : CartBaseController
     {
+        #region Const
 
+        private const string PincodeCookieName = "Orbio.Pincode";
 
+        #endregion
 
+        private readonly HttpContextBase httpContext;
         private readonly IPriceCalculationService priceCalculationService;
 
 
         public ShoppingCartController(IShoppingCartService shoppingCartService, IStoreContext storeContext,
-            IPriceCalculationService priceCalculationService, IGenericAttributeService genericAttributeService, IWorkContext workContext)
+            IPriceCalculationService priceCalculationService, IGenericAttributeService genericAttributeService, IWorkContext workContext,HttpContextBase httpContext)
             : base(shoppingCartService, workContext, storeContext, genericAttributeService)
         {
-
+            this.httpContext = httpContext;
             this.priceCalculationService = priceCalculationService;
         }
+
+        #region Utilities
+
+        protected virtual HttpCookie GetPincodeCookie()
+        {
+            if (httpContext == null || httpContext.Request == null)
+                return null;
+
+            return httpContext.Request.Cookies[PincodeCookieName];
+        }
+
+        protected virtual void SetPincodeCookie(string pincode)
+        {
+            if (httpContext != null && httpContext.Response != null)
+            {
+                var cookie = new HttpCookie(PincodeCookieName);
+                cookie.HttpOnly = true;
+                cookie.Value = pincode;
+                if (string.IsNullOrEmpty(pincode))
+                {
+                    cookie.Expires = DateTime.Now.AddMonths(-1);
+                }
+                else
+                {
+                    int cookieExpires = ConfigurationManager.AppSettings["CookieExpiryTime"] != null ? int.Parse(ConfigurationManager.AppSettings["CookieExpiryTime"]) : 24; //TODO make configurable
+                    cookie.Expires = DateTime.Now.AddHours(cookieExpires);
+                }
+
+                httpContext.Response.Cookies.Remove(PincodeCookieName);
+                httpContext.Response.Cookies.Add(cookie);
+            }
+        }
+
+        #endregion
 
         //[ContinueShoppingAttribute]
         public ActionResult Cart()
@@ -145,10 +185,21 @@ namespace Orbio.Web.UI.Controllers
         /// </summary>
         /// <param name="state"></param>
         /// <returns></returns>
-        public JsonResult CheckPincodeAvailability(string state)
+        public JsonResult CheckPincodeAvailability(string state, string pincode)
         {
             var result = shoppingCartService.CheckPincodeAvailability(state);
+            SetPincodeCookie(pincode);
             return Json(result);
+        }
+
+        /// <summary>
+        /// Get pincode from cookie
+        /// </summary>
+        /// <returns></returns>
+        public JsonResult GetPincodeFromCookie()
+        {
+            var result = GetPincodeCookie();
+            return Json(result.Value);
         }
     }
 }

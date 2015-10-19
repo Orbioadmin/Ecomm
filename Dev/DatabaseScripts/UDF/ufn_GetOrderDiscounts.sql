@@ -16,7 +16,7 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE FUNCTION ufn_GetOrderDiscounts (
+CREATE FUNCTION [dbo].[ufn_GetOrderDiscounts] (
 @customerId int,
 @storeId int
 )
@@ -54,26 +54,61 @@ BEGIN
 	BEGIN	
 		 
 		DECLARE @discountId INT
-	   
-		SELECT @discountId = Id FROM Discount  WHERE CouponCode = @couponCode AND 
-			RequiresCouponCode =1 AND ((@utcNow BETWEEN StartDateUtc AND EndDateUtc) OR (StartDateUtc is				null and		EndDateUtc is null) )
+		DECLARE @discountValid BIT
+		DECLARE @discountTypeId INT
 		
-		IF (@discountId IS NOT NULL AND EXISTS( SELECT DBO.ufn_CheckDiscountLimitation(@discountId,							@customerId,NULL)))
+		SELECT @discountId = Id FROM Discount  WHERE CouponCode = @couponCode AND 
+			RequiresCouponCode =1 AND ((@utcNow BETWEEN StartDateUtc AND EndDateUtc) OR (StartDateUtc is null and EndDateUtc is null) )
+
+		SET @discountTypeId = (SELECT DiscountTypeId FROM Discount WHERE Id = @discountId)
+		
+		set @discountValid = (Select [dbo].[ufn_CheckDiscountForCustomer](@discountId,@customerId))
+		
+
+		IF (@discountId IS NOT NULL AND EXISTS( SELECT DBO.ufn_CheckDiscountLimitation(@discountId,	@customerId,NULL)))
 		BEGIN		
-			INSERT INTO @couponDiscount
-			 SELECT  Id, [Name]
-			  ,[DiscountTypeId]
-			  ,[UsePercentage]
-			  ,[DiscountPercentage]
-			  ,[DiscountAmount]
-			  ,[StartDateUtc]
-			  ,[EndDateUtc]
-			  ,[RequiresCouponCode]
-			  ,[CouponCode]
-			  ,[DiscountLimitationId]
-			  ,[LimitationTimes] 
-			  , 1  
-			   FROM Discount WHERE Id = @discountId
+			IF(@discountTypeId <> 50)
+				BEGIN	
+					INSERT INTO @couponDiscount
+					 SELECT  Id, [Name]
+					  ,[DiscountTypeId]
+					  ,[UsePercentage]
+					  ,[DiscountPercentage]
+					  ,[DiscountAmount]
+					  ,[StartDateUtc]
+					  ,[EndDateUtc]
+					  ,[RequiresCouponCode]
+					  ,[CouponCode]
+					  ,[DiscountLimitationId]
+					  ,[LimitationTimes] 
+					  , 1  
+					   FROM Discount WHERE Id = @discountId
+				END
+			ELSE
+				BEGIN
+					IF(@discountValid <> 0)
+						BEGIN
+							INSERT INTO @couponDiscount
+							 SELECT  Id, [Name]
+							  ,[DiscountTypeId]
+							  ,[UsePercentage]
+							  ,[DiscountPercentage]
+							  ,[DiscountAmount]
+							  ,[StartDateUtc]
+							  ,[EndDateUtc]
+							  ,[RequiresCouponCode]
+							  ,[CouponCode]
+							  ,[DiscountLimitationId]
+							  ,[LimitationTimes] 
+							  , 1  
+							   FROM Discount WHERE Id = @discountId
+						END
+					ELSE
+						BEGIN
+							INSERT INTO @couponDiscount([RequiresCouponCode],CouponCode, IsValid)
+							VALUES(1,@couponCode, 0)
+						END
+				END
 		END
 		ELSE
 		BEGIN
@@ -96,18 +131,19 @@ BEGIN
       ,[DiscountLimitationId]
       ,[LimitationTimes]
       ,1 AS IsValid
-  FROM [esybuy].[dbo].[Discount] D
+  FROM [dbo].[Discount] D
   WHERE ((@utcNow BETWEEN StartDateUtc AND EndDateUtc) OR (StartDateUtc is null and EndDateUtc is null) )
   AND RequiresCouponCode = 0 AND dbo.ufn_CheckDiscountLimitation(Id, 1,null)=1
   AND DiscountTypeId in (1,20) 
   UNION ALL
-  SELECT * FROM @couponDiscount
+   SELECT  * FROM @couponDiscount 
   ) a
    FOR XML PATH('Discount'),ROOT('Discounts'), elements)
   --1 =oRDERsUBTOTAL 20=ORDERTOTAL
   	 
 	 Return @xmlresult
 END
+
 
 GO
 PRINT 'Created the UDF ufn_GetOrderDiscounts'
