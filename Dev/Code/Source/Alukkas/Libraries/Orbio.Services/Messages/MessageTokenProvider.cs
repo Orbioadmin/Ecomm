@@ -216,6 +216,12 @@ namespace Orbio.Services.Messages
 
         }
 
+        public virtual void AddDiscountTokens(IList<Token> tokens, Orbio.Core.Domain.Admin.Catalog.DiscountDetails discount)
+        {
+            tokens.Add(new Token("Discount.CouponCode", discount.CouponCode.ToString()));
+            tokens.Add(new Token("Discount.DiscountPercentage", discount.DiscountPercentage.ToString("#,##0.00")));
+        }
+
         #endregion
     }
 }

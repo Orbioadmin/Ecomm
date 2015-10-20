@@ -79,14 +79,22 @@ BEGIN
 						,LastActivityDateUtc,BillingAddress_Id,ShippingAddress_Id,FirstName,LastName,Gender,DOB,CompanyName,MobileNo)
  
 						values(newid(),@email,@email,@Password,@passwordformatid,@passwordsalt,@admincomment
-						,(select top 1 TaxExempt from dbo.CustomerRole where SystemName='Registered'),@affiliateid,@vendorid,@active,
+						,@istaxexempt,@affiliateid,@vendorid,@active,
 						@deleted,@issystemaccount,@systemname,@lastipaddress,@createdonutc,@lastlogindateutc,@lastactivitydateutc,
 						@billingaddress_id,@shippingaddress_id,@firstname,@lastname,@gender,@dob,@companyname,@mobileno)
-						
+						  
+						 set @id=SCOPE_IDENTITY()
+						  
 						IF(@customerroles is not null)
 						BEGIN
 							insert into dbo.Customer_CustomerRole_Mapping (Customer_Id,CustomerRole_Id) 
 							SELECT @id, i.value('.','int') from @customerroles.nodes('/ArrayOfInt/int') x(i)	
+						END
+						ELSE
+						BEGIN
+							insert into dbo.Customer_CustomerRole_Mapping (Customer_Id,CustomerRole_Id) 
+							values((select Id from dbo.Customer where Username=@email AND Deleted='False')
+							,(select top 1 Id from dbo.CustomerRole where SystemName='Registered'))
 						END
 						
 						IF(@customerdiscounts is not null)
@@ -95,12 +103,6 @@ BEGIN
 							SELECT i.value('.','int'),@id from @customerdiscounts.nodes('/ArrayOfInt/int') x(i)	
 						END
 						
-						ELSE
-						BEGIN
-							insert into dbo.Customer_CustomerRole_Mapping (Customer_Id,CustomerRole_Id) 
-							values((select Id from dbo.Customer where Username=@email AND Deleted='False')
-							,(select top 1 Id from dbo.CustomerRole where SystemName='Registered'))
-						END
 						SET @insertresult=1;
 					RETURN
 					END

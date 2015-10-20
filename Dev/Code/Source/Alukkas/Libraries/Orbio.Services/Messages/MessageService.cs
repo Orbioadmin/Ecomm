@@ -385,5 +385,39 @@ namespace Orbio.Services.Messages
             EmailDetail Sent = SendNotification(messageTemplate, tokens, email, name);
             return emailService.SentEmail(Sent);
         }
+
+        /// <summary>
+        /// sending discount notification with coupon code to customer
+        /// </summary>
+        /// <param name="discounts"></param>
+        /// <returns>int </returns>
+        public int SendDiscountCustomerNotification(List<Orbio.Core.Domain.Admin.Catalog.DiscountDetails> discounts, string email, string firstName)
+        {
+            if (discounts == null)
+                throw new ArgumentNullException("discount");
+
+            if (email == null)
+                throw new Exception("Email cannot be null");
+
+            var store = storeContext.CurrentStore;
+            var result = context.ExecuteFunction<MessageTemplate>("usp_MessageTemplate",
+            new SqlParameter() { ParameterName = "@messagename", Value = "Customer.DiscountNotification", DbType = System.Data.DbType.String });
+            var messageTemplate = new MessageTemplate();
+            messageTemplate = result.FirstOrDefault();
+
+            if (messageTemplate == null)
+                return 0;
+
+            foreach(var item in discounts)
+            {
+                //tokens
+            var tokens = new List<Token>();
+            messageTokenProvider.AddStoreTokens(tokens, store);
+            messageTokenProvider.AddDiscountTokens(tokens,item);
+            EmailDetail Sent = SendNotification(messageTemplate, tokens, email, firstName);
+            emailService.SentEmail(Sent);
+            }
+            return 1;
+        }
     }
 }

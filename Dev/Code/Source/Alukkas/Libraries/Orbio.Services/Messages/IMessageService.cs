@@ -23,5 +23,6 @@ namespace Orbio.Services.Messages
         int SendNewOrderNoteAddedCustomerNotification(Order order,OrderNote orderNote, int languageId);
         int SendShipmentSentCustomerNotification(Orbio.Core.Data.Shipment shipment, Order order, int languageId);
         int SendCustomerNotification(string email, string subject, string body,string name);
+        int SendDiscountCustomerNotification(List<Orbio.Core.Domain.Admin.Catalog.DiscountDetails> discounts, string email, string firstName);
     }
 }

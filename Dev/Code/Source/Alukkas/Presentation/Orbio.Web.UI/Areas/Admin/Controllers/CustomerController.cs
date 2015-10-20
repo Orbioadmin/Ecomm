@@ -21,6 +21,7 @@ using System.IO;
 using Orbio.Core.Utility;
 using PagedList;
 using Orbio.Web.UI.Areas.Admin.Models.Discount;
+using Orbio.Core.Domain.Admin.Catalog;
 
 namespace Orbio.Web.UI.Areas.Admin.Controllers
 {
@@ -207,7 +208,11 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                                           {
                                               Id = C.Id,
                                               Name = C.Name,
+                                              DiscountPercentage=C.DiscountPercentage,
+                                              CouponCode=C.CouponCode,
                                           }).ToList();
+
+                    TempData["Discount"] = model.DiscountList;
                 }
 
                 if (result.SelectedDiscount != null && result.SelectedDiscount.Count > 0) 
@@ -240,6 +245,15 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             };
             var registrationRequest = new Orbio.Services.Customers.CustomerRegistrationRequest(customer, model.Email, model.Gender, null, model.FirstName, Orbio.Core.Domain.Customers.PasswordFormat.Hashed, true);
             var registrationResult = custService.RegisterCustomer(registrationRequest, model.Roles,model.Discounts);
+            if (TempData["Discount"]!=null)
+            {
+                model.DiscountList = (List<DiscountModel>)TempData["Discount"];
+            }
+
+            if (model.Discounts != null && model.Discounts.Count > 0 && TempData["Discount"] != null)
+            {
+                SentDiscountCustomerNotification(model.DiscountList, model.Discounts, model.Email, model.FirstName);
+            }
             return RedirectToAction("ListCustomer");
         }
 
@@ -467,5 +481,19 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         }
 
         #endregion
+
+        public void SentDiscountCustomerNotification(List<DiscountModel> DiscountModel, List<int> Discounts,string email,string firstName)
+        {
+            var discountList = (from d in DiscountModel
+                                select new DiscountDetails()
+                                {
+                                    Id = d.Id,
+                                    Name = d.Name,
+                                    DiscountPercentage=d.DiscountPercentage,
+                                    CouponCode=d.CouponCode,
+                                }).ToList();
+            var discounts = discountList.Where(p => Discounts.Contains(p.Id)).ToList();
+            messageService.SendDiscountCustomerNotification(discounts.ToList(),email,firstName);
+        }
     }
 }

@@ -12,5 +12,8 @@ namespace Orbio.Core.Domain.Admin.Catalog
 
         public string Name { get; set; }
 
+        public decimal DiscountPercentage { get; set; }
+
+        public string CouponCode { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿using Orbio.Core.Domain.Discounts;
+﻿using Orbio.Core.Domain.Admin.Catalog;
 using Orbio.Core.Domain.Orders;
 using System;
 using System.Collections.Generic;
@@ -31,8 +31,8 @@ namespace Orbio.Core.Domain.Admin.Customers
 
         public List<CustomerRole> CustomerRoles { get; set; }
 
-        public List<Discount> Discounts { get; set; }
+        public List<DiscountDetails> Discounts { get; set; }
 
-        public List<Discount> SelectedDiscount { get; set; }
+        public List<DiscountDetails> SelectedDiscount { get; set; }
     }
 }

@@ -2,6 +2,12 @@
 
 <div class="col-md-12 add_cart_left_side edit_checkout_attr_main">
     @Html.HiddenFor(m => m.Id, new { Value = Model.Id })
+    @Html.HiddenFor(m => m.DiscountList, new { Value = Model.DiscountList })
+   
+    @foreach(var item in Model.DiscountList)
+    {
+        Html.Hidden("DiscountList", item);
+    } 
 
     <div class="form-group row" style="margin-top:10px">
         <div class="col-md-2"><label>Email : </label></div>

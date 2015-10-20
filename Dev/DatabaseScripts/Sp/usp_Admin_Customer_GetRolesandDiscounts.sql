@@ -34,9 +34,9 @@ AS
 BEGIN
 DECLARE @XmlResult xml
 	SELECT @XmlResult = (select(select * from CustomerRole FOR XML PATH('CustomerRole'), ROOT('CustomerRoles'),Type),
-	(select * from Discount where DiscountTypeId=50 and EndDateUtc>=GETDATE() FOR XML PATH('Discount'), ROOT('Discounts'),Type),
-	(select D.* from Discount D inner join Discount_AppliedToCustomers DC on D.Id=DC.Discount_Id where DC.Customer_Id=@id and D.EndDateUtc>=GETDATE()
-	 FOR XML PATH('Discount'), ROOT('SelectedDiscount'),Type)
+	(select * from Discount where DiscountTypeId=50 and EndDateUtc>=GETDATE() and (DiscountLimitationId=0 or DiscountLimitationId>LimitationTimes) FOR XML PATH('DiscountDetails'), ROOT('Discounts'),Type),
+	(select D.* from Discount D inner join Discount_AppliedToCustomers DC on D.Id=DC.Discount_Id where DC.Customer_Id=@id and D.EndDateUtc>=GETDATE()and (DiscountLimitationId=0 or DiscountLimitationId>LimitationTimes)
+	 FOR XML PATH('DiscountDetails'), ROOT('SelectedDiscount'),Type)
 	 FOR XML PATH('AdminCustomer'))
 	 
 	 SELECT @XmlResult as XmlResult
