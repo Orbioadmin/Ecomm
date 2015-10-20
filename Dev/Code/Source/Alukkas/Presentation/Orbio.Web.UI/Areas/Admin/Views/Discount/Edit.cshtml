@@ -113,7 +113,11 @@
                     $("#chkreqcouponcode").prop('checked', true)
                 }
             }
-      
+        var discountLimitationId = "@Model.LimitationTimes";
+        if (discountLimitationId != "0")
+        {
+            $('#discNtimes').css("display","block");
+        }
 
         $("#DiscountTypeId").change(function () {
             var discountTypeId = $('#DiscountTypeId').val();
@@ -149,6 +153,16 @@
                 $("#chkreqcouponcode").prop('checked', false)
                 $("#chkreqcouponcode").attr("disabled", false)
                 $('#discCoupon').css("display","none");
+            }
+        });
+        $("#DiscountLimitationId").change(function () {
+            var discountLimitationId = $('#DiscountLimitationId').val();
+
+            if (discountLimitationId != "0") {
+                $('#discNtimes').css("display", "block");
+            }
+            else {
+                $('#discNtimes').css("display", "none");
             }
         });
     </script>

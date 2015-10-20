@@ -81,5 +81,16 @@
                     $('#discCoupon').css("display", "none");
                 }
             });
+
+            $("#DiscountLimitationId").change(function () {
+                var discountLimitationId = $('#DiscountLimitationId').val();
+
+                if (discountLimitationId != "0") {
+                    $('#discNtimes').css("display", "block");
+                }
+                else {
+                    $('#discNtimes').css("display", "none");
+                }
+            });
         </script>
     }

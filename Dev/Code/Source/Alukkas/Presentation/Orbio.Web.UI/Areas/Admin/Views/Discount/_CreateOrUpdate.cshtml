@@ -99,5 +99,10 @@
                                                                            select new SelectListItem() { Text = discountLimitationType.ToString(), Value = ((int)discountLimitationType).ToString() }, new { @class = "prdct_name_txt" })
             </div>
         </div>
+        <div class="row" id="discNtimes" style="display:none">
+            <div class="col-md-3 prdct_name">N times :</div><div class="col-md-2">
+                @Html.TextBoxFor(m => m.LimitationTimes, new { @class = "prdct_name_txt",type="number" })
+            </div>
+        </div>
     </div>
 </div>
