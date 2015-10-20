@@ -199,7 +199,7 @@ namespace Orbio.Web.UI.Controllers
         public JsonResult GetPincodeFromCookie()
         {
             var result = GetPincodeCookie();
-            return Json(result.Value);
+            return Json((result != null)?result.Value:"");
         }
     }
 }

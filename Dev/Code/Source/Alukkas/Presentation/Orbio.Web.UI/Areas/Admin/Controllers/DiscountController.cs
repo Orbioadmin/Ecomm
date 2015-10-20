@@ -9,6 +9,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
+using Orbio.Web.UI.Models.Customer;
 
 namespace Orbio.Web.UI.Areas.Admin.Controllers
 {
@@ -75,8 +76,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             if (discountDetail == null)
                 //No product found with the specified id
                 return RedirectToAction("List");
-            var model = new DiscountModel();
-            PrepareDiscounttModel(model, discountDetail);
+            var model = new DiscountModel(discountDetail);
             return View(model);
         }
 
@@ -106,39 +106,6 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             int pageNumber = (page ?? 1);
             return PartialView(resultModel.ToPagedList(pageNumber,pageSize));
         }
-        protected void PrepareDiscounttModel(DiscountModel model, Orbio.Core.Domain.Discounts.Discount discount)
-        {
-            if (model == null)
-                throw new ArgumentNullException("model");
-
-            if (discount != null)
-            {
-                model.Id = discount.Id;
-                model.Name = discount.Name;
-                model.DiscountTypeId = discount.DiscountTypeId;
-                model.UsePercentage = discount.UsePercentage;
-                model.DiscountPercentage = discount.DiscountPercentage;
-                model.DiscountAmount = discount.DiscountAmount;
-                model.RequiresCouponCode = discount.RequiresCouponCode;
-                model.CouponCode = discount.CouponCode;
-                model.DiscountLimitationId = discount.DiscountLimitationId;
-                model.LimitationTimes = discount.LimitationTimes;
-                model.StartDateUtc = discount.StartDateUtc;
-                model.EndDateUtc = discount.EndDateUtc;
-                if (discount.Categories != null && discount.Categories.Count > 0)
-                {
-                    model.Categories = (from c in discount.Categories
-                                       select new CategorySimpleModel(c)).ToList();
-                }
-                if (discount.Products != null && discount.Products.Count > 0)
-                {
-                    model.Products = (from p in discount.Products
-                                     select new ProductOverViewModel(p)).ToList();
-                }
-            }
-        }
-
-
         public ActionResult DeleteUsageHistory(int id,int discountId)
         {
             _discountService.DeleteUsageHistory(id);

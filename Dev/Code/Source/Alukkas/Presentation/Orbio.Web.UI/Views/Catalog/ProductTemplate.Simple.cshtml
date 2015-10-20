@@ -418,8 +418,10 @@
             url: '@Url.Action("GetPincodeFromCookie", "ShoppingCart")',
             type: "POST",
             success: function (data) {
-                pincode = data;
-                getAddressInfoByZip(pincode);
+                if (data != "") {
+                    pincode = data;
+                    getAddressInfoByZip(pincode);
+                }
             }
         });
     });
