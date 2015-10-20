@@ -10,8 +10,8 @@
     <div class="form-group row" style="margin-top:10px">
         <div class="col-md-2"><label>Gender : </label></div>
         <div class="col-md-4">
-            @Html.RadioButtonFor(m => m.Gender, "M", new { @style = "font-size: small" }) Male
-            @Html.RadioButtonFor(m => m.Gender, "F", new { @style = "font-size: small" }) Female
+            @Html.RadioButtonFor(m => m.Gender, "M", new { @style = "font-size: small" ,required="required" }) Male
+            @Html.RadioButtonFor(m => m.Gender, "F", new { @style = "font-size: small", required = "required" }) Female
     </div>
         </div>
     <div class="form-group row" style="margin-top:10px">
