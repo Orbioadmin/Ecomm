@@ -74,13 +74,22 @@
 
                 if (discountTypeId == "50") {
                     $("#chkreqcouponcode").prop('checked', true)
-                    $("#chkreqcouponcode").attr("disabled", true);
                     $('#discCoupon').css("display", "block");
                 }
                 else {
                     $("#chkreqcouponcode").prop('checked', false)
-                    $("#chkreqcouponcode").attr("disabled", false)
                     $('#discCoupon').css("display", "none");
+                }
+            });
+
+            $("#DiscountLimitationId").change(function () {
+                var discountLimitationId = $('#DiscountLimitationId').val();
+
+                if (discountLimitationId != "0") {
+                    $('#discNtimes').css("display", "block");
+                }
+                else {
+                    $('#discNtimes').css("display", "none");
                 }
             });
         </script>

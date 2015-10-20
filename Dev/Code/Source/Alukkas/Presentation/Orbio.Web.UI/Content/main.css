@@ -2598,6 +2598,7 @@ ul.menu_desc li.select_menu{left:200px;}
 .second_menu.home .dropdown-menu li { padding: 3px 10px !important;}
 .navbar-nav.navbar-right:last-child {margin-right: 15px;}.admin-link{margin-top: -38px;}
 li.hidden-desk{display: none;} .second_menu .nav li.dropdown:hover .dropdown-menu{padding-bottom: 5px;}
+.dropdown-menu .col-sm-2{min-height: 155px;}
 }
 @media (min-width: 1001px) and (max-width: 1200px) {
 header ul.menu_desc li.select_menu {left: 128px;}.navbar-default.home .select_text{width: 280px;}
