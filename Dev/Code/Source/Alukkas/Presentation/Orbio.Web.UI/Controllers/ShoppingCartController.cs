@@ -73,7 +73,6 @@ namespace Orbio.Web.UI.Controllers
         public ActionResult Cart()
         {
             var model = PrepareShoppingCartItemModel();
-
             return View(model);
         }
 

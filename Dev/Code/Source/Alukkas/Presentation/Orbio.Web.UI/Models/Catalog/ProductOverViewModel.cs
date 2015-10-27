@@ -82,6 +82,8 @@ namespace Orbio.Web.UI.Models.Catalog
 
         public List<Discount> Discounts { get; set; }
 
+        public int DiscountPercentage { get; set; }
+
         public decimal DiscountAmount
         {
             get

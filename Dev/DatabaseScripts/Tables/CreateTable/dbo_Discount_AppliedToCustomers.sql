@@ -10,11 +10,13 @@ CREATE TABLE [dbo].[Discount_AppliedToCustomers](
 
 ALTER TABLE [dbo].[Discount_AppliedToCustomers]  WITH CHECK ADD  CONSTRAINT [FK_Discount_AppliedToCustomers_Customer] FOREIGN KEY([Customer_Id])
 REFERENCES [dbo].[Customer] ([Id])
+ON DELETE CASCADE
 
 ALTER TABLE [dbo].[Discount_AppliedToCustomers] CHECK CONSTRAINT [FK_Discount_AppliedToCustomers_Customer]
 
 ALTER TABLE [dbo].[Discount_AppliedToCustomers]  WITH CHECK ADD  CONSTRAINT [FK_Discount_AppliedToCustomers_Discount] FOREIGN KEY([Discount_Id])
 REFERENCES [dbo].[Discount] ([Id])
+ON DELETE CASCADE
 
 ALTER TABLE [dbo].[Discount_AppliedToCustomers] CHECK CONSTRAINT [FK_Discount_AppliedToCustomers_Discount]
 

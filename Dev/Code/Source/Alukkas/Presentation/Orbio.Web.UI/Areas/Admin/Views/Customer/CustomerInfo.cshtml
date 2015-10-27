@@ -4,11 +4,6 @@
     @Html.HiddenFor(m => m.Id, new { Value = Model.Id })
     @Html.HiddenFor(m => m.DiscountList, new { Value = Model.DiscountList })
    
-    @foreach(var item in Model.DiscountList)
-    {
-        Html.Hidden("DiscountList", item);
-    } 
-
     <div class="form-group row" style="margin-top:10px">
         <div class="col-md-2"><label>Email : </label></div>
         <div class="col-md-4">@Html.TextBoxFor(m => m.Email, new { @class = "edit_text_checkout", required = "required", type = "email", @style = "font-size: small" })</div>
@@ -35,19 +30,37 @@
     </div>
     <div class="form-group row" style="margin-top:10px">
         <div class="col-md-2"><label>Customer Roles : </label></div>
-        <div class="col-md-4 cust_role_edit">
-            <div class="customer_multi_roles">
-                @Html.ListBoxFor(m => m.Roles, new MultiSelectList(Model.CustomerRoles, "Id", "Name"), new { Multiple = "multiple", id = "role", @class = "search_customer", placeholder = "Role" })
+        @if (Model.CustomerRoles != null)
+        {
+            <div class="col-md-4 cust_role_edit">
+                <div class="customer_multi_roles">
+                    @Html.ListBoxFor(m => m.Roles, new MultiSelectList(Model.CustomerRoles, "Id", "Name"), new { Multiple = "multiple", id = "role", @class = "search_customer", placeholder = "Role" })
+                </div>
             </div>
-        </div>
+        }
+        else
+        {
+            <div class="col-md-4">
+                <label>Add a customer role</label>
+            </div>
+        }
     </div>
     <div class="form-group row" style="margin-top:10px">
         <div class="col-md-2"><label>Discount : </label></div>
-        <div class="col-md-4 cust_role_edit">
-            <div class="customer_multi_roles">
-                @Html.ListBoxFor(m => m.Discounts, new MultiSelectList(Model.DiscountList, "Id", "Name"), new { Multiple = "multiple", id = "discount", @class = "search_customer", placeholder = "Discounts" })
+        @if (Model.DiscountList != null)
+        {
+            <div class="col-md-4 cust_role_edit">
+                <div class="customer_multi_roles">
+                    @Html.ListBoxFor(m => m.Discounts, new MultiSelectList(Model.DiscountList, "Id", "Name"), new { Multiple = "multiple", id = "discount", @class = "search_customer", placeholder = "Discounts" })
+                </div>
             </div>
-        </div>
+        }
+        else
+        {
+            <div class="col-md-4">
+                <label>No discounts are available</label>
+            </div>
+        }
     </div>
     <div class="form-group row" style="margin-top:10px">
         <div class="col-md-2"><label>Admin Comment : </label></div>

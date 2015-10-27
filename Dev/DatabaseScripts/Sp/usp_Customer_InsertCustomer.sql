@@ -99,6 +99,8 @@ BEGIN
 						
 						IF(@customerdiscounts is not null)
 						BEGIN
+							delete from dbo.Discount_AppliedToCustomers where Customer_Id=@id
+							
 							insert into dbo.Discount_AppliedToCustomers(Discount_Id,Customer_Id) 
 							SELECT i.value('.','int'),@id from @customerdiscounts.nodes('/ArrayOfInt/int') x(i)	
 						END
@@ -123,13 +125,6 @@ BEGIN
 							insert into dbo.Customer_CustomerRole_Mapping (Customer_Id,CustomerRole_Id) 
 							SELECT @id, i.value('.','int') from @customerroles.nodes('/ArrayOfInt/int') x(i)						
 						END
-						
-						IF(@customerdiscounts is not null)
-						BEGIN
-							insert into dbo.Discount_AppliedToCustomers(Discount_Id,Customer_Id) 
-							SELECT i.value('.','int'),@id from @customerdiscounts.nodes('/ArrayOfInt/int') x(i)	
-						END
-						
 						ELSE
 						BEGIN
 						delete from dbo.Customer_CustomerRole_Mapping where Customer_Id=@Id
@@ -137,6 +132,14 @@ BEGIN
 							insert into dbo.Customer_CustomerRole_Mapping (Customer_Id,CustomerRole_Id) 
 							values(@id,(select top 1 Id from dbo.CustomerRole where SystemName='Registered'))
 						END
+						IF(@customerdiscounts is not null)
+						BEGIN
+						delete from dbo.Discount_AppliedToCustomers where Customer_Id=@id
+						
+							insert into dbo.Discount_AppliedToCustomers(Discount_Id,Customer_Id) 
+							SELECT i.value('.','int'),@id from @customerdiscounts.nodes('/ArrayOfInt/int') x(i)	
+						END
+						
 					SET @insertresult=1;
 					
 				END

@@ -15,7 +15,8 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Customers
     {
         public CustomerModel()
         {
-            // TODO: Complete member initialization
+            DiscountList = new List<DiscountModel>();
+            CustomerRoles = new List<CustomerRoleModel>();
         }
 
         public CustomerModel(AdminCustomer customer)

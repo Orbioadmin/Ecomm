@@ -1869,7 +1869,9 @@ div.mousetrap {width: 100%!important; border: 1px #ccc solid;}
   z-index: 999999;
 }
 .static_tab p{text-align:left;}
-
+#displayResult {
+    padding: 24px 0;
+}
 
 @media(min-width:769px) and (max-width:1000px) {
 ul li.select_menu{width: auto;}
@@ -2466,7 +2468,11 @@ footer.footer-alukkas h1{margin:35px 0 10px;}
     right: 32px;
     top: -30px;
     width: inherit;
-}footer.footer-alukkas a{color: #7f7f7f;}
+}footer.footer-alukkas a{color: #7f7f7f;}.check-avail li{text-align: left;}#displayResult li{text-align: center;}
+.check-avail li.check-aval{display: inline-block; width: 75px; vertical-align: middle; text-align: right;}
+.check-avail li.check-avals{display: inline-block; width: 250px; vertical-align: middle;}
+.check-avail .spanavail{margin-right:10px;}
+.check-avail .locationimg {margin-top: -10px;}
 footer.footer-alukkas a:hover{color: #F8C301;}
 .alukkas_thumbnail ol.carousel-indicators li.active{background:#F8C301; width: 10px; height:10px;}
 .alukkas_videos video{border-radius: 3px;}
@@ -2556,6 +2562,9 @@ span.icon-span:before{content: "";
 .check-avail li {display: inline-block; padding:0px 2px 3px 2px;}.check-butt{background: #555555; color: #ffffff; border: 1px #555 solid;}
 .check-avail li{width: 100%;}
 .second_menu.home .nav.navbar-nav li .col-sm-8 div.col-sm-3{width: 25%;}
+.info-inner{text-align: left;}.price-box{position: relative;}.regular-price .price{width: 100%; display: inline-block;}
+.pro-off{background:  url('../images/discount-bg.png') no-repeat; position: absolute; line-height: 33px; font-family: "Calibri_bold"; 
+display:inline-block; width:46px; height:33px; bottom:0; right: 0; margin: 0; text-align: right; padding-right: 5px;}
 @media screen and (-webkit-min-device-pixel-ratio:0) {
 .size_li li:hover, .size_li li.select {
     padding: 4px 10px;

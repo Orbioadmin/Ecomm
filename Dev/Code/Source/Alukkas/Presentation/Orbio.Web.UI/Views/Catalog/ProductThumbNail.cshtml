@@ -1,91 +1,91 @@
 ﻿@model Orbio.Web.UI.Models.Catalog.ProductOverViewModel
 
  <li>
-      @{
-          var baseImageUrl = System.Configuration.ConfigurationManager.AppSettings["ImageServerBaseUrl"];
-          var imageUrl = baseImageUrl + this.Model.ImageRelativeUrl;
-      }
+    @{
+        var baseImageUrl = System.Configuration.ConfigurationManager.AppSettings["ImageServerBaseUrl"];
+        var imageUrl = baseImageUrl + this.Model.ImageRelativeUrl;
+    }
 
-     <div class="products-grid row">
-                                                <div class="item ">
-        <div class="item-inner clearfix">
-             
-                  <div class="item-img have-additional clearfix">
-                  <a href="@Url.RouteUrl("Category", new { SeName = this.Model.SeName })?p=pt" class="product-image have-additional">
-                      <span class="image-main">
-                    <img src="@imageUrl" alt="@Model.Name"/>
-                      </span>
-                  </a>
-                        <div class="actions">
-                            <ul class="add-to-links">
+    <div class="products-grid row">
+        <div class="item ">
+            <div class="item-inner clearfix">
 
-                          <li><a title="Add to cart" href="javascript://" onclick="addItemToCart('@Model.Id');" class="link-share" data-toggle="tooltip" data-original-title="Add to Wishlist">
-</a></li>
-                          <li><a title="Add to Wishlist" href="javascript://" onclick="addItemToWishList('@Model.Id');" class=" link-wishlist" data-toggle="tooltip" data-original-title="Add to Compare"></a></li>
+                <div class="item-img have-additional clearfix">
+                    <a href="@Url.RouteUrl("Category", new { SeName = this.Model.SeName })?p=pt" class="product-image have-additional">
+                        <span class="image-main">
+                            <img src="@imageUrl" alt="@Model.Name" />
+                        </span>
+                    </a>
+                    <div class="actions">
+                        <ul class="add-to-links">
 
-                                                            </ul>
-                                                <div class="quickview-wrap">
-                                                    <a href='@Url.Action("EmailFriend", "Customer", new { this.Model.Name,this.Model.SeName})' title="Share ">
-                                                        <i class="link-compare"></i>
-                                                    </a>
+                            <li>
+                                <a title="Add to cart" href="javascript://" onclick="addItemToCart('@Model.Id');" class="link-share" data-toggle="tooltip" data-original-title="Add to Wishlist">
+                                </a>
+                            </li>
+                            <li><a title="Add to Wishlist" href="javascript://" onclick="addItemToWishList('@Model.Id');" class=" link-wishlist" data-toggle="tooltip" data-original-title="Add to Compare"></a></li>
+
+                        </ul>
+                        <div class="quickview-wrap">
+                            <a href='@Url.Action("EmailFriend", "Customer", new { this.Model.Name,this.Model.SeName})' title="Share ">
+                                <i class="link-compare"></i>
+                            </a>
                         </div>
-                                                </div>
-                        <!-- media -->
-                                           
-
-                                    <!-- media -->
                     </div>
-                    <div class="item-info">
-                        <div class="info-inner">
-                          
-                            <div class="item-title">
-                                <a href="@Url.RouteUrl("Category", new { SeName = this.Model.SeName })?p=pt" title="">
-                                    @this.Model.Name                                 </a>
-                            </div>
-                            <div class="item-content clearfix">
-                                <div class="item-price">
-                                    
+                    <!-- media -->
+                    <!-- media -->
+                </div>
+                <div class="item-info">
+                    <div class="info-inner">
 
-                        
-    <div class="price-box">
-                       <span class="regular-price" id="">
-                           @{
-                               var finalPrice = Convert.ToDecimal(this.Model.ProductPrice.Price) - this.Model.DiscountAmount;
-                           }
-                                            <span class="price">@this.Model.CurrencyCode.@finalPrice.ToString("#,##0.00")  </span>    
-                            @if (this.Model.ProductPrice.OldPrice != finalPrice)
-                                            {
-                                                <s>@this.Model.CurrencyCode.@this.Model.ProductPrice.OldPrice.ToString("#,##0.00")</s>
-                                            }
-                       </span>
-                                            
-        </div>
-
+                        <div class="item-title">
+                            <a href="@Url.RouteUrl("Category", new { SeName = this.Model.SeName })?p=pt" title="">
+                                @this.Model.Name
+                            </a>
+                        </div>
+                        <div class="item-content clearfix">
+                            <div class="item-price">
+                                <div class="price-box">
+                                    <span class="regular-price" id="">
+                                        @{
+                                            var finalPrice = Convert.ToDecimal(this.Model.ProductPrice.Price) - this.Model.DiscountAmount;
+                                            var discountPercentage = (this.Model.DiscountAmount * 100) / (this.Model.ProductPrice.OldPrice);
+                                        }
+                                        <span class="price">@this.Model.CurrencyCode.@finalPrice.ToString("#,##0.00")  </span>
+                                        @if (this.Model.ProductPrice.OldPrice != finalPrice)
+                                        {
+                                            <s>@this.Model.CurrencyCode.@this.Model.ProductPrice.OldPrice.ToString("#,##0.00")</s>
+                                        }
+                                        @if (discountPercentage>0)
+                                        { 
+                                        <p class="pro-off">@discountPercentage.ToString("#,##0")%</p>
+                                        }
+                                    </span>
                                 </div>
                             </div>
-                                                                    
-                                                        </div>
+                        </div>
                     </div>
-        </div>
+                </div>
             </div>
+        </div>
+    </div>
 
-</div>
 
-      @* <div class="main_thumb">
-                            <div class="thumbnail">
-                                <a href="@Url.RouteUrl("Category", new { SeName = this.Model.SeName })?p=pt"><img src="@imageUrl" alt=""></a>                                
-                            </div>
-                            <div class="caption">
-                                <div class="list_light_dark">@this.Model.Name</div>                        
-                                <div class="detail_list_cart">
-                                <ul class="list_cart">
-                                <li>
-                                <input type="submit" class="add_it_icon" value=""></li><li>
-                                <input type="submit" class="save_it_icon" value=""></li><li>
-                                <input type="submit" class="share_it_icon" value=""></li></ul>
-                                </div>
-                                <div class="list_thumb_offer"><s>325.00</s> (66% off) <span>@this.Model.ProductPrice.Price @this.Model.CurrencyCode</span></div>
-                            </div>
-                            </div>*@
+    @* <div class="main_thumb">
+        <div class="thumbnail">
+            <a href="@Url.RouteUrl("Category", new { SeName = this.Model.SeName })?p=pt"><img src="@imageUrl" alt=""></a>
+        </div>
+        <div class="caption">
+            <div class="list_light_dark">@this.Model.Name</div>
+            <div class="detail_list_cart">
+            <ul class="list_cart">
+            <li>
+            <input type="submit" class="add_it_icon" value=""></li><li>
+            <input type="submit" class="save_it_icon" value=""></li><li>
+            <input type="submit" class="share_it_icon" value=""></li></ul>
+            </div>
+            <div class="list_thumb_offer"><s>325.00</s> (66% off) <span>@this.Model.ProductPrice.Price @this.Model.CurrencyCode</span></div>
+        </div>
+        </div>*@
 
-       </li>
+</li>

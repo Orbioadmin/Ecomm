@@ -275,7 +275,7 @@
                 </div>
 
 
-                <div class="check-avail" id="checkPin">
+                @*<div class="check-avail" id="checkPin">
                     <ul>
                         <li>
                             <span><img src="~/Images/checkavail.png" class="locationimg" /></span> <span>Check Availability at</span>
@@ -285,16 +285,41 @@
                             <input type="submit" value="Check" class="check-butt" onclick="btnSubmit_Click()">
                         </li>
                     </ul>
+                </div>*@
+                <div class="check-avail" id="checkPin" style="display: inline-block;">
+                    <ul>
+                        <li class="check-aval"><span><img src="~/Images/checkavaildetail.png" class="locationimg"></span></li>
+                        <li class="check-avals">
+                            <ul>
+                                <li>
+                                    <span>Check Availability at</span>
+                                </li>
+                                <li>
+                                    <input type="text" autocomplete="off" minlength="6" maxlength="6" placeholder="Enter your pincode" id="pincode" required="">
+                                    <input type="submit" value="Check" class="check-butt" onclick="btnSubmit_Click()">
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
 
-                <div class="check-avail" style="display:none" id="displayResult">
+                <div class="check-avail" style="display: inline-block;" id="displayResult">
+                    <ul>
+                        <li>
+                            <img src="" id="imgavailability" class="locationimg">
+                            <span id="lbldisplayresult" class="spanavail">Not available at pincode : </span><span style="cursor:pointer"><a onclick="Change()" style="text-decoration:underline;">change</a></span>
+                        </li>
+                    </ul>
+                </div>
+
+                @*<div class="check-avail" style="display:none" id="displayResult">
                     <ul>
                         <li>
                             <img src="" id="imgavailability" class="locationimg" />
                             <span id="lbldisplayresult" class="spanavail"> Available at </span><span style="cursor:pointer"><a onclick="Change()" style="text-decoration:underline;">change</a></span>
                         </li>
                     </ul>
-                </div>
+                </div>*@
             </form> 
         </div>
     </div>

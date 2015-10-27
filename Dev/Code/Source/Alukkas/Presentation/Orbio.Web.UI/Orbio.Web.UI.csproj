@@ -739,10 +739,12 @@
     <Content Include="Images\cart.png" />
     <Content Include="Images\certified.png" />
     <Content Include="Images\checkavail.png" />
+    <Content Include="Images\checkavaildetail.png" />
     <Content Include="Images\collection1.png" />
     <Content Include="Images\collection2.png" />
     <Content Include="Images\collection3.png" />
     <Content Include="Images\collections-bg.png" />
+    <Content Include="Images\discount-bg.png" />
     <Content Include="Images\doublevalue_banner.jpg" />
     <Content Include="Images\edit.png" />
     <Content Include="Images\footer-divider.png" />
