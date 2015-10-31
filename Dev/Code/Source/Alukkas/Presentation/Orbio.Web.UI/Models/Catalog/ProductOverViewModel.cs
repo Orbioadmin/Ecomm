@@ -62,9 +62,6 @@ namespace Orbio.Web.UI.Models.Catalog
              
         }
 
-      
-
-        
         public string ShortDescription { get; set; }
         public string FullDescription { get; set; }
         public string Sku { get; set; }
@@ -74,6 +71,7 @@ namespace Orbio.Web.UI.Models.Catalog
         public decimal ProductUnit { get; set; }
         public int StockQuantity { get; set; }
         public bool Published { get; set; }
+        
         public Dictionary<string, string> ComponentDetails { get; set; }
         //price
         public ProductPriceModel ProductPrice { get; set; }

@@ -87,6 +87,8 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Product
         public System.DateTime? UpdatedOnUtc { get; set; }
         public decimal ProductUnit { get; set; }
         public string ImageUrl { get; set; }
+        public bool IsGift { get; set; }
+        public decimal GiftCharge { get; set; }
 
         public List<SelectListItem> AvailableDeliveryDates { get; set; }
         public List<SelectListItem> AvailableWarehouses { get; set; }

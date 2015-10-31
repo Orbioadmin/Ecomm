@@ -33,7 +33,10 @@ namespace Orbio.Web.UI.Models.Catalog
             this.ViewPath = productDetail.ViewPath;
             this.ImageRelativeUrl = productDetail.ImageRelativeUrl;
             this.CurrencyCode = productDetail.CurrencyCode;
-          
+            this.IsGift = productDetail.IsGift;
+            this.GiftCharge = productDetail.GiftCharge;
+            this.IsGiftWrapping = productDetail.IsGiftWrapping;
+
             //this.ProductPrice.Price = productDetail.Price;
              if (productDetail.BreadCrumbs != null && productDetail.BreadCrumbs.Count > 0)
             {               
@@ -193,6 +196,21 @@ namespace Orbio.Web.UI.Models.Catalog
 
         public string PriceDetailXml { get; set; }
 
+        /// <summary>
+        /// Gets or sets IsGift
+        /// </summary>
+        public bool IsGift { get; set; }
+
+        /// <summary>
+        /// Gets or sets gift charges
+        /// </summary>
+        public decimal GiftCharge { get; set; }
+
+        /// <summary>
+        /// Gets or sets gift charges
+        /// </summary>
+        public bool IsGiftWrapping { get; set; }
+
 
         decimal IShoppingCartItem.Price
         {
@@ -259,9 +277,6 @@ namespace Orbio.Web.UI.Models.Catalog
         {
             get { return this.Id; }
         }
-
-
-        
 
         string IShoppingCartItem.PriceDetailXml
         {

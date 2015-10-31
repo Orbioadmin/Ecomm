@@ -209,7 +209,19 @@
     {
         $('#displayResult').css("display", "none");
         $('#checkPin').css("display", "block");
-       
+
+    }
+    function GiftChargeCalculation(e)
+    {
+        var giftCharge = $('#giftCharge' + e.id).val();
+        var shipping = $('#shippingCharges').text();
+        if(e.checked)
+        {
+            $('#shippingCharges').text((parseFloat(shipping) + parseFloat(giftCharge)).toFixed(2));
+        }
+        else {
+            $('#shippingCharges').text((parseFloat(shipping) - parseFloat(giftCharge)).toFixed(2));
+        }
     }
 
 </script>

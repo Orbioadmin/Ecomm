@@ -99,7 +99,6 @@
         </div>
 
 
-
         <div class="col-sm-7">
             @using (Html.BeginForm("product", "catalog", new { Id = this.Model.Id, SeName = this.Model.SeName, cartType = Orbio.Core.Domain.Orders.ShoppingCartType.ShoppingCart }, FormMethod.Post, new { Id = "formProduct" }))
             {
@@ -117,10 +116,13 @@
                             Html.RenderAction("ProductStar", new { Id = this.Model.Id });
                             var finalPrice = Convert.ToDecimal(this.Model.ProductPrice.Price) - this.Model.DiscountAmount;
                             }
-                            <p class="price_rate">@this.Model.CurrencyCode.@finalPrice.ToString("#,##0.00")</p>
+                            <p class="price_rate"><span style="font-size:15px;color:#333">@((this.Model.ProductPrice.OldPrice != finalPrice)?"Sale :" : "MRP :") </span> @this.Model.CurrencyCode.@finalPrice.ToString("#,##0.00")</p>
                             @if (this.Model.ProductPrice.OldPrice != finalPrice)
                             {
-                                <s>@this.Model.CurrencyCode.@this.Model.ProductPrice.OldPrice.ToString("#,##0.00")</s>
+                                var discountPercentage = (this.Model.DiscountAmount * 100) / this.Model.ProductPrice.OldPrice;
+                                
+                                <span style="font-size:12px;color:#333">MRP : </span><s>@this.Model.CurrencyCode.@this.Model.ProductPrice.OldPrice.ToString("#,##0.00")</s>
+                                <span style="font-size:12px;color:#479e0d">[@discountPercentage.ToString("#,##0.00") %]</span>
                             }
 
                         </div>
@@ -213,57 +215,57 @@
 
                                     <tr>
                                         @foreach (var priceBreakUp in Model.ComponentDetails)
-                                    {
+                                        {
                                             <td>
                                                 @priceBreakUp.Key
                                                 <p>@this.Model.CurrencyCode.@priceBreakUp.Value</p>
                                             </td>
 
                                             @*<td>
-                            Other St.
-                            <p>@this.Model.CurrencyCode.@this.Model.Stones</p>
-                        </td>
+                                                    Other St.
+                                                    <p>@this.Model.CurrencyCode.@this.Model.Stones</p>
+                                                </td>
 
-                        <td>
-                            Making
-                            <p>@this.Model.CurrencyCode.@this.Model.Making</p>
-                        </td>*@
+                                                <td>
+                                                    Making
+                                                    <p>@this.Model.CurrencyCode.@this.Model.Making</p>
+                                                </td>*@
 
 
-                                    }
+                                        }
                                         @*<td>
-                        Tax
-                        <p>@this.Model.CurrencyCode.@this.Model.ProductPrice.TaxAmount</p>
-                    </td>*@
+                                                Tax
+                                                <p>@this.Model.CurrencyCode.@this.Model.ProductPrice.TaxAmount</p>
+                                            </td>*@
                                     </tr>
                                     @*<tr>
-                    <td>
-                        GOLD
-                        <p>@this.Model.CurrencyCode.@this.Model.Gold</p>
-                    </td>
+                                            <td>
+                                                GOLD
+                                                <p>@this.Model.CurrencyCode.@this.Model.Gold</p>
+                                            </td>
 
-                    <td>
-                        Other St.
-                        <p>@this.Model.CurrencyCode.@this.Model.Stones</p>
-                    </td>
+                                            <td>
+                                                Other St.
+                                                <p>@this.Model.CurrencyCode.@this.Model.Stones</p>
+                                            </td>
 
-                    <td>
-                        Making
-                        <p>@this.Model.CurrencyCode.@this.Model.Making</p>
-                    </td>
+                                            <td>
+                                                Making
+                                                <p>@this.Model.CurrencyCode.@this.Model.Making</p>
+                                            </td>
 
-                    <td>
-                        Tax
-                        <p>Rs.0.00</p>
-                    </td>
-                </tr>*@
+                                            <td>
+                                                Tax
+                                                <p>Rs.0.00</p>
+                                            </td>
+                                        </tr>*@
                                 </table>
                             </div>
                         </div>
                     }
                 }
-                
-                }
+
+            }
             <form method="get" action="" onsubmit="return false">
                 <div class="certification">
                     <ul class="clearfix">
@@ -275,27 +277,16 @@
                 </div>
 
 
-                @*<div class="check-avail" id="checkPin">
+                <div class="check-avail" id="checkPin">
                     <ul>
-                        <li>
-                            <span><img src="~/Images/checkavail.png" class="locationimg" /></span> <span>Check Availability at</span>
-                        </li>
-                        <li>
-                            <input type="text" autocomplete="off" minlength="6" maxlength="6" placeholder="Enter your pincode" id="pincode" required="required">
-                            <input type="submit" value="Check" class="check-butt" onclick="btnSubmit_Click()">
-                        </li>
-                    </ul>
-                </div>*@
-                <div class="check-avail" id="checkPin" style="display: inline-block;">
-                    <ul>
-                        <li class="check-aval"><span><img src="~/Images/checkavaildetail.png" class="locationimg"></span></li>
+                        <li class="check-aval"><span><img src="~/Images/checkavaildetail.png" class="locationimg" /></span></li>
                         <li class="check-avals">
                             <ul>
                                 <li>
                                     <span>Check Availability at</span>
                                 </li>
                                 <li>
-                                    <input type="text" autocomplete="off" minlength="6" maxlength="6" placeholder="Enter your pincode" id="pincode" required="">
+                                    <input type="text" autocomplete="off" minlength="6" maxlength="6" placeholder="Enter your pincode" id="pincode" required="required">
                                     <input type="submit" value="Check" class="check-butt" onclick="btnSubmit_Click()">
                                 </li>
                             </ul>
@@ -303,24 +294,15 @@
                     </ul>
                 </div>
 
-                <div class="check-avail" style="display: inline-block;" id="displayResult">
-                    <ul>
-                        <li>
-                            <img src="" id="imgavailability" class="locationimg">
-                            <span id="lbldisplayresult" class="spanavail">Not available at pincode : </span><span style="cursor:pointer"><a onclick="Change()" style="text-decoration:underline;">change</a></span>
-                        </li>
-                    </ul>
-                </div>
-
-                @*<div class="check-avail" style="display:none" id="displayResult">
+                <div class="check-avail" style="display:none" id="displayResult">
                     <ul>
                         <li>
                             <img src="" id="imgavailability" class="locationimg" />
                             <span id="lbldisplayresult" class="spanavail"> Available at </span><span style="cursor:pointer"><a onclick="Change()" style="text-decoration:underline;">change</a></span>
                         </li>
                     </ul>
-                </div>*@
-            </form> 
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -361,10 +343,7 @@
                         </div>
                         <div id="collapseTwo" class="panel-collapse collapse">
                             <div class="panel-body">
-
                                 @Html.Raw(this.Model.FullDescription)
-
-
                             </div>
                         </div>
                     </div>
@@ -432,93 +411,92 @@
         });
     </script>
 
-<script type="text/javascript">
-    var $j = jQuery.noConflict();
-    $j(document).ready(function () {
-        $j('.Price_break').click(function () {
-            $j('.Price_breakup').slideToggle('slow');
-        });
-        var pincode = "";
-        $.ajax({
-            url: '@Url.Action("GetPincodeFromCookie", "ShoppingCart")',
-            type: "POST",
-            success: function (data) {
-                if (data != "") {
-                    pincode = data;
-                    getAddressInfoByZip(pincode);
+    <script type="text/javascript">
+        var $j = jQuery.noConflict();
+        $j(document).ready(function () {
+            $j('.Price_break').click(function () {
+                $j('.Price_breakup').slideToggle('slow');
+            });
+            var pincode = "";
+            $.ajax({
+                url: '@Url.Action("GetPincodeFromCookie", "ShoppingCart")',
+                type: "POST",
+                success: function (data) {
+                    if (data != "") {
+                        pincode = data;
+                        getAddressInfoByZip(pincode);
+                    }
                 }
-            }
+            });
         });
-    });
-</script>
+    </script>
 
-<script language="javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
-<script>
+    <script language="javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
+    <script>
 
-    function btnSubmit_Click(e) {
-        var pincode = $('#pincode').val();
-        getAddressInfoByZip(pincode);
-    }
+        function btnSubmit_Click(e) {
+            var pincode = $('#pincode').val();
+            getAddressInfoByZip(pincode);
+        }
 
-    function getAddressInfoByZip(zip) {
-        if (zip.length >= 5 && typeof google != 'undefined') {
-            var state = "";
-            var addr = {};
-            var geocoder = new google.maps.Geocoder();
-            geocoder.geocode({ 'address': zip }, function (results, status) {
-                if (status == google.maps.GeocoderStatus.OK) {
-                    if (results.length >= 1) {
-                        for (var j = 0; j < results.length; j++) {
-                            for (var i = 0; i < results[j].address_components.length; i++) {
-                                var base = results[j].address_components[i].types[0];
-                                if (base == "administrative_area_level_1") {
-                                    state = results[j].address_components[i].long_name;
+        function getAddressInfoByZip(zip) {
+            if (zip.length >= 5 && typeof google != 'undefined') {
+                var state = "";
+                var addr = {};
+                var geocoder = new google.maps.Geocoder();
+                geocoder.geocode({ 'address': zip }, function (results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        if (results.length >= 1) {
+                            for (var j = 0; j < results.length; j++) {
+                                for (var i = 0; i < results[j].address_components.length; i++) {
+                                    var base = results[j].address_components[i].types[0];
+                                    if (base == "administrative_area_level_1") {
+                                        state = results[j].address_components[i].long_name;
+                                    }
                                 }
                             }
                         }
                     }
-                }
-                CheckPincodeAvailability(state, zip);
-            })
+                    CheckPincodeAvailability(state, zip);
+                })
+            }
+            else {
+                $("#pincode").prop("required", true);
+            }
         }
-        else {
-            $("#pincode").prop("required", true);
-        }
-    }
 
-    function CheckPincodeAvailability(state, pincode) {
-        if (state != null) {
-            $.ajax({
-                data: { state: state, pincode: pincode },
-                url: '@Url.Action("CheckPincodeAvailability","ShoppingCart")',
-                type: "POST",
-                success: function (data) {
-                    if (data == "Available") {
-                        $('#lbldisplayresult').text("Available at pincode : " + pincode);
-                        $('#displayResult').css("display", "inline-block");
-                        $('#checkPin').css("display", "none");
-                        $('#imgavailability').attr("src", "../images/available.png");
+        function CheckPincodeAvailability(state, pincode) {
+            if (state != null) {
+                $.ajax({
+                    data: { state: state, pincode: pincode },
+                    url: '@Url.Action("CheckPincodeAvailability","ShoppingCart")',
+                    type: "POST",
+                    success: function (data) {
+                        if (data == "Available") {
+                            $('#lbldisplayresult').text("Available at pincode : " + pincode);
+                            $('#displayResult').css("display", "inline-block");
+                            $('#checkPin').css("display", "none");
+                            $('#imgavailability').attr("src", "images/available.png");
+                        }
+                        else {
+                            $('#lbldisplayresult').text("Not available at pincode : " + pincode);
+                            $('#displayResult').css("display", "inline-block");
+                            $('#checkPin').css("display", "none");
+                            $('#imgavailability').attr("src", "images/unavail.png");
+                        }
                     }
-                    else {
-                        $('#lbldisplayresult').text("Not available at pincode : " + pincode);
-                        $('#displayResult').css("display", "inline-block");
-                        $('#checkPin').css("display", "none");
-                        $('#imgavailability').attr("src", "../images/unavail.png");
-                    }
-                }
-            });
+                });
+            }
+            else {
+                $('#lbldisplayresult').text("Not available at " + pincode);
+                $('#displayResult').css("display", "inline-block");
+                $('#checkPin').css("display", "none");
+            }
         }
-        else {
-            $('#lbldisplayresult').text("Not available at " + pincode);
-            $('#displayResult').css("display", "inline-block");
-            $('#checkPin').css("display", "none");
+
+        function Change() {
+            $('#displayResult').css("display", "none");
+            $('#checkPin').css("display", "inline-block");
         }
-    }
 
-    function Change() {
-        $('#displayResult').css("display", "none");
-        $('#checkPin').css("display", "inline-block");
-    }
-
-</script>
-
+    </script>

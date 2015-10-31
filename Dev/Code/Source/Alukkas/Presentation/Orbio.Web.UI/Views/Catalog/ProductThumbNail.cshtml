@@ -1,6 +1,6 @@
 ﻿@model Orbio.Web.UI.Models.Catalog.ProductOverViewModel
 
- <li>
+<li>
     @{
         var baseImageUrl = System.Configuration.ConfigurationManager.AppSettings["ImageServerBaseUrl"];
         var imageUrl = baseImageUrl + this.Model.ImageRelativeUrl;
@@ -13,7 +13,7 @@
                 <div class="item-img have-additional clearfix">
                     <a href="@Url.RouteUrl("Category", new { SeName = this.Model.SeName })?p=pt" class="product-image have-additional">
                         <span class="image-main">
-                            <img src="@imageUrl" alt="@Model.Name" />
+                            <img src="@imageUrl" alt="@Model.Name" border="0" style="border-style:none; -webkit-box-shadow:none;" />
                         </span>
                     </a>
                     <div class="actions">
@@ -56,9 +56,9 @@
                                         {
                                             <s>@this.Model.CurrencyCode.@this.Model.ProductPrice.OldPrice.ToString("#,##0.00")</s>
                                         }
-                                        @if (discountPercentage>0)
-                                        { 
-                                        <p class="pro-off">@discountPercentage.ToString("#,##0")%</p>
+                                        @if (discountPercentage > 0)
+                                        {
+                                            <span class="pro-off">@discountPercentage.ToString("#,##0")% </span>
                                         }
                                     </span>
                                 </div>
@@ -89,3 +89,11 @@
         </div>*@
 
 </li>
+
+<script>
+    arr = document.getElementsByTagName("img");
+    for (i = 0; i < arr.length; i++) {
+        if (arr[i].src == "")
+            arr[i].parentElement.removeChild(arr[i]);
+    }
+</script>

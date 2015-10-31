@@ -121,6 +121,8 @@ namespace Orbio.Core.Data
         public Nullable<decimal> StoneCost { get; set; }
         public Nullable<decimal> MakingCost { get; set; }
         public Nullable<decimal> ProductUnit { get; set; }
+        public bool IsGift { get; set; }
+        public decimal GiftCharge { get; set; }
     
         public virtual ICollection<OrderItem> OrderItems { get; set; }
         public virtual ICollection<Product_ProductAttribute_Mapping> Product_ProductAttribute_Mapping { get; set; }

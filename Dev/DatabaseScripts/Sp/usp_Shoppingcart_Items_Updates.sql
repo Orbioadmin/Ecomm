@@ -34,12 +34,14 @@ BEGIN
 
     SELECT C.value('(CartId)[1]','INT') AS [CartId],
 	C.value('(Quantity)[1]','INT') AS Quantity,
-	C.value('(IsRemove)[1]','bit') AS [IsRemove]
+	C.value('(IsRemove)[1]','bit') AS [IsRemove],
+	C.value('(IsGiftWrapping)[1]','bit') AS [IsGiftWrapping]
     INTO #temptable
     FROM @list.nodes('/ArrayOfShoppingCartItem/ShoppingCartItem') as T(C)
+	select * from #temptable
 
-
-	update sc set Quantity = t.Quantity
+	update sc set Quantity = t.Quantity,
+				  IsGiftWrapping=t.IsGiftWrapping
 		from [dbo].[ShoppingCartItem] sc
 			inner join #temptable t on
 				sc.Id = t.CartId

@@ -162,7 +162,7 @@ namespace Orbio.Services.Admin.Products
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        public int DeleteProductPicture(int Id)
+        public int DeleteProductPicture(int Id,int productId)
         {
             using (var context = new OrbioAdminContext())
             {
@@ -173,7 +173,7 @@ namespace Orbio.Services.Admin.Products
                     {
                         context.Product_Picture_Mapping.Remove(query);
                         context.SaveChanges();
-                        var productPicture = context.Product_Picture_Mapping.Where(p => p.Id > Id).ToList();
+                        var productPicture = context.Product_Picture_Mapping.Where(p => p.Id > Id && p.ProductId==productId).ToList();
                         productPicture.ForEach(a => a.DisplayOrder = (a.DisplayOrder - 1));
                         context.SaveChanges();
                     }

@@ -620,7 +620,7 @@ margin-bottom: 0;
 .detail_descrip p{ font-family: "Calibri"; font-size: 13px; margin: 0; color: #272727; padding-bottom: 3px;}
 .detail_descrip p span{color: #479e0d;}.detail_descrip .star_rt{margin-bottom: 20px;}p.price_rate{ line-height:
   20px; font-size: 26px; color: #272727; padding-top:6px;}
-.detail_descrip s { font-family: "Calibri"; font-size: 13px; color: #272727; margin-bottom: 15px; display: inline-block;}
+.detail_descrip s { font-family: "Calibri"; font-size: 14px; color: #272727; margin-bottom: 15px; display: inline-block;}
 .size_li li{float: left; padding:6px 10px; border-right: 1px #999 solid; color: #272727; font-family: "Calibri"; font-size: 14px; }
 .size_li li a{ color: #272727; font-family: "Calibri"; font-size: 14px;}
 .Buynow{ color: #ffffff; background: #f8c301; border-radius: 3px; border: 0; padding: 3px 22px; font-size: 16px; margin:10px 8px;
@@ -1164,7 +1164,9 @@ li.etalage_zoom_area{left:462px!important;}
 .products-grid .item .item-inner .more-buttons button {
     padding: 8px 15px;
 }
-.image-main img{width: 200px; height: 200px;}
+.image-main img{width: 200px; height: 200px; }
+.col-sm-10 .feature_li.four_items li .item-price {min-height: 42px;}
+.col-sm-10 .feature_li.four_items li{margin: 0px 7px!important;}
 .products-grid .item .item-inner .item-img {
     position: relative;
     margin-bottom: 0px;border-bottom: 1px solid hsl(0, 0%, 80%);
@@ -1286,7 +1288,7 @@ li.etalage_zoom_area{left:462px!important;}
 .shopping_table tr{border-bottom: 1px #f8c301 solid; padding: 10px 0;}
 .shopping_table tr:last-child{border-bottom: 0px #f8c301 solid; }
 .shopping_table td{color: #272727;}
-.shopping_table td img{width: 120px;}
+.shopping_table td img{}
 .shop_promation ul li.promat{padding-top:3px; padding-right: 4px;}
 input#AppliedCouponCode {margin-right: 4px;}
 .shop_promation{background:#d7d7d7;border-bottom: 1px #f8c301 solid; border-top: 1px #f8c301 solid; padding: 10px 0;
@@ -2526,7 +2528,9 @@ font-family: 'PT Sans', sans-serif; font-weight: 700; font-size: 13px;width:70px
   height:100%;
   min-height:100%;
 }
-.second_menu.home .nav.navbar-nav li div.col-sm-3 h3:hover + ul{display:block;}
+td[data-title="Item"] img{width:auto;}.cart-itm input{vertical-align: middle; margin: 0;}
+.cart-itm{background: url('../images/gift-bg.png') no-repeat; height: 33px; line-height: 33px; padding: 0 5px;}
+.second_menu.home.cart-itm .nav.navbar-nav li div.col-sm-3 h3:hover + ul{display:block;}
 .second_menu.home .nav.navbar-nav li div.col-sm-3 ul li{border-bottom:1px #ccc solid;}
 .quan_expect .col-sm-3 span { float: left; vertical-align: middle; padding-right: 10px; padding-top: 2px; font-style: normal; font-weight: bold;}
 .quan_expect .col-sm-3, .quan_expect .col-sm-9{padding-top: 10px; }
@@ -2565,6 +2569,7 @@ span.icon-span:before{content: "";
 .info-inner{text-align: left;}.price-box{position: relative;}.regular-price .price{width: 100%; display: inline-block;}
 .pro-off{background:  url('../images/discount-bg.png') no-repeat; position: absolute; line-height: 33px; font-family: "Calibri_bold"; 
 display:inline-block; width:46px; height:33px; bottom:0; right: 0; margin: 0; text-align: right; padding-right: 5px;}
+.live-cont{margin: 50px 0; background: #E3E3E3;}
 @media screen and (-webkit-min-device-pixel-ratio:0) {
 .size_li li:hover, .size_li li.select {
     padding: 4px 10px;

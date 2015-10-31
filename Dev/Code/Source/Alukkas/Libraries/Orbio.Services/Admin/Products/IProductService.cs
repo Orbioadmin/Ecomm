@@ -66,7 +66,7 @@ namespace Orbio.Services.Admin.Products
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        int DeleteProductPicture(int Id);
+        int DeleteProductPicture(int Id, int productId);
 
         /// <summary>
         /// Insert value to product specification mapping

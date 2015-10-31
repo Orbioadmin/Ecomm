@@ -53,8 +53,9 @@ namespace Orbio.Services.Orders
             var subTotal = GetCartSubTotal(cart, includeDiscounts);
             var taxRates = new Dictionary<int, decimal>();
             var taxAmount = taxCalculationService.CalculateTax(cart, workContext.CurrentCustomer, out taxRates);
+            var shippingAmount = GetShippingGiftTotal(cart);
             //need to add shipping and taxes
-            return subTotal + taxAmount;
+            return subTotal + taxAmount + shippingAmount;
         }
 
         public decimal GetFinalPrice(IShoppingCartItem cartItem, bool includeDiscounts, bool includeQty = true)
@@ -91,18 +92,22 @@ namespace Orbio.Services.Orders
                                   select d).ToList();
 
             discountAmount += GetDiscountAmount(orderDiscounts, subTotal - discountAmount);
-            var coupon = (from d in cart.Discounts
-                          where d.RequiresCouponCode == true
-                          select d).FirstOrDefault();
-
-            if (coupon != null)
-            {
-                discountAmount += GetDiscountAmount(coupon, subTotal - discountAmount);
-            }
-
+            
             return discountAmount;
         }
 
+        public decimal GetShippingGiftTotal(ICart cart)
+        {
+            var totalAmount = 0M;
+            var giftCharges = (from g in cart.ShoppingCartItems
+                               where g.IsGiftWrapping
+                               select g).ToList();
+            foreach (var item in giftCharges)
+            {
+                totalAmount = totalAmount + (item.GiftCharge * item.Quantity);
+            }
+            return totalAmount;
+        }
 
         public decimal GetAllDiscountAmount(ICart cart, out List<int> appliedDiscountIds)
         {
@@ -132,9 +137,25 @@ namespace Orbio.Services.Orders
                           select d).FirstOrDefault();
 
             if (coupon != null)
-            {                
+            {
                 discountAmount += GetDiscountAmount(coupon, subTotal - discountAmount);
                 appliedDiscountIds.Add(coupon.Id);
+            }
+
+            return discountAmount;
+        }
+
+        public decimal GetAllCouponDiscountAmount(ICart cart,string discount)
+        {
+            var discountAmount = 0M;
+            var subTotal = this.GetCartSubTotal(cart, false);
+            var coupon = (from d in cart.Discounts
+                          where d.RequiresCouponCode == true
+                          select d).FirstOrDefault();
+
+            if (coupon != null)
+            {
+                discountAmount += GetDiscountAmount(coupon, subTotal - Convert.ToDecimal(discount));
             }
 
             return discountAmount;

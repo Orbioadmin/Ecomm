@@ -178,6 +178,13 @@
                     $("#taxcat").hide();
                 }
             });
+            $('.enablingGift').on('click', function () {
+                if ($('.enablingGift').is(':checked')) {
+                    $(".show_div_check_gift_true").show();
+                } else {
+                    $(".show_div_check_gift_true").hide();
+                }
+            });
 
             $('.enablingInv').on('change', function () {
                 var invValue = $("#ManageInventoryMethodId").val();
@@ -193,6 +200,12 @@
                 $(".show_div_check_true").show();
             } else {
                 $(".show_div_check_true").hide();
+            }
+
+            if ($('.enablingGift').is(':checked')) {
+                $(".show_div_check_gift_true").show();
+            } else {
+                $(".show_div_check_gift_true").hide();
             }
 
             if ($('.enablingTax').is(':checked')) {

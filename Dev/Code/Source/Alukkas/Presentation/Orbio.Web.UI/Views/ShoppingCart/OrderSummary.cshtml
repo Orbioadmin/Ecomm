@@ -2,13 +2,15 @@
 
 @{
     var count = 0;
-    
+    int chkCount = 0;
     if(this.Model.Count > 0)
     {
     foreach (var scpd in this.Model)
     {
+      
         var scpdr = string.Format("ShoppingCartItems[{0}].IsRemove", count);
         var scpdqu = string.Format("ShoppingCartItems[{0}].SelectedQuantity", count);
+        var spcdGift = string.Format("ShoppingCartItems[{0}].IsGiftWrapping", count);
         var scpdId = string.Format("ShoppingCartItems[{0}].Id", count);
         var scpdTotalprice = string.Format("ShoppingCartItems[{0}].Totalprice", count);
         var scpdRemove = string.Format("ShoppingCartItems[{0}].IsRemove", count);
@@ -16,7 +18,8 @@
         var scpdcartid = string.Format("ShoppingCartItems[{0}].CartId", count);
         var scpdcartstatus = string.Format("ShoppingCartItems[{0}].ShoppingCartStatus", count);
         <tr>
-            <td data-title="Item"><a href="@Url.RouteUrl("Category", new { SeName = scpd.SeName })?p=pt"><img src="@scpd.DefaultPicture.ImageUrl"></a></td>
+            <td data-title="Item"><a href="@Url.RouteUrl("Category", new { SeName = scpd.SeName })?p=pt"><img src="@scpd.DefaultPicture.ImageUrl"></a>
+            </td>
             <td data-title="Title">
                 <a class="cartitem" href="@Url.RouteUrl("Category", new { SeName = scpd.SeName })?p=pt">
                     @scpd.Name
@@ -25,8 +28,18 @@
                 {
                     @attribute.TextPrompt<span>:</span>
                     @attribute.Values[0].Name
-                     @((attribute != scpd.ProductVariantAttributes.Last()) ? ", " : "")
+                    @((attribute != scpd.ProductVariantAttributes.Last()) ? ", " : "")
                 }
+               
+                @if (scpd.IsGift)
+                {
+                    chkCount++;
+                    <div class="cart-itm">
+                        @Html.CheckBox(spcdGift, scpd.IsGiftWrapping) Gift this item
+                        @Html.Hidden(spcdGift, scpd.IsGiftWrapping)
+                    </div>
+                }
+               
             </td>
             <td data-title="Remove" class="remove-table">@Html.CheckBox(scpdr, scpd.IsRemove)@*<input type="checkbox" name="Remove" value="@scpd.CartId" />*@</td>
             <td data-title="Quantity" class="quantity-table">
@@ -68,8 +81,7 @@
             <td data-title="Total Price">@scpd.CurrencyCode.@totalPrice.ToString("#,##0.00") </td>
         </tr>
                 count++;
-                }
-                
+                }  
           }
     else
     {

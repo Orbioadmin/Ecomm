@@ -26,7 +26,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE PROCEDURE [dbo].[usp_Product_InsertProduct] (
-@productXml xml,@productId INT OUTPUT)
+@productXml xml,@productId int OUTPUT)
 AS    
 BEGIN
 BEGIN TRY
@@ -48,8 +48,8 @@ BEGIN TRY
 ,[DisableWishlistButton],[AvailableForPreOrder],[PreOrderAvailabilityStartDateTimeUtc],[CallForPrice],[Price]
 ,[OldPrice],[ProductCost],[SpecialPrice],[SpecialPriceStartDateTimeUtc],[SpecialPriceEndDateTimeUtc],[CustomerEntersPrice]
 ,[MinimumCustomerEnteredPrice],[MaximumCustomerEnteredPrice],[HasTierPrices],[HasDiscountsApplied],[Weight],[Length]
-,[Width],[Height],[AvailableStartDateTimeUtc],[AvailableEndDateTimeUtc],[DisplayOrder],[Published],[Deleted]
-,[CreatedOnUtc],[UpdatedOnUtc],[ProductUnit])
+,[Width],[Height],[AvailableStartDateTimeUtc],[AvailableEndDateTimeUtc],[DisplayOrder],[Published],[IsGift]
+,[GiftCharge],[Deleted],[CreatedOnUtc],[UpdatedOnUtc],[ProductUnit])
 	select d.value('(ProductTypeId)[1]','int' ), 
 	   d.value('(ParentGroupedProductId)[1]','int' ),
 	   d.value('(VisibleIndividually)[1]','bit' ),
@@ -135,6 +135,8 @@ BEGIN TRY
 					d.value('(AvailableEndDateTimeUtc)[1]','DATETIME' ), 
 					 d.value('(DisplayOrder)[1]','int' ),
 					 d.value('(Published)[1]','bit' ),
+					 d.value('(IsGift)[1]','bit' ) as IsGift,
+					 d.value('(GiftCharge)[1]','decimal(18,4)' ) as GiftCharge,
 					 0,--Deleted
 					 d.value('(CreatedOnUtc)[1]','DATETIME' ),
 					 d.value('(UpdatedOnUtc)[1]','DATETIME' ),
@@ -192,7 +194,9 @@ BEGIN TRY
 	from @productXml.nodes('/ProductDetail/discountIds/int') O(D)
 	
    COMMIT TRAN
+   
 	 RETURN @productId
+	 
  END TRY
 
  BEGIN CATCH

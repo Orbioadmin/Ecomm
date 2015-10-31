@@ -426,7 +426,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
 
         public ActionResult DeleteProductPicture(int id, int productId)
         {
-            _productService.DeleteProductPicture(id);
+            _productService.DeleteProductPicture(id, productId);
             return RedirectToAction("Edit", "Product", new { id = productId });
         }
 

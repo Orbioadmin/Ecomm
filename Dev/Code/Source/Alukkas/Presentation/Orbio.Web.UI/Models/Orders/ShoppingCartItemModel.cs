@@ -19,8 +19,6 @@ namespace Orbio.Web.UI.Models.Orders
            
         }
 
-       
-
         public ShoppingCartItemModel(ShoppingCartItem productDetail)
             : base(productDetail)
         {
@@ -89,6 +87,7 @@ namespace Orbio.Web.UI.Models.Orders
 
             this.AttributeXml = productDetail.AttributesXml;
             this.IsRemove = false;
+            this.IsGiftWrapping = productDetail.IsGiftWrapping;
             this.ShoppingCartStatus = productDetail.ShoppingCartStatus;
             this.UpdatedOnUtc = productDetail.UpdatedOnUtc;
         }
@@ -104,6 +103,8 @@ namespace Orbio.Web.UI.Models.Orders
         public ShoppingCartStatus ShoppingCartStatus { get; set; }
 
         public DateTime UpdatedOnUtc { get; set; }
+
+        public bool IsGiftWrapping { get; set; }
 
         public string UnitPrice
         {

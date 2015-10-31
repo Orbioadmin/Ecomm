@@ -99,6 +99,8 @@ BEGIN TRY
 					d.value('(AvailableEndDateTimeUtc)[1]','DATETIME' ) as AvailableEndDateTimeUtc, 
 					 d.value('(DisplayOrder)[1]','int' ) as DisplayOrder,
 					 d.value('(Published)[1]','bit' ) as Published,
+					 d.value('(IsGift)[1]','bit' ) as IsGift,
+					 d.value('(GiftCharge)[1]','decimal(18,4)' ) as GiftCharge,
 					  d.value('(ProductUnit)[1]','decimal(18,4)' ) as ProductUnit
 					  Into #tempProductDetail
 		from @productXml.nodes('/ProductDetail/product') O(d)
@@ -123,7 +125,7 @@ BEGIN TRY
 ,p.[Weight] = toproduct.[Weight],p.[Length]=toproduct.[Length]
 ,p.[Width]=toproduct.Width,p.[Height]=toproduct.Height,p.[AvailableStartDateTimeUtc]=toproduct.AvailableStartDateTimeUtc
 ,p.[AvailableEndDateTimeUtc]=toproduct.AvailableEndDateTimeUtc,p.[DisplayOrder]=toproduct.DisplayOrder,p.[Published]=toproduct.Published
-,p.[ProductUnit]=toproduct.ProductUnit
+,p.[ProductUnit]=toproduct.ProductUnit,p.IsGift=toproduct.IsGift,p.GiftCharge=toproduct.GiftCharge
 	from [Product] p
 		 inner join #tempProductDetail toproduct on
 				p.Id = toproduct.Id
@@ -174,7 +176,6 @@ BEGIN TRY
 	select @productId, O.D.value('.','int' )		 
 	from @productXml.nodes('/ProductDetail/discountIds/int') O(D)
 	
-	
    COMMIT TRAN
 	 
  END TRY
@@ -202,6 +203,7 @@ BEGIN TRY
 				);
 	END CATCH
 END
+
 
 
 

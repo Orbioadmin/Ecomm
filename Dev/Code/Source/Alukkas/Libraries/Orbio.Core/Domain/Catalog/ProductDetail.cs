@@ -99,7 +99,20 @@ namespace Orbio.Core.Domain.Catalog
         [DataMember]
         public string AllowedQuantities { get; set; }
 
-       
+        /// <summary>
+        /// Gets or sets IsGift
+        /// </summary>
+        public bool IsGift { get; set; }
 
+        /// <summary>
+        /// Gets or sets Gift Charge
+        /// </summary>
+        public decimal GiftCharge { get; set; }
+
+
+        /// <summary>
+        /// Gets or sets IsGift
+        /// </summary>
+        public bool IsGiftWrapping { get; set; }
     }
 }

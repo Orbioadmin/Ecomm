@@ -173,8 +173,11 @@ namespace Orbio.Web.UI.Areas.Admin
                 .ForMember(ev => ev.AvailableStartDateTimeUtc, m => m.MapFrom(a => a.AvailableStartDateTimeUtc))
                 .ForMember(ev => ev.AvailableEndDateTimeUtc, m => m.MapFrom(a => a.AvailableEndDateTimeUtc))
                 .ForMember(ev => ev.Published, m => m.MapFrom(a => a.Published))
+                .ForMember(ev => ev.IsGift, m => m.MapFrom(a => a.IsGift))
+                .ForMember(ev => ev.GiftCharge, m => m.MapFrom(a => ((a.IsGift == true)? a.GiftCharge: 0)))
                 .ForMember(ev => ev.CreatedOnUtc, m => m.MapFrom(a => a.CreatedOnUtc))
                 .ForMember(ev => ev.UpdatedOnUtc, m => m.MapFrom(a => a.UpdatedOnUtc));
+               
             return Mapper.Map<Product, Orbio.Core.Domain.Admin.Product.Product>(model);
         }
 

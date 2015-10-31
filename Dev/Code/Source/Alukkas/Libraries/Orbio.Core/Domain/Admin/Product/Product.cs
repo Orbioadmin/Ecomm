@@ -95,6 +95,8 @@ namespace Orbio.Core.Domain.Admin.Product
         public int DisplayOrder { get; set; }
         public bool Published { get; set; }
         public bool Deleted { get; set; }
+        public bool IsGift { get; set; }
+        public decimal GiftCharge { get; set; }
         public System.DateTime CreatedOnUtc { get; set; }
         public System.DateTime UpdatedOnUtc { get; set; }
         public Nullable<decimal> ProductUnit { get; set; }

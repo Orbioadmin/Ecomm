@@ -15,6 +15,8 @@ namespace Orbio.Services.Orders
         decimal GetFinalPrice(IShoppingCartItem cartItem, bool includeDiscounts, bool includeQty);
         decimal GetUnitPrice(IShoppingCartItem cartItem);
         decimal GetAllDiscountAmount(ICart cart);
+        decimal GetShippingGiftTotal(ICart cart);
+        decimal GetAllCouponDiscountAmount(ICart cart,string discount);
         decimal GetAllDiscountAmount(ICart cart, out List<int> appliedDiscountIds);
         decimal GetDiscountAmount(IEnumerable<IDiscount> discounts, decimal finalPrice);
         decimal GetDiscountAmount(IEnumerable<IDiscount> discounts, decimal finalPrice, out int appliedDiscountId);

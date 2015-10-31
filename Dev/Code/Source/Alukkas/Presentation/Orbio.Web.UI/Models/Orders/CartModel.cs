@@ -77,11 +77,19 @@ namespace Orbio.Web.UI.Models.Orders
              }
          }
 
+        public string ShippingAmount
+         {
+             get
+             {
+                 return priceCalculationService.GetShippingGiftTotal(this).ToString("#,##0.00");
+             }
+         }
+
          public string SubTotal
          {
              get
              {
-                 return priceCalculationService.GetCartSubTotal(this, false).ToString("#,##0.00");
+                 return priceCalculationService.GetCartSubTotal(this, true).ToString("#,##0.00");
              }
          }
 
@@ -90,6 +98,14 @@ namespace Orbio.Web.UI.Models.Orders
              get
              {
                  return priceCalculationService.GetAllDiscountAmount(this).ToString("#,##0.00");
+             }
+         }
+
+        public string CouponDiscountAmount
+         {
+             get
+             {
+                 return priceCalculationService.GetAllCouponDiscountAmount(this,DiscountAmount).ToString("#,##0.00");
              }
          }
 
