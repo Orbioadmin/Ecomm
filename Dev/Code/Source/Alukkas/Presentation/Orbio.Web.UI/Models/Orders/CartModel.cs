@@ -89,7 +89,7 @@ namespace Orbio.Web.UI.Models.Orders
          {
              get
              {
-                 return priceCalculationService.GetCartSubTotal(this, true).ToString("#,##0.00");
+                 return priceCalculationService.GetCartSubTotal(this, false).ToString("#,##0.00");
              }
          }
 

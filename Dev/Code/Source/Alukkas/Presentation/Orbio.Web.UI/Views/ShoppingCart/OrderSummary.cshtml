@@ -73,8 +73,8 @@
                 @Html.Hidden(scpdRemove, scpd.IsRemove)  @Html.Hidden(scpdQuantity, scpd.SelectedQuantity) @Html.Hidden(scpdcartid, scpd.CartId) @Html.Hidden(scpdcartstatus, scpd.ShoppingCartStatus)
             <td data-title="Item Price">
            @{
-               var productAmount=Convert.ToDecimal(scpd.UnitPrice) - scpd.DiscountAmount;
-               var totalPrice=Convert.ToDecimal(scpd.TotalPrice)-(scpd.DiscountAmount * (Convert.ToDecimal(scpd.SelectedQuantity)));
+               var productAmount=Convert.ToDecimal(scpd.UnitPrice);
+               var totalPrice=Convert.ToDecimal(scpd.TotalPrice);
            }
             
             @scpd.CurrencyCode.@productAmount.ToString("#,##0.00") @Html.Hidden(scpdId, scpd.Id)  @*@Html.Hidden(scpdTotalprice, scpd.TotalPrice)*@</td>
