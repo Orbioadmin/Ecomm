@@ -36,6 +36,8 @@ namespace Orbio.Core.Domain.Orders
             this.TaxCategoryId = cartItem.TaxCategoryId;
             this.FinalPrice = cartItem.FinalPrice;
             this.ProductId = cartItem.ProductId;
+            this.IsGiftWrapping = cartItem.IsGiftWrapping;
+            this.GiftCharge = cartItem.GiftCharge;
             this.AttributeXml = cartItem.AttributeXml;
             this.PriceDetailXml = cartItem.PriceDetailXml;
         }
@@ -66,6 +68,9 @@ namespace Orbio.Core.Domain.Orders
 
         public string PriceDetailXml { get; set; }
 
+        public bool IsGiftWrapping { get; set; }
+
+        public decimal GiftCharge { get; set; }
  
     }
 }

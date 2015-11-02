@@ -69,8 +69,8 @@ BEGIN TRY
 		d.value('(OrderSubtotalExclTax)[1]','decimal(18,4)' ),
 		 d.value('(OrderSubTotalDiscountInclTax)[1]','decimal(18,4)' ),
 		  d.value('(OrderSubTotalDiscountExclTax)[1]','decimal(18,4)' ),
-		  0, --OrderShippingInclTax
-		  0,--OrderShippingExclTax
+		  d.value('(OrderShippingInclTax)[1]','decimal(18,4)' ),
+		  d.value('(OrderShippingExclTax)[1]','decimal(18,4)' ),
 		  0,--PaymentMethodAdditionalFeeInclTax
 		  0,--PaymentMethodAdditionalFeeExclTax
 		  d.value('(TaxRates)[1]','nvarchar(100)' ) ,

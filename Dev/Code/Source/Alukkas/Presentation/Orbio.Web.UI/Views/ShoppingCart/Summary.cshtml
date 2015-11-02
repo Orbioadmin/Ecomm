@@ -9,11 +9,12 @@
                 <tbody>
                     @foreach (var item in this.Model)
                     {
+                        var totalPrice=(Convert.ToDecimal(item.TotalPrice)-(Convert.ToDecimal(item.DiscountAmount)*Convert.ToDecimal(item.SelectedQuantity))).ToString("#,##0.00");
                         <tr>
                             <td><img src="@item.DefaultPicture.ImageUrl"></td>
                             <td>@item.Name</td>
                             <td>@item.SelectedQuantity</td>
-                            <td align="center">@item.CurrencyCode.@item.TotalPrice</td>
+                            <td align="center">@item.CurrencyCode.@totalPrice</td>
                         </tr>
                     }
 

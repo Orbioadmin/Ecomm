@@ -24,6 +24,8 @@ namespace Orbio.Web.UI.Models.Orders
                                                PriceDetailXml = sci.PriceDetailXml,
                                                Id = sci.ProductId,
                                                Discounts = sci.Discounts,
+                                               IsGiftWrapping=sci.IsGiftWrapping,
+                                               GiftCharge=sci.GiftCharge,
                                                ProductVariantAttributes = (from pva in sci.Attributes
                                                                            select new ProductVariantAttributeModel
                                                                            {

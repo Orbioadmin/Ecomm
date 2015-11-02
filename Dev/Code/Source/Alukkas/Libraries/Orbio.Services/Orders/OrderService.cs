@@ -135,12 +135,12 @@ namespace Orbio.Services.Orders
                      var taxRates = new Dictionary<decimal, decimal>();
                      var orderTaxTotal = taxCalculationService.CalculateTax(cart, customer, out taxRates);
                      var orderSubTotal = priceCalculationService.GetCartSubTotal(cart, false);
-
+                     var shippingSubTotal = priceCalculationService.GetShippingGiftTotal(cart);
                      var orderTotal = priceCalculationService.GetOrderTotal(cart, true);
                      var shippingStatus = ShippingStatus.NotYetShipped;
 
                      order = GetOrder(processOrderRequest, shippingMethodName, shippingRateComputationMethodSystemName, orderDiscountAmount, taxRates, orderTaxTotal,
-                         orderSubTotal, orderTotal, shippingStatus);
+                         orderSubTotal, orderTotal, shippingStatus, shippingSubTotal);
 
 
                      SetOrderItems(customer, cart, order);
@@ -259,6 +259,7 @@ namespace Orbio.Services.Orders
                  //decimal taxRate = decimal.Zero;
                  decimal scUnitPrice = priceCalculationService.GetFinalPrice(sci, true, false);
                  decimal scSubTotal = priceCalculationService.GetFinalPrice(sci, true, true);
+                 decimal subTotal = priceCalculationService.GetFinalPrice(sci, false, true);
                  decimal sciUnitTaxAmount = taxCalculationService.CalculateTax(scUnitPrice, sci.TaxCategoryId, customer);
                  var sciSubTotalTaxAmount = taxCalculationService.CalculateTax(scSubTotal, sci.TaxCategoryId, customer);
                  decimal scUnitPriceInclTax = scUnitPrice + sciUnitTaxAmount;
@@ -268,7 +269,7 @@ namespace Orbio.Services.Orders
 
                  //discounts
                  //Discount scDiscount = null;
-                 decimal discountAmount = priceCalculationService.GetDiscountAmount(sci.Discounts, scSubTotal);
+                 decimal discountAmount = priceCalculationService.GetDiscountAmount(sci.Discounts, subTotal);
                  decimal discountAmountInclTax = discountAmount; // _taxService.GetProductPrice(sc.Product, discountAmount, true, customer, out taxRate);
                  decimal discountAmountExclTax = discountAmount; //.GetProductPrice(sc.Product, discountAmount, false, customer, out taxRate);
                  //if (scDiscount != null && !appliedDiscounts.ContainsDiscount(scDiscount))
@@ -306,7 +307,7 @@ namespace Orbio.Services.Orders
              }
          }
 
-         private Order GetOrder(ProcessOrderRequest processOrderRequest, string shippingMethodName, string shippingRateComputationMethodSystemName, decimal orderDiscountAmount, Dictionary<decimal, decimal> taxRates, decimal orderTaxTotal, decimal orderSubTotal, decimal orderTotal, ShippingStatus shippingStatus)
+         private Order GetOrder(ProcessOrderRequest processOrderRequest, string shippingMethodName, string shippingRateComputationMethodSystemName, decimal orderDiscountAmount, Dictionary<decimal, decimal> taxRates, decimal orderTaxTotal, decimal orderSubTotal, decimal orderTotal, ShippingStatus shippingStatus, decimal shippingSubTotal)
          {
              var order = new Order()
              {
@@ -320,8 +321,8 @@ namespace Orbio.Services.Orders
                  OrderSubtotalExclTax = orderSubTotal,
                  OrderSubTotalDiscountInclTax = orderDiscountAmount, //currently no distinction between ordersubtotal or ordertotal discounts madhu mb
                  OrderSubTotalDiscountExclTax = orderDiscountAmount,
-                 OrderShippingInclTax = decimal.Zero, //no shipping yet
-                 OrderShippingExclTax = decimal.Zero,
+                 OrderShippingInclTax = shippingSubTotal, //no shipping yet, this is gift charge binding
+                 OrderShippingExclTax = shippingSubTotal,
                  //////////// PaymentMethodAdditionalFeeInclTax = paymentAdditionalFeeInclTax,
                  //////////// PaymentMethodAdditionalFeeExclTax = paymentAdditionalFeeExclTax,
                  TaxRates = taxRates.Count>0? (from kv in taxRates
