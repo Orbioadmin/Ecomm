@@ -29,11 +29,12 @@
     function toggleOrderItemEdit@(item.ProductId)(editMode) {
         if (editMode) {
             $('#pvQuantity@(item.ProductId)').removeAttr("disabled");
-           
+
             $('#btnDeleteOrderItem@(item.ProductId)').hide();
             $('#btnEditOrderItem@(item.ProductId)').hide();
             $('#btnSaveOrderItem@(item.ProductId)').show();
             $('#btnCancelOrderItem@(item.ProductId)').show();
+            $('#giftcheck@(item.ProductId)').show();
         }
         else {
             $('#pvQuantity@(item.ProductId)').attr("disabled", "disabled");
@@ -41,6 +42,7 @@
             $('#btnEditOrderItem@(item.ProductId)').show();
             $('#btnSaveOrderItem@(item.ProductId)').hide();
             $('#btnCancelOrderItem@(item.ProductId)').hide();
+            $('#giftcheck@(item.ProductId)').hide();
         }
     }
                 </script>
@@ -51,7 +53,16 @@
             {
                    @:<tr class="first_row">
                    @:<td class="varient_align">
-                   @:<img src="@item.ImageUrl" alt="ring" width="58" height="53"><label style="vertical-align: top;"><label class="diamond">@item.ProductName </label></br><label class="varient">@(new HtmlString(item.AttributeInfo))</label></label>
+                   @:<img src="@item.ImageUrl" alt="ring" width="58" height="53">
+                    <label style="vertical-align: top;">
+                        <label class="diamond">@item.ProductName </label><br />
+                        <label class="varient">@(new HtmlString(item.AttributeInfo))</label>
+                        @if (item.IsGift)
+                        {
+                        <img src="~/Areas/Admin/images/gift.png" alt="ring" style="border:none;">
+                        <input type="checkbox" name="giftcheck@(item.ProductId)" id="giftcheck@(item.ProductId)" checked="@item.IsGift" value="@item.IsGift" style="display:none;" />
+                        }
+                    </label>
                    @:</td>
                    @:<td class="quantity" style="padding-top: 22px;"><input name="pvQuantity@(item.ProductId)" type="number" value="@item.Quantity" id="pvQuantity@(item.ProductId)" class="adminInput" style="width: 40px;height: 23px;padding: 0 4px;border-radius: 2px;border: 1px solid #ccc;" /></td>
                    @:<td class="number" style="padding-top: 22px;">@item.UnitPriceExclTaxValue.ToString("#,##0.00")</td><td class="number" style="padding-top: 22px;">@item.DiscountExclTaxValue.ToString("#,##0.00")</td>
@@ -76,7 +87,18 @@
                   {
                 using (Html.BeginForm("EditOrderItem", "Order", new { id = this.Model.Id }, FormMethod.Post, new { Id = "formEditOrderItem" + item.ProductId }))
                  {
-                    @:<tr class="second_row"><td class="varient_align"><img src="@item.ImageUrl" alt="ring" width="58" height="53"><label style="vertical-align: top;"><label class="diamond">@item.ProductName </label></br><label class="varient">@(new HtmlString(item.AttributeInfo))</label></label></td><td class="quantity" style="padding-top: 22px;"><input name="pvQuantity@(item.ProductId)" type="number" value="@item.Quantity" id="pvQuantity@(item.ProductId)" class="adminInput" style="width: 40px;height: 23px;padding: 0 4px;border-radius: 2px;border: 1px solid #ccc;" /></td><td class="number" style="padding-top: 22px;">@item.UnitPriceExclTaxValue.ToString("#,##0.00")</td><td class="number" style="padding-top: 22px;">@item.DiscountExclTaxValue.ToString("#,##0.00")</td><td class="number" style="padding-top: 22px;">@item.SubTotalExclTaxValue.ToString("#,##0.00")</td>
+                    @:<tr class="second_row">
+                    <td class="varient_align">
+                    <img src="@item.ImageUrl" alt="ring" width="58" height="53">
+                    <label style="vertical-align: top;"><label class="diamond">@item.ProductName </label><br/>
+                     <label class="varient">@(new HtmlString(item.AttributeInfo))</label>
+                        @if (item.IsGift)
+                        {
+                            <img src="~/Areas/Admin/images/gift.png" alt="ring" style="border:none;">
+                            @:<input type="checkbox" id="giftcheck@(item.ProductId)" checked="@item.IsGift" value="@item.IsGift" style="display:none;" />
+                        }</label>
+                    </td>
+            <td class="quantity" style="padding-top: 22px;"><input name="pvQuantity@(item.ProductId)" type="number" value="@item.Quantity" id="pvQuantity@(item.ProductId)" class="adminInput" style="width: 40px;height: 23px;padding: 0 4px;border-radius: 2px;border: 1px solid #ccc;" /></td><td class="number" style="padding-top: 22px;">@item.UnitPriceExclTaxValue.ToString("#,##0.00")</td><td class="number" style="padding-top: 22px;">@item.DiscountExclTaxValue.ToString("#,##0.00")</td><td class="number" style="padding-top: 22px;">@item.SubTotalExclTaxValue.ToString("#,##0.00")</td>
                    if (Model.OrderStatus != "Complete" || Model.PaymentStatus!="Paid" || Model.ShippingStatus!="Delivered")
                    {
                     @:<td class="action_ring">

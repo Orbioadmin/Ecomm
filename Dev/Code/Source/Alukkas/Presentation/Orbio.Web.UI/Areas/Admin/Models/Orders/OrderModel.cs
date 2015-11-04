@@ -170,6 +170,8 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Orders
 
         public Shipping shipping { get; set; }
 
+       
+
         //billing info
 
         public Address BillingAddress { get; set; }
@@ -253,6 +255,7 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Orders
             //public DownloadActivationType DownloadActivationType { get; set; }
             public bool IsDownloadActivated { get; set; }
             public Guid LicenseDownloadGuid { get; set; }
+            public bool IsGift { get; set; }
         }
 
         public partial class TaxRate

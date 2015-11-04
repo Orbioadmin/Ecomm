@@ -146,6 +146,8 @@ namespace Orbio.Core.Domain.Orders
         /// </summary>
         public Address ShippingAddress { get; set; }
 
+
+        public Orbio.Core.Domain.Discounts.Discount DiscountDetails { get; set; }
         /// <summary>
         /// Gets or sets the customer tax display type identifier
         /// </summary>

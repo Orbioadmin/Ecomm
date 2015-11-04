@@ -94,9 +94,9 @@ BEGIN TRY
 	   Quantity, UnitPriceInclTax, UnitPriceExclTax, PriceInclTax,
 	   PriceExclTax, DiscountAmountInclTax, DiscountAmountExclTax,
 	   OriginalProductCost,AttributeDescription,AttributesXml,DownloadCount,
-		IsDownloadActivated,PriceDetailXml)
+		IsDownloadActivated,PriceDetailXml,IsGift)
 	  SELECT O.D.value('(OrderItemGuid)[1]','nvarchar(100)'), @orderId,
-		  O.D.value('(./Product/Id)[1]','INT'),
+		 (select ProductId from dbo.ufn_GetOrderProductId(@orderXml,O.D.value('(OrderItemGuid)[1]','nvarchar(100)'))),
 		  O.D.value('(Quantity)[1]','INT'),
 		  O.D.value('(UnitPriceInclTax)[1]','decimal(18,4)' ),
 		   O.D.value('(UnitPriceExclTax)[1]','decimal(18,4)' ),
@@ -109,7 +109,8 @@ BEGIN TRY
 		  O.D.value('(AttributesXml)[1]','nvarchar(max)'),
 		  0, --DownloadCount
 		  0, --IsDownloadActivated,
-		  O.D.value('(PriceDetailXml)[1]','nvarchar(max)')
+		  O.D.value('(PriceDetailXml)[1]','nvarchar(max)'),
+		  O.D.value('(IsGift)[1]','bit')
 		   FROM
 	  @orderXml.nodes('/Order/OrderItems/OrderItem') O(D)
 	  

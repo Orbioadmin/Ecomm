@@ -240,7 +240,8 @@ namespace Orbio.Services.Admin.Orders
                 throw new ArgumentNullException("order");
 
             //now delete an order
-            _orderService.DeleteOrder(order);
+            //_orderService.DeleteOrder(order);
+            _orderService.Delete(order.OrderId);
 
             //add a note
             order.OrderNotes.Clear();

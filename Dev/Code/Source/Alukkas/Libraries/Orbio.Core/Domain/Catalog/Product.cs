@@ -127,5 +127,10 @@ namespace Orbio.Core.Domain.Catalog
         [DataMember]
         public bool Published { get; set; }
 
+        /// <summary>
+        /// gets or sets the GiftCharge
+        /// </summary>
+        public decimal GiftCharge { get; set; }
+
     }
 }

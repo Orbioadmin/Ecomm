@@ -52,6 +52,8 @@ BEGIN TRY
 		d.value('(OrderSubtotalExclTax)[1]','decimal(18,4)' ) as OrderSubtotalExclTax,
 		 d.value('(OrderSubTotalDiscountInclTax)[1]','decimal(18,4)' ) as OrderSubTotalDiscountInclTax,
 		  d.value('(OrderSubTotalDiscountExclTax)[1]','decimal(18,4)' ) as OrderSubTotalDiscountExclTax,
+		  d.value('(OrderShippingInclTax)[1]','decimal(18,4)' ) as OrderShippingInclTax,
+		  d.value('(OrderShippingExclTax)[1]','decimal(18,4)' ) as OrderShippingExclTax,
 		  d.value('(TaxRates)[1]','nvarchar(100)' ) as TaxRates,
 		   d.value('(OrderTax)[1]','decimal(18,4)' ) as OrderTax,
 		  d.value('(OrderDiscount)[1]','decimal(18,4)' ) as OrderDiscount,
@@ -68,6 +70,8 @@ BEGIN TRY
 		 ord.OrderSubtotalInclTax = torder.OrderSubtotalInclTax,ord.OrderSubtotalExclTax = torder.OrderSubtotalExclTax,
 		 ord.OrderSubTotalDiscountInclTax = torder.OrderSubTotalDiscountInclTax,
 		 ord.OrderSubTotalDiscountExclTax = torder.OrderSubTotalDiscountExclTax,
+		 ord.OrderShippingExclTax=torder.OrderShippingExclTax,
+		 ord.OrderShippingInclTax=torder.OrderShippingInclTax,
 		 ord.TaxRates = torder.TaxRates,ord.OrderTax = torder.OrderTax, ord.OrderDiscount = torder.OrderDiscount, 
 		 ord.ShippingMethod = torder.ShippingMethod,ord.OrderTotal = torder.OrderTotal,ord.AllowStoringCreditCardNumber = torder.AllowStoringCreditCardNumber,
 		 ord.CreatedOnUtc = torder.CreatedOnUtc,ord.Deleted = torder.Deleted
@@ -75,8 +79,8 @@ BEGIN TRY
 		 inner join #tempOrderDetail torder on
 				ord.Id = torder.OrderId
 				
-				--stock updation from admin 
-		 EXEC usp_StockQuantity_Reset @storeId, @orderXml	
+		--stock updation from admin 
+		 EXEC usp_StockQuantity_Reset @storeId, @orderXml		
 				
 		SELECT O.D.value('(OrderItemGuid)[1]','nvarchar(100)') as OrderItemGuid,
 		 (select ProductId from dbo.ufn_GetOrderProductId(@orderXml,O.D.value('(OrderItemGuid)[1]','nvarchar(100)'))) as ProductId,

@@ -28,6 +28,7 @@ using DotNet.Highcharts.Helpers;
 using Orbio.Web.UI.Areas.Admin.Models.Catalog;
 using PagedList;
 using Newtonsoft.Json;
+using Orbio.Services.Admin.Discount;
 
 namespace Orbio.Web.UI.Areas.Admin.Controllers
 {
@@ -45,13 +46,13 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         private readonly IShippingService _shippingService;
         private readonly IBestSellerService _sellerService;
         private readonly INeverPurchasedReportService _neverPurchasedService;
-
+        public readonly IDiscountService _discountService;
         #endregion
 
         #region Ctor
 
         public OrderController(Orbio.Services.Admin.Orders.IOrderService orderService, IOrderReportService orderReportService, IAddressService addressService, IDateTimeHelper dateTimeHelper, ICountryService CountryService, IStateProvinceService stateProvinceService, IOrderProcessingService orderProcessingService, IMessageService messageService, IShippingService shippingService,
-            IBestSellerService _sellerService, INeverPurchasedReportService _neverPurchasedService)
+            IBestSellerService _sellerService, INeverPurchasedReportService _neverPurchasedService, IDiscountService _discountService)
         {
             this._orderService = orderService;
             this._addressService = addressService;
@@ -64,6 +65,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             this._shippingService = shippingService;
             this._sellerService = _sellerService;
             this._neverPurchasedService = _neverPurchasedService;
+            this._discountService = _discountService;
         }
 
         #endregion
@@ -580,7 +582,9 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                     //DownloadActivationType = orderItem.Product.DownloadActivationType,
                     IsDownloadActivated = orderItem.IsDownloadActivated,
 
-                    ImageUrl = baseUrl+orderItem.Product.ImageRelativeUrl
+                    ImageUrl = baseUrl+orderItem.Product.ImageRelativeUrl,
+
+                    IsGift=orderItem.IsGift
                 };
                 //license file
                 //if (orderItem.LicenseDownloadId.HasValue)
@@ -706,6 +710,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                 return RedirectToAction("List");
 
             _orderProcessingService.DeleteOrder(order);
+            
             return RedirectToAction("List");
         }
 
@@ -767,9 +772,10 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                 quantity = orderItem.Quantity;
             if (quantity > 0)
             {
+                //orderItem.Quantity = quantity;
+                order = GetOrderDetails(order, orderItem, quantity, false, false);
+                //order.OrderDiscount = GetOrderItemDiscount(orderItem, false);
                 orderItem.Quantity = quantity;
-                order.OrderTotal = GetFinalPrice(order, orderItem, false,false);
-                order.OrderDiscount = GetOrderItemDiscount(orderItem, false);
                 orderItem.PriceExclTax = GetOrderItemPrice(orderItem, false);
                 orderItem.PriceInclTax = GetOrderItemPrice(orderItem, true);
                 var orderNote = new OrderNote()
@@ -784,8 +790,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             }
             else
             {
-                order.OrderTotal = GetFinalPrice(order, orderItem, false, true);
-                order.OrderDiscount = (order.OrderDiscount - orderItem.DiscountAmountExclTax);
+                order = GetOrderDetails(order, orderItem, quantity, true, false);
                 var orderNote = new OrderNote()
                 {
                     DisplayToCustomer = false,
@@ -823,9 +828,8 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             var orderItem = order.OrderItems.FirstOrDefault(x => x.Product.Id == orderItemId);
             if (orderItem == null)
                 throw new ArgumentException("No order item found with the specified id");
-            
-            order.OrderTotal = GetFinalPrice(order, orderItem, false,true);
-            order.OrderDiscount = (order.OrderDiscount - orderItem.DiscountAmountExclTax);
+
+            order = GetOrderDetails(order, orderItem, 0, false, true);
             var orderNote = new OrderNote()
             {
                 DisplayToCustomer = false,
@@ -961,27 +965,103 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         }
         #endregion
 
-        public decimal GetFinalPrice(Order order,OrderItem orderItem,bool inclTax,bool del)
+        public Order GetOrderDetails(Order order, OrderItem orderItem, int quantity, bool inclTax, bool del)
         {
-            order.OrderTotal = (inclTax != true) ? (order.OrderTotal - orderItem.PriceExclTax) : (order.OrderTotal - orderItem.PriceInclTax);
-            if (del)
-            { 
-                return order.OrderTotal; 
+            if (!del)
+            {
+                decimal subTotal = GetSubTotal(order,orderItem, quantity, inclTax, del);
+                decimal  discountAmount = GetOrderItemDiscount(order,orderItem, quantity, inclTax, del);
+                decimal shippingCharge = GetOrderGiftCharge(order,orderItem, quantity, inclTax, del);
+                var promotionalDiscountAmount = (order.DiscountDetails != null) ? ((order.DiscountDetails.UsePercentage) ? ((subTotal * order.DiscountDetails.DiscountPercentage) / 100) : order.DiscountDetails.DiscountAmount) : 0;
+                order.OrderTotal = (subTotal - promotionalDiscountAmount) + shippingCharge;
+                order.OrderSubtotalExclTax = GetSubTotal(order, orderItem, quantity, false, del);
+                 order.OrderSubtotalInclTax = GetSubTotal(order, orderItem, quantity, true, del);
+                 order.OrderSubTotalDiscountExclTax = GetOrderItemDiscount(order, orderItem, quantity, false, del) + promotionalDiscountAmount;
+                 order.OrderSubTotalDiscountInclTax = GetOrderItemDiscount(order, orderItem, quantity, true, del) + promotionalDiscountAmount;
+                 order.OrderDiscount = GetOrderItemDiscount(order, orderItem, quantity, false, del) + promotionalDiscountAmount;
+                order.OrderShippingExclTax = GetOrderGiftCharge(order, orderItem, quantity, false, del);
+                order.OrderShippingInclTax = GetOrderGiftCharge(order, orderItem, quantity, true, del);
             }
-            decimal orderSubtotal = GetOrderItemPrice(orderItem, inclTax);
-            return order.OrderTotal = order.OrderTotal + orderSubtotal;
+            if(del)
+            {
+                decimal subTotal = GetSubTotal(order,orderItem, quantity, inclTax, del);
+                decimal  discountAmount = GetOrderItemDiscount(order,orderItem, quantity, inclTax, del);
+                decimal shippingCharge = GetOrderGiftCharge(order,orderItem, quantity, inclTax, del);
+            
+                var promotionalDiscountAmount = (order.DiscountDetails != null) ? ((order.DiscountDetails.UsePercentage) ? ((subTotal * order.DiscountDetails.DiscountPercentage) / 100) : order.DiscountDetails.DiscountAmount) : 0;
+                order.OrderTotal = (subTotal - promotionalDiscountAmount) + shippingCharge;
+                order.OrderSubTotalDiscountExclTax = GetOrderItemDiscount(order,orderItem, quantity, false, del);
+                order.OrderSubTotalDiscountInclTax = GetOrderItemDiscount(order,orderItem, quantity, true, del);
+                order.OrderDiscount = GetOrderItemDiscount(order, orderItem, quantity, false, del);
+                order.OrderShippingExclTax = GetOrderGiftCharge(order, orderItem, quantity, false, del);
+                order.OrderShippingInclTax = GetOrderGiftCharge(order, orderItem, quantity, true, del);
+            }
+            return order;
+            //order.OrderTotal = (inclTax != true) ? (order.OrderTotal - orderItem.PriceExclTax) : (order.OrderTotal - orderItem.PriceInclTax);
+            //if (del)
+            //{ 
+            //    return order.OrderTotal; 
+            //}
+            //decimal orderSubtotal = GetOrderItemPrice(orderItem, inclTax);
+            //return order.OrderTotal = order.OrderTotal + orderSubtotal;
         }
         public decimal GetOrderItemPrice(OrderItem orderItem, bool inclTax)
         {
             decimal orderItemPrice = (inclTax != true) ? (orderItem.Quantity * orderItem.UnitPriceExclTax) : (orderItem.Quantity * orderItem.UnitPriceInclTax);
             return orderItemPrice;
         }
-        public decimal GetOrderItemDiscount(OrderItem orderItem, bool inclTax)
+        public decimal GetOrderItemDiscount(Order order, OrderItem orderItem, int quantity, bool inclTax,bool del)
         {
-            decimal orderItemDiscount = (inclTax != true) ? (orderItem.Quantity * orderItem.DiscountAmountExclTax) : (orderItem.Quantity * orderItem.DiscountAmountInclTax);
+            decimal orderItemDiscount = 0;
+            foreach (var item in order.OrderItems)
+            {
+                if (!del)
+                {
+                    orderItemDiscount = orderItemDiscount + Convert.ToDecimal((item.Id == orderItem.Id && quantity > 0)
+                        ? (inclTax != true) ? (orderItem.DiscountAmountExclTax * quantity) : (orderItem.DiscountAmountInclTax * quantity)
+                        : ((!inclTax) ? item.DiscountAmountExclTax * item.Quantity : item.DiscountAmountInclTax * item.Quantity));
+                }
+                else
+                {
+                    orderItemDiscount = orderItemDiscount + Convert.ToDecimal((item.Id == orderItem.Id) ? 0 : ((!inclTax) ? item.DiscountAmountExclTax : item.DiscountAmountInclTax));
+                }
+            }
+
             return orderItemDiscount;
         }
-
+        public decimal GetOrderGiftCharge(Order order, OrderItem orderItem, int quantity, bool inclTax, bool del)
+        {
+            decimal orderItemGiftCharge=0;
+            foreach (var item in order.OrderItems)
+            {
+                if (!del)
+                {
+                    decimal giftCharge = (item.IsGift) ? (item.Product.GiftCharge) : 0;
+                    orderItemGiftCharge = orderItemGiftCharge + Convert.ToDecimal((item.Id == orderItem.Id) ? (quantity * giftCharge) : (giftCharge * item.Quantity));
+                }
+                else
+                {
+                    orderItemGiftCharge = orderItemGiftCharge + Convert.ToDecimal((item.Id == orderItem.Id) ? 0 : (item.Product.GiftCharge * item.Quantity));
+                }
+            }
+            return orderItemGiftCharge;
+        }
+        public decimal GetSubTotal(Order order, OrderItem orderItem, int quantity, bool inclTax, bool del)
+        {
+            decimal subTotal = 0;
+            foreach (var item in order.OrderItems)
+            {
+                if (!del)
+                {
+                    subTotal = subTotal + Convert.ToDecimal((item.Id == orderItem.Id && quantity > 0) ? ((!inclTax) ? (orderItem.UnitPriceExclTax * quantity) : (orderItem.UnitPriceInclTax * quantity)) : ((!inclTax) ? item.PriceExclTax : item.PriceInclTax));
+                }
+                else
+                {
+                    subTotal = subTotal + Convert.ToDecimal((item.Id == orderItem.Id) ? 0 : ((!inclTax) ? item.PriceExclTax : item.PriceInclTax));
+                }
+            }
+            return subTotal;
+        }
 
         #region Best Sellers
 

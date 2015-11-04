@@ -22,9 +22,9 @@ AS --WITH RETURNS NULL ON NULL INPUT
 BEGIN 
 	   DECLARE @xmlResult xml;
 	 
-		--WITH XMLNAMESPACES ('http://schemas.datacontract.org/2004/07/Orbio.Core.Domain.OrderItem' AS ns)
-		SELECT @xmlResult = (Select ori.Id,ori.OrderItemGuid,ori.OrderId,ori.ProductId,ori.Quantity,ori.UnitPriceExclTax,ori.UnitPriceInclTax,ori.PriceInclTax,ori.PriceExclTax,ori.DiscountAmountInclTax,
-					ori.OriginalProductCost,ori.AttributeDescription,ori.AttributesXml,ori.DownloadCount,ori.IsDownloadActivated,ori.LicenseDownloadId,
+		--WITH XMLNAMESPACES ('http://schemas.datacontract.org/2004/07/Orbio.Core.Domain.Catalog' AS ns)
+		SELECT @xmlResult = (Select ori.Id,ori.OrderItemGuid,ori.OrderId,ori.ProductId,ori.Quantity,ori.UnitPriceExclTax,ori.UnitPriceInclTax,ori.PriceInclTax,ori.PriceExclTax,ori.DiscountAmountInclTax,ori.DiscountAmountExclTax,
+					ori.OriginalProductCost,ori.AttributeDescription,ori.AttributesXml,ori.DownloadCount,ori.IsDownloadActivated,ori.LicenseDownloadId,ori.IsGift,
 					ori.ItemWeight,ori.PriceDetailXml,[dbo].[ufn_GetOrderProductDetails](ori.Id) from OrderItem ori inner join [Order] ord on ori.OrderId = ord.Id
 					inner join Product prd on ori.ProductId = prd.Id where ori.OrderId = @orderId for xml path('OrderItem'),Root('OrderItems'),type)
 		    

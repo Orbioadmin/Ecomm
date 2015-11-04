@@ -153,6 +153,19 @@ namespace Orbio.Services.Admin.Orders
             UpdateOrder(order);
         }
 
+        public virtual void Delete(int orderId)
+        {
+            using(var context= new OrbioAdminContext())
+            {
+                var result = context.Orders.Include("OrderItems").Where(m => m.Id == orderId && !m.Deleted).FirstOrDefault();
+                if(result!=null)
+                {
+                    result.Deleted = true;
+                    context.SaveChanges();
+                }
+            }
+        }
+
         /// <summary>
         /// Search recurring payments
         /// </summary>

@@ -401,6 +401,7 @@
     <Content Include="Areas\Admin\images\form.jpg" />
     <Content Include="Areas\Admin\images\form.png" />
     <Content Include="Areas\Admin\images\form1.jpg" />
+    <Content Include="Areas\Admin\images\gift.png" />
     <Content Include="Areas\Admin\images\ico-content.png" />
     <Content Include="Areas\Admin\images\image sprites.png" />
     <Content Include="Areas\Admin\images\menu_line.png" />

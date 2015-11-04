@@ -62,6 +62,12 @@ namespace Orbio.Services.Admin.Orders
         void DeleteOrder(Orbio.Core.Domain.Orders.Order order);
 
         /// <summary>
+        /// Deletes an order
+        /// </summary>
+        /// <param name="order">The order</param>
+        void Delete(int orderId);
+
+        /// <summary>
         /// Search recurring payments
         /// </summary>
         /// <param name="customerId">The customer identifier; 0 to load all records</param>

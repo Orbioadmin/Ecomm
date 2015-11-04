@@ -45,7 +45,7 @@ SELECT @XmlResult = (select Id as 'OrderId',OrderGuid,StoreId,CustomerId,Billing
 		 OrderSubtotalInclTax,OrderSubtotalExclTax,OrderSubTotalDiscountInclTax,
 		 OrderSubTotalDiscountExclTax,OrderShippingInclTax, OrderShippingExclTax,
 		 PaymentMethodAdditionalFeeInclTax,PaymentMethodAdditionalFeeExclTax,
-		 TaxRates,OrderTax, OrderDiscount, OrderTotal,RefundedAmount, RewardPointsWereAdded,
+		 TaxRates,OrderTax, OrderDiscount, OrderTotal,RefundedAmount, RewardPointsWereAdded,ShippingMethod,
 		 CustomerLanguageId,AffiliateId, CustomerIp, AllowStoringCreditCardNumber,
 		 Deleted, CreatedOnUtc,[dbo].[ufn_GetAdminOrderProductDetails](Id),[dbo].[ufn_GetAdminOrderNoteDetails](@Id),[dbo].[ufn_GetAdminCustomerDetail](Id),
 -- Get Billing Address
@@ -57,7 +57,13 @@ inner join dbo.StateProvince sta on addr.StateProvinceId = sta.Id where cus.Id =
 (select addr.Id as 'ShippingAddress_Id',addr.FirstName,addr.LastName,addr.Email,addr.Company,addr.Address1,addr.Address2,
 addr.ZipPostalCode,addr.PhoneNumber,addr.FaxNumber,con.Name 'Country' ,sta.Name 'States' from dbo.Customer cus inner join dbo.Address addr 
 on cus.ShippingAddress_Id = addr.Id inner join dbo.Country con on addr.CountryId = con.Id
-inner join dbo.StateProvince sta on addr.StateProvinceId = sta.Id where cus.Id = @customerId for xml path('ShippingAddress'),type) 
+inner join dbo.StateProvince sta on addr.StateProvinceId = sta.Id where cus.Id = @customerId for xml path('ShippingAddress'),type),
+
+--Get Discount Details
+(select d.* from DiscountUsageHistory duh 
+inner join Discount d on duh.DiscountId=d.Id 
+where duh.OrderId=@Id for xml path('DiscountDetails'),type)
+ 
 from [dbo].[Order] where Id = @Id 
 for XML path('Order'))
 
