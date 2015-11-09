@@ -99,6 +99,9 @@ ProductUnit as 'ProductUnit',
    OrderMaximumQuantity,
    AllowedQuantities,
    TaxCategoryId,
+   MetaDescription,
+   MetaKeywords,
+   MetaTitle,
    dbo.ufn_GetProductDiscounts(product.Id)
 
 from [dbo].[Product] product 

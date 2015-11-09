@@ -101,7 +101,9 @@ BEGIN TRY
 					 d.value('(Published)[1]','bit' ) as Published,
 					 d.value('(IsGift)[1]','bit' ) as IsGift,
 					 d.value('(GiftCharge)[1]','decimal(18,4)' ) as GiftCharge,
-					  d.value('(ProductUnit)[1]','decimal(18,4)' ) as ProductUnit
+					  d.value('(ProductUnit)[1]','decimal(18,4)' ) as ProductUnit,
+					  --d.value('(CreatedOnUtc)[1]','DATETIME') as CreatedOnUtc,
+					  d.value('(UpdatedOnUtc)[1]','DATETIME') as UpdatedOnUtc
 					  Into #tempProductDetail
 		from @productXml.nodes('/ProductDetail/product') O(d)
 	
@@ -125,7 +127,7 @@ BEGIN TRY
 ,p.[Weight] = toproduct.[Weight],p.[Length]=toproduct.[Length]
 ,p.[Width]=toproduct.Width,p.[Height]=toproduct.Height,p.[AvailableStartDateTimeUtc]=toproduct.AvailableStartDateTimeUtc
 ,p.[AvailableEndDateTimeUtc]=toproduct.AvailableEndDateTimeUtc,p.[DisplayOrder]=toproduct.DisplayOrder,p.[Published]=toproduct.Published
-,p.[ProductUnit]=toproduct.ProductUnit,p.IsGift=toproduct.IsGift,p.GiftCharge=toproduct.GiftCharge
+,p.[ProductUnit]=toproduct.ProductUnit,p.IsGift=toproduct.IsGift,p.GiftCharge=toproduct.GiftCharge,p.UpdatedOnUtc=toproduct.UpdatedOnUtc
 	from [Product] p
 		 inner join #tempProductDetail toproduct on
 				p.Id = toproduct.Id

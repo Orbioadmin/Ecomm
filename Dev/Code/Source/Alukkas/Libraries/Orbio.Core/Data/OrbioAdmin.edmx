@@ -484,6 +484,8 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <Property Name="StoneCost" Type="decimal" Precision="18" Scale="4" />
           <Property Name="MakingCost" Type="decimal" Precision="18" Scale="4" />
           <Property Name="ProductUnit" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="IsGift" Type="bit" Nullable="false" />
+          <Property Name="GiftCharge" Type="decimal" Precision="18" Scale="4" Nullable="false" />
         </EntityType>
         <EntityType Name="Product_Category_Mapping">
           <Key>
@@ -877,18 +879,6 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Category_Picture">
-          <End Role="Picture" Type="Self.Picture" Multiplicity="1" />
-          <End Role="Category" Type="Self.Category" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Picture">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Category">
-              <PropertyRef Name="PictureId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_CheckoutAttribute_TaxCategory">
           <End Role="TaxCategory" Type="Self.TaxCategory" Multiplicity="1" />
           <End Role="CheckoutAttribute" Type="Self.CheckoutAttribute" Multiplicity="*" />
@@ -902,7 +892,9 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Discount_AppliedToCategories_Category">
-          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Category" Type="Self.Category" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Discount_AppliedToCategories" Type="Self.Discount_AppliedToCategories" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Category">
@@ -938,7 +930,9 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Product_PriceComponent_Mapping_PriceComponents">
-          <End Role="PriceComponent" Type="Self.PriceComponent" Multiplicity="1" />
+          <End Role="PriceComponent" Type="Self.PriceComponent" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Product_PriceComponent_Mapping" Type="Self.Product_PriceComponent_Mapping" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PriceComponent">
@@ -950,7 +944,9 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Product_PriceComponent_Mapping_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Product_PriceComponent_Mapping" Type="Self.Product_PriceComponent_Mapping" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
@@ -962,7 +958,9 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Product_ProductComponent_Mapping_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Product_ProductComponent_Mapping" Type="Self.Product_ProductComponent_Mapping" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
@@ -974,7 +972,9 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Product_ProductComponent_Mapping_ProductComponents">
-          <End Role="ProductComponent" Type="Self.ProductComponent" Multiplicity="1" />
+          <End Role="ProductComponent" Type="Self.ProductComponent" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Product_ProductComponent_Mapping" Type="Self.Product_ProductComponent_Mapping" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ProductComponent">
@@ -1503,10 +1503,6 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           </AssociationSet>
           <AssociationSet Name="FK_Category_CategoryTemplate" Association="Self.FK_Category_CategoryTemplate">
             <End Role="CategoryTemplate" EntitySet="CategoryTemplate" />
-            <End Role="Category" EntitySet="Category" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Category_Picture" Association="Self.FK_Category_Picture">
-            <End Role="Picture" EntitySet="Picture" />
             <End Role="Category" EntitySet="Category" />
           </AssociationSet>
           <AssociationSet Name="FK_CheckoutAttribute_TaxCategory" Association="Self.FK_CheckoutAttribute_TaxCategory">
@@ -2257,6 +2253,8 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <NavigationProperty Name="Product_Category_Mapping" Relationship="OrbioAdminModel.ProductCategory_Product" FromRole="Product" ToRole="Product_Category_Mapping" />
           <NavigationProperty Name="Product_Manufacturer_Mapping" Relationship="OrbioAdminModel.ProductManufacturer_Product" FromRole="Product" ToRole="Product_Manufacturer_Mapping" />
           <NavigationProperty Name="ProductReviews" Relationship="OrbioAdminModel.ProductReview_Product" FromRole="Product" ToRole="ProductReview" />
+          <Property Name="IsGift" Type="Boolean" Nullable="false" />
+          <Property Name="GiftCharge" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
         </EntityType>
         <Association Name="Customer_BillingAddress">
           <End Type="OrbioAdminModel.Address" Role="Address" Multiplicity="0..1" />
@@ -3590,6 +3588,8 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="OrbioAdminModel.Product">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="GiftCharge" ColumnName="GiftCharge" />
+                <ScalarProperty Name="IsGift" ColumnName="IsGift" />
                 <ScalarProperty Name="ProductUnit" ColumnName="ProductUnit" />
                 <ScalarProperty Name="MakingCost" ColumnName="MakingCost" />
                 <ScalarProperty Name="StoneCost" ColumnName="StoneCost" />

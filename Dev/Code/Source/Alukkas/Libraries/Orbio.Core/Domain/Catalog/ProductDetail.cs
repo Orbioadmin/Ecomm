@@ -114,5 +114,20 @@ namespace Orbio.Core.Domain.Catalog
         /// Gets or sets IsGift
         /// </summary>
         public bool IsGiftWrapping { get; set; }
+
+        /// <summary>
+        /// Gets or sets MetaDescription
+        /// </summary>
+        public string MetaDescription{ get; set; }
+
+        /// <summary>
+        /// Gets or sets MetaKeywords
+        /// </summary>
+        public string MetaKeywords{ get; set; }
+
+        /// <summary>
+        /// Gets or sets MetaTitle
+        /// </summary>
+        public string MetaTitle{ get; set; }
     }
 }

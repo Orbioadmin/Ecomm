@@ -26,7 +26,7 @@ namespace Orbio.Services.Orders
             var subTotal = 0.00M;
             foreach (var sci in cart.ShoppingCartItems)
             {
-                subTotal += GetFinalDiscountPrice(sci, includeDiscounts);
+                subTotal += GetFinalPrice(sci, true);
             }
            
             if (includeDiscounts)
@@ -65,13 +65,13 @@ namespace Orbio.Services.Orders
             return includeQty? unitPrice * cartItem.Quantity: unitPrice;
         }
 
-        public decimal GetFinalDiscountPrice(IShoppingCartItem cartItem, bool includeDiscounts, bool includeQty = true)
-        {
-            var unitPrice = GetUnitPrice(cartItem);
-            //unitPrice = includeDiscounts ? unitPrice - GetDiscountAmount(cartItem.Discounts, unitPrice) : unitPrice;
-            unitPrice = unitPrice - GetDiscountAmount(cartItem.Discounts, unitPrice);
-            return includeQty ? unitPrice * cartItem.Quantity : unitPrice;
-        }
+        //public decimal GetFinalDiscountPrice(IShoppingCartItem cartItem, bool includeDiscounts, bool includeQty = true)
+        //{
+        //    var unitPrice = GetUnitPrice(cartItem);
+        //    //unitPrice = includeDiscounts ? unitPrice - GetDiscountAmount(cartItem.Discounts, unitPrice) : unitPrice;
+        //    unitPrice = unitPrice - GetDiscountAmount(cartItem.Discounts, unitPrice);
+        //    return includeQty ? unitPrice * cartItem.Quantity : unitPrice;
+        //}
 
         public decimal GetUnitPrice(IShoppingCartItem cartItem)
         {
@@ -84,7 +84,8 @@ namespace Orbio.Services.Orders
             {
                 pa += pva;
             }
-            return cartItem.Price + pa ;
+            var unitPrice = cartItem.Price + pa ;
+            return unitPrice;
         }
 
         public decimal GetAllDiscountAmount(ICart cart)

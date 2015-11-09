@@ -124,14 +124,14 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             {
                 var name = form["txtname" + Id];
                 var active = form["drpactive" + Id];
-                var systemRole = form["drpsystemrole" + Id];
+                //var systemRole = form["drpsystemrole" + Id];
                 var customerRole = new CustomerRole
                 {
                     Id = Id,
                     Name = name,
                     SystemName = name,
                     Active = Convert.ToBoolean(active),
-                    IsSystemRole = Convert.ToBoolean(systemRole),
+                    //IsSystemRole = Convert.ToBoolean(systemRole),
                 };
                 int result = customerRoleService.AddOrUpdateCustomerRole(customerRole);
             }

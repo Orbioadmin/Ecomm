@@ -572,7 +572,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                 var baseUrl = ConfigurationManager.AppSettings["ImageServerBaseUrl"];
                 var orderItemModel = new OrderModel.OrderItemModel()
                 {
-                    //Id = orderItem.Id,
+                    Id = orderItem.Id,
                     ProductId = orderItem.Product.Id,
                     ProductName = orderItem.Product.Name,
                     //Sku = orderItem.Product.FormatSku(orderItem.AttributesXml, _productAttributeParser),
@@ -762,8 +762,9 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             foreach (var formValue in form.AllKeys)
                 if (formValue.StartsWith("btnSaveOrderItem", StringComparison.InvariantCultureIgnoreCase))
                     orderItemId = Convert.ToInt32(formValue.Substring("btnSaveOrderItem".Length));
+           
 
-            var orderItem = order.OrderItems.FirstOrDefault(x => x.Product.Id == orderItemId);
+            var orderItem = order.OrderItems.FirstOrDefault(x => x.Id == orderItemId);
             if (orderItem == null)
                 throw new ArgumentException("No order item found with the specified id");
 
@@ -810,8 +811,8 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             return RedirectToAction("Edit", "Order", new { id = order.OrderId });
         }
 
-        [HttpPost]
-        public ActionResult DeleteOrderItem(int id, FormCollection form)
+        //[HttpPost]
+        public ActionResult DeleteOrderItem(int id, int itemId)
         {
 
             var order = _orderService.GetOrderById(id);
@@ -820,12 +821,12 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                 return RedirectToAction("List");
 
             //get order item identifier
-            int orderItemId = 0;
-            foreach (var formValue in form.AllKeys)
-                if (formValue.StartsWith("btnDeleteOrderItem", StringComparison.InvariantCultureIgnoreCase))
-                    orderItemId = Convert.ToInt32(formValue.Substring("btnDeleteOrderItem".Length));
+            //int orderItemId = 0;
+            //foreach (var formValue in form.AllKeys)
+            //    if (formValue.StartsWith("btnDeleteOrderItem", StringComparison.InvariantCultureIgnoreCase))
+            //        orderItemId = Convert.ToInt32(formValue.Substring("btnDeleteOrderItem".Length));
 
-            var orderItem = order.OrderItems.FirstOrDefault(x => x.Product.Id == orderItemId);
+            var orderItem = order.OrderItems.FirstOrDefault(x => x.Id == itemId);
             if (orderItem == null)
                 throw new ArgumentException("No order item found with the specified id");
 

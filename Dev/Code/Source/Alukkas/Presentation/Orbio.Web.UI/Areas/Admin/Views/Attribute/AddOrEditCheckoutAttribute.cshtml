@@ -21,7 +21,7 @@
             <span class="edit_order_details"><span class="edit_order_icon"></span><a href="" class="add_new_check">EDIT CHECKOUT ATTRIBUTE - @Model.Name </a> <a href="@Url.Action("GetCheckoutAttribute", "Attribute")" class="back_to_checkout" style="top:0px;text-transform:none;font-size: small;color: #0082c7;">(back to checkout attribute list) </a></span>
             <span class="back_to_order" style="padding-top:0px">
                 <input type="submit" value="Save" class="add_cat_button">
-                <a href="@Url.Action("DeleteCheckoutAttribute", "Attribute", new { Id = Model.Id })"> <input type="button" value="Delete" class="delete_cat_button" onclick="return confirm('are you sure');"></a>
+                <a href="@Url.Action("DeleteCheckoutAttribute", "Attribute", new { Id = Model.Id })"> <input type="button" value="Delete" class="delete_cat_button" onclick="return confirm('Are you sure you want to delete?');"></a>
             </span>
         }
      </div>

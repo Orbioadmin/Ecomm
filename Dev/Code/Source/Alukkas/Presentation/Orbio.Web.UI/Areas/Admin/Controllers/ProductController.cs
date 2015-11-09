@@ -150,8 +150,8 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         public Orbio.Core.Domain.Admin.Product.ProductDetail CreateOrUpdateProduct(Orbio.Web.UI.Areas.Admin.Models.Product.ProductModel model)
         {
             var product = model.ToEntity();
-            product.CreatedOnUtc = DateTime.UtcNow;
-            product.UpdatedOnUtc = DateTime.UtcNow;
+            product.CreatedOnUtc = DateTime.Now;
+            product.UpdatedOnUtc = DateTime.Now;
             var productDetails = new Orbio.Core.Domain.Admin.Product.ProductDetail
             {
                 product = product.ToDomainModel(),

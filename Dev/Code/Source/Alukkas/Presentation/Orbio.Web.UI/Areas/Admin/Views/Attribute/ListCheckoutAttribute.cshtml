@@ -37,7 +37,7 @@
                     <td class="align_center">@item.DisplayOrder</td>
                     <td class="align_center">
                         <a href="@Url.Action("EditCheckoutAttribute", "Attribute", new { Id=item.Id })"><label class="edit_ring"></label></a>
-                        <a href="@Url.Action("DeleteCheckoutAttribute", "Attribute", new { Id=item.Id })"><label label class="delete_ring" onclick=" return confirm('Are You Sure'); "></label></a>
+                        <a href="@Url.Action("DeleteCheckoutAttribute", "Attribute", new { Id=item.Id })"><label label class="delete_ring" onclick=" return confirm('Are you sure you want to delete'); "></label></a>
                     </td>
                 </tr>
                     }

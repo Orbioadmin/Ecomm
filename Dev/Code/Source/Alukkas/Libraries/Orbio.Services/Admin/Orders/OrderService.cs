@@ -119,7 +119,7 @@ namespace Orbio.Services.Admin.Orders
         {
             if (order == null)
                 throw new ArgumentNullException("order");
-
+            UpdateOrderNotes(order);
             bool result = UpdateOrderDetail(order);
 
             return result;

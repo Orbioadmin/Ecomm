@@ -77,36 +77,38 @@
                         else
                         {
                             @:<tr class="second_row rowItemsSpec" id="@item.Id">
-                            count = 1;
+                        count = 1;
                         }
-                     using (Html.BeginForm("EditProductSpecification", "Product", new { Id = @item.Id }, FormMethod.Post, new { Id = "formEditCustomerRole" + item.Id }))
-                      {
-                        <td class="align_center" style="cursor: move;">@item.SpecificationAttributeOption.SpecificationAttribute.Name</td>
-                        <td class="align_center" style="cursor: move;">@item.SpecificationAttributeOption.Name</td>
-                        <td class="align_center" style="cursor: move;">@item.SubTitle</td>
-                        <td class="align_center" style="cursor: move;">
-                        <label class="@(item.AllowFiltering ? "img_sprite1" : "img_sprite")" name="lblfilter@(item.Id)" id="lblfilter@(item.Id)"></label>
-                        <select name="AddSpecificationAttributeModel_AllowFiltering@(item.Id)" id="AddSpecificationAttributeModel_AllowFiltering@(item.Id)" value="@item.AllowFiltering" style="display:none;">
-                        <option value="True">True</option>
-                        <option value="False">False</option>
-                        </select>
-                        </td>
-                        <td class="align_center" style="cursor: move;">
-                        <label class="@(item.ShowOnProductPage ? "img_sprite1" : "img_sprite")" name="lblshopp@(item.Id)" id="lblshopp@(item.Id)"></label>
-                        <select name="AddSpecificationAttributeModel_ShowOnProductPage@(item.Id)" id="AddSpecificationAttributeModel_ShowOnProductPage@(item.Id)" value="@item.ShowOnProductPage" style="display:none;">
-                        <option value="True">True</option>
-                        <option value="False">False</option>
-                        </select>
-                        </td>
-                        <td class="action_ring">
-                        <input type="submit" name="btnSaveSpecItem@(item.Id)" value="" id="btnSaveSpecItem@(item.Id)" class="edit_save" style="display:none;" />
-                        <input type="submit" name="btnCancelOrderItem@(item.Id)" value="" onclick="toggleOrderItemEdit@(item.Id)(false);return false; " id="btnCancelOrderItem@(item.Id)" class="edit_cancel" style="display:none;" />
-                        <input type="button" name="btnEditOrderItem@(item.Id)" value="" onclick="toggleOrderItemEdit@(item.Id)(true);return false; " id="btnEditOrderItem@(item.Id)" class="edit_ring" />
-                        <a href="@Url.Action("DeleteSpecificationAttribute", "Product", new { id = item.Id,productId=item.ProductId })"><input type="button" name="btnDeleteOrderItem@(item.Id)" value="" id="btnDeleteOrderItem@(item.Id)" class="delete_ring" onclick=" return confirm('Are You Sure'); " /></a>
-                        </td>
+                        using (Html.BeginForm("EditProductSpecification", "Product", new { Id = item.Id }, FormMethod.Post, new { Id = "formEditCustomerRole" + item.Id }))
+                        {
+
+                            <td class="align_center" style="cursor: move;">@item.SpecificationAttributeOption.SpecificationAttribute.Name</td>
+                            <td class="align_center" style="cursor: move;">@item.SpecificationAttributeOption.Name</td>
+                            <td class="align_center" style="cursor: move;">@item.SubTitle</td>
+                            <td class="align_center" style="cursor: move;">
+                                <label class="@(item.AllowFiltering ? "img_sprite1" : "img_sprite")" name="lblfilter@(item.Id)" id="lblfilter@(item.Id)"></label>
+                                <select name="AddSpecificationAttributeModel_AllowFiltering@(item.Id)" id="AddSpecificationAttributeModel_AllowFiltering@(item.Id)" value="@item.AllowFiltering" style="display:none;">
+                                    <option value="True">True</option>
+                                    <option value="False">False</option>
+                                </select>
+                            </td>
+                            <td class="align_center" style="cursor: move;">
+                                <label class="@(item.ShowOnProductPage ? "img_sprite1" : "img_sprite")" name="lblshopp@(item.Id)" id="lblshopp@(item.Id)"></label>
+                                <select name="AddSpecificationAttributeModel_ShowOnProductPage@(item.Id)" id="AddSpecificationAttributeModel_ShowOnProductPage@(item.Id)" value="@item.ShowOnProductPage" style="display:none;">
+                                    <option value="True">True</option>
+                                    <option value="False">False</option>
+                                </select>
+                            </td>
+                            <td class="action_ring">
+                                <input type="submit" name="btnSaveSpecItem@(item.Id)" value="" id="btnSaveSpecItem@(item.Id)" class="edit_save" style="display:none;" />
+                                <input type="submit" name="btnCancelOrderItem@(item.Id)" value="" onclick="toggleOrderItemEdit@(item.Id)(false);return false; " id="btnCancelOrderItem@(item.Id)" class="edit_cancel" style="display:none;" />
+                                <input type="button" name="btnEditOrderItem@(item.Id)" value="" onclick="toggleOrderItemEdit@(item.Id)(true);return false; " id="btnEditOrderItem@(item.Id)" class="edit_ring" />
+                                <a href="@Url.Action("DeleteSpecificationAttribute", "Product", new { id = item.Id,productId=item.ProductId })"><input type="button" name="btnDeleteOrderItem@(item.Id)" value="" id="btnDeleteOrderItem@(item.Id)" class="delete_ring" onclick=" return confirm('Are you sure you want to delete'); " /></a>
+                            </td>
+
+                        }
+                        @:</tr>
                     }
-                    @:</tr>
-                }
                 </tbody>
             </table>
         </div>

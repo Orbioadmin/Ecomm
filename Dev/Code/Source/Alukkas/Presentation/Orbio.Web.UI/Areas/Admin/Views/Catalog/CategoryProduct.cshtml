@@ -31,7 +31,7 @@
                         <td class="varient_align">@item.Name</td>
                         <td class="varient_align" style="text-align:center"><label class="@(item.IsFeaturedProduct?"img_sprite1" : "img_sprite")"></label></td>
                         <td class="varient_align" style="text-align:center">@item.DisplayOrder</td>
-                        <td class="varient_align" style="text-align:center"><a style="cursor:pointer" href="@Url.Action("DeleteCategoryProduct", "Catalog", new { Id = item.CategoryId, cId = item.Id })" onclick=" return confirm('Are You Sure'); "><label class="delete_ring"></label></a></td>
+                        <td class="varient_align" style="text-align:center"><a style="cursor:pointer" href="@Url.Action("DeleteCategoryProduct", "Catalog", new { Id = item.CategoryId, cId = item.Id })" onclick=" return confirm('Are you sure you want to delete'); "><label class="delete_ring"></label></a></td>
                         @:</tr>
                             }
                 }

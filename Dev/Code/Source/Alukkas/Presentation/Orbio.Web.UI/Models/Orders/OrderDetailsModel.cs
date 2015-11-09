@@ -20,6 +20,7 @@ namespace Orbio.Web.UI.Models.Orders
                  if (orderDetails != null && orderDetails.Count > 0)
                  {
                      this.OrderedProductDetail = (from p in orderDetails
+                                                  orderby p.OrderNumber descending
                                                   select new OrderSummaryModel(p)).ToList();
                  }
              }

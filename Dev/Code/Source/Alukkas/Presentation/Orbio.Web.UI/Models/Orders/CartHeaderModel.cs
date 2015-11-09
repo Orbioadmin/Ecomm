@@ -8,5 +8,7 @@ namespace Orbio.Web.UI.Models.Orders
     public class CartHeaderModel
     {
         public int ItemCount { get; set; }
+
+        public int WishListItemCount { get; set; }
     }
 }

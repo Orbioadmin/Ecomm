@@ -29,7 +29,7 @@
                         <td>@item.IsPreSelected</td>
                         <td>@item.DisplayOrder</td>
                         <td><a href="@Url.Action("EditCheckoutAttributeValue", "Attribute", new { Id=item.Id,AttrId=Model.Id })"><label class="edit_ring"></label></a></td>
-                        <td><a href="@Url.Action("DeleteCheckoutAttributeValue", "Attribute", new { Id = item.Id, AttrId = Model.Id })"><label class="delete_ring" onclick=" return confirm('Are You Sure'); "></label></a></td>
+                        <td><a href="@Url.Action("DeleteCheckoutAttributeValue", "Attribute", new { Id = item.Id, AttrId = Model.Id })"><label class="delete_ring" onclick=" return confirm('Are you sure you want to delete'); "></label></a></td>
                     </tr>
                 }
             }

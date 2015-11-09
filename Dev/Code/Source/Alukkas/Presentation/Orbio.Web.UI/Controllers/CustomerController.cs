@@ -385,7 +385,7 @@ namespace Orbio.Web.UI.Controllers
             var model = new OrderDetailsModel(orderService.GetOrderDetails(curCustomer.Id));
             int pageNumber = (page ?? 1);
             int pageSize = Convert.ToInt32(ConfigurationManager.AppSettings["CatelogProductsPageSize"]);
-            return PartialView(model.OrderedProductDetail.ToPagedList(pageNumber, pageSize));
+            return PartialView(model.OrderedProductDetail.ToPagedList(pageNumber, pageSize));  
         }
         
         [HttpGet]

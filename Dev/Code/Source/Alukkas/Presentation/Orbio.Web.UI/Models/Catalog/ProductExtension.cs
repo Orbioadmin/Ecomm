@@ -85,15 +85,15 @@ namespace Orbio.Web.UI.Models.Catalog
         {
             foreach (var pva in productVariants)
             {
-                var preSelectedSetCount = (from pvav in pva.Values
+                var preSelectedSet = (from pvav in pva.Values
                                            where pvav.IsPreSelected == true
-                                           select pvav).Count();
-                if (preSelectedSetCount > 1)
+                                           select pvav);
+                if (preSelectedSet.Count() > 1)
                 {
 
-                    var maxDisplayOrder = pva.Values.Max(pvav => pvav.DisplayOrder);
+                    var maxDisplayOrder = preSelectedSet.Max(pvav => pvav.DisplayOrder);
 
-                    var pvavWithMaxDisplayOrder = (from pvav in pva.Values
+                    var pvavWithMaxDisplayOrder = (from pvav in preSelectedSet
                                                    where pvav.DisplayOrder == maxDisplayOrder
                                                    select pvav).FirstOrDefault();
                     if (pvavWithMaxDisplayOrder != null)

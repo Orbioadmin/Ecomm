@@ -43,7 +43,7 @@
                         <thead>
                         <td>Name</td>
                         <td>Price adjustment</td>
-                        <td>Weight adjustment</td>
+                        <td>Weight adjustment(gm)</td>
                         <td>Is pre-selected</td>
                         <td></td>
                         </thead>
@@ -124,7 +124,7 @@
                         <input type="submit" name="btnSavePvavItem@(item.Id)" value="" id="btnSavePvavItem@(item.Id)" class="edit_save" style="display:none;" />
                         <input type="submit" name="btnCancelPvavItem@(item.Id)" value="" onclick="togglePvavItemEdit@(item.Id)(false);return false; " id="btnCancelPvavItem@(item.Id)" class="edit_cancel" style="display:none;" />
                         <input type="button" name="btnEditPvavItem@(item.Id)" value="" onclick="togglePvavItemEdit@(item.Id)(true);return false; " id="btnEditPvavItem@(item.Id)" class="edit_ring" />
-                        <a href="@Url.Action("DeleteProductVariantAttributeValue", "Product", new { id = item.Id, productVariantAttributeId = item.ProductVariantAttributeId })"><input type="button" name="btnDeletePvavItem@(item.Id)" value="" id="btnDeletePvavItem@(item.Id)" class="delete_ring" onclick=" return confirm('Are You Sure'); " /></a>
+                        <a href="@Url.Action("DeleteProductVariantAttributeValue", "Product", new { id = item.Id, productVariantAttributeId = item.ProductVariantAttributeId })"><input type="button" name="btnDeletePvavItem@(item.Id)" value="" id="btnDeletePvavItem@(item.Id)" class="delete_ring" onclick=" return confirm('Are you sure you want to delete'); " /></a>
                     </td>
                     }
                     @:</tr>

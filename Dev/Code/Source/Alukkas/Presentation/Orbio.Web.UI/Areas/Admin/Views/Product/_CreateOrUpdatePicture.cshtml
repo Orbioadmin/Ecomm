@@ -31,7 +31,7 @@
                             count = 1;
                         }
                         <td class="align_center" style="cursor: move;"><img src="@imageUrl" alt="ring" width="100" height="80" /></td>
-                        <td class="align_center" style="text-align:left;padding-top:28px;width:10px"><a href="@Url.Action("DeleteProductPicture", "Product", new { id = item.Id,productId = item.ProductId })"><input type="button" name="btnDeleteOrderItem@(item.Id)" value="" id="btnDeleteOrderItem@(item.Id)" class="delete_ring" onclick=" return confirm('Are You Sure'); " /></a></td>
+                        <td class="align_center" style="text-align:left;padding-top:28px;width:10px"><a href="@Url.Action("DeleteProductPicture", "Product", new { id = item.Id,productId = item.ProductId })"><input type="button" name="btnDeleteOrderItem@(item.Id)" value="" id="btnDeleteOrderItem@(item.Id)" class="delete_ring" onclick=" return confirm('Are you sure you want to delete'); " /></a></td>
                         @:</tr>
                 }
                 </tbody>

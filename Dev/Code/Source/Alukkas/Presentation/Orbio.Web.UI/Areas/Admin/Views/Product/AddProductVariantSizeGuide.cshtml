@@ -26,7 +26,7 @@
                            {
                             <tr class="first_row rowItems" id="@pvaId">
                             <td class="align_center" style="cursor: move;"><img src="@imageUrl" alt="ring" width="320" height="200" /></td>
-                            <td class="align_center" style="text-align:left;padding-top:28px;width:10px"><a href="@Url.Action("DeleteSizeGuideUrl", "Product", new { id = pvaId })"><input type="button" name="btnDeleteOrderItem@(pvaId)" value="" id="btnDeleteOrderItem@(pvaId)" class="delete_ring" onclick=" return confirm('Are You Sure'); " /></a></td>
+                            <td class="align_center" style="text-align:left;padding-top:28px;width:10px"><a href="@Url.Action("DeleteSizeGuideUrl", "Product", new { id = pvaId })"><input type="button" name="btnDeleteOrderItem@(pvaId)" value="" id="btnDeleteOrderItem@(pvaId)" class="delete_ring" onclick=" return confirm('Are you sure you want to delete'); " /></a></td>
                             </tr>
                            }
                     </tbody>

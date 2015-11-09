@@ -32,7 +32,7 @@
                 <td class="varient_align">@item.Name</td>
                 <td class="varient_align" style="text-align:center"><label class="@(item.IsFeaturedProduct?"img_sprite1" : "img_sprite")"></label></td>
                 <td class="varient_align" style="text-align:center">@item.DisplayOrder</td>
-                <td class="varient_align" style="text-align:center"><a href="@Url.Action("DeleteManufacturerProduct", "Catalog", new { Id = item.ManufacturerId, pId = item.Id })"><label class="delete_ring" onclick=" return confirm('Are You Sure'); "></label></a></td>
+                <td class="varient_align" style="text-align:center"><a href="@Url.Action("DeleteManufacturerProduct", "Catalog", new { Id = item.ManufacturerId, pId = item.Id })"><label class="delete_ring" onclick=" return confirm('Are you sure you want to delete'); "></label></a></td>
                 @:</tr>
                     }
                 }

@@ -14,7 +14,7 @@
     }
     <li class="icon-cart hidden-desk search-set"><a><span class="icon-span">Search</span><i class="search-icon"></i></a></li>
     <li class="icon-cart after-login"><a href="@Url.RouteUrl("ShoppingCart")"><span class="icon-span">My Cart</span><i class="cart-icon"></i><span>@(Model.ItemCount)</span></a></li>
-    <li class="icon-cart after-login"><a href="~/Customer/MyAccount#mywishlist" class="mywish"><span class="icon-span">My Wishlist</span><i class="cart-wish"></i></a></li>
+    <li class="icon-cart after-login"><a href="~/Customer/MyAccount#mywishlist" class="mywish"><span class="icon-span">My Wishlist</span><i class="cart-wish"></i><span>@(Model.WishListItemCount)</span></a></li>
 }
 else
 {

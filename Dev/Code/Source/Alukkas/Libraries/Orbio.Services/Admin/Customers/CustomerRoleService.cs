@@ -63,12 +63,12 @@ namespace Orbio.Services.Admin.Customers
                         result.FreeShipping = customerRole.FreeShipping;
                         result.TaxExempt = customerRole.TaxExempt;
                         result.Active = customerRole.Active;
-                        result.IsSystemRole = customerRole.IsSystemRole;
+                        //result.IsSystemRole = customerRole.IsSystemRole;
                         context.SaveChanges();
                     }
                     else
                     {
-                        var role = context.CustomerRoles.FirstOrDefault();
+                        var role = new CustomerRole();
                         role.Name = customerRole.Name;
                         role.SystemName = customerRole.SystemName;
                         role.FreeShipping = customerRole.FreeShipping;

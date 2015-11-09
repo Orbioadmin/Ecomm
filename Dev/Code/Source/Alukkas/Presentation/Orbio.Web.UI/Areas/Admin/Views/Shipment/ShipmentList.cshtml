@@ -68,7 +68,7 @@
                             @(!string.IsNullOrEmpty(item.DeliveryDateUtc.ToString()) ? item.DeliveryDateUtc.ToString() : "Not Yet")
                         </td>
                         <td class="qty">
-                            <a href="@Url.Action("DeleteShipment", "Shipment", new { Id=item.Id })"><input type="button" class="delete_ring" onclick=" return confirm('Are You Sure'); " /></a>
+                            <a href="@Url.Action("DeleteShipment", "Shipment", new { Id=item.Id })"><input type="button" class="delete_ring" onclick=" return confirm('Are you sure you want to delete'); " /></a>
                         </td>
                         @: </tr>
                     <tr>

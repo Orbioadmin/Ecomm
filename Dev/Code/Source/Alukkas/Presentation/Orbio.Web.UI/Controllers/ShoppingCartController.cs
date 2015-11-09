@@ -104,7 +104,10 @@ namespace Orbio.Web.UI.Controllers
             var model = new CartHeaderModel
             {
                 ItemCount = shoppingCartService.GetCartItems("select", 0, ShoppingCartType.ShoppingCart,
-                    0, workContext.CurrentCustomer.Id, 0, 0, storeContext.CurrentStore.Id).ShoppingCartItems.Count
+                    0, workContext.CurrentCustomer.Id, 0, 0, storeContext.CurrentStore.Id).ShoppingCartItems.Count,
+                WishListItemCount = shoppingCartService.GetCartItems("select", 0, ShoppingCartType.Wishlist,
+                    0, workContext.CurrentCustomer.Id, 0, 0, storeContext.CurrentStore.Id).ShoppingCartItems.Count,
+              
             };
             return PartialView("CartItems", model);
         }

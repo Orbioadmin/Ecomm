@@ -84,7 +84,7 @@
                             <input type="submit" name="btnSaveOrderItem@(item.Id)" value="" id="btnSaveOrderItem@(item.Id)" class="edit_save" style="display:none;" />
                             <input type="submit" name="btnCancelOrderItem@(item.Id)" value="" onclick="toggleOrderItemEdit@(item.Id)    (false);return false; " id="btnCancelOrderItem@(item.Id)" class="edit_cancel" style="display:none;" />
                             <input type="button" name="btnEditOrderItem@(item.Id)" value="" onclick="toggleOrderItemEdit@(item.Id)(true);return false; " id="btnEditOrderItem@(item.Id)" class="edit_ring" />
-                            <a href="@Url.Action("DeletePriceComponent", "Component", new { Id = item.Id })"><input type="button" name="btnDeleteOrderItem@(item.Id)" value="" id="btnDeleteOrderItem@(item.Id)" class="delete_ring" onclick=" return confirm('Are You Sure'); " /></a>
+                            <a href="@Url.Action("DeletePriceComponent", "Component", new { Id = item.Id })"><input type="button" name="btnDeleteOrderItem@(item.Id)" value="" id="btnDeleteOrderItem@(item.Id)" class="delete_ring" onclick=" return confirm('Are you sure you want to delete'); " /></a>
                             </td>
                         @: </tr>
                     }

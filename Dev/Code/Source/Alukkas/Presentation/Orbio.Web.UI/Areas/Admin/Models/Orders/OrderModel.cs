@@ -222,6 +222,7 @@ namespace Orbio.Web.UI.Areas.Admin.Models.Orders
                 ReturnRequestIds = new List<int>();
                 PurchasedGiftCardIds = new List<int>();
             }
+            public int Id { get; set; }
             public int ProductId { get; set; }
             public string ProductName { get; set; }
             public string VendorName { get; set; }

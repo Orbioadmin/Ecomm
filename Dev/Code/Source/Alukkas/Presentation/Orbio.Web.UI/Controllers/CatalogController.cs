@@ -157,6 +157,7 @@ namespace Orbio.Web.UI.Controllers
             webHelper.RemoveQueryFromPath(ControllerContext.HttpContext, new List<string> { { "spec" } });
             ViewBag.MetaDescription = model.MetaDescription;
             ViewBag.MetaKeywords = model.MetaKeywords;
+            ViewBag.MetaTitle = model.MetaTitle;
             ViewBag.spec = spec; ViewBag.keyWord = keyWord;
             return View(model);
         }
@@ -329,6 +330,9 @@ namespace Orbio.Web.UI.Controllers
             ProductDetailModel selectedProduct = null;
             ShoppingCartType selectedCartType = ShoppingCartType.None;
             ViewBag.Errors = string.Empty;
+            ViewBag.MetaDescription = model.MetaDescription;
+            ViewBag.MetaKeywords = model.MetaKeywords;
+            ViewBag.MetaTitle = model.MetaTitle;
             if (TempData.ContainsKey("product"))
             {
                 var workContext = EngineContext.Current.Resolve<Orbio.Core.IWorkContext>();

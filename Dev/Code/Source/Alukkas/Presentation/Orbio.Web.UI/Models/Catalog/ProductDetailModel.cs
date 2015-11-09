@@ -36,6 +36,9 @@ namespace Orbio.Web.UI.Models.Catalog
             this.IsGift = productDetail.IsGift;
             this.GiftCharge = productDetail.GiftCharge;
             this.IsGiftWrapping = productDetail.IsGiftWrapping;
+            this.MetaDescription = productDetail.MetaDescription;
+            this.MetaKeywords = productDetail.MetaKeywords;
+            this.MetaTitle = productDetail.MetaTitle;
 
             //this.ProductPrice.Price = productDetail.Price;
              if (productDetail.BreadCrumbs != null && productDetail.BreadCrumbs.Count > 0)
@@ -210,6 +213,21 @@ namespace Orbio.Web.UI.Models.Catalog
         /// Gets or sets gift charges
         /// </summary>
         public bool IsGiftWrapping { get; set; }
+
+        /// <summary>
+        /// Gets or sets MetaDescription
+        /// </summary>
+        public string MetaDescription { get; set; }
+
+        /// <summary>
+        /// Gets or sets MetaKeywords
+        /// </summary>
+        public string MetaKeywords { get; set; }
+
+        /// <summary>
+        /// Gets or sets MetaTitle
+        /// </summary>
+        public string MetaTitle { get; set; }
 
 
         decimal IShoppingCartItem.Price

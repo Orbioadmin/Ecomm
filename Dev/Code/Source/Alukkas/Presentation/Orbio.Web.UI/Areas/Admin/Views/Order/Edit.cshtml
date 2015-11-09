@@ -16,7 +16,7 @@
             <div class="reader_icons">
                 <span><a href="" class="adobe_icon"></a></span>
                 <span>
-                <a href="@Url.Action("Delete", "Order", new { id = this.Model.Id })" class="close_icon"></a></span>
+                    <a href="@Url.Action("Delete", "Order", new { id = this.Model.Id })" class="close_icon" onclick=" return confirm('Are you sure you want to delete this order');"></a></span>
             </div>
         </div>
         <div class="tab_main_order col-md-12">

@@ -29,6 +29,7 @@ CREATE PROCEDURE [dbo].[usp_Delete_OrderItem]
 	@id int
 AS
 BEGIN
+update Product set StockQuantity=(select (p.StockQuantity + oi.Quantity) from OrderItem oi inner join Product p on oi.ProductId=p.Id where oi.Id=@id) where  ManageInventoryMethodId=1
 
 delete from dbo.OrderItem where Id = @id
 	

@@ -52,9 +52,10 @@ namespace Orbio.Services.Admin.Products
         {
             try
             {
-             using (var context = new OrbioAdminContext())
-                {
-                    var result = context.ProductTags.FirstOrDefault();
+              using (var context = new OrbioAdminContext())
+              {
+                  var result = new ProductTag();
+
                     if (result != null)
                     {
                         result.Name = name;

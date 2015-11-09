@@ -111,7 +111,7 @@ namespace Orbio.Web.UI.Models.Orders
             get
             {
                 var priceCalculationService = EngineContext.Current.Resolve<IPriceCalculationService>();
-                return priceCalculationService.GetFinalPrice(this, false, false).ToString("#,##0.00");
+                return priceCalculationService.GetFinalPrice(this, true, false).ToString("#,##0.00");
             }
         }
 

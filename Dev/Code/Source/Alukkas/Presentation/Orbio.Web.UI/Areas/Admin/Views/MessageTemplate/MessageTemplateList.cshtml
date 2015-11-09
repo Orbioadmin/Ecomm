@@ -32,7 +32,7 @@
                     <td class="align_center"><label class="@(item.IsActive ? "img_sprite1" : "img_sprite")"></label></td>
                     <td class="align_center">
                         <a href="@Url.Action("Edit", "MessageTemplate", new { Id = item.Id })"><input type="button" class="edit_ring" /></a>
-                        <a href="@Url.Action("DeleteMessageTemplate", "MessageTemplate", new { Id = item.Id })"><input type="button" class="delete_ring" onclick=" return confirm('Are You Sure'); " /></a>
+                        <a href="@Url.Action("DeleteMessageTemplate", "MessageTemplate", new { Id = item.Id })"><input type="button" class="delete_ring" onclick=" return confirm('Are you sure you want to delete'); " /></a>
                     </td>
                     @:</tr>
                         }

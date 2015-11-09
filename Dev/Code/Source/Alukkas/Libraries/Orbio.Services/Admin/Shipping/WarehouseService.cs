@@ -55,7 +55,7 @@ namespace Orbio.Services.Admin.Shipping
                     }
                     else
                     {
-                        var result = context.Addresses.FirstOrDefault();
+                        var result = new Orbio.Core.Data.Address();
                         if (result != null)
                         {
                             result.FirstName = null;
@@ -71,7 +71,8 @@ namespace Orbio.Services.Admin.Shipping
                             result.CreatedOnUtc = DateTime.Now;
                             context.Addresses.Add(result);
                             context.SaveChanges();
-                            var warehouse = context.Warehouses.FirstOrDefault();
+
+                            var warehouse =new Warehouse();
                             if (warehouse != null)
                             {
                                 warehouse.Name = name;
