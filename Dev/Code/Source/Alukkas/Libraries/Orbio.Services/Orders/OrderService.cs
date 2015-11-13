@@ -301,6 +301,7 @@ namespace Orbio.Services.Orders
                      DownloadCount = 0,
                      IsDownloadActivated = false,
                      LicenseDownloadId = 0,
+                     IsGift=sci.IsGiftWrapping,
                      // ItemWeight = itemWeight,
                  };
                  order.OrderItems.Add(orderItem);

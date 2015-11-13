@@ -28,5 +28,7 @@ namespace Orbio.Services.Admin.Catalog
        void DeleteCategoryProduct(int categoryId, int productId);
 
        List<Product_Category_Mapping> GetCategoryProducts(int Id);
+
+       void UpdateCategoryProduct(List<Product_Category_Mapping> prodCatModel);
     }
 }

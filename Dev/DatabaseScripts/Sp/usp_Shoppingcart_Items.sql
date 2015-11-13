@@ -214,7 +214,7 @@ SELECT @XmlResult = (SELECT dbo.ufn_GetOrderDiscounts(@customerId, @storeId)
 ,  
 (SELECT --(select count(#temp.ProductId) from #temp) as 'ItemCount',
 product.Id Id,
-product.Name Name,ur.Slug as SeName,product.Price Price,product.IsGift as IsGift,product.GiftCharge as GiftCharge,[dbo].[ufn_GetProductPriceDetails](product.Id),
+product.Name Name,ur.Slug as SeName,product.Price Price,product.IsGift as IsGift,product.GiftCharge as GiftCharge,product.IsFreeShipping, product.AdditionalShippingCharge,[dbo].[ufn_GetProductPriceDetails](product.Id),
 product.[Weight] as 'GoldWeight',
 product.ProductUnit as 'ProductUnit', product.TaxCategoryId,
 (select value from [dbo].[Setting] where Name = 'Product.PriceUnit') as PriceUnit,

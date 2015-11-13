@@ -69,7 +69,7 @@
 
                 @*@Html.DropDownList(scpdqu, (IEnumerable<SelectListItem>)qtySelectList)*@
                 
-                @Html.TextBox(scpdqu, scpd.SelectedQuantity, new { type = "Number", @class = "form-control", min = "1", Style = "width:40px;height: 23px;padding: 0 4px;border-radius: 2px;" })
+                @Html.TextBox(scpdqu, scpd.SelectedQuantity, new { type = "Number", @class = "form-control", min = scpd.OrderMinimumQuantity,max=scpd.OrderMaximumQuantity, Style = "width:40px;height: 23px;padding: 0 4px;border-radius: 2px;" })
                 @Html.Hidden(scpdRemove, scpd.IsRemove)  @Html.Hidden(scpdQuantity, scpd.SelectedQuantity) @Html.Hidden(scpdcartid, scpd.CartId) @Html.Hidden(scpdcartstatus, scpd.ShoppingCartStatus)
             <td data-title="Item Price">
            @{

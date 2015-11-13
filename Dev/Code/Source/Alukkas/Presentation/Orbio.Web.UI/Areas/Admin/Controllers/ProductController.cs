@@ -384,13 +384,17 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                     Value = productAttribute.Id.ToString()
                 });
             }
-
+            model.StockQuantity = product.StockQuantity;
+            model.OrderMinimumQuantity = product.OrderMinimumQuantity;
+            model.OrderMaximumQuantity = product.OrderMaximumQuantity;
+            model.AllowCustomerReviews = product.AllowCustomerReviews;
+            model.Published = product.Published;
             //default values
-                model.StockQuantity = 10000;
-                model.OrderMinimumQuantity = 1;
-                model.OrderMaximumQuantity = 10000;
-                model.AllowCustomerReviews = true;
-                model.Published = true;
+                //model.StockQuantity = 10000;
+                //model.OrderMinimumQuantity = 1;
+                //model.OrderMaximumQuantity = 10000;
+                //model.AllowCustomerReviews = true;
+                //model.Published = true;
         }
 
         #endregion

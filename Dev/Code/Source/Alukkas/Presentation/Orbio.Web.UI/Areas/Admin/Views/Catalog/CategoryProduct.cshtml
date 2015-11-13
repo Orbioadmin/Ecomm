@@ -18,6 +18,32 @@
                     int count = 1;
                     foreach (var item in Model)
                     {
+                        <script type="text/javascript">
+                            $(document).ready(function () {
+                                toggleOrderItemEdit@(item.Id)(false);
+                            });
+                        </script>
+
+                        <script type="text/javascript">
+    function toggleOrderItemEdit@(item.Id)(editMode) {
+        if (editMode) {
+            $('#lbldisplayorder@(item.Id)').hide();
+            $('#txtdisplayorder@(item.Id)').show();
+            $('#btnDeleteProductItem@(item.Id)').hide();
+            $('#btnEditProductItem@(item.Id)').hide();
+            $('#btnSaveProductItem@(item.Id)').show();
+            $('#btnCancelProductItem@(item.Id)').show();
+        }
+        else {
+            $('#lbldisplayorder@(item.Id)').show();
+            $('#txtdisplayorder@(item.Id)').hide();
+            $('#btnDeleteProductItem@(item.Id)').show();
+            $('#btnEditProductItem@(item.Id)').show();
+            $('#btnSaveProductItem@(item.Id)').hide();
+            $('#btnCancelProductItem@(item.Id)').hide();
+        }
+    }
+                        </script>
                         if (count == 1)
                         {
                             @:<tr class="first_row">
@@ -30,8 +56,18 @@
                         }
                         <td class="varient_align">@item.Name</td>
                         <td class="varient_align" style="text-align:center"><label class="@(item.IsFeaturedProduct?"img_sprite1" : "img_sprite")"></label></td>
-                        <td class="varient_align" style="text-align:center">@item.DisplayOrder</td>
-                        <td class="varient_align" style="text-align:center"><a style="cursor:pointer" href="@Url.Action("DeleteCategoryProduct", "Catalog", new { Id = item.CategoryId, cId = item.Id })" onclick=" return confirm('Are you sure you want to delete'); "><label class="delete_ring"></label></a></td>
+                        <td class="varient_align" style="text-align:center">
+                            <label id="lbldisplayorder@(item.Id)">@item.DisplayOrder</label>
+                            <input type="number" id="txtdisplayorder@(item.Id)" value="@item.DisplayOrder" style="display:none">
+                        </td>
+                        <td class="varient_align" style="text-align:center">
+                            <input type="button" name="btnSaveProductItem@(item.Id)" value="" id="btnSaveProductItem@(item.Id)" class="edit_save" style="display:none;" onclick="SaveUpdatedDisplayOrder(@item.Id,@item.CategoryId)"/>
+                            <input type="submit" name="btnCancelProductItem@(item.Id)" value="" onclick="toggleOrderItemEdit@(item.Id)(false);return false; " id="btnCancelProductItem@(item.Id)" class="edit_cancel" style="display:none;" />
+                            <input type="button" name="btnEditProductItem@(item.Id)" value="" onclick="toggleOrderItemEdit@(item.Id)(true);return false; " id="btnEditProductItem@(item.Id)" class="edit_ring" />
+                            <a href="@Url.Action("DeleteCategoryProduct", "Catalog", new { Id = item.CategoryId, cId = item.Id })"><input type="button" name="btnDeleteProductItem@(item.Id)" value="" id="btnDeleteProductItem@(item.Id)" class="delete_ring" onclick=" return confirm('Are you sure you want to delete'); " /></a>
+
+                        @*<a style="cursor:pointer" href="@Url.Action("DeleteCategoryProduct", "Catalog", new { Id = item.CategoryId, cId = item.Id })" onclick=" return confirm('Are you sure you want to delete'); "><label class="delete_ring" ></label></a>*@
+                        </td>
                         @:</tr>
                             }
                 }

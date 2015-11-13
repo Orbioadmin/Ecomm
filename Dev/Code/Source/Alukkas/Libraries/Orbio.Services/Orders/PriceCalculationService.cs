@@ -108,14 +108,24 @@ namespace Orbio.Services.Orders
         public decimal GetShippingGiftTotal(ICart cart)
         {
             var totalAmount = 0M;
+            var shippingCharge = 0M;
             var giftCharges = (from g in cart.ShoppingCartItems
                                where g.IsGiftWrapping
                                select g).ToList();
+            var items = (from ship in cart.ShoppingCartItems
+                                  where !ship.IsFreeShipping
+                                  select ship).ToList();
+            if(items!=null)
+            {
+                shippingCharge = (items.Count > 0) ? items.Max(m => m.AdditionalShippingCharge) : 0;
+            }
+
             foreach (var item in giftCharges)
             {
                 totalAmount = totalAmount + (item.GiftCharge * item.Quantity);
             }
-            return totalAmount;
+            totalAmount=totalAmount+ shippingCharge;
+            return totalAmount; 
         }
 
         public decimal GetAllDiscountAmount(ICart cart, out List<int> appliedDiscountIds)

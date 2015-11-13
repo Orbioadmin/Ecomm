@@ -40,6 +40,8 @@ namespace Orbio.Core.Domain.Orders
             this.GiftCharge = cartItem.GiftCharge;
             this.AttributeXml = cartItem.AttributeXml;
             this.PriceDetailXml = cartItem.PriceDetailXml;
+            this.IsFreeShipping = cartItem.IsFreeShipping;
+            this.AdditionalShippingCharge = cartItem.AdditionalShippingCharge;
         }
 
         public decimal Price
@@ -71,6 +73,9 @@ namespace Orbio.Core.Domain.Orders
         public bool IsGiftWrapping { get; set; }
 
         public decimal GiftCharge { get; set; }
- 
+
+        public bool IsFreeShipping { get; set; }
+
+        public decimal AdditionalShippingCharge { get; set; }
     }
 }

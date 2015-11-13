@@ -132,5 +132,17 @@ namespace Orbio.Core.Domain.Catalog
         /// </summary>
         public decimal GiftCharge { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether the entity is free shipping
+        /// </summary>
+        public bool IsFreeShipping { get; set; }
+
+        /// <summary>
+        /// gets or sets additional shipping value
+        /// </summary>
+        public decimal AdditionalShippingCharge { get; set; }
+        /// <summary>
+        /// Gets or sets a value indicating whether to display stock availability
+        /// </summary>
     }
 }

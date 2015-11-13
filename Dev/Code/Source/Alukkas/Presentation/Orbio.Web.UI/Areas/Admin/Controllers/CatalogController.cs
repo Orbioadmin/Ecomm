@@ -12,6 +12,7 @@ using System.Web;
 using System.Web.Mvc;
 using PagedList;
 using Orbio.Services.Admin.Seo;
+using Orbio.Core.Data;
 
 namespace Orbio.Web.UI.Areas.Admin.Controllers
 {
@@ -84,6 +85,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         {
             var result = categoryServices.GetCategoryProducts(Id.GetValueOrDefault());
             var model = (from pcm in result
+                         orderby pcm.DisplayOrder ascending
                          select new ProductModel(pcm)).ToList();
             int pageNumber = (page ?? 1);
             int pageSize = Convert.ToInt32(ConfigurationManager.AppSettings["PageSize"]);
@@ -309,6 +311,53 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                 SeName = model.Manufacturer.SeName,
             };
             return manufacturerModel;
+        }
+
+        [HttpPost]
+        public ActionResult EditCategoryProduct(int productId,int categoryId,int displayOrder)
+        {
+            int? page = 1;
+            var result = categoryServices.GetCategoryProducts(categoryId);
+            var model = (from pcm in result
+                         orderby pcm.DisplayOrder ascending
+                         select new ProductModel(pcm)).ToList();
+            if(model!=null)
+            {
+                int count = displayOrder;
+                foreach(var item in model)
+                {
+                  if(item.Id==productId && item.CategoryId==categoryId)
+                  {
+                      item.DisplayOrder = displayOrder;
+                  }
+                  else
+                  {
+                      if(item.DisplayOrder>=displayOrder)
+                      {
+                          count++;
+                          item.DisplayOrder = count;
+                          
+                      }
+                  }
+                }
+
+                var prodCatModel=(from m in model
+                                      select new Product_Category_Mapping()
+                                      {
+                                         Id=m.Id,
+                                         ProductId=m.Id,
+                                         CategoryId=m.CategoryId,
+                                         IsFeaturedProduct = m.IsFeaturedProduct,
+                                         DisplayOrder = m.DisplayOrder,
+                                      }).ToList();
+
+                categoryServices.UpdateCategoryProduct(prodCatModel);
+            }
+            model = model.OrderBy(m => m.DisplayOrder).ToList();
+            int pageNumber = (page ?? 1);
+            int pageSize = Convert.ToInt32(ConfigurationManager.AppSettings["PageSize"]);
+            return PartialView("CategoryProduct", model.ToPagedList(pageNumber, pageSize));
+            //return RedirectToAction("CategoryProduct", new { id = categoryId });
         }
     }
 }

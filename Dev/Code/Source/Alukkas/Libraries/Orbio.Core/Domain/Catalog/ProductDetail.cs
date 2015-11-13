@@ -10,6 +10,7 @@ namespace Orbio.Core.Domain.Catalog
         /// Gets or sets the stock quantity
         /// </summary>
         public int StockQuantity { get; set; }
+        
         /// <summary>
         /// Gets or sets a value indicating whether the entity is ship enabled
         /// </summary>
@@ -19,6 +20,11 @@ namespace Orbio.Core.Domain.Catalog
         /// Gets or sets a value indicating whether the entity is free shipping
         /// </summary>
         public bool IsFreeShipping { get; set; }
+
+        /// <summary>
+        /// gets or sets additional shipping value
+        /// </summary>
+        public decimal AdditionalShippingCharge { get; set; }
         /// <summary>
         /// Gets or sets a value indicating whether to display stock availability
         /// </summary>
@@ -108,7 +114,6 @@ namespace Orbio.Core.Domain.Catalog
         /// Gets or sets Gift Charge
         /// </summary>
         public decimal GiftCharge { get; set; }
-
 
         /// <summary>
         /// Gets or sets IsGift

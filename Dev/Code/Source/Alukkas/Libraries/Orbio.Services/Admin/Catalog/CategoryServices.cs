@@ -335,5 +335,20 @@ namespace Orbio.Services.Admin.Catalog
             }
         }
 
+        public void UpdateCategoryProduct(List<Product_Category_Mapping> prodCatModel)
+        {
+            using (var context = new OrbioAdminContext())
+            {
+                foreach(var item in prodCatModel)
+                {
+                    var prodCategory = context.Product_Category_Mapping.Where(m => m.ProductId == item.ProductId && m.CategoryId == item.CategoryId).FirstOrDefault();
+                    if(prodCategory!=null)
+                    {
+                        prodCategory.DisplayOrder = item.DisplayOrder;
+                        context.SaveChanges();
+                    }
+                }
+            }
+        }
     }
 }

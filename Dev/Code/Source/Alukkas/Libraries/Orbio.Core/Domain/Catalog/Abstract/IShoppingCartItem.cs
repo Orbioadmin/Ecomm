@@ -16,5 +16,7 @@ namespace Orbio.Core.Domain.Catalog.Abstract
         string PriceDetailXml { get; }
         bool IsGiftWrapping { get; set; }
         decimal GiftCharge { get; set; }
+        bool IsFreeShipping { get; set; }
+        decimal AdditionalShippingCharge { get; set; }
     }
 }

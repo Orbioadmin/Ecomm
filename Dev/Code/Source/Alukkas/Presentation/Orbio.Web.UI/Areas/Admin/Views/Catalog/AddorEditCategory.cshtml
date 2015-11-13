@@ -148,5 +148,26 @@
     });
 </script>
 
+<script>
+    function SaveUpdatedDisplayOrder(id,categoryId)
+    {
+        var displayOrder=document.getElementById('txtdisplayorder'+id).value;
+        $.ajax({
+            type: "POST",
+            url:'@Url.Action("EditCategoryProduct", "Catalog")',
+            //contentType: false,
+            //processData: false,
+            data:{productId:id,categoryId:categoryId,displayOrder:displayOrder},
+            //data: data,
+            success: function (result) {
+                $('#catprod').html(result);
+            },
+            error: function (xhr) {
+                alert("Error has occurred..");
+            }
+        });
+    }
+</script>
+
 }
    

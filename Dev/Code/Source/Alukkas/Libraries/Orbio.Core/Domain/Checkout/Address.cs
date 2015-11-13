@@ -82,11 +82,14 @@ namespace Orbio.Core.Domain.Checkout
         [DataMember]
         public string States { get; set; }
 
+        public List<string> AllStates { get; set; }
+        
         /// <summary>
         /// Gets or sets the Country
         /// </summary>
         [DataMember]
         public string Country{ get; set; }
 
+        public List<string> Countries { get; set; }
     }
 }

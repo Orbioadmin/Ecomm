@@ -127,6 +127,7 @@ namespace Orbio.Web.UI.Models.Catalog
            
             this.StockAvailability = productDetail.FormatStockMessage();
             this.IsFreeShipping = productDetail.IsFreeShipping;
+            this.AdditionalShippingCharge = productDetail.AdditionalShippingCharge;
             this.IsShipEnabled = productDetail.IsShipEnabled;
             this.DeliveredIn = productDetail.DeliveredIn;
             this.OrderMaximumQuantity = productDetail.OrderMaximumQuantity;
@@ -186,6 +187,7 @@ namespace Orbio.Web.UI.Models.Catalog
 
         public bool IsFreeShipping { get; set; }
 
+        public decimal AdditionalShippingCharge { get; set; }
 
         public int OrderMinimumQuantity { get; set; }
 

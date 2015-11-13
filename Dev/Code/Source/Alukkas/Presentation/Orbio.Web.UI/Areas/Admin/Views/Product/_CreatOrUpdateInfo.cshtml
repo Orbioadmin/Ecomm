@@ -33,12 +33,12 @@
 
         <div class="break_border"></div>
         <div class="row">
-            <div class="col-md-3 prdct_name">Price :</div><div class="col-md-2">@Html.TextBoxFor(model => model.Price, new { @class = "prdct_name_txt", type = "number", required = "required" })</div>
-            <div class="col-md-2 prdct_name left_side_text_name"> Old Price :</div><div class="col-md-2 left_side_text">@Html.TextBoxFor(model => model.OldPrice, new { @class = "prdct_name_txt", type = "number", required = "required" })</div>
+            <div class="col-md-3 prdct_name">Price :</div><div class="col-md-2">@Html.TextBoxFor(model => model.Price, String.Format("{0:0.00}", Model.Price), new { @class = "prdct_name_txt", type = "number", required = "required" })</div>
+            <div class="col-md-2 prdct_name left_side_text_name"> Old Price :</div><div class="col-md-2 left_side_text">@Html.TextBoxFor(model => model.OldPrice, String.Format("{0:0.00}", Model.OldPrice), new { @class = "prdct_name_txt", type = "number", required = "required" })</div>
         </div>
         <div class="row">
-            <div class="col-md-3 prdct_name">Product cost:</div><div class="col-md-2">@Html.TextBoxFor(model => model.ProductCost, new { @class = "prdct_name_txt", type = "number", required = "required" })</div>
-            <div class="col-md-2 prdct_name left_side_text_name">Special price:</div><div class="col-md-2 left_side_text">@Html.TextBoxFor(model => model.SpecialPrice, new { @class = "prdct_name_txt", type = "number" })</div>
+            <div class="col-md-3 prdct_name">Product cost:</div><div class="col-md-2">@Html.TextBoxFor(model => model.ProductCost, String.Format("{0:0.00}", Model.ProductCost), new { @class = "prdct_name_txt", type = "number", required = "required" })</div>
+            <div class="col-md-2 prdct_name left_side_text_name">Special price:</div><div class="col-md-2 left_side_text">@Html.TextBoxFor(model => model.SpecialPrice, String.Format("{0:0.00}", Model.SpecialPrice), new { @class = "prdct_name_txt", type = "number" })</div>
         </div>
         <div class="row">
             <div class="col-md-3 prdct_name">Special price start date:</div>
@@ -90,12 +90,12 @@
         <div class="show_div_check_true" style="display:none">
             <div class="row"><div class="col-md-3 prdct_name">Free Shipping :</div><div class="col-md-4">@Html.CheckBoxFor(model => model.IsFreeShipping, new { @class = "show_on_homepage_check" })</div></div>
             <div class="row">
-                <div class="col-md-3 prdct_name">Additional shipping charge :</div><div class="col-md-3">@Html.TextBoxFor(model => model.AdditionalShippingCharge, new { @class = "prdct_name_txt", type = "number" })</div>
+                <div class="col-md-3 prdct_name">Additional shipping charge :</div><div class="col-md-3">@Html.TextBoxFor(model => model.AdditionalShippingCharge, String.Format("{0:0.00}", Model.AdditionalShippingCharge), new { @class = "prdct_name_txt", type = "number" })</div>
             </div>
             <div class="row">
-                <div class="col-md-3 prdct_name">Net Weight :</div><div class="col-md-1">@Html.TextBoxFor(model => model.Weight, new { @class = "prdct_name_txt", type = "number" })</div>
-                <div class="col-md-2 prdct_name left_side_text_name">Width :</div><div class="col-md-1 left_side_text_height">@Html.TextBoxFor(model => model.Width, new { @class = "prdct_name_txt", type = "number" })</div>
-                <div class="col-md-2 prdct_name left_side_text_name">Height :</div><div class="col-md-1 left_side_text_height">@Html.TextBoxFor(model => model.Height, new { @class = "prdct_name_txt", type = "number" })</div>
+                <div class="col-md-3 prdct_name">Net Weight :</div><div class="col-md-1">@Html.TextBoxFor(model => model.Weight, String.Format("{0:0.00}", Model.Weight), new { @class = "prdct_name_txt", type = "number" })</div>
+                <div class="col-md-2 prdct_name left_side_text_name">Width :</div><div class="col-md-1 left_side_text_height">@Html.TextBoxFor(model => model.Width, String.Format("{0:0.00}", Model.Width), new { @class = "prdct_name_txt", type = "number" })</div>
+                <div class="col-md-2 prdct_name left_side_text_name">Height :</div><div class="col-md-1 left_side_text_height">@Html.TextBoxFor(model => model.Height, String.Format("{0:0.00}", Model.Height), new { @class = "prdct_name_txt", type = "number" })</div>
             </div>
             <div class="row">
                 <div class="col-md-3 prdct_name">Delivery date :</div><div class="col-md-2">@Html.DropDownList("DeliveryDateId", Model.AvailableDeliveryDates, new { @class = "virtual_select_class" })</div>
@@ -105,7 +105,7 @@
 
         <div class="break_border"></div>
 
-        <div class="row"><div class="col-md-3 prdct_name">Tax exempt :</div><div class="col-md-1">@Html.CheckBoxFor(model => model.IsTaxExempt, new { @class = "show_on_homepage_check enablingTax" })</div></div>
+        <div class="row"><div class="col-md-3 prdct_name">Tax Applicable :</div><div class="col-md-1">@Html.CheckBoxFor(model => model.IsTaxExempt, new { @class = "show_on_homepage_check enablingTax" })</div></div>
         <div id="taxcat" class="row" style="display:none">
             <div class="col-md-3 prdct_name">Product Type :</div>
             <div class="col-md-3">
@@ -118,7 +118,7 @@
 
         <div class="show_div_check_gift_true" style="display:none">
             <div class="row">
-                <div class="col-md-3 prdct_name">Gifting charge :</div><div class="col-md-3">@Html.TextBoxFor(model => model.GiftCharge, new { @class = "prdct_name_txt", type = "number" })</div>
+                <div class="col-md-3 prdct_name">Gifting charge :</div><div class="col-md-3">@Html.TextBoxFor(model => model.GiftCharge, String.Format("{0:0.00}", Model.GiftCharge), new { @class = "prdct_name_txt", type = "number" })</div>
             </div>
         </div>
             
@@ -153,7 +153,7 @@
             </div>
             <div class="row"><div class="col-md-3 prdct_name">Minimum cart quantity:</div><div class="col-md-4">@Html.TextBoxFor(model => model.OrderMinimumQuantity, new { @class = "prdct_name_txt", type = "number" })</div></div>
             <div class="row"><div class="col-md-3 prdct_name">Maximum cart quantity:</div><div class="col-md-4">@Html.TextBoxFor(model => model.OrderMaximumQuantity, new { @class = "prdct_name_txt", type = "number" })</div></div>
-            <div class="row"><div class="col-md-3 prdct_name">Allowed quantities:</div><div class="col-md-4">@Html.TextBoxFor(model => model.AllowedQuantities, new { @class = "prdct_name_txt" })</div></div>
+            @*<div class="row"><div class="col-md-3 prdct_name">Allowed quantities:</div><div class="col-md-4">@Html.TextBoxFor(model => model.AllowedQuantities, new { @class = "prdct_name_txt" })</div></div>*@
 
             <div class="break_border"></div>
 

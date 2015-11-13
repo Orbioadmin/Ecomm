@@ -976,10 +976,10 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                 var promotionalDiscountAmount = (order.DiscountDetails != null) ? ((order.DiscountDetails.UsePercentage) ? ((subTotal * order.DiscountDetails.DiscountPercentage) / 100) : order.DiscountDetails.DiscountAmount) : 0;
                 order.OrderTotal = (subTotal - promotionalDiscountAmount) + shippingCharge;
                 order.OrderSubtotalExclTax = GetSubTotal(order, orderItem, quantity, false, del);
-                 order.OrderSubtotalInclTax = GetSubTotal(order, orderItem, quantity, true, del);
-                 order.OrderSubTotalDiscountExclTax = GetOrderItemDiscount(order, orderItem, quantity, false, del) + promotionalDiscountAmount;
-                 order.OrderSubTotalDiscountInclTax = GetOrderItemDiscount(order, orderItem, quantity, true, del) + promotionalDiscountAmount;
-                 order.OrderDiscount = GetOrderItemDiscount(order, orderItem, quantity, false, del) + promotionalDiscountAmount;
+                order.OrderSubtotalInclTax = GetSubTotal(order, orderItem, quantity, true, del);
+                order.OrderSubTotalDiscountExclTax = GetOrderItemDiscount(order, orderItem, quantity, false, del) + promotionalDiscountAmount;
+                order.OrderSubTotalDiscountInclTax = GetOrderItemDiscount(order, orderItem, quantity, true, del) + promotionalDiscountAmount;
+                order.OrderDiscount = GetOrderItemDiscount(order, orderItem, quantity, false, del) + promotionalDiscountAmount;
                 order.OrderShippingExclTax = GetOrderGiftCharge(order, orderItem, quantity, false, del);
                 order.OrderShippingInclTax = GetOrderGiftCharge(order, orderItem, quantity, true, del);
             }
@@ -1033,6 +1033,14 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
         public decimal GetOrderGiftCharge(Order order, OrderItem orderItem, int quantity, bool inclTax, bool del)
         {
             decimal orderItemGiftCharge=0;
+            decimal shippingCharge = 0;
+            var items = (from item in order.OrderItems
+                                  where item.Product.IsFreeShipping == false
+                                  select item).ToList();
+            if(items!=null)
+            {
+                shippingCharge = (items.Count > 0) ? items.Max(m => m.Product.AdditionalShippingCharge) : 0;
+            }
             foreach (var item in order.OrderItems)
             {
                 if (!del)
@@ -1045,7 +1053,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                     orderItemGiftCharge = orderItemGiftCharge + Convert.ToDecimal((item.Id == orderItem.Id) ? 0 : (item.Product.GiftCharge * item.Quantity));
                 }
             }
-            return orderItemGiftCharge;
+            return orderItemGiftCharge + shippingCharge;
         }
         public decimal GetSubTotal(Order order, OrderItem orderItem, int quantity, bool inclTax, bool del)
         {
