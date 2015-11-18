@@ -245,7 +245,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                     CustomerEmail = x.Customer.Email,
                     CreatedOn = _dateTimeHelper.ConvertToUserTime(x.CreatedOnUtc, DateTimeKind.Utc)
                 };
-            }).ToList();
+            }).OrderByDescending(m => m.Id).ToList();
 
             return orderModel;
         }
@@ -687,7 +687,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
 
             try
             {
-                order.CreatedOnUtc = DateTime.UtcNow;
+                order.CreatedOnUtc = DateTime.Now;
                 order.OrderStatusId = model.OrderStatusId;
                 _orderService.UpdateOrder(order);
                 _messageService.SendOrderCustomerNotification(order, 1, null, null, model.OrderStatusId);
@@ -731,7 +731,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                 {
                     DisplayToCustomer = model.AddOrderNoteDisplayToCustomer,
                     Note = "Remove Shipping charge from your order",
-                    CreatedOnUtc = DateTime.UtcNow,
+                    CreatedOnUtc = DateTime.Now,
                 };
                 order.OrderNotes.Add(orderNote);
             }
@@ -741,7 +741,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             {
                 DisplayToCustomer = model.AddOrderNoteDisplayToCustomer,
                 Note = "Add some adjustment in your order",
-                CreatedOnUtc = DateTime.UtcNow,
+                CreatedOnUtc = DateTime.Now,
             };
             order.OrderNotes.Add(orderNote);
             _orderService.UpdateOrderNotes(order);
@@ -783,7 +783,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                 {
                     DisplayToCustomer = false,
                     Note = "Your order item quantity has been updated",
-                    CreatedOnUtc = DateTime.UtcNow,
+                    CreatedOnUtc = DateTime.Now,
                 };
                 order.OrderNotes.Add(orderNote);
                _orderService.UpdateOrder(order);
@@ -796,7 +796,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                 {
                     DisplayToCustomer = false,
                     Note = "Your Order Item has been removed",
-                    CreatedOnUtc = DateTime.UtcNow,
+                    CreatedOnUtc = DateTime.Now,
                 };
                 order.OrderNotes.Add(orderNote);
                 _orderService.UpdateOrder(order);
@@ -835,7 +835,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             {
                 DisplayToCustomer = false,
                 Note = "Your Order Item has been removed",
-                CreatedOnUtc = DateTime.UtcNow,
+                CreatedOnUtc = DateTime.Now,
             };
             order.OrderNotes.Add(orderNote);
             _orderService.UpdateOrder(order);
@@ -856,7 +856,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
             {
                 DisplayToCustomer = model.AddOrderNoteDisplayToCustomer,
                 Note = model.AddOrderNoteMessage,
-                CreatedOnUtc = DateTime.UtcNow,
+                CreatedOnUtc = DateTime.Now,
             };
             order.OrderNotes.Clear();
             order.OrderNotes.Add(orderNote);
@@ -942,7 +942,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                     {
                         DisplayToCustomer = model.AddOrderNoteDisplayToCustomer,
                         Note = model.shipping.Comment,
-                        CreatedOnUtc = DateTime.UtcNow,
+                        CreatedOnUtc = DateTime.Now,
                     };
                     order.OrderNotes.Clear();
                     order.OrderNotes.Add(orderNote);
