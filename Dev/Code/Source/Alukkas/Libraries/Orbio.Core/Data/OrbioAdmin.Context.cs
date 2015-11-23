@@ -75,6 +75,7 @@ namespace Orbio.Core.Data
         public virtual DbSet<ProductVariantAttributeValue> ProductVariantAttributeValues { get; set; }
         public virtual DbSet<RelatedProduct> RelatedProducts { get; set; }
         public virtual DbSet<SimilarProduct> SimilarProducts { get; set; }
+        public virtual DbSet<PermissionRecord> PermissionRecords { get; set; }
     
         public virtual ObjectResult<Order> usp_Get_AdminOrderDetails(Nullable<int> orderStatusId, Nullable<int> paymentStatusId, Nullable<int> shippingStatusId, Nullable<int> customerId, Nullable<System.DateTime> createdFromUtc, Nullable<System.DateTime> createdToUtc, string billingEmail, Nullable<int> orderNo)
         {

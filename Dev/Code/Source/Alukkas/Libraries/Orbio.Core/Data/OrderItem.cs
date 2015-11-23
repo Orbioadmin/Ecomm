@@ -38,6 +38,7 @@ namespace Orbio.Core.Data
         public Nullable<int> LicenseDownloadId { get; set; }
         public Nullable<decimal> ItemWeight { get; set; }
         public string PriceDetailXml { get; set; }
+        public bool IsGift { get; set; }
     
         public virtual Order Order { get; set; }
         public virtual Product Product { get; set; }

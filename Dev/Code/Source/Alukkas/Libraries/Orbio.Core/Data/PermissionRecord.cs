@@ -12,23 +12,18 @@ namespace Orbio.Core.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class CustomerRole
+    public partial class PermissionRecord
     {
-        public CustomerRole()
+        public PermissionRecord()
         {
-            this.Customers = new HashSet<Customer>();
-            this.PermissionRecords = new HashSet<PermissionRecord>();
+            this.CustomerRoles = new HashSet<CustomerRole>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
-        public bool FreeShipping { get; set; }
-        public bool TaxExempt { get; set; }
-        public bool Active { get; set; }
-        public bool IsSystemRole { get; set; }
         public string SystemName { get; set; }
+        public string Category { get; set; }
     
-        public virtual ICollection<Customer> Customers { get; set; }
-        public virtual ICollection<PermissionRecord> PermissionRecords { get; set; }
+        public virtual ICollection<CustomerRole> CustomerRoles { get; set; }
     }
 }

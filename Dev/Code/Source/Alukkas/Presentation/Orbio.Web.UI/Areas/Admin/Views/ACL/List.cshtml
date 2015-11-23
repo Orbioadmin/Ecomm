@@ -1,0 +1,166 @@
+﻿@model  Orbio.Web.UI.Areas.Admin.Models.ACL.AccessControlDetailModel
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="container">
+    @using (Html.BeginForm("UpdatePermission", "ACL", FormMethod.Post, new { id="formAction" }))
+    { 
+    <div class="main_edit_order" style="padding-bottom :15px">
+        <span class="edit_order_details"><span class="shipmen_icon"></span><a href="">Access Control List</a></span>
+        <span class="back_to_order" style="padding-top:0px">
+                <input type="submit" value="Save" class="add_cat_button">
+            </span>
+    </div>
+
+    <div class="col-md-12" style=" margin-bottom: 34px;background-color: #fff;margin-top: 10px;width:100%">
+        <div class="col-md-9 main_order_table" style="width:100%">
+
+            @*@Html.Action("AccessControlList")*@
+
+           
+            <table class="item_admin_order">
+
+               <thead>
+               <td>Permission Name</td>
+                @foreach (var custRole in Model.Roles)
+                {
+                    @:<td>
+                        @custRole.Name
+                    @:<input type="checkbox" id="selectall-@(custRole.Id)" onclick="selectall(@custRole.Id)" />
+                @:</td>
+                }
+
+                </thead>
+                <tbody>
+                    @if (Model.Roles != null)
+                    {
+                        if (Model.Roles.Count > 0)
+                        {
+
+                            int count = 1;
+                            foreach (var item in Model.ACL)
+                            {
+                                int roleCount = Model.Roles.Count;
+                                if (count == 1)
+                                {
+                                    @:<tr class="first_row">
+                                    count++;
+                                }
+                                else
+                                {
+                                    @:<tr class="second_row">
+                                    count = 1;
+                                }
+                                <td class="action_ring">
+                                    <label id="lblname">@item.PermissionName</label>
+                                </td>
+                                foreach (var role in Model.Roles)
+                                {
+                                    var allowed = item.SelectedCustomerRoles.Select(m => m.Id).Contains(role.Id);
+
+                                    @:<td>
+                                        @:<input class="allow_@(role.Id)" type="checkbox" value="@(item.PermissionName)" name="allow_@(role.Id)" @(allowed ? " checked=checked" : null) />
+                                    @:</td>
+                                }
+
+                                @:</tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr style="display: table-row;">
+
+                                <td colspan="1">No customer roles available</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr style="display: table-row;">
+
+                            <td colspan="1">No customer roles available</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+    }
+</div>
+
+<script type="text/javascript">
+    function selectall(Id) {
+            if ($("#selectall-" + Id).is(':checked')) {
+                $('.allow_' + Id).prop('checked', true);
+            }
+            else {
+                $('.allow_' + Id).prop('checked', false);
+            }
+    };
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

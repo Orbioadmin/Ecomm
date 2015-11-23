@@ -61,6 +61,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\ACL\IPermissionService.cs" />
+    <Compile Include="Admin\ACL\PermissionService.cs" />
     <Compile Include="Admin\Address\AddressService.cs" />
     <Compile Include="Admin\Address\IAddressService.cs" />
     <Compile Include="Admin\Attributes\CheckoutAttributeService.cs" />

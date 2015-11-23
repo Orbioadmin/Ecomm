@@ -126,6 +126,9 @@
     <Compile Include="Data\OrderItem.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\PermissionRecord.cs">
+      <DependentUpon>OrbioAdmin.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\Picture.cs">
       <DependentUpon>OrbioAdmin.tt</DependentUpon>
     </Compile>

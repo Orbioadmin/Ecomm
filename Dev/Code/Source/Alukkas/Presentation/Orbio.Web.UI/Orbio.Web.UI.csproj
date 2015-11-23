@@ -71,7 +71,7 @@
       <HintPath>..\..\..\..\..\..\..\..\Ecom_Git\Ecomm\Dev\Code\Source\Alukkas\Presentation\Orbio.Web.UI\bin\dotless.Core.dll</HintPath>
     </Reference>
     <Reference Include="DotNet.Highcharts">
-      <HintPath>..\..\packages\DotNet.Highcharts.4.0\lib\DotNet.Highcharts.dll</HintPath>
+      <HintPath>\\ORBIO-SVR1\FileSharing\Roshini\ALUKKA\DotNet.Highcharts.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\..\packages\EntityFramework.6.0.1\lib\net45\EntityFramework.dll</HintPath>
@@ -91,10 +91,10 @@
       <HintPath>..\..\packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="PagedList">
-      <HintPath>..\..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <HintPath>\\ORBIO-SVR1\FileSharing\Roshini\ALUKKA\PagedList.dll</HintPath>
     </Reference>
     <Reference Include="PagedList.Mvc">
-      <HintPath>..\..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+      <HintPath>\\ORBIO-SVR1\FileSharing\Roshini\ALUKKA\PagedList.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Private>True</Private>
@@ -254,6 +254,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\BundleConfig.cs" />
+    <Compile Include="Areas\Admin\Controllers\ACLController.cs" />
     <Compile Include="Areas\Admin\Controllers\AttributeController.cs" />
     <Compile Include="Areas\Admin\Controllers\CatalogController.cs" />
     <Compile Include="Areas\Admin\Controllers\ComponentController.cs" />
@@ -272,6 +273,8 @@
     <Compile Include="Areas\Admin\Controllers\ShoppingCartController.cs" />
     <Compile Include="Areas\Admin\Controllers\TaxController.cs" />
     <Compile Include="Areas\Admin\MappingExtensions.cs" />
+    <Compile Include="Areas\Admin\Models\ACL\AccessControlDetailModel.cs" />
+    <Compile Include="Areas\Admin\Models\ACL\AccessControlListModel.cs" />
     <Compile Include="Areas\Admin\Models\Attribute\CheckoutAttributeModel.cs" />
     <Compile Include="Areas\Admin\Models\Attribute\CheckoutAttributeValueModel.cs" />
     <Compile Include="Areas\Admin\Models\Attribute\ProductAttributeModel.cs" />
@@ -941,6 +944,8 @@
     <Content Include="Areas\Admin\Views\Product\_CreateOrUpdateProductAttribute.cshtml" />
     <Content Include="Areas\Admin\Views\Product\AddProductVariantSizeGuide.cshtml" />
     <Content Include="Areas\Admin\Views\Product\AddOrUpdateProductAttributeValue.cshtml" />
+    <Content Include="Areas\Admin\Views\ACL\List.cshtml" />
+    <Content Include="Areas\Admin\Views\ACL\AccessControlList.cshtml" />
     <None Include="Properties\PublishProfiles\ecom.pubxml" />
     <Content Include="Areas\Admin\Views\Customer\ListCustomer.cshtml" />
     <Content Include="Areas\Admin\Views\Customer\CustomerList.cshtml" />

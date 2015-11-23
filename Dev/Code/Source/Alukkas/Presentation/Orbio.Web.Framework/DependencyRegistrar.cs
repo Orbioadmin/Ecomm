@@ -113,6 +113,9 @@ namespace Orbio.Web.Framework
             builder.RegisterType<OBS.Admin.Shipping.ShippingMethodService>().As<OBS.Admin.Shipping.IShippingMethodService>().InstancePerHttpRequest();
             //added by sankar
             builder.RegisterType<OBS.Admin.Seo.UrlRecordService>().As<OBS.Admin.Seo.IUrlRecordService>().InstancePerHttpRequest();
+
+            //added by sankar
+            builder.RegisterType<OBS.Admin.ACL.PermissionService>().As<OBS.Admin.ACL.IPermissionService>().InstancePerHttpRequest();
             
         }
 
