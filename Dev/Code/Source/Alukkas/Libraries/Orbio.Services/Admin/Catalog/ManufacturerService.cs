@@ -102,7 +102,7 @@ namespace Orbio.Services.Admin.Catalog
                     }
                     else
                     {
-                        var manufacturers = context.Manufacturers.FirstOrDefault();
+                        var manufacturers = new Manufacturer();
                         manufacturers.Name = model.Name;
                         manufacturers.Description = model.Description;
                         manufacturers.ManufacturerTemplateId = model.ManufacturerTemplate;

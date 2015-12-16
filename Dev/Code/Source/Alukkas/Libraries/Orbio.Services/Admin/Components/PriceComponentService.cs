@@ -46,7 +46,7 @@ namespace Orbio.Services.Admin.Components
                     }
                     else
                     {
-                        var priceComp = context.PriceComponents.FirstOrDefault();
+                        var priceComp = new PriceComponent();
                         priceComp.Name = Name;
                         priceComp.IsActive = IsActive;
                         priceComp.Deleted = false;

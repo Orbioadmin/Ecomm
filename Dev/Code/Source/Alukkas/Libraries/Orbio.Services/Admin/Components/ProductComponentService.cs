@@ -47,7 +47,7 @@ namespace Orbio.Services.Admin.Components
                     }
                     else
                     {
-                        var prodComp = context.ProductComponents.FirstOrDefault();
+                        var prodComp = new ProductComponent();
                         prodComp.ComponentName = Name;
                         prodComp.IsActive = IsActive;
                         prodComp.IsVariablePrice = IsVariablePrice;

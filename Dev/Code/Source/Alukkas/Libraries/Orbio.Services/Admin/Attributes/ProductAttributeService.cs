@@ -53,7 +53,7 @@ namespace Orbio.Services.Admin.Attributes
                 }
                 else
                 {
-                    var productAttribute = context.ProductAttributes.FirstOrDefault();
+                    var productAttribute = new ProductAttribute();
                     productAttribute.Name = Name;
                     productAttribute.Description = Description;
                     context.ProductAttributes.Add(productAttribute);

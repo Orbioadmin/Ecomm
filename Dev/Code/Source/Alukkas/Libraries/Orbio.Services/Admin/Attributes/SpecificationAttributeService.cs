@@ -47,7 +47,7 @@ namespace Orbio.Services.Admin.Attributes
                     }
                     else
                     {
-                        var specification = context.SpecificationAttributes.FirstOrDefault();
+                        var specification = new SpecificationAttribute();
                         specification.Name = Name;
                         specification.DisplayOrder = DisplayOrder;
                         context.SpecificationAttributes.Add(specification);
@@ -139,7 +139,7 @@ namespace Orbio.Services.Admin.Attributes
                     }
                     else
                     {
-                        var spec = context.SpecificationAttributeOptions.FirstOrDefault();
+                        var spec = new SpecificationAttributeOption();
                         spec.Name = Name;
                         spec.DisplayOrder = DisplayOrder;
                         spec.SpecificationAttributeId = SpecificationAttributeId;
