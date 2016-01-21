@@ -41,6 +41,11 @@
 
     <div class="price-range">
         <!--price-range-->
+        @if(minPrice==maxPrice)
+        {
+            minPrice = 0;
+            selectedMinPrice = 0;
+        }
          @Html.Raw("<input type=\"text\" class=\"span2\" value=\"\" data-slider-min=\"" +  minPrice +"\" data-slider-max=\"" + maxPrice
          + "\" data-slider-step=\"5\" data-slider-value=\"[ " + selectedMinPrice + "," + selectedMaxPrice + "]\" data-url= \"" + filterUrl + "\" id=\"sl2\"/>")<br />
         <b class="pull-left" style="font-size: 12px;"><span class=" gridrupees">Rs.</span>@minPrice</b> <b class="pull-right" style="font-size: 12px;"><span class=" gridrupees">Rs.</span>@maxPrice</b>
