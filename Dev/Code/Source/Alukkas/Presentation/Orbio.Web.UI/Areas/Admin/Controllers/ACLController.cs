@@ -78,7 +78,7 @@ namespace Orbio.Web.UI.Areas.Admin.Controllers
                     {
                         if (pr.CustomerRoles.FirstOrDefault(x => x.Id == cr.Id) != null)
                         {
-                            pr.CustomerRoles.Remove(cr);
+                            pr.CustomerRoles = pr.CustomerRoles.Where(x => x.Id != cr.Id).ToList();
                             permissionService.UpdatePermissionRecord(pr);
                         }
                     }

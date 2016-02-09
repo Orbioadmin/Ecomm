@@ -12,5 +12,6 @@ namespace Orbio.Services.Admin.ACL
        List<PermissionRecord> GetAllPermission();
 
        void UpdatePermissionRecord(PermissionRecord p);
+        void RemovePermissionRecord(PermissionRecord p);
     }
 }

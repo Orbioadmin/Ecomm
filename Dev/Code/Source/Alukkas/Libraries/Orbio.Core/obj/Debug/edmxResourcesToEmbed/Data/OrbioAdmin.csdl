@@ -36,6 +36,7 @@
     <NavigationProperty Name="Logs" Relationship="OrbioAdminModel.Log_Customer" FromRole="Customer" ToRole="Log" />
     <NavigationProperty Name="Address" Relationship="OrbioAdminModel.Customer_BillingAddress" FromRole="Customer" ToRole="Address" />
     <NavigationProperty Name="Address1" Relationship="OrbioAdminModel.Customer_ShippingAddress" FromRole="Customer" ToRole="Address" />
+    <NavigationProperty Name="ProductReviews" Relationship="OrbioAdminModel.ProductReview_Customer" FromRole="Customer" ToRole="ProductReview" />
   </EntityType>
   <EntityType Name="Order">
     <Key>
@@ -101,6 +102,8 @@
     <NavigationProperty Name="Address1" Relationship="OrbioAdminModel.Order_ShippingAddress" FromRole="Order" ToRole="Address" />
     <NavigationProperty Name="RecurringPayments" Relationship="OrbioAdminModel.RecurringPayment_InitialOrder" FromRole="Order" ToRole="RecurringPayment" />
     <NavigationProperty Name="Shipments" Relationship="OrbioAdminModel.Shipment_Order" FromRole="Order" ToRole="Shipment" />
+    <NavigationProperty Name="GiftCardUsageHistories" Relationship="OrbioAdminModel.GiftCardUsageHistory_UsedWithOrder" FromRole="Order" ToRole="GiftCardUsageHistory" />
+    <NavigationProperty Name="DiscountUsageHistories" Relationship="OrbioAdminModel.DiscountUsageHistory_Order" FromRole="Order" ToRole="DiscountUsageHistory" />
   </EntityType>
   <Association Name="Order_Customer">
     <End Role="Customer" Type="Self.Customer" Multiplicity="1">
@@ -202,12 +205,7 @@
       <End Role="ManufacturerTemplate" EntitySet="ManufacturerTemplates" />
       <End Role="ManufacturerTemplate1" EntitySet="ManufacturerTemplates" />
     </AssociationSet>
-    <EntitySet Name="Product_Category_Mapping" EntityType="OrbioAdminModel.Product_Category_Mapping" />
     <EntitySet Name="Product_Manufacturer_Mapping" EntityType="OrbioAdminModel.Product_Manufacturer_Mapping" />
-    <AssociationSet Name="ProductCategory_Category" Association="OrbioAdminModel.ProductCategory_Category">
-      <End Role="Category" EntitySet="Categories" />
-      <End Role="Product_Category_Mapping" EntitySet="Product_Category_Mapping" />
-    </AssociationSet>
     <AssociationSet Name="ProductManufacturer_Manufacturer" Association="OrbioAdminModel.ProductManufacturer_Manufacturer">
       <End Role="Manufacturer" EntitySet="Manufacturers" />
       <End Role="Product_Manufacturer_Mapping" EntitySet="Product_Manufacturer_Mapping" />
@@ -237,7 +235,6 @@
     <EntitySet Name="CheckoutAttributeValues" EntityType="OrbioAdminModel.CheckoutAttributeValue" />
     <EntitySet Name="PriceComponents" EntityType="OrbioAdminModel.PriceComponent" />
     <EntitySet Name="Product_SpecificationAttribute_Mapping" EntityType="OrbioAdminModel.Product_SpecificationAttribute_Mapping" />
-    <EntitySet Name="ProductComponents" EntityType="OrbioAdminModel.ProductComponent" />
     <EntitySet Name="SpecificationAttributes" EntityType="OrbioAdminModel.SpecificationAttribute" />
     <EntitySet Name="SpecificationAttributeOptions" EntityType="OrbioAdminModel.SpecificationAttributeOption" />
     <AssociationSet Name="CheckoutAttributeValue_CheckoutAttribute" Association="OrbioAdminModel.CheckoutAttributeValue_CheckoutAttribute">
@@ -261,6 +258,119 @@
       <End Role="TaxCategory" EntitySet="TaxCategories" />
       <End Role="CheckoutAttribute" EntitySet="CheckoutAttributes" />
     </AssociationSet>
+    <EntitySet Name="Product_Picture_Mapping" EntityType="OrbioAdminModel.Product_Picture_Mapping" />
+    <EntitySet Name="Product_PriceComponent_Mapping" EntityType="OrbioAdminModel.Product_PriceComponent_Mapping" />
+    <EntitySet Name="Product_ProductComponent_Mapping" EntityType="OrbioAdminModel.Product_ProductComponent_Mapping" />
+    <AssociationSet Name="ProductPicture_Picture" Association="OrbioAdminModel.ProductPicture_Picture">
+      <End Role="Picture" EntitySet="Pictures" />
+      <End Role="Product_Picture_Mapping" EntitySet="Product_Picture_Mapping" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_PriceComponent_Mapping_PriceComponents" Association="OrbioAdminModel.FK_Product_PriceComponent_Mapping_PriceComponents">
+      <End Role="PriceComponent" EntitySet="PriceComponents" />
+      <End Role="Product_PriceComponent_Mapping" EntitySet="Product_PriceComponent_Mapping" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_PriceComponent_Mapping_Product" Association="OrbioAdminModel.FK_Product_PriceComponent_Mapping_Product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Product_PriceComponent_Mapping" EntitySet="Product_PriceComponent_Mapping" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_ProductComponent_Mapping_Product" Association="OrbioAdminModel.FK_Product_ProductComponent_Mapping_Product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Product_ProductComponent_Mapping" EntitySet="Product_ProductComponent_Mapping" />
+    </AssociationSet>
+    <AssociationSet Name="ProductPicture_Product" Association="OrbioAdminModel.ProductPicture_Product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Product_Picture_Mapping" EntitySet="Product_Picture_Mapping" />
+    </AssociationSet>
+    <EntitySet Name="DeliveryDates" EntityType="OrbioAdminModel.DeliveryDate" />
+    <EntitySet Name="ProductTags" EntityType="OrbioAdminModel.ProductTag" />
+    <AssociationSet Name="Product_ProductTag_Mapping" Association="OrbioAdminModel.Product_ProductTag_Mapping">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="ProductTag" EntitySet="ProductTags" />
+    </AssociationSet>
+    <EntitySet Name="NewsLetterSubscriptions" EntityType="OrbioAdminModel.NewsLetterSubscription" />
+    <EntitySet Name="Product_Category_Mapping" EntityType="OrbioAdminModel.Product_Category_Mapping" />
+    <AssociationSet Name="ProductCategory_Category" Association="OrbioAdminModel.ProductCategory_Category">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Product_Category_Mapping" EntitySet="Product_Category_Mapping" />
+    </AssociationSet>
+    <AssociationSet Name="ProductCategory_Product" Association="OrbioAdminModel.ProductCategory_Product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Product_Category_Mapping" EntitySet="Product_Category_Mapping" />
+    </AssociationSet>
+    <AssociationSet Name="ProductManufacturer_Product" Association="OrbioAdminModel.ProductManufacturer_Product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Product_Manufacturer_Mapping" EntitySet="Product_Manufacturer_Mapping" />
+    </AssociationSet>
+    <EntitySet Name="Countries" EntityType="OrbioAdminModel.Country" />
+    <EntitySet Name="StateProvinces" EntityType="OrbioAdminModel.StateProvince" />
+    <AssociationSet Name="Address_Country" Association="OrbioAdminModel.Address_Country">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="Address" EntitySet="Addresses" />
+    </AssociationSet>
+    <AssociationSet Name="Address_StateProvince" Association="OrbioAdminModel.Address_StateProvince">
+      <End Role="StateProvince" EntitySet="StateProvinces" />
+      <End Role="Address" EntitySet="Addresses" />
+    </AssociationSet>
+    <AssociationSet Name="StateProvince_Country" Association="OrbioAdminModel.StateProvince_Country">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="StateProvince" EntitySet="StateProvinces" />
+    </AssociationSet>
+    <EntitySet Name="GiftCards" EntityType="OrbioAdminModel.GiftCard" />
+    <EntitySet Name="GiftCardUsageHistories" EntityType="OrbioAdminModel.GiftCardUsageHistory" />
+    <AssociationSet Name="GiftCard_PurchasedWithOrderItem" Association="OrbioAdminModel.GiftCard_PurchasedWithOrderItem">
+      <End Role="OrderItem" EntitySet="OrderItems" />
+      <End Role="GiftCard" EntitySet="GiftCards" />
+    </AssociationSet>
+    <AssociationSet Name="GiftCardUsageHistory_GiftCard" Association="OrbioAdminModel.GiftCardUsageHistory_GiftCard">
+      <End Role="GiftCard" EntitySet="GiftCards" />
+      <End Role="GiftCardUsageHistory" EntitySet="GiftCardUsageHistories" />
+    </AssociationSet>
+    <AssociationSet Name="GiftCardUsageHistory_UsedWithOrder" Association="OrbioAdminModel.GiftCardUsageHistory_UsedWithOrder">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="GiftCardUsageHistory" EntitySet="GiftCardUsageHistories" />
+    </AssociationSet>
+    <EntitySet Name="MessageTemplates" EntityType="OrbioAdminModel.MessageTemplate" />
+    <EntitySet Name="DiscountUsageHistories" EntityType="OrbioAdminModel.DiscountUsageHistory" />
+    <AssociationSet Name="DiscountUsageHistory_Order" Association="OrbioAdminModel.DiscountUsageHistory_Order">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="DiscountUsageHistory" EntitySet="DiscountUsageHistories" />
+    </AssociationSet>
+    <EntitySet Name="ProductComponents" EntityType="OrbioAdminModel.ProductComponent" />
+    <AssociationSet Name="FK_Product_ProductComponent_Mapping_ProductComponents" Association="OrbioAdminModel.FK_Product_ProductComponent_Mapping_ProductComponents">
+      <End Role="ProductComponent" EntitySet="ProductComponents" />
+      <End Role="Product_ProductComponent_Mapping" EntitySet="Product_ProductComponent_Mapping" />
+    </AssociationSet>
+    <EntitySet Name="ProductReviews" EntityType="OrbioAdminModel.ProductReview" />
+    <AssociationSet Name="ProductReview_Customer" Association="OrbioAdminModel.ProductReview_Customer">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="ProductReview" EntitySet="ProductReviews" />
+    </AssociationSet>
+    <AssociationSet Name="ProductReview_Product" Association="OrbioAdminModel.ProductReview_Product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="ProductReview" EntitySet="ProductReviews" />
+    </AssociationSet>
+    <EntitySet Name="Warehouses" EntityType="OrbioAdminModel.Warehouse" />
+    <AssociationSet Name="FK_Warehouse_Address" Association="OrbioAdminModel.FK_Warehouse_Address">
+      <End Role="Address" EntitySet="Addresses" />
+      <End Role="Warehouse" EntitySet="Warehouses" />
+    </AssociationSet>
+    <EntitySet Name="TaxRates" EntityType="OrbioAdminModel.TaxRate" />
+    <AssociationSet Name="FK_TaxRate_TaxCategory" Association="OrbioAdminModel.FK_TaxRate_TaxCategory">
+      <End Role="TaxCategory" EntitySet="TaxCategories" />
+      <End Role="TaxRate" EntitySet="TaxRates" />
+    </AssociationSet>
+    <EntitySet Name="ProductVariantAttributeValues" EntityType="OrbioAdminModel.ProductVariantAttributeValue" />
+    <AssociationSet Name="ProductVariantAttributeValue_ProductVariantAttribute" Association="OrbioAdminModel.ProductVariantAttributeValue_ProductVariantAttribute">
+      <End Role="Product_ProductAttribute_Mapping" EntitySet="Product_ProductAttribute_Mapping" />
+      <End Role="ProductVariantAttributeValue" EntitySet="ProductVariantAttributeValues" />
+    </AssociationSet>
+    <EntitySet Name="RelatedProducts" EntityType="OrbioAdminModel.RelatedProduct" />
+    <EntitySet Name="SimilarProducts" EntityType="OrbioAdminModel.SimilarProduct" />
+    <EntitySet Name="PermissionRecords" EntityType="OrbioAdminModel.PermissionRecord" />
+    <AssociationSet Name="PermissionRecord_Role_Mapping" Association="OrbioAdminModel.PermissionRecord_Role_Mapping">
+      <End Role="PermissionRecord" EntitySet="PermissionRecords" />
+      <End Role="CustomerRole" EntitySet="CustomerRoles" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="CustomerRole">
     <Key>
@@ -274,6 +384,7 @@
     <Property Name="IsSystemRole" Type="Boolean" Nullable="false" />
     <Property Name="SystemName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Customers" Relationship="OrbioAdminModel.Customer_CustomerRole_Mapping" FromRole="CustomerRole" ToRole="Customer" />
+    <NavigationProperty Name="PermissionRecords" Relationship="OrbioAdminModel.PermissionRecord_Role_Mapping" FromRole="CustomerRole" ToRole="PermissionRecord" />
   </EntityType>
   <EntityType Name="OrderItem">
     <Key>
@@ -300,6 +411,8 @@
     <NavigationProperty Name="Order" Relationship="OrbioAdminModel.OrderItem_Order" FromRole="OrderItem" ToRole="Order" />
     <Property Type="String" Name="PriceDetailXml" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Product" Relationship="OrbioAdminModel.OrderItem_Product" FromRole="OrderItem" ToRole="Product" />
+    <NavigationProperty Name="GiftCards" Relationship="OrbioAdminModel.GiftCard_PurchasedWithOrderItem" FromRole="OrderItem" ToRole="GiftCard" />
+    <Property Name="IsGift" Type="Boolean" Nullable="false" />
   </EntityType>
   <Association Name="OrderItem_Order">
     <End Type="OrbioAdminModel.Order" Role="Order" Multiplicity="1">
@@ -370,6 +483,9 @@
     <NavigationProperty Name="Customers1" Relationship="OrbioAdminModel.Customer_ShippingAddress" FromRole="Address" ToRole="Customer" />
     <NavigationProperty Name="Orders" Relationship="OrbioAdminModel.Order_BillingAddress" FromRole="Address" ToRole="Order" />
     <NavigationProperty Name="Orders1" Relationship="OrbioAdminModel.Order_ShippingAddress" FromRole="Address" ToRole="Order" />
+    <NavigationProperty Name="Country" Relationship="OrbioAdminModel.Address_Country" FromRole="Address" ToRole="Country" />
+    <NavigationProperty Name="StateProvince" Relationship="OrbioAdminModel.Address_StateProvince" FromRole="Address" ToRole="StateProvince" />
+    <NavigationProperty Name="Warehouses" Relationship="OrbioAdminModel.FK_Warehouse_Address" FromRole="Address" ToRole="Warehouse" />
   </EntityType>
   <EntityType Name="Product">
     <Key>
@@ -471,6 +587,15 @@
     <NavigationProperty Name="OrderItems" Relationship="OrbioAdminModel.OrderItem_Product" FromRole="Product" ToRole="OrderItem" />
     <NavigationProperty Name="Product_ProductAttribute_Mapping" Relationship="OrbioAdminModel.ProductVariantAttribute_Product" FromRole="Product" ToRole="Product_ProductAttribute_Mapping" />
     <NavigationProperty Name="Product_SpecificationAttribute_Mapping" Relationship="OrbioAdminModel.ProductSpecificationAttribute_Product" FromRole="Product" ToRole="Product_SpecificationAttribute_Mapping" />
+    <NavigationProperty Name="Product_PriceComponent_Mapping" Relationship="OrbioAdminModel.FK_Product_PriceComponent_Mapping_Product" FromRole="Product" ToRole="Product_PriceComponent_Mapping" />
+    <NavigationProperty Name="Product_ProductComponent_Mapping" Relationship="OrbioAdminModel.FK_Product_ProductComponent_Mapping_Product" FromRole="Product" ToRole="Product_ProductComponent_Mapping" />
+    <NavigationProperty Name="Product_Picture_Mapping" Relationship="OrbioAdminModel.ProductPicture_Product" FromRole="Product" ToRole="Product_Picture_Mapping" />
+    <NavigationProperty Name="ProductTags" Relationship="OrbioAdminModel.Product_ProductTag_Mapping" FromRole="Product" ToRole="ProductTag" />
+    <NavigationProperty Name="Product_Category_Mapping" Relationship="OrbioAdminModel.ProductCategory_Product" FromRole="Product" ToRole="Product_Category_Mapping" />
+    <NavigationProperty Name="Product_Manufacturer_Mapping" Relationship="OrbioAdminModel.ProductManufacturer_Product" FromRole="Product" ToRole="Product_Manufacturer_Mapping" />
+    <NavigationProperty Name="ProductReviews" Relationship="OrbioAdminModel.ProductReview_Product" FromRole="Product" ToRole="ProductReview" />
+    <Property Name="IsGift" Type="Boolean" Nullable="false" />
+    <Property Name="GiftCharge" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
   </EntityType>
   <Association Name="Customer_BillingAddress">
     <End Type="OrbioAdminModel.Address" Role="Address" Multiplicity="0..1" />
@@ -724,6 +849,7 @@
     <Property Name="IsNew" Type="Boolean" Nullable="false" />
     <Property Name="RelativeUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Categories" Relationship="OrbioAdminModel.FK_Category_Picture" FromRole="Picture" ToRole="Category" />
+    <NavigationProperty Name="Product_Picture_Mapping" Relationship="OrbioAdminModel.ProductPicture_Picture" FromRole="Picture" ToRole="Product_Picture_Mapping" />
   </EntityType>
   <EntityType Name="UrlRecord">
     <Key>
@@ -796,17 +922,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="Product_Category_Mapping">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ProductId" Type="Int32" Nullable="false" />
-    <Property Name="CategoryId" Type="Int32" Nullable="false" />
-    <Property Name="IsFeaturedProduct" Type="Boolean" Nullable="false" />
-    <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Category" Relationship="OrbioAdminModel.ProductCategory_Category" FromRole="Product_Category_Mapping" ToRole="Category" />
-  </EntityType>
   <EntityType Name="Product_Manufacturer_Mapping">
     <Key>
       <PropertyRef Name="Id" />
@@ -817,21 +932,8 @@
     <Property Name="IsFeaturedProduct" Type="Boolean" Nullable="false" />
     <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Manufacturer" Relationship="OrbioAdminModel.ProductManufacturer_Manufacturer" FromRole="Product_Manufacturer_Mapping" ToRole="Manufacturer" />
+    <NavigationProperty Name="Product" Relationship="OrbioAdminModel.ProductManufacturer_Product" FromRole="Product_Manufacturer_Mapping" ToRole="Product" />
   </EntityType>
-  <Association Name="ProductCategory_Category">
-    <End Type="OrbioAdminModel.Category" Role="Category" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="OrbioAdminModel.Product_Category_Mapping" Role="Product_Category_Mapping" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Category">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Product_Category_Mapping">
-        <PropertyRef Name="CategoryId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="ProductManufacturer_Manufacturer">
     <End Type="OrbioAdminModel.Manufacturer" Role="Manufacturer" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -860,6 +962,7 @@
     <Property Name="SizeGuideUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Product" Relationship="OrbioAdminModel.ProductVariantAttribute_Product" FromRole="Product_ProductAttribute_Mapping" ToRole="Product" />
     <NavigationProperty Name="ProductAttribute" Relationship="OrbioAdminModel.ProductVariantAttribute_ProductAttribute" FromRole="Product_ProductAttribute_Mapping" ToRole="ProductAttribute" />
+    <NavigationProperty Name="ProductVariantAttributeValues" Relationship="OrbioAdminModel.ProductVariantAttributeValue_ProductVariantAttribute" FromRole="Product_ProductAttribute_Mapping" ToRole="ProductVariantAttributeValue" />
   </EntityType>
   <EntityType Name="ProductAttribute">
     <Key>
@@ -1001,6 +1104,7 @@
     <Property Name="CreatedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
     <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="ModifiedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Product_PriceComponent_Mapping" Relationship="OrbioAdminModel.FK_Product_PriceComponent_Mapping_PriceComponents" FromRole="PriceComponent" ToRole="Product_PriceComponent_Mapping" />
   </EntityType>
   <EntityType Name="Product_SpecificationAttribute_Mapping">
     <Key>
@@ -1016,19 +1120,6 @@
     <Property Name="SubTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Product" Relationship="OrbioAdminModel.ProductSpecificationAttribute_Product" FromRole="Product_SpecificationAttribute_Mapping" ToRole="Product" />
     <NavigationProperty Name="SpecificationAttributeOption" Relationship="OrbioAdminModel.ProductSpecificationAttribute_SpecificationAttributeOption" FromRole="Product_SpecificationAttribute_Mapping" ToRole="SpecificationAttributeOption" />
-  </EntityType>
-  <EntityType Name="ProductComponent">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ComponentName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="IsActive" Type="Boolean" Nullable="false" />
-    <Property Name="Deleted" Type="Boolean" Nullable="false" />
-    <Property Name="CreatedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="ModifiedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
   </EntityType>
   <EntityType Name="SpecificationAttribute">
     <Key>
@@ -1114,6 +1205,7 @@
     <Property Name="Name" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
     <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
     <NavigationProperty Name="CheckoutAttributes" Relationship="OrbioAdminModel.FK_CheckoutAttribute_TaxCategory" FromRole="TaxCategory" ToRole="CheckoutAttribute" />
+    <NavigationProperty Name="TaxRates" Relationship="OrbioAdminModel.FK_TaxRate_TaxCategory" FromRole="TaxCategory" ToRole="TaxRate" />
   </EntityType>
   <Association Name="FK_CheckoutAttribute_TaxCategory">
     <End Type="OrbioAdminModel.TaxCategory" Role="TaxCategory" Multiplicity="1" />
@@ -1126,5 +1218,546 @@
         <PropertyRef Name="TaxCategoryId" />
       </Dependent>
     </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Product_Picture_Mapping">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="PictureId" Type="Int32" Nullable="false" />
+    <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Picture" Relationship="OrbioAdminModel.ProductPicture_Picture" FromRole="Product_Picture_Mapping" ToRole="Picture" />
+    <NavigationProperty Name="Product" Relationship="OrbioAdminModel.ProductPicture_Product" FromRole="Product_Picture_Mapping" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Product_PriceComponent_Mapping">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="PricecomponentId" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Percentage" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Itemrate" Type="Decimal" Precision="18" Scale="2" />
+    <NavigationProperty Name="PriceComponent" Relationship="OrbioAdminModel.FK_Product_PriceComponent_Mapping_PriceComponents" FromRole="Product_PriceComponent_Mapping" ToRole="PriceComponent" />
+    <NavigationProperty Name="Product" Relationship="OrbioAdminModel.FK_Product_PriceComponent_Mapping_Product" FromRole="Product_PriceComponent_Mapping" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Product_ProductComponent_Mapping">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="ComponentId" Type="Int32" Nullable="false" />
+    <Property Name="Weight" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+    <Property Name="UnitPrice" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+    <NavigationProperty Name="Product" Relationship="OrbioAdminModel.FK_Product_ProductComponent_Mapping_Product" FromRole="Product_ProductComponent_Mapping" ToRole="Product" />
+    <NavigationProperty Name="ProductComponent" Relationship="OrbioAdminModel.FK_Product_ProductComponent_Mapping_ProductComponents" FromRole="Product_ProductComponent_Mapping" ToRole="ProductComponent" />
+  </EntityType>
+  <Association Name="ProductPicture_Picture">
+    <End Type="OrbioAdminModel.Picture" Role="Picture" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="OrbioAdminModel.Product_Picture_Mapping" Role="Product_Picture_Mapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Picture">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product_Picture_Mapping">
+        <PropertyRef Name="PictureId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_PriceComponent_Mapping_PriceComponents">
+    <End Type="OrbioAdminModel.PriceComponent" Role="PriceComponent" Multiplicity="1" />
+    <End Type="OrbioAdminModel.Product_PriceComponent_Mapping" Role="Product_PriceComponent_Mapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PriceComponent">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product_PriceComponent_Mapping">
+        <PropertyRef Name="PricecomponentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_PriceComponent_Mapping_Product">
+    <End Type="OrbioAdminModel.Product" Role="Product" Multiplicity="1" />
+    <End Type="OrbioAdminModel.Product_PriceComponent_Mapping" Role="Product_PriceComponent_Mapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product_PriceComponent_Mapping">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_ProductComponent_Mapping_Product">
+    <End Type="OrbioAdminModel.Product" Role="Product" Multiplicity="1" />
+    <End Type="OrbioAdminModel.Product_ProductComponent_Mapping" Role="Product_ProductComponent_Mapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product_ProductComponent_Mapping">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductPicture_Product">
+    <End Type="OrbioAdminModel.Product" Role="Product" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="OrbioAdminModel.Product_Picture_Mapping" Role="Product_Picture_Mapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product_Picture_Mapping">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="DeliveryDate">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductTag">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Products" Relationship="OrbioAdminModel.Product_ProductTag_Mapping" FromRole="ProductTag" ToRole="Product" />
+  </EntityType>
+  <Association Name="Product_ProductTag_Mapping">
+    <End Type="OrbioAdminModel.Product" Role="Product" Multiplicity="*" />
+    <End Type="OrbioAdminModel.ProductTag" Role="ProductTag" Multiplicity="*" />
+  </Association>
+  <EntityType Name="NewsLetterSubscription">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NewsLetterSubscriptionGuid" Type="Guid" Nullable="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="Product_Category_Mapping">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="CategoryId" Type="Int32" Nullable="false" />
+    <Property Name="IsFeaturedProduct" Type="Boolean" Nullable="false" />
+    <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Category" Relationship="OrbioAdminModel.ProductCategory_Category" FromRole="Product_Category_Mapping" ToRole="Category" />
+    <NavigationProperty Name="Product" Relationship="OrbioAdminModel.ProductCategory_Product" FromRole="Product_Category_Mapping" ToRole="Product" />
+  </EntityType>
+  <Association Name="ProductCategory_Category">
+    <End Type="OrbioAdminModel.Category" Role="Category" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="OrbioAdminModel.Product_Category_Mapping" Role="Product_Category_Mapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product_Category_Mapping">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductCategory_Product">
+    <End Type="OrbioAdminModel.Product" Role="Product" Multiplicity="1" />
+    <End Type="OrbioAdminModel.Product_Category_Mapping" Role="Product_Category_Mapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product_Category_Mapping">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductManufacturer_Product">
+    <End Type="OrbioAdminModel.Product" Role="Product" Multiplicity="1" />
+    <End Type="OrbioAdminModel.Product_Manufacturer_Mapping" Role="Product_Manufacturer_Mapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product_Manufacturer_Mapping">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="AllowsBilling" Type="Boolean" Nullable="false" />
+    <Property Name="AllowsShipping" Type="Boolean" Nullable="false" />
+    <Property Name="TwoLetterIsoCode" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="ThreeLetterIsoCode" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="NumericIsoCode" Type="Int32" Nullable="false" />
+    <Property Name="SubjectToVat" Type="Boolean" Nullable="false" />
+    <Property Name="Published" Type="Boolean" Nullable="false" />
+    <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Addresses" Relationship="OrbioAdminModel.Address_Country" FromRole="Country" ToRole="Address" />
+    <NavigationProperty Name="StateProvinces" Relationship="OrbioAdminModel.StateProvince_Country" FromRole="Country" ToRole="StateProvince" />
+  </EntityType>
+  <EntityType Name="StateProvince">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CountryId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Abbreviation" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Published" Type="Boolean" Nullable="false" />
+    <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Addresses" Relationship="OrbioAdminModel.Address_StateProvince" FromRole="StateProvince" ToRole="Address" />
+    <NavigationProperty Name="Country" Relationship="OrbioAdminModel.StateProvince_Country" FromRole="StateProvince" ToRole="Country" />
+  </EntityType>
+  <Association Name="Address_Country">
+    <End Type="OrbioAdminModel.Country" Role="Country" Multiplicity="0..1" />
+    <End Type="OrbioAdminModel.Address" Role="Address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Address">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Address_StateProvince">
+    <End Type="OrbioAdminModel.StateProvince" Role="StateProvince" Multiplicity="0..1" />
+    <End Type="OrbioAdminModel.Address" Role="Address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StateProvince">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Address">
+        <PropertyRef Name="StateProvinceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="StateProvince_Country">
+    <End Type="OrbioAdminModel.Country" Role="Country" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="OrbioAdminModel.StateProvince" Role="StateProvince" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StateProvince">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="GiftCard">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PurchasedWithOrderItemId" Type="Int32" />
+    <Property Name="GiftCardTypeId" Type="Int32" Nullable="false" />
+    <Property Name="Amount" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+    <Property Name="IsGiftCardActivated" Type="Boolean" Nullable="false" />
+    <Property Name="GiftCardCouponCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="RecipientName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="RecipientEmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SenderName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SenderEmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsRecipientNotified" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="OrderItem" Relationship="OrbioAdminModel.GiftCard_PurchasedWithOrderItem" FromRole="GiftCard" ToRole="OrderItem" />
+    <NavigationProperty Name="GiftCardUsageHistories" Relationship="OrbioAdminModel.GiftCardUsageHistory_GiftCard" FromRole="GiftCard" ToRole="GiftCardUsageHistory" />
+  </EntityType>
+  <EntityType Name="GiftCardUsageHistory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GiftCardId" Type="Int32" Nullable="false" />
+    <Property Name="UsedWithOrderId" Type="Int32" Nullable="false" />
+    <Property Name="UsedValue" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+    <Property Name="CreatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="GiftCard" Relationship="OrbioAdminModel.GiftCardUsageHistory_GiftCard" FromRole="GiftCardUsageHistory" ToRole="GiftCard" />
+    <NavigationProperty Name="Order" Relationship="OrbioAdminModel.GiftCardUsageHistory_UsedWithOrder" FromRole="GiftCardUsageHistory" ToRole="Order" />
+  </EntityType>
+  <Association Name="GiftCard_PurchasedWithOrderItem">
+    <End Type="OrbioAdminModel.OrderItem" Role="OrderItem" Multiplicity="0..1" />
+    <End Type="OrbioAdminModel.GiftCard" Role="GiftCard" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderItem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GiftCard">
+        <PropertyRef Name="PurchasedWithOrderItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GiftCardUsageHistory_GiftCard">
+    <End Type="OrbioAdminModel.GiftCard" Role="GiftCard" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="OrbioAdminModel.GiftCardUsageHistory" Role="GiftCardUsageHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GiftCard">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GiftCardUsageHistory">
+        <PropertyRef Name="GiftCardId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GiftCardUsageHistory_UsedWithOrder">
+    <End Type="OrbioAdminModel.Order" Role="Order" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="OrbioAdminModel.GiftCardUsageHistory" Role="GiftCardUsageHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GiftCardUsageHistory">
+        <PropertyRef Name="UsedWithOrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="MessageTemplate">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="BccEmailAddresses" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Subject" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="EmailAccountId" Type="Int32" Nullable="false" />
+    <Property Name="LimitedToStores" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DiscountUsageHistory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DiscountId" Type="Int32" Nullable="false" />
+    <Property Name="OrderId" Type="Int32" Nullable="false" />
+    <Property Name="CreatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Order" Relationship="OrbioAdminModel.DiscountUsageHistory_Order" FromRole="DiscountUsageHistory" ToRole="Order" />
+  </EntityType>
+  <Association Name="DiscountUsageHistory_Order">
+    <End Type="OrbioAdminModel.Order" Role="Order" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="OrbioAdminModel.DiscountUsageHistory" Role="DiscountUsageHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DiscountUsageHistory">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ProductComponent">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ComponentName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="Deleted" Type="Boolean" Nullable="false" />
+    <Property Name="IsVariablePrice" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Product_ProductComponent_Mapping" Relationship="OrbioAdminModel.FK_Product_ProductComponent_Mapping_ProductComponents" FromRole="ProductComponent" ToRole="Product_ProductComponent_Mapping" />
+  </EntityType>
+  <Association Name="FK_Product_ProductComponent_Mapping_ProductComponents">
+    <End Type="OrbioAdminModel.ProductComponent" Role="ProductComponent" Multiplicity="1" />
+    <End Type="OrbioAdminModel.Product_ProductComponent_Mapping" Role="Product_ProductComponent_Mapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductComponent">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product_ProductComponent_Mapping">
+        <PropertyRef Name="ComponentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ProductReview">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerId" Type="Int32" Nullable="false" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ReviewText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Rating" Type="Int32" Nullable="false" />
+    <Property Name="HelpfulYesTotal" Type="Int32" Nullable="false" />
+    <Property Name="HelpfulNoTotal" Type="Int32" Nullable="false" />
+    <Property Name="CreatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Customer" Relationship="OrbioAdminModel.ProductReview_Customer" FromRole="ProductReview" ToRole="Customer" />
+    <NavigationProperty Name="Product" Relationship="OrbioAdminModel.ProductReview_Product" FromRole="ProductReview" ToRole="Product" />
+  </EntityType>
+  <Association Name="ProductReview_Customer">
+    <End Type="OrbioAdminModel.Customer" Role="Customer" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="OrbioAdminModel.ProductReview" Role="ProductReview" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductReview">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductReview_Product">
+    <End Type="OrbioAdminModel.Product" Role="Product" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="OrbioAdminModel.ProductReview" Role="ProductReview" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductReview">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Warehouse">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="AddressId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Address" Relationship="OrbioAdminModel.FK_Warehouse_Address" FromRole="Warehouse" ToRole="Address" />
+  </EntityType>
+  <Association Name="FK_Warehouse_Address">
+    <End Type="OrbioAdminModel.Address" Role="Address" Multiplicity="1" />
+    <End Type="OrbioAdminModel.Warehouse" Role="Warehouse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Warehouse">
+        <PropertyRef Name="AddressId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="TaxRate">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StoreId" Type="Int32" Nullable="false" />
+    <Property Name="TaxCategoryId" Type="Int32" Nullable="false" />
+    <Property Name="CountryId" Type="Int32" Nullable="false" />
+    <Property Name="StateProvinceId" Type="Int32" Nullable="false" />
+    <Property Name="Zip" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Percentage" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+    <NavigationProperty Name="TaxCategory" Relationship="OrbioAdminModel.FK_TaxRate_TaxCategory" FromRole="TaxRate" ToRole="TaxCategory" />
+  </EntityType>
+  <Association Name="FK_TaxRate_TaxCategory">
+    <End Type="OrbioAdminModel.TaxCategory" Role="TaxCategory" Multiplicity="1" />
+    <End Type="OrbioAdminModel.TaxRate" Role="TaxRate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaxCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TaxRate">
+        <PropertyRef Name="TaxCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ProductVariantAttributeValue">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductVariantAttributeId" Type="Int32" Nullable="false" />
+    <Property Name="AttributeValueTypeId" Type="Int32" Nullable="false" />
+    <Property Name="AssociatedProductId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="ColorSquaresRgb" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PriceAdjustment" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+    <Property Name="WeightAdjustment" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+    <Property Name="Cost" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="IsPreSelected" Type="Boolean" Nullable="false" />
+    <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+    <Property Name="PictureId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Product_ProductAttribute_Mapping" Relationship="OrbioAdminModel.ProductVariantAttributeValue_ProductVariantAttribute" FromRole="ProductVariantAttributeValue" ToRole="Product_ProductAttribute_Mapping" />
+  </EntityType>
+  <Association Name="ProductVariantAttributeValue_ProductVariantAttribute">
+    <End Type="OrbioAdminModel.Product_ProductAttribute_Mapping" Role="Product_ProductAttribute_Mapping" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="OrbioAdminModel.ProductVariantAttributeValue" Role="ProductVariantAttributeValue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product_ProductAttribute_Mapping">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductVariantAttributeValue">
+        <PropertyRef Name="ProductVariantAttributeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="RelatedProduct">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId1" Type="Int32" Nullable="false" />
+    <Property Name="ProductId2" Type="Int32" Nullable="false" />
+    <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SimilarProduct">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId1" Type="Int32" Nullable="false" />
+    <Property Name="ProductId2" Type="Int32" Nullable="false" />
+    <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PermissionRecord">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SystemName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Category" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CustomerRoles" Relationship="OrbioAdminModel.PermissionRecord_Role_Mapping" FromRole="PermissionRecord" ToRole="CustomerRole" />
+  </EntityType>
+  <Association Name="PermissionRecord_Role_Mapping">
+    <End Type="OrbioAdminModel.PermissionRecord" Role="PermissionRecord" Multiplicity="*" />
+    <End Type="OrbioAdminModel.CustomerRole" Role="CustomerRole" Multiplicity="*" />
   </Association>
 </Schema>

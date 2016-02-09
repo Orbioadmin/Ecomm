@@ -83,6 +83,21 @@
     <Property Name="IsPreSelected" Type="bit" Nullable="false" />
     <Property Name="DisplayOrder" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="AllowsBilling" Type="bit" Nullable="false" />
+    <Property Name="AllowsShipping" Type="bit" Nullable="false" />
+    <Property Name="TwoLetterIsoCode" Type="nvarchar" MaxLength="2" />
+    <Property Name="ThreeLetterIsoCode" Type="nvarchar" MaxLength="3" />
+    <Property Name="NumericIsoCode" Type="int" Nullable="false" />
+    <Property Name="SubjectToVat" Type="bit" Nullable="false" />
+    <Property Name="Published" Type="bit" Nullable="false" />
+    <Property Name="DisplayOrder" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="Customer">
     <Key>
       <PropertyRef Name="Id" />
@@ -135,6 +150,14 @@
     <Property Name="IsSystemRole" Type="bit" Nullable="false" />
     <Property Name="SystemName" Type="nvarchar" MaxLength="255" />
   </EntityType>
+  <EntityType Name="DeliveryDate">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="400" Nullable="false" />
+    <Property Name="DisplayOrder" Type="int" Nullable="false" />
+  </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="Discount_AppliedToCategories">
@@ -144,6 +167,43 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
     </Key>
     <Property Name="Discount_Id" Type="int" Nullable="false" />
     <Property Name="Category_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DiscountUsageHistory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DiscountId" Type="int" Nullable="false" />
+    <Property Name="OrderId" Type="int" Nullable="false" />
+    <Property Name="CreatedOnUtc" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GiftCard">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PurchasedWithOrderItemId" Type="int" />
+    <Property Name="GiftCardTypeId" Type="int" Nullable="false" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="IsGiftCardActivated" Type="bit" Nullable="false" />
+    <Property Name="GiftCardCouponCode" Type="nvarchar(max)" />
+    <Property Name="RecipientName" Type="nvarchar(max)" />
+    <Property Name="RecipientEmail" Type="nvarchar(max)" />
+    <Property Name="SenderName" Type="nvarchar(max)" />
+    <Property Name="SenderEmail" Type="nvarchar(max)" />
+    <Property Name="Message" Type="nvarchar(max)" />
+    <Property Name="IsRecipientNotified" Type="bit" Nullable="false" />
+    <Property Name="CreatedOnUtc" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GiftCardUsageHistory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GiftCardId" Type="int" Nullable="false" />
+    <Property Name="UsedWithOrderId" Type="int" Nullable="false" />
+    <Property Name="UsedValue" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="CreatedOnUtc" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="Log">
     <Key>
@@ -191,6 +251,29 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
     <Property Name="Name" Type="nvarchar" MaxLength="400" Nullable="false" />
     <Property Name="ViewPath" Type="nvarchar" MaxLength="400" Nullable="false" />
     <Property Name="DisplayOrder" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MessageTemplate">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="BccEmailAddresses" Type="nvarchar" MaxLength="200" />
+    <Property Name="Subject" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Body" Type="nvarchar(max)" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="EmailAccountId" Type="int" Nullable="false" />
+    <Property Name="LimitedToStores" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NewsLetterSubscription">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NewsLetterSubscriptionGuid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="CreatedOnUtc" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="Order">
     <Key>
@@ -274,6 +357,24 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
     <Property Name="LicenseDownloadId" Type="int" />
     <Property Name="ItemWeight" Type="decimal" Precision="18" Scale="4" />
     <Property Name="PriceDetailXml" Type="nvarchar(max)" />
+    <Property Name="IsGift" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PermissionRecord">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SystemName" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Category" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PermissionRecord_Role_Mapping">
+    <Key>
+      <PropertyRef Name="PermissionRecord_Id" />
+      <PropertyRef Name="CustomerRole_Id" />
+    </Key>
+    <Property Name="PermissionRecord_Id" Type="int" Nullable="false" />
+    <Property Name="CustomerRole_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Picture">
     <Key>
@@ -396,6 +497,8 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
     <Property Name="StoneCost" Type="decimal" Precision="18" Scale="4" />
     <Property Name="MakingCost" Type="decimal" Precision="18" Scale="4" />
     <Property Name="ProductUnit" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="IsGift" Type="bit" Nullable="false" />
+    <Property Name="GiftCharge" Type="decimal" Precision="18" Scale="4" Nullable="false" />
   </EntityType>
   <EntityType Name="Product_Category_Mapping">
     <Key>
@@ -417,6 +520,26 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
     <Property Name="IsFeaturedProduct" Type="bit" Nullable="false" />
     <Property Name="DisplayOrder" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="Product_Picture_Mapping">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="PictureId" Type="int" Nullable="false" />
+    <Property Name="DisplayOrder" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product_PriceComponent_Mapping">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="PricecomponentId" Type="int" Nullable="false" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Percentage" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Itemrate" Type="numeric" Precision="18" Scale="2" />
+  </EntityType>
   <EntityType Name="Product_ProductAttribute_Mapping">
     <Key>
       <PropertyRef Name="Id" />
@@ -429,6 +552,24 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
     <Property Name="AttributeControlTypeId" Type="int" Nullable="false" />
     <Property Name="DisplayOrder" Type="int" Nullable="false" />
     <Property Name="SizeGuideUrl" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Product_ProductComponent_Mapping">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="ComponentId" Type="int" Nullable="false" />
+    <Property Name="Weight" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="UnitPrice" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product_ProductTag_Mapping">
+    <Key>
+      <PropertyRef Name="Product_Id" />
+      <PropertyRef Name="ProductTag_Id" />
+    </Key>
+    <Property Name="Product_Id" Type="int" Nullable="false" />
+    <Property Name="ProductTag_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Product_SpecificationAttribute_Mapping">
     <Key>
@@ -463,6 +604,48 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
     <Property Name="CreatedDate" Type="datetime" Nullable="false" />
     <Property Name="ModifiedBy" Type="nvarchar" MaxLength="150" />
     <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+    <Property Name="IsVariablePrice" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductReview">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerId" Type="int" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="IsApproved" Type="bit" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" />
+    <Property Name="ReviewText" Type="nvarchar(max)" />
+    <Property Name="Rating" Type="int" Nullable="false" />
+    <Property Name="HelpfulYesTotal" Type="int" Nullable="false" />
+    <Property Name="HelpfulNoTotal" Type="int" Nullable="false" />
+    <Property Name="CreatedOnUtc" Type="datetime" Nullable="false" />
+    <Property Name="CustomerName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ProductTag">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="400" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductVariantAttributeValue">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductVariantAttributeId" Type="int" Nullable="false" />
+    <Property Name="AttributeValueTypeId" Type="int" Nullable="false" />
+    <Property Name="AssociatedProductId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="400" Nullable="false" />
+    <Property Name="ColorSquaresRgb" Type="nvarchar" MaxLength="100" />
+    <Property Name="PriceAdjustment" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="WeightAdjustment" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="Cost" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+    <Property Name="IsPreSelected" Type="bit" Nullable="false" />
+    <Property Name="DisplayOrder" Type="int" Nullable="false" />
+    <Property Name="PictureId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="RecurringPayment">
     <Key>
@@ -477,6 +660,15 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
     <Property Name="Deleted" Type="bit" Nullable="false" />
     <Property Name="InitialOrderId" Type="int" Nullable="false" />
     <Property Name="CreatedOnUtc" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RelatedProduct">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductId1" Type="int" Nullable="false" />
+    <Property Name="ProductId2" Type="int" Nullable="false" />
+    <Property Name="DisplayOrder" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Shipment">
     <Key>
@@ -508,6 +700,15 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
     <Property Name="Description" Type="nvarchar(max)" />
     <Property Name="DisplayOrder" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="SimilarProduct">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductId1" Type="int" Nullable="false" />
+    <Property Name="ProductId2" Type="int" Nullable="false" />
+    <Property Name="DisplayOrder" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="SpecificationAttribute">
     <Key>
       <PropertyRef Name="Id" />
@@ -525,6 +726,17 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
     <Property Name="DisplayOrder" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="StateProvince">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CountryId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Abbreviation" Type="nvarchar" MaxLength="100" />
+    <Property Name="Published" Type="bit" Nullable="false" />
+    <Property Name="DisplayOrder" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="TaxCategory">
     <Key>
       <PropertyRef Name="Id" />
@@ -532,6 +744,18 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="400" Nullable="false" />
     <Property Name="DisplayOrder" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TaxRate">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StoreId" Type="int" Nullable="false" />
+    <Property Name="TaxCategoryId" Type="int" Nullable="false" />
+    <Property Name="CountryId" Type="int" Nullable="false" />
+    <Property Name="StateProvinceId" Type="int" Nullable="false" />
+    <Property Name="Zip" Type="nvarchar(max)" />
+    <Property Name="Percentage" Type="decimal" Precision="18" Scale="4" Nullable="false" />
   </EntityType>
   <EntityType Name="UrlRecord">
     <Key>
@@ -544,6 +768,38 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
     <Property Name="IsActive" Type="bit" Nullable="false" />
     <Property Name="LanguageId" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="Warehouse">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="400" Nullable="false" />
+    <Property Name="AddressId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="Address_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+    <End Role="Address" Type="Self.Address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Address">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Address_StateProvince">
+    <End Role="StateProvince" Type="Self.StateProvince" Multiplicity="0..1" />
+    <End Role="Address" Type="Self.Address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StateProvince">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Address">
+        <PropertyRef Name="StateProvinceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="CheckoutAttributeValue_CheckoutAttribute">
     <End Role="CheckoutAttribute" Type="Self.CheckoutAttribute" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -610,6 +866,20 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="DiscountUsageHistory_Order">
+    <End Role="Order" Type="Self.Order" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="DiscountUsageHistory" Type="Self.DiscountUsageHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DiscountUsageHistory">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Category_CategoryTemplate">
     <End Role="CategoryTemplate" Type="Self.CategoryTemplate" Multiplicity="1" />
     <End Role="Category" Type="Self.Category" Multiplicity="*" />
@@ -622,20 +892,10 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Category_Picture">
-    <End Role="Picture" Type="Self.Picture" Multiplicity="1" />
-    <End Role="Category" Type="Self.Category" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Picture">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Category">
-        <PropertyRef Name="PictureId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_CheckoutAttribute_TaxCategory">
-    <End Role="TaxCategory" Type="Self.TaxCategory" Multiplicity="1" />
+    <End Role="TaxCategory" Type="Self.TaxCategory" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="CheckoutAttribute" Type="Self.CheckoutAttribute" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TaxCategory">
@@ -647,7 +907,9 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Discount_AppliedToCategories_Category">
-    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="Category" Type="Self.Category" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Discount_AppliedToCategories" Type="Self.Discount_AppliedToCategories" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Category">
@@ -679,6 +941,126 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
       </Principal>
       <Dependent Role="ManufacturerTemplate1">
         <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_PriceComponent_Mapping_PriceComponents">
+    <End Role="PriceComponent" Type="Self.PriceComponent" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Product_PriceComponent_Mapping" Type="Self.Product_PriceComponent_Mapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PriceComponent">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product_PriceComponent_Mapping">
+        <PropertyRef Name="PricecomponentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_PriceComponent_Mapping_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Product_PriceComponent_Mapping" Type="Self.Product_PriceComponent_Mapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product_PriceComponent_Mapping">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_ProductComponent_Mapping_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Product_ProductComponent_Mapping" Type="Self.Product_ProductComponent_Mapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product_ProductComponent_Mapping">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_ProductComponent_Mapping_ProductComponents">
+    <End Role="ProductComponent" Type="Self.ProductComponent" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Product_ProductComponent_Mapping" Type="Self.Product_ProductComponent_Mapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductComponent">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product_ProductComponent_Mapping">
+        <PropertyRef Name="ComponentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaxRate_TaxCategory">
+    <End Role="TaxCategory" Type="Self.TaxCategory" Multiplicity="1" />
+    <End Role="TaxRate" Type="Self.TaxRate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaxCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TaxRate">
+        <PropertyRef Name="TaxCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Warehouse_Address">
+    <End Role="Address" Type="Self.Address" Multiplicity="1" />
+    <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Warehouse">
+        <PropertyRef Name="AddressId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GiftCard_PurchasedWithOrderItem">
+    <End Role="OrderItem" Type="Self.OrderItem" Multiplicity="0..1" />
+    <End Role="GiftCard" Type="Self.GiftCard" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderItem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GiftCard">
+        <PropertyRef Name="PurchasedWithOrderItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GiftCardUsageHistory_GiftCard">
+    <End Role="GiftCard" Type="Self.GiftCard" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="GiftCardUsageHistory" Type="Self.GiftCardUsageHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GiftCard">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GiftCardUsageHistory">
+        <PropertyRef Name="GiftCardId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GiftCardUsageHistory_UsedWithOrder">
+    <End Role="Order" Type="Self.Order" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="GiftCardUsageHistory" Type="Self.GiftCardUsageHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GiftCardUsageHistory">
+        <PropertyRef Name="UsedWithOrderId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -762,6 +1144,62 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="PermissionRecord_CustomerRoles_Source">
+    <End Role="PermissionRecord" Type="Self.PermissionRecord" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PermissionRecord_Role_Mapping" Type="Self.PermissionRecord_Role_Mapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PermissionRecord">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PermissionRecord_Role_Mapping">
+        <PropertyRef Name="PermissionRecord_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PermissionRecord_CustomerRoles_Target">
+    <End Role="CustomerRole" Type="Self.CustomerRole" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PermissionRecord_Role_Mapping" Type="Self.PermissionRecord_Role_Mapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CustomerRole">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PermissionRecord_Role_Mapping">
+        <PropertyRef Name="CustomerRole_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Product_ProductTags_Source">
+    <End Role="Product" Type="Self.Product" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Product_ProductTag_Mapping" Type="Self.Product_ProductTag_Mapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product_ProductTag_Mapping">
+        <PropertyRef Name="Product_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Product_ProductTags_Target">
+    <End Role="ProductTag" Type="Self.ProductTag" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Product_ProductTag_Mapping" Type="Self.Product_ProductTag_Mapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductTag">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product_ProductTag_Mapping">
+        <PropertyRef Name="ProductTag_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="ProductCategory_Category">
     <End Role="Category" Type="Self.Category" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -776,6 +1214,18 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="ProductCategory_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="Product_Category_Mapping" Type="Self.Product_Category_Mapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product_Category_Mapping">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="ProductManufacturer_Manufacturer">
     <End Role="Manufacturer" Type="Self.Manufacturer" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -787,6 +1237,74 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
       </Principal>
       <Dependent Role="Product_Manufacturer_Mapping">
         <PropertyRef Name="ManufacturerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductManufacturer_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="Product_Manufacturer_Mapping" Type="Self.Product_Manufacturer_Mapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product_Manufacturer_Mapping">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductPicture_Picture">
+    <End Role="Picture" Type="Self.Picture" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Product_Picture_Mapping" Type="Self.Product_Picture_Mapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Picture">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product_Picture_Mapping">
+        <PropertyRef Name="PictureId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductPicture_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Product_Picture_Mapping" Type="Self.Product_Picture_Mapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product_Picture_Mapping">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductReview_Customer">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ProductReview" Type="Self.ProductReview" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductReview">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductReview_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ProductReview" Type="Self.ProductReview" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductReview">
+        <PropertyRef Name="ProductId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -846,6 +1364,20 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="ProductVariantAttributeValue_ProductVariantAttribute">
+    <End Role="Product_ProductAttribute_Mapping" Type="Self.Product_ProductAttribute_Mapping" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ProductVariantAttributeValue" Type="Self.ProductVariantAttributeValue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product_ProductAttribute_Mapping">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductVariantAttributeValue">
+        <PropertyRef Name="ProductVariantAttributeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="RecurringPayment_InitialOrder">
     <End Role="Order" Type="Self.Order" Multiplicity="1" />
     <End Role="RecurringPayment" Type="Self.RecurringPayment" Multiplicity="*" />
@@ -900,6 +1432,20 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="StateProvince_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="StateProvince" Type="Self.StateProvince" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StateProvince">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Function Name="usp_Get_AdminOrderDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="orderStatusId" Type="int" Mode="In" />
     <Parameter Name="paymentStatusId" Type="int" Mode="In" />
@@ -916,37 +1462,66 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
     <EntitySet Name="CategoryTemplate" EntityType="Self.CategoryTemplate" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CheckoutAttribute" EntityType="Self.CheckoutAttribute" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CheckoutAttributeValue" EntityType="Self.CheckoutAttributeValue" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Customer_CustomerRole_Mapping" EntityType="Self.Customer_CustomerRole_Mapping" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CustomerRole" EntityType="Self.CustomerRole" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DeliveryDate" EntityType="Self.DeliveryDate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DiscountUsageHistory" EntityType="Self.DiscountUsageHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GiftCard" EntityType="Self.GiftCard" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GiftCardUsageHistory" EntityType="Self.GiftCardUsageHistory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Log" EntityType="Self.Log" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Manufacturer" EntityType="Self.Manufacturer" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ManufacturerTemplate" EntityType="Self.ManufacturerTemplate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MessageTemplate" EntityType="Self.MessageTemplate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NewsLetterSubscription" EntityType="Self.NewsLetterSubscription" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="OrderItem" EntityType="Self.OrderItem" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PermissionRecord" EntityType="Self.PermissionRecord" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PermissionRecord_Role_Mapping" EntityType="Self.PermissionRecord_Role_Mapping" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Picture" EntityType="Self.Picture" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PriceComponent" EntityType="Self.PriceComponent" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Product_Category_Mapping" EntityType="Self.Product_Category_Mapping" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Product_Manufacturer_Mapping" EntityType="Self.Product_Manufacturer_Mapping" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product_Picture_Mapping" EntityType="Self.Product_Picture_Mapping" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product_PriceComponent_Mapping" EntityType="Self.Product_PriceComponent_Mapping" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Product_ProductAttribute_Mapping" EntityType="Self.Product_ProductAttribute_Mapping" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product_ProductComponent_Mapping" EntityType="Self.Product_ProductComponent_Mapping" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product_ProductTag_Mapping" EntityType="Self.Product_ProductTag_Mapping" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Product_SpecificationAttribute_Mapping" EntityType="Self.Product_SpecificationAttribute_Mapping" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ProductAttribute" EntityType="Self.ProductAttribute" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ProductComponent" EntityType="Self.ProductComponent" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductReview" EntityType="Self.ProductReview" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductTag" EntityType="Self.ProductTag" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductVariantAttributeValue" EntityType="Self.ProductVariantAttributeValue" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RecurringPayment" EntityType="Self.RecurringPayment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RelatedProduct" EntityType="Self.RelatedProduct" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Shipment" EntityType="Self.Shipment" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ShipmentItem" EntityType="Self.ShipmentItem" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ShippingMethod" EntityType="Self.ShippingMethod" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SimilarProduct" EntityType="Self.SimilarProduct" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SpecificationAttribute" EntityType="Self.SpecificationAttribute" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SpecificationAttributeOption" EntityType="Self.SpecificationAttributeOption" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StateProvince" EntityType="Self.StateProvince" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TaxCategory" EntityType="Self.TaxCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TaxRate" EntityType="Self.TaxRate" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UrlRecord" EntityType="Self.UrlRecord" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Warehouse" EntityType="Self.Warehouse" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Discount_AppliedToCategories" EntityType="Self.Discount_AppliedToCategories" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [Discount_AppliedToCategories].[Discount_Id] AS [Discount_Id], 
     [Discount_AppliedToCategories].[Category_Id] AS [Category_Id]
     FROM [dbo].[Discount_AppliedToCategories] AS [Discount_AppliedToCategories]</DefiningQuery>
     </EntitySet>
+    <AssociationSet Name="Address_Country" Association="Self.Address_Country">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="Address" EntitySet="Address" />
+    </AssociationSet>
+    <AssociationSet Name="Address_StateProvince" Association="Self.Address_StateProvince">
+      <End Role="StateProvince" EntitySet="StateProvince" />
+      <End Role="Address" EntitySet="Address" />
+    </AssociationSet>
     <AssociationSet Name="CheckoutAttributeValue_CheckoutAttribute" Association="Self.CheckoutAttributeValue_CheckoutAttribute">
       <End Role="CheckoutAttribute" EntitySet="CheckoutAttribute" />
       <End Role="CheckoutAttributeValue" EntitySet="CheckoutAttributeValue" />
@@ -967,12 +1542,12 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
       <End Role="Address" EntitySet="Address" />
       <End Role="Customer" EntitySet="Customer" />
     </AssociationSet>
+    <AssociationSet Name="DiscountUsageHistory_Order" Association="Self.DiscountUsageHistory_Order">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="DiscountUsageHistory" EntitySet="DiscountUsageHistory" />
+    </AssociationSet>
     <AssociationSet Name="FK_Category_CategoryTemplate" Association="Self.FK_Category_CategoryTemplate">
       <End Role="CategoryTemplate" EntitySet="CategoryTemplate" />
-      <End Role="Category" EntitySet="Category" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Category_Picture" Association="Self.FK_Category_Picture">
-      <End Role="Picture" EntitySet="Picture" />
       <End Role="Category" EntitySet="Category" />
     </AssociationSet>
     <AssociationSet Name="FK_CheckoutAttribute_TaxCategory" Association="Self.FK_CheckoutAttribute_TaxCategory">
@@ -990,6 +1565,42 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
     <AssociationSet Name="FK_ManufacturerTemplate_ManufacturerTemplate" Association="Self.FK_ManufacturerTemplate_ManufacturerTemplate">
       <End Role="ManufacturerTemplate" EntitySet="ManufacturerTemplate" />
       <End Role="ManufacturerTemplate1" EntitySet="ManufacturerTemplate" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_PriceComponent_Mapping_PriceComponents" Association="Self.FK_Product_PriceComponent_Mapping_PriceComponents">
+      <End Role="PriceComponent" EntitySet="PriceComponent" />
+      <End Role="Product_PriceComponent_Mapping" EntitySet="Product_PriceComponent_Mapping" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_PriceComponent_Mapping_Product" Association="Self.FK_Product_PriceComponent_Mapping_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Product_PriceComponent_Mapping" EntitySet="Product_PriceComponent_Mapping" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_ProductComponent_Mapping_Product" Association="Self.FK_Product_ProductComponent_Mapping_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Product_ProductComponent_Mapping" EntitySet="Product_ProductComponent_Mapping" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_ProductComponent_Mapping_ProductComponents" Association="Self.FK_Product_ProductComponent_Mapping_ProductComponents">
+      <End Role="ProductComponent" EntitySet="ProductComponent" />
+      <End Role="Product_ProductComponent_Mapping" EntitySet="Product_ProductComponent_Mapping" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaxRate_TaxCategory" Association="Self.FK_TaxRate_TaxCategory">
+      <End Role="TaxCategory" EntitySet="TaxCategory" />
+      <End Role="TaxRate" EntitySet="TaxRate" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Warehouse_Address" Association="Self.FK_Warehouse_Address">
+      <End Role="Address" EntitySet="Address" />
+      <End Role="Warehouse" EntitySet="Warehouse" />
+    </AssociationSet>
+    <AssociationSet Name="GiftCard_PurchasedWithOrderItem" Association="Self.GiftCard_PurchasedWithOrderItem">
+      <End Role="OrderItem" EntitySet="OrderItem" />
+      <End Role="GiftCard" EntitySet="GiftCard" />
+    </AssociationSet>
+    <AssociationSet Name="GiftCardUsageHistory_GiftCard" Association="Self.GiftCardUsageHistory_GiftCard">
+      <End Role="GiftCard" EntitySet="GiftCard" />
+      <End Role="GiftCardUsageHistory" EntitySet="GiftCardUsageHistory" />
+    </AssociationSet>
+    <AssociationSet Name="GiftCardUsageHistory_UsedWithOrder" Association="Self.GiftCardUsageHistory_UsedWithOrder">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="GiftCardUsageHistory" EntitySet="GiftCardUsageHistory" />
     </AssociationSet>
     <AssociationSet Name="Log_Customer" Association="Self.Log_Customer">
       <End Role="Customer" EntitySet="Customer" />
@@ -1015,13 +1626,53 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
       <End Role="Product" EntitySet="Product" />
       <End Role="OrderItem" EntitySet="OrderItem" />
     </AssociationSet>
+    <AssociationSet Name="PermissionRecord_CustomerRoles_Source" Association="Self.PermissionRecord_CustomerRoles_Source">
+      <End Role="PermissionRecord" EntitySet="PermissionRecord" />
+      <End Role="PermissionRecord_Role_Mapping" EntitySet="PermissionRecord_Role_Mapping" />
+    </AssociationSet>
+    <AssociationSet Name="PermissionRecord_CustomerRoles_Target" Association="Self.PermissionRecord_CustomerRoles_Target">
+      <End Role="CustomerRole" EntitySet="CustomerRole" />
+      <End Role="PermissionRecord_Role_Mapping" EntitySet="PermissionRecord_Role_Mapping" />
+    </AssociationSet>
+    <AssociationSet Name="Product_ProductTags_Source" Association="Self.Product_ProductTags_Source">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Product_ProductTag_Mapping" EntitySet="Product_ProductTag_Mapping" />
+    </AssociationSet>
+    <AssociationSet Name="Product_ProductTags_Target" Association="Self.Product_ProductTags_Target">
+      <End Role="ProductTag" EntitySet="ProductTag" />
+      <End Role="Product_ProductTag_Mapping" EntitySet="Product_ProductTag_Mapping" />
+    </AssociationSet>
     <AssociationSet Name="ProductCategory_Category" Association="Self.ProductCategory_Category">
       <End Role="Category" EntitySet="Category" />
+      <End Role="Product_Category_Mapping" EntitySet="Product_Category_Mapping" />
+    </AssociationSet>
+    <AssociationSet Name="ProductCategory_Product" Association="Self.ProductCategory_Product">
+      <End Role="Product" EntitySet="Product" />
       <End Role="Product_Category_Mapping" EntitySet="Product_Category_Mapping" />
     </AssociationSet>
     <AssociationSet Name="ProductManufacturer_Manufacturer" Association="Self.ProductManufacturer_Manufacturer">
       <End Role="Manufacturer" EntitySet="Manufacturer" />
       <End Role="Product_Manufacturer_Mapping" EntitySet="Product_Manufacturer_Mapping" />
+    </AssociationSet>
+    <AssociationSet Name="ProductManufacturer_Product" Association="Self.ProductManufacturer_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Product_Manufacturer_Mapping" EntitySet="Product_Manufacturer_Mapping" />
+    </AssociationSet>
+    <AssociationSet Name="ProductPicture_Picture" Association="Self.ProductPicture_Picture">
+      <End Role="Picture" EntitySet="Picture" />
+      <End Role="Product_Picture_Mapping" EntitySet="Product_Picture_Mapping" />
+    </AssociationSet>
+    <AssociationSet Name="ProductPicture_Product" Association="Self.ProductPicture_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Product_Picture_Mapping" EntitySet="Product_Picture_Mapping" />
+    </AssociationSet>
+    <AssociationSet Name="ProductReview_Customer" Association="Self.ProductReview_Customer">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="ProductReview" EntitySet="ProductReview" />
+    </AssociationSet>
+    <AssociationSet Name="ProductReview_Product" Association="Self.ProductReview_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ProductReview" EntitySet="ProductReview" />
     </AssociationSet>
     <AssociationSet Name="ProductSpecificationAttribute_Product" Association="Self.ProductSpecificationAttribute_Product">
       <End Role="Product" EntitySet="Product" />
@@ -1039,6 +1690,10 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
       <End Role="ProductAttribute" EntitySet="ProductAttribute" />
       <End Role="Product_ProductAttribute_Mapping" EntitySet="Product_ProductAttribute_Mapping" />
     </AssociationSet>
+    <AssociationSet Name="ProductVariantAttributeValue_ProductVariantAttribute" Association="Self.ProductVariantAttributeValue_ProductVariantAttribute">
+      <End Role="Product_ProductAttribute_Mapping" EntitySet="Product_ProductAttribute_Mapping" />
+      <End Role="ProductVariantAttributeValue" EntitySet="ProductVariantAttributeValue" />
+    </AssociationSet>
     <AssociationSet Name="RecurringPayment_InitialOrder" Association="Self.RecurringPayment_InitialOrder">
       <End Role="Order" EntitySet="Order" />
       <End Role="RecurringPayment" EntitySet="RecurringPayment" />
@@ -1054,6 +1709,10 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
     <AssociationSet Name="SpecificationAttributeOption_SpecificationAttribute" Association="Self.SpecificationAttributeOption_SpecificationAttribute">
       <End Role="SpecificationAttribute" EntitySet="SpecificationAttribute" />
       <End Role="SpecificationAttributeOption" EntitySet="SpecificationAttributeOption" />
+    </AssociationSet>
+    <AssociationSet Name="StateProvince_Country" Association="Self.StateProvince_Country">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="StateProvince" EntitySet="StateProvince" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

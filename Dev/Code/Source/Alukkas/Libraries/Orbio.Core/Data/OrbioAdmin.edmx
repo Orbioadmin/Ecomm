@@ -362,6 +362,24 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <Property Name="LicenseDownloadId" Type="int" />
           <Property Name="ItemWeight" Type="decimal" Precision="18" Scale="4" />
           <Property Name="PriceDetailXml" Type="nvarchar(max)" />
+          <Property Name="IsGift" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PermissionRecord">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SystemName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Category" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PermissionRecord_Role_Mapping">
+          <Key>
+            <PropertyRef Name="PermissionRecord_Id" />
+            <PropertyRef Name="CustomerRole_Id" />
+          </Key>
+          <Property Name="PermissionRecord_Id" Type="int" Nullable="false" />
+          <Property Name="CustomerRole_Id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Picture">
           <Key>
@@ -880,7 +898,9 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_CheckoutAttribute_TaxCategory">
-          <End Role="TaxCategory" Type="Self.TaxCategory" Multiplicity="1" />
+          <End Role="TaxCategory" Type="Self.TaxCategory" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="CheckoutAttribute" Type="Self.CheckoutAttribute" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TaxCategory">
@@ -1126,6 +1146,34 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
             </Principal>
             <Dependent Role="OrderItem">
               <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PermissionRecord_CustomerRoles_Source">
+          <End Role="PermissionRecord" Type="Self.PermissionRecord" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PermissionRecord_Role_Mapping" Type="Self.PermissionRecord_Role_Mapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PermissionRecord">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PermissionRecord_Role_Mapping">
+              <PropertyRef Name="PermissionRecord_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PermissionRecord_CustomerRoles_Target">
+          <End Role="CustomerRole" Type="Self.CustomerRole" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PermissionRecord_Role_Mapping" Type="Self.PermissionRecord_Role_Mapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerRole">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PermissionRecord_Role_Mapping">
+              <PropertyRef Name="CustomerRole_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1434,6 +1482,8 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <EntitySet Name="NewsLetterSubscription" EntityType="Self.NewsLetterSubscription" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderItem" EntityType="Self.OrderItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PermissionRecord" EntityType="Self.PermissionRecord" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PermissionRecord_Role_Mapping" EntityType="Self.PermissionRecord_Role_Mapping" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Picture" EntityType="Self.Picture" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PriceComponent" EntityType="Self.PriceComponent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
@@ -1580,6 +1630,14 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <AssociationSet Name="OrderItem_Product" Association="Self.OrderItem_Product">
             <End Role="Product" EntitySet="Product" />
             <End Role="OrderItem" EntitySet="OrderItem" />
+          </AssociationSet>
+          <AssociationSet Name="PermissionRecord_CustomerRoles_Source" Association="Self.PermissionRecord_CustomerRoles_Source">
+            <End Role="PermissionRecord" EntitySet="PermissionRecord" />
+            <End Role="PermissionRecord_Role_Mapping" EntitySet="PermissionRecord_Role_Mapping" />
+          </AssociationSet>
+          <AssociationSet Name="PermissionRecord_CustomerRoles_Target" Association="Self.PermissionRecord_CustomerRoles_Target">
+            <End Role="CustomerRole" EntitySet="CustomerRole" />
+            <End Role="PermissionRecord_Role_Mapping" EntitySet="PermissionRecord_Role_Mapping" />
           </AssociationSet>
           <AssociationSet Name="Product_ProductTags_Source" Association="Self.Product_ProductTags_Source">
             <End Role="Product" EntitySet="Product" />
@@ -2032,6 +2090,11 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           </AssociationSet>
           <EntitySet Name="RelatedProducts" EntityType="OrbioAdminModel.RelatedProduct" />
           <EntitySet Name="SimilarProducts" EntityType="OrbioAdminModel.SimilarProduct" />
+          <EntitySet Name="PermissionRecords" EntityType="OrbioAdminModel.PermissionRecord" />
+          <AssociationSet Name="PermissionRecord_Role_Mapping" Association="OrbioAdminModel.PermissionRecord_Role_Mapping">
+            <End Role="PermissionRecord" EntitySet="PermissionRecords" />
+            <End Role="CustomerRole" EntitySet="CustomerRoles" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="CustomerRole">
           <Key>
@@ -2045,6 +2108,7 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <Property Name="IsSystemRole" Type="Boolean" Nullable="false" />
           <Property Name="SystemName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Customers" Relationship="OrbioAdminModel.Customer_CustomerRole_Mapping" FromRole="CustomerRole" ToRole="Customer" />
+          <NavigationProperty Name="PermissionRecords" Relationship="OrbioAdminModel.PermissionRecord_Role_Mapping" FromRole="CustomerRole" ToRole="PermissionRecord" />
         </EntityType>
         <EntityType Name="OrderItem">
           <Key>
@@ -2072,6 +2136,7 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <Property Type="String" Name="PriceDetailXml" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Product" Relationship="OrbioAdminModel.OrderItem_Product" FromRole="OrderItem" ToRole="Product" />
           <NavigationProperty Name="GiftCards" Relationship="OrbioAdminModel.GiftCard_PurchasedWithOrderItem" FromRole="OrderItem" ToRole="GiftCard" />
+          <Property Name="IsGift" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="OrderItem_Order">
           <End Type="OrbioAdminModel.Order" Role="Order" Multiplicity="1">
@@ -3405,6 +3470,20 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <Property Name="ProductId2" Type="Int32" Nullable="false" />
           <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
         </EntityType>
+        <EntityType Name="PermissionRecord">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SystemName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Category" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CustomerRoles" Relationship="OrbioAdminModel.PermissionRecord_Role_Mapping" FromRole="PermissionRecord" ToRole="CustomerRole" />
+        </EntityType>
+        <Association Name="PermissionRecord_Role_Mapping">
+          <End Type="OrbioAdminModel.PermissionRecord" Role="PermissionRecord" Multiplicity="*" />
+          <End Type="OrbioAdminModel.CustomerRole" Role="CustomerRole" Multiplicity="*" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3520,6 +3599,7 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
           <EntitySetMapping Name="OrderItems">
             <EntityTypeMapping TypeName="OrbioAdminModel.OrderItem">
               <MappingFragment StoreEntitySet="OrderItem">
+                <ScalarProperty Name="IsGift" ColumnName="IsGift" />
                 <ScalarProperty Name="PriceDetailXml" ColumnName="PriceDetailXml" />
                 <ScalarProperty Name="ItemWeight" ColumnName="ItemWeight" />
                 <ScalarProperty Name="LicenseDownloadId" ColumnName="LicenseDownloadId" />
@@ -4216,6 +4296,24 @@ warning 6002: The table/view 'Alukkas_Ecommerce.dbo.Discount_AppliedToCategories
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="PermissionRecords">
+            <EntityTypeMapping TypeName="OrbioAdminModel.PermissionRecord">
+              <MappingFragment StoreEntitySet="PermissionRecord">
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="SystemName" ColumnName="SystemName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="PermissionRecord_Role_Mapping" TypeName="OrbioAdminModel.PermissionRecord_Role_Mapping" StoreEntitySet="PermissionRecord_Role_Mapping">
+            <EndProperty Name="CustomerRole">
+              <ScalarProperty Name="Id" ColumnName="CustomerRole_Id" />
+            </EndProperty>
+            <EndProperty Name="PermissionRecord">
+              <ScalarProperty Name="Id" ColumnName="PermissionRecord_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

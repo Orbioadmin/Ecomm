@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8076e97ea71a457fab33e39b18c4ff34" Name="Diagram1" ZoomLevel="41">
+      <Diagram DiagramId="8076e97ea71a457fab33e39b18c4ff34" Name="Diagram1" ZoomLevel="28">
         <EntityTypeShape EntityType="OrbioAdminModel.Customer" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="OrbioAdminModel.Order" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
         <AssociationConnector Association="OrbioAdminModel.Order_Customer" ManuallyRouted="false" />
@@ -100,6 +100,8 @@
         <AssociationConnector Association="OrbioAdminModel.ProductVariantAttributeValue_ProductVariantAttribute" />
         <EntityTypeShape EntityType="OrbioAdminModel.RelatedProduct" Width="1.5" PointX="4.21609860482444" PointY="14.111229202761887" />
         <EntityTypeShape EntityType="OrbioAdminModel.SimilarProduct" Width="1.5" PointX="9.8831470114566144" PointY="20.007555240768731" />
+        <EntityTypeShape EntityType="OrbioAdminModel.PermissionRecord" Width="1.5" PointX="10.336354862123894" PointY="9.7324062333127515" />
+        <AssociationConnector Association="OrbioAdminModel.PermissionRecord_Role_Mapping" />
       </Diagram>
         <EntityTypeShape EntityType="OrbioAdminModel.SpecificationAttribute" Width="1.5" PointX="34.75" PointY="9" />
         <EntityTypeShape EntityType="OrbioAdminModel.SpecificationAttributeOption" Width="1.5" PointX="32.5" PointY="9" />

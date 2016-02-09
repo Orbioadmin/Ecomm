@@ -40,6 +40,14 @@ namespace Orbio.Services.Admin.ACL
                 new SqlParameter() { ParameterName = "@id", Value = p.Id, DbType = System.Data.DbType.Int32 },
             new SqlParameter() { ParameterName = "@roles", Value = roleXml, DbType = System.Data.DbType.Xml }).FirstOrDefault();
         }
+        public void RemovePermissionRecord(PermissionRecord p)
+        {
+            var roles = GetAllCustomerRoles(p);
+            var roleXml = Serializer.GenericSerializer(roles);
+            var result = dbContext.ExecuteFunction<Int32>("usp_OrbioAdmin_UpdatePermission",
+                new SqlParameter() { ParameterName = "@id", Value = p.Id, DbType = System.Data.DbType.Int32 },
+            new SqlParameter() { ParameterName = "@roles", Value = null, DbType = System.Data.DbType.Xml }).FirstOrDefault();
+        }
 
         public List<int> GetAllCustomerRoles(PermissionRecord p)
         {
